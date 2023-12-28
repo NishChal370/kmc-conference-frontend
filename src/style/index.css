@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&display=swap");
+
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+:root {
+      --primary: #141414;
+}
+
+@layer base {
+      html {
+            @apply font-default
+            bg-white 
+            text-default;
+      }
+
+      * {
+            @apply tracking-wide;
+
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+            display: none;
+      }
+
+      .no-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+      }
+
+      /* width */
+      ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+            @apply bg-transparent;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+            @apply bg-[#dbdada];
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+            @apply bg-[#c7c6c6];
+      }
+}
