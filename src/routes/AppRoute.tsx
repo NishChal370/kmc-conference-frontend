@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Outlet, createBrowserRouter } from "react-router-dom";
-import { App } from "./index";
+import { HOME_PATH } from "@/constants/routePath/path-normalUser";
+import { App, Home } from "./index";
 
 const AppRoute = createBrowserRouter([
       {
@@ -11,11 +12,12 @@ const AppRoute = createBrowserRouter([
             ),
             children: [
                   {
+                        path: HOME_PATH.home.basic,
                         element: <Outlet />, //TODO: Implement protected route.
                         children: [
                               {
                                     index: true,
-                                    element: <h1>Home</h1>,
+                                    element: <Home />,
                               },
 
                               {

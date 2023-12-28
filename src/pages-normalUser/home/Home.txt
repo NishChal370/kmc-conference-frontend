@@ -1,0 +1,216 @@
+import headerImage from "@/assets/image/3386534-removebg.png";
+import headerImage2 from "@/assets/image/ktmcityscape.png";
+import headerImage3 from "@/assets/image/bg2.jpg";
+import log from "@/assets/image/logo.png";
+
+function Home() {
+      return (
+            <>
+                  <header
+                        id="header"
+                        className="relative flex flex-col justify-end items-center w-full h-[80vh] bg-[url('../../assets/image/bg2.jpg')]"
+                  >
+                        {/* <article className="flex flex-col gap-20 font-secondary tracking-wide w-[56%] break-words text-center">
+                        <h1 className=" text-7xl">
+                              <span className=" text-[#dba12f]">Kathmandu</span> Metropolitan IT{" "}
+                              <span className="text-[#d637a6]">Conference</span>
+                        </h1>
+
+                        <h2 className="text-5xl">
+                              JAN 20, 2023 <br />
+                              @CITY CENTER MALL
+                        </h2>
+                  </article> */}
+                        <nav className=" absolute top-0 bg-amber-950/20 flex justify-between items-end gap-2 w-full  py-4 px-4">
+                              <section className="flex gap-6 text-center items-end justify-center">
+                                    <div className="flex text-xs text-start items-end font-bold">
+                                          <img className=" w-14" src={log} alt="" />
+                                          <span className=" pl-2 border-l-2 border-white">
+                                                <p>KMC</p>
+                                                <p>IT CONFERENCE</p>
+                                                <p>2024</p>
+                                          </span>
+                                    </div>
+                                    <div className="flex gap-10">
+                                          <button type="button" className="">
+                                                TOPICS
+                                          </button>
+                                          <button type="button">ABOUT</button>
+                                          <button type="button">SESSIONS & EVENTS</button>
+                                          <button type="button">EXHIBITS</button>
+                                          <button type="button">LOGISTICS</button>
+                                    </div>
+                              </section>
+
+                              <section className="flex justify-center items-center gap-4">
+                                    <span className="text-sm font-semibold tracking-wide text-end leading-tight pr-3 border-r-2 border-white">
+                                          <h4 className="text-white">APRIL 10, 2024</h4>
+                                          <h4 className=" text-blue-600">KATHMANDU</h4>
+                                    </span>
+                                    <button
+                                          type="button"
+                                          className=" bg-blue-500 px-5 py-2 text-white text-sm font-semibold"
+                                    >
+                                          REGISTER
+                                    </button>
+                              </section>
+                        </nav>
+
+                        <article>
+                              <h1 className="text-amber-950 font-black text-center text-5xl leading-tight mb-14">
+                                    COME JOIN <br />
+                                    NEPAL&apos;S BIGGEST <br />
+                                    IT CONFERENCE
+                              </h1>
+                        </article>
+                  </header>
+
+                  <div className="w-[40%] text-center flex flex-col gap-7 [&>p]:text-xl">
+                        <h2 className="text-4xl font-bold">About The Conference</h2>
+                        <p>Pandemic Powers: Tech&apos;s Opportunities and Challenges</p>
+                        <p>
+                              The pandemic landscape is an exotic and strange one, bubbling with new
+                              opportunities and hidden pitfalls. Regulators and lawmakers who in years past
+                              adopted a hands-off policy toward tech are more closely scrutinizing every move
+                              made in Seattle and Silicon Valley. The SEC is ramping up to take a great look
+                              at the SPAC boom. And while a new exuberance has followed the pandemic, there
+                              are questions about just how complete the recovery will be.
+                        </p>
+                        <p>
+                              Join us as we explore the opportunities and challenges at the Bloomberg
+                              Technology Summit, 2021.
+                        </p>
+                  </div>
+
+                  <div className="w-[60%] text-start flex flex-col justify-center items-center gap-8 ">
+                        <h2 className="text-3xl font-extrabold self-start tracking-wide px-2">
+                              Meet our 2024 speakers
+                        </h2>
+
+                        <section className="  grid grid-cols-4 gap-6 auto-cols-auto  [&>*]:w-fit text-xl items-center">
+                              {[
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/45b25080a128d67b821094ef524ab226a17185f1.jpeg?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/2d8df68dac81087272afeaf64168d8cdfb3ccfea.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/0013e063074834266fb0d2186bf283cf4541df45.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/72580bd9508f9029943eb42756b8acb88b17d3bc.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/6e4a10c482240e5e7b7fcc5b27db64688f8ea51d.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/ca38c4c1fb1be5db2f370ae0110d0cb75cb2bdd9.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/45b25080a128d67b821094ef524ab226a17185f1.jpeg?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/2d8df68dac81087272afeaf64168d8cdfb3ccfea.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/0013e063074834266fb0d2186bf283cf4541df45.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/72580bd9508f9029943eb42756b8acb88b17d3bc.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/6e4a10c482240e5e7b7fcc5b27db64688f8ea51d.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/ca38c4c1fb1be5db2f370ae0110d0cb75cb2bdd9.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/45b25080a128d67b821094ef524ab226a17185f1.jpeg?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/2d8df68dac81087272afeaf64168d8cdfb3ccfea.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/0013e063074834266fb0d2186bf283cf4541df45.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/72580bd9508f9029943eb42756b8acb88b17d3bc.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/6e4a10c482240e5e7b7fcc5b27db64688f8ea51d.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                                    {
+                                          img: "https://web-summit-avenger.imgix.net/production/avatars/original/ca38c4c1fb1be5db2f370ae0110d0cb75cb2bdd9.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
+                                          name: "Meredith Whittaker",
+                                          designation: "President",
+                                          company: "Signal",
+                                    },
+                              ].map(({ img, name, designation, company }, index) => (
+                                    <div className="relative w-56 h-fit" key={index}>
+                                          <img className="w-full h-full" src={img} alt="" />
+                                          <article className=" absolute bottom-0 leading-5 text-white font-semibold text-base [&>*]:text-shadow px-7 py-3">
+                                                <p>{name}</p>
+                                                <p>{designation}</p>
+                                                <p>{company}</p>
+                                          </article>
+                                    </div>
+                              ))}
+                        </section>
+                  </div>
+            </>
+      );
+}
+
+export default Home;

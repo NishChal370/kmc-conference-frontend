@@ -7,11 +7,13 @@ export default {
             extend: {
                   colors: {
                         primary: "#ff2a45",
-                        mute: "rgb(0,0,0,0.05)",
+                        mute: "rgb(0,0,0,0.021)",
+                        red: "#ff2a45",
                   },
 
                   fontFamily: {
-                        default: ["Nunito Sans", "sans-serif"],
+                        default: ["Nunito", "sans-serif"],
+                        secondary: ["DM Serif Display", "sans-serif"],
                   },
 
                   textColor: {
