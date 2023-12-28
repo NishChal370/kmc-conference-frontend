@@ -1,8 +1,9 @@
 import HomeHeader from "./components/HomeHeader";
 import HomeSpeakers from "./components/HomeSpeakers";
 import HomeOrganizers from "./components/HomeOrganizers";
-import AboutConference from "./components/AboutConference";
+import HomeAboutConference from "./components/HomeAboutConference";
 import HomeFeaturedExhibitors from "./components/HomeFeaturedExhibitors";
+import HomeStatisticalCounter from "./components/HomeStatisticalCounter";
 
 function Home() {
       return (
@@ -10,7 +11,8 @@ function Home() {
                   <span className="flex flex-col w-full h-full">
                         <HomeHeader />
 
-                        <AboutConference />
+                        <HomeAboutConference />
+                        <HomeStatisticalCounter />
                   </span>
 
                   <HomeSpeakers />

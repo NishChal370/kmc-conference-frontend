@@ -1,7 +1,13 @@
 function HomeOrganizers() {
       return (
             <div className="bg-mute w-full py-20 flex justify-center">
-                  <span className="w-[60%] grid grid-cols-4 gap-x-10 gap-y-12 self-center place-items-center ">
+                  <span
+                        className="w-[60%] grid gap-x-10 gap-y-12 self-center place-items-center 
+                              sm:grid-cols-2 
+                              lg:grid-cols-3 
+                              xl:grid-cols-4
+                        "
+                  >
                         {[
                               {
                                     img: "https://mlwdmr8a4b9i.i.optimole.com/O7d89Mg.ynKH~62d4e/w:2000/h:278/q:90/https://startupgrind.tech/wp-content/uploads/sites/7/2023/01/Logo-Original-Index-Ventures.png",

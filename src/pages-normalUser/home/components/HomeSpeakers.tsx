@@ -1,11 +1,11 @@
 function HomeSpeakers() {
       return (
-            <div className="max-w-[56%] text-start flex flex-col justify-center items-center gap-8 ">
+            <div className="w-[94%] sm:w-[80%] xl:max-w-[90%] 2xl:w-[60%] text-start flex flex-col justify-center items-center gap-8 ">
                   <h2 className="text-3xl font-extrabold self-start tracking-wide px-4 font-secondary">
                         Meet our 2024 speakers
                   </h2>
 
-                  <section className="  grid grid-cols-4 gap-6 auto-cols-auto  [&>*]:w-fit text-xl items-center">
+                  <section className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-cols-auto  [&>*]:w-fit text-xl items-center">
                         {[
                               {
                                     img: "https://web-summit-avenger.imgix.net/production/avatars/original/45b25080a128d67b821094ef524ab226a17185f1.jpeg?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300",
@@ -75,7 +75,7 @@ function HomeSpeakers() {
                               },
                         ].map(({ img, name, designation, company }, index) => (
                               <div className="relative w-56 h-fit" key={index}>
-                                    <img className="w-full h-full" src={img} alt="" />
+                                    <img className="w-full h-full hover:grayscale" src={img} alt="" />
                                     <article className=" absolute bottom-0 leading-5 text-white font-semibold text-base [&>*]:text-shadow px-7 py-3">
                                           <p>{name}</p>
                                           <p>{designation}</p>
