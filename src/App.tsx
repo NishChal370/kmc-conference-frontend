@@ -4,10 +4,10 @@ import Footer from "./layout-normalUser/Footer";
 
 function App() {
       return (
-            <div className="flex flex-col justify-center gap-10 w-full h-full">
+            <div className="flex flex-col justify-center gap-40 w-full h-full">
                   <TopNav />
 
-                  <main className="flex flex-col gap-52 items-center w-full mb-10">
+                  <main className="flex flex-col gap-52 items-center w-full">
                         <Outlet />
                   </main>
 

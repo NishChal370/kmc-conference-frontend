@@ -1,11 +1,21 @@
-function AboutConference() {
+function HomeAboutConference() {
       return (
             <article className="bg-mute py-14 flex  justify-center text-black">
-                  <span className="w-[60%] flex justify-between gap-6">
+                  <span
+                        className="w-[90%] flex flex-col justify-between gap-6
+                              md:flex-row md:w-[80%] 
+                              xl:w-[60%]
+                        "
+                  >
                         <h4 className="font-bold text-4xl font-secondary">
                               What is Kathmandu IT Conference?
                         </h4>
-                        <p className="w-[60%] flex flex-col gap-2">
+                        <p
+                              className="w-full flex flex-col gap-2
+                                    md:w-[80%] 
+                                    xl:w-[60%]
+                              "
+                        >
                               <span>
                                     We are an innovative event organization based in Kathmandu, Nepal,
                                     orchestrating premier tech conferences across the region. Our flagship
@@ -27,4 +37,4 @@ function AboutConference() {
       );
 }
 
-export default AboutConference;
+export default HomeAboutConference;
