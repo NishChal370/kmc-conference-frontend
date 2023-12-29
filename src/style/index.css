@@ -25,19 +25,6 @@
             -moz-osx-font-smoothing: grayscale;
       }
 
-      .text-shadow {
-            text-shadow: 0 0 5px hsl(0, 100%, 1%);
-      }
-
-      .no-scrollbar::-webkit-scrollbar {
-            display: none;
-      }
-
-      .no-scrollbar {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-      }
-
       /* width */
       ::-webkit-scrollbar {
             width: 0px;
