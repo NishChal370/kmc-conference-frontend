@@ -116,7 +116,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                                       <a
                                                             key={index}
                                                             className="transition ease-in-out duration-300
-                                                                  hover:-translate-y-1 hover:scale-110 hover:text-red
+                                                                  hover:-translate-y-1 hover:scale-110 hover:text-primary
                                                             "
                                                             href={link}
                                                             target="_blank"

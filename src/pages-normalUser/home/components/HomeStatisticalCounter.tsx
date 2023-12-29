@@ -11,7 +11,7 @@ function HomeStatisticalCounter() {
                   arrows={false}
                   slidesToShow={3}
                   slidesToScroll={3}
-                  className="text-red mt-10 w-full"
+                  className="text-primary mt-10 w-full"
                   responsive={[
                         {
                               breakpoint: 768,

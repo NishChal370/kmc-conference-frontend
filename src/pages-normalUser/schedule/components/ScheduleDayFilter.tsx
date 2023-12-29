@@ -21,7 +21,7 @@ function ScheduleDayFilter() {
                               <button
                                     key={index}
                                     className={`flex flex-col  w-full min-w-fit h-fit px-4 py-4 
-                                    ${index === 0 ? "bg-red text-white" : "bg-transparent text-black"}
+                                    ${index === 0 ? "bg-primary text-white" : "bg-transparent text-black"}
                                     border border-default  rounded-md`}
                               >
                                     <p className="text-2xl font-bold">

@@ -3,7 +3,7 @@ function LoginButton() {
             <button
                   type="button"
                   className="text-white border border-white rounded-md py-2 px-10 min-w-fit w-full
-                        active:border-red active:text-red
+                        active:border-primary active:text-primary
                   "
             >
                   LOGIN

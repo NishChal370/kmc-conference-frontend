@@ -6,10 +6,10 @@ function Footer() {
                         Reserved
                   </p>
                   <section className="flex gap-4 self-end">
-                        <button type="button" className="active:text-red">
+                        <button type="button" className="active:text-primary">
                               Looking for schedule?
                         </button>
-                        <button type="button" className="active:text-red">
+                        <button type="button" className="active:text-primary">
                               Contact the organizer
                         </button>
                   </section>
