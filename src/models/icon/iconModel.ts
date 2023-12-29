@@ -3,4 +3,5 @@ export type TIconType =
       | "clear"
       | "facebook"
       | "instagram"
-      | "linkedin";
+      | "linkedin"
+      | "calender";

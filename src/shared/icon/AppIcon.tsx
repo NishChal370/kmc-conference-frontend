@@ -2,6 +2,7 @@ import {
       IconBrandFacebook,
       IconBrandInstagram,
       IconBrandLinkedin,
+      IconCalendarEvent,
       IconMenu2,
       IconX,
 } from "@tabler/icons-react";
@@ -31,6 +32,9 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "linkedin":
                         return <IconBrandLinkedin className={className} size={size ?? ICON.size} />;
+
+                  case "calender":
+                        return <IconCalendarEvent className={className} size={size ?? ICON.size} />;
 
                   default:
                         alert("Please select icon");

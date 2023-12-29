@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import AppIcon from "@/shared/icon/AppIcon";
 import NavMenuItemButton from "./NavMenuItemButton";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
 import LoginButton from "@/shared-normalUser/buttons/LoginButton";
 import EventParticipationButton from "@/shared-normalUser/buttons/EventParticipationButton";
 import { ICON } from "@/constants/icon";
+import { SCHEDULE_PATH } from "@/constants/routePath/path-normalUser";
 import "../styles/navMenu.css";
 
 interface INavMenu {
@@ -12,6 +14,8 @@ interface INavMenu {
 }
 
 function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
+      const navigate = useNavigate();
+
       return (
             <nav
                   id="nav-menu"
@@ -25,7 +29,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                     sm:px-10
                               "
                         >
-                              <AppMainLogo />
+                              <AppMainLogo onClick={closeMenuHandler} />
 
                               <button
                                     type="button"
@@ -63,9 +67,18 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                                 [&>*]:text-start [&>*]:tracking-widest
                                           "
                                     >
-                                          {[{ name: "Schedule" }].map(({ name }, index) => (
-                                                <NavMenuItemButton key={index} name={name} />
-                                          ))}
+                                          {[{ name: "Schedule", path: SCHEDULE_PATH.schedule.full }].map(
+                                                ({ name, path }, index) => (
+                                                      <NavMenuItemButton
+                                                            key={index}
+                                                            name={name}
+                                                            onClick={() => {
+                                                                  navigate(path);
+                                                                  closeMenuHandler();
+                                                            }}
+                                                      />
+                                                )
+                                          )}
                                     </section>
 
                                     <section

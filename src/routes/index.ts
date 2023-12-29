@@ -7,6 +7,8 @@ export const App = lazy(() => import("@/App"));
 
 
 export const Home = lazy(() => import("@/pages-normalUser/home/Home"));
+export const Schedule = lazy(() => import("@/pages-normalUser/schedule/Schedule"));
+
 
 
 
