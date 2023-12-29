@@ -1,4 +1,10 @@
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import {
+      IconBrandFacebook,
+      IconBrandInstagram,
+      IconBrandLinkedin,
+      IconMenu2,
+      IconX,
+} from "@tabler/icons-react";
 import { ICON } from "@/constants/icon";
 import { TIconType } from "@/models/icon/iconModel";
 
@@ -16,6 +22,15 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "clear":
                         return <IconX className={className} size={size ?? ICON.size} />;
+
+                  case "facebook":
+                        return <IconBrandFacebook className={className} size={size ?? ICON.size} />;
+
+                  case "instagram":
+                        return <IconBrandInstagram className={className} size={size ?? ICON.size} />;
+
+                  case "linkedin":
+                        return <IconBrandLinkedin className={className} size={size ?? ICON.size} />;
 
                   default:
                         alert("Please select icon");

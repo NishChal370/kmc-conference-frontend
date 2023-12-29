@@ -87,6 +87,32 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                           <EventParticipationButton />
 
                                           <LoginButton />
+
+                                          <span className="flex gap-2 items-center justify-start [&>a]:active:text-whited">
+                                                {[
+                                                      { name: "facebook", link: "http://www.facebook.com" },
+                                                      {
+                                                            name: "instagram",
+                                                            link: "http://www.instagram.com",
+                                                      },
+                                                      {
+                                                            name: "linkedin",
+                                                            link: "http://www.linkedin.com",
+                                                      },
+                                                ].map(({ name, link }, index) => (
+                                                      <a
+                                                            key={index}
+                                                            className="transition ease-in-out duration-300
+                                                                  hover:-translate-y-1 hover:scale-110 hover:text-red
+                                                            "
+                                                            href={link}
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                      >
+                                                            <AppIcon name={name} size={ICON.size + 16} />
+                                                      </a>
+                                                ))}
+                                          </span>
                                     </section>
                               </span>
                         </section>

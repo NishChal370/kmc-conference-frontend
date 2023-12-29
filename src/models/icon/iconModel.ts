@@ -1,3 +1,6 @@
 export type TIconType =
       | "menu"
-      | "clear";
+      | "clear"
+      | "facebook"
+      | "instagram"
+      | "linkedin";
