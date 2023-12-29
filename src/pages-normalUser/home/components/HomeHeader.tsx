@@ -1,3 +1,5 @@
+import LoginButton from "@/shared-normalUser/buttons/LoginButton";
+import EventParticipationButton from "@/shared-normalUser/buttons/EventParticipationButton";
 import "../style/homeHeader.css";
 
 function HomeHeader() {
@@ -45,22 +47,16 @@ function HomeHeader() {
                                     </span>
 
                                     <aside
-                                          className="flex flex-col self-end gap-4 font-bold
+                                          className="flex flex-col self-end gap-4 font-bold w-full
+                                                [&>button]:md:px-20 [&>button]:md:py-4
                                                 sm:flex-row 
+                                                md:w-fit
                                                 lg:self-auto lg:flex-col
                                           "
                                     >
-                                          <button type="button" className="bg-red px-20 py-4 rounded-md">
-                                                BE PART OF THE CONFERENCE
-                                          </button>
-                                          <button
-                                                type="button"
-                                                className=" text-white px-20 py-4 border border-white rounded-md
-                                                      active:border-red active:text-red
-                                                "
-                                          >
-                                                LOGIN
-                                          </button>
+                                          <EventParticipationButton />
+
+                                          <LoginButton />
                                     </aside>
                               </section>
                         </article>

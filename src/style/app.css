@@ -1,0 +1,19 @@
+.transition-max-height {
+      transition-property: max-height;
+      transition-duration: 0.6s;
+      transition-timing-function: ease-in-out;
+      overflow: hidden;
+}
+
+.text-shadow {
+      text-shadow: 0 0 5px hsl(0, 100%, 1%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+      display: none;
+}
+
+.no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+}
