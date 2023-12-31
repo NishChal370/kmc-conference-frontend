@@ -1,9 +1,14 @@
 import {
+      IconBed,
       IconBrandFacebook,
       IconBrandInstagram,
       IconBrandLinkedin,
       IconCalendarEvent,
+      IconCarGarage,
+      IconClockHour2,
+      IconMapPin,
       IconMenu2,
+      IconShare2,
       IconX,
 } from "@tabler/icons-react";
 import { ICON } from "@/constants/icon";
@@ -35,6 +40,21 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "calender":
                         return <IconCalendarEvent className={className} size={size ?? ICON.size} />;
+
+                  case "clock":
+                        return <IconClockHour2 className={className} size={size ?? ICON.size} />;
+
+                  case "location":
+                        return <IconMapPin className={className} size={size ?? ICON.size} />;
+
+                  case "share":
+                        return <IconShare2 className={className} size={size ?? ICON.size} />;
+
+                  case "parking":
+                        return <IconCarGarage className={className} size={size ?? ICON.size} />;
+
+                  case "accommodation":
+                        return <IconBed className={className} size={size ?? ICON.size} />;
 
                   default:
                         alert("Please select icon");

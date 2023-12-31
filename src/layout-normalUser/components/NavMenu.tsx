@@ -33,7 +33,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
 
                               <button
                                     type="button"
-                                    className="text-red w-fit active:text-white"
+                                    className="text-primary w-fit active:text-white"
                                     onClick={closeMenuHandler}
                               >
                                     <AppIcon name="clear" size={ICON.size + 8} />

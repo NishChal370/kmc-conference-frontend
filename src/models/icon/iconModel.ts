@@ -4,4 +4,9 @@ export type TIconType =
       | "facebook"
       | "instagram"
       | "linkedin"
-      | "calender";
+      | "calender"
+      | "location"
+      | "clock"
+      | "share"
+      | "parking"
+      | "accommodation";
