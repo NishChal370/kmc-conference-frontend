@@ -12,6 +12,7 @@ function Home() {
                         <HomeHeader />
 
                         <HomeAboutConference />
+
                         <HomeStatisticalCounter />
                   </span>
 

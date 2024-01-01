@@ -48,7 +48,7 @@ function HomeFeaturedExhibitors() {
                                           key={index}
                                           className=" h-20 w-auto object-content"
                                           src={img}
-                                          alt=""
+                                          alt="featured-exhibitors"
                                     />
                               ))}
                         </section>

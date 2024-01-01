@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import log from "@/assets/image/logo.png";
 import { HOME_PATH } from "@/constants/routePath/path-normalUser";
+import log from "@/assets/image/logo.png";
 
 interface IAppMainLogo {
       onClick?: () => void;
