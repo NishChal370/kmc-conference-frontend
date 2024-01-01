@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Outlet, createBrowserRouter } from "react-router-dom";
-import { HOME_PATH } from "@/constants/routePath/path-normalUser";
-import { App, Home } from "./index";
+import { HOME_PATH, SCHEDULE_PATH } from "@/constants/routePath/path-normalUser";
+import { App, Home, Schedule, ScheduleDetail } from "./index";
 
 const AppRoute = createBrowserRouter([
       {
@@ -18,6 +18,21 @@ const AppRoute = createBrowserRouter([
                               {
                                     index: true,
                                     element: <Home />,
+                              },
+
+                              {
+                                    path: SCHEDULE_PATH.schedule.basic,
+                                    element: <Outlet />,
+                                    children: [
+                                          {
+                                                index: true,
+                                                element: <Schedule />,
+                                          },
+                                          {
+                                                path: SCHEDULE_PATH.detail.basic,
+                                                element: <ScheduleDetail />,
+                                          },
+                                    ],
                               },
 
                               {

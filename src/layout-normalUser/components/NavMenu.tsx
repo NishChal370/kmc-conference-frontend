@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import AppIcon from "@/shared/icon/AppIcon";
 import NavMenuItemButton from "./NavMenuItemButton";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
 import LoginButton from "@/shared-normalUser/buttons/LoginButton";
 import EventParticipationButton from "@/shared-normalUser/buttons/EventParticipationButton";
 import { ICON } from "@/constants/icon";
+import { SCHEDULE_PATH } from "@/constants/routePath/path-normalUser";
 import "../styles/navMenu.css";
 
 interface INavMenu {
@@ -12,6 +14,8 @@ interface INavMenu {
 }
 
 function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
+      const navigate = useNavigate();
+
       return (
             <nav
                   id="nav-menu"
@@ -25,11 +29,11 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                     sm:px-10
                               "
                         >
-                              <AppMainLogo />
+                              <AppMainLogo onClick={closeMenuHandler} />
 
                               <button
                                     type="button"
-                                    className="text-red w-fit active:text-white"
+                                    className="text-primary w-fit active:text-white"
                                     onClick={closeMenuHandler}
                               >
                                     <AppIcon name="clear" size={ICON.size + 8} />
@@ -63,9 +67,18 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                                 [&>*]:text-start [&>*]:tracking-widest
                                           "
                                     >
-                                          {[{ name: "Schedule" }].map(({ name }, index) => (
-                                                <NavMenuItemButton key={index} name={name} />
-                                          ))}
+                                          {[{ name: "Schedule", path: SCHEDULE_PATH.schedule.full }].map(
+                                                ({ name, path }, index) => (
+                                                      <NavMenuItemButton
+                                                            key={index}
+                                                            name={name}
+                                                            onClick={() => {
+                                                                  navigate(path);
+                                                                  closeMenuHandler();
+                                                            }}
+                                                      />
+                                                )
+                                          )}
                                     </section>
 
                                     <section
@@ -103,7 +116,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                                       <a
                                                             key={index}
                                                             className="transition ease-in-out duration-300
-                                                                  hover:-translate-y-1 hover:scale-110 hover:text-red
+                                                                  hover:-translate-y-1 hover:scale-110 hover:text-primary
                                                             "
                                                             href={link}
                                                             target="_blank"

@@ -7,11 +7,12 @@ import HomeStatisticalCounter from "./components/HomeStatisticalCounter";
 
 function Home() {
       return (
-            <>
+            <span className="flex flex-col gap-52 items-center w-full">
                   <span className="flex flex-col w-full h-full">
                         <HomeHeader />
 
                         <HomeAboutConference />
+
                         <HomeStatisticalCounter />
                   </span>
 
@@ -22,7 +23,7 @@ function Home() {
 
                         <HomeFeaturedExhibitors />
                   </span>
-            </>
+            </span>
       );
 }
 
