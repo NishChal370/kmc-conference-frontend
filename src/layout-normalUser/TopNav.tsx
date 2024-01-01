@@ -5,9 +5,9 @@ import RegisterButton from "@/shared-normalUser/buttons/RegisterButton";
 function TopNav() {
       return (
             <nav
-                  className="fixed z-50 top-0 flex justify-between items-end gap-2 w-full py-2 px-4 
-                              sm:px-10
-                        "
+                  className="fixed z-10 top-0 flex justify-between items-end gap-2 w-full py-2 px-4 
+                        sm:px-10
+                  "
             >
                   <AppMainLogo />
 
