@@ -1,6 +1,7 @@
 import { HOME_PATH } from "./homePath";
 import { SPEAKER_PATH } from './speakerPath';
 import { SCHEDULE_PATH } from "./schedulePath";
+import { ABOUT_US_PATH } from "./aboutUsPath";
 
 
-export { HOME_PATH, SCHEDULE_PATH, SPEAKER_PATH };
+export { HOME_PATH, SCHEDULE_PATH, SPEAKER_PATH, ABOUT_US_PATH };
