@@ -9,8 +9,8 @@ function HomeHeader() {
                   id="home-header"
                   heightClasses="h-[56rem] pt-12 
                         sm:h-[40rem] sm:pt-0 
-                        md:h-[34rem] 
-                        lg:px-0 lg:h-[31rem]
+                        md:h-[36rem] 
+                        lg:px-0
                   "
             >
                   <article

@@ -1,15 +1,15 @@
 function HomeFeaturedExhibitors() {
       return (
-            <div className="py-16 flex justify-center">
+            <div className="py-16 flex justify-center w-full h-full">
                   <span
-                        className="w-[90%] flex flex-col gap-12
+                        className="w-[90%] flex flex-col gap-14
                               sm:w-[80%] 
                               lg:[70%] 
                               xl:max-w-[60%]
                         "
                   >
                         <section className="flex flex-col gap-4">
-                              <h1 className=" text-4xl font-extrabold">FEATURED EXHIBITORS</h1>
+                              <h1 className="text-4xl font-extrabold">FEATURED EXHIBITORS</h1>
                               <p>
                                     See the companies from across the globe that will be showcasing the latest
                                     in digital health, food tech, automotive tech, NFTs, gaming, smart home
@@ -17,7 +17,7 @@ function HomeFeaturedExhibitors() {
                               </p>
                         </section>
 
-                        <section className=" grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 justify-center w-[90%] self-center">
+                        <section className=" grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-12 gap-y-20 justify-center w-[90%] self-center">
                               {[
                                     {
                                           img: "https://cdn.ces.tech/ces/media/logos-and-icons/2022/amazon_300x150.png",

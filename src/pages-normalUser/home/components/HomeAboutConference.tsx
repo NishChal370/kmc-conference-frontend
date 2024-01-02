@@ -1,17 +1,15 @@
 function HomeAboutConference() {
       return (
-            <article className="bg-mute py-14 flex  justify-center text-black">
+            <article className="bg-mute py-24 flex  justify-center text-black">
                   <span
                         className="w-[90%] flex flex-col justify-between gap-6
                               md:flex-row md:w-[80%] 
                               xl:w-[60%]
                         "
                   >
-                        <h4 className="font-bold text-4xl font-secondary">
-                              What is Kathmandu IT Conference?
-                        </h4>
+                        <h1 className="text-4xl font-bold">What is Kathmandu IT Conference?</h1>
                         <p
-                              className="w-full flex flex-col gap-2
+                              className="w-full flex flex-col gap-2 leading-relaxed
                                     md:w-[80%] 
                                     xl:w-[60%]
                               "

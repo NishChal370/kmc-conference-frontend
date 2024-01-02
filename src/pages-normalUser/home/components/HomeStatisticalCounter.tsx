@@ -3,28 +3,35 @@ import Slider from "react-slick";
 function HomeStatisticalCounter() {
       return (
             <Slider
-                  dots={true}
+                  dots={false}
                   infinite={true}
                   autoplay={true}
                   autoplaySpeed={1500}
-                  speed={500}
+                  speed={1600}
                   arrows={false}
                   slidesToShow={3}
-                  slidesToScroll={3}
+                  slidesToScroll={1}
                   className="text-primary mt-10 w-full"
                   responsive={[
+                        {
+                              breakpoint: 1024,
+                              settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 1,
+                              },
+                        },
                         {
                               breakpoint: 768,
                               settings: {
                                     slidesToShow: 2,
-                                    slidesToScroll: 2,
+                                    slidesToScroll: 1,
                               },
                         },
                         {
                               breakpoint: 640,
                               settings: {
                                     slidesToShow: 1,
-                                    slidesToScroll: 3,
+                                    slidesToScroll: 1,
                               },
                         },
                   ]}

@@ -2,9 +2,9 @@ import { ORGANIZERS_DETAIL } from "../seed/organizersDetail";
 
 function HomeOrganizers() {
       return (
-            <div className="bg-mute w-full py-20 flex justify-center">
+            <div className="bg-mute w-full py-24 flex justify-center">
                   <span
-                        className="w-[60%] grid gap-x-10 gap-y-12 self-center place-items-center 
+                        className="w-[60%] grid gap-x-12 gap-y-20 self-center place-items-center 
                               sm:grid-cols-2 
                               lg:grid-cols-3 
                               xl:grid-cols-4
