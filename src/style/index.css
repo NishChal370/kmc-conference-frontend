@@ -25,6 +25,13 @@
             -moz-osx-font-smoothing: grayscale;
       }
 
+      input,
+      textarea {
+            @apply bg-transparent;
+            @apply outline-none;
+            @apply text-default;
+      }
+
       /* width */
       ::-webkit-scrollbar {
             width: 0px;
