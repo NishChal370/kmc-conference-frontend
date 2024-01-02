@@ -5,7 +5,7 @@ import AppMainLogo from "@/shared/logo/AppMainLogo";
 import LoginButton from "@/shared-normalUser/buttons/LoginButton";
 import EventParticipationButton from "@/shared-normalUser/buttons/EventParticipationButton";
 import { ICON } from "@/constants/icon";
-import { SCHEDULE_PATH } from "@/constants/routePath/path-normalUser";
+import { SCHEDULE_PATH, SPEAKER_PATH } from "@/constants/routePath/path-normalUser";
 import "../styles/navMenu.css";
 
 interface INavMenu {
@@ -54,11 +54,18 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                           "
                                     >
                                           {[
-                                                { name: "Speakers" },
-                                                { name: "Organizers" },
-                                                { name: "Exhibitors" },
-                                          ].map(({ name }, index) => (
-                                                <NavMenuItemButton key={index} name={name} />
+                                                { name: "Speakers", path: SPEAKER_PATH.speaker.full },
+                                                { name: "Organizers", path: "" },
+                                                { name: "Exhibitors", path: "" },
+                                          ].map(({ name, path }, index) => (
+                                                <NavMenuItemButton
+                                                      key={index}
+                                                      name={name}
+                                                      onClick={() => {
+                                                            navigate(path);
+                                                            closeMenuHandler();
+                                                      }}
+                                                />
                                           ))}
                                     </section>
 

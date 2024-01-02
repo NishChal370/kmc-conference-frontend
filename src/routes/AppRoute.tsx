@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Outlet, createBrowserRouter } from "react-router-dom";
-import { HOME_PATH, SCHEDULE_PATH } from "@/constants/routePath/path-normalUser";
-import { App, Home, Schedule, ScheduleDetail } from "./index";
+import { HOME_PATH, SCHEDULE_PATH, SPEAKER_PATH } from "@/constants/routePath/path-normalUser";
+import { App, Home, Schedule, ScheduleDetail, Speaker } from "./index";
 
 const AppRoute = createBrowserRouter([
       {
@@ -33,6 +33,11 @@ const AppRoute = createBrowserRouter([
                                                 element: <ScheduleDetail />,
                                           },
                                     ],
+                              },
+
+                              {
+                                    path: SPEAKER_PATH.speaker.basic,
+                                    element: <Speaker />,
                               },
 
                               {
