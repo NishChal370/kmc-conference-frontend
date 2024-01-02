@@ -8,7 +8,7 @@ function SpeakerDetail() {
                   "
             >
                   <div
-                        className="flex flex-col gap-2 justify-start items-start text-start w-full max-w-[20rem] h-[20rem] 
+                        className="self-start flex flex-col gap-2 justify-start items-start text-start w-full max-w-[20rem] h-[20rem] 
                               sm:w-[26rem] sm:h-fit
                         "
                   >

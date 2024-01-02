@@ -5,12 +5,7 @@ import AppMainLogo from "@/shared/logo/AppMainLogo";
 import LoginButton from "@/shared-normalUser/buttons/LoginButton";
 import EventParticipationButton from "@/shared-normalUser/buttons/EventParticipationButton";
 import { ICON } from "@/constants/icon";
-import {
-      ABOUT_US_PATH,
-      ORGANIZERS_PATH,
-      SCHEDULE_PATH,
-      SPEAKER_PATH,
-} from "@/constants/routePath/path-normalUser";
+import { SCHEDULE_PATH, SPEAKER_PATH } from "@/constants/routePath/path-normalUser";
 import "../styles/navMenu.css";
 
 interface INavMenu {
@@ -47,7 +42,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
 
                         <section className="flex justify-center items-center w-full h-full">
                               <span
-                                    className="grid grid-cols-1 gap-x-2 gap-y-6 justify-between w-full h-[40rem] max-h-screen text-2xl
+                                    className="grid grid-cols-1 gap-x-2 gap-y-6 justify-between w-full h-fit text-2xl
                                           sm:w-[60%]
                                           lg:w-[70%]  lg:grid-cols-2 lg:h-3/5 lg:gap-y-1
                                           xl:w-[50%] xl:max-w-[50rem]
@@ -60,7 +55,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                     >
                                           {[
                                                 { name: "Speakers", path: SPEAKER_PATH.speaker.full },
-                                                { name: "Organizers", path: ORGANIZERS_PATH.organizer.full },
+                                                { name: "Organizers", path: "" },
                                                 { name: "Exhibitors", path: "" },
                                           ].map(({ name, path }, index) => (
                                                 <NavMenuItemButton
@@ -99,19 +94,12 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                           "
                                     >
                                           {[
-                                                { name: "About us", path: ABOUT_US_PATH.aboutUs.full },
-                                                { name: "Gallery", path: "" },
-                                                { name: "News and Updates", path: "" },
-                                                { name: "Privacy Policy", path: "" },
-                                          ].map(({ name, path }, index) => (
-                                                <NavMenuItemButton
-                                                      key={index}
-                                                      name={name}
-                                                      onClick={() => {
-                                                            navigate(path);
-                                                            closeMenuHandler();
-                                                      }}
-                                                />
+                                                { name: "About us" },
+                                                { name: "Gallery" },
+                                                { name: "News and Updates" },
+                                                { name: "Privacy Policy" },
+                                          ].map(({ name }, index) => (
+                                                <NavMenuItemButton key={index} name={name} />
                                           ))}
                                     </section>
 
@@ -141,7 +129,10 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                                             target="_blank"
                                                             rel="noreferrer"
                                                       >
-                                                            <AppIcon name={name} size={ICON.size + 16} />
+                                                            <AppIcon
+                                                                  name={name as any}
+                                                                  size={ICON.size + 16}
+                                                            />
                                                       </a>
                                                 ))}
                                           </span>
