@@ -9,13 +9,13 @@ function HomeHeader() {
                   id="home-header"
                   heightClasses="h-[56rem] pt-12 
                         sm:h-[40rem] sm:pt-0 
-                        md:h-[36rem] 
+                        md:h-[32rem] 
                         lg:px-0
                   "
             >
                   <article
                         className="text-white flex flex-col justify-center gap-8
-                              lg:w-[80%]
+                              lg:w-[80%] max-w-[76rem]
                         "
                   >
                         <h1

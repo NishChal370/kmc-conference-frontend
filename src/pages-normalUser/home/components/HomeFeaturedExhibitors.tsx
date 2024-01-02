@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom";
+import ViewMoreButton from "@/shared-normalUser/buttons/ViewMoreButton";
+
 function HomeFeaturedExhibitors() {
+      const navigate = useNavigate();
+
       return (
             <div className="py-16 flex justify-center w-full h-full">
                   <span
@@ -52,6 +57,8 @@ function HomeFeaturedExhibitors() {
                                     />
                               ))}
                         </section>
+
+                        <ViewMoreButton name="view exhibitors" clickHandler={() => navigate("/")} />
                   </span>
             </div>
       );
