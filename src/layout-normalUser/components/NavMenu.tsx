@@ -141,7 +141,10 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                                             target="_blank"
                                                             rel="noreferrer"
                                                       >
-                                                            <AppIcon name={name} size={ICON.size + 16} />
+                                                            <AppIcon
+                                                                  name={name as any}
+                                                                  size={ICON.size + 16}
+                                                            />
                                                       </a>
                                                 ))}
                                           </span>
