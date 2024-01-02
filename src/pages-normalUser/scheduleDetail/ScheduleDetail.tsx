@@ -18,11 +18,11 @@ function ScheduleDetail() {
                         <article
                               className="w-full flex flex-col gap-14 text-sm
                                     [&>span]:flex [&>span]:flex-col [&>span]:justify-center [&>span]:gap-1.5
-                                    [&>span>*]:leading-relaxed
+                                    [&>span>*]:leading-loose
                                     [&>span>h5]:text-xl [&>span>h5]:font-semibold
                               "
                         >
-                              <span>
+                              <span className="w-full flex !gap-0 !leading-3 h-fit">
                                     <h3 className="text-lg font-semibold">Saturday, January 27</h3>
                                     <h1 className="text-4xl font-bold">Marketing Workshop #2</h1>
                               </span>

@@ -44,7 +44,7 @@ function HomeStatisticalCounter() {
                         { count: "100+", title: "exhibitors" },
                   ].map(({ count, title }, index) => (
                         <span key={index}>
-                              <div className="w-full self-center flex flex-col items-center text-start">
+                              <div className="w-full self-center flex flex-col items-center text-start mt-12">
                                     <article>
                                           <p className="text-7xl font-bold">{count}</p>
                                           <p className="text-2xl">{title}</p>

@@ -6,7 +6,7 @@ function ScheduleDayFilter() {
                   "
             >
                   <section
-                        className="flex justify-start pb-2 items-start gap-10 min-w-[100%] max-w-[10rem] overflow-scroll [&>button]:text-start 
+                        className="flex justify-start pb-2 items-start gap-y-10 min-w-[100%] max-w-[10rem] overflow-scroll [&>button]:text-start 
                               sm:pb-0 sm:justify-center sm:flex-col  sm:min-w-fit sm:w-[12rem] sm:max-w-[12rem]
                               md:w-[16rem] md:max-w-[16rem]
                               lg:w-[20rem] lg:max-w-[20rem]

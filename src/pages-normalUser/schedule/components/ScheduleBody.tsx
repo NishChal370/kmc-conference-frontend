@@ -12,7 +12,7 @@ function ScheduleBody() {
             >
                   <ScheduleDayFilter />
 
-                  <section className="flex flex-col justify-start items-start gap-16 w-full h-full">
+                  <section className="flex flex-col justify-start items-start gap-y-20 w-full h-full">
                         <ScheduleCard />
 
                         <ScheduleCard
