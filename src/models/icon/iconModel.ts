@@ -9,4 +9,5 @@ export type TIconType =
       | "clock"
       | "share"
       | "parking"
-      | "accommodation";
+      | "accommodation"
+      | "arrow-right";

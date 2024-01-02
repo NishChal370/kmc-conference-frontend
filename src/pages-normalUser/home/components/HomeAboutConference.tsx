@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
+import ViewMoreButton from "@/shared-normalUser/buttons/ViewMoreButton";
+import { ABOUT_US_PATH } from "@/constants/routePath/path-normalUser";
+
 function HomeAboutConference() {
+      const navigate = useNavigate();
+
       return (
             <article className="bg-mute py-24 flex  justify-center text-black">
                   <span
@@ -29,6 +35,8 @@ function HomeAboutConference() {
                                     our ability to bring together &apos;the tech elite and visionary
                                     leaders.&apos;
                               </span>
+
+                              <ViewMoreButton clickHandler={() => navigate(ABOUT_US_PATH.aboutUs.full)} />
                         </p>
                   </span>
             </article>

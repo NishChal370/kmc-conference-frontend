@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
+import ViewMoreButton from "@/shared-normalUser/buttons/ViewMoreButton";
+import { SPEAKER_PATH } from "@/constants/routePath/path-normalUser";
+
 function HomeSpeakers() {
+      const navigate = useNavigate();
+
       return (
             <div className="w-[94%] sm:w-[80%] xl:max-w-[90%] 2xl:w-[60%] text-start flex flex-col justify-center items-center gap-10 ">
                   <h1 className="text-4xl font-bold self-start">Meet our 2024 speakers</h1>
@@ -82,6 +88,11 @@ function HomeSpeakers() {
                               </div>
                         ))}
                   </section>
+
+                  <ViewMoreButton
+                        name="view speakers"
+                        clickHandler={() => navigate(SPEAKER_PATH.speaker.full)}
+                  />
             </div>
       );
 }
