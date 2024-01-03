@@ -11,7 +11,7 @@ function HomeSpeakers() {
             <div className="w-[94%] sm:w-[80%] xl:max-w-[90%] 2xl:w-[60%] text-start flex flex-col justify-center items-center gap-10">
                   <HeaderAnimatedText
                         el="h1"
-                        text="Meet our 2024 speakers"
+                        text="Meet our 2028 speakers"
                         className="text-4xl font-bold self-start"
                   />
 

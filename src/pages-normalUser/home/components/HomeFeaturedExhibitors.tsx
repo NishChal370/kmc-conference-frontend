@@ -40,7 +40,7 @@ function HomeFeaturedExhibitors() {
                                           img: "https://cdn.ces.tech/ces/media/exhibitor-images/hyundai_300x150_2.png",
                                     },
                                     {
-                                          img: "https://cdn.ces.tech/ces/media/logos-and-icons/2024/lg-logo-34_300x150.png",
+                                          img: "https://cdn.ces.tech/ces/media/logos-and-icons/2028/lg-logo-34_300x150.png",
                                     },
                                     {
                                           img: "https://cdn.ces.tech/ces/media/exhibitor-images/mercedes_benz_300x150_2.png",

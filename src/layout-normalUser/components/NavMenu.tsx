@@ -35,7 +35,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                     sm:px-10
                               "
                         >
-                              <AppMainLogo size="w-[20rem]" onClick={closeMenuHandler} />
+                              <AppMainLogo size="w-[16rem]" onClick={closeMenuHandler} />
 
                               <button
                                     type="button"

@@ -6,7 +6,7 @@ function SpeakerFilter() {
                   <span className="relative flex justify-center items-center">
                         <input
                               type="text"
-                              className="peer border border-default rounded-md py-1 px-2.5 w-[16rem]"
+                              className="peer border border-default rounded-md py-1 px-2.5  w-full sm:min-w-[16rem]"
                               placeholder="Search speaker"
                         />
 
