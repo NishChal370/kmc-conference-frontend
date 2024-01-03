@@ -8,13 +8,7 @@ function HomeFeaturedExhibitors() {
 
       return (
             <div className="py-16 flex justify-center w-full h-full">
-                  <span
-                        className="w-[90%] flex flex-col gap-14
-                              sm:w-[80%] 
-                              lg:[70%] 
-                              xl:max-w-[60%]
-                        "
-                  >
+                  <span className="home-section--width flex flex-col gap-14 ">
                         <section className="flex flex-col gap-4">
                               <HeaderAnimatedText
                                     el="h1"

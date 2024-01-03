@@ -9,9 +9,8 @@ function HomeAboutConference() {
       return (
             <article className="bg-mute py-24 flex  justify-center text-black">
                   <span
-                        className="w-[90%] flex flex-col justify-between gap-6
-                              md:flex-row md:w-[80%] 
-                              xl:w-[60%]
+                        className="home-section--width flex flex-col justify-between gap-6
+                              md:flex-row
                         "
                   >
                         <HeaderAnimatedText

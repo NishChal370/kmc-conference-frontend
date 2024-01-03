@@ -3,10 +3,8 @@ import { SPEAKERS_DETAILS } from "../seed.tsx/speakersDetailList";
 function SpeakerDetail() {
       return (
             <div
-                  className="flex flex-col gap-10 justify-center items-center leading-loose w-full max-w-[68rem] px-10 h-fit
+                  className="speaker-detail--width flex flex-col gap-10 justify-center items-center leading-loose
                         md:flex-row md:items-start
-                        xl:w-[80%] xl:max-w-[72rem] 
-                        2xl:w-[80%] 2xl:max-w-[72rem] 
                   "
             >
                   <div
