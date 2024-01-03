@@ -8,13 +8,7 @@ function HomeFeaturedExhibitors() {
 
       return (
             <div className="py-16 flex justify-center w-full h-full">
-                  <span
-                        className="w-[90%] flex flex-col gap-14
-                              sm:w-[80%] 
-                              lg:[70%] 
-                              xl:max-w-[60%]
-                        "
-                  >
+                  <span className="home-section--width flex flex-col gap-14 ">
                         <section className="flex flex-col gap-4">
                               <HeaderAnimatedText
                                     el="h1"
@@ -40,7 +34,7 @@ function HomeFeaturedExhibitors() {
                                           img: "https://cdn.ces.tech/ces/media/exhibitor-images/hyundai_300x150_2.png",
                                     },
                                     {
-                                          img: "https://cdn.ces.tech/ces/media/logos-and-icons/2024/lg-logo-34_300x150.png",
+                                          img: "https://cdn.ces.tech/ces/media/logos-and-icons/2028/lg-logo-34_300x150.png",
                                     },
                                     {
                                           img: "https://cdn.ces.tech/ces/media/exhibitor-images/mercedes_benz_300x150_2.png",

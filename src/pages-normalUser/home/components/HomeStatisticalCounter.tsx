@@ -37,9 +37,9 @@ function HomeStatisticalCounter() {
                   ]}
             >
                   {[
-                        { count: "2,100+", title: "organizers" },
-                        { count: "320+", title: "speakers" },
-                        { count: "70,000+", title: "attendees" },
+                        { count: "02", title: "organizers" },
+                        { count: "29+", title: "speakers" },
+                        { count: "249+", title: "attendees" },
                         { count: "43%", title: "women attendees" },
                         { count: "100+", title: "exhibitors" },
                   ].map(({ count, title }, index) => (

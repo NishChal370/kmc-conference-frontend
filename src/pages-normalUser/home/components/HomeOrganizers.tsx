@@ -9,7 +9,7 @@ function HomeOrganizers() {
 
       return (
             <div className="bg-mute w-full py-24 flex justify-center">
-                  <span className="w-[60%] flex flex-col justify-center items-center gap-10 h-full">
+                  <span className="home-section--width flex flex-col justify-center items-center gap-10 h-full">
                         <span
                               className="grid gap-x-12 gap-y-20 self-center place-items-center 
                               sm:grid-cols-2 

@@ -3,11 +3,12 @@ import { HOME_PATH } from "@/constants/routePath/path-normalUser";
 import log from "@/assets/image/logo.png";
 
 interface IAppMainLogo {
+      id?: string;
       onClick?: () => void;
       size?: string;
 }
 
-function AppMainLogo({ onClick, size = "w-[10rem]" }: IAppMainLogo) {
+function AppMainLogo({ id = "app-logo", onClick, size = "w-[10rem] sm:w-[16rem]" }: IAppMainLogo) {
       const navigate = useNavigate();
 
       const buttonHandler = () => {
@@ -19,10 +20,10 @@ function AppMainLogo({ onClick, size = "w-[10rem]" }: IAppMainLogo) {
       return (
             <button
                   type="button"
-                  className="flex justify-center items-center w-fit h-fit"
+                  className="flex justify-center items-center w-fit h-fit scale-110"
                   onClick={buttonHandler}
             >
-                  <img className={size} src={log} alt="app-logo" />
+                  <img id={id} className={size} src={log} alt="app-logo" />
             </button>
       );
 }

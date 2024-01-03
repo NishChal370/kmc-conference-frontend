@@ -4,6 +4,7 @@ import HomeOrganizers from "./components/HomeOrganizers";
 import HomeAboutConference from "./components/HomeAboutConference";
 import HomeFeaturedExhibitors from "./components/HomeFeaturedExhibitors";
 import HomeStatisticalCounter from "./components/HomeStatisticalCounter";
+import "./style/home.css";
 
 function Home() {
       return (

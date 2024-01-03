@@ -7,17 +7,14 @@ function HomeHeader() {
       return (
             <PageHeader
                   id="home-header"
-                  heightClasses="h-[56rem] pt-12 
-                        sm:h-[40rem] sm:pt-0 
-                        md:h-[32rem] 
-                        lg:px-0
+                  heightClasses="h-[54rem] pt-20
+                        sm:h-[40rem] sm:pt-24
+                       
+                        lg:h-[36rem] xl:px-0
+                        xl:h-[32rem]
                   "
             >
-                  <article
-                        className="text-white flex flex-col justify-center gap-8
-                              lg:w-[80%] max-w-[76rem]
-                        "
-                  >
+                  <article className="text-white flex flex-col justify-center gap-8">
                         <h1
                               className="text-4xl font-bold w-full
                                     lg:w-[78%]
