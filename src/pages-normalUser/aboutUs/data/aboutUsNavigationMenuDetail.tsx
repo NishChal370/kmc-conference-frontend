@@ -11,7 +11,7 @@ export const ABOUT_US_NAVIGATION_DETAIL = [
             title: "Speaker",
             subTitle: "Find your speakers",
             path: SPEAKER_PATH.speaker.full,
-            img: "https://www.extolloadventures.com/wp-content/uploads/2018/07/Durbar-Square-1350x670.jpg",
+            img: "https://image.tourismnpl.com/Landmark/Kathmandu_Durbar_Square_968.jpeg",
       },
       {
             title: "Organizers",

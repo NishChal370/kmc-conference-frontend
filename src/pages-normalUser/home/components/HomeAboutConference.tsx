@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import ViewMoreButton from "@/shared-normalUser/buttons/ViewMoreButton";
 import { ABOUT_US_PATH } from "@/constants/routePath/path-normalUser";
+import HeaderAnimatedText from "@/template/animation/HeadingAnimatedText";
 
 function HomeAboutConference() {
       const navigate = useNavigate();
@@ -13,9 +14,14 @@ function HomeAboutConference() {
                               xl:w-[60%]
                         "
                   >
-                        <h1 className="text-4xl font-bold">What is Kathmandu IT Conference?</h1>
+                        <HeaderAnimatedText
+                              el="h1"
+                              text="What is Kathmandu IT Conference?"
+                              className="text-4xl font-bold"
+                        />
+
                         <p
-                              className="w-full flex flex-col gap-2 leading-relaxed
+                              className="w-full flex flex-col gap-2 leading-loose
                                     md:w-[80%] 
                                     xl:w-[60%]
                               "
