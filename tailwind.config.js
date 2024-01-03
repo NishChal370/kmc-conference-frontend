@@ -16,7 +16,7 @@ export default {
                   },
 
                   textColor: {
-                        default: "#333333",
+                        default: "rgb(26, 29, 38)",
                   },
 
                   borderColor: {
