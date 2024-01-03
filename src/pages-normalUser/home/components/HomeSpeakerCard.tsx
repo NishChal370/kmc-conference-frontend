@@ -18,7 +18,7 @@ function HomeSpeakerCard({ img, name, designation, company }: IHomeSpeakerCard) 
                               src={img}
                               alt="speaker"
                         />
-                        <article className="absolute bottom-0 leading-5 text-white font-semibold text-base [&>*]:text-shadow px-7 py-3">
+                        <article className="absolute bottom-0 leading-5 text-shadow text-white font-semibold text-base px-7 py-3">
                               <p>{name}</p>
                               <p>{designation}</p>
                               <p>{company}</p>

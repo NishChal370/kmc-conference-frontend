@@ -1,5 +1,5 @@
-import kmcLogo from "@/assets/image/organizers/KMCLogo.png";
-import nepalGovLogo from "@/assets/image/organizers/nepalgovermentlogo.png";
+import kmcLogo from "@/assets/image/KMCLogo.png";
+import nepalGovLogo from "@/assets/image/nepalgovermentlogo.png";
 
 export const ORGANIZERS_DETAIL = [
       {

@@ -1,37 +1,25 @@
-import { useNavigate } from "react-router-dom";
-import ViewMoreButton from "@/shared-normalUser/buttons/ViewMoreButton";
-import ScaleRaiseUpAnimationWrapper from "@/template/animation/ScaleRaiseUpAnimationWrapper";
-import { ORGANIZERS_PATH } from "@/constants/routePath/path-normalUser";
-import { ORGANIZERS_DETAIL } from "../seed/organizersDetail";
+import HomeOrganizersBodyContainer from "../container/HomeOrganizersBodyContainer";
+import HeaderAnimatedText from "@/template/animation/HeadingAnimatedText";
 
 function HomeOrganizers() {
-      const navigate = useNavigate();
-
       return (
-            <div className="bg-mute w-full py-24 flex justify-center">
-                  <span className="home-section--width flex flex-col justify-center items-center gap-10 h-full">
-                        <span
-                              className="grid gap-x-12 gap-y-20 self-center place-items-center 
-                              sm:grid-cols-2 
-                              lg:grid-cols-3 
-                              xl:grid-cols-4
-                              "
-                        >
-                              {ORGANIZERS_DETAIL.map(({ img }, index) => (
-                                    <ScaleRaiseUpAnimationWrapper key={index}>
-                                          <img
-                                                className="h-7 w-30 object-content"
-                                                src={img}
-                                                alt="organizer"
-                                          />
-                                    </ScaleRaiseUpAnimationWrapper>
-                              ))}
+            <div className="bg-mute/0 w-full py-24 flex justify-center items-center">
+                  <span className="home-section--width flex flex-col justify-center items-center gap-20 h-full">
+                        <span className="flex w-full flex-col gap-4">
+                              <HeaderAnimatedText
+                                    el="h1"
+                                    text="The Driving Force"
+                                    className="text-xl font-semibold text-center"
+                              />
+
+                              <HeaderAnimatedText
+                                    el="h2"
+                                    text="2080 Conference organizers"
+                                    className="text-3xl font-extrabold text-center"
+                              />
                         </span>
 
-                        <ViewMoreButton
-                              name="view organizers"
-                              clickHandler={() => navigate(ORGANIZERS_PATH.organizer.full)}
-                        />
+                        <HomeOrganizersBodyContainer />
                   </span>
             </div>
       );

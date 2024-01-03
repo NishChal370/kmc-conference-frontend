@@ -36,6 +36,7 @@ function RaiseUpAnimationWrapper({ children }: IRaiseUpAnimationWrapper) {
                   onViewportLeave={() => {
                         setIsInView(false);
                   }}
+                  className="w-full h-full"
                   style={{ display: "inline-block" }}
             >
                   {children}
