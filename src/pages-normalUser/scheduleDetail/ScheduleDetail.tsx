@@ -29,7 +29,7 @@ function ScheduleDetail() {
 
                               <span className="lg:!hidden">
                                     <h5>Date and time</h5>
-                                    <p>Saturday, January, 2028 . 16:00 -19-00</p>
+                                    <p>Saturday, January, 2080 . 16:00 -19-00</p>
                               </span>
 
                               <span className="lg:!hidden">

@@ -13,10 +13,10 @@ function ScheduleDayFilter() {
                         "
                   >
                         {[
-                              { date: "26th January, 2028" },
-                              { date: "27th January, 2028" },
-                              { date: "28th January, 2028" },
-                              { date: "29th January, 2028" },
+                              { date: "26th January, 2080" },
+                              { date: "27th January, 2080" },
+                              { date: "28th January, 2080" },
+                              { date: "29th January, 2080" },
                         ].map(({ date }, index) => (
                               <button
                                     key={index}

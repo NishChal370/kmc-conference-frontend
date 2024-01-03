@@ -12,7 +12,7 @@ function ScheduleScheduleCard() {
                   >
                         <span title="Date & Time">
                               <AppIcon name="clock" size={ICON.size + 10} />
-                              <p className="text-base">Saturday, January 30, 2028 at 16:00 to 19:00</p>
+                              <p className="text-base">Saturday, January 30, 20 at 16:00 to 19:00</p>
                         </span>
 
                         <span title="Location">

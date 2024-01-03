@@ -12,7 +12,7 @@ function SpeakerHeader() {
                   "
             >
                   <h1 className="text-4xl font-bold tracking-wider sm:text-center">
-                        Introducing the Esteemed Speakers of Kathmandu Metropolitan IT Conference 2028
+                        Introducing the Esteemed Speakers of Kathmandu Metropolitan IT Conference 2080
                   </h1>
             </PageHeader>
       );

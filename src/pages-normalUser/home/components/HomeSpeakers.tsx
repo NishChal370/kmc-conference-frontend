@@ -12,7 +12,7 @@ function HomeSpeakers() {
             <div className="home-section--width text-start flex flex-col justify-center items-center gap-10">
                   <HeaderAnimatedText
                         el="h1"
-                        text="Meet our 2028 speakers"
+                        text="Meet our 2080 speakers"
                         className="text-4xl font-bold self-start"
                   />
 

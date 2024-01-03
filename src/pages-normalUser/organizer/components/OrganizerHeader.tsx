@@ -12,7 +12,7 @@ function OrganizerHeader() {
                   "
             >
                   <h1 className="text-4xl font-bold tracking-wider sm:text-center">
-                        The Driving Force: Organizers of Kathmandu IT Conference 2028
+                        The Driving Force: Organizers of Kathmandu IT Conference 2080
                   </h1>
             </PageHeader>
       );

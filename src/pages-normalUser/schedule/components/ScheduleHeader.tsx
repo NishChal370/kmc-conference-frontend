@@ -11,7 +11,7 @@ function ScheduleHeader() {
                   "
             >
                   <h1 className="text-4xl font-bold tracking-wider sm:text-center">
-                        Explore the Kathmandu IT Conference 2028 Sessions
+                        Explore the Kathmandu IT Conference 2080 Sessions
                   </h1>
             </PageHeader>
       );
