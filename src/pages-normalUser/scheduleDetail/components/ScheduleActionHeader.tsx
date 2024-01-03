@@ -4,7 +4,7 @@ function ScheduleActionHeader() {
                   <span
                         className="w-full flex flex-col justify-between items-start gap-4
                               sm:text-center sm:flex-row sm:gap-2
-                              lg:w-[90%]
+                              lg:w-[80%] lg:max-w-[80rem]
                               xl:w-[70%]
                         "
                   >

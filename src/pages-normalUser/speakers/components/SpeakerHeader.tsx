@@ -6,7 +6,9 @@ function SpeakerHeader() {
             <PageHeader id="speaker-detail-header" heightClasses="h-[24rem] sm:h-[20rem]">
                   <h1 className="text-4xl font-bold tracking-wider sm:text-center">
                         Kathmandu Metropolitan IT Conference 2024
-                        <br /> Speakers
+                        <br />
+                        <br />
+                        Speakers
                   </h1>
             </PageHeader>
       );

@@ -4,9 +4,10 @@ import log from "@/assets/image/logo.png";
 
 interface IAppMainLogo {
       onClick?: () => void;
+      size?: string;
 }
 
-function AppMainLogo({ onClick }: IAppMainLogo) {
+function AppMainLogo({ onClick, size = "w-[10rem]" }: IAppMainLogo) {
       const navigate = useNavigate();
 
       const buttonHandler = () => {
@@ -18,15 +19,10 @@ function AppMainLogo({ onClick }: IAppMainLogo) {
       return (
             <button
                   type="button"
-                  className="flex text-xs text-start items-end font-bold"
+                  className="flex justify-center items-center w-fit h-fit"
                   onClick={buttonHandler}
             >
-                  <img className="w-14" src={log} alt="app-logo" />
-                  <span className="pl-2 border-l-2 border-white text-white text-shadow">
-                        <p>KMC</p>
-                        <p>IT CONFERENCE</p>
-                        <p>2024</p>
-                  </span>
+                  <img className={size} src={log} alt="app-logo" />
             </button>
       );
 }

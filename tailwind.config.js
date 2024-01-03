@@ -6,14 +6,13 @@ export default {
       theme: {
             extend: {
                   colors: {
-                        primary: "#ff2a45",
+                        primary: "#bd1701",
                         mute: "rgb(0,0,0,0.021)",
-                        red: "#ff2a45",
+                        red: "#bd1701",
                   },
 
                   fontFamily: {
-                        default: ["Nunito", "sans-serif"],
-                        secondary: ["DM Serif Display", "sans-serif"],
+                        default: ["Open Sans", "sans-serif"],
                   },
 
                   textColor: {

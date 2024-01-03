@@ -7,7 +7,7 @@ interface ISpeakerDetailModal {
 function SpeakerDetailModal({ closeModal }: ISpeakerDetailModal) {
       return (
             <Modal size="w-full max-w-[70rem]" closeHandler={closeModal}>
-                  <div className="flex flex-col justify-center items-center w-full h-full gap-8 sm:flex-row sm:items-start max-w-[70rem]">
+                  <div className="flex flex-col justify-center items-start w-full h-full gap-8 sm:flex-row sm:items-start max-w-[70rem]">
                         <section
                               className="flex flex-col justify-center items-center gap-2 w-72 h-fit
                                     sm:w-96

@@ -6,7 +6,9 @@ function OrganizerHeader() {
             <PageHeader id="organizer-header" heightClasses="h-[24rem] sm:h-[20rem]">
                   <h1 className="text-4xl font-bold tracking-wider sm:text-center">
                         Kathmandu Metropolitan IT Conference 2024
-                        <br /> Organizers
+                        <br />
+                        <br />
+                        Organizers
                   </h1>
             </PageHeader>
       );
