@@ -9,8 +9,16 @@ interface IHomeSpeakerCard {
 function HomeSpeakerCard({ img, name, designation, company }: IHomeSpeakerCard) {
       return (
             <ScaleRaiseUpAnimationWrapper>
-                  <div className="relative w-70 h-fit">
-                        <img className="w-full h-full hover:grayscale" src={img} alt="" />
+                  <div className="relative w-full h-full">
+                        <figure>
+                              <img
+                                    className=" w-72 h-72 min-w-[18rem] min-h-[18rem] object-cover  hover:grayscale
+                                          lg:w-64 lg:h-64 lg:min-w-[256px] lg:min-h-[256px]
+                                    "
+                                    src={img}
+                                    alt=""
+                              />
+                        </figure>
                         <article className="absolute bottom-0 leading-5 text-white font-semibold text-base [&>*]:text-shadow px-7 py-3">
                               <p>{name}</p>
                               <p>{designation}</p>
