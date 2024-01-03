@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import ViewMoreButton from "@/shared-normalUser/buttons/ViewMoreButton";
-import { ORGANIZERS_DETAIL } from "../seed/organizersDetail";
+import ScaleRaiseUpAnimationWrapper from "@/template/animation/ScaleRaiseUpAnimationWrapper";
 import { ORGANIZERS_PATH } from "@/constants/routePath/path-normalUser";
+import { ORGANIZERS_DETAIL } from "../seed/organizersDetail";
 
 function HomeOrganizers() {
       const navigate = useNavigate();
@@ -17,12 +18,13 @@ function HomeOrganizers() {
                               "
                         >
                               {ORGANIZERS_DETAIL.map(({ img }, index) => (
-                                    <img
-                                          key={index}
-                                          className=" h-7 w-30 object-content"
-                                          src={img}
-                                          alt="organizer"
-                                    />
+                                    <ScaleRaiseUpAnimationWrapper key={index}>
+                                          <img
+                                                className="h-7 w-30 object-content"
+                                                src={img}
+                                                alt="organizer"
+                                          />
+                                    </ScaleRaiseUpAnimationWrapper>
                               ))}
                         </span>
 

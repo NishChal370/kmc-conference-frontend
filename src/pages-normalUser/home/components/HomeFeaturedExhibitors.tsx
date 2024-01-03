@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import ViewMoreButton from "@/shared-normalUser/buttons/ViewMoreButton";
+import HeaderAnimatedText from "@/template/animation/HeadingAnimatedText";
+import ScaleRaiseUpAnimationWrapper from "@/template/animation/ScaleRaiseUpAnimationWrapper";
 
 function HomeFeaturedExhibitors() {
       const navigate = useNavigate();
@@ -14,7 +16,11 @@ function HomeFeaturedExhibitors() {
                         "
                   >
                         <section className="flex flex-col gap-4">
-                              <h1 className="text-4xl font-extrabold">FEATURED EXHIBITORS</h1>
+                              <HeaderAnimatedText
+                                    el="h1"
+                                    text="FEATURED EXHIBITORS"
+                                    className="text-4xl font-extrabold"
+                              />
                               <p>
                                     See the companies from across the globe that will be showcasing the latest
                                     in digital health, food tech, automotive tech, NFTs, gaming, smart home
@@ -49,12 +55,13 @@ function HomeFeaturedExhibitors() {
                                           img: "https://cdn.ces.tech/ces/media/logos-and-icons/2023/sony_blue-transparent-300x150.png",
                                     },
                               ].map(({ img }, index) => (
-                                    <img
-                                          key={index}
-                                          className=" h-20 w-auto object-content"
-                                          src={img}
-                                          alt="featured-exhibitors"
-                                    />
+                                    <ScaleRaiseUpAnimationWrapper key={index}>
+                                          <img
+                                                className="h-20 w-auto object-content"
+                                                src={img}
+                                                alt="featured-exhibitors"
+                                          />
+                                    </ScaleRaiseUpAnimationWrapper>
                               ))}
                         </section>
 
