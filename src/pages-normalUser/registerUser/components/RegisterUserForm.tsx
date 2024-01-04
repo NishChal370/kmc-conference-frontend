@@ -1,5 +1,6 @@
 import Input from "@/shared/input/Input";
 import Button from "@/shared/button/Button";
+import PasswordInput from "@/shared/input/PasswordInput";
 
 function RegisterUserForm() {
       return (
@@ -9,9 +10,11 @@ function RegisterUserForm() {
                   "
             >
                   <section className="grid lg:grid-cols-3 gap-y-10 gap-x-4">
-                        <Input title="First Name" />
-                        <Input title="Middle Name" />
-                        <Input title="Last Name" />
+                        <Input label="First Name" />
+
+                        <Input label="Middle Name" />
+
+                        <Input label="Last Name" />
                   </section>
 
                   <section
@@ -19,8 +22,9 @@ function RegisterUserForm() {
                               lg:grid-cols-2
                         "
                   >
-                        <Input title="Gender" />
-                        <Input type="date" title="Date of birth" />
+                        <Input label="Gender" />
+
+                        <Input type="date" label="Date of birth" />
                   </section>
 
                   <section
@@ -28,8 +32,9 @@ function RegisterUserForm() {
                               lg:grid-cols-2
                         "
                   >
-                        <Input type="email" title="Email" />
-                        <Input title="Phone Number" />
+                        <Input type="email" label="Email" />
+
+                        <Input label="Phone Number" />
                   </section>
 
                   <section
@@ -37,11 +42,12 @@ function RegisterUserForm() {
                               lg:grid-cols-2
                         "
                   >
-                        <Input type="password" title="Password" />
-                        <Input type="password" title="Confirm Password" />
+                        <PasswordInput />
+
+                        <PasswordInput label="Confirm Password" />
                   </section>
 
-                  <Button type="submit" title="Register" />
+                  <Button type="submit" title="Register" extraClassName="py-2" />
             </form>
       );
 }

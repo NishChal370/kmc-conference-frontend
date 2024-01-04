@@ -11,4 +11,6 @@ export type TIconType =
       | "parking"
       | "accommodation"
       | "arrow-right"
-      | "arrow-left";
+      | "arrow-left"
+      | "lock"
+      | "unlock";
