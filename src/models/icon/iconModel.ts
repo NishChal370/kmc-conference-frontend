@@ -13,4 +13,6 @@ export type TIconType =
       | "arrow-right"
       | "arrow-left"
       | "lock"
-      | "unlock";
+      | "unlock"
+      | "tick"
+      | "down-arrow";

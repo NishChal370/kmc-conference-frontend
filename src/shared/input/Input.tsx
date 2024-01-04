@@ -26,7 +26,6 @@ function Input({ label, type = "text", children, errorMessage, containerClassNam
                                     className="peer border-0 w-full pl-2 py-2 
                                           placeholder:text-white/0 placeholder
                                     "
-                                    placeholder="userInput"
                                     {...children}
                               />
 

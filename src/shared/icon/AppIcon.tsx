@@ -7,6 +7,8 @@ import {
       IconBrandLinkedin,
       IconCalendarEvent,
       IconCarGarage,
+      IconCheck,
+      IconChevronDown,
       IconClockHour2,
       IconLock,
       IconLockOpen,
@@ -72,6 +74,19 @@ function AppIcon({ name, className, size }: IIcon) {
                   case "unlock":
                         return <IconLockOpen className={className} size={size ?? ICON.size} />;
 
+                  case "tick":
+                        return <IconCheck className={className} size={size ?? ICON.size} />;
+
+                  case "down-arrow":
+                        return (
+                              <IconChevronDown
+                                    className={`
+                                                ${className} 
+                                                transition-all duration-500 ease-in-out
+                                          `}
+                                    size={size ?? ICON.size}
+                              />
+                        );
                   default:
                         alert("Please select icon");
                         break;

@@ -1,6 +1,7 @@
 import Input from "@/shared/input/Input";
 import Button from "@/shared/button/Button";
 import PasswordInput from "@/shared/input/PasswordInput";
+import StaticOptionsDropdownInput from "@/shared/input/StaticOptionsDropdownInput";
 
 function RegisterUserForm() {
       return (
@@ -22,7 +23,15 @@ function RegisterUserForm() {
                               lg:grid-cols-2
                         "
                   >
-                        <Input label="Gender" />
+                        {/* <Input label="Gender" /> */}
+                        <StaticOptionsDropdownInput
+                              name="Gender"
+                              data={[
+                                    { id: "Male", value: "male" },
+                                    { id: "Female", value: "Female" },
+                                    { id: "Others", value: "Others" },
+                              ]}
+                        />
 
                         <Input type="date" label="Date of birth" />
                   </section>
