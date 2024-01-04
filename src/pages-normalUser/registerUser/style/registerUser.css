@@ -1,0 +1,45 @@
+.grid-area-first {
+      grid-area: first;
+}
+
+.grid-area-middle {
+      grid-area: middle;
+}
+
+.grid-area-email {
+      grid-area: email;
+}
+
+.grid-area-dob {
+      grid-area: dob;
+}
+
+.grid-area-gender {
+      grid-area: gender;
+}
+
+.grid-area-phone {
+      grid-area: phone;
+}
+.grid-area-password {
+      grid-area: password;
+}
+
+.grid-area-password-confirm {
+      grid-area: password-confirm;
+}
+
+.grid-area-login-button {
+      grid-area: login-button;
+}
+
+.register-form-grid {
+      display: grid;
+      grid-template-areas:
+            "first  last middle "
+            "email  . phone "
+            "dob gender gender"
+            "password password password-confirm"
+            "login-button  login-button .";
+      grid-template-columns: repeat(3, 1fr);
+}

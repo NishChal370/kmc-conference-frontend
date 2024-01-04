@@ -17,6 +17,7 @@ export default {
 
                   textColor: {
                         default: "rgb(26, 29, 38)",
+                        mute: "#94a3b8",
                   },
 
                   borderColor: {

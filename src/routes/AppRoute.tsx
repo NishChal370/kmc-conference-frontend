@@ -7,10 +7,21 @@ import {
       SCHEDULE_PATH,
       SPEAKER_PATH,
 } from "@/constants/routePath/path-normalUser";
-import { AboutUs, App, Home, Organizer, Schedule, ScheduleDetail, Speaker } from "./index";
+import {
+      AuthApp,
+      AboutUs,
+      App,
+      Home,
+      Organizer,
+      RegisterUser,
+      Schedule,
+      ScheduleDetail,
+      Speaker,
+} from "./index";
 
 const AppRoute = createBrowserRouter([
       {
+            path: "/",
             element: (
                   <Suspense fallback={<h1>loading....</h1>}>
                         <App />
@@ -61,6 +72,20 @@ const AppRoute = createBrowserRouter([
                                     element: <h1>Not found</h1>,
                               },
                         ],
+                  },
+            ],
+      },
+      {
+            path: "login",
+            element: (
+                  <Suspense fallback={<h1>loading....</h1>}>
+                        <AuthApp />
+                  </Suspense>
+            ),
+            children: [
+                  {
+                        path: "register",
+                        element: <RegisterUser />,
                   },
             ],
       },
