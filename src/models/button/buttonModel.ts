@@ -12,6 +12,7 @@ export type IButton = {
       extraClassName?: string;
       variant?: ButtonVariant;
       title: string;
+      iconName?: TIconType;
 } & ({ type: "submit"; onClickHandler?: never } | { type?: ButtonType; onClickHandler: () => void })
 
 

@@ -1,5 +1,5 @@
+import Input from "@/shared/input/Input";
 import Button from "@/shared/button/Button";
-import UserNameInput from "@/shared-normalUser/input/UserNameInput";
 
 function RegisterUserForm() {
       return (
@@ -9,9 +9,9 @@ function RegisterUserForm() {
                   "
             >
                   <section className="grid lg:grid-cols-3 gap-y-10 gap-x-4">
-                        <UserNameInput title="First Name" />
-                        <UserNameInput title="Middle Name" />
-                        <UserNameInput title="Last Name" />
+                        <Input title="First Name" />
+                        <Input title="Middle Name" />
+                        <Input title="Last Name" />
                   </section>
 
                   <section
@@ -19,8 +19,8 @@ function RegisterUserForm() {
                               lg:grid-cols-2
                         "
                   >
-                        <UserNameInput title="Gender" />
-                        <UserNameInput type="date" title="Date of birth" />
+                        <Input title="Gender" />
+                        <Input type="date" title="Date of birth" />
                   </section>
 
                   <section
@@ -28,8 +28,8 @@ function RegisterUserForm() {
                               lg:grid-cols-2
                         "
                   >
-                        <UserNameInput type="email" title="Email" />
-                        <UserNameInput title="Phone Number" />
+                        <Input type="email" title="Email" />
+                        <Input title="Phone Number" />
                   </section>
 
                   <section
@@ -37,8 +37,8 @@ function RegisterUserForm() {
                               lg:grid-cols-2
                         "
                   >
-                        <UserNameInput type="password" title="Password" />
-                        <UserNameInput type="password" title="Confirm Password" />
+                        <Input type="password" title="Password" />
+                        <Input type="password" title="Confirm Password" />
                   </section>
 
                   <Button type="submit" title="Register" />

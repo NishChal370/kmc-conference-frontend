@@ -1,8 +1,15 @@
-import BackButton from "@/shared/button/BackButton";
+import { useNavigate } from "react-router-dom";
+import Button from "@/shared/button/Button";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
 import { ORGANIZERS_DETAIL } from "@/pages-normalUser/organizer/seed/organizersDetails";
 
 function AuthSlide() {
+      const navigate = useNavigate();
+
+      const backToWebsiteHandler = () => {
+            navigate("/");
+      };
+
       return (
             <aside
                   className="relative w-full flex min-w-0 
@@ -11,7 +18,15 @@ function AuthSlide() {
                         lg:max-w-[50rem]
                   "
             >
-                  <BackButton containerClassName="absolute top-0" name="Back To Website" />
+                  <nav className="absolute top-0 w-full py-4 px-4">
+                        <Button
+                              iconName="arrow-left"
+                              type="button"
+                              title="Back To Website"
+                              variant="text"
+                              onClickHandler={backToWebsiteHandler}
+                        />
+                  </nav>
 
                   <div
                         className="w-full h-full flex flex-col gap-4 pt-10 justify-start items-center max-h-[40rem]

@@ -1,4 +1,5 @@
 import {
+      IconArrowNarrowLeft,
       IconArrowNarrowRight,
       IconBed,
       IconBrandFacebook,
@@ -59,6 +60,9 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "arrow-right":
                         return <IconArrowNarrowRight className={className} size={size ?? ICON.size} />;
+
+                  case "arrow-left":
+                        return <IconArrowNarrowLeft className={className} size={size ?? ICON.size} />;
 
                   default:
                         alert("Please select icon");

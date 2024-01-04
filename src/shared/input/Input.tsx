@@ -1,7 +1,6 @@
 import { UseFormRegisterReturn } from "react-hook-form";
-// import AppIcon from "../icon/AppIcon";
 
-interface IUserNameInput {
+interface IInput {
       title: string;
       children?: UseFormRegisterReturn<string>;
       errorMessage?: string;
@@ -9,7 +8,7 @@ interface IUserNameInput {
       containerClassName?: string;
 }
 
-function UserNameInput({ title, type = "text", children, errorMessage, containerClassName }: IUserNameInput) {
+function Input({ title, type = "text", children, errorMessage, containerClassName }: IInput) {
       return (
             <div className={`flex flex-col gap-2 ${containerClassName}`}>
                   {errorMessage && <p className="self-end text-error text-xs">{errorMessage}</p>}
@@ -52,12 +51,10 @@ function UserNameInput({ title, type = "text", children, errorMessage, container
                                     group-focus-within:text-black
                                     ${errorMessage ? "!text-error" : "text-mute"} 
                               `}
-                        >
-                              {/* <AppIcon icon="" /> */}
-                        </label>
+                        ></label>
                   </section>
             </div>
       );
 }
 
-export default UserNameInput;
+export default Input;

@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Outlet, createBrowserRouter } from "react-router-dom";
 import {
       ABOUT_US_PATH,
+      AUTH_PATH,
       HOME_PATH,
       ORGANIZERS_PATH,
       SCHEDULE_PATH,
@@ -76,7 +77,7 @@ const AppRoute = createBrowserRouter([
             ],
       },
       {
-            path: "login",
+            path: AUTH_PATH.login.basic,
             element: (
                   <Suspense fallback={<h1>loading....</h1>}>
                         <AuthApp />
@@ -84,7 +85,7 @@ const AppRoute = createBrowserRouter([
             ),
             children: [
                   {
-                        path: "register",
+                        path: AUTH_PATH.registerUser.basic,
                         element: <RegisterUser />,
                   },
             ],
