@@ -10,7 +10,7 @@ function RegisterUserForm() {
                         [&>section]:w-full
                   "
             >
-                  <section className="grid lg:grid-cols-3 gap-y-10 gap-x-4">
+                  <section className="grid lg:grid-cols-3 h-fit justify-center items-center gap-x-4">
                         <Input label="First Name" />
 
                         <Input label="Middle Name" />
@@ -23,7 +23,6 @@ function RegisterUserForm() {
                               lg:grid-cols-2
                         "
                   >
-                        {/* <Input label="Gender" /> */}
                         <StaticOptionsDropdownInput
                               name="Gender"
                               data={[

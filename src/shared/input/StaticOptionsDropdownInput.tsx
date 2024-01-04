@@ -25,8 +25,12 @@ function StaticOptionsDropdownInput({
       return (
             //NOTE: In value if we don't add empty object when `selected` is `undefined` then previous selected status will not be removed from the List box.
             <Listbox by="id" value={selected || {}} onChange={onChangeHandler}>
-                  <div className="relative w-full min-w-[14rem]">
-                        {errorMessage && <p className="self-end text-error text-xs">{errorMessage}</p>}
+                  <div className="relative w-full min-w-[14rem] flex flex-col gap-0">
+                        {errorMessage && (
+                              <p className="absolute -top-5 right-0 mt-1 text-error text-xs">
+                                    {errorMessage}
+                              </p>
+                        )}
 
                         <div className="relative group tracking-wide items-start w-full min-w-fit text-sm">
                               <Listbox.Button
@@ -50,9 +54,10 @@ function StaticOptionsDropdownInput({
                               </Listbox.Button>
 
                               <label
-                                    htmlFor="userInput"
-                                    className={`absolute pointer-events-none start-2.5 top-0 leading-none  -translate-y-[60%] bg-white p-0 transition-all 
+                                    htmlFor="dropdown"
+                                    className={`absolute pointer-events-none start-2.5 top-0 leading-none bg-white p-0 transition-all 
                                           text-mute  peer-focus:text-black
+                                          ${selected?.value ? "-translate-y-[60%]" : "top-[34%]"}
                                           ${
                                                 errorMessage
                                                       ? "text-error peer-focus:text-error"

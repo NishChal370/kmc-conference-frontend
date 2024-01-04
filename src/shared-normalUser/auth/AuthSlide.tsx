@@ -46,7 +46,7 @@ function AuthSlide() {
                                     <span className="text-primary">IT Conference</span>
                               </h1>
                               <p className="text-sm font-semibold">
-                                    &quot;Powering Government Through Tech&quot;
+                                    &quot;Powering Government With Tech&quot;
                               </p>
                         </article>
 
