@@ -1,13 +1,14 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
 import NavMenuButton from "@/shared-normalUser/navMenu/NavMenuButton";
 import RegisterButton from "@/shared-normalUser/buttons/RegisterButton";
 import kmcLogo from "@/assets/image/KMCLogo.png";
 import nepalGovLogo from "@/assets/image/nepalgovermentlogo.png";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 function TopNav() {
       const location = useLocation();
+
       useEffect(() => {
             const handleScroll = () => {
                   const nav = document.getElementById("top-nav");

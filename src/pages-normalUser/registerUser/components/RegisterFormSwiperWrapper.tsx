@@ -42,7 +42,7 @@ function RegisterFormSwiperWrapper({ children }: IRegisterFormSwiperWrapper) {
                   spaceBetween={30}
                   virtual
                   allowTouchMove={false}
-                  className="w-full h-full flex "
+                  className="w-full h-full flex"
             >
                   {children({
                         isLastForm,

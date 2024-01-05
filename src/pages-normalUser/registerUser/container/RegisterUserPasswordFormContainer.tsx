@@ -16,9 +16,8 @@ function RegisterUserPasswordFormContainer({
 
       const formSubmitHandler = handleSubmit((data) => {
             submitToParentHandler(data);
-
-            // slideToPrevious();
       });
+
       return (
             <RegisterUserPasswordForm
                   registerUserPasswordForm={registerUserPasswordForm}
