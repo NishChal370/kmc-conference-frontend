@@ -1,13 +1,16 @@
 import { SwiperSlide } from "swiper/react";
+import { STATUS } from "@/enum/commonEnum";
+import LoadingAnimation from "@/shared/loading/LoadingAnimation";
 import RegisterFormSwiperWrapper from "./RegisterFormSwiperWrapper";
 import RegisterUserBasicFormContainer from "../container/RegisterUserBasicFormContainer";
 import RegisterUserPasswordFormContainer from "../container/RegisterUserPasswordFormContainer";
 
 interface IRegisterUserFormProps {
+      status: STATUS;
       submitFullForm: (data: any, isLastForm: () => boolean) => void;
 }
 
-function RegisterUserForm({ submitFullForm }: IRegisterUserFormProps) {
+function RegisterUserForm({ status, submitFullForm }: IRegisterUserFormProps) {
       return (
             <div className="flex w-full flex-col justify-center h-full">
                   <RegisterFormSwiperWrapper>
@@ -53,6 +56,8 @@ function RegisterUserForm({ submitFullForm }: IRegisterUserFormProps) {
                               </>
                         )}
                   </RegisterFormSwiperWrapper>
+
+                  {status === STATUS.Loading && <LoadingAnimation />}
             </div>
       );
 }
