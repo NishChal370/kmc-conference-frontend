@@ -43,7 +43,7 @@ function RegisterUserForm({ status, submitFullForm }: IRegisterUserFormProps) {
                                     >
                                           <>
                                                 <h5 className="text-sm font-semibold pl-2">
-                                                      Enter you new Password
+                                                      Enter your new Password
                                                 </h5>
                                                 <RegisterUserPasswordFormContainer
                                                       slideToPrevious={slideToPrev}
