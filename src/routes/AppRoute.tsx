@@ -18,6 +18,7 @@ import {
       Schedule,
       ScheduleDetail,
       Speaker,
+      Login,
 } from "./index";
 
 const AppRoute = createBrowserRouter([
@@ -84,6 +85,10 @@ const AppRoute = createBrowserRouter([
                   </Suspense>
             ),
             children: [
+                  {
+                        index: true,
+                        element: <Login />,
+                  },
                   {
                         path: AUTH_PATH.registerUser.basic,
                         element: <RegisterUser />,

@@ -18,7 +18,7 @@ function PasswordInput({ children, errorMessage, label }: IPasswordInput) {
       return (
             <div className="relative flex flex-col gap-2">
                   {errorMessage && (
-                        <p className="absolute bottom-10 right-0 mt-1 text-end text-error text-xs">
+                        <p className="absolute bottom-10 max-w-[92%] right-0 mt-1 text-end text-error text-xs">
                               {errorMessage}
                         </p>
                   )}

@@ -17,6 +17,7 @@ export const Organizer = lazy(() => import("@/pages-normalUser/organizer/Organiz
 
 
 
+export const Login = lazy(() => import("@/pages-normalUser/login/Login"));
 export const RegisterUser = lazy(() => import("@/pages-normalUser/registerUser/RegisterUser"));
 
 

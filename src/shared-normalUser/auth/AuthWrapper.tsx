@@ -7,8 +7,8 @@ interface IAuthWrapper {
 function AuthWrapper({ children }: IAuthWrapper) {
       return (
             <div
-                  className="flex flex-col w-full justify-between gap-0 h-full min-h-screen 
-                        md:flex-row
+                  className="flex flex-col w-full justify-between gap-4 h-full 
+                        md:flex-row md:gap-0 md:min-h-screen     
                   "
             >
                   <AuthSlide />
