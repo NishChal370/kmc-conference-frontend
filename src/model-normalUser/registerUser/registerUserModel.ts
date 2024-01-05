@@ -13,4 +13,20 @@ export interface IRegisterUserPostRequest {
 }
 
 
-export type IRegisterUserForm = IRegisterUserPostRequest
+export type IRegisterUserForm = IRegisterUserPostRequest;
+
+
+export interface IRegisterUserBasicForm {
+      firstName: string;
+      middleName: string;
+      lastName: string;
+      emailAddress: string;
+      dateOfBirth: string;
+      gender: GENDER;
+      phoneNumber: string;
+}
+
+export interface IRegisterUserPasswordForm {
+      password: string;
+      confirmPassword: string;
+}

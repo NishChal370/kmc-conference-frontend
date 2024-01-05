@@ -6,7 +6,7 @@ import RegisterUserFormContainer from "./container/RegisterUserFormContainer";
 function RegisterUser() {
       return (
             <AuthWrapper>
-                  <div className="flex flex-col justify-center items-center gap-16 w-[90%]">
+                  <div className="flex flex-col justify-center items-center gap-2 w-[90%]">
                         <RegisterUserHeader />
 
                         <RegisterUserFormContainer />

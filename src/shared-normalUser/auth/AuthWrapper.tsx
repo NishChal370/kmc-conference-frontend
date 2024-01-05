@@ -17,7 +17,7 @@ function AuthWrapper({ children }: IAuthWrapper) {
                         className=" w-[100%] flex flex-col gap-6 justify-center items-center
                               md:w-full md:max-w-[30rem]
                               lg:w-fit lg:min-w-[40rem] 
-                              xl:w-full xl:min-w-fit xl:max-w-full
+                              xl:w-full xl:min-w-0 xl:max-w-full
                               [&>span>*]:xl:max-w-[54rem]
                         "
                   >
