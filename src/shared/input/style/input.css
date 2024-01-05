@@ -7,10 +7,20 @@
             @apply outline-none;
             @apply text-default;
       }
-      input[type="date"]:required:invalid::-webkit-datetime-edit {
-            color: transparent;
+
+      /* For Chrome, Safari */
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 1000px white inset;
+            background-color: transparent;
+            border-radius: 0.375rem;
       }
-      input[type="date"]:focus::-webkit-datetime-edit {
-            color: black !important;
+
+      /* For Firefox */
+      input:-moz-autofill {
+            background: transparent;
+            border-radius: 0.375rem;
       }
 }

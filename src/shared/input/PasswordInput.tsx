@@ -3,7 +3,7 @@ import { UseFormRegisterReturn } from "react-hook-form";
 import AppIcon from "../icon/AppIcon";
 
 interface IPasswordInput {
-      children?: UseFormRegisterReturn<string>;
+      children: UseFormRegisterReturn<string>;
       errorMessage?: string;
       label?: string;
 }
@@ -18,7 +18,9 @@ function PasswordInput({ children, errorMessage, label }: IPasswordInput) {
       return (
             <div className="relative flex flex-col gap-2">
                   {errorMessage && (
-                        <p className="absolute -top-5 right-0 mt-1 text-error text-xs">{errorMessage}</p>
+                        <p className="absolute bottom-10 right-0 mt-1 text-end text-error text-xs">
+                              {errorMessage}
+                        </p>
                   )}
 
                   <section
@@ -29,10 +31,10 @@ function PasswordInput({ children, errorMessage, label }: IPasswordInput) {
                   >
                         <span className="w-full">
                               <input
-                                    id="password"
+                                    id={`password-${label}`}
                                     type={showPassword ? "text" : "password"}
-                                    className="peer border-0 w-full pl-2 py-2 
-                                          placeholder:text-white/0 placeholder
+                                    className="peer border-0 w-full pl-2 py-2
+                                          placeholder:text-white/0 placeholder:text-[0rem]
                                     "
                                     placeholder="."
                                     autoCapitalize="off"
@@ -40,9 +42,9 @@ function PasswordInput({ children, errorMessage, label }: IPasswordInput) {
                               />
 
                               <label
-                                    htmlFor="userInput"
+                                    htmlFor={`password-${label}`}
                                     className={`absolute pointer-events-none start-2.5 top-0 leading-none  -translate-y-[60%] bg-white p-0 transition-all 
-                                          text-mute peer-placeholder-shown:top-1/2 peer-focus:text-black
+                                          peer-placeholder-shown:top-1/2 peer-focus:top-0
                                           ${
                                                 errorMessage
                                                       ? "text-error peer-focus:text-error"

@@ -1,7 +1,7 @@
-import RegisterUserForm from "./components/RegisterUserForm";
 import AuthWrapper from "@/shared-normalUser/auth/AuthWrapper";
 import RegisterUserHeader from "./components/RegisterUserHeader";
 import RegisterUserFooter from "./components/RegisterUserFooter";
+import RegisterUserFormContainer from "./container/RegisterUserFormContainer";
 
 function RegisterUser() {
       return (
@@ -9,7 +9,7 @@ function RegisterUser() {
                   <div className="flex flex-col justify-center items-center gap-16 w-[90%]">
                         <RegisterUserHeader />
 
-                        <RegisterUserForm />
+                        <RegisterUserFormContainer />
 
                         <RegisterUserFooter />
                   </div>

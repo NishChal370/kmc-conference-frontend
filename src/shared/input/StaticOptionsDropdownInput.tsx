@@ -3,12 +3,12 @@ import { Listbox, Transition } from "@headlessui/react";
 import AppIcon from "../icon/AppIcon";
 
 interface IData {
-      id: string | number;
       value: string | number;
+      option: string | number;
 }
 
 interface IStaticOptionsDropdownInput {
-      name: string;
+      label: string;
       data: IData[];
       selected?: IData;
       errorMessage?: string;
@@ -16,7 +16,7 @@ interface IStaticOptionsDropdownInput {
 }
 
 function StaticOptionsDropdownInput({
-      name,
+      label,
       data,
       selected,
       onChangeHandler,
@@ -24,7 +24,7 @@ function StaticOptionsDropdownInput({
 }: IStaticOptionsDropdownInput) {
       return (
             //NOTE: In value if we don't add empty object when `selected` is `undefined` then previous selected status will not be removed from the List box.
-            <Listbox by="id" value={selected || {}} onChange={onChangeHandler}>
+            <Listbox by="value" value={selected || {}} onChange={onChangeHandler}>
                   <div className="relative w-full min-w-[14rem] flex flex-col gap-0">
                         {errorMessage && (
                               <p className="absolute -top-5 right-0 mt-1 text-error text-xs">
@@ -34,14 +34,14 @@ function StaticOptionsDropdownInput({
 
                         <div className="relative group tracking-wide items-start w-full min-w-fit text-sm">
                               <Listbox.Button
-                                    className={`relative border border-default rounded-md w-full px-2 py-1.5 text-start ${
+                                    className={`relative border rounded-md w-full px-2 py-1.5 text-start ${
                                           selected?.value ? "text-default" : "text-mute"
-                                    }`}
+                                    } ${errorMessage ? "!border-error" : "border-default"} `}
                               >
                                     {({ open }) => (
                                           <>
                                                 <span className="flex items-center truncate min-h-[1.6rem]">
-                                                      {selected?.value ? selected.value : ""}
+                                                      {selected?.value ? selected?.value : ""}
                                                 </span>
                                                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                                       <AppIcon
@@ -54,9 +54,8 @@ function StaticOptionsDropdownInput({
                               </Listbox.Button>
 
                               <label
-                                    htmlFor="dropdown"
+                                    htmlFor={`dropdown-${label}`}
                                     className={`absolute pointer-events-none start-2.5 top-0 leading-none bg-white p-0 transition-all 
-                                          text-mute  peer-focus:text-black
                                           ${selected?.value ? "-translate-y-[60%]" : "top-[34%]"}
                                           ${
                                                 errorMessage
@@ -65,7 +64,7 @@ function StaticOptionsDropdownInput({
                                           } 
                                     `}
                               >
-                                    {name}
+                                    {label}
                               </label>
                         </div>
 
@@ -75,10 +74,10 @@ function StaticOptionsDropdownInput({
                               leaveFrom="opacity-100"
                               leaveTo="opacity-0"
                         >
-                              <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-                                    {data.map((product) => (
+                              <Listbox.Options className="absolute z-10 top-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+                                    {data.map((option) => (
                                           <Listbox.Option
-                                                key={product.id}
+                                                key={option.value}
                                                 className={({ active }) =>
                                                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
                                                             active
@@ -86,7 +85,7 @@ function StaticOptionsDropdownInput({
                                                                   : "text-gray-900"
                                                       }`
                                                 }
-                                                value={product}
+                                                value={option}
                                           >
                                                 {({ selected }) => (
                                                       <>
@@ -97,7 +96,7 @@ function StaticOptionsDropdownInput({
                                                                               : "font-normal"
                                                                   }`}
                                                             >
-                                                                  {product.value}
+                                                                  {option.value}
                                                             </span>
                                                             {selected ? (
                                                                   <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-primary">
