@@ -6,4 +6,5 @@ export const INPUT_ERROR_MESSAGE = {
       passwordNotMatched: "Password doesn't match",
       invalidContactNumber: "Invalid number",
       invalidEmail: "Invalid email address",
+      invalidDob: "Please enter a valid date of birth",
 } as const;

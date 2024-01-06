@@ -1,18 +1,14 @@
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import AppIcon from "../icon/AppIcon";
-
-interface IData {
-      value: string | number;
-      option: string | number;
-}
+import { IDropdownOptionModel } from "@/models/input/dropDownModel";
 
 interface IStaticOptionsDropdownInput {
       label: string;
-      data: IData[];
-      selected?: IData;
+      data: IDropdownOptionModel[];
+      selected?: IDropdownOptionModel;
       errorMessage?: string;
-      onChangeHandler?: (data: IData) => void;
+      onChangeHandler?: (data: IDropdownOptionModel) => void;
 }
 
 function StaticOptionsDropdownInput({

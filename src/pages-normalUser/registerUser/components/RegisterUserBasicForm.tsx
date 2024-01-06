@@ -5,6 +5,9 @@ import Button from "@/shared/button/Button";
 import StaticOptionsDropdownInput from "@/shared/input/StaticOptionsDropdownInput";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 import { IRegisterUserBasicForm } from "@/model-normalUser/registerUser/registerUserModel";
+import { REGEX } from "@/helper/regex";
+import { GENDER_OPTIONS } from "../data/genderList";
+import validateDateOfBirth from "@/utils/validation/validateDateOfBirth";
 
 interface IRegisterUserBasicFormProps {
       registerUserBasicForm: UseFormReturn<IRegisterUserBasicForm>;
@@ -36,12 +39,7 @@ function RegisterUserBasicForm({
                         </Input>
 
                         <Input label="Middle Name" errorMessage={errors.middleName?.message}>
-                              {register("middleName", {
-                                    required: {
-                                          value: true,
-                                          message: INPUT_ERROR_MESSAGE.empty,
-                                    },
-                              })}
+                              {register("middleName")}
                         </Input>
 
                         <Input label="Last Name" errorMessage={errors.lastName?.message}>
@@ -71,11 +69,7 @@ function RegisterUserBasicForm({
                               render={({ field }) => (
                                     <StaticOptionsDropdownInput
                                           label="Gender"
-                                          data={[
-                                                { value: "Male", option: "Male" },
-                                                { value: "Female", option: "Female" },
-                                                { value: "Others", option: "Others" },
-                                          ]}
+                                          data={GENDER_OPTIONS}
                                           selected={
                                                 field.value
                                                       ? {
@@ -98,6 +92,8 @@ function RegisterUserBasicForm({
                                           value: true,
                                           message: INPUT_ERROR_MESSAGE.empty,
                                     },
+                                    validate: (value: string) =>
+                                          !validateDateOfBirth(value) ? INPUT_ERROR_MESSAGE.invalidDob : true,
                               })}
                         </Input>
                   </section>
@@ -112,6 +108,10 @@ function RegisterUserBasicForm({
                                     required: {
                                           value: true,
                                           message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                                    pattern: {
+                                          value: REGEX.EMAIL,
+                                          message: INPUT_ERROR_MESSAGE.invalidEmail,
                                     },
                               })}
                         </Input>

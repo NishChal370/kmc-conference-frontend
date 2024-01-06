@@ -6,16 +6,18 @@ import { errorToastMessage, loadingAlert, successMessage, swalAlertClose } from 
 function useRegisterUserApi() {
       const dispatch = useAppDispatch();
 
-      const registerUser = (userDetail: IRegisterUserPostRequest) => {
+      const registerUser = async (userDetail: IRegisterUserPostRequest) => {
             loadingAlert();
 
-            dispatch(postRegisterUser(userDetail))
+            await dispatch(postRegisterUser(userDetail))
                   .unwrap()
                   .then(() => {
                         successMessage({ title: "Register", message: "You have been registered. Use it while logging in." })
                   })
                   .catch(({ detail }) => {
                         errorToastMessage(detail);
+
+                        throw new Error(detail);
                   })
                   .finally(swalAlertClose)
       }
