@@ -18,11 +18,11 @@ export enum GENDER {
  * @enum
  * Represent API network status
  */
-export enum STATUS {
-      Idle,
-      Loading,
-      Succeeded,
-      Failed,
+export enum ApiStatus {
+      IDEL,
+      LOADING,
+      SUCCEEDED,
+      FAILED,
       DATA_NOT_FOUND,
 }
 

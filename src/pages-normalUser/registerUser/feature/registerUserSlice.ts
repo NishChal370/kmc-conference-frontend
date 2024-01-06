@@ -1,6 +1,6 @@
 import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
-import { STATUS } from "@/enum/commonEnum";
+import { ApiStatus } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { postRegisterUser } from "./registerUserRequest";
 
@@ -8,7 +8,7 @@ type IRegisterUserSlice = IBasicSliceState;
 
 
 const initialState: IRegisterUserSlice = {
-      status: STATUS.Idle,
+      status: ApiStatus.IDEL,
 }
 
 const registerUserSlice = createSlice({
@@ -18,13 +18,13 @@ const registerUserSlice = createSlice({
       extraReducers(builder) {
             builder
                   .addCase(postRegisterUser.pending, (state) => {
-                        state.status = STATUS.Loading;
+                        state.status = ApiStatus.LOADING;
                   })
                   .addCase(postRegisterUser.fulfilled, (state) => {
-                        state.status = STATUS.Succeeded;
+                        state.status = ApiStatus.SUCCEEDED;
                   })
                   .addCase(postRegisterUser.rejected, (state, action) => {
-                        state.status = STATUS.Failed;
+                        state.status = ApiStatus.FAILED;
                         state.error = action.payload;
                   })
       },

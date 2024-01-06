@@ -1,12 +1,13 @@
 import axios from "axios";
 import { cookiesStore } from "@/utils/cookiesHandler";
+import { authApi } from "./service-normalUser/authApi";
 
 export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const API_URL = BASE_URL + "/api";
 
 
-const appAxios = axios.create({
+const AXIOS = axios.create({
       baseURL: API_URL,
 });
 
@@ -16,7 +17,7 @@ let refreshQueue: any[] = [];
 
 let isRefreshing = false;
 
-appAxios.interceptors.request.use(
+AXIOS.interceptors.request.use(
       (config) => {
             const accessToken = cookiesStore.getItem("access_token");
 
@@ -43,7 +44,7 @@ appAxios.interceptors.request.use(
 );
 
 
-appAxios.interceptors.response.use(
+AXIOS.interceptors.response.use(
       (response) => response,
       async (error) => {
             const originalRequest = error.config;
@@ -65,7 +66,7 @@ appAxios.interceptors.response.use(
                                     refreshAccessToken();
                         });
 
-                        return await appAxios({
+                        return await AXIOS({
                               ...originalRequest,
                               headers: {
                                     ...originalRequest.headers,
@@ -93,16 +94,16 @@ async function refreshAccessToken() {
       isRefreshing = true;
 
       try {
-            //TODO: uncomment this
-            // const response = await authApi.refreshToken({
-            //       accessToken: cookiesStore.getItem("access_token") ?? "",
-            //       refreshToken: cookiesStore.getItem("refresh_token") ?? "",
-            // });
-            //TODO: uncomment this
-            // const { accessToken, refreshToken } = response.data;
-            //TODO: uncomment this
-            // cookiesStore.saveItem({ key: 'access_token', data: accessToken });
-            // cookiesStore.saveItem({ key: 'refresh_token', data: refreshToken });
+
+            const response = await authApi.refreshToken({
+                  accessToken: cookiesStore.getItem("access_token") ?? "",
+                  refreshToken: cookiesStore.getItem("refresh_token") ?? "",
+            });
+
+            const { accessToken, refreshToken } = response.data;
+
+            cookiesStore.saveItem({ key: 'access_token', data: accessToken });
+            cookiesStore.saveItem({ key: 'refresh_token', data: refreshToken });
 
             // Resolve all pending requests in the refresh queue with the new access token
             refreshQueue.forEach(request => {
@@ -110,8 +111,8 @@ async function refreshAccessToken() {
             });
       } catch (error) {
             // move to login page if token is invalid and if present location is not page associated with login
-            if (!window.location.pathname.includes('login')) {
-                  window.location.replace("/login")
+            if (window.location.pathname !== "/") {
+                  window.location.replace("/")
             }
 
             // Reject all pending requests in the refresh queue with the error
@@ -122,4 +123,4 @@ async function refreshAccessToken() {
       }
 }
 
-export default appAxios;
+export default AXIOS;

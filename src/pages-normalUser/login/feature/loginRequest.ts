@@ -1,8 +1,8 @@
 import { authApi } from "@/api/service-normalUser/authApi";
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
-import { ILogin } from "@/model-normalUser/login/loginModel";
+import { ILogin, ILoginResponse } from "@/model-normalUser/login/loginModel";
 
-export const postLogin = createAppAsyncThunk<unknown, ILogin>(
+export const postLogin = createAppAsyncThunk<ILoginResponse, ILogin>(
       "user/login",
       async (loginDetail, { rejectWithValue }) => {
             try {

@@ -1,4 +1,4 @@
-import { STATUS } from "@/enum/commonEnum";
+import { ApiStatus } from "@/enum/commonEnum";
 
 /**
  * @interface
@@ -23,12 +23,12 @@ export interface IApiErrorDetail {
  * Represent Slice basic state
  * 
  * @property {boolean} isToRefetch - it helps to forcefully refetch data. Note: it don't matter that value is true or false. but its value should be changed to trigger refetch. Optional
- * @property {STATUS} status - represent api status
+ * @property {ApiStatus} status - represent api status
  * @property {IApiErrorDetail} error - represent api error detail.
  */
 export interface IBasicSliceState<TErrorDetail = IApiErrorDetail> {
       isToRefetch?: boolean;
-      status: STATUS;
+      status: ApiStatus;
       error?: TErrorDetail;
 }
 

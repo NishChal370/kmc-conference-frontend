@@ -6,7 +6,12 @@ import { loginState } from "../feature/loginSlice";
 import { ILogin } from "@/model-normalUser/login/loginModel";
 
 function LoginFormContainer() {
-      const loginForm = useAppForm<ILogin>();
+      const loginForm = useAppForm<ILogin>({
+            defaultValues: {
+                  emailAddress: "test@gmail.com",
+                  password: "Mypassword1!",
+            },
+      });
       const { handleSubmit } = loginForm;
 
       const { login } = useLoginApi();
