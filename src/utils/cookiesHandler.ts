@@ -12,7 +12,7 @@ export const cookiesStore = {
       saveItem: ({ key, data }: IUseCookies) => {
             const expires = new Date(Date.now() + 5 * 864e5).toUTCString();
 
-            document.cookie = `${key}=${data}; expires=${expires}; path=/; secure; HttpOnly; SameSite=Strict`;
+            document.cookie = `${key}=${data}; expires=${expires}; path=/; secure; SameSite=Strict`;
 
       },
 
@@ -56,5 +56,5 @@ export const cookiesStore = {
 const deleteCookies = (key: string) => {
       const expiryDate = new Date(Date.now() - 1).toUTCString();
 
-      return document.cookie = `${key}=; expires==${expiryDate}; path=/; secure; HttpOnly; SameSite=Strict`;
+      return document.cookie = `${key}=; expires==${expiryDate}; path=/; secure; SameSite=Strict`;
 }

@@ -1,6 +1,8 @@
 import { useAppDispatch } from "@/app/hooks";
+import { Status } from "@/enum/commonEnum";
 import { ILogin } from "@/model-normalUser/login/loginModel";
 import { postLogin } from "@/pages-normalUser/login/feature/loginRequest";
+import { changeVerifyLoginStatus } from "@/protectedRoute/feature/verifyLoginSlice";
 import { errorToastMessage, loadingAlert, swalAlertClose } from "@/utils/alert";
 
 function useLoginApi() {
@@ -11,6 +13,9 @@ function useLoginApi() {
 
             dispatch(postLogin(loginDetail))
                   .unwrap()
+                  .then(() => {
+                        dispatch(changeVerifyLoginStatus(Status.SUCCEEDED))
+                  })
                   .catch(({ detail }) => {
                         errorToastMessage(detail);
                   })

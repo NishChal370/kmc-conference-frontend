@@ -8,7 +8,7 @@ export const authApi = {
       login: (loginDetail: ILogin) => {
             const options: AxiosRequestConfig = {
                   method: "POST",
-                  url: `Auth/login-user`,
+                  url: `auth/login-user`,
                   data: loginDetail,
             };
 
@@ -25,6 +25,26 @@ export const authApi = {
 
             return AXIOS.request(options);
       },
+
+
+      verifyLogin: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `auth/verify`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      logout: () => {
+            const options: AxiosRequestConfig = {
+                  method: "POST",
+                  url: `auth/user-logout`,
+            };
+
+            return AXIOS.request(options);
+      },
+
 
       registerUser: (userDetail: IRegisterUserPostRequest) => {
             const options: AxiosRequestConfig = {

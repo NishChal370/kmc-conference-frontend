@@ -21,6 +21,7 @@ function LoginFormContainer() {
       const formSubmitHandler = handleSubmit((loginDetail) => {
             login(loginDetail);
       });
+
       return <LoginForm status={status} loginForm={loginForm} formSubmitHandler={formSubmitHandler} />;
 }
 

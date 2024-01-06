@@ -6,11 +6,11 @@ import PasswordInput from "@/shared/input/PasswordInput";
 import LoadingAnimation from "@/shared/loading/LoadingAnimation";
 import { REGEX } from "@/helper/regex";
 import { ILogin } from "@/model-normalUser/login/loginModel";
-import { ApiStatus } from "@/enum/commonEnum";
+import { Status } from "@/enum/commonEnum";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 
 interface ILoginFormProps {
-      status: ApiStatus;
+      status: Status;
       loginForm: UseFormReturn<ILogin>;
       formSubmitHandler: (e?: BaseSyntheticEvent) => void;
 }
@@ -63,7 +63,7 @@ function LoginForm({
 
                   <Button type="submit" title="log in" />
 
-                  {status === ApiStatus.LOADING && <LoadingAnimation />}
+                  {status === Status.LOADING && <LoadingAnimation />}
             </form>
       );
 }

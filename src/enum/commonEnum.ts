@@ -16,9 +16,23 @@ export enum GENDER {
 
 /**
  * @enum
+ * Represent role
+ */
+export enum UserRole {
+      SUPER_ADMIN = "SuperAdmin",
+      SITE_MANAGER = "SiteManager",
+      REVIEWER = "Reviewer",
+      READ_ONLY = "ReadOnly",
+      PARTICIPANTS = "User",
+}
+
+
+
+/**
+ * @enum
  * Represent API network status
  */
-export enum ApiStatus {
+export enum Status {
       IDEL,
       LOADING,
       SUCCEEDED,

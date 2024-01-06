@@ -1,7 +1,7 @@
 import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { postLogin } from "./loginRequest";
-import { ApiStatus } from "@/enum/commonEnum";
+import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { cookiesStore } from "@/utils/cookiesHandler";
 
@@ -9,7 +9,7 @@ type ILoginSlice = IBasicSliceState;
 
 
 const initialState: ILoginSlice = {
-      status: ApiStatus.IDEL,
+      status: Status.IDEL,
 }
 
 const loginSlice = createSlice({
@@ -19,17 +19,16 @@ const loginSlice = createSlice({
       extraReducers(builder) {
             builder
                   .addCase(postLogin.pending, (state) => {
-                        state.status = ApiStatus.LOADING;
+                        state.status = Status.LOADING;
                   })
                   .addCase(postLogin.fulfilled, (state, action) => {
-                        state.status = ApiStatus.SUCCEEDED;
-
+                        state.status = Status.SUCCEEDED;
 
                         cookiesStore.saveItem({ key: "access_token", data: action.payload.accessToken });
                         cookiesStore.saveItem({ key: "refresh_token", data: action.payload.refreshToken });
                   })
                   .addCase(postLogin.rejected, (state, action) => {
-                        state.status = ApiStatus.FAILED;
+                        state.status = Status.FAILED;
                         state.error = action.payload;
                   })
       },
