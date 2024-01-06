@@ -110,10 +110,13 @@ async function refreshAccessToken() {
                   request.resolve();
             });
       } catch (error) {
-            // move to login page if token is invalid and if present location is not page associated with login
-            if (window.location.pathname !== "/") {
-                  window.location.replace("/")
-            }
+
+            console.log("here in error ");
+            //TODO: check here if user is in admin page or not
+            //move to login page if token is invalid and if present location is not page associated with login
+            // if (window.location.pathname !== "/") {
+            //       window.location.replace("/")
+            // }
 
             // Reject all pending requests in the refresh queue with the error
             refreshQueue.forEach(request_1 => {

@@ -5,6 +5,7 @@ import useAuthApi from "@/hooks/auth/useAuthApi";
 function ProtectedRoute() {
       const { verifyLogin } = useAuthApi();
 
+      console.log("Called");
       useEffect(() => {
             verifyLogin();
       }, []);
