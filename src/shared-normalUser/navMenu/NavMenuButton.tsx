@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ICON } from "@/constants/icon";
 import AppIcon from "@/shared/icon/AppIcon";
-import NavMenu from "@/layout-normalUser/components/NavMenu";
+import NavMenu from "@/layout-normalUser/TopNav/components/NavMenu";
 
 function NavMenuButton() {
       const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);

@@ -3,6 +3,7 @@ import { lazy } from 'react';
 
 /*** Container  ****/
 export const App = lazy(() => import("@/App"));
+export const AuthApp = lazy(() => import("@/AuthApp"));
 
 
 
@@ -13,6 +14,14 @@ export const ScheduleDetail = lazy(() => import("@/pages-normalUser/scheduleDeta
 export const Speaker = lazy(() => import("@/pages-normalUser/speakers/Speaker"));
 export const AboutUs = lazy(() => import("@/pages-normalUser/aboutUs/AboutUs"));
 export const Organizer = lazy(() => import("@/pages-normalUser/organizer/Organizer"));
+
+
+
+export const Login = lazy(() => import("@/pages-normalUser/login/Login"));
+export const RegisterUser = lazy(() => import("@/pages-normalUser/registerUser/RegisterUser"));
+
+
+
 
 
 

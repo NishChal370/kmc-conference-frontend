@@ -10,4 +10,9 @@ export type TIconType =
       | "share"
       | "parking"
       | "accommodation"
-      | "arrow-right";
+      | "arrow-right"
+      | "arrow-left"
+      | "lock"
+      | "unlock"
+      | "tick"
+      | "down-arrow";

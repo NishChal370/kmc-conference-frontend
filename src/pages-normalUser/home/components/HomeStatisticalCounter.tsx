@@ -31,7 +31,7 @@ function HomeStatisticalCounter() {
                               slidesPerView: 3,
                         },
                   }}
-                  className="text-primary mt-10 w-full max-w-[140rem]"
+                  className="text-primary mt-10 w-full max-w-[140rem] ease-in-out"
             >
                   {[
                         { count: "02", title: "organizers" },
@@ -41,7 +41,7 @@ function HomeStatisticalCounter() {
                         { count: "100+", title: "exhibitors" },
                   ].map(({ count, title }, index) => (
                         <SwiperSlide key={index}>
-                              <span className="w-full h-full self-center flex flex-col items-center text-start">
+                              <span className="w-full h-full self-center flex flex-col items-center mt-16 text-start ease-in-out">
                                     <article>
                                           <p className="text-7xl font-bold">{count}</p>
                                           <p className="text-2xl">{title}</p>

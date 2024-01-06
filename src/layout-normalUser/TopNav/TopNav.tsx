@@ -1,13 +1,14 @@
-import AppMainLogo from "@/shared/logo/AppMainLogo";
-import NavMenuButton from "@/shared-normalUser/navMenu/NavMenuButton";
-import RegisterButton from "@/shared-normalUser/buttons/RegisterButton";
-import kmcLogo from "@/assets/image/KMCLogo.png";
-import nepalGovLogo from "@/assets/image/nepalgovermentlogo.png";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import AppMainLogo from "@/shared/logo/AppMainLogo";
+import NavRegisterButton from "./components/NavRegisterButton";
+import NavMenuButton from "@/shared-normalUser/navMenu/NavMenuButton";
+import kmcLogo from "@/assets/image/KMCLogo.png";
+import nepalGovLogo from "@/assets/image/nepalgovermentlogo.png";
 
 function TopNav() {
       const location = useLocation();
+
       useEffect(() => {
             const handleScroll = () => {
                   const nav = document.getElementById("top-nav");
@@ -18,8 +19,9 @@ function TopNav() {
                   if (!nav) return;
 
                   // Check if the page is scrolled down from the top
-                  if (window.scrollY > 0) {
+                  if (window.scrollY > 0.2) {
                         nav.style.backgroundColor = "white"; // New color when scrolled down
+
                         if (extraLogoContainer) {
                               extraLogoContainer.style.visibility = "hidden"; // or use extraLogoContainer.style.display = "none !important";
                               extraLogoContainer.style.height = "0"; // Optionally set height to 0
@@ -31,6 +33,7 @@ function TopNav() {
                         }
                   } else {
                         nav.style.backgroundColor = ""; // Original color when scrolled to the top
+
                         if (extraLogoContainer) {
                               extraLogoContainer.style.visibility = "visible"; // or use extraLogoContainer.style.display = "flex !important";
                               extraLogoContainer.style.height = "auto"; // Reset height
@@ -70,17 +73,13 @@ function TopNav() {
                                     <img
                                           className="!w-[2.5rem] object-contain"
                                           src="https://kathmandu.gov.np/wp-content/themes/kmc-theme/images/flag-nepal.gif"
-                                          alt=""
+                                          alt="nepal-map"
                                     />
                               </section>
                         )}
 
                         <section className="flex gap-4 justify-center items-center max-w-fit">
-                              <RegisterButton
-                                    extraClassName="hidden 
-                                          sm:flex
-                                    "
-                              />
+                              <NavRegisterButton />
 
                               <NavMenuButton />
                         </section>

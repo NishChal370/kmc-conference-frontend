@@ -1,5 +1,5 @@
-import LoginButton from "@/shared-normalUser/buttons/LoginButton";
 import PageHeader from "@/shared-normalUser/pageHeader/PageHeader";
+import ExploreScheduleButton from "@/pages-normalUser/home/components/ExploreScheduleButton";
 import EventParticipationButton from "@/shared-normalUser/buttons/EventParticipationButton";
 import "../style/homeHeader.css";
 
@@ -9,9 +9,8 @@ function HomeHeader() {
                   id="home-header"
                   heightClasses="h-[54rem] pt-20
                         sm:h-[40rem] sm:pt-24
-                       
-                        lg:h-[36rem] xl:px-0
-                        xl:h-[32rem]
+                        lg:h-[36rem]
+                        xl:h-[32rem] xl:px-0
                   "
             >
                   <article className="text-white flex flex-col justify-center gap-8">
@@ -54,7 +53,7 @@ function HomeHeader() {
                               >
                                     <EventParticipationButton />
 
-                                    <LoginButton />
+                                    <ExploreScheduleButton />
                               </aside>
                         </section>
                   </article>

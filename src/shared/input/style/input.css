@@ -1,0 +1,26 @@
+@tailwind utilities;
+
+@layer utilities {
+      input,
+      textarea {
+            @apply bg-transparent;
+            @apply outline-none;
+            @apply text-default;
+      }
+
+      /* For Chrome, Safari */
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 1000px white inset;
+            background-color: transparent;
+            border-radius: 0.375rem;
+      }
+
+      /* For Firefox */
+      input:-moz-autofill {
+            background: transparent;
+            border-radius: 0.375rem;
+      }
+}

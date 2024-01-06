@@ -1,15 +1,27 @@
+import { useNavigate } from "react-router-dom";
+import Button from "@/shared/button/Button";
+import { AUTH_PATH } from "@/constants/routePath/path-normalUser";
+
 interface IRegisterButton {
       extraClassName?: React.HTMLAttributes<unknown>["className"];
 }
 
 function RegisterButton({ extraClassName }: IRegisterButton) {
+      const navigate = useNavigate();
+
+      const buttonHandler = () => {
+            navigate(AUTH_PATH.registerUser.full);
+      };
+
       return (
-            <button
-                  type="button"
-                  className={`bg-primary px-5 py-2 text-white text-sm font-semibold rounded-md ${extraClassName}`}
-            >
-                  REGISTER
-            </button>
+            <>
+                  <Button
+                        extraClassName={extraClassName}
+                        variant="filled"
+                        title="REGISTER"
+                        onClickHandler={buttonHandler}
+                  />
+            </>
       );
 }
 
