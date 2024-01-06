@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import TopNav from "./layout-normalUser/TopNav";
 import Footer from "./layout-normalUser/Footer";
+import TopNav from "./layout-normalUser/TopNav/TopNav";
 
 function App() {
       return (

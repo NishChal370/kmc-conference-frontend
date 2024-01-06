@@ -9,6 +9,7 @@ type IconButtonVariant = "filled" | "lightFilled" | "outlined";
 
 
 export type IButton = {
+      id?: string;
       extraClassName?: string;
       variant?: ButtonVariant;
       title: string;

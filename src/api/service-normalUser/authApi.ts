@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "../constant";
-import { ILogin } from "@/model-normalUser/login/loginModel";
 import { ITokenModel } from "@/models/auth/authModel";
+import { ILogin } from "@/model-normalUser/login/loginModel";
 import { IRegisterUserPostRequest } from "@/model-normalUser/registerUser/registerUserModel";
 
 export const authApi = {
@@ -39,7 +39,8 @@ export const authApi = {
       logout: () => {
             const options: AxiosRequestConfig = {
                   method: "POST",
-                  url: `auth/user-logout`,
+                  url: `auth/logout`,
+                  data: {} //Backend requirement
             };
 
             return AXIOS.request(options);

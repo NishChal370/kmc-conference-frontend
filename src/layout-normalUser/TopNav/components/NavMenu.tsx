@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import AppIcon from "@/shared/icon/AppIcon";
+import ConferenceCTA from "./ConferenceCTA";
 import NavMenuItemButton from "./NavMenuItemButton";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
-import LoginButton from "@/shared-normalUser/buttons/LoginButton";
-import EventParticipationButton from "@/shared-normalUser/buttons/EventParticipationButton";
 import RaiseUpAnimationWrapper from "@/template/animation/RaiseUpAnimationWrapper";
 import { ICON } from "@/constants/icon";
 import {
@@ -116,14 +115,8 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                           ))}
                                     </section>
 
-                                    <section className="text-lg flex flex-col gap-4 item-center justify-start">
-                                          <RaiseUpAnimationWrapper>
-                                                <EventParticipationButton />
-                                          </RaiseUpAnimationWrapper>
-
-                                          <RaiseUpAnimationWrapper>
-                                                <LoginButton />
-                                          </RaiseUpAnimationWrapper>
+                                    <section className="text-lg flex flex-col gap-4 item-center justify-start sm:justify-center">
+                                          <ConferenceCTA closeMenuHandler={closeMenuHandler} />
 
                                           <span className="flex gap-2 items-center justify-start [&>a]:active:text-whited">
                                                 {[

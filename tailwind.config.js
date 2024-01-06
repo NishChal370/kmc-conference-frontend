@@ -25,6 +25,10 @@ export default {
                         default: "rgb(0,0,0,0.1)",
                   },
 
+                  boxShadow: {
+                        button: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+                  },
+
                   screens: {
                         xs: "320px",
                   },

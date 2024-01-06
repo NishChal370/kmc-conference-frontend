@@ -5,11 +5,13 @@ import { errorToastMessage } from '@/utils/alert';
 function useAuthApi() {
       const dispatch = useAppDispatch();
 
-      const logout = () => {
-            dispatch(fetchUserLogout())
+      const logout = async () => {
+            await dispatch(fetchUserLogout())
                   .unwrap()
                   .catch(({ detail }) => {
                         errorToastMessage(detail);
+
+                        throw new Error(detail)
                   })
       }
 

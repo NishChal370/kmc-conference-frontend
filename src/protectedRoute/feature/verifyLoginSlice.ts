@@ -6,9 +6,6 @@ import { IBasicSliceState } from '@/models/commonModel';
 import { fetchUserLogout, fetchVeryLogin } from './verifyLoginRequest';
 
 
-
-
-
 const initialState: IBasicSliceState = {
       status: Status.IDEL,
 }
