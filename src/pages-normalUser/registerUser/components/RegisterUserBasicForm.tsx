@@ -2,6 +2,7 @@ import { BaseSyntheticEvent } from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
 import Input from "@/shared/input/Input";
 import Button from "@/shared/button/Button";
+import PhoneInput from "@/shared/input/PhoneInput";
 import StaticOptionsDropdownInput from "@/shared/input/StaticOptionsDropdownInput";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 import { IRegisterUserBasicForm } from "@/model-normalUser/registerUser/registerUserModel";
@@ -99,7 +100,7 @@ function RegisterUserBasicForm({
                   </section>
 
                   <section
-                        className="grid gap-y-10 gap-x-4  w-full
+                        className="grid gap-y-10 gap-x-4 w-full
                               lg:grid-cols-2
                         "
                   >
@@ -116,16 +117,9 @@ function RegisterUserBasicForm({
                               })}
                         </Input>
 
-                        <Input label="Phone Number" errorMessage={errors.phoneNumber?.message}>
-                              {register("phoneNumber", {
-                                    required: {
-                                          value: true,
-                                          message: INPUT_ERROR_MESSAGE.empty,
-                                    },
-                              })}
-                        </Input>
+                        <PhoneInput control={control} isRequired name="phoneNumber" />
 
-                        <span className="flex items-center justify-center w-full col-span-2">
+                        <span className="flex items-center justify-center w-full lg:col-span-2">
                               <Button
                                     variant="outlined"
                                     type="submit"
