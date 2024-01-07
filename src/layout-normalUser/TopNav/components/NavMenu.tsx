@@ -12,6 +12,7 @@ import {
       SPEAKER_PATH,
 } from "@/constants/routePath/path-normalUser";
 import "../styles/navMenu.css";
+import UserAccessPanel from "./UserAccessPanel";
 
 interface INavMenu {
       visibility: boolean;
@@ -47,7 +48,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
 
                         <section className="flex justify-center items-center w-full h-full">
                               <span
-                                    className="grid grid-cols-1 gap-x-2 gap-y-6 justify-between w-full h-[40rem] max-h-screen text-2xl
+                                    className="grid grid-cols-1 gap-x-2 gap-y-6 justify-between w-full h-[40rem] max-h-screen
                                           sm:w-[60%]
                                           lg:w-[70%]  lg:grid-cols-2 lg:h-3/5 lg:gap-y-1
                                           xl:w-[50%] xl:max-w-[50rem]
@@ -115,7 +116,9 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                           ))}
                                     </section>
 
-                                    <section className="text-lg flex flex-col gap-4 item-center justify-start sm:justify-center">
+                                    <section className="text-lg flex flex-col gap-4 item-center justify-start">
+                                          <UserAccessPanel closeMenuHandler={closeMenuHandler} />
+
                                           <ConferenceCTA closeMenuHandler={closeMenuHandler} />
 
                                           <span className="flex gap-2 items-center justify-start [&>a]:active:text-whited">

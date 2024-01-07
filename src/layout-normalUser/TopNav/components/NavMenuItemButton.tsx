@@ -9,7 +9,7 @@ function NavMenuItemButton({ name, onClick }: INavMenuItemButton) {
             <button
                   onClick={onClick}
                   type="button"
-                  className="transition hover:translate-x-8 hover:scale-100 duration-200  active:text-primary"
+                  className="transition hover:translate-x-8 hover:scale-100 duration-200  active:text-primary text-2xl"
             >
                   <RaiseUpAnimationWrapper>{name}</RaiseUpAnimationWrapper>
             </button>
