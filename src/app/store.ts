@@ -6,6 +6,11 @@ import verifyLoginReducer from "@/protectedRoute/feature/verifyLoginSlice";
 import registerUserReducer from "@/pages-normalUser/registerUser/feature/registerUserSlice";
 
 
+
+/***ADMIN PANEL */
+import adminSideNavReducer from "@/layout-adminUser/sideNav/feature/adminSideNavSlice";
+
+
 export const store = configureStore({
       reducer: {
             registerUser: registerUserReducer,
@@ -13,6 +18,8 @@ export const store = configureStore({
 
             login: loginReducer,
             verifyLogin: verifyLoginReducer,
+
+            adminSideNav: adminSideNavReducer
       },
 });
 

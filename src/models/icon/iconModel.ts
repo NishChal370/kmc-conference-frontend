@@ -15,4 +15,5 @@ export type TIconType =
       | "lock"
       | "unlock"
       | "tick"
-      | "down-arrow";
+      | "down-arrow"
+      | "dashboard";

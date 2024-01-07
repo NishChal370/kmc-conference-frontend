@@ -4,7 +4,7 @@ import NavMenuItemButton from "./NavMenuItemButton";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 import { Status, UserRole } from "@/enum/commonEnum";
 import getTokenDetail from "@/utils/token/getTokenDetail";
-import { ADMIN_HOME_PATH } from "@/constants/routePath/path-adminUser";
+import { ADMIN_DASHBOARD_PATH } from "@/constants/routePath/path-adminUser";
 
 interface IUserAccessPanel {
       closeMenuHandler: () => void;
@@ -24,7 +24,7 @@ function UserAccessPanel({ closeMenuHandler }: IUserAccessPanel) {
                   {[
                         {
                               name: "Admin Panel",
-                              path: ADMIN_HOME_PATH.home.full,
+                              path: ADMIN_DASHBOARD_PATH.dashboard.full,
                               isVisible: getTokenDetail.loggedInUserRole() !== UserRole.PARTICIPANTS,
                         },
                         { name: "Profile", path: "/profile", isVisible: true },

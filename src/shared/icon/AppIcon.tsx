@@ -10,6 +10,7 @@ import {
       IconCheck,
       IconChevronDown,
       IconClockHour2,
+      IconHome2,
       IconLock,
       IconLockOpen,
       IconMapPin,
@@ -87,6 +88,9 @@ function AppIcon({ name, className, size }: IIcon) {
                                     size={size ?? ICON.size}
                               />
                         );
+
+                  case "dashboard":
+                        return <IconHome2 className={className} size={size ?? ICON.size} />;
                   default:
                         alert("Please select icon");
                         break;

@@ -1,5 +1,5 @@
 import { ADMIN_BASE_PATH } from "./adminBasePath";
-import { ADMIN_HOME_PATH } from "./adminHomePath";
+import { ADMIN_DASHBOARD_PATH } from "./adminDashboardPath";
 
 
-export { ADMIN_BASE_PATH, ADMIN_HOME_PATH }
+export { ADMIN_BASE_PATH, ADMIN_DASHBOARD_PATH }
