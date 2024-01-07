@@ -1,53 +1,42 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
-import NavRegisterButton from "./components/NavRegisterButton";
-import NavMenuButton from "@/shared-normalUser/navMenu/NavMenuButton";
-import kmcLogo from "@/assets/image/KMCLogo.png";
-import nepalGovLogo from "@/assets/image/nepalgovermentlogo.png";
+import NavActionButtons from "./components/NavActionButtons";
+import TopNavOrganizers from "@/layout-normalUser/TopNav/components/TopNavOrganizers";
 
 function TopNav() {
-      const location = useLocation();
+      const handleScroll = () => {
+            const topNavContainer = document.getElementById("top-nav");
+            const topNavAppLogo = document.getElementById("top-nav--app-log");
+            const topNavActionButtons = document.getElementById("top-nav--action-buttons");
+
+            if (!topNavContainer || !topNavAppLogo) return;
+
+            let topNavInitialColor = "";
+            let topNavAppLogoInitialColor = "";
+
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                  topNavInitialColor = topNavContainer.style.backgroundColor;
+                  topNavContainer.style.backgroundColor = "white";
+
+                  topNavAppLogoInitialColor = topNavAppLogo.style.width;
+                  topNavAppLogo.style.width = "10rem";
+
+                  if (topNavActionButtons) {
+                        topNavActionButtons.style.setProperty("color", "#bd1701", "important");
+                  }
+            } else {
+                  topNavContainer.style.backgroundColor = topNavInitialColor;
+                  topNavAppLogo.style.width = topNavAppLogoInitialColor;
+
+                  if (topNavActionButtons) {
+                        topNavActionButtons.style.setProperty("color", "white", "important");
+                  }
+            }
+      };
 
       useEffect(() => {
-            const handleScroll = () => {
-                  const nav = document.getElementById("top-nav");
-                  const extraLogoContainer = document.getElementById("extra-logo-container");
-                  const appLogo = document.getElementById("top-nav--app-log");
-                  let logoInitialSize = "";
-
-                  if (!nav) return;
-
-                  // Check if the page is scrolled down from the top
-                  if (window.scrollY > 0.2) {
-                        nav.style.backgroundColor = "white"; // New color when scrolled down
-
-                        if (extraLogoContainer) {
-                              extraLogoContainer.style.visibility = "hidden"; // or use extraLogoContainer.style.display = "none !important";
-                              extraLogoContainer.style.height = "0"; // Optionally set height to 0
-                        }
-                        if (appLogo) {
-                              logoInitialSize = appLogo.style.width;
-                              // appLogo.style.width.transform = "scale(0.5)"; // Example: scale down to 90%
-                              appLogo.style.width = "10rem"; // Example: scale down to 90%
-                        }
-                  } else {
-                        nav.style.backgroundColor = ""; // Original color when scrolled to the top
-
-                        if (extraLogoContainer) {
-                              extraLogoContainer.style.visibility = "visible"; // or use extraLogoContainer.style.display = "flex !important";
-                              extraLogoContainer.style.height = "auto"; // Reset height
-                        }
-                        if (appLogo) {
-                              appLogo.style.width = logoInitialSize;
-                        }
-                  }
-            };
-
-            // Attach the scroll event listener
             window.addEventListener("scroll", handleScroll);
 
-            // Clean up the event listener
             return () => {
                   window.removeEventListener("scroll", handleScroll);
             };
@@ -56,34 +45,18 @@ function TopNav() {
       return (
             <nav
                   id="top-nav"
-                  className="fixed z-10 top-0 flex justify-between items-center gap-2 w-full py-4 px-4 
-                        sm:px-10
+                  className="fixed z-10 top-0 flex justify-between items-center gap-2 w-full py-2 px-4 
+                        lg:px-10
                   "
             >
-                  <AppMainLogo id="top-nav--app-log" />
-
-                  <aside className="flex  flex-col justify-center items-end gap-2.5">
-                        {location.pathname === "/" && (
-                              <section
-                                    id="extra-logo-container"
-                                    className="flex gap-4 justify-center items-center [&>img]:w-[4rem]  [&>img]:h-fit [&>img]:object-contain"
-                              >
-                                    <img src={kmcLogo} alt="" />
-                                    <img src={nepalGovLogo} alt="" />
-                                    <img
-                                          className="!w-[2.5rem] object-contain"
-                                          src="https://kathmandu.gov.np/wp-content/themes/kmc-theme/images/flag-nepal.gif"
-                                          alt="nepal-map"
-                                    />
-                              </section>
-                        )}
-
-                        <section className="flex gap-4 justify-center items-center max-w-fit">
-                              <NavRegisterButton />
-
-                              <NavMenuButton />
-                        </section>
+                  <aside className="flex justify-start items-end gap-2.5">
+                        <AppMainLogo id="top-nav--app-log" />
                   </aside>
+
+                  <span className="flex flex-col w-fit gap-1.5 items-end">
+                        <TopNavOrganizers />
+                        <NavActionButtons />
+                  </span>
             </nav>
       );
 }

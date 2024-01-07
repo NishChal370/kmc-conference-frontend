@@ -10,6 +10,12 @@ const getTokenDetail = {
             return role ? role as UserRole : undefined;
       },
 
+      loggedInUserName: () => {
+            const token = getDecodedToken();
+
+            return token["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+      }
+
 }
 
 export default getTokenDetail

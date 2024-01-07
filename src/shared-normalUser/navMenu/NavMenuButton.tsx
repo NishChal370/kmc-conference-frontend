@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ICON } from "@/constants/icon";
 import AppIcon from "@/shared/icon/AppIcon";
 import NavMenu from "@/layout-normalUser/TopNav/components/NavMenu";
+import { ICON } from "@/constants/icon";
 
 function NavMenuButton() {
       const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -18,10 +18,10 @@ function NavMenuButton() {
             <>
                   <button
                         type="button"
-                        className="text-primary w-fit active:text-white"
+                        className="w-fit flex items-center gap-1"
                         onClick={menuOpenButtonHandler}
                   >
-                        <AppIcon name="menu" size={ICON.size + 8} />
+                        <AppIcon name="menu" className="" size={ICON.size + 8} />
                   </button>
 
                   <NavMenu visibility={isMenuOpen} closeMenuHandler={menuCloseButtonHandler} />

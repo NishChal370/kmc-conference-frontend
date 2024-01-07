@@ -8,7 +8,7 @@ interface IAppMainLogo {
       size?: string;
 }
 
-function AppMainLogo({ id = "app-logo", onClick, size = "w-[10rem] sm:w-[16rem]" }: IAppMainLogo) {
+function AppMainLogo({ id = "app-logo", onClick, size = "w-[10rem] sm:w-[14rem]" }: IAppMainLogo) {
       const navigate = useNavigate();
 
       const buttonHandler = () => {
@@ -23,7 +23,7 @@ function AppMainLogo({ id = "app-logo", onClick, size = "w-[10rem] sm:w-[16rem]"
                   className="flex justify-center items-center w-fit h-fit scale-110"
                   onClick={buttonHandler}
             >
-                  <img id={id} className={size} src={log} alt="app-logo" />
+                  <img id={id} className={size + " object-contain"} src={log} alt="app-logo" />
             </button>
       );
 }
