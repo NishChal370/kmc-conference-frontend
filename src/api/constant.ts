@@ -1,6 +1,5 @@
 import axios from "axios";
 import { cookiesStore } from "@/utils/cookiesHandler";
-import { authApi } from "./service-normalUser/authApi";
 
 export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -95,15 +94,15 @@ async function refreshAccessToken() {
 
       try {
 
-            const response = await authApi.refreshToken({
-                  accessToken: cookiesStore.getItem("access_token") ?? "",
-                  refreshToken: cookiesStore.getItem("refresh_token") ?? "",
-            });
+            // const response = await authApi.refreshToken({
+            //       accessToken: cookiesStore.getItem("access_token") ?? "",
+            //       refreshToken: cookiesStore.getItem("refresh_token") ?? "",
+            // });
 
-            const { accessToken, refreshToken } = response.data;
+            // const { accessToken, refreshToken } = response.data;
 
-            cookiesStore.saveItem({ key: 'access_token', data: accessToken });
-            cookiesStore.saveItem({ key: 'refresh_token', data: refreshToken });
+            // cookiesStore.saveItem({ key: 'access_token', data: accessToken });
+            // cookiesStore.saveItem({ key: 'refresh_token', data: refreshToken });
 
             // Resolve all pending requests in the refresh queue with the new access token
             refreshQueue.forEach(request => {

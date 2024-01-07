@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import AuthWrapper from "./shared-normalUser/auth/AuthWrapper";
 
 function AuthApp() {
@@ -9,7 +8,7 @@ function AuthApp() {
                         <Outlet />
                   </AuthWrapper>
 
-                  <ToastContainer />
+                  {/* <ToastContainer /> */}
             </div>
       );
 }

@@ -116,7 +116,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                     </section>
 
                                     <section className="text-lg flex flex-col gap-4 item-center justify-start sm:justify-center">
-                                          <ConferenceCTA closeMenuHandler={closeMenuHandler} />
+                                          <ConferenceCTA />
 
                                           <span className="flex gap-2 items-center justify-start [&>a]:active:text-whited">
                                                 {[

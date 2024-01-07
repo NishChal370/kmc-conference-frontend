@@ -31,13 +31,13 @@ Shah has been a popular figure in Nepalese hip-hop since the early 2010s. Shah a
 
             Before being elected as the deputy mayor of Kathmandu, she was active as a Newa heritage conservationist and indigenous–script (Ranjana) activist.`,
       },
-      {
-            image: mahabirPun,
-            name: "Mahabir Pun",
-            designation: "Nepali researcher,teacher,social entrepreneur",
-            company: "",
-            description: "Mahabir Pun  is a Nepali researcher,teacher,social entrepreneur and an activist known for his work in applying wireless technologies to develop remote areas of the Himalayas, also known as the Nepal Wireless Networking Project He is a widely known figure in Nepal, and his work has been recognised by the Ashoka Foundation, the Ramon Magsaysay Foundation, [University of Nebraska Kearney],and Global Ideas Bank.",
-      },
+      // {
+      //       image: mahabirPun,
+      //       name: "Mahabir Pun",
+      //       designation: "Nepali researcher,teacher,social entrepreneur",
+      //       company: "",
+      //       description: "Mahabir Pun  is a Nepali researcher,teacher,social entrepreneur and an activist known for his work in applying wireless technologies to develop remote areas of the Himalayas, also known as the Nepal Wireless Networking Project He is a widely known figure in Nepal, and his work has been recognised by the Ashoka Foundation, the Ramon Magsaysay Foundation, [University of Nebraska Kearney],and Global Ideas Bank.",
+      // },
 
       {
             image: muniShakya,
