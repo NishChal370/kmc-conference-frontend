@@ -2,7 +2,7 @@ import SideNavItemContainer from "./container/SideNavItemContainer";
 import { SIDE_NAV_LIST } from "./data/sideNavList";
 import { useAppSelector } from "@/app/hooks";
 import { adminSideNavState } from "./feature/adminSideNavSlice";
-import { ISideNavDetail } from "@admin/model/sideNav/sideNavModel";
+import { ISideNavDetail } from "@/admin/model/sideNav/sideNavModel";
 
 function SideNav() {
       const { isSideNavOpen } = useAppSelector(adminSideNavState);

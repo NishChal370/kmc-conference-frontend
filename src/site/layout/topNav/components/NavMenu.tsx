@@ -5,7 +5,7 @@ import NavMenuItemButton from "./NavMenuItemButton";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
 import RaiseUpAnimationWrapper from "@/template/animation/RaiseUpAnimationWrapper";
 import { ICON } from "@/constants/icon";
-import { ABOUT_US_PATH, ORGANIZERS_PATH, SCHEDULE_PATH, SPEAKER_PATH } from "@site/constants/routePath";
+import { ABOUT_US_PATH, ORGANIZERS_PATH, SCHEDULE_PATH, SPEAKER_PATH } from "@/site/constants/routePath";
 import "../styles/navMenu.css";
 import UserAccessPanel from "./UserAccessPanel";
 

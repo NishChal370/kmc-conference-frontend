@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import useNavPathInfo from "@admin/hooks/header/useNavPathInfo";
+import useNavPathInfo from "@/admin/hooks/header/useNavPathInfo";
 
 interface IHeader {
       pageHeaderName?: string;

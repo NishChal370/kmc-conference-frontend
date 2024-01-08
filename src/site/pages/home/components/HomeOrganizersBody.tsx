@@ -1,5 +1,5 @@
-import ViewMoreButton from "@site/shared/buttons/ViewMoreButton";
-import { ORGANIZERS_DETAIL } from "@site/pages/organizer/seed/organizersDetails";
+import ViewMoreButton from "@/site/shared/buttons/ViewMoreButton";
+import { ORGANIZERS_DETAIL } from "@/site/pages/organizer/seed/organizersDetails";
 import RaiseUpAnimationWrapper from "@/template/animation/RaiseUpAnimationWrapper";
 import AppIcon from "@/shared/icon/AppIcon";
 import { ICON } from "@/constants/icon";

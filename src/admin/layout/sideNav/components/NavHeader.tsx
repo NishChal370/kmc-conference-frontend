@@ -1,5 +1,5 @@
 import AppIcon from "@/shared/icon/AppIcon";
-import { ISideNavDetail } from "@admin/model/sideNav/sideNavModel";
+import { ISideNavDetail } from "@/admin/model/sideNav/sideNavModel";
 
 interface INavHeader {
       title: ISideNavDetail["title"];

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HomeOrganizersBody from "../components/HomeOrganizersBody";
-import { ORGANIZERS_PATH } from "@site/constants/routePath/organizerPath";
+import { ORGANIZERS_PATH } from "@/site/constants/routePath/organizerPath";
 
 function HomeOrganizersBodyContainer() {
       const navigate = useNavigate();

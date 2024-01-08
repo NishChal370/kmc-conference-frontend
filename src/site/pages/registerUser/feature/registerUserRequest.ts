@@ -1,6 +1,6 @@
-import { authApi } from "@site/api/service/authApi";
+import { authApi } from "@/site/api/service/authApi";
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
-import { IRegisterUserPostRequest } from "@site/model/registerUser/registerUserModel";
+import { IRegisterUserPostRequest } from "@/site/model/registerUser/registerUserModel";
 
 export const postRegisterUser = createAppAsyncThunk<unknown, IRegisterUserPostRequest>(
       "user/register",

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { SCHEDULE_PATH } from "@site/constants/routePath";
+import { SCHEDULE_PATH } from "@/site/constants/routePath";
 
 interface IScheduleCardTitle {
       title: string;

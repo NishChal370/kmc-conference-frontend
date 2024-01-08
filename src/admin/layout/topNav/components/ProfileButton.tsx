@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import AppIcon from "@/shared/icon/AppIcon";
-import Menu, { MenuButton, MenuItems } from "@admin/shared/menu/Menu";
+import Menu, { MenuButton, MenuItems } from "@/admin/shared/menu/Menu";
 import useAuthApi from "@/hooks/auth/useAuthApi";
 import getTokenDetail from "@/utils/token/getTokenDetail";
 

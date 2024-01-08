@@ -1,6 +1,6 @@
-import { authApi } from "@site/api/service/authApi";
+import { authApi } from "@/site/api/service/authApi";
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
-import { ILogin, ILoginResponse } from "@site/model/login/loginModel";
+import { ILogin, ILoginResponse } from "@/site/model/login/loginModel";
 
 export const postLogin = createAppAsyncThunk<ILoginResponse, ILogin>(
       "user/login",

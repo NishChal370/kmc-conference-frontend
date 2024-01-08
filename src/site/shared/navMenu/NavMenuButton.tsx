@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AppIcon from "@/shared/icon/AppIcon";
-import NavMenu from "@site/layout/topNav/components/NavMenu";
+import NavMenu from "@/site/layout/topNav/components/NavMenu";
 import { ICON } from "@/constants/icon";
 
 function NavMenuButton() {

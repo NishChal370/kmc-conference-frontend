@@ -1,8 +1,8 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "../../../api/constant";
 import { ITokenModel } from "@/models/auth/authModel";
-import { ILogin } from "@site/model/login/loginModel";
-import { IRegisterUserPostRequest } from "@site/model/registerUser/registerUserModel";
+import { ILogin } from "@/site/model/login/loginModel";
+import { IRegisterUserPostRequest } from "@/site/model/registerUser/registerUserModel";
 
 export const authApi = {
       login: (loginDetail: ILogin) => {

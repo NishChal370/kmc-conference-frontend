@@ -1,4 +1,4 @@
-import PageHeader from "@site/shared/pageHeader/PageHeader";
+import PageHeader from "@/site/shared/pageHeader/PageHeader";
 
 function AboutUsHeader() {
       return (

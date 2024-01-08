@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import RegisterUserForm from "../components/RegisterUserForm";
-import useRegisterUserApi from "@site/hooks/registerUser/useRegisterUserApi";
-import { IRegisterUserForm } from "@site/model/registerUser/registerUserModel";
+import useRegisterUserApi from "@/site/hooks/registerUser/useRegisterUserApi";
+import { IRegisterUserForm } from "@/site/model/registerUser/registerUserModel";
 import { useAppSelector } from "@/app/hooks";
 import { registerUserState } from "../feature/registerUserSlice";
-import { AUTH_PATH } from "@site/constants/routePath";
+import { AUTH_PATH } from "@/site/constants/routePath";
 
 function RegisterUserFormContainer() {
       const navigate = useNavigate();

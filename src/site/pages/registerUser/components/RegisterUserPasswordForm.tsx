@@ -2,7 +2,7 @@ import { BaseSyntheticEvent } from "react";
 import { UseFormReturn } from "react-hook-form";
 import Button from "@/shared/button/Button";
 import PasswordInput from "@/shared/input/PasswordInput";
-import { IRegisterUserPasswordForm } from "@site/model/registerUser/registerUserModel";
+import { IRegisterUserPasswordForm } from "@/site/model/registerUser/registerUserModel";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 import { REGEX } from "@/helper/regex";
 

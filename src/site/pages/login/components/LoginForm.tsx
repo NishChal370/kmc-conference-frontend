@@ -5,7 +5,7 @@ import Button from "@/shared/button/Button";
 import PasswordInput from "@/shared/input/PasswordInput";
 import LoadingAnimation from "@/shared/loading/LoadingAnimation";
 import { REGEX } from "@/helper/regex";
-import { ILogin } from "@site/model/login/loginModel";
+import { ILogin } from "@/site/model/login/loginModel";
 import { Status } from "@/enum/commonEnum";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 

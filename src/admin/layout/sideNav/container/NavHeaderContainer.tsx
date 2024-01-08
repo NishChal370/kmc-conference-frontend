@@ -2,8 +2,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/app/hooks";
 import NavHeader from "../components/NavHeader";
 import { sideNavViewHandler } from "../feature/adminSideNavSlice";
-import { ADMIN_DASHBOARD_PATH } from "@admin/constants/routePath";
-import { ISideNavDetail } from "@admin/model/sideNav/sideNavModel";
+import { ADMIN_DASHBOARD_PATH } from "@/admin/constants/routePath";
+import { ISideNavDetail } from "@/admin/model/sideNav/sideNavModel";
 
 interface NavHeaderContainer {
       title: ISideNavDetail["title"];

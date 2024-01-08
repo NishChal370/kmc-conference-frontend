@@ -1,6 +1,6 @@
-import PageHeader from "@site/shared/pageHeader/PageHeader";
-import ExploreScheduleButton from "@site/pages/home/components/ExploreScheduleButton";
-import EventParticipationButton from "@site/shared/buttons/EventParticipationButton";
+import PageHeader from "@/site/shared/pageHeader/PageHeader";
+import ExploreScheduleButton from "@/site/pages/home/components/ExploreScheduleButton";
+import EventParticipationButton from "@/site/shared/buttons/EventParticipationButton";
 import "../style/homeHeader.css";
 
 function HomeHeader() {

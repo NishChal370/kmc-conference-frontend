@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import ViewMoreButton from "@site/shared/buttons/ViewMoreButton";
+import ViewMoreButton from "@/site/shared/buttons/ViewMoreButton";
 import HeaderAnimatedText from "@/template/animation/HeadingAnimatedText";
 import ScaleRaiseUpAnimationWrapper from "@/template/animation/ScaleRaiseUpAnimationWrapper";
 

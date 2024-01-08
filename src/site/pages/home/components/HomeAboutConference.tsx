@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import ViewMoreButton from "@site/shared/buttons/ViewMoreButton";
-import { ABOUT_US_PATH } from "@site/constants/routePath";
+import ViewMoreButton from "@/site/shared/buttons/ViewMoreButton";
+import { ABOUT_US_PATH } from "@/site/constants/routePath";
 import HeaderAnimatedText from "@/template/animation/HeadingAnimatedText";
 
 function HomeAboutConference() {

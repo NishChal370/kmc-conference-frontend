@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SideNavItem from "../components/SideNavItem";
-import { ISideNavDetail } from "@admin/model/sideNav/sideNavModel";
+import { ISideNavDetail } from "@/admin/model/sideNav/sideNavModel";
 
 interface ISideNavItem extends ISideNavDetail {
       isSubNav?: boolean;

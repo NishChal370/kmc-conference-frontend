@@ -1,6 +1,6 @@
 import AppIcon from "@/shared/icon/AppIcon";
-import TableActionButton from "@admin/shared/table/TableActionButton";
-import { Table, TableBody, TableHead, Td, Ti } from "@admin/shared/table";
+import TableActionButton from "@/admin/shared/table/TableActionButton";
+import { Table, TableBody, TableHead, Td, Ti } from "@/admin/shared/table";
 import { Status } from "@/enum/commonEnum";
 import { SPEAKER_HEADER_LIST } from "../data/speakerHeaderList";
 import { ISpeakerBasicInfo } from "@/models/speaker/SpeakerModel";
