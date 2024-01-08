@@ -46,7 +46,7 @@ function NavHeaderContainer({
                   return pathname === pathName;
             }
 
-            const firstPathSegment = pathname.split("/")[1];
+            const firstPathSegment = pathname.split("/")[2];
 
             if (!firstPathSegment) {
                   // default page to open when pathname is not given

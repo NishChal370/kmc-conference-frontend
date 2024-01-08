@@ -16,8 +16,8 @@ function SideNavItemContainer(sideNavItemsProps: ISideNavItem) {
       };
 
       useEffect(() => {
-            const isActive = pathname.split("/")[1]
-                  ? sideNavItemsProps.pathName.includes(pathname.split("/")[1])
+            const isActive = pathname.split("/")[2]
+                  ? sideNavItemsProps.pathName.includes(pathname.split("/")[2])
                   : false;
 
             setShowSubNav(isActive);

@@ -9,7 +9,7 @@ function SideNav() {
 
       return (
             <div
-                  id="side-nav"
+                  id="admin-side-nav"
                   className={`absolute group cursor-pointer
                         transition-all duration-700 ease-in-out
                         md:hover:min-w-[260px] md:hover:max-w-[260px] 
