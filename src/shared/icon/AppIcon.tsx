@@ -11,6 +11,7 @@ import {
       IconChevronDown,
       IconClockHour2,
       IconDots,
+      IconEye,
       IconHome2,
       IconLock,
       IconLockOpen,
@@ -104,6 +105,9 @@ function AppIcon({ name, className, size }: IIcon) {
                         return (
                               <IconTriangle className={className + " rotate-180"} size={size ?? ICON.size} />
                         );
+
+                  case "view":
+                        return <IconEye className={className} size={size ?? ICON.size + 2} />;
 
                   default:
                         alert("Please select icon");

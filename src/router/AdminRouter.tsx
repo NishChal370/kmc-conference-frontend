@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { RouteObject } from "react-router-dom";
+import { Outlet, RouteObject } from "react-router-dom";
 import AdminApp from "@/AdminApp";
 import { AdminSchedule, AdminSpeakers } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
@@ -31,7 +31,13 @@ export const AdminRouter: RouteObject = {
 
                         {
                               path: ADMIN_SPEAKERS_PATH.speaker.basic,
-                              element: <AdminSpeakers />,
+                              element: <Outlet />,
+                              children: [
+                                    {
+                                          index: true,
+                                          element: <AdminSpeakers />,
+                                    },
+                              ],
                         },
                         {
                               path: "*",

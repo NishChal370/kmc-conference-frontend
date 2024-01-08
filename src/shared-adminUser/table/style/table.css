@@ -31,16 +31,8 @@
       }
 
       #page-table tbody > tr > * {
-            @apply border-b border-mute/10 p-3;
+            @apply border-b border-mute/5 p-3;
       }
-
-      /* #table-action-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100% !important;
-            height: 300% !important;
-      } */
 
       @media (max-width: 600px) {
             #page-table > thead {

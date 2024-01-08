@@ -19,4 +19,5 @@ export type TIconType =
       | "dashboard"
       | "more-horizontal"
       | "sort-ascending"
-      | "sort-descending";
+      | "sort-descending"
+      | "view";

@@ -16,7 +16,7 @@ function AdminApp() {
                   >
                         <SideNav />
 
-                        <div className="w-full p-4 flex flex-col gap-10 overflow-hidden">
+                        <div className=" w-full p-4 mb-40 flex flex-col gap-10 overflow-hidden">
                               <Outlet />
                         </div>
                   </main>

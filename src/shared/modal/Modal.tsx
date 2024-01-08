@@ -10,8 +10,14 @@ interface IModal {
 }
 
 function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
+      const initialScrollTop = () => {
+            const modalContainer = document.querySelector(".scroll--container");
+            if (modalContainer) {
+                  modalContainer.scrollTo(0, 0);
+            }
+      };
       return (
-            <Transition appear show={toShow} as={Fragment}>
+            <Transition appear show={toShow} afterEnter={initialScrollTop} as={Fragment}>
                   <Dialog
                         as="div"
                         className="relative z-40 w-fit"
@@ -29,7 +35,7 @@ function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
                               <div className="fixed inset-0 bg-[#000000] bg-opacity-30 " />
                         </Transition.Child>
 
-                        <div className="fixed inset-0 overflow-y-auto">
+                        <div className="scroll--container fixed inset-0 overflow-y-auto">
                               <div className="flex min-h-full items-center justify-center p-4 text-center">
                                     <Transition.Child
                                           as={Fragment}

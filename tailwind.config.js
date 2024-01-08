@@ -10,6 +10,7 @@ export default {
                         mute: "rgb(0,0,0,0.021)",
                         red: "#bd1701",
                         error: "#de4504",
+                        edit: "#1CBAE2",
                   },
 
                   fontFamily: {

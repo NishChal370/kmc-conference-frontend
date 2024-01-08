@@ -1,11 +1,15 @@
 import { Status } from "@/enum/commonEnum";
-import { SPEAKERS_DETAILS } from "@/pages-normalUser/speakers/seed.tsx/speakersDetailList";
+import AppIcon from "@/shared/icon/AppIcon";
 import { Table, TableBody, TableHead, Td } from "@/shared-adminUser/table";
 import TableActionButton from "@/shared-adminUser/table/TableActionButton";
-import AppIcon from "@/shared/icon/AppIcon";
 import { SPEAKER_HEADER_LIST } from "../data/speakerHeaderList";
+import { SPEAKERS_DETAILS } from "@/pages-normalUser/speakers/seed.tsx/speakersDetailList";
 
-function AdminSpeakerTable() {
+interface IAdminSpeakerTable {
+      openEditModal: ({ editingData }: { editingData: string }) => void;
+}
+
+function AdminSpeakerTable({ openEditModal }: IAdminSpeakerTable) {
       return (
             <Table>
                   <TableHead headers={SPEAKER_HEADER_LIST} />
@@ -18,15 +22,14 @@ function AdminSpeakerTable() {
                                                 {index + 1}
                                           </Td>
 
-                                          <Td
-                                                dataName="speaker-image"
-                                                className="w-full sm:!w-fit !hidden sm:!flex"
-                                          >
-                                                <img
-                                                      className="w-8 h-8 object-cover flex justify-end "
-                                                      src={speaker.image}
-                                                      alt=""
-                                                />
+                                          <Td dataName="" className="w-full sm:!w-fit">
+                                                <span className="w-full h-full flex sm:justify-center items-center">
+                                                      <img
+                                                            className="w-8 h-8 object-cover"
+                                                            src={speaker.image}
+                                                            alt=""
+                                                      />
+                                                </span>
                                           </Td>
 
                                           <Td dataName="Speaker Name">{speaker.name}</Td>
@@ -39,10 +42,18 @@ function AdminSpeakerTable() {
                                                 <TableActionButton
                                                       items={[
                                                             {
+                                                                  title: "View Detail",
+                                                                  type: "View",
+                                                                  icon: <AppIcon name="view" />,
+                                                                  clickHandler: () => {},
+                                                            },
+                                                            {
                                                                   title: "Update",
                                                                   type: "Update",
-                                                                  icon: <AppIcon name="accommodation" />,
-                                                                  clickHandler: () => {},
+                                                                  icon: <AppIcon name="view" />,
+                                                                  clickHandler: () => {
+                                                                        openEditModal({ editingData: "" });
+                                                                  },
                                                             },
                                                       ]}
                                                 />
