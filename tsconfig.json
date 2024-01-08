@@ -23,7 +23,9 @@
     /* Alias */
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "@admin/*": ["admin/*"],
+      "@site/*": ["site/*"],
     }
   },
   "include": [

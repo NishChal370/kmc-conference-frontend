@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import AuthWrapper from "./shared-normalUser/auth/AuthWrapper";
+import AuthWrapper from "./site/shared/auth/AuthWrapper";
 
 function AuthApp() {
       return (

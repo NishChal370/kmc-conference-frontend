@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { HOME_PATH } from "@/constants/routePath/path-normalUser";
+import { HOME_PATH } from "@/site/constants/routePath";
 import log from "@/assets/image/logo.png";
 
 interface IAppMainLogo {

@@ -2,23 +2,23 @@ import { lazy } from 'react';
 
 
 /*** Container  ****/
-export const App = lazy(() => import("@/App"));
+export const App = lazy(() => import("@/site/App"));
 export const AuthApp = lazy(() => import("@/AuthApp"));
 
 
 
-export const Home = lazy(() => import("@/pages-normalUser/home/Home"));
+export const Home = lazy(() => import("@/site/pages/home/Home"));
 
-export const Schedule = lazy(() => import("@/pages-normalUser/schedule/Schedule"));
-export const ScheduleDetail = lazy(() => import("@/pages-normalUser/scheduleDetail/ScheduleDetail"));
-export const Speaker = lazy(() => import("@/pages-normalUser/speakers/Speaker"));
-export const AboutUs = lazy(() => import("@/pages-normalUser/aboutUs/AboutUs"));
-export const Organizer = lazy(() => import("@/pages-normalUser/organizer/Organizer"));
+export const Schedule = lazy(() => import("@/site/pages/schedule/Schedule"));
+export const ScheduleDetail = lazy(() => import("@/site/pages/scheduelDetail/ScheduleDetail"));
+export const Speaker = lazy(() => import("@/site/pages/speakers/Speaker"));
+export const AboutUs = lazy(() => import("@/site/pages/aboutUs/AboutUs"));
+export const Organizer = lazy(() => import("@/site/pages/organizer/Organizer"));
 
 
 
-export const Login = lazy(() => import("@/pages-normalUser/login/Login"));
-export const RegisterUser = lazy(() => import("@/pages-normalUser/registerUser/RegisterUser"));
+export const Login = lazy(() => import("@/site/pages/login/Login"));
+export const RegisterUser = lazy(() => import("@/site/pages/registerUser/RegisterUser"));
 
 
 

@@ -7,7 +7,7 @@ import {
       ORGANIZERS_PATH,
       SCHEDULE_PATH,
       SPEAKER_PATH,
-} from "@/constants/routePath/path-normalUser";
+} from "@/site/constants/routePath";
 
 const PublicRouter: RouteObject = {
       path: "/",
