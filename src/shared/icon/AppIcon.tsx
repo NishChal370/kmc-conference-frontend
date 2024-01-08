@@ -10,12 +10,14 @@ import {
       IconCheck,
       IconChevronDown,
       IconClockHour2,
+      IconDots,
       IconHome2,
       IconLock,
       IconLockOpen,
       IconMapPin,
       IconMenu2,
       IconShare2,
+      IconTriangle,
       IconX,
 } from "@tabler/icons-react";
 import { ICON } from "@/constants/icon";
@@ -91,6 +93,18 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "dashboard":
                         return <IconHome2 className={className} size={size ?? ICON.size} />;
+
+                  case "more-horizontal":
+                        return <IconDots className={className} size={size ?? ICON.size} />;
+
+                  case "sort-ascending":
+                        return <IconTriangle className={className} size={size ?? ICON.size} />;
+
+                  case "sort-descending":
+                        return (
+                              <IconTriangle className={className + " rotate-180"} size={size ?? ICON.size} />
+                        );
+
                   default:
                         alert("Please select icon");
                         break;
