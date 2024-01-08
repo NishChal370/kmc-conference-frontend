@@ -1,6 +1,6 @@
 import Header from "@/shared-adminUser/header/Header";
-import AdminSpeakerTable from "./components/AdminSpeakerTable";
 import AdminAddOrEditSpeakerForm from "./components/AdminSpeakerAddOrEditForm";
+import AdminSpeakerTableContainer from "./container/AdminSpeakerTableContainer";
 import useModal from "@/hooks-adminUser/modal/useModal";
 import { IModal } from "@/model-adminUser/modal/useModalModel";
 import { FieldStatus } from "@/enum-adminUser/modal/modalEnum";
@@ -17,7 +17,7 @@ function AdminSpeakers() {
                   <Header />
 
                   <section className="w-full h-full flex flex-col items-center justify-center">
-                        <AdminSpeakerTable openEditModal={openApplicationEditModalState} />
+                        <AdminSpeakerTableContainer openEditModal={openApplicationEditModalState} />
                   </section>
 
                   {[FieldStatus.Edit].includes(applicationModalState.modalStatus) && (

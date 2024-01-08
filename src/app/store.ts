@@ -11,6 +11,9 @@ import registerUserReducer from "@/pages-normalUser/registerUser/feature/registe
 import adminSideNavReducer from "@/layout-adminUser/sideNav/feature/adminSideNavSlice";
 
 
+import speakerReducer from "@/pages-adminUser/speakers/feature/speakerSlice";
+
+
 export const store = configureStore({
       reducer: {
             registerUser: registerUserReducer,
@@ -19,7 +22,10 @@ export const store = configureStore({
             login: loginReducer,
             verifyLogin: verifyLoginReducer,
 
-            adminSideNav: adminSideNavReducer
+            adminSideNav: adminSideNavReducer,
+
+
+            speaker: speakerReducer,
       },
 });
 

@@ -1,42 +1,36 @@
-import { Status } from "@/enum/commonEnum";
 import AppIcon from "@/shared/icon/AppIcon";
-import { Table, TableBody, TableHead, Td } from "@/shared-adminUser/table";
 import TableActionButton from "@/shared-adminUser/table/TableActionButton";
+import { Table, TableBody, TableHead, Td, Ti } from "@/shared-adminUser/table";
+import { Status } from "@/enum/commonEnum";
 import { SPEAKER_HEADER_LIST } from "../data/speakerHeaderList";
-import { SPEAKERS_DETAILS } from "@/pages-normalUser/speakers/seed.tsx/speakersDetailList";
+import { ISpeakerBasicInfo } from "@/models/speaker/SpeakerModel";
 
 interface IAdminSpeakerTable {
+      status: Status;
+      speakersBasicInfo: ISpeakerBasicInfo[];
       openEditModal: ({ editingData }: { editingData: string }) => void;
 }
 
-function AdminSpeakerTable({ openEditModal }: IAdminSpeakerTable) {
+function AdminSpeakerTable({ openEditModal, status, speakersBasicInfo }: IAdminSpeakerTable) {
       return (
             <Table>
                   <TableHead headers={SPEAKER_HEADER_LIST} />
 
-                  <TableBody status={Status.SUCCEEDED}>
+                  <TableBody status={status}>
                         <>
-                              {SPEAKERS_DETAILS.map((speaker, index) => (
+                              {speakersBasicInfo.map((speaker, index) => (
                                     <tr key={index} className="text-start">
                                           <Td id="index" dataName="index">
                                                 {index + 1}
                                           </Td>
 
-                                          <Td dataName="" className="w-full sm:!w-fit">
-                                                <span className="w-full h-full flex sm:justify-center items-center">
-                                                      <img
-                                                            className="w-8 h-8 object-cover"
-                                                            src={speaker.image}
-                                                            alt=""
-                                                      />
-                                                </span>
-                                          </Td>
+                                          <Ti image={speaker.photo} />
 
                                           <Td dataName="Speaker Name">{speaker.name}</Td>
 
-                                          <Td dataName="Designation">{speaker.designation}</Td>
+                                          <Td dataName="Designation">{speaker.jobTitle}</Td>
 
-                                          <Td dataName="Company">{speaker.company}</Td>
+                                          <Td dataName="Company">{speaker.affiliation}</Td>
 
                                           <Td id="table-action-container" dataName="Action">
                                                 <TableActionButton

@@ -20,6 +20,18 @@ export interface IApiErrorDetail {
 
 
 
+
+/**
+ * @interface
+ * Represent api basic response
+ * 
+ * @property {number} totalPage - total number of pages.
+ */
+export interface IBasicApiResponse {
+      totalPages: number
+}
+
+
 /**
  * @interface
  * Represent Slice basic state
