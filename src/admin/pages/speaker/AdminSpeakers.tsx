@@ -1,9 +1,9 @@
-import Header from "@/admin/shared/header/Header";
+import Header from "@admin/shared/header/Header";
 import AdminAddOrEditSpeakerForm from "./components/AdminSpeakerAddOrEditForm";
 import AdminSpeakerTableContainer from "./container/AdminSpeakerTableContainer";
-import useModal from "@/admin/hooks/modal/useModal";
-import { IModal } from "@/admin/model/modal/useModalModel";
-import { FieldStatus } from "@/admin/enum/modal/modalEnum";
+import useModal from "@admin/hooks/modal/useModal";
+import { IModal } from "@admin/model/modal/useModalModel";
+import { FieldStatus } from "@admin/enum/modal/modalEnum";
 
 function AdminSpeakers() {
       const {

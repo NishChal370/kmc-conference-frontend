@@ -5,7 +5,7 @@ import Button from "@/shared/button/Button";
 import PhoneInput from "@/shared/input/PhoneInput";
 import StaticOptionsDropdownInput from "@/shared/input/StaticOptionsDropdownInput";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { IRegisterUserBasicForm } from "@/site/model/registerUser/registerUserModel";
+import { IRegisterUserBasicForm } from "@site/model/registerUser/registerUserModel";
 import { REGEX } from "@/helper/regex";
 import { GENDER_OPTIONS } from "../data/genderList";
 import validateDateOfBirth from "@/utils/validation/validateDateOfBirth";

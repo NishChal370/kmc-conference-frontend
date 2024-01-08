@@ -1,4 +1,4 @@
-import { ITableHeaderDataList } from "@/admin/model/commonModel";
+import { ITableHeaderDataList } from "@admin/model/commonModel";
 
 export const SPEAKER_HEADER_LIST: ITableHeaderDataList = [
       { id: "index", title: "#" },

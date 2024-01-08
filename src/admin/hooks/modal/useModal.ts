@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { FieldStatus } from '@/admin/enum/modal/modalEnum';
-import { IModal, IModalExtraInfo, IModalExtraInfoOption, IModalOption } from '@/admin/model/modal/useModalModel';
+import { FieldStatus } from '@admin/enum/modal/modalEnum';
+import { IModal, IModalExtraInfo, IModalExtraInfoOption, IModalOption } from '@admin/model/modal/useModalModel';
 
 
 interface IModalState<TModalData, TModalExtraInfo> {

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import HomeSpeakerCard from "./HomeSpeakerCard";
-import ViewMoreButton from "@/site/shared/buttons/ViewMoreButton";
+import ViewMoreButton from "@site/shared/buttons/ViewMoreButton";
 import HeaderAnimatedText from "@/template/animation/HeadingAnimatedText";
-import { SPEAKER_PATH } from "@/site/constants/routePath";
-import { SPEAKERS_DETAILS } from "@/site/pages/speakers/seed.tsx/speakersDetailList";
+import { SPEAKER_PATH } from "@site/constants/routePath";
+import { SPEAKERS_DETAILS } from "@site/pages/speakers/seed.tsx/speakersDetailList";
 
 function HomeSpeakers() {
       const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/app/hooks";
-import { postRegisterUser } from "@/site/pages/registerUser/feature/registerUserRequest";
-import { IRegisterUserPostRequest } from "@/site/model/registerUser/registerUserModel";
+import { postRegisterUser } from "@site/pages/registerUser/feature/registerUserRequest";
+import { IRegisterUserPostRequest } from "@site/model/registerUser/registerUserModel";
 import { errorToastMessage, loadingAlert, successMessage, swalAlertClose } from "@/utils/alert";
 
 function useRegisterUserApi() {

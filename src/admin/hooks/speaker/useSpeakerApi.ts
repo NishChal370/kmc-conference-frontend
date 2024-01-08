@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@/app/hooks';
-import { getSpeakerBasicInfo as getSpeakerBasicInfoReq } from '@/admin/pages/speaker/feature/speakerRequest';
+import { getSpeakerBasicInfo as getSpeakerBasicInfoReq } from '@admin/pages/speaker/feature/speakerRequest';
 
 function useSpeakerApi() {
       const dispatch = useAppDispatch();

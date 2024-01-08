@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { RouteObject } from "react-router-dom";
-import { AUTH_PATH } from "@/site/constants/routePath";
+import { AUTH_PATH } from "@site/constants/routePath";
 import { AuthRoute } from "@/protectedRoute";
 import AuthApp from "@/AuthApp";
 import { Login, RegisterUser } from "./index";

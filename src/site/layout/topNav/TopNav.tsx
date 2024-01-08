@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
 import NavActionButtons from "./components/NavActionButtons";
-import TopNavOrganizers from "@/site/layout/topNav/components/TopNavOrganizers";
+import TopNavOrganizers from "@site/layout/topNav/components/TopNavOrganizers";
 
 function TopNav() {
       const handleScroll = () => {

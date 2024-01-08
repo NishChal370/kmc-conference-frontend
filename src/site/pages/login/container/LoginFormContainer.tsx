@@ -1,9 +1,9 @@
 import LoginForm from "../components/LoginForm";
 import { useAppSelector } from "@/app/hooks";
 import useAppForm from "@/hooks/form/useAppForm";
-import useLoginApi from "@/site/hooks/login/useLoginApi";
+import useLoginApi from "@site/hooks/login/useLoginApi";
 import { loginState } from "../feature/loginSlice";
-import { ILogin } from "@/site/model/login/loginModel";
+import { ILogin } from "@site/model/login/loginModel";
 
 function LoginFormContainer() {
       const loginForm = useAppForm<ILogin>({

@@ -1,4 +1,4 @@
-import Header from "@/admin/shared/header/Header";
+import Header from "@admin/shared/header/Header";
 
 function AdminSchedule() {
       return (

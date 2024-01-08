@@ -1,6 +1,6 @@
 import useAppForm from "@/hooks/form/useAppForm";
 import RegisterUserBasicForm from "../components/RegisterUserBasicForm";
-import { IRegisterUserBasicForm } from "@/site/model/registerUser/registerUserModel";
+import { IRegisterUserBasicForm } from "@site/model/registerUser/registerUserModel";
 
 interface IRegisterUserBasicFormContainer {
       slideToNext: () => void;

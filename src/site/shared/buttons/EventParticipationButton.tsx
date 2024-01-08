@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { AUTH_PATH } from "@/site/constants/routePath";
+import { AUTH_PATH } from "@site/constants/routePath";
 
 function EventParticipationButton() {
       const navigate = useNavigate();

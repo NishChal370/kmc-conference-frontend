@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { Outlet, RouteObject } from "react-router-dom";
-import AdminApp from "@/admin/AdminApp";
+import AdminApp from "@admin/AdminApp";
 import { AdminSchedule, AdminSpeakers } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
-import { ADMIN_BASE_PATH, ADMIN_SCHEDULE_PATH, ADMIN_SPEAKERS_PATH } from "@/admin/constants/routePath";
+import { ADMIN_BASE_PATH, ADMIN_SCHEDULE_PATH, ADMIN_SPEAKERS_PATH } from "@admin/constants/routePath";
 
 export const AdminRouter: RouteObject = {
       path: ADMIN_BASE_PATH,

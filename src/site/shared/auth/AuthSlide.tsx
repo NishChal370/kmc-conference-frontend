@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "@/shared/button/Button";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
-import { ORGANIZERS_DETAIL } from "@/site/pages/organizer/seed/organizersDetails";
+import { ORGANIZERS_DETAIL } from "@site/pages/organizer/seed/organizersDetails";
 
 function AuthSlide() {
       const navigate = useNavigate();

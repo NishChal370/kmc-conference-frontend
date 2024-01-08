@@ -1,7 +1,7 @@
 import { ICON } from "@/constants/icon";
 import { useAppDispatch } from "@/app/hooks";
 import AppIcon from "@/shared/icon/AppIcon";
-import { sideNavViewHandler } from "@/admin/layout/sideNav/feature/adminSideNavSlice";
+import { sideNavViewHandler } from "@admin/layout/sideNav/feature/adminSideNavSlice";
 
 function SideNavOpenButton() {
       const dispatch = useAppDispatch();

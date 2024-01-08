@@ -1,7 +1,7 @@
 import { useAppDispatch } from "@/app/hooks";
 import { Status } from "@/enum/commonEnum";
-import { ILogin } from "@/site/model/login/loginModel";
-import { postLogin } from "@/site/pages/login/feature/loginRequest";
+import { ILogin } from "@site/model/login/loginModel";
+import { postLogin } from "@site/pages/login/feature/loginRequest";
 import { changeVerifyLoginStatus } from "@/protectedRoute/feature/verifyLoginSlice";
 import { errorToastMessage, loadingAlert, swalAlertClose } from "@/utils/alert";
 

@@ -1,4 +1,4 @@
-import { authApi } from "@/site/api/service/authApi";
+import { authApi } from "@site/api/service/authApi";
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 
 

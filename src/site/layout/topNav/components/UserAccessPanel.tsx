@@ -4,7 +4,7 @@ import NavMenuItemButton from "./NavMenuItemButton";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 import { Status, UserRole } from "@/enum/commonEnum";
 import getTokenDetail from "@/utils/token/getTokenDetail";
-import { ADMIN_DASHBOARD_PATH } from "@/admin/constants/routePath";
+import { ADMIN_DASHBOARD_PATH } from "@admin/constants/routePath";
 
 interface IUserAccessPanel {
       closeMenuHandler: () => void;

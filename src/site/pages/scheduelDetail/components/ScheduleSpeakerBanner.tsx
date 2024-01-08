@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ScheduleSpeakerCard from "./ScheduleSpeakerCard";
-import SpeakerDetailModal from "@/site/pages/speakers/components/SpeakerDetailModal";
+import SpeakerDetailModal from "@site/pages/speakers/components/SpeakerDetailModal";
 import { SCHEDULE_SPEAKER_DETAILS } from "../seed/speakersDetail";
 
 function ScheduleSpeakerBanner() {

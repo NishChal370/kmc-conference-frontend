@@ -1,6 +1,6 @@
 
-import { ADMIN_DASHBOARD_PATH, ADMIN_SCHEDULE_PATH, ADMIN_SPEAKERS_PATH } from "@/admin/constants/routePath";
-import { ISideNavDetail } from "@/admin/model/sideNav/sideNavModel";
+import { ADMIN_DASHBOARD_PATH, ADMIN_SCHEDULE_PATH, ADMIN_SPEAKERS_PATH } from "@admin/constants/routePath";
+import { ISideNavDetail } from "@admin/model/sideNav/sideNavModel";
 import getUniqueId from "@/utils/uniqueId/getUniqueId"
 
 export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [

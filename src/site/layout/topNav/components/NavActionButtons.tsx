@@ -1,7 +1,7 @@
 import { Status } from "@/enum/commonEnum";
 import { useAppSelector } from "@/app/hooks";
-import NavMenuButton from "@/site/shared/navMenu/NavMenuButton";
-import RegisterButton from "@/site/shared/buttons/RegisterButton";
+import NavMenuButton from "@site/shared/navMenu/NavMenuButton";
+import RegisterButton from "@site/shared/buttons/RegisterButton";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 import getTokenDetail from "@/utils/token/getTokenDetail";
 

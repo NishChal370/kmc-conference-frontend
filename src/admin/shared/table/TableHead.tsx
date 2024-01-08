@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { ICON } from "@/constants/icon";
-import { OrderBy } from "@/admin/enum/commonEnum";
-import { ISortDetail, ITableHeaderDataList } from "@/admin/model/commonModel";
+import { OrderBy } from "@admin/enum/commonEnum";
+import { ISortDetail, ITableHeaderDataList } from "@admin/model/commonModel";
 import AppIcon from "@/shared/icon/AppIcon";
 
 interface ITableHead<TSortBy, TOrderBy> {

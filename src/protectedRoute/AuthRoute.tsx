@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useAppSelector } from "@/app/hooks";
 import { verifyLoginState } from "./feature/verifyLoginSlice";
 import { Status } from "@/enum/commonEnum";
-import { HOME_PATH } from "@/site/constants/routePath";
+import { HOME_PATH } from "@site/constants/routePath";
 
 function AuthRoute() {
       const { status } = useAppSelector(verifyLoginState);

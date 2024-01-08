@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/app/hooks";
-import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
+import useSpeakerApi from "@admin/hooks/speaker/useSpeakerApi";
 import { useEffect } from "react";
 import { speakerState } from "../feature/speakerSlice";
 import AdminSpeakerTable from "../components/AdminSpeakerTable";

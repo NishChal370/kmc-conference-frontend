@@ -1,4 +1,4 @@
-import { ORGANIZERS_PATH, SCHEDULE_PATH, SPEAKER_PATH } from "@/site/constants/routePath";
+import { ORGANIZERS_PATH, SCHEDULE_PATH, SPEAKER_PATH } from "@site/constants/routePath";
 
 export const ABOUT_US_NAVIGATION_DETAIL = [
       {

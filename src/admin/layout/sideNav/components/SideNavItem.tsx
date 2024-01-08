@@ -1,6 +1,6 @@
 import NavHeaderContainer from "../container/NavHeaderContainer";
 import SideNavItemContainer from "../container/SideNavItemContainer";
-import { ISideNavDetail } from "@/admin/model/sideNav/sideNavModel";
+import { ISideNavDetail } from "@admin/model/sideNav/sideNavModel";
 import "../style/sideNav.css";
 
 interface ISideNavItem extends ISideNavDetail {

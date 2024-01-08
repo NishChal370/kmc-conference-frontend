@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Button from "@/shared/button/Button";
-import { AUTH_PATH } from "@/site/constants/routePath";
+import { AUTH_PATH } from "@site/constants/routePath";
 
 interface IRegisterButton {
       extraClassName?: React.HTMLAttributes<unknown>["className"];
