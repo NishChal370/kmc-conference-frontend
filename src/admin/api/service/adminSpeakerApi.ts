@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
-import { IAdminSpeakerPutRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerPutRequest, IAdminSpeakerFullDetailedInfoById } from "@/admin/model/speaker/adminSpeakerModel";
 
 export const adminSpeakerApi = {
       getBasicInfo: () => {
@@ -10,6 +10,16 @@ export const adminSpeakerApi = {
                   url: `Speaker`,
             };
 
+
+            return AXIOS.request(options);
+      },
+
+
+      getSpeakerFullDetailedInfoById: ({ speakerId }: IAdminSpeakerFullDetailedInfoById) => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Speaker/${speakerId}`,
+            };
 
             return AXIOS.request(options);
       },
@@ -23,5 +33,5 @@ export const adminSpeakerApi = {
 
 
             return AXIOS.request(options);
-      }
+      },
 }

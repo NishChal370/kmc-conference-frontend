@@ -1,11 +1,12 @@
+import { useEffect } from "react";
+import AdminSpeakerTable from "../components/AdminSpeakerTable";
 import { useAppSelector } from "@/app/hooks";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
-import { useEffect } from "react";
+import { IAdminSpeakerEditModal } from "@/admin/model/speaker/adminSpeakerModel";
 import { speakerState } from "../feature/speakerSlice";
-import AdminSpeakerTable from "../components/AdminSpeakerTable";
 
 interface IAdminSpeakerTableContainer {
-      openEditModal: ({ editingData }: { editingData: string }) => void;
+      openEditModal: ({ editingData }: { editingData: IAdminSpeakerEditModal }) => void;
 }
 
 function AdminSpeakerTableContainer({ openEditModal }: IAdminSpeakerTableContainer) {

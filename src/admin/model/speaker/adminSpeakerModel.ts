@@ -1,7 +1,7 @@
 import { IAttachment, IFilUpdateDetail } from '@/models/file/fileModel';
 import { IMultipleInputFields, IMultiplePhoneNumberInput } from '@/models/input/multiplePhoneInputModel';
 
-export interface AdminSpeakerFullDetail {
+export interface IAdminSpeakerFullDetail {
       speakerId: number,
       photo: File,
       firstName: string,
@@ -25,12 +25,23 @@ export interface AdminSpeakerFullDetail {
       avRequirements: string,
       preferredSessionLengthMinutes: number,
       accommodationNeeds: string,
-      sessionProposal: string,
+      sessionProposal?: IAttachment[],
       referenceContacts: string[],
 }
 
 
 
+/**
+ * @interface
+ * Represent GET speaker full details by speakerId.
+ */
+export interface IAdminSpeakerFullDetailedInfoById {
+      speakerId: IAdminSpeakerFullDetail["speakerId"],
+}
+
+
+
+export type IAdminSpeakerFullDetailedInfoByIdResponse = IAdminSpeakerFullDetail;
 
 
 
@@ -70,3 +81,7 @@ export interface IAdminSpeakerEditForm extends Omit<IAdminSpeakerPutRequest, "sp
       referenceContacts: IMultiplePhoneNumberInput,
       proposalFile: IFilUpdateDetail,
 }
+
+
+
+export type IAdminSpeakerEditModal = IAdminSpeakerFullDetailedInfoById;

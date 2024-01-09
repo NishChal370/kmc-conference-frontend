@@ -5,11 +5,12 @@ import { Status } from "@/enum/commonEnum";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import { SPEAKER_HEADER_LIST } from "../data/speakerHeaderList";
 import { ISpeakerBasicInfo } from "@/models/speaker/SpeakerModel";
+import { IAdminSpeakerEditModal } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IAdminSpeakerTable {
       status: Status;
       speakersBasicInfo: ISpeakerBasicInfo[];
-      openEditModal: ({ editingData }: { editingData: string }) => void;
+      openEditModal: ({ editingData }: { editingData: IAdminSpeakerEditModal }) => void;
 }
 
 function AdminSpeakerTable({ openEditModal, status, speakersBasicInfo }: IAdminSpeakerTable) {
@@ -51,7 +52,11 @@ function AdminSpeakerTable({ openEditModal, status, speakersBasicInfo }: IAdminS
                                                                   type: "Update",
                                                                   icon: <AppIcon name="view" />,
                                                                   clickHandler: () => {
-                                                                        openEditModal({ editingData: "" });
+                                                                        openEditModal({
+                                                                              editingData: {
+                                                                                    speakerId: speaker.id,
+                                                                              },
+                                                                        });
                                                                   },
                                                             },
                                                       ]}

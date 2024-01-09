@@ -1,5 +1,5 @@
 import { adminSpeakerApi } from "@/admin/api/service/adminSpeakerApi";
-import { IAdminSpeakerPutRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerFullDetail, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest } from "@/admin/model/speaker/adminSpeakerModel";
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { ISpeakerBasicInfoResponse } from "@/models/speaker/SpeakerModel";
 
@@ -15,6 +15,22 @@ export const getSpeakerBasicInfo = createAppAsyncThunk<ISpeakerBasicInfoResponse
             }
       }
 );
+
+
+export const getAdminSpeakerFullDetailedInfo = createAppAsyncThunk<IAdminSpeakerFullDetail, IAdminSpeakerFullDetailedInfoById>(
+      "admin/speaker/full-detail/get",
+      async (speakerDetail, { rejectWithValue }) => {
+            try {
+                  const response = await adminSpeakerApi.getSpeakerFullDetailedInfoById(speakerDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
 
 
 export const putAdminSpeakerFullDetail = createAppAsyncThunk<undefined, IAdminSpeakerPutRequest>(

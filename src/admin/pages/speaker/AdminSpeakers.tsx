@@ -1,16 +1,17 @@
 import Header from "@/admin/shared/header/Header";
 import AdminSpeakerTableContainer from "./container/AdminSpeakerTableContainer";
+import AdminSpeakerEditFormContainer from "./container/AdminSpeakerEditFormContainer";
 import useModal from "@/admin/hooks/modal/useModal";
 import { IModal } from "@/admin/model/modal/useModalModel";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
-import AdminSpeakerEditFormContainer from "./container/AdminSpeakerEditFormContainer";
+import { IAdminSpeakerEditModal } from "@/admin/model/speaker/adminSpeakerModel";
 
 function AdminSpeakers() {
       const {
             modalState: applicationModalState,
             openEditModal: openApplicationEditModalState,
             closeModal: closeApplicationModal,
-      } = useModal<IModal<string>>();
+      } = useModal<IModal<IAdminSpeakerEditModal>>();
 
       return (
             <>
@@ -20,9 +21,13 @@ function AdminSpeakers() {
                         <AdminSpeakerTableContainer openEditModal={openApplicationEditModalState} />
                   </section>
 
-                  {[FieldStatus.Edit].includes(applicationModalState.modalStatus) && (
-                        <AdminSpeakerEditFormContainer closeModalHandler={closeApplicationModal} />
-                  )}
+                  {[FieldStatus.Edit].includes(applicationModalState.modalStatus) &&
+                        applicationModalState.modalData?.edit?.speakerId && (
+                              <AdminSpeakerEditFormContainer
+                                    selectedSpeakerId={applicationModalState.modalData?.edit?.speakerId}
+                                    closeModalHandler={closeApplicationModal}
+                              />
+                        )}
             </>
       );
 }

@@ -1,14 +1,25 @@
 import { useAppDispatch } from '@/app/hooks';
-import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail } from '@/admin/pages/speaker/feature/speakerRequest';
-import { IAdminSpeakerPutRequest } from '@/admin/model/speaker/adminSpeakerModel';
+import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, getAdminSpeakerFullDetailedInfo as getAdminSpeakerFullDetailedInfoReq } from '@/admin/pages/speaker/feature/speakerRequest';
+import { IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest } from '@/admin/model/speaker/adminSpeakerModel';
 import { errorToastMessage, loadingAlertWithMessage, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useSpeakerApi() {
       const dispatch = useAppDispatch();
 
       const getSpeakerBasicInfo = () => {
-
             dispatch(getSpeakerBasicInfoReq())
+      }
+
+
+      const getAdminSpeakerFullDetailedInfo = (speakerDetail: IAdminSpeakerFullDetailedInfoById) => {
+            loadingAlertWithMessage({ title: "Loading", text: "Please wait while getting data" });
+
+            dispatch(getAdminSpeakerFullDetailedInfoReq(speakerDetail))
+                  .unwrap()
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+                  })
+                  .finally(swalAlertClose)
       }
 
 
@@ -30,7 +41,7 @@ function useSpeakerApi() {
                   .finally(swalAlertClose)
       }
 
-      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail } as const;
+      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getAdminSpeakerFullDetailedInfo } as const;
 }
 
 export default useSpeakerApi
