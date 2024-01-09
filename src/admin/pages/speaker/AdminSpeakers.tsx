@@ -1,9 +1,9 @@
 import Header from "@/admin/shared/header/Header";
-import AdminAddOrEditSpeakerForm from "./components/AdminSpeakerAddOrEditForm";
 import AdminSpeakerTableContainer from "./container/AdminSpeakerTableContainer";
 import useModal from "@/admin/hooks/modal/useModal";
 import { IModal } from "@/admin/model/modal/useModalModel";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
+import AdminSpeakerEditFormContainer from "./container/AdminSpeakerEditFormContainer";
 
 function AdminSpeakers() {
       const {
@@ -21,10 +21,7 @@ function AdminSpeakers() {
                   </section>
 
                   {[FieldStatus.Edit].includes(applicationModalState.modalStatus) && (
-                        <AdminAddOrEditSpeakerForm
-                              modalType="Edit"
-                              closeModalHandler={closeApplicationModal}
-                        />
+                        <AdminSpeakerEditFormContainer closeModalHandler={closeApplicationModal} />
                   )}
             </>
       );

@@ -7,8 +7,8 @@ interface IModalSectionHeader {
  */
 function ModalSectionHeader({ title }: IModalSectionHeader) {
       return (
-            <header className="w-auto bg-primary/5 text-default">
-                  <p className="p-3 font-bold text-base tracking-wide">{title}</p>
+            <header className="w-auto bg-primary/5">
+                  <p className="text-md font-semibold text-primary py-2 px-4 rounded-sm">{title}</p>
             </header>
       );
 }

@@ -2,16 +2,20 @@ import { UseFormRegisterReturn } from "react-hook-form";
 
 interface ISecondaryInput {
       label: string;
-      children?: UseFormRegisterReturn<string>;
+      placeHolder?: string;
       errorMessage?: string;
-      type?: React.InputHTMLAttributes<HTMLInputElement>["type"];
+      isRequired?: boolean;
       containerClassName?: string;
+      children?: UseFormRegisterReturn<string>;
+      type?: React.InputHTMLAttributes<HTMLInputElement>["type"];
 }
 
 function SecondaryInput({
       label,
       type = "text",
+      isRequired = false,
       children,
+      placeHolder,
       errorMessage,
       containerClassName,
 }: ISecondaryInput) {
@@ -24,7 +28,8 @@ function SecondaryInput({
                                     ${errorMessage ? "text-error peer-focus:text-error" : "text-black"} 
                               `}
                         >
-                              {label}
+                              {label}&nbsp;
+                              {isRequired && "*"}
                         </label>
                         {errorMessage && <p className=" text-error text-xs">{errorMessage}</p>}
                   </span>
@@ -40,7 +45,7 @@ function SecondaryInput({
                                     id={`input-${label}`}
                                     type={type}
                                     className="border-0 w-full pl-2 py-2"
-                                    placeholder={label}
+                                    placeholder={placeHolder ?? label}
                                     {...children}
                               />
                         </span>

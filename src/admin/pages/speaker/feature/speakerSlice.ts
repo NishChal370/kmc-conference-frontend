@@ -2,7 +2,7 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { getSpeakerBasicInfo } from "./speakerRequest";
+import { getSpeakerBasicInfo, putAdminSpeakerFullDetail } from "./speakerRequest";
 import { ISpeakerBasicInfoResponse } from "@/models/speaker/SpeakerModel";
 
 
@@ -43,6 +43,10 @@ const speakerSlice = createSlice({
                   .addCase(getSpeakerBasicInfo.rejected, (state, action) => {
                         state.speakerBasicInfo.status = Status.FAILED;
                         state.speakerBasicInfo.error = action.payload;
+                  })
+
+                  .addCase(putAdminSpeakerFullDetail.fulfilled, (state) => {
+                        state.speakerBasicInfo.isToRefetch = !state.speakerBasicInfo.isToRefetch;
                   })
       },
 })

@@ -1,19 +1,17 @@
 import Button from "../button/Button";
 
 interface IModalActionButtons {
-      resetHandler?: () => void;
-      submitHandler?: () => void;
-      submitAndNewHandler?: () => void;
+      resetHandler: () => void;
 }
 
-function ModalActionButtons({ submitHandler, resetHandler }: IModalActionButtons) {
+function ModalActionButtons({ resetHandler }: IModalActionButtons) {
       return (
             <span
-                  className="flex flex-col justify-end gap-4 w-full h-fit text-center mb-10
+                  className="flex flex-col justify-end gap-4 w-full h-fit text-center mb-6
                         sm:flex-row sm:min-w-[24%]
                   "
             >
-                  <Button type="button" title="Reset" variant="lightFilled" onClickHandler={() => {}} />
+                  <Button type="button" title="Reset" variant="lightFilled" onClickHandler={resetHandler} />
 
                   <Button type="submit" title="Submit" variant="filled" />
             </span>

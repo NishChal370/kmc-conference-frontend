@@ -9,7 +9,7 @@ interface IAdminSpeakerTableContainer {
 }
 
 function AdminSpeakerTableContainer({ openEditModal }: IAdminSpeakerTableContainer) {
-      const { status, data, error } = useAppSelector(speakerState).speakerBasicInfo;
+      const { status, data, isToRefetch } = useAppSelector(speakerState).speakerBasicInfo;
       const { getSpeakerBasicInfo } = useSpeakerApi();
 
       const fetchData = () => {
@@ -18,7 +18,7 @@ function AdminSpeakerTableContainer({ openEditModal }: IAdminSpeakerTableContain
 
       useEffect(() => {
             fetchData();
-      }, []);
+      }, [isToRefetch]);
 
       return (
             <>

@@ -8,6 +8,7 @@ interface IPhoneInput<TControl extends FieldValues> {
       control: Control<TControl>;
       isRequired?: boolean;
       label?: string;
+      variant?: "primary" | "secondary";
       containerClassName?: string;
 }
 
@@ -16,6 +17,7 @@ function PhoneInput<TControl extends FieldValues>({
       control,
       isRequired = false,
       label = "Phone",
+      variant = "primary",
       containerClassName,
 }: IPhoneInput<TControl>) {
       return (
@@ -34,11 +36,39 @@ function PhoneInput<TControl extends FieldValues>({
                         },
                   }}
                   render={({ field: { onChange, value }, formState: { errors } }) => (
-                        <div className={`relative flex flex-col gap-0 ${containerClassName}`}>
-                              {errors[name]?.message && (
-                                    <p className="absolute bottom-10 right-0 mt-1 text-error text-xs">
-                                          {errors[name]?.message as string}
-                                    </p>
+                        <div
+                              className={`relative flex flex-col 
+                                    ${variant === "secondary" ? "gap-1" : "gap-0"}  
+                                    ${containerClassName}`}
+                        >
+                              {variant === "secondary" ? (
+                                    <span className="flex w-full justify-between gap-1 pl-1">
+                                          <label
+                                                htmlFor={`input-${label}`}
+                                                className={`leading-none p-0 text-sm font-semibold tracking-wide
+                                                      ${
+                                                            errors[name]?.message
+                                                                  ? "text-error peer-focus:text-error"
+                                                                  : "text-black"
+                                                      } 
+                                                `}
+                                          >
+                                                {label}&nbsp;
+                                                {isRequired && "*"}
+                                          </label>
+
+                                          {errors[name]?.message && (
+                                                <p className=" text-error text-xs">
+                                                      {errors[name]?.message as string}
+                                                </p>
+                                          )}
+                                    </span>
+                              ) : (
+                                    errors[name]?.message && (
+                                          <p className="absolute bottom-10 right-0 mt-1 text-error text-xs">
+                                                {errors[name]?.message as string}
+                                          </p>
+                                    )
                               )}
 
                               <section
@@ -61,21 +91,27 @@ function PhoneInput<TControl extends FieldValues>({
                                                 onChange={onChange}
                                           />
 
-                                          <label
-                                                htmlFor={`input-${label}`}
-                                                className={`absolute pointer-events-none start-2.5 top-0 leading-none -translate-y-[60%] bg-white p-0 transition-all 
-                                                      ${value ? "top-0" : "top-1/2 text-white/0 bg-white/0"}
-                                                      ${
-                                                            errors[name]?.message
-                                                                  ? "text-error"
-                                                                  : value
-                                                                    ? "text-black"
-                                                                    : "text-mute"
-                                                      } 
-                                                `}
-                                          >
-                                                {label}
-                                          </label>
+                                          {variant === "primary" && (
+                                                <label
+                                                      htmlFor={`input-${label}`}
+                                                      className={`absolute pointer-events-none start-2.5 top-0 leading-none -translate-y-[60%] bg-white p-0 transition-all 
+                                                            ${
+                                                                  value
+                                                                        ? "top-0"
+                                                                        : "top-1/2 text-white/0 bg-white/0"
+                                                            }
+                                                            ${
+                                                                  errors[name]?.message
+                                                                        ? "text-error"
+                                                                        : value
+                                                                          ? "text-black"
+                                                                          : "text-mute"
+                                                            } 
+                                                      `}
+                                                >
+                                                      {label}
+                                                </label>
+                                          )}
                                     </span>
                               </section>
                         </div>
