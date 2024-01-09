@@ -2,6 +2,7 @@ import AppIcon from "@/shared/icon/AppIcon";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
 import { Table, TableBody, TableHead, Td, Ti } from "@/admin/shared/table";
 import { Status } from "@/enum/commonEnum";
+import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import { SPEAKER_HEADER_LIST } from "../data/speakerHeaderList";
 import { ISpeakerBasicInfo } from "@/models/speaker/SpeakerModel";
 
@@ -31,6 +32,10 @@ function AdminSpeakerTable({ openEditModal, status, speakersBasicInfo }: IAdminS
                                           <Td dataName="Designation">{speaker.jobTitle}</Td>
 
                                           <Td dataName="Company">{speaker.affiliation}</Td>
+
+                                          <Td dataName="Approval Status">
+                                                {SpeakerApprovalStatus[speaker.approvalStatus]}
+                                          </Td>
 
                                           <Td id="table-action-container" dataName="Action">
                                                 <TableActionButton

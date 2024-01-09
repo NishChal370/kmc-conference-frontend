@@ -1,9 +1,12 @@
 import { Modal } from "@/shared/modal";
+import Button from "@/shared/button/Button";
 import ModalFooter from "@/shared/modal/ModalFooter";
 import RichTextEditor from "@/shared/input/RichTextEditor";
 import SecondaryInput from "@/shared/input/SecondaryInput";
 import ModalActionButtons from "@/shared/modal/ModalActionButtons";
-import Button from "@/shared/button/Button";
+import MultiplePhoneInput from "@/shared/input/MultiplePhoneInput";
+import useAppForm from "@/hooks/form/useAppForm";
+import { IMultiplePhoneNumberInput } from "@/models/input/multiplePhoneInputModel";
 
 interface IAdminAddOrEditSpeakerForm {
       modalType?: "Add" | "Edit";
@@ -11,6 +14,16 @@ interface IAdminAddOrEditSpeakerForm {
 }
 
 function AdminAddOrEditSpeakerForm({ modalType = "Add", closeModalHandler }: IAdminAddOrEditSpeakerForm) {
+      const { control, handleSubmit, formState } = useAppForm<{
+            phoneNumber: IMultiplePhoneNumberInput;
+            name: "";
+      }>({
+            defaultValues: {
+                  phoneNumber: [{ phone: "" }],
+                  name: "",
+            },
+      });
+
       return (
             <>
                   <Modal
@@ -18,11 +31,16 @@ function AdminAddOrEditSpeakerForm({ modalType = "Add", closeModalHandler }: IAd
                         size="w-[90%]"
                         closeHandler={closeModalHandler}
                   >
-                        <form className="flex flex-col gap-12">
+                        <form
+                              className="flex flex-col gap-12"
+                              onSubmit={handleSubmit((value) => {
+                                    console.log(value);
+                              })}
+                        >
                               <div
                                     className="flex flex-col gap-20 justify-center w-full
-                                          [&>section]:flex [&>section]:flex-col  [&>section]:gap-8
-                                          [&>section>h5]:text-md [&>section>h5]:font-semibold [&>section>h5]:bg-primary/5 [&>section>h5]:py-2 [&>section>h5]:px-4 [&>section>h5]:rounded-sm
+                                          [&>section]:flex [&>section]:flex-col  [&>section]:gap-10
+                                          [&>section>h5]:text-md [&>section>h5]:font-semibold [&>section>h5]:bg-primary/5 [&>section>h5]:text-primary [&>section>h5]:py-2 [&>section>h5]:px-4 [&>section>h5]:rounded-sm
                                           [&>section>span]:grid [&>section>span]:sm:grid-cols-2 [&>section>span]:gap-x-10  [&>section>span]:gap-y-12
                                     "
                               >
@@ -40,7 +58,11 @@ function AdminAddOrEditSpeakerForm({ modalType = "Add", closeModalHandler }: IAd
                                                       alt="speaker-img"
                                                 />
 
-                                                <aside className="flex flex-col justify-end gap-3">
+                                                <aside
+                                                      className="flex flex-col items-center justify-end gap-3 
+                                                            sm:items-start
+                                                      "
+                                                >
                                                       <Button
                                                             title="Upload New Photo"
                                                             type="button"
@@ -86,11 +108,10 @@ function AdminAddOrEditSpeakerForm({ modalType = "Add", closeModalHandler }: IAd
                                           <span>
                                                 <SecondaryInput label="Expertise in Field" />
                                                 <SecondaryInput label="Publications" />
-                                                <SecondaryInput label="Previous Conference" />
                                                 <SecondaryInput label="Previous Speaking Engagements" />
-                                                <span className="sm:col-span-2">
-                                                      <RichTextEditor label="Previous Experience" />
-                                                </span>
+                                                <br />
+                                                <RichTextEditor label="Previous Experience" />
+                                                <RichTextEditor label="Previous Conference" />
                                           </span>
                                     </section>
 
@@ -99,7 +120,10 @@ function AdminAddOrEditSpeakerForm({ modalType = "Add", closeModalHandler }: IAd
                                           <span>
                                                 <SecondaryInput label="Willing to travel" />
                                                 <SecondaryInput label="Audio/View Requirement" />
-                                                <SecondaryInput type="file" label="Accommodation Needs" />
+
+                                                <span className="sm:col-span-2">
+                                                      <RichTextEditor label="Accommodation Needs" />
+                                                </span>
                                           </span>
                                     </section>
 
@@ -107,7 +131,13 @@ function AdminAddOrEditSpeakerForm({ modalType = "Add", closeModalHandler }: IAd
                                           <h5>Additional Information</h5>
                                           <span>
                                                 <SecondaryInput type="file" label="Session Proposal" />
-                                                <SecondaryInput type="file" label="Reference Contact" />
+                                                <MultiplePhoneInput
+                                                      isRequired
+                                                      control={control}
+                                                      label="Reference Contact"
+                                                      name="phoneNumber"
+                                                      errorMessage={formState.errors.phoneNumber}
+                                                />
                                           </span>
                                     </section>
                               </div>

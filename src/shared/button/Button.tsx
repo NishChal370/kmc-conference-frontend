@@ -5,11 +5,13 @@ import { IButton } from "@/models/button/buttonModel";
 function Button({
       id = "app-button",
       title,
+      suggestion,
       type = "button",
       onClickHandler,
       variant = "filled",
       extraClassName,
       iconName,
+      disable = false,
 }: IButton) {
       const defaultClassName = {
             filled: "group flex items-center gap-1.5 justify-center tracking-wider bg-primary px-6 py-1.5 text-white text-sm border border-primary uppercase font-semibold rounded-md w-full active:shadow-button",
@@ -24,9 +26,11 @@ function Button({
       return (
             <button
                   id={id}
+                  title={suggestion ?? ""}
                   type={type}
                   className={defaultClassName[variant] + " " + extraClassName}
                   onClick={onClickHandler}
+                  disabled={disable}
             >
                   {iconName ? (
                         <AppIcon

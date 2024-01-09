@@ -6,5 +6,6 @@ export const SPEAKER_HEADER_LIST: ITableHeaderDataList = [
       { id: "speaker-name", title: "Speaker Name", className: "text-start" },
       { id: "speaker-designation", title: "Designation", className: "text-start" },
       { id: "speaker-company", title: "Company", className: "text-start" },
+      { id: "speaker-approvalStatus", title: "Approval Status", className: "text-start" },
       { id: "action", title: "Action" },
 ];
