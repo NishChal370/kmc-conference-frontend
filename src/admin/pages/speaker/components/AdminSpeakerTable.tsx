@@ -8,6 +8,7 @@ import { ISpeakerBasicInfo } from "@/models/speaker/SpeakerModel";
 import {
       IAdminSpeakerEditModal,
       IAdminSpeakerStatusChangeModal,
+      ISpeakerDetailDeleteRequest,
 } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IAdminSpeakerTable {
@@ -16,12 +17,14 @@ interface IAdminSpeakerTable {
       openStatusChangeModal: (speakerDetail: IAdminSpeakerStatusChangeModal) => void;
       openViewModal: ({ viewingData }: { viewingData: IAdminSpeakerEditModal }) => void;
       openEditModal: ({ editingData }: { editingData: IAdminSpeakerEditModal }) => void;
+      deleteSpeakerDetailHandler: (deletingDetail: ISpeakerDetailDeleteRequest) => void;
 }
 
 function AdminSpeakerTable({
       openEditModal,
       openViewModal,
       openStatusChangeModal,
+      deleteSpeakerDetailHandler,
       status,
       speakersBasicInfo,
 }: IAdminSpeakerTable) {
@@ -86,6 +89,16 @@ function AdminSpeakerTable({
                                                                               approvalStatus:
                                                                                     speaker.approvalStatus,
                                                                               speakerName: speaker.name,
+                                                                        });
+                                                                  },
+                                                            },
+                                                            {
+                                                                  title: "Delete",
+                                                                  type: "Danger",
+                                                                  icon: <AppIcon name="view" />,
+                                                                  clickHandler: () => {
+                                                                        deleteSpeakerDetailHandler({
+                                                                              speakerId: speaker.id,
                                                                         });
                                                                   },
                                                             },

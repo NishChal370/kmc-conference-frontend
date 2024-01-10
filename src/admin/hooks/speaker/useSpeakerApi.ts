@@ -1,7 +1,7 @@
 import { useAppDispatch } from '@/app/hooks';
-import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, getAdminSpeakerFullDetailedInfo as getAdminSpeakerFullDetailedInfoReq, putAdminSpeakerApprovalStatus } from '@/admin/pages/speaker/feature/speakerRequest';
-import { IAdminSpeakerBasicInfoSearch, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq } from '@/admin/model/speaker/adminSpeakerModel';
-import { errorToastMessage, loadingAlertWithMessage, successMessage, swalAlertClose } from '@/utils/alert';
+import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, getAdminSpeakerFullDetailedInfo as getAdminSpeakerFullDetailedInfoReq, putAdminSpeakerApprovalStatus, deleteSpeakerDetail as deleteSpeakerDetailReq } from '@/admin/pages/speaker/feature/speakerRequest';
+import { IAdminSpeakerBasicInfoSearch, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerDetailDeleteRequest } from '@/admin/model/speaker/adminSpeakerModel';
+import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useSpeakerApi() {
       const dispatch = useAppDispatch();
@@ -59,7 +59,27 @@ function useSpeakerApi() {
                   .finally(swalAlertClose)
       }
 
-      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getAdminSpeakerFullDetailedInfo, updateSpeakerApprovalStatus } as const;
+
+      const deleteSpeakerDetail = async (deletingDetail: ISpeakerDetailDeleteRequest) => {
+            await showSuccessfulConfirmation({ buttonText: "Delete", showCancelButton: true }).then(() => {
+                  loadingAlertWithMessage({ title: "Deleting", text: "Please wait while deleting" });
+
+                  dispatch(deleteSpeakerDetailReq(deletingDetail))
+                        .unwrap()
+                        .then(() => {
+
+                              successMessage({ title: "Deleted", message: "Speaker has been deleted." });
+                        })
+                        .catch((error) => {
+                              errorToastMessage(error.detail);
+
+                              throw new Error(error);
+                        })
+                        .finally(swalAlertClose)
+            })
+      }
+
+      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getAdminSpeakerFullDetailedInfo, updateSpeakerApprovalStatus, deleteSpeakerDetail } as const;
 }
 
 export default useSpeakerApi

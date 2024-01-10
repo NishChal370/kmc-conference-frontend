@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
-import { IAdminSpeakerPutRequest, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerBasicInfoSearch, IAdminSpeakerStatusChangeReq } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerPutRequest, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerBasicInfoSearch, IAdminSpeakerStatusChangeReq, ISpeakerDetailDeleteRequest } from "@/admin/model/speaker/adminSpeakerModel";
 
 export const adminSpeakerApi = {
       getBasicInfo: (searchDetail: IAdminSpeakerBasicInfoSearch) => {
@@ -41,6 +41,17 @@ export const adminSpeakerApi = {
                   method: "PUT",
                   url: `Speaker/update-status`,
                   data: approvalDetail
+            };
+
+
+            return AXIOS.request(options);
+      },
+
+      deleteSpeakerDetail: (deletingDetail: ISpeakerDetailDeleteRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "DELETE",
+                  url: `Speaker`,
+                  data: deletingDetail
             };
 
 

@@ -31,7 +31,7 @@ function AdminSpeakerTableContainer({
 
       const { status, data, isToRefetch, error } = useAppSelector(speakerState).speakerBasicInfo;
 
-      const { getSpeakerBasicInfo } = useSpeakerApi();
+      const { getSpeakerBasicInfo, deleteSpeakerDetail } = useSpeakerApi();
 
       const { getSearchParmaValues, clearAllSearchParam } = useURLQueryHandler();
 
@@ -57,6 +57,7 @@ function AdminSpeakerTableContainer({
                         openViewModal={openViewModal}
                         openEditModal={openEditModal}
                         openStatusChangeModal={openStatusChangeModal}
+                        deleteSpeakerDetailHandler={deleteSpeakerDetail}
                         status={status}
                         speakersBasicInfo={data.speakers}
                   />

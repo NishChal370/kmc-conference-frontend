@@ -10,7 +10,7 @@
 @tailwind components;
 
 :root {
-      --primary: #141414;
+      --primary: #bd1701;
 }
 
 @layer base {

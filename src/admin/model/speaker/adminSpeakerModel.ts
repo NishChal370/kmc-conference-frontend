@@ -98,8 +98,15 @@ export interface IAdminSpeakerStatusChangeReq {
       approvalStatus: SpeakerApprovalStatus,
 }
 
+
 export interface IAdminSpeakerStatusChangeModal {
       id: IAdminSpeakerFullDetail["speakerId"],
       speakerName: IAdminSpeakerFullDetail["firstName"];
       approvalStatus: SpeakerApprovalStatus,
+}
+
+
+
+export interface ISpeakerDetailDeleteRequest {
+      speakerId: IAdminSpeakerFullDetail["speakerId"],
 }
