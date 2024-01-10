@@ -7,7 +7,7 @@ interface IModalActionButtons {
 function ModalActionButtons({ resetHandler }: IModalActionButtons) {
       return (
             <span
-                  className="flex flex-col justify-end gap-4 w-full h-fit text-center mb-6
+                  className="flex flex-col justify-end gap-4 w-full h-fit text-center mb-2
                         sm:flex-row sm:min-w-[24%]
                   "
             >

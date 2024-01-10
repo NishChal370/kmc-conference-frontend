@@ -82,9 +82,11 @@ function PhoneInput<TControl extends FieldValues>({
                                                 id={`input-phone-${label}`}
                                                 international
                                                 defaultCountry="NP"
-                                                className="border-0 w-full pl-2 py-2
+                                                className={`border-0 w-full pl-2 ${
+                                                      variant === "primary" ? "py-2" : "py-1.5"
+                                                }
                                                       placeholder:text-white/0 placeholder:text-[0rem]
-                                                "
+                                                `}
                                                 placeholder="Enter phone number"
                                                 countryCallingCodeEditable={true}
                                                 value={value || ""}

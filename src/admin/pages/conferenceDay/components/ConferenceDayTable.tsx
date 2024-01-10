@@ -8,9 +8,10 @@ import { IConferenceDayModel } from "@/admin/model/conferenceDay/conferenceDayMo
 interface IConferenceDayTable {
       status: Status;
       conferenceDay: IConferenceDayModel[];
+      editButtonHandler: ({ editingData }: { editingData: IConferenceDayModel }) => () => void;
 }
 
-function ConferenceDayTable({ status, conferenceDay }: IConferenceDayTable) {
+function ConferenceDayTable({ status, conferenceDay, editButtonHandler }: IConferenceDayTable) {
       return (
             <>
                   <Table>
@@ -74,7 +75,9 @@ function ConferenceDayTable({ status, conferenceDay }: IConferenceDayTable) {
                                                                         title: "Update",
                                                                         type: "Update",
                                                                         icon: <AppIcon name="update" />,
-                                                                        clickHandler: () => {},
+                                                                        clickHandler: editButtonHandler({
+                                                                              editingData: day,
+                                                                        }),
                                                                   },
                                                                   {
                                                                         title: "Delete",

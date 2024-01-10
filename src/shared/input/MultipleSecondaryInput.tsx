@@ -100,7 +100,7 @@ function MultipleSecondaryInput<TControl extends FieldValues>({
                                                       <input
                                                             id={`input-${field.id}`}
                                                             type={"type"}
-                                                            className="border-0 w-full pl-2 py-2"
+                                                            className="border-0 w-full pl-2 py-1.5"
                                                             placeholder={placeholder ?? label}
                                                             value={input.value}
                                                             onChange={({ target }) =>

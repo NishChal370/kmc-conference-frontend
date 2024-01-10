@@ -44,7 +44,7 @@ function SecondaryInput({
                               <input
                                     id={`input-${label}`}
                                     type={type}
-                                    className="border-0 w-full pl-2 py-2"
+                                    className="border-0 w-full pl-2 py-1.5"
                                     placeholder={placeHolder ?? label}
                                     {...children}
                               />

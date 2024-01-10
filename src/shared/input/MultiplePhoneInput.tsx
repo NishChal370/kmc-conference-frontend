@@ -99,7 +99,7 @@ function MultiplePhoneInput<TControl extends FieldValues>({
                                                             id={`input-phone-${field.id}`}
                                                             international
                                                             defaultCountry="NP"
-                                                            className="border-0 w-full pl-2 py-2 placeholder:text-white/0 placeholder:text-[0rem]"
+                                                            className="border-0 w-full pl-2 py-1.5 placeholder:text-white/0 placeholder:text-[0rem]"
                                                             placeholder="Enter phone number"
                                                             countryCallingCodeEditable={true}
                                                             value={input.value}

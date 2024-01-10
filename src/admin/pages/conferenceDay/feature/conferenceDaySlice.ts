@@ -1,9 +1,9 @@
 import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
-import { IConferenceDayResponse } from "@/admin/model/conferenceDay/conferenceDayModel";
 import { IBasicSliceState } from "@/models/commonModel";
-import { getConferenceDayDetail } from "./conferenceDayRequest";
+import { IConferenceDayResponse } from "@/admin/model/conferenceDay/conferenceDayModel";
+import { getConferenceDayDetail, putConferenceDay } from "./conferenceDayRequest";
 
 
 
@@ -41,6 +41,11 @@ const conferenceDaySlice = createSlice({
                   .addCase(getConferenceDayDetail.rejected, (state, action) => {
                         state.status = Status.FAILED;
                         state.error = action.payload;
+                  })
+
+
+                  .addCase(putConferenceDay.fulfilled, (state) => {
+                        state.isToRefetch = !state.isToRefetch;
                   })
       },
 })

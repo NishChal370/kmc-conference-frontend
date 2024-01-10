@@ -9,8 +9,13 @@ import { useAppSelector } from "@/app/hooks";
 import { useURLQueryValues } from "@/hooks/urlQueryHandler";
 import useConferenceDayApi from "@/admin/hooks/conferenceDay/useConferenceDayApi";
 import { conferenceDayState } from "../feature/conferenceDaySlice";
+import { IConferenceDayModel } from "@/admin/model/conferenceDay/conferenceDayModel";
 
-function ConferenceDayTableContainer() {
+interface IConferenceDayTableContainer {
+      openEditModal: ({ editingData }: { editingData: IConferenceDayModel }) => void;
+}
+
+function ConferenceDayTableContainer({ openEditModal }: IConferenceDayTableContainer) {
       const { search } = useLocation();
 
       const { status, error, data } = useAppSelector(conferenceDayState);
@@ -23,13 +28,21 @@ function ConferenceDayTableContainer() {
             getConferenceDayDetail({ pageNumber: currentPageNumber });
       };
 
+      const editButtonHandler = (data: { editingData: IConferenceDayModel }) => () => {
+            openEditModal(data);
+      };
+
       useEffect(() => {
             fetchData();
       }, [search]);
 
       return (
             <>
-                  <ConferenceDayTable status={status} conferenceDay={data.days} />
+                  <ConferenceDayTable
+                        status={status}
+                        conferenceDay={data.days}
+                        editButtonHandler={editButtonHandler}
+                  />
 
                   {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}
 

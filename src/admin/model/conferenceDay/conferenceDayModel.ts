@@ -24,3 +24,19 @@ export interface IConferenceDayResponse extends IBasicApiResponse {
 export interface IConferenceDaySearch {
       pageNumber?: number;
 }
+
+
+export interface IConferenceDayForm {
+      description: string,
+      date: string,
+      parkingInfo: string,
+      parkingLocation: string,
+      hotelInfo: string,
+      hotelLocation: string,
+      location: string,
+      venueCity: string,
+      venueState: string
+}
+
+
+export type IConferenceDayPutRequest = IConferenceDayModel;
