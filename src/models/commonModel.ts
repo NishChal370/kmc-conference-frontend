@@ -1,4 +1,4 @@
-import { Status } from "@/enum/commonEnum";
+import { OrderBy, Status } from "@/enum/commonEnum";
 
 /**
  * @interface
@@ -46,4 +46,19 @@ export interface IBasicSliceState<TErrorDetail = IApiErrorDetail> {
       error?: TErrorDetail;
 }
 
+
+
+/**
+ * @interface
+ * Represent api basic search param
+ * 
+ * @property {number} pageNumber - page number.
+ * @property {TSortBy} sortBy - sort by. Generic.
+ * @property {OrderBy}orderBy - order by.
+ */
+export interface IBasicSearchParam<TSortBy = undefined> {
+      pageNumber: number;
+      sortBy?: TSortBy;
+      orderBy?: OrderBy;
+}
 

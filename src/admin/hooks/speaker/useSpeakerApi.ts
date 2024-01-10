@@ -1,13 +1,13 @@
 import { useAppDispatch } from '@/app/hooks';
 import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, getAdminSpeakerFullDetailedInfo as getAdminSpeakerFullDetailedInfoReq } from '@/admin/pages/speaker/feature/speakerRequest';
-import { IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest } from '@/admin/model/speaker/adminSpeakerModel';
+import { IAdminSpeakerBasicInfoSearch, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest } from '@/admin/model/speaker/adminSpeakerModel';
 import { errorToastMessage, loadingAlertWithMessage, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useSpeakerApi() {
       const dispatch = useAppDispatch();
 
-      const getSpeakerBasicInfo = () => {
-            dispatch(getSpeakerBasicInfoReq())
+      const getSpeakerBasicInfo = (searchDetail: IAdminSpeakerBasicInfoSearch) => {
+            dispatch(getSpeakerBasicInfoReq(searchDetail))
       }
 
 

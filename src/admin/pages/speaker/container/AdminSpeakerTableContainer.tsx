@@ -1,13 +1,15 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import ErrorMessage from "@/shared/errorMessage/ErrorMessage";
 import AdminSpeakerTable from "../components/AdminSpeakerTable";
 import NotFoundMessage from "@/shared/errorMessage/NotFoundMessage";
+import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { Status } from "@/enum/commonEnum";
-import { IAdminSpeakerEditModal } from "@/admin/model/speaker/adminSpeakerModel";
 import { speakerSliceAction, speakerState } from "../feature/speakerSlice";
+import { IAdminSpeakerEditModal } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IAdminSpeakerTableContainer {
       openEditModal: ({ editingData }: { editingData: IAdminSpeakerEditModal }) => void;
@@ -15,19 +17,25 @@ interface IAdminSpeakerTableContainer {
 }
 
 function AdminSpeakerTableContainer({ openEditModal, openViewModal }: IAdminSpeakerTableContainer) {
+      const { search } = useLocation();
+
       const dispatch = useAppDispatch();
 
       const { status, data, isToRefetch, error } = useAppSelector(speakerState).speakerBasicInfo;
 
       const { getSpeakerBasicInfo } = useSpeakerApi();
 
+      const { getSearchParmaValues, clearAllSearchParam } = useURLQueryHandler();
+
+      const { currentPageNumber } = getSearchParmaValues();
+
       const fetchData = () => {
-            getSpeakerBasicInfo();
+            getSpeakerBasicInfo({ pageNumber: currentPageNumber });
       };
 
       useEffect(() => {
             fetchData();
-      }, [isToRefetch]);
+      }, [search, isToRefetch]);
 
       useEffect(() => {
             return () => {
@@ -43,10 +51,11 @@ function AdminSpeakerTableContainer({ openEditModal, openViewModal }: IAdminSpea
                         status={status}
                         speakersBasicInfo={data.speakers}
                   />
+
                   {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}
 
                   {status === Status.DATA_NOT_FOUND && (
-                        <NotFoundMessage viewAllHandler={fetchData} buttonTitle="Reload" />
+                        <NotFoundMessage viewAllHandler={clearAllSearchParam} buttonTitle="Reload" />
                   )}
 
                   {(status === Status.IDEL || status === Status.LOADING) && <LoadingMessage />}

@@ -1,13 +1,13 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
-import { IAdminSpeakerPutRequest, IAdminSpeakerFullDetailedInfoById } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerPutRequest, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerBasicInfoSearch } from "@/admin/model/speaker/adminSpeakerModel";
 
 export const adminSpeakerApi = {
-      getBasicInfo: () => {
+      getBasicInfo: (searchDetail: IAdminSpeakerBasicInfoSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Speaker`,
+                  url: `Speaker?pageNumber=${searchDetail.pageNumber}`,
             };
 
 

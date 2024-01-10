@@ -40,3 +40,12 @@ export enum Status {
       DATA_NOT_FOUND,
 }
 
+
+/**
+ * @enum
+ * For table sort
+ */
+export enum OrderBy {
+      Ascending,
+      Descending,
+}

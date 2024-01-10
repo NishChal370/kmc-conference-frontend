@@ -1,13 +1,13 @@
-import { adminSpeakerApi } from "@/admin/api/service/adminSpeakerApi";
-import { IAdminSpeakerFullDetail, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest } from "@/admin/model/speaker/adminSpeakerModel";
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
+import { adminSpeakerApi } from "@/admin/api/service/adminSpeakerApi";
 import { ISpeakerBasicInfoResponse } from "@/models/speaker/SpeakerModel";
+import { IAdminSpeakerBasicInfoSearch, IAdminSpeakerFullDetail, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest } from "@/admin/model/speaker/adminSpeakerModel";
 
-export const getSpeakerBasicInfo = createAppAsyncThunk<ISpeakerBasicInfoResponse>(
+export const getSpeakerBasicInfo = createAppAsyncThunk<ISpeakerBasicInfoResponse, IAdminSpeakerBasicInfoSearch>(
       "speaker/basic",
-      async (_, { rejectWithValue }) => {
+      async (searchDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminSpeakerApi.getBasicInfo();
+                  const response = await adminSpeakerApi.getBasicInfo(searchDetail);
 
                   return response.data;
             } catch (error: any) {

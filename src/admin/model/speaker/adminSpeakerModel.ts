@@ -85,3 +85,8 @@ export interface IAdminSpeakerEditForm extends Omit<IAdminSpeakerPutRequest, "sp
 
 
 export type IAdminSpeakerEditModal = IAdminSpeakerFullDetailedInfoById;
+
+
+export interface IAdminSpeakerBasicInfoSearch {
+      pageNumber?: number;
+}
