@@ -10,10 +10,11 @@ import { IAdminSpeakerEditModal } from "@/admin/model/speaker/adminSpeakerModel"
 interface IAdminSpeakerTable {
       status: Status;
       speakersBasicInfo: ISpeakerBasicInfo[];
+      openViewModal: ({ viewingData }: { viewingData: IAdminSpeakerEditModal }) => void;
       openEditModal: ({ editingData }: { editingData: IAdminSpeakerEditModal }) => void;
 }
 
-function AdminSpeakerTable({ openEditModal, status, speakersBasicInfo }: IAdminSpeakerTable) {
+function AdminSpeakerTable({ openEditModal, openViewModal, status, speakersBasicInfo }: IAdminSpeakerTable) {
       return (
             <Table>
                   <TableHead headers={SPEAKER_HEADER_LIST} />
@@ -45,7 +46,13 @@ function AdminSpeakerTable({ openEditModal, status, speakersBasicInfo }: IAdminS
                                                                   title: "View Detail",
                                                                   type: "View",
                                                                   icon: <AppIcon name="view" />,
-                                                                  clickHandler: () => {},
+                                                                  clickHandler: () => {
+                                                                        openViewModal({
+                                                                              viewingData: {
+                                                                                    speakerId: speaker.id,
+                                                                              },
+                                                                        });
+                                                                  },
                                                             },
                                                             {
                                                                   title: "Update",

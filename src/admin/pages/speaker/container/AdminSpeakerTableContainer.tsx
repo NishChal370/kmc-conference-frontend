@@ -5,15 +5,16 @@ import AdminSpeakerTable from "../components/AdminSpeakerTable";
 import NotFoundMessage from "@/shared/errorMessage/NotFoundMessage";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
+import { Status } from "@/enum/commonEnum";
 import { IAdminSpeakerEditModal } from "@/admin/model/speaker/adminSpeakerModel";
 import { speakerSliceAction, speakerState } from "../feature/speakerSlice";
-import { Status } from "@/enum/commonEnum";
 
 interface IAdminSpeakerTableContainer {
       openEditModal: ({ editingData }: { editingData: IAdminSpeakerEditModal }) => void;
+      openViewModal: ({ viewingData }: { viewingData: IAdminSpeakerEditModal }) => void;
 }
 
-function AdminSpeakerTableContainer({ openEditModal }: IAdminSpeakerTableContainer) {
+function AdminSpeakerTableContainer({ openEditModal, openViewModal }: IAdminSpeakerTableContainer) {
       const dispatch = useAppDispatch();
 
       const { status, data, isToRefetch, error } = useAppSelector(speakerState).speakerBasicInfo;
@@ -37,6 +38,7 @@ function AdminSpeakerTableContainer({ openEditModal }: IAdminSpeakerTableContain
       return (
             <>
                   <AdminSpeakerTable
+                        openViewModal={openViewModal}
                         openEditModal={openEditModal}
                         status={status}
                         speakersBasicInfo={data.speakers}

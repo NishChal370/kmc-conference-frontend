@@ -47,7 +47,10 @@ function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
                                           leaveTo="opacity-0 scale-95"
                                     >
                                           <Dialog.Panel
-                                                className={`flex flex-col gap-8 min-w-fit  ${size} transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all`}
+                                                className={
+                                                      `flex flex-col gap-8 min-w-fit w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all ` +
+                                                      size
+                                                }
                                           >
                                                 <Dialog.Title
                                                       as="h3"
