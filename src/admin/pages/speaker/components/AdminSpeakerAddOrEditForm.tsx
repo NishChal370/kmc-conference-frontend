@@ -1,6 +1,7 @@
 import { BaseSyntheticEvent } from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
 import PhoneInput from "@/shared/input/PhoneInput";
+import ToggleButton from "@/shared/button/ToggleButton";
 import RichTextEditor from "@/shared/input/RichTextEditor";
 import SecondaryInput from "@/shared/input/SecondaryInput";
 import ImageSelectInput from "@/shared/fileInput/ImageSelectInput";
@@ -35,7 +36,7 @@ function AdminAddOrEditSpeakerForm({
             <>
                   <Modal
                         title={`${modalType} Speaker Detail`}
-                        size="w-full md:w-[90%]"
+                        size="w-full md:!w-[70%]"
                         closeHandler={closeModalHandler}
                   >
                         <form className="flex flex-col gap-12" onSubmit={formSubmitHandler}>
@@ -297,12 +298,21 @@ function AdminAddOrEditSpeakerForm({
                                           <ModalSectionHeader title="Session Detail" />
 
                                           <span>
-                                                <SecondaryInput
-                                                      label="Willing to travel"
-                                                      errorMessage={errors.willingToTravel?.message}
-                                                >
-                                                      {register("willingToTravel")}
-                                                </SecondaryInput>
+                                                <Controller
+                                                      name="willingToTravel"
+                                                      control={control}
+                                                      render={({ field }) => (
+                                                            <ToggleButton
+                                                                  label="Willing to travel"
+                                                                  value={field.value}
+                                                                  onChangeHandler={field.onChange}
+                                                                  buttonName={{
+                                                                        one: "Yes, I will",
+                                                                        two: "No, I can not",
+                                                                  }}
+                                                            />
+                                                      )}
+                                                />
 
                                                 <SecondaryInput
                                                       label="Audio/View Requirement"

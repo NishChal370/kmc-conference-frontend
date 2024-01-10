@@ -8,6 +8,7 @@ export default {
                   colors: {
                         primary: "#bd1701",
                         mute: "rgb(0,0,0,0.021)",
+                        "mute-1": "rgb(241, 243, 245)",
                         red: "#bd1701",
                         error: "#de4504",
                         edit: "#1CBAE2",

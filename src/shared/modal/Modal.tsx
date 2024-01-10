@@ -20,7 +20,7 @@ function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
             <Transition appear show={toShow} afterEnter={initialScrollTop} as={Fragment}>
                   <Dialog
                         as="div"
-                        className="relative z-40 w-fit"
+                        className="relative z-40 min-w-fit"
                         onClose={() => null} // this work like backDrop
                   >
                         <Transition.Child
@@ -47,7 +47,7 @@ function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
                                           leaveTo="opacity-0 scale-95"
                                     >
                                           <Dialog.Panel
-                                                className={`flex flex-col gap-8 min-w-fit max-w-7xl ${size} transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all`}
+                                                className={`flex flex-col gap-8 min-w-fit  ${size} transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all`}
                                           >
                                                 <Dialog.Title
                                                       as="h3"
