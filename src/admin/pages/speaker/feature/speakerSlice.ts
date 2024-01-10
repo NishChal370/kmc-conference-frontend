@@ -39,14 +39,33 @@ const initialState: ISpeakerSlice = {
 const speakerSlice = createSlice({
       name: "speaker",
       initialState,
-      reducers: {},
+      reducers: {
+            resetSpeakerBasicInfoSlice: (state) => {
+                  state.speakerBasicInfo = {
+                        status: Status.IDEL,
+                        data: {
+                              totalPages: 0,
+                              speakers: []
+                        }
+                  }
+            },
+
+            resetSpeakerFullDetailedInfoSlice: (state) => {
+                  state.speakerFullDetailedInfo = {
+                        status: Status.IDEL,
+                        data: undefined,
+                  }
+            },
+      },
       extraReducers(builder) {
             builder
                   .addCase(getSpeakerBasicInfo.pending, (state) => {
                         state.speakerBasicInfo.status = Status.LOADING;
                   })
                   .addCase(getSpeakerBasicInfo.fulfilled, (state, action) => {
-                        state.speakerBasicInfo.status = Status.SUCCEEDED;
+                        state.speakerBasicInfo.status = action.payload.speakers.length <= 0
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
                         state.speakerBasicInfo.data = action.payload;
 
                   })
@@ -80,5 +99,7 @@ const speakerSlice = createSlice({
 
 
 export default speakerSlice.reducer;
+
+export const speakerSliceAction = speakerSlice.actions;
 
 export const speakerState = (state: RootState) => state.speaker;

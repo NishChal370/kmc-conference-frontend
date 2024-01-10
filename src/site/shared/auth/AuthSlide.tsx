@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "@/shared/button/Button";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
+import { APP_SUB_TITLE, APP_TITLE } from "@/constants/appDetail";
 import { ORGANIZERS_DETAIL } from "@/site/pages/organizer/seed/organizersDetails";
 
 function AuthSlide() {
@@ -42,12 +43,10 @@ function AuthSlide() {
                               "
                         >
                               <h1 className="leading-snug">
-                                    Kathmandu Metropolitan City <br />
+                                    {APP_TITLE} <br />
                                     <span className="text-primary">IT Conference</span>
                               </h1>
-                              <p className="text-sm font-semibold">
-                                    &quot;Powering Government With Tech&quot;
-                              </p>
+                              <p className="text-sm font-semibold">&quot;{APP_SUB_TITLE}&quot;</p>
                         </article>
 
                         <footer

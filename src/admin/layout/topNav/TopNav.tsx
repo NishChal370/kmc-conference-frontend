@@ -1,6 +1,6 @@
 import ProfileButton from "./components/ProfileButton";
 import SideNavOpenButton from "./components/SideNavOpenButton";
-import appLogo from "@/assets/image/logo.png";
+import appLogo from "@/assets/image/appLogo.png";
 
 function TopNav() {
       return (

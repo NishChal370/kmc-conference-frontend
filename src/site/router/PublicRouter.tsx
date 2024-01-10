@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Outlet, RouteObject } from "react-router-dom";
+import Loading from "@/shared/loading/Loading";
 import { AboutUs, App, Home, Organizer, Schedule, ScheduleDetail, Speaker } from "./index";
 import {
       ABOUT_US_PATH,
@@ -12,7 +13,7 @@ import {
 const PublicRouter: RouteObject = {
       path: "/",
       element: (
-            <Suspense fallback={<h1>loading....</h1>}>
+            <Suspense fallback={<Loading />}>
                   <App />
             </Suspense>
       ),

@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Outlet, RouteObject } from "react-router-dom";
 import AdminApp from "@/admin/AdminApp";
+import Loading from "@/shared/loading/Loading";
 import { AdminSchedule, AdminSpeakers } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
 import { ADMIN_BASE_PATH, ADMIN_SCHEDULE_PATH, ADMIN_SPEAKERS_PATH } from "@/admin/constants/routePath";
@@ -11,7 +12,7 @@ export const AdminRouter: RouteObject = {
       children: [
             {
                   element: (
-                        <Suspense fallback={<h1>loading Suspense....</h1>}>
+                        <Suspense fallback={<Loading />}>
                               <AdminApp />
                         </Suspense>
                   ),

@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import { RouteObject } from "react-router-dom";
-import { AUTH_PATH } from "@/site/constants/routePath";
-import { AuthRoute } from "@/protectedRoute";
 import AuthApp from "@/AuthApp";
+import Loading from "@/shared/loading/Loading";
+import { AuthRoute } from "@/protectedRoute";
 import { Login, RegisterUser } from "./index";
+import { AUTH_PATH } from "@/site/constants/routePath";
 
 const AuthRouter: RouteObject = {
       path: AUTH_PATH.login.basic,
@@ -11,7 +12,7 @@ const AuthRouter: RouteObject = {
       children: [
             {
                   element: (
-                        <Suspense fallback={<h1>loading Suspense....</h1>}>
+                        <Suspense fallback={<Loading />}>
                               <AuthApp />
                         </Suspense>
                   ),

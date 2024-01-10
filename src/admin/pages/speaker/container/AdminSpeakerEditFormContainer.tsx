@@ -1,10 +1,10 @@
+import { useEffect } from "react";
 import AdminAddOrEditSpeakerForm from "../components/AdminSpeakerAddOrEditForm";
 import useAppForm from "@/hooks/form/useAppForm";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { speakerSliceAction, speakerState } from "../feature/speakerSlice";
 import { IAdminSpeakerEditForm, IAdminSpeakerPutRequest } from "@/admin/model/speaker/adminSpeakerModel";
-import { useEffect } from "react";
-import { useAppSelector } from "@/app/hooks";
-import { speakerState } from "../feature/speakerSlice";
 import { Status } from "@/enum/commonEnum";
 
 interface IAdminSpeakerEditFormContainer {
@@ -65,8 +65,9 @@ function AdminSpeakerEditFormContainer({
       //       //       previousSpeakingEngagements: [{ value: "" }],
       //       // },
       // }
+      const dispatch = useAppDispatch();
 
-      const { status, error, data } = useAppSelector(speakerState).speakerFullDetailedInfo;
+      const { status, data } = useAppSelector(speakerState).speakerFullDetailedInfo;
 
       const { updateAdminSpeakerFullDetail, getAdminSpeakerFullDetailedInfo } = useSpeakerApi();
 
@@ -113,6 +114,10 @@ function AdminSpeakerEditFormContainer({
 
       useEffect(() => {
             fetchData();
+
+            return () => {
+                  dispatch(speakerSliceAction.resetSpeakerFullDetailedInfoSlice());
+            };
       }, [selectedSpeakerId]);
 
       useEffect(() => {
@@ -120,17 +125,15 @@ function AdminSpeakerEditFormContainer({
       }, [data]);
 
       return (
-            <>
-                  {status === Status.SUCCEEDED && (
-                        <AdminAddOrEditSpeakerForm
-                              modalType="Edit"
-                              speakerEditForm={speakerEditForm}
-                              formSubmitHandler={formSubmitHandler}
-                              formResetHandler={reset}
-                              closeModalHandler={closeModalHandler}
-                        />
-                  )}
-            </>
+            status === Status.SUCCEEDED && (
+                  <AdminAddOrEditSpeakerForm
+                        modalType="Edit"
+                        speakerEditForm={speakerEditForm}
+                        formSubmitHandler={formSubmitHandler}
+                        formResetHandler={reset}
+                        closeModalHandler={closeModalHandler}
+                  />
+            )
       );
 }
 

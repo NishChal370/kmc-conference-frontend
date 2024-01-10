@@ -1,13 +1,14 @@
 import kmcLogo from "@/assets/image/KMCLogo.png";
 import nepalGovLogo from "@/assets/image/nepalgovermentlogo.png";
+import { APP_TITLE } from "@/constants/appDetail";
 
 function TopNavOrganizers() {
       return (
             <div className="hidden sm:flex w-full justify-start items-center gap-3">
                   <img
-                        title="Kathmandu Metropolitan City"
+                        title={APP_TITLE}
                         src={kmcLogo}
-                        alt="Kathmandu Metropolitan City"
+                        alt={APP_TITLE}
                         className="w-[3.2rem] h-[3.2rem] object-contain"
                   />
                   <img

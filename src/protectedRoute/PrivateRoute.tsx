@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
+import Loading from "@/shared/loading/Loading";
 import { useAppSelector } from "@/app/hooks";
 import { verifyLoginState } from "./feature/verifyLoginSlice";
 import { Status, UserRole } from "@/enum/commonEnum";
@@ -14,7 +15,7 @@ function PrivateRoute() {
 
       if (status === Status.SUCCEEDED) return <Outlet />;
 
-      return <h1> Loading .....</h1>;
+      return <Loading />;
 }
 
 export default PrivateRoute;
