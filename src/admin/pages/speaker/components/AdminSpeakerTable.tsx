@@ -5,16 +5,26 @@ import { Status } from "@/enum/commonEnum";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import { SPEAKER_HEADER_LIST } from "../data/speakerHeaderList";
 import { ISpeakerBasicInfo } from "@/models/speaker/SpeakerModel";
-import { IAdminSpeakerEditModal } from "@/admin/model/speaker/adminSpeakerModel";
+import {
+      IAdminSpeakerEditModal,
+      IAdminSpeakerStatusChangeModal,
+} from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IAdminSpeakerTable {
       status: Status;
       speakersBasicInfo: ISpeakerBasicInfo[];
+      openStatusChangeModal: (speakerDetail: IAdminSpeakerStatusChangeModal) => void;
       openViewModal: ({ viewingData }: { viewingData: IAdminSpeakerEditModal }) => void;
       openEditModal: ({ editingData }: { editingData: IAdminSpeakerEditModal }) => void;
 }
 
-function AdminSpeakerTable({ openEditModal, openViewModal, status, speakersBasicInfo }: IAdminSpeakerTable) {
+function AdminSpeakerTable({
+      openEditModal,
+      openViewModal,
+      openStatusChangeModal,
+      status,
+      speakersBasicInfo,
+}: IAdminSpeakerTable) {
       return (
             <Table>
                   <TableHead headers={SPEAKER_HEADER_LIST} />
@@ -63,6 +73,19 @@ function AdminSpeakerTable({ openEditModal, openViewModal, status, speakersBasic
                                                                               editingData: {
                                                                                     speakerId: speaker.id,
                                                                               },
+                                                                        });
+                                                                  },
+                                                            },
+                                                            {
+                                                                  title: "Update Status",
+                                                                  type: "Update",
+                                                                  icon: <AppIcon name="view" />,
+                                                                  clickHandler: () => {
+                                                                        openStatusChangeModal({
+                                                                              id: speaker.id,
+                                                                              approvalStatus:
+                                                                                    speaker.approvalStatus,
+                                                                              speakerName: speaker.name,
                                                                         });
                                                                   },
                                                             },

@@ -1,3 +1,4 @@
+import { SpeakerApprovalStatus } from '@/enum/speaker/speakerEnum';
 import { IAttachment, IFilUpdateDetail } from '@/models/file/fileModel';
 import { IMultipleInputFields, IMultiplePhoneNumberInput } from '@/models/input/multiplePhoneInputModel';
 
@@ -89,4 +90,16 @@ export type IAdminSpeakerEditModal = IAdminSpeakerFullDetailedInfoById;
 
 export interface IAdminSpeakerBasicInfoSearch {
       pageNumber?: number;
+}
+
+
+export interface IAdminSpeakerStatusChangeReq {
+      id: IAdminSpeakerFullDetail["speakerId"],
+      approvalStatus: SpeakerApprovalStatus,
+}
+
+export interface IAdminSpeakerStatusChangeModal {
+      id: IAdminSpeakerFullDetail["speakerId"],
+      speakerName: IAdminSpeakerFullDetail["firstName"];
+      approvalStatus: SpeakerApprovalStatus,
 }

@@ -1,12 +1,17 @@
+import { useState } from "react";
 import Header from "@/admin/shared/header/Header";
 import AdminSpeakerTableContainer from "./container/AdminSpeakerTableContainer";
 import AdminSpeakerEditFormContainer from "./container/AdminSpeakerEditFormContainer";
 import AdminSpeakerViewModalContainer from "./container/AdminSpeakerViewModalContainer";
 import AdminSpeakerPaginationContainer from "./container/AdminSpeakerPaginationContainer";
+import AdminSpeakerStatusUpdateModalContainer from "./container/AdminSpeakerStatusUpdateModalContainer";
 import useModal from "@/admin/hooks/modal/useModal";
+import {
+      IAdminSpeakerEditModal,
+      IAdminSpeakerStatusChangeModal,
+} from "@/admin/model/speaker/adminSpeakerModel";
 import { IModal } from "@/admin/model/modal/useModalModel";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
-import { IAdminSpeakerEditModal } from "@/admin/model/speaker/adminSpeakerModel";
 
 function AdminSpeakers() {
       const {
@@ -16,12 +21,15 @@ function AdminSpeakers() {
             closeModal: closeApplicationModal,
       } = useModal<IModal<IAdminSpeakerEditModal>>();
 
+      const [approvalStatusDetail, setSpeakerStatusDetail] = useState<IAdminSpeakerStatusChangeModal>();
+
       return (
             <>
                   <Header />
 
                   <section className="w-full h-full flex flex-col gap-6 items-center justify-center">
                         <AdminSpeakerTableContainer
+                              openStatusChangeModal={(speakerDetail) => setSpeakerStatusDetail(speakerDetail)}
                               openViewModal={openApplicationViewModalState}
                               openEditModal={openApplicationEditModalState}
                         />
@@ -44,6 +52,13 @@ function AdminSpeakers() {
                                     closeModalHandler={closeApplicationModal}
                               />
                         )}
+
+                  {approvalStatusDetail?.id && (
+                        <AdminSpeakerStatusUpdateModalContainer
+                              speakerStatusDetail={approvalStatusDetail}
+                              closeModalHandler={() => setSpeakerStatusDetail(undefined)}
+                        />
+                  )}
             </>
       );
 }

@@ -9,14 +9,22 @@ import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { Status } from "@/enum/commonEnum";
 import { speakerSliceAction, speakerState } from "../feature/speakerSlice";
-import { IAdminSpeakerEditModal } from "@/admin/model/speaker/adminSpeakerModel";
+import {
+      IAdminSpeakerEditModal,
+      IAdminSpeakerStatusChangeModal,
+} from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IAdminSpeakerTableContainer {
+      openStatusChangeModal: (speakerDetail: IAdminSpeakerStatusChangeModal) => void;
       openEditModal: ({ editingData }: { editingData: IAdminSpeakerEditModal }) => void;
       openViewModal: ({ viewingData }: { viewingData: IAdminSpeakerEditModal }) => void;
 }
 
-function AdminSpeakerTableContainer({ openEditModal, openViewModal }: IAdminSpeakerTableContainer) {
+function AdminSpeakerTableContainer({
+      openStatusChangeModal,
+      openEditModal,
+      openViewModal,
+}: IAdminSpeakerTableContainer) {
       const { search } = useLocation();
 
       const dispatch = useAppDispatch();
@@ -48,6 +56,7 @@ function AdminSpeakerTableContainer({ openEditModal, openViewModal }: IAdminSpea
                   <AdminSpeakerTable
                         openViewModal={openViewModal}
                         openEditModal={openEditModal}
+                        openStatusChangeModal={openStatusChangeModal}
                         status={status}
                         speakersBasicInfo={data.speakers}
                   />

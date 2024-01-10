@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
-import { IAdminSpeakerPutRequest, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerBasicInfoSearch } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerPutRequest, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerBasicInfoSearch, IAdminSpeakerStatusChangeReq } from "@/admin/model/speaker/adminSpeakerModel";
 
 export const adminSpeakerApi = {
       getBasicInfo: (searchDetail: IAdminSpeakerBasicInfoSearch) => {
@@ -34,4 +34,16 @@ export const adminSpeakerApi = {
 
             return AXIOS.request(options);
       },
+
+
+      putSpeakerApprovalStatus: (approvalDetail: IAdminSpeakerStatusChangeReq) => {
+            const options: AxiosRequestConfig = {
+                  method: "PUT",
+                  url: `Speaker/update-status`,
+                  data: approvalDetail
+            };
+
+
+            return AXIOS.request(options);
+      }
 }

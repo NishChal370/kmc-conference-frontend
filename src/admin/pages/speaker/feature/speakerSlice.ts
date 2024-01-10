@@ -4,7 +4,7 @@ import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { ISpeakerBasicInfoResponse } from "@/models/speaker/SpeakerModel";
 import { IAdminSpeakerFullDetailedInfoByIdResponse } from "@/admin/model/speaker/adminSpeakerModel";
-import { getAdminSpeakerFullDetailedInfo, getSpeakerBasicInfo, putAdminSpeakerFullDetail } from "./speakerRequest";
+import { getAdminSpeakerFullDetailedInfo, getSpeakerBasicInfo, putAdminSpeakerApprovalStatus, putAdminSpeakerFullDetail } from "./speakerRequest";
 
 
 interface ISpeakerBasicInfoSlice extends IBasicSliceState {
@@ -92,6 +92,9 @@ const speakerSlice = createSlice({
 
 
                   .addCase(putAdminSpeakerFullDetail.fulfilled, (state) => {
+                        state.speakerBasicInfo.isToRefetch = !state.speakerBasicInfo.isToRefetch;
+                  })
+                  .addCase(putAdminSpeakerApprovalStatus.fulfilled, (state) => {
                         state.speakerBasicInfo.isToRefetch = !state.speakerBasicInfo.isToRefetch;
                   })
       },

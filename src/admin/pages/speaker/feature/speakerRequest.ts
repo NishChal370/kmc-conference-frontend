@@ -1,7 +1,7 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminSpeakerApi } from "@/admin/api/service/adminSpeakerApi";
 import { ISpeakerBasicInfoResponse } from "@/models/speaker/SpeakerModel";
-import { IAdminSpeakerBasicInfoSearch, IAdminSpeakerFullDetail, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerBasicInfoSearch, IAdminSpeakerFullDetail, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq } from "@/admin/model/speaker/adminSpeakerModel";
 
 export const getSpeakerBasicInfo = createAppAsyncThunk<ISpeakerBasicInfoResponse, IAdminSpeakerBasicInfoSearch>(
       "speaker/basic",
@@ -38,6 +38,20 @@ export const putAdminSpeakerFullDetail = createAppAsyncThunk<undefined, IAdminSp
       async (speakerUpdateDetail, { rejectWithValue }) => {
             try {
                   const response = await adminSpeakerApi.putSpeakerDetail(speakerUpdateDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+export const putAdminSpeakerApprovalStatus = createAppAsyncThunk<undefined, IAdminSpeakerStatusChangeReq>(
+      "admin/speaker/approval-status/put",
+      async (approvalDetail, { rejectWithValue }) => {
+            try {
+                  const response = await adminSpeakerApi.putSpeakerApprovalStatus(approvalDetail);
 
                   return response.data;
             } catch (error: any) {
