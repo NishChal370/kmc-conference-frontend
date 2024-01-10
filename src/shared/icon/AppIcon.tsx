@@ -11,6 +11,7 @@ import {
       IconChevronDown,
       IconClockHour2,
       IconDots,
+      IconEdit,
       IconEye,
       IconHome2,
       IconLock,
@@ -18,6 +19,7 @@ import {
       IconMapPin,
       IconMenu2,
       IconShare2,
+      IconTrash,
       IconTriangle,
       IconX,
 } from "@tabler/icons-react";
@@ -108,6 +110,12 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "view":
                         return <IconEye className={className} size={size ?? ICON.size + 2} />;
+
+                  case "update":
+                        return <IconEdit className={className} size={size ?? ICON.size} />;
+
+                  case "delete":
+                        return <IconTrash className={className} size={size ?? ICON.size} />;
 
                   default:
                         alert("Please select icon");

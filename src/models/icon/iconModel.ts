@@ -20,4 +20,6 @@ export type TIconType =
       | "more-horizontal"
       | "sort-ascending"
       | "sort-descending"
-      | "view";
+      | "view"
+      | "update"
+      | "delete";

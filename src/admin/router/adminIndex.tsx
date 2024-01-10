@@ -1,4 +1,8 @@
-import AdminSchedule from "@/admin/pages/schedule/AdminSchedule";
-import AdminSpeakers from "@/admin/pages/speaker/AdminSpeakers";
+import { lazy } from "react";
 
-export { AdminSchedule, AdminSpeakers };
+const Days = lazy(() => import("@/admin/pages/conferenceDay/ConferenceDay"));
+
+const AdminSpeakers = lazy(() => import("@/admin/pages/speaker/AdminSpeakers"));
+const AdminSchedule = lazy(() => import("@/admin/pages/schedule/AdminSchedule"));
+
+export { Days, AdminSchedule, AdminSpeakers };
