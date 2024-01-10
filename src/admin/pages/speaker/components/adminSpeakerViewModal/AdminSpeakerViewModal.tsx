@@ -13,9 +13,13 @@ interface IAdminSpeakerViewModal {
 
 function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeakerViewModal) {
       return (
-            <Modal title="View Speaker Detail" size="max-w-[84rem]" closeHandler={closeModalHandler}>
+            <Modal
+                  title="View Speaker Detail"
+                  size="min-w-full sm:min-w-[95%] xl:min-w-[80%] max-w-[84rem]"
+                  closeHandler={closeModalHandler}
+            >
                   <div
-                        className="flex flex-col gap-0 w-full max-w-[84rem] h-full
+                        className="flex flex-col gap-0 w-full min-w-full h-full
                               lg:flex-row
                         "
                   >
