@@ -8,7 +8,7 @@ import { Status } from "@/enum/commonEnum";
 import { useAppSelector } from "@/app/hooks";
 import { useURLQueryValues } from "@/hooks/urlQueryHandler";
 import useConferenceDayApi from "@/admin/hooks/conferenceDay/useConferenceDayApi";
-import { conferenceDayState } from "../feature/conferenceDaySlice";
+import { conferenceDaysState } from "../feature/conferenceDaySlice";
 import {
       IConferenceDayDeleteRequest,
       IConferenceDayModel,
@@ -24,7 +24,7 @@ function ConferenceDayTableContainer({ openEditModal }: IConferenceDayTableConta
 
       const { search } = useLocation();
 
-      const { status, error, data } = useAppSelector(conferenceDayState);
+      const { status, error, data } = useAppSelector(conferenceDaysState);
 
       const { getConferenceDayDetail, deleteConferenceDayDetail } = useConferenceDayApi();
 

@@ -1,12 +1,26 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminConferenceDayApi } from "@/admin/api/service/adminConferenceDay";
-import { IConferenceDayDeleteRequest, IConferenceDayPostRequest, IConferenceDayPutRequest, IConferenceDayResponse, IConferenceDaySearch } from "@/admin/model/conferenceDay/conferenceDayModel";
+import { IConferenceDayBasicInfoResponse, IConferenceDayDeleteRequest, IConferenceDayPostRequest, IConferenceDayPutRequest, IConferenceDayResponse, IConferenceDaySearch } from "@/admin/model/conferenceDay/conferenceDayModel";
 
 export const getConferenceDayDetail = createAppAsyncThunk<IConferenceDayResponse, IConferenceDaySearch>(
       "conference-day/get",
       async (searchDetail, { rejectWithValue }) => {
             try {
                   const response = await adminConferenceDayApi.getDayDetail(searchDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+export const getConferenceDayBasicInfo = createAppAsyncThunk<IConferenceDayBasicInfoResponse>(
+      "conference-day/get/basic-info",
+      async (_, { rejectWithValue }) => {
+            try {
+                  const response = await adminConferenceDayApi.getDayThemeBasicInfo();
 
                   return response.data;
             } catch (error: any) {

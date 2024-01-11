@@ -2,7 +2,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import RadioButtonGroup from "@/admin/shared/button/RadioButtonGroup";
 import { ADMIN_DAY_THEME_PATH } from "@/admin/constants/routePath";
 
-function AdminDayThemeDayFilter() {
+interface IAdminDayThemeDayFilter {
+      options: { id: string; value?: number; label: string }[];
+}
+
+function AdminDayThemeDayFilter({ options }: IAdminDayThemeDayFilter) {
       const params = useParams();
       const navigate = useNavigate();
 
@@ -17,11 +21,7 @@ function AdminDayThemeDayFilter() {
                         changeHandler={function (value: number | undefined): void {
                               navigateHandler(value ? +value : undefined);
                         }}
-                        options={[
-                              { id: "1", value: undefined, label: "All" },
-                              { id: "2", value: 1, label: "Day 1" },
-                              { id: "3", value: 2, label: "Day 2" },
-                        ]}
+                        options={options}
                   />
             </div>
       );

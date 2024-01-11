@@ -53,3 +53,5 @@ export interface IConferenceDayDate {
       dayId: number;
       date: string;
 }
+
+export type IConferenceDayBasicInfoResponse = IConferenceDayDate[];

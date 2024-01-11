@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@/app/hooks';
-import { deleteConferenceDay, getConferenceDayDetail as getConferenceDayDetailReq, postConferenceDay, putConferenceDay } from '@/admin/pages/conferenceDay/feature/conferenceDayRequest';
+import { deleteConferenceDay, getConferenceDayDetail as getConferenceDayDetailReq, postConferenceDay, putConferenceDay, getConferenceDayBasicInfo as getConferenceDayBasicInfoReq } from '@/admin/pages/conferenceDay/feature/conferenceDayRequest';
 import { IConferenceDayDeleteRequest, IConferenceDayPostRequest, IConferenceDayPutRequest, IConferenceDaySearch } from '@/admin/model/conferenceDay/conferenceDayModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
@@ -9,6 +9,10 @@ function useConferenceDayApi() {
 
       const getConferenceDayDetail = (searchDetail: IConferenceDaySearch) => {
             dispatch(getConferenceDayDetailReq(searchDetail))
+      }
+
+      const getConferenceDaysBasicInfo = () => {
+            dispatch(getConferenceDayBasicInfoReq())
       }
 
 
@@ -67,7 +71,7 @@ function useConferenceDayApi() {
       }
 
 
-      return { getConferenceDayDetail, addConferenceDayDetail, updateConferenceDayDetail, deleteConferenceDayDetail } as const;
+      return { getConferenceDayDetail, getConferenceDaysBasicInfo, addConferenceDayDetail, updateConferenceDayDetail, deleteConferenceDayDetail } as const;
 }
 
 export default useConferenceDayApi

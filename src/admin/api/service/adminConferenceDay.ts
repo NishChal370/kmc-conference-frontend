@@ -12,6 +12,15 @@ export const adminConferenceDayApi = {
             return AXIOS.request(options);
       },
 
+      getDayThemeBasicInfo: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Days/min`,
+            };
+
+            return AXIOS.request(options);
+      },
+
 
       putDayDetail: (conferenceDayDetail: IConferenceDayPutRequest) => {
             const options: AxiosRequestConfig = {

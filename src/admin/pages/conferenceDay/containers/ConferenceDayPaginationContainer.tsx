@@ -3,14 +3,14 @@ import Pagination from "@/shared/pagination/Pagination";
 import { Status } from "@/enum/commonEnum";
 import useAfterMount from "@/hooks/lifeCycle/useAfterMount";
 import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
-import { conferenceDayState } from "../feature/conferenceDaySlice";
+import { conferenceDaysState } from "../feature/conferenceDaySlice";
 
 function ConferenceDayPaginationContainer() {
       const {
             status,
             isToRefetch,
             data: { totalPages },
-      } = useAppSelector(conferenceDayState);
+      } = useAppSelector(conferenceDaysState);
 
       const { changeQueryPageNumber, getSearchParmaValues, clearAllSearchParam, resetSearchParam } =
             useURLQueryHandler();
