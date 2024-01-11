@@ -1,7 +1,7 @@
 import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
-import { getDayThemes } from "./dayThemeRequest";
+import { deleteDayTheme, getDayThemes, postDayTheme, putDayTheme } from "./dayThemeRequest";
 import { IBasicSliceState } from "@/models/commonModel";
 import { IDayThemeResponse } from "@/admin/model/dayTheme/dayThemeModel";
 
@@ -56,6 +56,19 @@ const dayThemeSlice = createSlice({
                   .addCase(getDayThemes.rejected, (state, action) => {
                         state.dayThemes.status = Status.FAILED;
                         state.dayThemes.error = action.payload;
+                  })
+
+
+                  .addCase(postDayTheme.fulfilled, (state) => {
+                        state.dayThemes.isToRefetch = !state.dayThemes.isToRefetch;
+                  })
+
+                  .addCase(putDayTheme.fulfilled, (state) => {
+                        state.dayThemes.isToRefetch = !state.dayThemes.isToRefetch;
+                  })
+
+                  .addCase(deleteDayTheme.fulfilled, (state) => {
+                        state.dayThemes.isToRefetch = !state.dayThemes.isToRefetch;
                   })
       },
 })

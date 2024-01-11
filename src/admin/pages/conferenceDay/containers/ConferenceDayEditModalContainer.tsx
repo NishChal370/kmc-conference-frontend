@@ -35,7 +35,9 @@ function ConferenceDayEditModalContainer({
             updateConferenceDayDetail(conferenceDay).then(closeModalHandler);
       });
 
-      const formResetHandler = reset;
+      const formResetHandler = () => {
+            reset();
+      };
 
       useEffect(() => {
             const initialValue: IConferenceDayForm = {
@@ -49,7 +51,7 @@ function ConferenceDayEditModalContainer({
                   venueState: conferenceDayDetail.venueInfo.venueState,
             };
 
-            formResetHandler(initialValue);
+            reset(initialValue);
       }, []);
 
       return (
