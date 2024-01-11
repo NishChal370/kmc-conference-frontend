@@ -70,7 +70,7 @@ function AdminSpeakerTable({
                                                             {
                                                                   title: "Update",
                                                                   type: "Update",
-                                                                  icon: <AppIcon name="view" />,
+                                                                  icon: <AppIcon name="update" />,
                                                                   clickHandler: () => {
                                                                         openEditModal({
                                                                               editingData: {
@@ -82,7 +82,7 @@ function AdminSpeakerTable({
                                                             {
                                                                   title: "Update Status",
                                                                   type: "Update",
-                                                                  icon: <AppIcon name="view" />,
+                                                                  icon: <AppIcon name="update" />,
                                                                   clickHandler: () => {
                                                                         openStatusChangeModal({
                                                                               id: speaker.id,
@@ -95,7 +95,7 @@ function AdminSpeakerTable({
                                                             {
                                                                   title: "Delete",
                                                                   type: "Danger",
-                                                                  icon: <AppIcon name="view" />,
+                                                                  icon: <AppIcon name="delete" />,
                                                                   clickHandler: () => {
                                                                         deleteSpeakerDetailHandler({
                                                                               speakerId: speaker.id,

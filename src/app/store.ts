@@ -11,6 +11,7 @@ import registerUserReducer from "@/site/pages/registerUser/feature/registerUserS
 import adminSideNavReducer from "@/admin/layout/sideNav/feature/adminSideNavSlice";
 
 
+import dayThemeReducer from "@/admin/pages/dayTheme/feature/dayThemeSlice";
 import conferenceDayReducer from "@/admin/pages/conferenceDay/feature/conferenceDaySlice";
 import speakerReducer from "@/admin/pages/speaker/feature/speakerSlice";
 
@@ -25,6 +26,7 @@ export const store = configureStore({
 
             adminSideNav: adminSideNavReducer,
 
+            dayTheme: dayThemeReducer,
             conferenceDay: conferenceDayReducer,
             speaker: speakerReducer,
       },
