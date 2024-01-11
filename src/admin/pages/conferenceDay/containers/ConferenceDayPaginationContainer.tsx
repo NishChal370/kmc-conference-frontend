@@ -17,10 +17,10 @@ function ConferenceDayPaginationContainer() {
       const { currentPageNumber } = getSearchParmaValues();
 
       useAfterMount(() => {
-            if (currentPageNumber === 1) {
+            if (window.location.search === "?pageNumber=1") {
                   resetSearchParam();
             } else {
-                  clearAllSearchParam({ pageNumber: 1 });
+                  clearAllSearchParam();
             }
       }, [isToRefetch]);
 
