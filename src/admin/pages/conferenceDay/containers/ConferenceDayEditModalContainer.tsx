@@ -20,7 +20,6 @@ function ConferenceDayEditModalContainer({
       const formSubmitHandler = handleSubmit((conferenceUpdatedDay) => {
             const conferenceDay: IConferenceDayModel = {
                   id: conferenceDayDetail.id,
-                  description: conferenceUpdatedDay.description,
                   date: conferenceUpdatedDay.date,
                   venueInfo: {
                         parkingInfo: conferenceUpdatedDay.parkingInfo,
@@ -40,7 +39,6 @@ function ConferenceDayEditModalContainer({
 
       useEffect(() => {
             const initialValue: IConferenceDayForm = {
-                  description: conferenceDayDetail.description,
                   date: conferenceDayDetail.date,
                   parkingInfo: conferenceDayDetail.venueInfo.parkingInfo,
                   parkingLocation: conferenceDayDetail.venueInfo.parkingLocation,

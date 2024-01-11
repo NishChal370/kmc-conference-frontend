@@ -14,7 +14,7 @@ interface IConferenceDayAddOrEditModal {
 }
 
 function ConferenceDayAddOrEditModal({
-      modalType,
+      modalType = "Add",
       closeModalHandler,
       formResetHandler,
       formSubmitHandler,

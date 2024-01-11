@@ -2,7 +2,7 @@ import { IBasicApiResponse } from "@/models/commonModel"
 
 export interface IConferenceDayModel {
       id: number,
-      description: string,
+      description?: string,
       date: string,
       venueInfo: {
             parkingInfo: string,
@@ -27,7 +27,7 @@ export interface IConferenceDaySearch {
 
 
 export interface IConferenceDayForm {
-      description: string,
+      description?: string,
       date: string,
       parkingInfo: string,
       parkingLocation: string,
@@ -40,3 +40,10 @@ export interface IConferenceDayForm {
 
 
 export type IConferenceDayPutRequest = IConferenceDayModel;
+
+export type IConferenceDayPostRequest = Omit<IConferenceDayModel, "id">;
+
+
+export interface IConferenceDayDeleteRequest {
+      id: IConferenceDayModel["id"];
+}

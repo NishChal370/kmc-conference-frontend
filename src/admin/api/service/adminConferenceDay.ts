@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
-import { IConferenceDayPutRequest, IConferenceDaySearch } from "@/admin/model/conferenceDay/conferenceDayModel";
+import { IConferenceDayDeleteRequest, IConferenceDayPostRequest, IConferenceDayPutRequest, IConferenceDaySearch } from "@/admin/model/conferenceDay/conferenceDayModel";
 
 export const adminConferenceDayApi = {
       getDayDetail: (searchDetail: IConferenceDaySearch) => {
@@ -16,6 +16,26 @@ export const adminConferenceDayApi = {
       putDayDetail: (conferenceDayDetail: IConferenceDayPutRequest) => {
             const options: AxiosRequestConfig = {
                   method: "PUT",
+                  url: `Days`,
+                  data: conferenceDayDetail
+            };
+
+            return AXIOS.request(options);
+      },
+
+      postDayDetail: (conferenceDayDetail: IConferenceDayPostRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "POST",
+                  url: `Days`,
+                  data: conferenceDayDetail
+            };
+
+            return AXIOS.request(options);
+      },
+
+      deleteDayDetail: (conferenceDayDetail: IConferenceDayDeleteRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "DELETE",
                   url: `Days`,
                   data: conferenceDayDetail
             };

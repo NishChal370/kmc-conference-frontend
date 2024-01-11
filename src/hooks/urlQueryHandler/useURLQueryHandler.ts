@@ -86,6 +86,13 @@ function useURLQueryHandler<TSearchQuery extends object, TBasicSearchQuery exten
       };
 
 
+      const resetSearchParam = () => {
+            const newSearchParam = new URLSearchParams();
+
+            setSearchParamState(newSearchParam);
+      }
+
+
       const clearSearchParam = (
             // pageNumber is not allowed to be removed.
             { removingQueryKeys }: { removingQueryKeys: Array<keyof Omit<TSearchQuery, "pageNumber">> }
@@ -124,6 +131,7 @@ function useURLQueryHandler<TSearchQuery extends object, TBasicSearchQuery exten
             clearAllSearchParam,
             clearSearchParam,
             clearSearchParamExcept,
+            resetSearchParam,
       } as const;
 }
 

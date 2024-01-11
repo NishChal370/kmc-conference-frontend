@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { IConferenceDayResponse } from "@/admin/model/conferenceDay/conferenceDayModel";
-import { getConferenceDayDetail, putConferenceDay } from "./conferenceDayRequest";
+import { deleteConferenceDay, getConferenceDayDetail, postConferenceDay, putConferenceDay } from "./conferenceDayRequest";
 
 
 
@@ -25,7 +25,17 @@ const initialState: IConferenceDaySlice = {
 const conferenceDaySlice = createSlice({
       name: "conferenceDay",
       initialState,
-      reducers: {},
+      reducers: {
+            resetConferenceDaySlice: (state) => {
+                  state = {
+                        status: Status.IDEL,
+                        data: {
+                              totalPages: 0,
+                              days: []
+                        }
+                  }
+            }
+      },
       extraReducers(builder) {
             builder
                   .addCase(getConferenceDayDetail.pending, (state) => {
@@ -45,6 +55,14 @@ const conferenceDaySlice = createSlice({
 
 
                   .addCase(putConferenceDay.fulfilled, (state) => {
+                        state.isToRefetch = !state.isToRefetch;
+                  })
+
+                  .addCase(postConferenceDay.fulfilled, (state) => {
+                        state.isToRefetch = !state.isToRefetch;
+                  })
+
+                  .addCase(deleteConferenceDay.fulfilled, (state) => {
                         state.isToRefetch = !state.isToRefetch;
                   })
       },

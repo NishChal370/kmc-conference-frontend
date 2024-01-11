@@ -3,15 +3,24 @@ import TableActionButton from "@/admin/shared/table/TableActionButton";
 import { Table, TableBody, TableHead, Td } from "@/admin/shared/table";
 import { Status } from "@/enum/commonEnum";
 import { CONFERENCE_DAY_TABLE_HEADER } from "../data/conferenceDayTableHeader";
-import { IConferenceDayModel } from "@/admin/model/conferenceDay/conferenceDayModel";
+import {
+      IConferenceDayDeleteRequest,
+      IConferenceDayModel,
+} from "@/admin/model/conferenceDay/conferenceDayModel";
 
 interface IConferenceDayTable {
       status: Status;
       conferenceDay: IConferenceDayModel[];
+      deleteButtonHandler: (conferenceDayDetail: IConferenceDayDeleteRequest) => () => void;
       editButtonHandler: ({ editingData }: { editingData: IConferenceDayModel }) => () => void;
 }
 
-function ConferenceDayTable({ status, conferenceDay, editButtonHandler }: IConferenceDayTable) {
+function ConferenceDayTable({
+      status,
+      conferenceDay,
+      editButtonHandler,
+      deleteButtonHandler,
+}: IConferenceDayTable) {
       return (
             <>
                   <Table>
@@ -83,7 +92,9 @@ function ConferenceDayTable({ status, conferenceDay, editButtonHandler }: IConfe
                                                                         title: "Delete",
                                                                         type: "Danger",
                                                                         icon: <AppIcon name="delete" />,
-                                                                        clickHandler: () => {},
+                                                                        clickHandler: deleteButtonHandler({
+                                                                              id: day.id,
+                                                                        }),
                                                                   },
                                                             ]}
                                                       />

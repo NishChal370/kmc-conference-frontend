@@ -9,7 +9,10 @@ import { useAppSelector } from "@/app/hooks";
 import { useURLQueryValues } from "@/hooks/urlQueryHandler";
 import useConferenceDayApi from "@/admin/hooks/conferenceDay/useConferenceDayApi";
 import { conferenceDayState } from "../feature/conferenceDaySlice";
-import { IConferenceDayModel } from "@/admin/model/conferenceDay/conferenceDayModel";
+import {
+      IConferenceDayDeleteRequest,
+      IConferenceDayModel,
+} from "@/admin/model/conferenceDay/conferenceDayModel";
 
 interface IConferenceDayTableContainer {
       openEditModal: ({ editingData }: { editingData: IConferenceDayModel }) => void;
@@ -18,9 +21,9 @@ interface IConferenceDayTableContainer {
 function ConferenceDayTableContainer({ openEditModal }: IConferenceDayTableContainer) {
       const { search } = useLocation();
 
-      const { status, error, data } = useAppSelector(conferenceDayState);
+      const { status, error, data, isToRefetch } = useAppSelector(conferenceDayState);
 
-      const { getConferenceDayDetail } = useConferenceDayApi();
+      const { getConferenceDayDetail, deleteConferenceDayDetail } = useConferenceDayApi();
 
       const { currentPageNumber } = useURLQueryValues();
 
@@ -32,6 +35,10 @@ function ConferenceDayTableContainer({ openEditModal }: IConferenceDayTableConta
             openEditModal(data);
       };
 
+      const deleteButtonHandler = (conferenceDayDetail: IConferenceDayDeleteRequest) => () => {
+            deleteConferenceDayDetail(conferenceDayDetail);
+      };
+
       useEffect(() => {
             fetchData();
       }, [search]);
@@ -41,6 +48,7 @@ function ConferenceDayTableContainer({ openEditModal }: IConferenceDayTableConta
                   <ConferenceDayTable
                         status={status}
                         conferenceDay={data.days}
+                        deleteButtonHandler={deleteButtonHandler}
                         editButtonHandler={editButtonHandler}
                   />
 
