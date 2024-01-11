@@ -1,11 +1,10 @@
 import { IBasicApiResponse } from '@/models/commonModel';
-import { IConferenceDayModel } from "../conferenceDay/conferenceDayModel"
+import { IConferenceDayDate } from "../conferenceDay/conferenceDayModel"
 
 export interface IDayThemeModel {
       id: number,
       title: string,
-      date: string;
-      dayId: IConferenceDayModel["id"],
+      day: IConferenceDayDate;
       plenarySession: {
             title: string,
             description: string,
@@ -26,9 +25,13 @@ export interface IDayThemeSearch {
 }
 
 
-export type IDayThemePostRequest = Omit<IDayThemeModel, "id" | "date">;
+export interface IDayThemePostRequest extends Omit<IDayThemeModel, "id" | "day"> {
+      dayId: IDayThemeModel["day"]["dayId"];
+};
 
-export type IDayThemePutRequest = Omit<IDayThemeModel, "date">;
+export interface IDayThemePutRequest extends Omit<IDayThemeModel, "day"> {
+      dayId: IDayThemeModel["day"]["dayId"];
+};
 
 
 

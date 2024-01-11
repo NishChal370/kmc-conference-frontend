@@ -9,7 +9,7 @@ import useDayThemeApi from "@/admin/hooks/dayTheme/useDayThemeApi";
 import { formatTime } from "@/utils/stringFormat/formatTime";
 
 interface IAdminDayThemeAddFormContainer {
-      selectedDayId: IDayThemeModel["dayId"];
+      selectedDayId: IDayThemeModel["day"]["dayId"];
       closeModalHandler: () => void;
 }
 
@@ -17,7 +17,7 @@ function AdminDayThemeAddFormContainer({ selectedDayId, closeModalHandler }: IAd
       const { addAdminDayTheme } = useDayThemeApi();
 
       const dayThemeAddForm = useAppForm<IDayThemeAddOrEditForm>();
-      const { handleSubmit, reset, getValues } = dayThemeAddForm;
+      const { handleSubmit, reset } = dayThemeAddForm;
 
       const formSubmitHandler = handleSubmit((dayTheme) => {
             const newDayTheme: IDayThemePostRequest = {

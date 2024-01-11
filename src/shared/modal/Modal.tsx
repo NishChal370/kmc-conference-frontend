@@ -48,7 +48,7 @@ function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
                                     >
                                           <Dialog.Panel
                                                 className={
-                                                      `flex flex-col gap-8 min-w-fit transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all ` +
+                                                      `flex flex-col gap-8  transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all ` +
                                                       size
                                                 }
                                           >
@@ -59,7 +59,7 @@ function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
                                                       }`}
                                                 >
                                                       {title && (
-                                                            <header className=" text-base  tracking-wide font-semibold">
+                                                            <header className=" text-base  min-w-min tracking-wide font-semibold">
                                                                   {title}
                                                             </header>
                                                       )}

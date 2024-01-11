@@ -1,0 +1,19 @@
+.rich-text--reader .ql-toolbar {
+      display: none;
+}
+.rich-text--reader {
+      width: fit-content;
+      height: fit-content;
+}
+
+@tailwind utilities;
+
+@layer utilities {
+      .rich-text--reader .ql-editor {
+            @apply p-0;
+      }
+      .rich-text--reader .ql-container {
+            border: none;
+            @apply text-sm font-default;
+      }
+}

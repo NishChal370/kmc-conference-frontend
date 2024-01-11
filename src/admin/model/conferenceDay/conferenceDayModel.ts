@@ -47,3 +47,9 @@ export type IConferenceDayPostRequest = Omit<IConferenceDayModel, "id">;
 export interface IConferenceDayDeleteRequest {
       id: IConferenceDayModel["id"];
 }
+
+
+export interface IConferenceDayDate {
+      dayId: number;
+      date: string;
+}

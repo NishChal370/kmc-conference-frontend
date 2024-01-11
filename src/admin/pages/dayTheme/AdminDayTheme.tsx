@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import Header from "@/admin/shared/header/Header";
+import AdminDayThemeViewModal from "./components/AdminDayThemeViewModal";
 import AdminDayThemeDayFilter from "./components/AdminDayThemeDayFilter";
 import AdminDayThemeTableContainer from "./container/AdminDayThemeTableContainer";
 import AdminDayThemeAddFormContainer from "./container/AdminDayThemeAddFormContainer";
@@ -33,7 +34,10 @@ function AdminDayTheme() {
                   <section className="w-full h-full flex flex-col gap-6 items-center justify-center">
                         <AdminDayThemeDayFilter />
 
-                        <AdminDayThemeTableContainer openEditModal={openEditModal} />
+                        <AdminDayThemeTableContainer
+                              openViewModal={openViewModal}
+                              openEditModal={openEditModal}
+                        />
 
                         <AdminDayThemePaginationContainer />
                   </section>
@@ -49,6 +53,13 @@ function AdminDayTheme() {
                         <AdminDayThemeEditFormContainer
                               selectedDayTheme={modalState.modalData?.edit}
                               closeModalHandler={closeModal}
+                        />
+                  )}
+
+                  {[FieldStatus.View].includes(modalState.modalStatus) && modalState.modalData?.view && (
+                        <AdminDayThemeViewModal
+                              closeModalHandler={closeModal}
+                              dayThemeDetail={modalState.modalData?.view}
                         />
                   )}
             </>

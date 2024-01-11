@@ -19,7 +19,7 @@ function AdminDayThemeDayFilter() {
                         }}
                         options={[
                               { id: "1", value: undefined, label: "All" },
-                              { id: "2", value: 48, label: "Day 1" },
+                              { id: "2", value: 1, label: "Day 1" },
                               { id: "3", value: 2, label: "Day 2" },
                         ]}
                   />

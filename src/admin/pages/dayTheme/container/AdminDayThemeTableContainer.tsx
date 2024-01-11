@@ -12,10 +12,11 @@ import useDayThemeApi from "@/admin/hooks/dayTheme/useDayThemeApi";
 import { IDayThemeDeleteRequest, IDayThemeModel } from "@/admin/model/dayTheme/dayThemeModel";
 
 interface IAdminDayThemeTableContainer {
+      openViewModal: ({ viewingData }: { viewingData: IDayThemeModel }) => void;
       openEditModal: ({ editingData }: { editingData: IDayThemeModel }) => void;
 }
 
-function AdminDayThemeTableContainer({ openEditModal }: IAdminDayThemeTableContainer) {
+function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDayThemeTableContainer) {
       const params = useParams();
 
       const { search } = useLocation();
@@ -38,7 +39,11 @@ function AdminDayThemeTableContainer({ openEditModal }: IAdminDayThemeTableConta
             });
       };
 
+      const openViewModalHandler = (viewingData: IDayThemeModel) => () => {
+            openViewModal({ viewingData });
+      };
       const openEditModalHandler = (editingData: IDayThemeModel) => () => {
+            console.log(editingData);
             openEditModal({ editingData });
       };
 
@@ -62,6 +67,7 @@ function AdminDayThemeTableContainer({ openEditModal }: IAdminDayThemeTableConta
                         status={status}
                         dayThemes={data.themes}
                         deleteHandler={deleteHandler}
+                        openViewModalHandler={openViewModalHandler}
                         openEditModalHandler={openEditModalHandler}
                   />
 

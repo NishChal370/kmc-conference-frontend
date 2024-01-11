@@ -8,11 +8,18 @@ import { IDayThemeDeleteRequest, IDayThemeModel } from "@/admin/model/dayTheme/d
 interface IAdminDayTheme {
       status: Status;
       dayThemes: IDayThemeModel[];
-      deleteHandler: (deletingData: IDayThemeDeleteRequest) => () => void;
+      openViewModalHandler: (viewingData: IDayThemeModel) => () => void;
       openEditModalHandler: (editingData: IDayThemeModel) => () => void;
+      deleteHandler: (deletingData: IDayThemeDeleteRequest) => () => void;
 }
 
-function AdminDayThemeTable({ status, dayThemes, openEditModalHandler, deleteHandler }: IAdminDayTheme) {
+function AdminDayThemeTable({
+      status,
+      dayThemes,
+      deleteHandler,
+      openEditModalHandler,
+      openViewModalHandler,
+}: IAdminDayTheme) {
       return (
             <Table>
                   <TableHead headers={DAY_THEME_HEADER_LIST} />
@@ -59,9 +66,7 @@ function AdminDayThemeTable({ status, dayThemes, openEditModalHandler, deleteHan
                                                                   title: "View Detail",
                                                                   type: "View",
                                                                   icon: <AppIcon name="view" />,
-                                                                  clickHandler: () => {
-                                                                        console.log("");
-                                                                  },
+                                                                  clickHandler: openViewModalHandler(theme),
                                                             },
                                                             {
                                                                   title: "Update",
