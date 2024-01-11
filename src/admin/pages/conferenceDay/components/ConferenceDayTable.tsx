@@ -11,6 +11,7 @@ import {
 interface IConferenceDayTable {
       status: Status;
       conferenceDay: IConferenceDayModel[];
+      viewThemeHandler: (dayId: IConferenceDayModel["id"]) => () => void;
       deleteButtonHandler: (conferenceDayDetail: IConferenceDayDeleteRequest) => () => void;
       editButtonHandler: ({ editingData }: { editingData: IConferenceDayModel }) => () => void;
 }
@@ -18,6 +19,7 @@ interface IConferenceDayTable {
 function ConferenceDayTable({
       status,
       conferenceDay,
+      viewThemeHandler,
       editButtonHandler,
       deleteButtonHandler,
 }: IConferenceDayTable) {
@@ -80,6 +82,14 @@ function ConferenceDayTable({
                                                 <Td id="table-action-container" dataName="Action">
                                                       <TableActionButton
                                                             items={[
+                                                                  {
+                                                                        title: "View Theme",
+                                                                        type: "View",
+                                                                        icon: <AppIcon name="view" />,
+                                                                        clickHandler: viewThemeHandler(
+                                                                              day.id
+                                                                        ),
+                                                                  },
                                                                   {
                                                                         title: "Update",
                                                                         type: "Update",

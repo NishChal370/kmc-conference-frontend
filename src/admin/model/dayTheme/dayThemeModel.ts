@@ -20,5 +20,6 @@ export interface IDayThemeResponse extends IBasicApiResponse {
 
 
 export interface IDayThemeSearch {
+      dayId?: IDayThemeModel["id"]
       pageNumber?: number;
 }

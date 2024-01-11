@@ -14,6 +14,7 @@ function ConferenceDayPaginationContainer() {
 
       const { changeQueryPageNumber, getSearchParmaValues, clearAllSearchParam, resetSearchParam } =
             useURLQueryHandler();
+
       const { currentPageNumber } = getSearchParmaValues();
 
       useAfterMount(() => {

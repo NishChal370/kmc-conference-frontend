@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import ErrorMessage from "@/shared/errorMessage/ErrorMessage";
 import ConferenceDayTable from "../components/ConferenceDayTable";
@@ -13,15 +13,18 @@ import {
       IConferenceDayDeleteRequest,
       IConferenceDayModel,
 } from "@/admin/model/conferenceDay/conferenceDayModel";
+import { ADMIN_DAY_THEME_PATH } from "@/admin/constants/routePath";
 
 interface IConferenceDayTableContainer {
       openEditModal: ({ editingData }: { editingData: IConferenceDayModel }) => void;
 }
 
 function ConferenceDayTableContainer({ openEditModal }: IConferenceDayTableContainer) {
+      const navigate = useNavigate();
+
       const { search } = useLocation();
 
-      const { status, error, data, isToRefetch } = useAppSelector(conferenceDayState);
+      const { status, error, data } = useAppSelector(conferenceDayState);
 
       const { getConferenceDayDetail, deleteConferenceDayDetail } = useConferenceDayApi();
 
@@ -39,6 +42,10 @@ function ConferenceDayTableContainer({ openEditModal }: IConferenceDayTableConta
             deleteConferenceDayDetail(conferenceDayDetail);
       };
 
+      const viewThemeHandler = (dayId: IConferenceDayModel["id"]) => () => {
+            navigate(ADMIN_DAY_THEME_PATH.theme.full(dayId));
+      };
+
       useEffect(() => {
             fetchData();
       }, [search]);
@@ -48,6 +55,7 @@ function ConferenceDayTableContainer({ openEditModal }: IConferenceDayTableConta
                   <ConferenceDayTable
                         status={status}
                         conferenceDay={data.days}
+                        viewThemeHandler={viewThemeHandler}
                         deleteButtonHandler={deleteButtonHandler}
                         editButtonHandler={editButtonHandler}
                   />

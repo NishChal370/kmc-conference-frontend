@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import ErrorMessage from "@/shared/errorMessage/ErrorMessage";
 import AdminDayThemeTable from "../components/AdminDayThemeTable";
@@ -11,6 +11,8 @@ import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useDayThemeApi from "@/admin/hooks/dayTheme/useDayThemeApi";
 
 function AdminDayThemeTableContainer() {
+      const params = useParams();
+
       const { search } = useLocation();
 
       const dispatch = useAppDispatch();
@@ -24,7 +26,11 @@ function AdminDayThemeTableContainer() {
       const { currentPageNumber } = getSearchParmaValues();
 
       const fetchData = () => {
-            getDayThemes({ pageNumber: currentPageNumber });
+            const selectedDay = params["dayId"];
+            getDayThemes({
+                  dayId: selectedDay ? parseInt(selectedDay) : undefined,
+                  pageNumber: currentPageNumber,
+            });
       };
 
       useEffect(() => {
