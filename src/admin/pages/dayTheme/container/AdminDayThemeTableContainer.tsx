@@ -9,8 +9,13 @@ import { Status } from "@/enum/commonEnum";
 import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useDayThemeApi from "@/admin/hooks/dayTheme/useDayThemeApi";
+import { IDayThemeDeleteRequest, IDayThemeModel } from "@/admin/model/dayTheme/dayThemeModel";
 
-function AdminDayThemeTableContainer() {
+interface IAdminDayThemeTableContainer {
+      openEditModal: ({ editingData }: { editingData: IDayThemeModel }) => void;
+}
+
+function AdminDayThemeTableContainer({ openEditModal }: IAdminDayThemeTableContainer) {
       const params = useParams();
 
       const { search } = useLocation();
@@ -19,7 +24,7 @@ function AdminDayThemeTableContainer() {
 
       const { status, data, error } = useAppSelector(dayThemesState);
 
-      const { getDayThemes } = useDayThemeApi();
+      const { getDayThemes, deleteAdminDayTheme } = useDayThemeApi();
 
       const { getSearchParmaValues, clearAllSearchParam } = useURLQueryHandler();
 
@@ -31,6 +36,14 @@ function AdminDayThemeTableContainer() {
                   dayId: selectedDay ? parseInt(selectedDay) : undefined,
                   pageNumber: currentPageNumber,
             });
+      };
+
+      const openEditModalHandler = (editingData: IDayThemeModel) => () => {
+            openEditModal({ editingData });
+      };
+
+      const deleteHandler = (deletingData: IDayThemeDeleteRequest) => () => {
+            deleteAdminDayTheme(deletingData);
       };
 
       useEffect(() => {
@@ -45,7 +58,12 @@ function AdminDayThemeTableContainer() {
 
       return (
             <>
-                  <AdminDayThemeTable status={status} dayThemes={data.themes} />
+                  <AdminDayThemeTable
+                        status={status}
+                        dayThemes={data.themes}
+                        deleteHandler={deleteHandler}
+                        openEditModalHandler={openEditModalHandler}
+                  />
 
                   {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}
 

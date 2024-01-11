@@ -1,6 +1,7 @@
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./style/richTextInput.css";
+import useSanitizedHtml from "@/hooks/sanitizedHtml/useSanitizedHtml";
 
 interface IRichTextEditor {
       label: string;
@@ -21,6 +22,8 @@ function RichTextEditor({
       onChangeHandler,
       containerClassName,
 }: IRichTextEditor) {
+      const sanitizedHtml = useSanitizedHtml(value);
+
       return (
             <div className={`relative flex flex-col gap-2 ${containerClassName}`}>
                   <span className="flex w-full justify-between gap-1 pl-1">
@@ -39,7 +42,7 @@ function RichTextEditor({
                   <ReactQuill
                         theme="snow"
                         className="rich-text--editor h-[300px] w-full !rounded-md"
-                        value={value}
+                        value={sanitizedHtml}
                         placeholder={placeHolder || label}
                         onChange={(value) => {
                               // this text appear when user all data from text box.

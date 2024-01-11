@@ -3,14 +3,16 @@ import { Table, TableBody, TableHead, Td } from "@/admin/shared/table";
 import { DAY_THEME_HEADER_LIST } from "../data/dayThemeHeader";
 import { Status } from "@/enum/commonEnum";
 import AppIcon from "@/shared/icon/AppIcon";
-import { IDayThemeModel } from "@/admin/model/dayTheme/dayThemeModel";
+import { IDayThemeDeleteRequest, IDayThemeModel } from "@/admin/model/dayTheme/dayThemeModel";
 
 interface IAdminDayTheme {
       status: Status;
       dayThemes: IDayThemeModel[];
+      deleteHandler: (deletingData: IDayThemeDeleteRequest) => () => void;
+      openEditModalHandler: (editingData: IDayThemeModel) => () => void;
 }
 
-function AdminDayThemeTable({ status, dayThemes }: IAdminDayTheme) {
+function AdminDayThemeTable({ status, dayThemes, openEditModalHandler, deleteHandler }: IAdminDayTheme) {
       return (
             <Table>
                   <TableHead headers={DAY_THEME_HEADER_LIST} />
@@ -64,18 +66,16 @@ function AdminDayThemeTable({ status, dayThemes }: IAdminDayTheme) {
                                                             {
                                                                   title: "Update",
                                                                   type: "Update",
-                                                                  icon: <AppIcon name="view" />,
-                                                                  clickHandler: () => {
-                                                                        console.log("");
-                                                                  },
+                                                                  icon: <AppIcon name="update" />,
+                                                                  clickHandler: openEditModalHandler(theme),
                                                             },
                                                             {
                                                                   title: "Delete",
                                                                   type: "Danger",
-                                                                  icon: <AppIcon name="view" />,
-                                                                  clickHandler: () => {
-                                                                        console.log("");
-                                                                  },
+                                                                  icon: <AppIcon name="delete" />,
+                                                                  clickHandler: deleteHandler({
+                                                                        id: theme.id,
+                                                                  }),
                                                             },
                                                       ]}
                                                 />

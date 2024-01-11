@@ -38,7 +38,6 @@ function AdminDayThemeAddFormContainer({ selectedDayId, closeModalHandler }: IAd
             reset();
       };
 
-      console.log(getValues("title"));
       return (
             <AdminDayThemeAddOrEditForm
                   dayThemeAddOrEditForm={dayThemeAddForm}

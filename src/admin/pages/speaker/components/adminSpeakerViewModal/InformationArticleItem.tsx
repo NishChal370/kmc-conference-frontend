@@ -1,3 +1,5 @@
+import SanitizedContent from "@/shared/sanitizedContent/SanitizedContent";
+
 interface IInformationArticleItem {
       title?: string;
       detail: string;
@@ -8,10 +10,11 @@ function InformationArticleItem({ title, detail }: IInformationArticleItem) {
             <span className="!w-full !flex !col-span-3 [&>p]:!max-w-full !max-w-full !min-w-full">
                   {title && <h6>{title}</h6>}
 
-                  <p
-                        dangerouslySetInnerHTML={{ __html: detail }}
+                  <SanitizedContent
+                        tagName="p"
+                        htmlContent={detail}
                         className="text-justify leading-loose [&>*]:!leading-loose !text-mute"
-                  ></p>
+                  />
             </span>
       );
 }
