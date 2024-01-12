@@ -43,6 +43,7 @@ export interface IDayThemeDeleteRequest {
 
 export interface IDayThemeAddOrEditForm {
       title: string,
+      day: IConferenceDayDate,
       plenaryTitle: string,
       plenaryDescription: string,
       plenaryStartTime: string,

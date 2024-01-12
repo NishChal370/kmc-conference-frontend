@@ -13,7 +13,7 @@
             @apply p-0;
       }
       .rich-text--reader .ql-container {
-            border: none;
+            border: none !important;
             @apply text-sm font-default;
       }
 }

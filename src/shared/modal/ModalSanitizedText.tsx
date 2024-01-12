@@ -21,7 +21,7 @@ function ModalSanitizedText({ title, htmlContent, containerClassName }: IModalSa
 
       return (
             <div
-                  className={`flex flex-col justify-between gap-2 border-b border-b-mute
+                  className={`flex flex-col justify-between gap-2
                         sm:items-start ${containerClassName}
                   `}
             >

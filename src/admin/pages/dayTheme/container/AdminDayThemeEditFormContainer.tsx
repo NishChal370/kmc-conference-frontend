@@ -28,7 +28,7 @@ function AdminDayThemeEditFormContainer({
             const newDayTheme: IDayThemePutRequest = {
                   id: selectedDayTheme.id,
                   title: dayTheme.title,
-                  dayId: selectedDayTheme.day.dayId,
+                  dayId: dayTheme.day.dayId,
                   plenarySession: {
                         title: dayTheme.plenaryTitle,
                         description: dayTheme.plenaryDescription,
@@ -48,6 +48,7 @@ function AdminDayThemeEditFormContainer({
             if (selectedDayTheme) {
                   const dayThemeEditingDetail: IDayThemeAddOrEditForm = {
                         title: selectedDayTheme.title,
+                        day: selectedDayTheme.day,
                         plenaryTitle: selectedDayTheme.plenarySession.title,
                         plenaryDescription: selectedDayTheme.plenarySession.description,
                         plenaryStartTime: selectedDayTheme.plenarySession.startTime,
@@ -64,6 +65,7 @@ function AdminDayThemeEditFormContainer({
 
       return (
             <AdminDayThemeAddOrEditForm
+                  modalType="Edit"
                   dayThemeAddOrEditForm={dayThemeAddForm}
                   closeModalHandler={closeModalHandler}
                   formResetHandler={formResetHandler}

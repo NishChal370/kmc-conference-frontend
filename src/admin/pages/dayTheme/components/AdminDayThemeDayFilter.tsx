@@ -3,7 +3,7 @@ import RadioButtonGroup from "@/admin/shared/button/RadioButtonGroup";
 import { ADMIN_DAY_THEME_PATH } from "@/admin/constants/routePath";
 
 interface IAdminDayThemeDayFilter {
-      options: { id: string; value?: number; label: string }[];
+      options: { id: string; value?: number; label: string; title: string }[];
 }
 
 function AdminDayThemeDayFilter({ options }: IAdminDayThemeDayFilter) {

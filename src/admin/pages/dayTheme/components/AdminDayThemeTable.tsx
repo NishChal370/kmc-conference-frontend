@@ -33,7 +33,7 @@ function AdminDayThemeTable({
                                           </Td>
 
                                           <Td id="title" dataName="Date" className="sm:text-start">
-                                                2024-01-11
+                                                {theme.day.date}
                                           </Td>
 
                                           <Td id="title" dataName="Title" className="sm:text-start">
@@ -54,7 +54,7 @@ function AdminDayThemeTable({
                                                 className="sm:text-start"
                                           >
                                                 <>
-                                                      {theme.plenarySession.startTime} -
+                                                      {theme.plenarySession.startTime}&nbsp;-&nbsp;
                                                       {theme.plenarySession.endTime}
                                                 </>
                                           </Td>

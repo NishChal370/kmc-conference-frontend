@@ -5,6 +5,7 @@ import RichTextEditor from "@/shared/input/RichTextEditor";
 import { Modal, ModalActionButtons, ModalFooter } from "@/shared/modal";
 import { IDayThemeAddOrEditForm } from "@/admin/model/dayTheme/dayThemeModel";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import ConferenceDaySelectInput from "../../conferenceDay/containers/ConferenceDaySelectInput";
 
 interface IAdminDayThemeAddOrEditForm {
       modalType?: "Add" | "Edit";
@@ -40,6 +41,30 @@ function AdminDayThemeAddOrEditForm({
                                     },
                               })}
                         </SecondaryInput>
+
+                        {modalType === "Edit" && (
+                              <Controller
+                                    name="day"
+                                    control={control}
+                                    rules={{
+                                          required: {
+                                                value: true,
+                                                message: INPUT_ERROR_MESSAGE.empty,
+                                          },
+                                    }}
+                                    render={({ field: { onChange, value }, fieldState }) => (
+                                          <ConferenceDaySelectInput
+                                                isRequired
+                                                selected={value}
+                                                onChangeHandler={(e) => {
+                                                      console.log(e);
+                                                      onChange(e);
+                                                }}
+                                                errorMessage={fieldState.error?.message}
+                                          />
+                                    )}
+                              />
+                        )}
 
                         <section className="flex flex-col gap-8 w-full mt-6">
                               <span className="flex w-full justify-between items-center gap-6">

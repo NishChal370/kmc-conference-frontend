@@ -3,7 +3,7 @@ import AppIcon from "@/shared/icon/AppIcon";
 interface IRadioButtonGroup<ValueType> {
       selectedValue?: ValueType;
       changeHandler: (value: ValueType) => void;
-      options: { id: string; value?: ValueType; label: string }[];
+      options: { id: string; value?: ValueType; label: string; title?: string }[];
 }
 
 function RadioButtonGroup<ValueType extends number | string | undefined>({
@@ -17,7 +17,7 @@ function RadioButtonGroup<ValueType extends number | string | undefined>({
 
       return (
             <div className="flex gap-2 text-sm">
-                  {options.map(({ id, value, label }) => (
+                  {options.map(({ id, value, label, title }) => (
                         <div
                               key={id}
                               className={`flex gap-1 items-center justify-center px-4 py-1 rounded-sm min-w-[6rem] cursor-pointer
@@ -44,7 +44,9 @@ function RadioButtonGroup<ValueType extends number | string | undefined>({
                                     className={selectedValue !== (value as ValueType) ? "hidden" : undefined}
                               />
 
-                              <label htmlFor={`${label}-radio-button`}>{label}</label>
+                              <label title={title} htmlFor={`${label}-radio-button`}>
+                                    {label}
+                              </label>
                         </div>
                   ))}
             </div>

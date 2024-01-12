@@ -20,11 +20,12 @@ function AdminDayThemeDayFilterContainer() {
 
       const options = useMemo(
             () => [
-                  { id: "", value: undefined, label: "All" },
+                  { id: "", value: undefined, label: "All", title: "All" },
                   ...data.map((day, index) => ({
                         id: day.dayId.toString(),
                         value: day.dayId,
                         label: "Day " + (index + 1),
+                        title: day.date,
                   })),
             ],
             [data]
