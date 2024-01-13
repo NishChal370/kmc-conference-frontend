@@ -32,3 +32,6 @@ export interface IScheduleTopicsSearch {
       sessionId: IScheduleTopicModel["id"]
       pageNumber?: number;
 }
+
+
+export type IScheduleTopicForm = IScheduleTopicModel;

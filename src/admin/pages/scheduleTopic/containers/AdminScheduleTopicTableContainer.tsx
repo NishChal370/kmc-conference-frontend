@@ -6,36 +6,64 @@ import AdminScheduleTopicTable from "../components/AdminScheduleTopicTable";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useScheduleTopicApi from "@/admin/hooks/scheduleTopic/useScheduleTopicApi";
 import { Status } from "@/enum/commonEnum";
-import { IScheduleTopicModel } from "@/admin/model/scheduleTopic/scheduleTopicModel";
+import {
+      IScheduleTopicDeleteRequest,
+      IScheduleTopicModel,
+} from "@/admin/model/scheduleTopic/scheduleTopicModel";
 import { scheduleTopicSliceAction, scheduleTopicsSliceState } from "../feature/scheduleTopicSlice";
 
 interface IAdminScheduleTopicTableContainer {
       isVisible: boolean;
       scheduleId: IScheduleTopicModel["id"];
+      openEditModal: ({ editingData }: { editingData: IScheduleTopicModel }) => void;
 }
-function AdminScheduleTopicTableContainer({ isVisible, scheduleId }: IAdminScheduleTopicTableContainer) {
+function AdminScheduleTopicTableContainer({
+      isVisible,
+      scheduleId,
+      openEditModal,
+}: IAdminScheduleTopicTableContainer) {
       const dispatch = useAppDispatch();
 
-      const { status, scheduleTopics, error } = useAppSelector(scheduleTopicsSliceState);
+      const { status, scheduleTopics, error, isToRefetch } = useAppSelector(scheduleTopicsSliceState);
 
-      const { getScheduleTopics } = useScheduleTopicApi();
+      const { getScheduleTopics, deleteAdminScheduleTopic } = useScheduleTopicApi();
 
       const fetchData = () => {
             getScheduleTopics({ sessionId: scheduleId });
       };
 
+      const editButtonHandler = (data: { editingData: IScheduleTopicModel }) => () => {
+            openEditModal(data);
+      };
+
+      const deleteButtonHandler = (conferenceDayDetail: IScheduleTopicDeleteRequest) => () => {
+            deleteAdminScheduleTopic(conferenceDayDetail);
+      };
+
+      //FIXME: if we combine this two useEffect, data will be double fetch on Update.
+      useEffect(() => {
+            if (!isVisible) return;
+
+            fetchData();
+      }, [isToRefetch]);
+
       useEffect(() => {
             if (isVisible) {
                   fetchData();
                   return;
+            } else if (!isVisible) {
+                  dispatch(scheduleTopicSliceAction.resetScheduleTopicsSlice());
             }
-
-            dispatch(scheduleTopicSliceAction.resetScheduleTopicsSlice());
       }, [isVisible]);
 
       return (
             <>
-                  <AdminScheduleTopicTable status={status} scheduleTopics={scheduleTopics.sessionTopics} />
+                  <AdminScheduleTopicTable
+                        status={status}
+                        scheduleTopics={scheduleTopics.sessionTopics}
+                        editButtonHandler={editButtonHandler}
+                        deleteButtonHandler={deleteButtonHandler}
+                  />
 
                   {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}
 

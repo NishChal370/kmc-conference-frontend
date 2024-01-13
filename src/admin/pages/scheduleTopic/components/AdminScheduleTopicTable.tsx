@@ -1,16 +1,26 @@
 import AppIcon from "@/shared/icon/AppIcon";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
-import { IScheduleTopicModel } from "@/admin/model/scheduleTopic/scheduleTopicModel";
 import { NestedTBody, NestedTd, NestedTh, NestedTr } from "@/admin/shared/table/nested-table";
+import {
+      IScheduleTopicDeleteRequest,
+      IScheduleTopicModel,
+} from "@/admin/model/scheduleTopic/scheduleTopicModel";
 import { Status } from "@/enum/commonEnum";
 import { ADMIN_SESSION_TOPIC_TABLE_HEADER } from "../data/adminScheduleTopicHeaders";
 
 interface IAdminScheduleTopicTable {
       status: Status;
       scheduleTopics: IScheduleTopicModel[];
+      editButtonHandler: (data: { editingData: IScheduleTopicModel }) => () => void;
+      deleteButtonHandler: (conferenceDayDetail: IScheduleTopicDeleteRequest) => () => void;
 }
 
-function AdminScheduleTopicTable({ scheduleTopics, status }: IAdminScheduleTopicTable) {
+function AdminScheduleTopicTable({
+      status,
+      scheduleTopics,
+      editButtonHandler,
+      deleteButtonHandler,
+}: IAdminScheduleTopicTable) {
       return (
             <>
                   <table className="w-full !h-full">
@@ -27,10 +37,26 @@ function AdminScheduleTopicTable({ scheduleTopics, status }: IAdminScheduleTopic
                                                       <TableActionButton
                                                             items={[
                                                                   {
-                                                                        title: "View Theme",
+                                                                        title: "View",
                                                                         type: "View",
                                                                         icon: <AppIcon name="view" />,
                                                                         clickHandler: () => {},
+                                                                  },
+                                                                  {
+                                                                        title: "Update",
+                                                                        type: "Update",
+                                                                        icon: <AppIcon name="update" />,
+                                                                        clickHandler: editButtonHandler({
+                                                                              editingData: scheduleTopic,
+                                                                        }),
+                                                                  },
+                                                                  {
+                                                                        title: "Delete",
+                                                                        type: "Danger",
+                                                                        icon: <AppIcon name="delete" />,
+                                                                        clickHandler: deleteButtonHandler({
+                                                                              id: scheduleTopic.id,
+                                                                        }),
                                                                   },
                                                             ]}
                                                       />

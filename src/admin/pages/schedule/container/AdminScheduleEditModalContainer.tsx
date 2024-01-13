@@ -23,7 +23,7 @@ function AdminScheduleEditModalContainer({
             const schedule: ISchedulePutRequest = {
                   id: selectedScheduleDetail.id,
                   title: scheduleUpdatedData.title,
-                  themeId: selectedScheduleDetail.themeId, //TODO: change this later
+                  themeId: selectedScheduleDetail.themeId,
                   location: scheduleUpdatedData.location,
                   startTime: formatTime(scheduleUpdatedData.startTime),
                   endTime: formatTime(scheduleUpdatedData.endTime),
