@@ -5,6 +5,7 @@ import { IModal } from "@/admin/model/modal/useModalModel";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 import { IScheduleModel } from "@/admin/model/schedule/scheduleModel";
 import { IScheduleTopicModel } from "@/admin/model/scheduleTopic/scheduleTopicModel";
+import AdminScheduleTopicViewModal from "./components/AdminScheduleTopicViewModal";
 
 interface IAdminScheduleTopic {
       isVisible: boolean;
@@ -12,13 +13,15 @@ interface IAdminScheduleTopic {
 }
 
 function AdminScheduleTopic({ isVisible, scheduleId }: IAdminScheduleTopic) {
-      const { modalState, openEditModal, closeModal } = useModal<IModal<IScheduleTopicModel>>();
+      const { modalState, openEditModal, openViewModal, closeModal } =
+            useModal<IModal<IScheduleTopicModel>>();
 
       return (
             <>
                   <AdminScheduleTopicTableContainer
                         isVisible={isVisible}
                         scheduleId={scheduleId}
+                        openViewModal={openViewModal}
                         openEditModal={openEditModal}
                   />
 
@@ -26,6 +29,13 @@ function AdminScheduleTopic({ isVisible, scheduleId }: IAdminScheduleTopic) {
                         <AdminScheduleTopicEditFormContainer
                               closeModalHandler={closeModal}
                               scheduleTopicDetail={modalState.modalData.edit}
+                        />
+                  )}
+
+                  {FieldStatus.View === modalState.modalStatus && modalState.modalData?.view && (
+                        <AdminScheduleTopicViewModal
+                              selectedTopicDetail={modalState.modalData.view}
+                              closeModalHandler={closeModal}
                         />
                   )}
             </>

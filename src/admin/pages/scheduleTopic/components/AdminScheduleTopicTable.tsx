@@ -11,6 +11,7 @@ import { ADMIN_SESSION_TOPIC_TABLE_HEADER } from "../data/adminScheduleTopicHead
 interface IAdminScheduleTopicTable {
       status: Status;
       scheduleTopics: IScheduleTopicModel[];
+      viewButtonHandler: (viewingData: IScheduleTopicModel) => () => void;
       editButtonHandler: (data: { editingData: IScheduleTopicModel }) => () => void;
       deleteButtonHandler: (conferenceDayDetail: IScheduleTopicDeleteRequest) => () => void;
 }
@@ -19,6 +20,7 @@ function AdminScheduleTopicTable({
       status,
       scheduleTopics,
       editButtonHandler,
+      viewButtonHandler,
       deleteButtonHandler,
 }: IAdminScheduleTopicTable) {
       return (
@@ -40,7 +42,10 @@ function AdminScheduleTopicTable({
                                                                         title: "View",
                                                                         type: "View",
                                                                         icon: <AppIcon name="view" />,
-                                                                        clickHandler: () => {},
+                                                                        clickHandler:
+                                                                              viewButtonHandler(
+                                                                                    scheduleTopic
+                                                                              ),
                                                                   },
                                                                   {
                                                                         title: "Update",

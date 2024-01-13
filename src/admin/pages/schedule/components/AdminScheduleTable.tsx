@@ -139,7 +139,7 @@ function AdminScheduleTable({
                                                                                           type: "View",
 
                                                                                           icon: (
-                                                                                                <AppIcon name="update" />
+                                                                                                <AppIcon name="add" />
                                                                                           ),
                                                                                           clickHandler:
                                                                                                 openTopicAddModalHandler(

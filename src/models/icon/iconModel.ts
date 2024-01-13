@@ -22,4 +22,5 @@ export type TIconType =
       | "sort-descending"
       | "view"
       | "update"
-      | "delete";
+      | "delete"
+      | "add";

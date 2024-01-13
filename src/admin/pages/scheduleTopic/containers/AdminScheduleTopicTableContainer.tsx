@@ -16,11 +16,13 @@ interface IAdminScheduleTopicTableContainer {
       isVisible: boolean;
       scheduleId: IScheduleTopicModel["id"];
       openEditModal: ({ editingData }: { editingData: IScheduleTopicModel }) => void;
+      openViewModal: ({ viewingData }: { viewingData: IScheduleTopicModel }) => void;
 }
 function AdminScheduleTopicTableContainer({
       isVisible,
       scheduleId,
       openEditModal,
+      openViewModal,
 }: IAdminScheduleTopicTableContainer) {
       const dispatch = useAppDispatch();
 
@@ -38,6 +40,10 @@ function AdminScheduleTopicTableContainer({
 
       const deleteButtonHandler = (conferenceDayDetail: IScheduleTopicDeleteRequest) => () => {
             deleteAdminScheduleTopic(conferenceDayDetail);
+      };
+
+      const viewButtonHandler = (viewingData: IScheduleTopicModel) => () => {
+            openViewModal({ viewingData });
       };
 
       //FIXME: if we combine this two useEffect, data will be double fetch on Update.
@@ -62,6 +68,7 @@ function AdminScheduleTopicTableContainer({
                         status={status}
                         scheduleTopics={scheduleTopics.sessionTopics}
                         editButtonHandler={editButtonHandler}
+                        viewButtonHandler={viewButtonHandler}
                         deleteButtonHandler={deleteButtonHandler}
                   />
 

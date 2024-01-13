@@ -18,6 +18,7 @@ import {
       IconLockOpen,
       IconMapPin,
       IconMenu2,
+      IconPlus,
       IconShare2,
       IconTrash,
       IconTriangle,
@@ -116,6 +117,9 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "delete":
                         return <IconTrash className={className} size={size ?? ICON.size} />;
+
+                  case "add":
+                        return <IconPlus className={className} size={size ?? ICON.size} />;
 
                   default:
                         alert("Please select icon");
