@@ -1,5 +1,7 @@
 import { useEffect, useMemo } from "react";
 import AdminDayThemeDayFilter from "../components/AdminDayThemeDayFilter";
+import LoadingAnimation from "@/shared/loading/LoadingAnimation";
+import { FilterErrorMessage, FilterNotFoundMessage } from "@/shared/errorMessage";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useConferenceDayApi from "@/admin/hooks/conferenceDay/useConferenceDayApi";
 import {
@@ -7,20 +9,18 @@ import {
       conferenceDaysBasicInfoState,
 } from "../../conferenceDay/feature/conferenceDaySlice";
 import { Status } from "@/enum/commonEnum";
-import ErrorMessage from "@/shared/errorMessage/ErrorMessage";
-import LoadingAnimation from "@/shared/loading/LoadingAnimation";
-import NotFoundMessage from "@/shared/errorMessage/NotFoundMessage";
+import { IRadioButtonGroupOptions } from "@/admin/model/button/radioButtonGroupModel";
 
 function AdminDayThemeDayFilterContainer() {
       const dispatch = useAppDispatch();
 
-      const { status, error, data } = useAppSelector(conferenceDaysBasicInfoState);
+      const { status, data } = useAppSelector(conferenceDaysBasicInfoState);
 
       const { getConferenceDaysBasicInfo } = useConferenceDayApi();
 
-      const options = useMemo(
+      const options: IRadioButtonGroupOptions<number> = useMemo(
             () => [
-                  { id: "", value: undefined, label: "All", title: "All" },
+                  { id: "all", value: undefined, label: "All", title: "All" },
                   ...data.map((day, index) => ({
                         id: day.dayId.toString(),
                         value: day.dayId,
@@ -42,15 +42,13 @@ function AdminDayThemeDayFilterContainer() {
             <>
                   {status === Status.SUCCEEDED && <AdminDayThemeDayFilter options={options} />}
 
-                  {status === Status.FAILED && (
-                        <ErrorMessage title={error?.title} detail="Something went wrong." />
-                  )}
+                  {status !== Status.SUCCEEDED && (
+                        <span className="flex self-start w-[22%]">
+                              {status === Status.FAILED && <FilterErrorMessage />}
 
-                  {status === Status.DATA_NOT_FOUND && <NotFoundMessage buttonTitle="Reload" />}
+                              {status === Status.DATA_NOT_FOUND && <FilterNotFoundMessage />}
 
-                  {(status === Status.IDEL || status === Status.LOADING) && (
-                        <span className=" flex w-1/4 self-start">
-                              <LoadingAnimation />
+                              {(status === Status.IDEL || status === Status.LOADING) && <LoadingAnimation />}
                         </span>
                   )}
             </>

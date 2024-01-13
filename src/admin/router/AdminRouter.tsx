@@ -52,7 +52,13 @@ export const AdminRouter: RouteObject = {
 
                         {
                               path: ADMIN_SCHEDULE_PATH.schedule.basic,
-                              element: <AdminSchedule />,
+                              element: (
+                                    <CheckDynamicRouteType
+                                          type="number"
+                                          paramName={ADMIN_SCHEDULE_PATH.schedule.paramName}
+                                    />
+                              ),
+                              children: [{ index: true, element: <AdminSchedule /> }],
                         },
 
                         {

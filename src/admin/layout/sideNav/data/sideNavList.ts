@@ -29,7 +29,7 @@ export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [
             id: getUniqueId(),
             title: "Session",
             Icon: "dashboard",
-            pathName: ADMIN_SCHEDULE_PATH.schedule.full,
+            pathName: ADMIN_SCHEDULE_PATH.schedule.full(),
       },
 
       {

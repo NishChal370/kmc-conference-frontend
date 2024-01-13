@@ -94,7 +94,7 @@
 
             #table-action-container {
                   position: absolute;
-                  transform: translateY(-8.8rem);
+                  top: 0rem;
                   padding-right: 1rem;
             }
       }

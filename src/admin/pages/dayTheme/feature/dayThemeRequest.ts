@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
-import { IDayThemeDeleteRequest, IDayThemePostRequest, IDayThemePutRequest, IDayThemeResponse, IDayThemeSearch } from "@/admin/model/dayTheme/dayThemeModel";
 import { adminDayThemeApi } from "@/admin/api/service/adminDayThemeApi";
+import { IDayThemeDeleteRequest, IDayThemeMinResponse, IDayThemePostRequest, IDayThemePutRequest, IDayThemeResponse, IDayThemeSearch } from "@/admin/model/dayTheme/dayThemeModel";
 
 export const getDayThemes = createAppAsyncThunk<IDayThemeResponse, IDayThemeSearch>(
       "day/themes",
@@ -15,6 +15,48 @@ export const getDayThemes = createAppAsyncThunk<IDayThemeResponse, IDayThemeSear
       }
 );
 
+
+export const getDayThemesMin = createAppAsyncThunk<IDayThemeMinResponse>(
+      "day/themes/min-info",
+      async (_, { rejectWithValue }) => {
+            try {
+                  const response = await adminDayThemeApi.getDayThemesMin();
+
+                  // return response.data;
+                  return [ // TODO: Remove this 
+                        {
+                              id: 1,
+                              title: "Digital Transformation",
+                              day: {
+                                    dayId: 2,
+                                    date: "2024-01-13",
+                              },
+
+                        },
+                        {
+                              id: 3,
+                              title: "this is theme two",
+                              day: {
+                                    dayId: 2,
+                                    date: "2024-01-13"
+                              },
+
+                        },
+                        {
+                              id: 4,
+                              title: "this is theme two",
+                              day: {
+                                    dayId: 2,
+                                    date: "2024-01-14"
+                              },
+
+                        }
+                  ]
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
 
 
 export const postDayTheme = createAppAsyncThunk<unknown, IDayThemePostRequest>(

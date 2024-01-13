@@ -13,6 +13,15 @@ export const adminDayThemeApi = {
             return AXIOS.request(options);
       },
 
+      getDayThemesMin: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Themes/min`,
+            };
+
+            return AXIOS.request(options);
+      },
+
 
       postDayTheme: (dayThemeDetail: IDayThemePostRequest) => {
             const options: AxiosRequestConfig = {

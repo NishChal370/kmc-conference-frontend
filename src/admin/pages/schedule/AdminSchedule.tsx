@@ -10,6 +10,7 @@ import useModal from "@/admin/hooks/modal/useModal";
 import { IModal } from "@/admin/model/modal/useModalModel";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 import { IScheduleModel } from "@/admin/model/schedule/scheduleModel";
+import AdminScheduleThemeFilterContainer from "./container/AdminScheduleThemeFilterContainer";
 
 function AdminSchedule() {
       const { themeId } = useParams();
@@ -28,6 +29,8 @@ function AdminSchedule() {
                   </span>
 
                   <section className="w-full h-full flex flex-col gap-6 items-center justify-center">
+                        <AdminScheduleThemeFilterContainer />
+
                         <AdminScheduleTableContainer openEditModal={openEditModal} />
 
                         <AdminSchedulePaginationContainer />

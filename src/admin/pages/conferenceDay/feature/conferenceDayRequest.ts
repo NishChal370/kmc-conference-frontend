@@ -20,7 +20,7 @@ export const getConferenceDayBasicInfo = createAppAsyncThunk<IConferenceDayBasic
       "conference-day/get/basic-info",
       async (_, { rejectWithValue }) => {
             try {
-                  const response = await adminConferenceDayApi.getDayThemeBasicInfo();
+                  const response = await adminConferenceDayApi.getDayBasicInfo();
 
                   return response.data;
             } catch (error: any) {

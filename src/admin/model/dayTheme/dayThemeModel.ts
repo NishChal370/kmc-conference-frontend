@@ -14,6 +14,17 @@ export interface IDayThemeModel {
 }
 
 
+
+export interface IDayThemeMinModel {
+      id: number,
+      title: string,
+      day: IConferenceDayDate;
+}
+
+
+export type IDayThemeMinResponse = IDayThemeMinModel[];
+
+
 export interface IDayThemeResponse extends IBasicApiResponse {
       themes: IDayThemeModel[];
 }

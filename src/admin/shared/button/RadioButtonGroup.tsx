@@ -20,7 +20,8 @@ function RadioButtonGroup<ValueType extends number | string | undefined>({
                   {options.map(({ id, value, label, title }) => (
                         <div
                               key={id}
-                              className={`flex gap-1 items-center justify-center px-4 py-1 rounded-sm min-w-[6rem] cursor-pointer
+                              className={`flex gap-1 items-center justify-center px-4 py-1 rounded-sm min-w-[6rem] max-w-[9rem] cursor-pointer
+                                    md:min-w-[4rem] 
                                     [&>*]:cursor-pointer
                                     ${
                                           selectedValue === (value as ValueType)
@@ -41,10 +42,16 @@ function RadioButtonGroup<ValueType extends number | string | undefined>({
 
                               <AppIcon
                                     name="tick"
-                                    className={selectedValue !== (value as ValueType) ? "hidden" : undefined}
+                                    className={
+                                          selectedValue !== (value as ValueType) ? "hidden" : "min-w-[1.5rem]"
+                                    }
                               />
 
-                              <label title={title} htmlFor={`${label}-radio-button`}>
+                              <label
+                                    title={title}
+                                    htmlFor={`${label}-radio-button`}
+                                    className="w-full line-clamp-2"
+                              >
                                     {label}
                               </label>
                         </div>

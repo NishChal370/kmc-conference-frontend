@@ -1,4 +1,4 @@
-import { deleteDayTheme as deleteDayThemeReq, getDayThemes as getDayThemesReq, postDayTheme, putDayTheme } from '@/admin/pages/dayTheme/feature/dayThemeRequest';
+import { deleteDayTheme as deleteDayThemeReq, getDayThemesMin as getDayThemesMinReq, getDayThemes as getDayThemesReq, postDayTheme, putDayTheme } from '@/admin/pages/dayTheme/feature/dayThemeRequest';
 import { IDayThemeDeleteRequest, IDayThemePostRequest, IDayThemePutRequest, IDayThemeSearch } from '@/admin/model/dayTheme/dayThemeModel';
 import { useAppDispatch } from '@/app/hooks';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
@@ -9,6 +9,10 @@ function useDayThemeApi() {
 
       const getDayThemes = (searchDetail: IDayThemeSearch) => {
             dispatch(getDayThemesReq(searchDetail))
+      }
+
+      const getDayThemesMin = () => {
+            dispatch(getDayThemesMinReq())
       }
 
       const addAdminDayTheme = async (dayThemeDetail: IDayThemePostRequest) => {
@@ -66,7 +70,7 @@ function useDayThemeApi() {
       }
 
 
-      return { getDayThemes, addAdminDayTheme, updateAdminDayTheme, deleteAdminDayTheme } as const;
+      return { getDayThemes, getDayThemesMin, addAdminDayTheme, updateAdminDayTheme, deleteAdminDayTheme } as const;
 
 }
 

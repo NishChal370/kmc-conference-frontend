@@ -11,12 +11,14 @@ interface IAdminDayTheme {
       openViewModalHandler: (viewingData: IDayThemeModel) => () => void;
       openEditModalHandler: (editingData: IDayThemeModel) => () => void;
       deleteHandler: (deletingData: IDayThemeDeleteRequest) => () => void;
+      viewScheduleHandler: (themeId: IDayThemeModel["id"]) => () => void;
 }
 
 function AdminDayThemeTable({
       status,
       dayThemes,
       deleteHandler,
+      viewScheduleHandler,
       openEditModalHandler,
       openViewModalHandler,
 }: IAdminDayTheme) {
@@ -67,6 +69,12 @@ function AdminDayThemeTable({
                                                                   type: "View",
                                                                   icon: <AppIcon name="view" />,
                                                                   clickHandler: openViewModalHandler(theme),
+                                                            },
+                                                            {
+                                                                  title: "View Session",
+                                                                  type: "View",
+                                                                  icon: <AppIcon name="view" />,
+                                                                  clickHandler: viewScheduleHandler(theme.id),
                                                             },
                                                             {
                                                                   title: "Update",

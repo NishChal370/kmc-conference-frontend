@@ -1,18 +1,23 @@
 import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
-import { deleteDayTheme, getDayThemes, postDayTheme, putDayTheme } from "./dayThemeRequest";
+import { deleteDayTheme, getDayThemes, getDayThemesMin, postDayTheme, putDayTheme } from "./dayThemeRequest";
 import { IBasicSliceState } from "@/models/commonModel";
-import { IDayThemeResponse } from "@/admin/model/dayTheme/dayThemeModel";
+import { IDayThemeMinResponse, IDayThemeResponse } from "@/admin/model/dayTheme/dayThemeModel";
 
 
 interface IDayThemesSlice extends IBasicSliceState {
-      data: IDayThemeResponse
+      data: IDayThemeResponse;
+}
+
+interface IDayThemesMinSlice extends IBasicSliceState {
+      data: IDayThemeMinResponse;
 }
 
 
 type IDayThemeSlice = {
       dayThemes: IDayThemesSlice,
+      dayThemesMin: IDayThemesMinSlice,
 };
 
 
@@ -23,6 +28,10 @@ const initialState: IDayThemeSlice = {
                   totalPages: 0,
                   themes: []
             }
+      },
+      dayThemesMin: {
+            status: Status.IDEL,
+            data: []
       },
 
 }
@@ -38,6 +47,12 @@ const dayThemeSlice = createSlice({
                               totalPages: 0,
                               themes: []
                         }
+                  }
+            },
+            resetDayThemesMin: (state) => {
+                  state.dayThemesMin = {
+                        status: Status.IDEL,
+                        data: []
                   }
             },
       },
@@ -58,7 +73,6 @@ const dayThemeSlice = createSlice({
                         state.dayThemes.error = action.payload;
                   })
 
-
                   .addCase(postDayTheme.fulfilled, (state) => {
                         state.dayThemes.isToRefetch = !state.dayThemes.isToRefetch;
                   })
@@ -70,6 +84,22 @@ const dayThemeSlice = createSlice({
                   .addCase(deleteDayTheme.fulfilled, (state) => {
                         state.dayThemes.isToRefetch = !state.dayThemes.isToRefetch;
                   })
+
+
+                  .addCase(getDayThemesMin.pending, (state) => {
+                        state.dayThemesMin.status = Status.LOADING;
+                  })
+                  .addCase(getDayThemesMin.fulfilled, (state, action) => {
+                        state.dayThemesMin.status = action.payload.length <= 0
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.dayThemesMin.data = action.payload;
+
+                  })
+                  .addCase(getDayThemesMin.rejected, (state, action) => {
+                        state.dayThemesMin.status = Status.FAILED;
+                        state.dayThemesMin.error = action.payload;
+                  })
       },
 })
 
@@ -79,3 +109,4 @@ export default dayThemeSlice.reducer;
 export const dayThemeSliceAction = dayThemeSlice.actions;
 
 export const dayThemesState = (state: RootState) => state.dayTheme.dayThemes;
+export const dayThemesMinState = (state: RootState) => state.dayTheme.dayThemesMin;

@@ -1,14 +1,15 @@
 import { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import ErrorMessage from "@/shared/errorMessage/ErrorMessage";
 import AdminDayThemeTable from "../components/AdminDayThemeTable";
 import NotFoundMessage from "@/shared/errorMessage/NotFoundMessage";
 import { dayThemeSliceAction, dayThemesState } from "../feature/dayThemeSlice";
-import { Status } from "@/enum/commonEnum";
 import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useDayThemeApi from "@/admin/hooks/dayTheme/useDayThemeApi";
+import { ADMIN_SCHEDULE_PATH } from "@/admin/constants/routePath";
+import { Status } from "@/enum/commonEnum";
 import { IDayThemeDeleteRequest, IDayThemeModel } from "@/admin/model/dayTheme/dayThemeModel";
 
 interface IAdminDayThemeTableContainer {
@@ -19,7 +20,7 @@ interface IAdminDayThemeTableContainer {
 function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDayThemeTableContainer) {
       const params = useParams();
 
-      const selectedDay = params["dayId"];
+      const navigate = useNavigate();
 
       const { search } = useLocation();
 
@@ -33,6 +34,8 @@ function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDay
 
       const { currentPageNumber } = getSearchParmaValues();
 
+      const selectedDay = params["dayId"];
+
       const fetchData = () => {
             getDayThemes({
                   dayId: selectedDay ? parseInt(selectedDay) : undefined,
@@ -44,12 +47,15 @@ function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDay
             openViewModal({ viewingData });
       };
       const openEditModalHandler = (editingData: IDayThemeModel) => () => {
-            console.log(editingData);
             openEditModal({ editingData });
       };
 
       const deleteHandler = (deletingData: IDayThemeDeleteRequest) => () => {
             deleteAdminDayTheme(deletingData);
+      };
+
+      const viewScheduleHandler = (themeId: IDayThemeModel["id"]) => () => {
+            navigate(ADMIN_SCHEDULE_PATH.schedule.full(themeId));
       };
 
       useEffect(() => {
@@ -70,6 +76,7 @@ function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDay
                         deleteHandler={deleteHandler}
                         openViewModalHandler={openViewModalHandler}
                         openEditModalHandler={openEditModalHandler}
+                        viewScheduleHandler={viewScheduleHandler}
                   />
 
                   {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}

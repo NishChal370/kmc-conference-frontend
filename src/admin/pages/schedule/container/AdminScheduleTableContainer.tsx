@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import ErrorMessage from "@/shared/errorMessage/ErrorMessage";
 import AdminScheduleTable from "../components/AdminScheduleTable";
@@ -16,6 +16,7 @@ interface IAdminScheduleTableContainer {
 }
 
 function AdminScheduleTableContainer({ openEditModal }: IAdminScheduleTableContainer) {
+      const params = useParams();
       const { search } = useLocation();
 
       const dispatch = useAppDispatch();
@@ -28,8 +29,10 @@ function AdminScheduleTableContainer({ openEditModal }: IAdminScheduleTableConta
 
       const { currentPageNumber } = getSearchParmaValues();
 
+      const themeId = params["themeId"] ? parseInt(params["themeId"]) : undefined;
+
       const fetchData = () => {
-            getSchedules({ pageNumber: currentPageNumber });
+            getSchedules({ themeId: themeId, pageNumber: currentPageNumber });
       };
 
       const editButtonHandler = (data: { editingData: IScheduleModel }) => () => {
@@ -38,7 +41,7 @@ function AdminScheduleTableContainer({ openEditModal }: IAdminScheduleTableConta
 
       useEffect(() => {
             fetchData();
-      }, [search]);
+      }, [search, themeId]);
 
       useEffect(() => {
             return () => {

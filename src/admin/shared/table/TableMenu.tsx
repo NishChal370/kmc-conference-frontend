@@ -10,7 +10,7 @@ function TableMenu({ children }: ITableMenu) {
             <HeadlessMenu
                   as="div"
                   className="flex justify-end pr-7 
-                        sm:pr-0 gap-2.5 sm:w-full sm:h-full sm:justify-center sm:items-center
+                        sm:pr-0 gap-2 sm:w-full sm:h-full sm:justify-center sm:items-center
                   "
             >
                   {children}
@@ -60,8 +60,8 @@ export function TableMenuItems({ items }: ITableMenuItems) {
                   leaveTo="opacity-0 translate-y-1"
             >
                   <HeadlessMenu.Items
-                        className="absolute z-10 -translate-x-32 translate-y-0 flex flex-col gap-4 px-4 py-6 bg-white border border-default/25 shadow-md min-w-[10rem] max-w-[20rem] rounded-md text-sm
-                              sm:-translate-x-4 sm:translate-y-12
+                        className="absolute z-10 -translate-x-0 translate-y-4 flex flex-col gap-4 px-4 py-6 bg-white border border-default/25 shadow-md min-w-[10rem] max-w-[20rem] rounded-md text-sm
+                              sm:-translate-x-20 sm:translate-y-20
                         "
                   >
                         {items.map(
