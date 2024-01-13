@@ -19,6 +19,8 @@ interface IAdminDayThemeTableContainer {
 function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDayThemeTableContainer) {
       const params = useParams();
 
+      const selectedDay = params["dayId"];
+
       const { search } = useLocation();
 
       const dispatch = useAppDispatch();
@@ -32,7 +34,6 @@ function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDay
       const { currentPageNumber } = getSearchParmaValues();
 
       const fetchData = () => {
-            const selectedDay = params["dayId"];
             getDayThemes({
                   dayId: selectedDay ? parseInt(selectedDay) : undefined,
                   pageNumber: currentPageNumber,
@@ -53,7 +54,7 @@ function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDay
 
       useEffect(() => {
             fetchData();
-      }, [search]);
+      }, [search, params["dayId"]]);
 
       useEffect(() => {
             return () => {

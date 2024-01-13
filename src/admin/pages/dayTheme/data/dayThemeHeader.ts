@@ -1,7 +1,7 @@
 import { ITableHeaderDataList } from "@/admin/model/commonModel";
 
 export const DAY_THEME_HEADER_LIST: ITableHeaderDataList = [
-      { id: "index", title: "#", className: "sm:text-start" },
+      { id: "index", title: "#", },
 
       { id: "date", title: "Date", className: "sm:text-start" },
 

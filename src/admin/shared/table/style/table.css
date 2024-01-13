@@ -15,7 +15,7 @@
 
       #page-table td,
       #page-table th {
-            @apply min-w-[6rem] 
+            @apply min-w-[6rem]
             max-w-xs
             py-2 sm:!px-4;
       }
@@ -25,7 +25,7 @@
       }
 
       #page-table thead th {
-            @apply font-semibold 
+            @apply font-semibold
             bg-primary/5
             whitespace-nowrap;
       }
@@ -34,14 +34,14 @@
             @apply border-b border-mute/5 p-3;
       }
 
-      @media (max-width: 600px) {
-            #page-table > thead {
+      @media (max-width: 640px) {
+            #page-table > thead:not(.nested-thead) {
                   display: none;
             }
 
-            #page-table tbody {
-                  @apply flex 
-                  flex-col 
+            #page-table tbody:not(.nested-tbody) {
+                  @apply flex
+                  flex-col
                   gap-8;
             }
 
@@ -49,39 +49,41 @@
                   @apply border-none p-2;
             }
 
-            #page-table tbody tr {
+            #page-table tbody tr:not(.nested-tr) {
                   @apply border border-mute relative
-                  rounded-md 
-                  p-4 
+                  rounded-md
+                  p-4
                   w-full;
             }
 
             #page-table tbody td:before {
                   content: attr(data-name);
-                  @apply float-left 
-                  pr-3 
+                  @apply float-left
+                  pr-3
                   text-mute;
             }
 
-            #page-table tbody td:first-child {
+            #page-table tbody #index {
                   display: none;
             }
 
-            #page-table tbody td {
+            #page-table tbody td:not(.nested-td) {
                   display: block;
-                  @apply w-full 
+                  @apply text-right;
+            }
+            #page-table tbody td {
+                  @apply w-full
                   max-w-full
-                  text-right
                   text-default;
             }
 
-            #page-table tr > td > p {
+            #page-table tr > td:not(.nested-td) > p {
                   @apply line-clamp-none;
             }
 
             /* if table have action button */
             #page-table tbody tr:has(#table-action-container) {
-                  @apply pt-10 
+                  @apply pt-10
                   pb-4
                   px-4;
             }
@@ -92,8 +94,7 @@
 
             #table-action-container {
                   position: absolute;
-                  top: 0.6rem;
-                  left: 90%;
+                  transform: translateY(-8.8rem);
                   padding-right: 1rem;
             }
       }

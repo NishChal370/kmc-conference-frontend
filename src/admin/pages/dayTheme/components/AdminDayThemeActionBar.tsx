@@ -7,7 +7,7 @@ interface IAdminDayThemeActionBar {
 function AdminDayThemeActionBar({ addButtonHandler }: IAdminDayThemeActionBar) {
       return (
             <aside>
-                  <Button title="New Day" onClickHandler={addButtonHandler} />
+                  <Button title="New Theme" onClickHandler={addButtonHandler} />
             </aside>
       );
 }

@@ -20,7 +20,7 @@ export interface IDayThemeResponse extends IBasicApiResponse {
 
 
 export interface IDayThemeSearch {
-      dayId?: IDayThemeModel["id"]
+      dayId?: IConferenceDayDate["dayId"]
       pageNumber?: number;
 }
 

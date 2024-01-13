@@ -28,7 +28,7 @@ function AdminDayThemeTable({
                         <>
                               {dayThemes.map((theme, index) => (
                                     <tr key={theme.id}>
-                                          <Td id="index" dataName="index" className="sm:text-start">
+                                          <Td id="index" dataName="index">
                                                 {index + 1}
                                           </Td>
 

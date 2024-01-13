@@ -26,7 +26,7 @@ function AdminDayTheme() {
 
                         <AdminDayThemeActionBar
                               addButtonHandler={() =>
-                                    dayId ? openAddModal() : errorToastMessage("Pease select Day")
+                                    dayId ? openAddModal() : errorToastMessage("Please select Day")
                               }
                         />
                   </span>

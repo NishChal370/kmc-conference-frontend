@@ -13,7 +13,10 @@ import adminSideNavReducer from "@/admin/layout/sideNav/feature/adminSideNavSlic
 
 import dayThemeReducer from "@/admin/pages/dayTheme/feature/dayThemeSlice";
 import conferenceDayReducer from "@/admin/pages/conferenceDay/feature/conferenceDaySlice";
+import scheduleReducer from "@/admin/pages/schedule/feature/scheduleSlice";
+import scheduleTopicReducer from "@/admin/pages/scheduleTopic/feature/scheduleTopicSlice";
 import speakerReducer from "@/admin/pages/speaker/feature/speakerSlice";
+
 
 
 export const store = configureStore({
@@ -28,6 +31,8 @@ export const store = configureStore({
 
             dayTheme: dayThemeReducer,
             conferenceDay: conferenceDayReducer,
+            schedule: scheduleReducer,
+            scheduleTopic: scheduleTopicReducer,
             speaker: speakerReducer,
       },
 });

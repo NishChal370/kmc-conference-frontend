@@ -32,7 +32,7 @@ function ConferenceDayTable({
                               <>
                                     {conferenceDay.map((day, index) => (
                                           <tr key={day.id}>
-                                                <Td id="index" dataName="index" className="xs:text-start">
+                                                <Td id="index" dataName="index">
                                                       {index + 1}
                                                 </Td>
 

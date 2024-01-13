@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { IDayThemeDeleteRequest, IDayThemePostRequest, IDayThemePutRequest, IDayThemeResponse, IDayThemeSearch } from "@/admin/model/dayTheme/dayThemeModel";
-import { adminDayThemeApi } from "@/admin/api/service/adminDayTheme";
+import { adminDayThemeApi } from "@/admin/api/service/adminDayThemeApi";
 
 export const getDayThemes = createAppAsyncThunk<IDayThemeResponse, IDayThemeSearch>(
       "day/themes",

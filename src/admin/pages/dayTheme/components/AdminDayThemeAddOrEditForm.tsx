@@ -56,10 +56,7 @@ function AdminDayThemeAddOrEditForm({
                                           <ConferenceDaySelectInput
                                                 isRequired
                                                 selected={value}
-                                                onChangeHandler={(e) => {
-                                                      console.log(e);
-                                                      onChange(e);
-                                                }}
+                                                onChangeHandler={onChange}
                                                 errorMessage={fieldState.error?.message}
                                           />
                                     )}

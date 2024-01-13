@@ -1,5 +1,5 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
-import { adminConferenceDayApi } from "@/admin/api/service/adminConferenceDay";
+import { adminConferenceDayApi } from "@/admin/api/service/adminConferenceDayApi";
 import { IConferenceDayBasicInfoResponse, IConferenceDayDeleteRequest, IConferenceDayPostRequest, IConferenceDayPutRequest, IConferenceDayResponse, IConferenceDaySearch } from "@/admin/model/conferenceDay/conferenceDayModel";
 
 export const getConferenceDayDetail = createAppAsyncThunk<IConferenceDayResponse, IConferenceDaySearch>(

@@ -31,7 +31,9 @@ function ConferenceDayAddModalContainer({ closeModal }: IConferenceDayAddModalCo
             addConferenceDayDetail(conferenceDay).then(closeModal);
       });
 
-      const formResetHandler = reset;
+      const formResetHandler = () => {
+            reset();
+      };
 
       return (
             <ConferenceDayAddOrEditModal

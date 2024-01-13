@@ -27,7 +27,7 @@ export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [
 
       {
             id: getUniqueId(),
-            title: "Schedule",
+            title: "Session",
             Icon: "dashboard",
             pathName: ADMIN_SCHEDULE_PATH.schedule.full,
       },
