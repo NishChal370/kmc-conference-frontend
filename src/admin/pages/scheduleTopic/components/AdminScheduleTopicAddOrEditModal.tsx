@@ -16,7 +16,7 @@ interface IAdminScheduleTopicAddOrEditModal {
 }
 
 function AdminScheduleTopicAddOrEditModal({
-      modalType,
+      modalType = "Add",
       closeModalHandler,
       formResetHandler,
       formSubmitHandler,
@@ -29,7 +29,7 @@ function AdminScheduleTopicAddOrEditModal({
       return (
             <Modal
                   title={`${modalType} Topic Detail`}
-                  size="w-full lg:!max-w-[56rem]"
+                  size="w-full lg:!max-w-[64rem]"
                   closeHandler={closeModalHandler}
             >
                   <form className="flex flex-col gap-6 w-full" onSubmit={formSubmitHandler}>
@@ -45,6 +45,12 @@ function AdminScheduleTopicAddOrEditModal({
                         <Controller
                               control={control}
                               name="description"
+                              rules={{
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              }}
                               render={({ field, fieldState }) => (
                                     <RichTextEditor
                                           isRequired
@@ -60,6 +66,12 @@ function AdminScheduleTopicAddOrEditModal({
                         <Controller
                               control={control}
                               name="kmcHighlights"
+                              rules={{
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              }}
                               render={({ field, fieldState }) => (
                                     <RichTextEditor
                                           isRequired
@@ -75,6 +87,12 @@ function AdminScheduleTopicAddOrEditModal({
                         <Controller
                               control={control}
                               name="keyNote"
+                              rules={{
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              }}
                               render={({ field, fieldState }) => (
                                     <RichTextEditor
                                           isRequired
@@ -90,6 +108,12 @@ function AdminScheduleTopicAddOrEditModal({
                         <Controller
                               control={control}
                               name="internationalCases"
+                              rules={{
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              }}
                               render={({ field, fieldState }) => (
                                     <RichTextEditor
                                           isRequired
@@ -105,6 +129,12 @@ function AdminScheduleTopicAddOrEditModal({
                         <Controller
                               control={control}
                               name="workshop"
+                              rules={{
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              }}
                               render={({ field, fieldState }) => (
                                     <RichTextEditor
                                           isRequired

@@ -16,12 +16,12 @@ function useDayThemeApi() {
       }
 
       const addAdminDayTheme = async (dayThemeDetail: IDayThemePostRequest) => {
-            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
+            loadingAlertWithMessage();
 
             await dispatch(postDayTheme(dayThemeDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ title: "Updated", message: "New Theme has been created." });
+                        successMessage({ title: "Success", message: "New Theme has been created." });
                   })
                   .catch((error) => {
                         errorToastMessage(error.detail);

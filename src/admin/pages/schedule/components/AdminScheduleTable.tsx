@@ -10,6 +10,7 @@ import { ADMIN_SESSION_TABLE_HEADER } from "../data/adminScheduleHeaders";
 interface IAdminScheduleTable {
       status: Status;
       schedules: IScheduleModel[];
+      openTopicAddModalHandler: (data: IScheduleModel["id"]) => () => void;
       deleteScheduleHandler: (deletingDetail: IScheduleDeleteRequest) => void;
       editButtonHandler: (data: { editingData: IScheduleModel }) => () => void;
 }
@@ -19,6 +20,7 @@ function AdminScheduleTable({
       status,
       editButtonHandler,
       deleteScheduleHandler,
+      openTopicAddModalHandler,
 }: IAdminScheduleTable) {
       return (
             <>
@@ -131,6 +133,18 @@ function AdminScheduleTable({
                                                                                                             }
                                                                                                       );
                                                                                                 },
+                                                                                    },
+                                                                                    {
+                                                                                          title: "Add Topic",
+                                                                                          type: "View",
+
+                                                                                          icon: (
+                                                                                                <AppIcon name="update" />
+                                                                                          ),
+                                                                                          clickHandler:
+                                                                                                openTopicAddModalHandler(
+                                                                                                      schedule.id
+                                                                                                ),
                                                                                     },
                                                                               ]}
                                                                         />

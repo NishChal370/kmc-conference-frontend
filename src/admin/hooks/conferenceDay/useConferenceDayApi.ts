@@ -22,7 +22,7 @@ function useConferenceDayApi() {
             await dispatch(postConferenceDay(conferenceDayDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ message: "Request for a new conference day has been made." });
+                        successMessage({ title: "Success", message: "New Conference Day has been created." });
                   })
                   .catch((error) => {
                         errorToastMessage(error.detail);

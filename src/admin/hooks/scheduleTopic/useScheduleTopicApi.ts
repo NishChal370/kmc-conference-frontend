@@ -16,12 +16,12 @@ function useScheduleTopicApi() {
 
 
       const addAdminScheduleTopic = async (newScheduleTopicDetail: IScheduleTopicPostRequest) => {
-            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
+            loadingAlertWithMessage();
 
             await dispatch(postScheduleTopic(newScheduleTopicDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ title: "Updated", message: "Session topic detail has been updated." });
+                        successMessage({ title: "Success", message: "New Session Topic has been created." });
                   })
                   .catch((error) => {
                         errorToastMessage(error.detail);

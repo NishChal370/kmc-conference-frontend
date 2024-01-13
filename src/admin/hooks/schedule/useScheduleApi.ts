@@ -15,12 +15,12 @@ function useScheduleApi() {
 
 
       const addAdminSchedule = async (newScheduleDetail: ISchedulePostRequest) => {
-            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
+            loadingAlertWithMessage();
 
             await dispatch(postSchedule(newScheduleDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ title: "Updated", message: "Session detail has been updated." });
+                        successMessage({ title: "Success", message: "New Session has been created." });
                   })
                   .catch((error) => {
                         errorToastMessage(error.detail);

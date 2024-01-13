@@ -13,9 +13,10 @@ import { IScheduleModel } from "@/admin/model/schedule/scheduleModel";
 
 interface IAdminScheduleTableContainer {
       openEditModal: (editingData: { editingData: IScheduleModel }) => void;
+      openTopicAddModal: (data: IScheduleModel["id"]) => void;
 }
 
-function AdminScheduleTableContainer({ openEditModal }: IAdminScheduleTableContainer) {
+function AdminScheduleTableContainer({ openEditModal, openTopicAddModal }: IAdminScheduleTableContainer) {
       const params = useParams();
       const { search } = useLocation();
 
@@ -39,6 +40,10 @@ function AdminScheduleTableContainer({ openEditModal }: IAdminScheduleTableConta
             openEditModal(data);
       };
 
+      const openTopicAddModalHandler = (data: IScheduleModel["id"]) => () => {
+            openTopicAddModal(data);
+      };
+
       useEffect(() => {
             fetchData();
       }, [search, themeId]);
@@ -56,6 +61,7 @@ function AdminScheduleTableContainer({ openEditModal }: IAdminScheduleTableConta
                         schedules={data.sessions}
                         editButtonHandler={editButtonHandler}
                         deleteScheduleHandler={deleteAdminSchedule}
+                        openTopicAddModalHandler={openTopicAddModalHandler}
                   />
 
                   {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}

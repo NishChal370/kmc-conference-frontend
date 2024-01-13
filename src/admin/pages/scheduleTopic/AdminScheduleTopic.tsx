@@ -12,7 +12,7 @@ interface IAdminScheduleTopic {
 }
 
 function AdminScheduleTopic({ isVisible, scheduleId }: IAdminScheduleTopic) {
-      const { modalState, openAddModal, openEditModal, closeModal } = useModal<IModal<IScheduleTopicModel>>();
+      const { modalState, openEditModal, closeModal } = useModal<IModal<IScheduleTopicModel>>();
 
       return (
             <>
