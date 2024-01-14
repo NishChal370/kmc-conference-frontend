@@ -8,28 +8,29 @@ import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { Status } from "@/enum/commonEnum";
-import { speakerSliceAction, speakerState } from "../feature/speakerSlice";
 import {
-      IAdminSpeakerEditModal,
+      ISpeakerDeleteRequest,
+      IAdminSpeakerViewOrEditModal,
       IAdminSpeakerStatusChangeModal,
 } from "@/admin/model/speaker/adminSpeakerModel";
+import { speakerBasicInfoSliceState, speakerSliceAction } from "../feature/speakerSlice";
 
 interface IAdminSpeakerTableContainer {
       openStatusChangeModal: (speakerDetail: IAdminSpeakerStatusChangeModal) => void;
-      openEditModal: ({ editingData }: { editingData: IAdminSpeakerEditModal }) => void;
-      openViewModal: ({ viewingData }: { viewingData: IAdminSpeakerEditModal }) => void;
+      openEditModal: ({ editingData }: { editingData: IAdminSpeakerViewOrEditModal }) => void;
+      openViewModal: ({ viewingData }: { viewingData: IAdminSpeakerViewOrEditModal }) => void;
 }
 
 function AdminSpeakerTableContainer({
-      openStatusChangeModal,
       openEditModal,
       openViewModal,
+      openStatusChangeModal,
 }: IAdminSpeakerTableContainer) {
       const { search } = useLocation();
 
       const dispatch = useAppDispatch();
 
-      const { status, data, isToRefetch, error } = useAppSelector(speakerState).speakerBasicInfo;
+      const { status, data, error } = useAppSelector(speakerBasicInfoSliceState);
 
       const { getSpeakerBasicInfo, deleteSpeakerDetail } = useSpeakerApi();
 
@@ -41,9 +42,25 @@ function AdminSpeakerTableContainer({
             getSpeakerBasicInfo({ pageNumber: currentPageNumber });
       };
 
+      const openViewModalHandler = (viewingData: IAdminSpeakerViewOrEditModal) => () => {
+            openViewModal({ viewingData });
+      };
+
+      const openEditModalHandler = (editingData: IAdminSpeakerViewOrEditModal) => () => {
+            openEditModal({ editingData });
+      };
+
+      const openStatusChangeModalHandler = (speakerDetail: IAdminSpeakerStatusChangeModal) => () => {
+            openStatusChangeModal(speakerDetail);
+      };
+
+      const deleteSpeakerDetailHandler = (deletingDetail: ISpeakerDeleteRequest) => () => {
+            deleteSpeakerDetail(deletingDetail);
+      };
+
       useEffect(() => {
             fetchData();
-      }, [search, isToRefetch]);
+      }, [search]);
 
       useEffect(() => {
             return () => {
@@ -54,12 +71,12 @@ function AdminSpeakerTableContainer({
       return (
             <>
                   <AdminSpeakerTable
-                        openViewModal={openViewModal}
-                        openEditModal={openEditModal}
-                        openStatusChangeModal={openStatusChangeModal}
-                        deleteSpeakerDetailHandler={deleteSpeakerDetail}
                         status={status}
                         speakersBasicInfo={data.speakers}
+                        openViewModalHandler={openViewModalHandler}
+                        openEditModalHandler={openEditModalHandler}
+                        openStatusChangeModalHandler={openStatusChangeModalHandler}
+                        deleteSpeakerDetailHandler={deleteSpeakerDetailHandler}
                   />
 
                   {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}

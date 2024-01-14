@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Header from "@/admin/shared/header/Header";
 import AdminSpeakerTableContainer from "./container/AdminSpeakerTableContainer";
 import AdminSpeakerEditFormContainer from "./container/AdminSpeakerEditFormContainer";
@@ -6,22 +5,20 @@ import AdminSpeakerViewModalContainer from "./container/AdminSpeakerViewModalCon
 import AdminSpeakerPaginationContainer from "./container/AdminSpeakerPaginationContainer";
 import AdminSpeakerStatusUpdateModalContainer from "./container/AdminSpeakerStatusUpdateModalContainer";
 import useModal from "@/admin/hooks/modal/useModal";
+import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import {
-      IAdminSpeakerEditModal,
+      IAdminSpeakerViewOrEditModal,
       IAdminSpeakerStatusChangeModal,
 } from "@/admin/model/speaker/adminSpeakerModel";
 import { IModal } from "@/admin/model/modal/useModalModel";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 
 function AdminSpeakers() {
-      const {
-            modalState: applicationModalState,
-            openEditModal: openApplicationEditModalState,
-            openViewModal: openApplicationViewModalState,
-            closeModal: closeApplicationModal,
-      } = useModal<IModal<IAdminSpeakerEditModal>>();
+      const { modalState, openEditModal, openViewModal, closeModal } =
+            useModal<IModal<IAdminSpeakerViewOrEditModal>>();
 
-      const [approvalStatusDetail, setSpeakerStatusDetail] = useState<IAdminSpeakerStatusChangeModal>();
+      const [statusChangeModal, openStatusChangeModal, closeStatusChangeModal] =
+            useExtraModal<IAdminSpeakerStatusChangeModal>();
 
       return (
             <>
@@ -29,34 +26,32 @@ function AdminSpeakers() {
 
                   <section className="w-full h-full flex flex-col gap-6 items-center justify-center">
                         <AdminSpeakerTableContainer
-                              openStatusChangeModal={(speakerDetail) => setSpeakerStatusDetail(speakerDetail)}
-                              openViewModal={openApplicationViewModalState}
-                              openEditModal={openApplicationEditModalState}
+                              openStatusChangeModal={openStatusChangeModal}
+                              openViewModal={openViewModal}
+                              openEditModal={openEditModal}
                         />
 
                         <AdminSpeakerPaginationContainer />
                   </section>
 
-                  {[FieldStatus.Edit].includes(applicationModalState.modalStatus) &&
-                        applicationModalState.modalData?.edit?.speakerId && (
-                              <AdminSpeakerEditFormContainer
-                                    selectedSpeakerId={applicationModalState.modalData?.edit?.speakerId}
-                                    closeModalHandler={closeApplicationModal}
-                              />
-                        )}
+                  {[FieldStatus.Edit].includes(modalState.modalStatus) && modalState.modalData?.edit?.id && (
+                        <AdminSpeakerEditFormContainer
+                              selectedSpeakerId={modalState.modalData?.edit?.id}
+                              closeModalHandler={closeModal}
+                        />
+                  )}
 
-                  {[FieldStatus.View].includes(applicationModalState.modalStatus) &&
-                        applicationModalState.modalData?.view?.speakerId && (
-                              <AdminSpeakerViewModalContainer
-                                    selectedSpeakerId={applicationModalState.modalData?.view?.speakerId}
-                                    closeModalHandler={closeApplicationModal}
-                              />
-                        )}
+                  {[FieldStatus.View].includes(modalState.modalStatus) && modalState.modalData?.view?.id && (
+                        <AdminSpeakerViewModalContainer
+                              selectedSpeakerId={modalState.modalData?.view?.id}
+                              closeModalHandler={closeModal}
+                        />
+                  )}
 
-                  {approvalStatusDetail?.id && (
+                  {statusChangeModal?.isOpen && statusChangeModal?.data?.id && (
                         <AdminSpeakerStatusUpdateModalContainer
-                              speakerStatusDetail={approvalStatusDetail}
-                              closeModalHandler={() => setSpeakerStatusDetail(undefined)}
+                              speakerStatusDetail={statusChangeModal.data}
+                              closeModalHandler={closeStatusChangeModal}
                         />
                   )}
             </>

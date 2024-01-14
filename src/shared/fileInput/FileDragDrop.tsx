@@ -65,7 +65,7 @@ function FileDragDrop({
                                     type="file"
                                     id="file-choose-input"
                                     hidden
-                                    multiple
+                                    multiple={false}
                                     onChange={inputChangeHandler}
                                     //SEE: https://stackoverflow.com/questions/59461119/angular-input-file-selecting-the-same-file
                                     // it help to allow upload same file twice.
@@ -95,7 +95,7 @@ function FileDragDrop({
                                           {oldFiles &&
                                                 oldFiles.map((file: IAttachment, index: number) => (
                                                       <OldFileDetail
-                                                            key={file.id}
+                                                            key={index}
                                                             file={file}
                                                             removeButtonHandler={removeOldFileHandler(index)}
                                                       />

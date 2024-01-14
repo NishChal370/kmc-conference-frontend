@@ -11,14 +11,14 @@ import FileDragDropContainer from "@/shared/fileInput/FileDragDropContainer";
 import { Modal, ModalSectionHeader, ModalFooter, ModalActionButtons } from "@/shared/modal";
 import { REGEX } from "@/helper/regex";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { IAdminSpeakerEditForm } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerForm } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IAdminAddOrEditSpeakerForm {
       modalType?: "Add" | "Edit";
       closeModalHandler: () => void;
       formResetHandler: () => void;
       formSubmitHandler: (e?: BaseSyntheticEvent) => Promise<void>;
-      speakerEditForm: UseFormReturn<IAdminSpeakerEditForm>;
+      speakerEditForm: UseFormReturn<IAdminSpeakerForm>;
 }
 
 function AdminAddOrEditSpeakerForm({
@@ -36,10 +36,10 @@ function AdminAddOrEditSpeakerForm({
             <>
                   <Modal
                         title={`${modalType} Speaker Detail`}
-                        size="w-full md:!w-[70%]"
+                        size="w-full lg:!max-w-[76rem]"
                         closeHandler={closeModalHandler}
                   >
-                        <form className="flex flex-col gap-12" onSubmit={formSubmitHandler}>
+                        <form className="flex flex-col gap-12 w-full" onSubmit={formSubmitHandler}>
                               <div
                                     className="flex flex-col gap-20 justify-center w-full
                                           [&>section]:flex [&>section]:flex-col  [&>section]:gap-10
@@ -56,9 +56,9 @@ function AdminAddOrEditSpeakerForm({
                                                 <SecondaryInput
                                                       isRequired
                                                       label="First Name"
-                                                      errorMessage={errors.firstName?.message}
+                                                      errorMessage={errors.name?.message}
                                                 >
-                                                      {register("firstName", {
+                                                      {register("name", {
                                                             required: {
                                                                   value: true,
                                                                   message: INPUT_ERROR_MESSAGE.empty,
@@ -68,22 +68,22 @@ function AdminAddOrEditSpeakerForm({
 
                                                 <SecondaryInput
                                                       label="Middle Name"
-                                                      errorMessage={errors.middleName?.message}
+                                                      // errorMessage={errors.middleName?.message}
                                                 >
-                                                      {register("middleName")}
+                                                      {/* {register("middleName")} */}
                                                 </SecondaryInput>
 
                                                 <SecondaryInput
                                                       isRequired
                                                       label="Last Name"
-                                                      errorMessage={errors.lastName?.message}
+                                                      // errorMessage={errors.lastName?.message}
                                                 >
-                                                      {register("lastName", {
+                                                      {/* {register("lastName", {
                                                             required: {
                                                                   value: true,
                                                                   message: INPUT_ERROR_MESSAGE.empty,
                                                             },
-                                                      })}
+                                                      })} */}
                                                 </SecondaryInput>
 
                                                 <PhoneInput
@@ -151,15 +151,10 @@ function AdminAddOrEditSpeakerForm({
                                                 </SecondaryInput>
 
                                                 <SecondaryInput
-                                                      isRequired
                                                       label="LinkedIn"
                                                       errorMessage={errors.linkedInProfile?.message}
                                                 >
                                                       {register("linkedInProfile", {
-                                                            required: {
-                                                                  value: true,
-                                                                  message: INPUT_ERROR_MESSAGE.empty,
-                                                            },
                                                             pattern: {
                                                                   value: REGEX.URL,
                                                                   message: INPUT_ERROR_MESSAGE.invalidUrl,
@@ -226,6 +221,7 @@ function AdminAddOrEditSpeakerForm({
                                           <span>
                                                 <section className="flex flex-col gap-10">
                                                       <SecondaryInput
+                                                            isRequired
                                                             label="Expertise in Field"
                                                             errorMessage={errors.expertiseInField?.message}
                                                       >
@@ -350,11 +346,11 @@ function AdminAddOrEditSpeakerForm({
                                                             )}
                                                       />
                                                 </span>
+
                                                 <span className="sm:col-span-2">
                                                       <Controller
                                                             name="proposalFile"
                                                             control={control}
-                                                            defaultValue={{ oldFiles: [], newFiles: [] }}
                                                             render={({ field }) => (
                                                                   <FileDragDropContainer
                                                                         label="Session Proposal"

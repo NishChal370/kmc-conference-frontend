@@ -2,23 +2,22 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { ISpeakerBasicInfoResponse } from "@/models/speaker/SpeakerModel";
-import { IAdminSpeakerFullDetailedInfoByIdResponse } from "@/admin/model/speaker/adminSpeakerModel";
-import { deleteSpeakerDetail, getAdminSpeakerFullDetailedInfo, getSpeakerBasicInfo, putAdminSpeakerApprovalStatus, putAdminSpeakerFullDetail } from "./speakerRequest";
+import { ISpeakerBasicResponse, ISpeakerByIdResponse } from "@/admin/model/speaker/adminSpeakerModel";
+import { deleteSpeakerDetail, getSpeakerBasicInfo, getSpeakerDetailedById, putAdminSpeakerApprovalStatus, putAdminSpeakerFullDetail } from "./speakerRequest";
 
 
-interface ISpeakerBasicInfoSlice extends IBasicSliceState {
-      data: ISpeakerBasicInfoResponse
+interface ISpeakerBasicSlice extends IBasicSliceState {
+      data: ISpeakerBasicResponse
 }
 
-interface ISpeakerFullDetailedInfoSlice extends IBasicSliceState {
-      data?: IAdminSpeakerFullDetailedInfoByIdResponse
+interface ISpeakerDetailedSlice extends IBasicSliceState {
+      data?: ISpeakerByIdResponse;
 }
 
 
 type ISpeakerSlice = {
-      speakerBasicInfo: ISpeakerBasicInfoSlice,
-      speakerFullDetailedInfo: ISpeakerFullDetailedInfoSlice
+      speakerBasicInfo: ISpeakerBasicSlice,
+      speakerDetailedInfo: ISpeakerDetailedSlice
 };
 
 
@@ -31,7 +30,7 @@ const initialState: ISpeakerSlice = {
                   speakers: []
             }
       },
-      speakerFullDetailedInfo: {
+      speakerDetailedInfo: {
             status: Status.IDEL,
       },
 }
@@ -50,8 +49,8 @@ const speakerSlice = createSlice({
                   }
             },
 
-            resetSpeakerFullDetailedInfoSlice: (state) => {
-                  state.speakerFullDetailedInfo = {
+            resetSpeakerDetailedInfoSlice: (state) => {
+                  state.speakerDetailedInfo = {
                         status: Status.IDEL,
                         data: undefined,
                   }
@@ -76,17 +75,17 @@ const speakerSlice = createSlice({
 
 
 
-                  .addCase(getAdminSpeakerFullDetailedInfo.pending, (state) => {
-                        state.speakerFullDetailedInfo.status = Status.LOADING;
+                  .addCase(getSpeakerDetailedById.pending, (state) => {
+                        state.speakerDetailedInfo.status = Status.LOADING;
                   })
-                  .addCase(getAdminSpeakerFullDetailedInfo.fulfilled, (state, action) => {
-                        state.speakerFullDetailedInfo.status = Status.SUCCEEDED;
-                        state.speakerFullDetailedInfo.data = action.payload;
+                  .addCase(getSpeakerDetailedById.fulfilled, (state, action) => {
+                        state.speakerDetailedInfo.status = Status.SUCCEEDED;
+                        state.speakerDetailedInfo.data = action.payload;
 
                   })
-                  .addCase(getAdminSpeakerFullDetailedInfo.rejected, (state, action) => {
-                        state.speakerFullDetailedInfo.status = Status.FAILED;
-                        state.speakerFullDetailedInfo.error = action.payload;
+                  .addCase(getSpeakerDetailedById.rejected, (state, action) => {
+                        state.speakerDetailedInfo.status = Status.FAILED;
+                        state.speakerDetailedInfo.error = action.payload;
                   })
 
 
@@ -110,4 +109,5 @@ export default speakerSlice.reducer;
 
 export const speakerSliceAction = speakerSlice.actions;
 
-export const speakerState = (state: RootState) => state.speaker;
+export const speakerBasicInfoSliceState = (state: RootState) => state.speaker.speakerBasicInfo;
+export const speakerDetailedSliceState = (state: RootState) => state.speaker.speakerDetailedInfo;

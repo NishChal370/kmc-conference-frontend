@@ -1,14 +1,10 @@
-import { Fragment } from "react";
-import { Modal } from "@/shared/modal";
-import InformationItem from "./InformationItem";
-import InformationSection from "./InformationSection";
 import SpeakerProfileSection from "./SpeakerProfileSection";
-import InformationArticleItem from "./InformationArticleItem";
-import { IAdminSpeakerFullDetail } from "@/admin/model/speaker/adminSpeakerModel";
+import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
+import { ISpeakerDetailModel } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IAdminSpeakerViewModal {
       closeModalHandler: () => void;
-      speakerDetail: IAdminSpeakerFullDetail;
+      speakerDetail: ISpeakerDetailModel;
 }
 
 function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeakerViewModal) {
@@ -25,165 +21,151 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                   >
                         <SpeakerProfileSection
                               image={speakerDetail.phone}
-                              name={
-                                    speakerDetail.firstName +
-                                    " " +
-                                    speakerDetail.middleName +
-                                    " " +
-                                    speakerDetail.lastName
-                              }
+                              name={speakerDetail.name}
                               designation="Different publication types"
                         />
 
-                        <aside
-                              className="w-full h-full flex flex-col gap-4 mb-14 px-2
-                                    [&>section]:md:px-10
-                                    [&>hr]:border-mute-1/75
+                        <main
+                              className="mb-6 w-full flex flex-col gap-y-20 tracking-wide
+                                    sm:px-2
                               "
                         >
-                              <InformationSection title="Personal Information">
-                                    <article>
-                                          <InformationItem
-                                                title="First Name"
-                                                detail={speakerDetail.firstName}
-                                          />
+                              <section className="flex flex-col gap-6 w-full">
+                                    <ModalSectionHeader title="Personal Information" />
 
-                                          <InformationItem
-                                                title="Middle Name"
-                                                detail={speakerDetail.middleName}
-                                          />
+                                    <article
+                                          className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
+                                                sm:grid-cols-2 sm:px-2
+                                          "
+                                    >
+                                          <span
+                                                className="sm:col-span-2 grid grid-cols-1 gap-10 w-full
+                                                      sm:grid-cols-2
+                                                      lg:grid-cols-3 sm:px-2
+                                                "
+                                          >
+                                                <ModalText title="First Name" data={speakerDetail.name} />
 
-                                          <InformationItem
-                                                title="Last Name"
-                                                detail={speakerDetail.lastName}
-                                          />
+                                                <ModalText title="Middle Name" data={speakerDetail.name} />
 
-                                          <InformationItem title="Email" detail={speakerDetail.email} />
-
-                                          <InformationItem
-                                                title="Phone Number"
-                                                detail={speakerDetail.phone}
-                                          />
-                                    </article>
-                              </InformationSection>
-
-                              <InformationSection title="Professional Information">
-                                    <article>
-                                          <InformationItem title="Title" detail={speakerDetail.title} />
-
-                                          <InformationItem
-                                                title="Affiliation"
-                                                detail={speakerDetail.affiliation}
-                                          />
-
-                                          <InformationItem
-                                                title="Designation"
-                                                detail={speakerDetail.jobTitle}
-                                          />
-
-                                          <InformationItem
-                                                title="LinkedIn"
-                                                type="link"
-                                                link={speakerDetail.linkedInProfile}
-                                                detail={speakerDetail.linkedInProfile}
-                                          />
-
-                                          <InformationItem
-                                                title="Twitter"
-                                                type="link"
-                                                link={speakerDetail.twitterHandle}
-                                                detail={speakerDetail.twitterHandle}
-                                          />
-
-                                          <InformationItem
-                                                title="Personal Website"
-                                                type="link"
-                                                link={speakerDetail.professionalWebsite}
-                                                detail={speakerDetail.professionalWebsite}
-                                          />
-                                    </article>
-                              </InformationSection>
-
-                              <InformationSection title="Biographical Information">
-                                    <InformationArticleItem detail={speakerDetail.bio} />
-                              </InformationSection>
-
-                              <InformationSection title="Professional Background">
-                                    <article>
-                                          <InformationItem
-                                                title="Expertise in Field"
-                                                detail={speakerDetail.expertiseInField}
-                                          />
-
-                                          <InformationItem
-                                                title="Publications"
-                                                type="list"
-                                                items={speakerDetail.publications}
-                                          />
-
-                                          <InformationItem
-                                                title="Previous Speaking Engagements"
-                                                type="list"
-                                                items={speakerDetail.previousSpeakingEngagements}
-                                          />
-
-                                          <InformationArticleItem
-                                                title="Previous Experience "
-                                                detail={speakerDetail.previousExperience}
-                                          />
-
-                                          <InformationArticleItem
-                                                title="Previous Conference "
-                                                detail={speakerDetail.previousConferences}
-                                          />
-                                    </article>
-                              </InformationSection>
-
-                              <InformationSection title="Session Background">
-                                    <article>
-                                          <InformationItem
-                                                title="Willing to travel"
-                                                detail={speakerDetail.willingToTravel ? "Yes" : "No"}
-                                          />
-
-                                          <InformationItem
-                                                title="Audio/view Requirement"
-                                                detail={speakerDetail.avRequirements}
-                                          />
-
-                                          <InformationItem
-                                                title="Preferred session length (in minutes)"
-                                                detail={speakerDetail.preferredSessionLengthMinutes.toString()}
-                                          />
-
-                                          <InformationArticleItem
-                                                title="Accommodation Needs"
-                                                detail={speakerDetail.accommodationNeeds}
-                                          />
-                                    </article>
-                              </InformationSection>
-
-                              <InformationSection title="Additional Information">
-                                    <article>
-                                          <span>
-                                                <h6>Reference Contact</h6>
-
-                                                <p>
-                                                      {speakerDetail.referenceContacts.length
-                                                            ? speakerDetail.referenceContacts.map(
-                                                                    (contact) => (
-                                                                          <Fragment key={contact}>
-                                                                                <span>{contact}</span>
-                                                                                <br />
-                                                                          </Fragment>
-                                                                    )
-                                                              )
-                                                            : "---"}
-                                                </p>
+                                                <ModalText title="Last Name" data={speakerDetail.name} />
                                           </span>
+
+                                          <ModalText title="Email Address" data={speakerDetail.email} />
+
+                                          <ModalText title="Phone Number" data={speakerDetail.phone} />
                                     </article>
-                              </InformationSection>
-                        </aside>
+                              </section>
+                              <section className="flex flex-col gap-6 w-full">
+                                    <ModalSectionHeader title="Professional Information" />
+
+                                    <article
+                                          className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
+                                                sm:grid-cols-2 sm:px-2
+                                          "
+                                    >
+                                          <ModalText title="Title" data={speakerDetail.title} />
+
+                                          <ModalText title="Affiliation" data={speakerDetail.affiliation} />
+
+                                          <ModalText title="Designation" data={speakerDetail.jobTitle} />
+
+                                          <ModalText title="LinkedIn" data={speakerDetail.linkedInProfile} />
+
+                                          <ModalText title="Twitter" data={speakerDetail.twitterHandle} />
+
+                                          <ModalText
+                                                title="Personal Website"
+                                                data={speakerDetail.professionalWebsite}
+                                          />
+                                    </article>
+                              </section>
+                              <section className="flex flex-col gap-6 w-full">
+                                    <ModalSectionHeader title="Biographical Information" />
+
+                                    <article
+                                          className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
+                                                sm:grid-cols-2 sm:px-2
+                                          "
+                                    >
+                                          <ModalSanitizedText title="" htmlContent={speakerDetail.bio} />
+                                    </article>
+                              </section>
+                              <section className="flex flex-col gap-6 w-full">
+                                    <ModalSectionHeader title="Professional Background" />
+
+                                    <article
+                                          className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
+                                                sm:grid-cols-2 sm:px-2
+                                          "
+                                    >
+                                          <ModalText
+                                                title="Expertise in Field"
+                                                data={speakerDetail.expertiseInField}
+                                          />
+
+                                          <ModalText title="Publications" data={speakerDetail.publications} />
+
+                                          <ModalText
+                                                title="Previous Speaking Engagements"
+                                                data={speakerDetail.previousSpeakingEngagements}
+                                          />
+
+                                          <ModalText
+                                                title="Previous Experience"
+                                                data={speakerDetail.previousExperience}
+                                          />
+
+                                          <ModalText
+                                                title="Previous Conference"
+                                                data={speakerDetail.previousConferences}
+                                          />
+                                    </article>
+                              </section>
+                              <section className="flex flex-col gap-6 w-full">
+                                    <ModalSectionHeader title="Session Background" />
+
+                                    <article
+                                          className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
+                                                sm:grid-cols-2 sm:px-2
+                                          "
+                                    >
+                                          <ModalText
+                                                title="Willing to travel"
+                                                data={speakerDetail.willingToTravel ? "Yes" : "No"}
+                                          />
+
+                                          <ModalText
+                                                title="Audio/view Requirement"
+                                                data={speakerDetail.avRequirements}
+                                          />
+
+                                          <ModalText
+                                                title="Preferred session length (in minutes)"
+                                                data={speakerDetail.preferredSessionLengthMinutes}
+                                          />
+
+                                          <ModalText
+                                                title="Accommodation Needs"
+                                                data={speakerDetail.accommodationNeeds}
+                                          />
+                                    </article>
+                              </section>
+                              <section className="flex flex-col gap-6 w-full">
+                                    <ModalSectionHeader title="Additional Information" />
+
+                                    <article
+                                          className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
+                                                sm:grid-cols-2 sm:px-2
+                                          "
+                                    >
+                                          <ModalText
+                                                title="Reference Contact"
+                                                data={speakerDetail.referenceContacts}
+                                          />
+                                    </article>
+                              </section>
+                        </main>
                   </div>
             </Modal>
       );

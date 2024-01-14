@@ -1,9 +1,9 @@
 export interface IAttachment {
-      id: number;
+      fileName: string;
+      basePath: string;
       originalName: string;
       contentType: string;
-      fileName: string;
-      fileSize: number;
+      sizeBytes: number;
 }
 
 

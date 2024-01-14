@@ -1,6 +1,6 @@
 interface IText {
       title: string;
-      data?: string | number;
+      data?: string | number | string[] | number[] | null;
       containerClassName?: string;
       dataClassName?: string;
 }
@@ -13,7 +13,20 @@ function ModalText({ title, data, containerClassName = "", dataClassName = "" }:
                   `}
             >
                   <h3 className="font-semibold py-2 text-start text-sm">{title}</h3>
-                  <p className={dataClassName}>{typeof data === "number" ? data ?? "---" : data || "---"}</p>
+
+                  {Array.isArray(data) && data && (
+                        <ul>
+                              {data.map((value, index) => (
+                                    <li key={index}>{value}</li>
+                              ))}
+                        </ul>
+                  )}
+
+                  {!Array.isArray(data) && (
+                        <p className={dataClassName}>
+                              {typeof data === "number" ? data ?? "---" : data || "---"}
+                        </p>
+                  )}
             </div>
       );
 }

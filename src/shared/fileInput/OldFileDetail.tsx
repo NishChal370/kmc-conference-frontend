@@ -1,7 +1,7 @@
-import { Base64 } from "js-base64";
-// import fileIcon from "@/assets/image/file.png";
 import { IAttachment } from "@/models/file/fileModel";
-import { convertFileSizeToMb } from "@/utils/converter/convertFileSizeToMb";
+import convertBytesToMB from "@/utils/converter/convertBytesToMB";
+import AppIcon from "../icon/AppIcon";
+import filePlaceHolder from "@/assets/image/webp/file-placeholder.webp";
 
 interface IOldFileDetail {
       file: IAttachment;
@@ -10,23 +10,25 @@ interface IOldFileDetail {
 
 function OldFileDetail({ file, removeButtonHandler }: IOldFileDetail) {
       return (
-            <div className="flex gap-3 justify-between px-4 py-1 bg-link/10 rounded-lg w-full items-center text-default">
-                  <a className="flex gap-3 items-center" target="_blank" rel="noreferrer">
-                        <img src={"fileIcon"} alt="uploaded-file" className="w-7 h-7" />
-                        <article>
-                              <p className=" truncate w-20 1sm:w-40 sm:w-full sm:truncate-none-custom">
-                                    {Base64.decode(file.originalName)}
-                              </p>
-                              <p className="text-xs font-semibold">{convertFileSizeToMb(file.fileSize)} MB</p>
+            <div className="relative flex gap-3 justify-between px-0 py-0 bg-mute/0 rounded-lg w-32 h-fit items-center text-default">
+                  <a
+                        className="flex flex-col gap-3 items-center w-full h-full"
+                        target="_blank"
+                        rel="noreferrer"
+                  >
+                        <img src={filePlaceHolder} alt="uploaded-file" className=" w-32 h-16 object-cover" />
+                        <article className="flex w-full flex-col">
+                              <p className="w-full break-words line-clamp-2">{atob(file.originalName)}</p>
+                              <p className="text-xs font-semibold">{convertBytesToMB(file.sizeBytes)} MB</p>
                         </article>
                   </a>
 
                   <button
                         type="button"
                         onClick={removeButtonHandler}
-                        className=" rounded-full active:shadow-button"
+                        className=" absolute top-0 right-0 text-primary text-shadow bg-white/50 active:shadow-button"
                   >
-                        <i className="bi bi-x-circle text-xl text-default"></i>
+                        <AppIcon name="clear" />
                   </button>
             </div>
       );

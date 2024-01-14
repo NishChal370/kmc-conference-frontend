@@ -1,112 +1,181 @@
 import { SpeakerApprovalStatus } from '@/enum/speaker/speakerEnum';
+import { IBasicApiResponse, } from '@/models/commonModel';
 import { IAttachment, IFilUpdateDetail } from '@/models/file/fileModel';
 import { IMultipleInputFields, IMultiplePhoneNumberInput } from '@/models/input/multiplePhoneInputModel';
 
-export interface IAdminSpeakerFullDetail {
-      speakerId: number,
-      photo: File,
-      firstName: string,
-      middleName: string,
-      lastName: string,
-      phone: string,
-      email: string,
-      title: string,
+
+
+export interface ISpeakerBasicModel {
+      id: number,
+      name: string,
+      photo: IAttachment | null,
+      jobTitle: string,
+      affiliation: string,
+      approvalStatus: SpeakerApprovalStatus
+}
+
+export interface ISpeakerDetailModel extends ISpeakerBasicModel {
+      title: string;
+      email: string;
+      phone: string;
+      bio: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience?: string;
+      previousConferences?: string;
+      expertiseInField: string;
+      previousSpeakingEngagements: string[] | null;
+      publications: string[] | null;
+      preferredSessionLengthMinutes?: number;
+      availabilityInfo: string[] | null; // THis is not in used
+      willingToTravel: boolean;
+      avRequirements?: string;
+      accommodationNeeds?: string;
+      sessionProposal: IAttachment | null;
+      referenceContacts: string[] | null;
+      agreedToDates: boolean;
+      agreedTandC: boolean;
+}
+
+
+
+export interface ISpeakerBasicResponse extends IBasicApiResponse {
+      speakers: ISpeakerBasicModel[];
+}
+
+
+
+
+export type ISpeakerByIdResponse = ISpeakerDetailModel;
+
+
+
+
+
+export interface ISpeakerBasicSearch {
+      pageNumber: number;
+}
+
+
+
+export interface ISpeakerByIdSearch {
+      id: ISpeakerDetailModel["id"];
+}
+
+
+
+export interface IAdminSpeakerPostRequest {
+      name: string,
+      title: string;
+      photo: File | null,
       affiliation: string,
       jobTitle: string,
-      linkedInProfile: string,
-      twitterHandle: string,
-      professionalWebsite: string,
-      bio: string,
-      expertiseInField: string,
-      publications: string[],
-      previousSpeakingEngagements: string[],
-      previousExperience: string,
-      previousConferences: string,
-      willingToTravel: boolean,
-      avRequirements: string,
-      preferredSessionLengthMinutes: number,
-      accommodationNeeds: string,
-      sessionProposal?: IAttachment[],
-      referenceContacts: string[],
+      email: string;
+      phone: string;
+      bio: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience?: string;
+      previousConferences?: string;
+      expertiseInField: string;
+      previousSpeakingEngagements: string[] | null;
+      publications: string[] | null;
+      preferredSessionLengthMinutes?: number;
+      availabilityInfo: string[] | null; // THis is not in used
+      willingToTravel: boolean;
+      avRequirements?: string;
+      accommodationNeeds?: string;
+      sessionProposal: File | null;
+      referenceContacts: string[] | null;
+      agreedToDates: boolean;
+      agreedTandC: boolean;
 }
 
-
-
-/**
- * @interface
- * Represent GET speaker full details by speakerId.
- */
-export interface IAdminSpeakerFullDetailedInfoById {
-      speakerId: IAdminSpeakerFullDetail["speakerId"],
-}
-
-
-
-export type IAdminSpeakerFullDetailedInfoByIdResponse = IAdminSpeakerFullDetail;
 
 
 
 export interface IAdminSpeakerPutRequest {
-      speakerId: number,
-      photo: File,
-      firstName: string,
-      middleName: string,
-      lastName: string,
-      phone: string,
-      email: string,
-      title: string,
+      speakerId: ISpeakerDetailModel["id"];
+      name: string,
+      title: string;
+      photo: File | null,
       affiliation: string,
       jobTitle: string,
-      linkedInProfile: string,
-      twitterHandle: string,
-      professionalWebsite: string,
-      bio: string,
-      expertiseInField: string,
-      publications: string[],
-      previousSpeakingEngagements: string[],
-      previousExperience: string,
-      previousConferences: string,
-      willingToTravel: boolean,
-      avRequirements: string,
-      preferredSessionLengthMinutes: number,
-      accommodationNeeds: string,
-      sessionProposal?: File[],
-      oldSessionProposal?: IAttachment[],
-      referenceContacts: string[],
+      email: string;
+      phone: string;
+      bio: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience?: string;
+      previousConferences?: string;
+      expertiseInField: string;
+      previousSpeakingEngagements: string[] | null;
+      publications: string[] | null;
+      preferredSessionLengthMinutes?: number;
+      availabilityInfo: string[] | null; // THis is not in used
+      willingToTravel: boolean;
+      avRequirements?: string;
+      accommodationNeeds?: string;
+      sessionProposal: File | null;
+      referenceContacts: string[] | null;
+      oldPhoto?: string;
+      oldSessionProposal?: string;
 }
 
 
-export interface IAdminSpeakerEditForm extends Omit<IAdminSpeakerPutRequest, "speakerId" | "publications" | "previousSpeakingEngagements" | "referenceContacts" | "sessionProposal" | "oldSessionProposal"> {
-      publications: IMultipleInputFields,
-      previousSpeakingEngagements: IMultipleInputFields,
-      referenceContacts: IMultiplePhoneNumberInput,
+export interface ISpeakerDeleteRequest {
+      speakerId: ISpeakerDetailModel["id"],
+}
+
+
+
+
+export interface IAdminSpeakerForm {
+      speakerId: ISpeakerDetailModel["id"];
+      name: string,
+      photo: IFilUpdateDetail,
+      jobTitle: string,
+      affiliation: string,
+      title: string;
+      email: string;
+      phone: string;
+      bio: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience?: string;
+      previousConferences?: string;
+      expertiseInField: string;
+      previousSpeakingEngagements: IMultipleInputFields;
+      publications: IMultipleInputFields;
+      preferredSessionLengthMinutes?: number;
+      availabilityInfo: string[] | null; // THis is not in used
+      willingToTravel: boolean;
+      avRequirements?: string;
+      accommodationNeeds?: string;
+      referenceContacts: IMultiplePhoneNumberInput;
       proposalFile: IFilUpdateDetail,
 }
 
 
-
-export type IAdminSpeakerEditModal = IAdminSpeakerFullDetailedInfoById;
-
-
-export interface IAdminSpeakerBasicInfoSearch {
-      pageNumber?: number;
+export interface IAdminSpeakerViewOrEditModal {
+      id: ISpeakerDetailModel["id"],
 }
 
 
+
+
 export interface IAdminSpeakerStatusChangeReq {
-      id: IAdminSpeakerFullDetail["speakerId"],
-      approvalStatus: SpeakerApprovalStatus,
+      id: ISpeakerDetailModel["id"],
+      approvalStatus: ISpeakerDetailModel["approvalStatus"],
 }
 
 
 export interface IAdminSpeakerStatusChangeModal {
-      id: IAdminSpeakerFullDetail["speakerId"],
-      speakerName: IAdminSpeakerFullDetail["firstName"];
-      approvalStatus: SpeakerApprovalStatus,
-}
-
-
-
-export interface ISpeakerDetailDeleteRequest {
-      speakerId: IAdminSpeakerFullDetail["speakerId"],
+      id: ISpeakerDetailModel["id"],
+      speakerName: ISpeakerDetailModel["name"];
+      approvalStatus: ISpeakerDetailModel["approvalStatus"],
 }

@@ -1,17 +1,28 @@
-import { useAppSelector } from "@/app/hooks";
 import Pagination from "@/shared/pagination/Pagination";
-import { speakerState } from "../feature/speakerSlice";
+import { useAppSelector } from "@/app/hooks";
+import useAfterMount from "@/hooks/lifeCycle/useAfterMount";
 import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { Status } from "@/enum/commonEnum";
+import { speakerBasicInfoSliceState } from "../feature/speakerSlice";
 
 function AdminSpeakerPaginationContainer() {
       const {
             status,
+            isToRefetch,
             data: { totalPages },
-      } = useAppSelector(speakerState).speakerBasicInfo;
+      } = useAppSelector(speakerBasicInfoSliceState);
 
-      const { changeQueryPageNumber, getSearchParmaValues } = useURLQueryHandler();
+      const { changeQueryPageNumber, getSearchParmaValues, resetSearchParam, clearAllSearchParam } =
+            useURLQueryHandler();
       const { currentPageNumber } = getSearchParmaValues();
+
+      useAfterMount(() => {
+            if (window.location.search === "?pageNumber=1") {
+                  resetSearchParam();
+            } else {
+                  clearAllSearchParam();
+            }
+      }, [isToRefetch]);
 
       if (status !== Status.SUCCEEDED) return;
 

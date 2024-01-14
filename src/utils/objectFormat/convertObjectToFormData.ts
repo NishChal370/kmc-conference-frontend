@@ -4,20 +4,22 @@ function convertObjectToFormData(obj: object) {
 
       Object.entries(obj).forEach(([key, value]) => {
 
-            if (value instanceof FileList) {
-                  if (value.length) {
+            console.log(value, typeof value)
+            if (value instanceof File) {
+                  if (value) {
 
-                        formData.append(key, value[0], value[0].name);
+                        formData.append(key, value, value.name);
                   }
 
             }
             else {
 
-                  formData.append(
-                        key,
-                        // if value type is object convert it into JSON
-                        typeof value === 'object' ? JSON.stringify(value) : value
-                  );
+                  if (value)
+                        formData.append(
+                              key,
+                              // if value type is object convert it into JSON
+                              typeof value === 'object' ? JSON.stringify(value) : value
+                        );
             }
       });
 

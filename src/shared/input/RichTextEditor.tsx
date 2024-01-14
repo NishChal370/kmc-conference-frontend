@@ -8,7 +8,7 @@ interface IRichTextEditor {
       errorMessage?: string;
       containerClassName?: string;
       isRequired?: boolean;
-      value: string;
+      value?: string;
       placeHolder?: string;
       onChangeHandler: (value: string) => void;
 }

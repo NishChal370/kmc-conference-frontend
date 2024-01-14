@@ -1,10 +1,9 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminSpeakerApi } from "@/admin/api/service/adminSpeakerApi";
-import { ISpeakerBasicInfoResponse } from "@/models/speaker/SpeakerModel";
-import { IAdminSpeakerBasicInfoSearch, IAdminSpeakerFullDetail, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerDetailDeleteRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerBasicSearch, IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicResponse, ISpeakerByIdResponse, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/adminSpeakerModel";
 
-export const getSpeakerBasicInfo = createAppAsyncThunk<ISpeakerBasicInfoResponse, IAdminSpeakerBasicInfoSearch>(
-      "speaker/basic",
+export const getSpeakerBasicInfo = createAppAsyncThunk<ISpeakerBasicResponse, ISpeakerBasicSearch>(
+      "speaker/basic/get",
       async (searchDetail, { rejectWithValue }) => {
             try {
                   const response = await adminSpeakerApi.getBasicInfo(searchDetail);
@@ -17,11 +16,11 @@ export const getSpeakerBasicInfo = createAppAsyncThunk<ISpeakerBasicInfoResponse
 );
 
 
-export const getAdminSpeakerFullDetailedInfo = createAppAsyncThunk<IAdminSpeakerFullDetail, IAdminSpeakerFullDetailedInfoById>(
-      "admin/speaker/full-detail/get",
+export const getSpeakerDetailedById = createAppAsyncThunk<ISpeakerByIdResponse, ISpeakerByIdSearch>(
+      "admin/speaker/detailed-info/get",
       async (speakerDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminSpeakerApi.getSpeakerFullDetailedInfoById(speakerDetail);
+                  const response = await adminSpeakerApi.getSpeakerDetailedById(speakerDetail);
 
                   return response.data;
             } catch (error: any) {
@@ -37,7 +36,7 @@ export const putAdminSpeakerFullDetail = createAppAsyncThunk<undefined, IAdminSp
       "admin/speaker/put",
       async (speakerUpdateDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminSpeakerApi.putSpeakerDetail(speakerUpdateDetail);
+                  const response = await adminSpeakerApi.putSpeakerDetailed(speakerUpdateDetail);
 
                   return response.data;
             } catch (error: any) {
@@ -61,7 +60,7 @@ export const putAdminSpeakerApprovalStatus = createAppAsyncThunk<undefined, IAdm
 );
 
 
-export const deleteSpeakerDetail = createAppAsyncThunk<undefined, ISpeakerDetailDeleteRequest>(
+export const deleteSpeakerDetail = createAppAsyncThunk<undefined, ISpeakerDeleteRequest>(
       "admin/speaker/delete",
       async (deletingDetail, { rejectWithValue }) => {
             try {

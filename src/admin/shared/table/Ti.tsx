@@ -1,18 +1,20 @@
+import { IAttachment } from "@/models/file/fileModel";
 import { Td } from "./index";
-
+import { ImageSkeleton } from "../placeHolder";
 interface ITi {
-      image: string;
+      image?: IAttachment;
 }
 
+// TODO: DO it after fetch api is ready.
 function Ti({ image }: ITi) {
       return (
-            <Td dataName="" className="w-full sm:!w-fit">
+            <Td dataName="" className="w-full sm:!w-fit text-center">
                   {image ? (
                         <span className="w-full h-full flex sm:justify-center items-center">
-                              <img className="w-8 h-8 object-cover" src={image} alt="" />
+                              {/* <img className="w-8 h-8 object-cover" src={image} alt="" /> */}
                         </span>
                   ) : (
-                        <p className={`${image && "text-white/0 sm:default"}`}>---</p>
+                        <ImageSkeleton />
                   )}
             </Td>
       );

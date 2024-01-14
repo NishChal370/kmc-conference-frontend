@@ -3,6 +3,7 @@ import Button from "../button/Button";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { FILE_SIZE_LIMIT } from "@/constants/fileData/fileData";
 import { validateImageFile } from "@/utils/validation/validateImageFile";
+import imagePlaceHolder from "@/assets/image/webp/file-placeholder.webp";
 
 interface IImageSelectInput<TControl extends FieldValues> {
       name: Path<TControl>;
@@ -25,11 +26,9 @@ function ImageSelectInput<TControl extends FieldValues>({ name, control }: IImag
                               <img
                                     className="w-[10rem] max-w-[10rem] h-[10rem] max-h-[10rem] rounded-md object-cover"
                                     src={
-                                          field.value
-                                                ? URL.createObjectURL(
-                                                        new Blob([field.value], { type: field.value.type })
-                                                  )
-                                                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUaj1IZKNPAcoapImmRfor34DMBXoh7Vwn10xHYQqnbg&s"
+                                          field.value["newFiles"] && field.value["newFiles"].length
+                                                ? URL.createObjectURL(field.value["newFiles"][0] || "")
+                                                : imagePlaceHolder
                                     }
                                     alt="Preview"
                               />
@@ -56,15 +55,21 @@ function ImageSelectInput<TControl extends FieldValues>({ name, control }: IImag
                                           type="file"
                                           accept="image/*"
                                           hidden
+                                          //SEE: https://stackoverflow.com/questions/59461119/angular-input-file-selecting-the-same-file
+                                          // it help to allow upload same file twice.
+                                          onClick={({ target }: any) => (target.value = null)}
                                           onChange={(event) => {
                                                 const errorMessage = validateImageFile(
                                                       event.target.files && event.target.files[0]
                                                 );
 
                                                 if (!errorMessage) {
-                                                      field.onChange(
-                                                            event.target.files && event.target.files[0]
-                                                      );
+                                                      field.onChange({
+                                                            oldFiles: [],
+                                                            newFiles: event.target.files
+                                                                  ? event.target.files
+                                                                  : [],
+                                                      });
                                                 } else {
                                                       setError(errorMessage);
                                                 }

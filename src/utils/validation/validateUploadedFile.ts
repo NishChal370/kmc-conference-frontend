@@ -1,8 +1,5 @@
 import { ALLOWED_FILE_TYPE, FILE_SIZE_LIMIT } from '@/constants/fileData/fileData';
 
-// import { errorSwalMessage } from "../toastMessage";
-
-
 interface IValidateUploadedFile {
       newFilesArray: File[];
       updatedFilesArray: File[];

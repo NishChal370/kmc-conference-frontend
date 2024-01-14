@@ -1,20 +1,20 @@
 import { useAppDispatch } from '@/app/hooks';
-import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, getAdminSpeakerFullDetailedInfo as getAdminSpeakerFullDetailedInfoReq, putAdminSpeakerApprovalStatus, deleteSpeakerDetail as deleteSpeakerDetailReq } from '@/admin/pages/speaker/feature/speakerRequest';
-import { IAdminSpeakerBasicInfoSearch, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerDetailDeleteRequest } from '@/admin/model/speaker/adminSpeakerModel';
+import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, putAdminSpeakerApprovalStatus, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById } from '@/admin/pages/speaker/feature/speakerRequest';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
+import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from '@/admin/model/speaker/adminSpeakerModel';
 
 function useSpeakerApi() {
       const dispatch = useAppDispatch();
 
-      const getSpeakerBasicInfo = (searchDetail: IAdminSpeakerBasicInfoSearch) => {
+      const getSpeakerBasicInfo = (searchDetail: ISpeakerBasicSearch) => {
             dispatch(getSpeakerBasicInfoReq(searchDetail))
       }
 
 
-      const getAdminSpeakerFullDetailedInfo = (speakerDetail: IAdminSpeakerFullDetailedInfoById) => {
+      const getSpeakerDetailedInfo = (speakerDetail: ISpeakerByIdSearch) => {
             loadingAlertWithMessage({ title: "Loading", text: "Please wait while getting data" });
 
-            dispatch(getAdminSpeakerFullDetailedInfoReq(speakerDetail))
+            dispatch(getSpeakerDetailedById(speakerDetail))
                   .unwrap()
                   .catch((error) => {
                         errorToastMessage(error.detail);
@@ -60,7 +60,7 @@ function useSpeakerApi() {
       }
 
 
-      const deleteSpeakerDetail = async (deletingDetail: ISpeakerDetailDeleteRequest) => {
+      const deleteSpeakerDetail = async (deletingDetail: ISpeakerDeleteRequest) => {
             await showSuccessfulConfirmation({ buttonText: "Delete", showCancelButton: true }).then(() => {
                   loadingAlertWithMessage({ title: "Deleting", text: "Please wait while deleting" });
 
@@ -79,7 +79,7 @@ function useSpeakerApi() {
             })
       }
 
-      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getAdminSpeakerFullDetailedInfo, updateSpeakerApprovalStatus, deleteSpeakerDetail } as const;
+      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getSpeakerDetailedInfo, updateSpeakerApprovalStatus, deleteSpeakerDetail } as const;
 }
 
 export default useSpeakerApi

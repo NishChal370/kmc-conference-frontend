@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { speakerSliceAction, speakerState } from "../feature/speakerSlice";
-import { ISpeakerBasicInfo } from "@/models/speaker/SpeakerModel";
 import AdminSpeakerViewModal from "../components/adminSpeakerViewModal/AdminSpeakerViewModal";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
+import { speakerDetailedSliceState, speakerSliceAction } from "../feature/speakerSlice";
 import { Status } from "@/enum/commonEnum";
+import { ISpeakerBasicModel } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IAdminSpeakerViewModalContainer {
-      selectedSpeakerId: ISpeakerBasicInfo["id"];
+      selectedSpeakerId: ISpeakerBasicModel["id"];
       closeModalHandler: () => void;
 }
 
@@ -17,19 +17,19 @@ function AdminSpeakerViewModalContainer({
 }: IAdminSpeakerViewModalContainer) {
       const dispatch = useAppDispatch();
 
-      const { status, data } = useAppSelector(speakerState).speakerFullDetailedInfo;
+      const { status, data } = useAppSelector(speakerDetailedSliceState);
 
-      const { getAdminSpeakerFullDetailedInfo } = useSpeakerApi();
+      const { getSpeakerDetailedInfo } = useSpeakerApi();
 
       const fetchData = () => {
-            getAdminSpeakerFullDetailedInfo({ speakerId: selectedSpeakerId });
+            getSpeakerDetailedInfo({ id: selectedSpeakerId });
       };
 
       useEffect(() => {
             fetchData();
 
             return () => {
-                  dispatch(speakerSliceAction.resetSpeakerFullDetailedInfoSlice());
+                  dispatch(speakerSliceAction.resetSpeakerDetailedInfoSlice());
             };
       }, []);
 

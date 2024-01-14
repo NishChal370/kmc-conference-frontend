@@ -1,30 +1,29 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
-import { IAdminSpeakerPutRequest, IAdminSpeakerFullDetailedInfoById, IAdminSpeakerBasicInfoSearch, IAdminSpeakerStatusChangeReq, ISpeakerDetailDeleteRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/adminSpeakerModel";
 
 export const adminSpeakerApi = {
-      getBasicInfo: (searchDetail: IAdminSpeakerBasicInfoSearch) => {
+      getBasicInfo: (searchDetail: ISpeakerBasicSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
                   url: `Speaker?pageNumber=${searchDetail.pageNumber}`,
             };
 
-
             return AXIOS.request(options);
       },
 
 
-      getSpeakerFullDetailedInfoById: ({ speakerId }: IAdminSpeakerFullDetailedInfoById) => {
+      getSpeakerDetailedById: ({ id }: ISpeakerByIdSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Speaker/${speakerId}`,
+                  url: `Speaker/${id}`,
             };
 
             return AXIOS.request(options);
       },
 
-      putSpeakerDetail: (speakerUpdateDetail: IAdminSpeakerPutRequest) => {
+      putSpeakerDetailed: (speakerUpdateDetail: IAdminSpeakerPutRequest) => {
             const options: AxiosRequestConfig = {
                   method: "PUT",
                   url: `Speaker`,
@@ -47,7 +46,7 @@ export const adminSpeakerApi = {
             return AXIOS.request(options);
       },
 
-      deleteSpeakerDetail: (deletingDetail: ISpeakerDetailDeleteRequest) => {
+      deleteSpeakerDetail: (deletingDetail: ISpeakerDeleteRequest) => {
             const options: AxiosRequestConfig = {
                   method: "DELETE",
                   url: `Speaker`,

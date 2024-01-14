@@ -37,9 +37,10 @@ function FileDragDropContainer({ label, value, onChangeHandler }: IFileDragDropC
             setAndRemoveErrorMessage(error);
 
             if (!error) {
+                  // old file will be remove while adding new file.
                   onChangeHandler({
-                        oldFiles: value.oldFiles,
-                        newFiles: [...(value.newFiles || []), ...newFiles],
+                        oldFiles: [],
+                        newFiles: [...newFiles],
                   });
             }
       };
@@ -48,7 +49,7 @@ function FileDragDropContainer({ label, value, onChangeHandler }: IFileDragDropC
             setErrorMessage(undefined);
 
             onChangeHandler({
-                  oldFiles: value.oldFiles,
+                  oldFiles: [],
                   newFiles: (value.newFiles || []).filter((_, index) => index !== removingIndex),
             });
       };
@@ -58,7 +59,7 @@ function FileDragDropContainer({ label, value, onChangeHandler }: IFileDragDropC
 
             onChangeHandler({
                   oldFiles: (value.oldFiles || []).filter((_, index) => index !== removingIndex),
-                  newFiles: value.newFiles,
+                  newFiles: [],
             });
       };
 
@@ -69,7 +70,6 @@ function FileDragDropContainer({ label, value, onChangeHandler }: IFileDragDropC
             clearTimeout(timeOut);
 
             timeOut = setTimeout(() => {
-                  console.log("Called remove");
                   setErrorMessage(undefined);
             }, 2000);
       };
