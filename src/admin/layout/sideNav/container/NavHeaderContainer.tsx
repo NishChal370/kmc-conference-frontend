@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/app/hooks";
 import NavHeader from "../components/NavHeader";
 import { sideNavViewHandler } from "../feature/adminSideNavSlice";
-import { ADMIN_DASHBOARD_PATH } from "@/admin/constants/routePath";
+import { ADMIN_BASE_PATH, ADMIN_DASHBOARD_PATH } from "@/admin/constants/routePath";
 import { ISideNavDetail } from "@/admin/model/sideNav/sideNavModel";
 
 interface NavHeaderContainer {
@@ -43,7 +43,7 @@ function NavHeaderContainer({
 
       const isActive = () => {
             if (isSubNav) {
-                  return pathname === pathName;
+                  return pathname.replace(`/${ADMIN_BASE_PATH}/`, "") === pathName;
             }
 
             const firstPathSegment = pathname.split("/")[2];

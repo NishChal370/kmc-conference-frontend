@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Outlet, RouteObject } from "react-router-dom";
+import { Navigate, Outlet, RouteObject } from "react-router-dom";
 import AdminApp from "@/admin/AdminApp";
 import Loading from "@/shared/loading/Loading";
 import { AdminSchedule, AdminSpeakers, Days, AdminDayTheme } from "./adminIndex";
@@ -7,9 +7,9 @@ import { PrivateRoute } from "@/protectedRoute";
 import {
       ADMIN_BASE_PATH,
       ADMIN_SCHEDULE_PATH,
-      ADMIN_SPEAKERS_PATH,
       ADMIN_DAYS_PATH,
       ADMIN_DAY_THEME_PATH,
+      ADMIN_USER_PATH,
 } from "@/admin/constants/routePath";
 import { CheckDynamicRouteType } from "@/helper/validateRoute";
 
@@ -62,11 +62,15 @@ export const AdminRouter: RouteObject = {
                         },
 
                         {
-                              path: ADMIN_SPEAKERS_PATH.speaker.basic,
+                              path: ADMIN_USER_PATH.base.basic,
                               element: <Outlet />,
                               children: [
                                     {
                                           index: true,
+                                          element: <Navigate to="speaker" replace />,
+                                    },
+                                    {
+                                          path: ADMIN_USER_PATH.speaker.basic,
                                           element: <AdminSpeakers />,
                                     },
                               ],
