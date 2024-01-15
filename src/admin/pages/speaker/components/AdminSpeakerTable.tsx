@@ -58,7 +58,7 @@ function AdminSpeakerTable({
                                                                   }),
                                                             },
                                                             {
-                                                                  title: "Update",
+                                                                  title: "Update Detail",
                                                                   type: "Update",
                                                                   icon: <AppIcon name="update" />,
                                                                   clickHandler: openEditModalHandler({

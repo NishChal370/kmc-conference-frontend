@@ -1,5 +1,5 @@
 
-import { ADMIN_DASHBOARD_PATH, ADMIN_DAYS_PATH, ADMIN_DAY_THEME_PATH, ADMIN_SCHEDULE_PATH, ADMIN_USER_PATH } from "@/admin/constants/routePath";
+import { ADMIN_DASHBOARD_PATH, ADMIN_DAYS_PATH, ADMIN_DAY_THEME_PATH, ADMIN_SCHEDULE_PATH, ADMIN_APPLICANT_PATH } from "@/admin/constants/routePath";
 import { ISideNavDetail } from "@/admin/model/sideNav/sideNavModel";
 import getUniqueId from "@/utils/uniqueId/getUniqueId"
 
@@ -34,15 +34,21 @@ export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [
 
       {
             id: getUniqueId(),
-            title: "User",
+            title: "Applicants",
             Icon: "dashboard",
-            pathName: ADMIN_USER_PATH.base.basic,
+            pathName: ADMIN_APPLICANT_PATH.base.basic,
             subNav: [
                   {
                         id: getUniqueId(),
                         title: "Speaker",
                         Icon: "dashboard",
-                        pathName: ADMIN_USER_PATH.speaker.full,
+                        pathName: ADMIN_APPLICANT_PATH.speaker.full,
+                  },
+                  {
+                        id: getUniqueId(),
+                        title: "Call For Paper",
+                        Icon: "dashboard",
+                        pathName: ADMIN_APPLICANT_PATH.callForPaper.full,
                   },
             ]
       },

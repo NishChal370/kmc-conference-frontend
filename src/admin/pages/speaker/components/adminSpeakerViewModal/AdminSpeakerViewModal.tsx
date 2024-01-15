@@ -22,7 +22,7 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                         <SpeakerProfileSection
                               image={speakerDetail.phone}
                               name={speakerDetail.name}
-                              designation="Different publication types"
+                              designation={speakerDetail.jobTitle}
                         />
 
                         <main
@@ -41,7 +41,7 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                           <span
                                                 className="sm:col-span-2 grid grid-cols-1 gap-10 w-full
                                                       sm:grid-cols-2
-                                                      lg:grid-cols-3 sm:px-2
+                                                      lg:grid-cols-3
                                                 "
                                           >
                                                 <ModalText title="First Name" data={speakerDetail.name} />

@@ -4,7 +4,6 @@ function convertObjectToFormData(obj: object) {
 
       Object.entries(obj).forEach(([key, value]) => {
 
-            console.log(value, typeof value)
             if (value instanceof File) {
                   if (value) {
 

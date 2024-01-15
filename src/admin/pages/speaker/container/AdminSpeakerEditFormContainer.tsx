@@ -43,21 +43,14 @@ function AdminSpeakerEditFormContainer({
             const publications = speakerUpdatedDetail.publications.map(({ value }) => value);
             const referenceContacts = speakerUpdatedDetail.referenceContacts.map(({ phone }) => phone);
 
-            console.log(speakerUpdatedDetail.photo.newFiles![0]);
             const updatedSpeaker: IAdminSpeakerPutRequest = {
                   speakerId: speakerUpdatedDetail.speakerId,
-                  name: speakerUpdatedDetail.name,
-                  title: speakerUpdatedDetail.title,
                   photo: speakerUpdatedDetail.photo.newFiles?.length
                         ? speakerUpdatedDetail.photo.newFiles[0]
                         : null,
                   oldPhoto: speakerUpdatedDetail.photo.oldFiles?.length
                         ? speakerUpdatedDetail.photo.oldFiles[0].fileName
                         : undefined,
-                  affiliation: speakerUpdatedDetail.affiliation,
-                  jobTitle: speakerUpdatedDetail.jobTitle,
-                  email: speakerUpdatedDetail.email,
-                  phone: speakerUpdatedDetail.phone,
                   bio: speakerUpdatedDetail.bio,
                   linkedInProfile: speakerUpdatedDetail.linkedInProfile || undefined, // un
                   twitterHandle: speakerUpdatedDetail.twitterHandle || undefined, //un
@@ -85,9 +78,12 @@ function AdminSpeakerEditFormContainer({
                   referenceContacts: referenceContacts.filter(Boolean).length ? referenceContacts : null,
             };
 
-            console.log(updatedSpeaker, speakerUpdatedDetail.photo.newFiles);
             updateAdminSpeakerFullDetail(updatedSpeaker).then(closeModalHandler);
       });
+
+      const formResetHandler = () => {
+            reset();
+      };
 
       const fetchData = () => {
             getSpeakerDetailedInfo({ id: selectedSpeakerId });
@@ -98,16 +94,10 @@ function AdminSpeakerEditFormContainer({
 
             const speakerEditingDetail: IAdminSpeakerForm = {
                   speakerId: data.id,
-                  name: data.name,
-                  title: data.title,
                   photo: {
                         newFiles: [],
                         oldFiles: data.photo ? [data.photo] : undefined,
                   },
-                  affiliation: data.affiliation,
-                  jobTitle: data.jobTitle,
-                  email: data.email,
-                  phone: data.phone,
                   bio: data.bio,
                   linkedInProfile: data.linkedInProfile,
                   twitterHandle: data.twitterHandle,
@@ -165,9 +155,7 @@ function AdminSpeakerEditFormContainer({
                         modalType="Edit"
                         speakerEditForm={speakerEditForm}
                         formSubmitHandler={formSubmitHandler}
-                        formResetHandler={() => {
-                              reset();
-                        }}
+                        formResetHandler={formResetHandler}
                         closeModalHandler={closeModalHandler}
                   />
             )

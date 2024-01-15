@@ -1,6 +1,5 @@
 import { BaseSyntheticEvent } from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
-import PhoneInput from "@/shared/input/PhoneInput";
 import ToggleButton from "@/shared/button/ToggleButton";
 import RichTextEditor from "@/shared/input/RichTextEditor";
 import SecondaryInput from "@/shared/input/SecondaryInput";
@@ -43,113 +42,15 @@ function AdminAddOrEditSpeakerForm({
                               <div
                                     className="flex flex-col gap-20 justify-center w-full
                                           [&>section]:flex [&>section]:flex-col  [&>section]:gap-10
-                                          [&>section>h5]:text-md [&>section>h5]:font-semibold [&>section>h5]:bg-primary/5 [&>section>h5]:text-primary [&>section>h5]:py-2 [&>section>h5]:px-4 [&>section>h5]:rounded-sm
                                           [&>section>span]:grid [&>section>span]:sm:grid-cols-2 [&>section>span]:gap-x-10  [&>section>span]:gap-y-12
                                     "
                               >
                                     <section>
-                                          <ModalSectionHeader title="Profile Information" />
-
                                           <ImageSelectInput name="photo" control={control} />
 
-                                          <span>
-                                                <SecondaryInput
-                                                      isRequired
-                                                      label="First Name"
-                                                      errorMessage={errors.name?.message}
-                                                >
-                                                      {register("name", {
-                                                            required: {
-                                                                  value: true,
-                                                                  message: INPUT_ERROR_MESSAGE.empty,
-                                                            },
-                                                      })}
-                                                </SecondaryInput>
-
-                                                <SecondaryInput
-                                                      label="Middle Name"
-                                                      // errorMessage={errors.middleName?.message}
-                                                >
-                                                      {/* {register("middleName")} */}
-                                                </SecondaryInput>
-
-                                                <SecondaryInput
-                                                      isRequired
-                                                      label="Last Name"
-                                                      // errorMessage={errors.lastName?.message}
-                                                >
-                                                      {/* {register("lastName", {
-                                                            required: {
-                                                                  value: true,
-                                                                  message: INPUT_ERROR_MESSAGE.empty,
-                                                            },
-                                                      })} */}
-                                                </SecondaryInput>
-
-                                                <PhoneInput
-                                                      isRequired
-                                                      name="phone"
-                                                      control={control}
-                                                      variant="secondary"
-                                                />
-
-                                                <SecondaryInput
-                                                      isRequired
-                                                      label="Email"
-                                                      errorMessage={errors.email?.message}
-                                                >
-                                                      {register("email", {
-                                                            required: {
-                                                                  value: true,
-                                                                  message: INPUT_ERROR_MESSAGE.empty,
-                                                            },
-                                                      })}
-                                                </SecondaryInput>
-                                          </span>
-                                    </section>
-                                    <section>
                                           <ModalSectionHeader title="Professional Information" />
 
                                           <span>
-                                                <SecondaryInput
-                                                      isRequired
-                                                      label="Title"
-                                                      errorMessage={errors.title?.message}
-                                                >
-                                                      {register("title", {
-                                                            required: {
-                                                                  value: true,
-                                                                  message: INPUT_ERROR_MESSAGE.empty,
-                                                            },
-                                                      })}
-                                                </SecondaryInput>
-
-                                                <SecondaryInput
-                                                      isRequired
-                                                      label="Affiliation"
-                                                      errorMessage={errors.affiliation?.message}
-                                                >
-                                                      {register("affiliation", {
-                                                            required: {
-                                                                  value: true,
-                                                                  message: INPUT_ERROR_MESSAGE.empty,
-                                                            },
-                                                      })}
-                                                </SecondaryInput>
-
-                                                <SecondaryInput
-                                                      isRequired
-                                                      label="Designation"
-                                                      errorMessage={errors.jobTitle?.message}
-                                                >
-                                                      {register("jobTitle", {
-                                                            required: {
-                                                                  value: true,
-                                                                  message: INPUT_ERROR_MESSAGE.empty,
-                                                            },
-                                                      })}
-                                                </SecondaryInput>
-
                                                 <SecondaryInput
                                                       label="LinkedIn"
                                                       errorMessage={errors.linkedInProfile?.message}

@@ -2,14 +2,14 @@ import { Suspense } from "react";
 import { Navigate, Outlet, RouteObject } from "react-router-dom";
 import AdminApp from "@/admin/AdminApp";
 import Loading from "@/shared/loading/Loading";
-import { AdminSchedule, AdminSpeakers, Days, AdminDayTheme } from "./adminIndex";
+import { AdminSchedule, AdminSpeakers, Days, AdminDayTheme, AdminCallForPaper } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
 import {
       ADMIN_BASE_PATH,
       ADMIN_SCHEDULE_PATH,
       ADMIN_DAYS_PATH,
       ADMIN_DAY_THEME_PATH,
-      ADMIN_USER_PATH,
+      ADMIN_APPLICANT_PATH,
 } from "@/admin/constants/routePath";
 import { CheckDynamicRouteType } from "@/helper/validateRoute";
 
@@ -62,16 +62,22 @@ export const AdminRouter: RouteObject = {
                         },
 
                         {
-                              path: ADMIN_USER_PATH.base.basic,
+                              path: ADMIN_APPLICANT_PATH.base.basic,
                               element: <Outlet />,
                               children: [
                                     {
                                           index: true,
-                                          element: <Navigate to="speaker" replace />,
+                                          element: (
+                                                <Navigate to={ADMIN_APPLICANT_PATH.speaker.basic} replace />
+                                          ),
                                     },
                                     {
-                                          path: ADMIN_USER_PATH.speaker.basic,
+                                          path: ADMIN_APPLICANT_PATH.speaker.basic,
                                           element: <AdminSpeakers />,
+                                    },
+                                    {
+                                          path: ADMIN_APPLICANT_PATH.callForPaper.basic,
+                                          element: <AdminCallForPaper />,
                                     },
                               ],
                         },

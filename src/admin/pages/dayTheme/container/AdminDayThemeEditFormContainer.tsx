@@ -23,7 +23,6 @@ function AdminDayThemeEditFormContainer({
       const dayThemeAddForm = useAppForm<IDayThemeAddOrEditForm>();
       const { handleSubmit, reset } = dayThemeAddForm;
 
-      console.log(selectedDayTheme);
       const formSubmitHandler = handleSubmit((dayTheme) => {
             const newDayTheme: IDayThemePutRequest = {
                   id: selectedDayTheme.id,

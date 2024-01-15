@@ -22,36 +22,7 @@ export const getDayThemesMin = createAppAsyncThunk<IDayThemeMinResponse>(
             try {
                   const response = await adminDayThemeApi.getDayThemesMin();
 
-                  // return response.data;
-                  return [ // TODO: Remove this 
-                        {
-                              id: 1,
-                              title: "Digital Transformation",
-                              day: {
-                                    dayId: 2,
-                                    date: "2024-01-13",
-                              },
-
-                        },
-                        {
-                              id: 3,
-                              title: "this is theme two",
-                              day: {
-                                    dayId: 2,
-                                    date: "2024-01-13"
-                              },
-
-                        },
-                        {
-                              id: 4,
-                              title: "this is theme two",
-                              day: {
-                                    dayId: 2,
-                                    date: "2024-01-14"
-                              },
-
-                        }
-                  ]
+                  return response.data;
             } catch (error: any) {
                   return rejectWithValue(error.response.data);
             }

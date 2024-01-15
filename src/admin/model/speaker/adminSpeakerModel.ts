@@ -35,7 +35,6 @@ export interface ISpeakerDetailModel extends ISpeakerBasicModel {
       sessionProposal: IAttachment | null;
       referenceContacts: string[] | null;
       agreedToDates: boolean;
-      agreedTandC: boolean;
 }
 
 
@@ -66,14 +65,8 @@ export interface ISpeakerByIdSearch {
 
 
 export interface IAdminSpeakerPostRequest {
-      name: string,
-      title: string;
-      photo: File | null,
-      affiliation: string,
-      jobTitle: string,
-      email: string;
-      phone: string;
       bio: string;
+      photo: File | null,
       linkedInProfile?: string;
       twitterHandle?: string;
       professionalWebsite?: string;
@@ -98,13 +91,6 @@ export interface IAdminSpeakerPostRequest {
 
 export interface IAdminSpeakerPutRequest {
       speakerId: ISpeakerDetailModel["id"];
-      name: string,
-      title: string;
-      photo: File | null,
-      affiliation: string,
-      jobTitle: string,
-      email: string;
-      phone: string;
       bio: string;
       linkedInProfile?: string;
       twitterHandle?: string;
@@ -119,9 +105,10 @@ export interface IAdminSpeakerPutRequest {
       willingToTravel: boolean;
       avRequirements?: string;
       accommodationNeeds?: string;
-      sessionProposal: File | null;
       referenceContacts: string[] | null;
+      photo: File | null,
       oldPhoto?: string;
+      sessionProposal: File | null;
       oldSessionProposal?: string;
 }
 
@@ -135,13 +122,7 @@ export interface ISpeakerDeleteRequest {
 
 export interface IAdminSpeakerForm {
       speakerId: ISpeakerDetailModel["id"];
-      name: string,
       photo: IFilUpdateDetail,
-      jobTitle: string,
-      affiliation: string,
-      title: string;
-      email: string;
-      phone: string;
       bio: string;
       linkedInProfile?: string;
       twitterHandle?: string;
