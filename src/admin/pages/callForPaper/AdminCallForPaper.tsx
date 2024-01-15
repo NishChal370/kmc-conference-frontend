@@ -1,18 +1,19 @@
 import Header from "@/admin/shared/header/Header";
 import AdminCallForPaperTableContainer from "./container/AdminCallForPaperTableContainer";
 import AdminCallForPaperPaginationContainer from "./container/AdminCallForPaperPaginationContainer";
+import AdminCallForPaperStatusUpdateModalContainer from "./container/AdminCallForPaperStatusUpdateModalContainer";
+import AdminCallForPaperViewModalContainer from "./container/AdminCallForPaperViewModalContainer";
 import {
       IAdminCallForPaperStatusChangeModal,
       IAdminCallForPaperViewOrEditModal,
 } from "@/admin/model/callForPaper/callForPaperModel";
+import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 import { IModal } from "@/admin/model/modal/useModalModel";
 import useModal from "@/admin/hooks/modal/useModal";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
-import AdminCallForPaperStatusUpdateModalContainer from "./container/AdminCallForPaperStatusUpdateModalContainer";
 
 function AdminCallForPaper() {
-      const { modalState, openEditModal, openViewModal, closeModal } =
-            useModal<IModal<IAdminCallForPaperViewOrEditModal>>();
+      const { modalState, openViewModal, closeModal } = useModal<IModal<IAdminCallForPaperViewOrEditModal>>();
 
       const [statusChangeModal, openStatusChangeModal, closeStatusChangeModal] =
             useExtraModal<IAdminCallForPaperStatusChangeModal>();
@@ -29,6 +30,13 @@ function AdminCallForPaper() {
 
                         <AdminCallForPaperPaginationContainer />
                   </section>
+
+                  {[FieldStatus.View].includes(modalState.modalStatus) && modalState.modalData?.view?.id && (
+                        <AdminCallForPaperViewModalContainer
+                              selectedCallForPaperId={modalState.modalData?.view?.id}
+                              closeModalHandler={closeModal}
+                        />
+                  )}
 
                   {statusChangeModal?.isOpen && statusChangeModal?.data?.id && (
                         <AdminCallForPaperStatusUpdateModalContainer

@@ -196,7 +196,7 @@ function AdminCallForPaperAddOrEditForm({
                                                 control={control}
                                                 render={({ field }) => (
                                                       <FileDragDropContainer
-                                                            label="Session Proposal"
+                                                            label="Full Paper / Extended Abstract"
                                                             value={field.value}
                                                             onChangeHandler={field.onChange}
                                                       />

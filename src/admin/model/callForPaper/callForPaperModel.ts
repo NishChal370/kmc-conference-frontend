@@ -6,6 +6,8 @@ import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum
 export interface ICallForPaperBasicModel {
       id: number,
       name: string,
+      email: string,
+      phone: string,
       jobTitle?: string,
       affiliation?: string,
       proposedPaperSessionTitle: string,
@@ -17,7 +19,6 @@ export interface ICallForPaperDetailModel extends ICallForPaperBasicModel {
       linkedInProfile?: string;
       twitterHandler?: string;
       professionalWebsite?: string;
-      proposedPaperSessionTitle: string;
       abstractSummary: string;
       keywords: string[] | null;
       primaryFieldCategory: string;
@@ -60,15 +61,61 @@ export interface ICallForPaperByIdSearch {
 
 
 
-export interface IAdminCallForPaperPostRequest extends Omit<ICallForPaperDetailModel, "fullPaperORExtendedAbstract"> {
+export interface IAdminCallForPaperPostRequest {
+      briefBiography: string;
+      linkedInProfile?: string;
+      twitterHandler?: string;
+      professionalWebsite?: string;
+      proposedPaperSessionTitle: string;
+      abstractSummary: string;
+      keywords: string[] | null;
+      primaryFieldCategory: string;
+      researchMethodology: string;
+      keyObjectives: string[] | null;
+      contributions: string[] | null;
+      significanceRelevance?: string;
+      preferredPresentationFormat: string;
+      audioVisualRequirements: string;
+      previousExperience: string[] | null;
+      listOfConferences: string[] | null;
+      referencesOrCitations: string[] | null;
+      availabilityDaysTimes?: string; // no in use
+      willParticipateInPanel: boolean;
+      willParticipateInWorkshop: boolean;
+      specialAccommodationNeeds: string;
+      additionalRequirements: string;
+      confirmPresent: boolean;
+      acceptTandC: boolean;
       fullPaperORExtendedAbstract?: File | null;
 }
 
 
 
 
-export interface IAdminCallForPaperPutRequest extends Omit<ICallForPaperDetailModel, "fullPaperORExtendedAbstract" | "confirmPresent" | "acceptTandC"> {
+export interface IAdminCallForPaperPutRequest {
       callId: ICallForPaperBasicModel["id"];
+      briefBiography: string;
+      linkedInProfile?: string;
+      twitterHandler?: string;
+      professionalWebsite?: string;
+      proposedPaperSessionTitle: string;
+      abstractSummary: string;
+      keywords: string[] | null;
+      primaryFieldCategory: string;
+      researchMethodology: string;
+      keyObjectives: string[] | null;
+      contributions: string[] | null;
+      significanceRelevance?: string;
+      preferredPresentationFormat: string;
+      audioVisualRequirements: string;
+      previousExperience: string[] | null;
+      listOfConferences: string[] | null;
+      referencesOrCitations: string[] | null;
+      availabilityDaysTimes?: string; // no in use
+      willParticipateInPanel: boolean;
+      willParticipateInWorkshop: boolean;
+      specialAccommodationNeeds: string;
+      additionalRequirements: string;
       fullPaperORExtendedAbstract?: File | null;
       oldFullPaperOrExtendedAbstract?: IAttachment["fileName"]
 }

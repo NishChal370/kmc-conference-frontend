@@ -38,24 +38,14 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                                 sm:grid-cols-2 sm:px-2
                                           "
                                     >
-                                          <span
-                                                className="sm:col-span-2 grid grid-cols-1 gap-10 w-full
-                                                      sm:grid-cols-2
-                                                      lg:grid-cols-3
-                                                "
-                                          >
-                                                <ModalText title="First Name" data={speakerDetail.name} />
-
-                                                <ModalText title="Middle Name" data={speakerDetail.name} />
-
-                                                <ModalText title="Last Name" data={speakerDetail.name} />
-                                          </span>
+                                          <ModalText title="Speaker Name" data={speakerDetail.name} />
 
                                           <ModalText title="Email Address" data={speakerDetail.email} />
 
                                           <ModalText title="Phone Number" data={speakerDetail.phone} />
                                     </article>
                               </section>
+
                               <section className="flex flex-col gap-6 w-full">
                                     <ModalSectionHeader title="Professional Information" />
 
