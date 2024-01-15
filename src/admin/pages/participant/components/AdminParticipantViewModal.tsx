@@ -1,5 +1,6 @@
 import { IParticipantModel } from "@/admin/model/participant/participantModel";
 import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
+import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 
 interface IAdminParticipantViewModal {
       participant: IParticipantModel;
@@ -56,7 +57,7 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
                         </section>
 
                         <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Conference Specifics" />
+                              <ModalSectionHeader title="Emergency Contact" />
 
                               <article
                                     className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
@@ -64,22 +65,18 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
                                     "
                               >
                                     <ModalText
-                                          title="Registration Type"
-                                          data={participant.registrationType}
+                                          title="Emergency Contact Name"
+                                          data={participant.emergencyContactName}
                                     />
-                                    <ModalText title="Session Choices" data={"participant.sessionChoices"} />
 
                                     <ModalText
-                                          title="Track Preferences"
-                                          data={participant.trackPreferences}
+                                          title="Relationship With Emergency Contact"
+                                          data={participant.relationshipWithEmergencyContact}
                                     />
-                                    {/* <ModalText
-                                          title="Registration Fee Payment Details"
-                                          data={participant.registrationFeePaymentDetails}
-                                    /> */}
+
                                     <ModalText
-                                          title="Special Requirements"
-                                          data={participant.specialRequirements}
+                                          title="Emergency Contact Number"
+                                          data={participant.emergencyContactName}
                                     />
                               </article>
                         </section>
@@ -105,6 +102,39 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
                         </section>
 
                         <section className="flex flex-col gap-6 w-full">
+                              <ModalSectionHeader title="Session Specifics" />
+
+                              <article
+                                    className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
+                                          sm:grid-cols-2 sm:px-2
+                                    "
+                              >
+                                    <ModalText
+                                          title="Registration Type"
+                                          data={participant.registrationType}
+                                    />
+
+                                    <ModalText
+                                          title="Session Choices"
+                                          data={participant.sessionChoices.map(({ title }) => title)}
+                                    />
+
+                                    <ModalText
+                                          title="Track Preferences"
+                                          data={participant.trackPreferences}
+                                    />
+                                    {/* <ModalText
+                                          title="Registration Fee Payment Details"
+                                          data={participant.registrationFeePaymentDetails}
+                                    /> */}
+                                    <ModalText
+                                          title="Special Requirements"
+                                          data={participant.specialRequirements}
+                                    />
+                              </article>
+                        </section>
+
+                        <section className="flex flex-col gap-6 w-full">
                               <ModalSectionHeader title="Accommodation and Travel" />
 
                               <article
@@ -122,38 +152,19 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
                                           data={participant.roommatePreferences}
                                     />
 
-                                    <ModalText title="Arrival Date" data={participant.arrivalDate} />
+                                    <ModalText
+                                          title="Arrival Date"
+                                          data={changeDateFormat(participant.arrivalDate)}
+                                    />
 
-                                    <ModalText title="Departure Date" data={participant.departureDate} />
+                                    <ModalText
+                                          title="Departure Date"
+                                          data={changeDateFormat(participant.departureDate)}
+                                    />
 
                                     <ModalText
                                           title="Mode of Transportation"
                                           data={participant.modeOfTransportation}
-                                    />
-                              </article>
-                        </section>
-
-                        <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Emergency Contact" />
-
-                              <article
-                                    className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
-                                          sm:grid-cols-2 sm:px-2
-                                    "
-                              >
-                                    <ModalText
-                                          title="Emergency Contact Name"
-                                          data={participant.emergencyContactName}
-                                    />
-
-                                    <ModalText
-                                          title="Relationship With Emergency Contact"
-                                          data={participant.relationshipWithEmergencyContact}
-                                    />
-
-                                    <ModalText
-                                          title="Emergency Contact Number"
-                                          data={participant.emergencyContactName}
                                     />
                               </article>
                         </section>

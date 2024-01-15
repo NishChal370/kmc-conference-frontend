@@ -39,5 +39,5 @@ export type IScheduleForm = ISchedulePostRequest;
 
 export interface IScheduleChoice {
       sessionId: IScheduleModel["id"];
-      sessionTitle: IScheduleModel["title"]
+      title: IScheduleModel["title"]
 }
