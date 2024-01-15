@@ -9,6 +9,7 @@ import {
       AdminDayTheme,
       AdminCallForPaper,
       AdminParticipant,
+      AdminUser,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
 import {
@@ -19,6 +20,7 @@ import {
       ADMIN_APPLICANT_PATH,
 } from "@/admin/constants/routePath";
 import { CheckDynamicRouteType } from "@/helper/validateRoute";
+import { ADMIN_ADMINISTRATION_PATH } from "../constants/routePath/adminAdministrationPath";
 
 export const AdminRouter: RouteObject = {
       path: ADMIN_BASE_PATH,
@@ -89,6 +91,23 @@ export const AdminRouter: RouteObject = {
                                     {
                                           path: ADMIN_APPLICANT_PATH.participant.basic,
                                           element: <AdminParticipant />,
+                                    },
+                              ],
+                        },
+
+                        {
+                              path: ADMIN_ADMINISTRATION_PATH.base.basic,
+                              element: <Outlet />,
+                              children: [
+                                    {
+                                          index: true,
+                                          element: (
+                                                <Navigate to={ADMIN_ADMINISTRATION_PATH.user.basic} replace />
+                                          ),
+                                    },
+                                    {
+                                          path: ADMIN_ADMINISTRATION_PATH.user.basic,
+                                          element: <AdminUser />,
                                     },
                               ],
                         },

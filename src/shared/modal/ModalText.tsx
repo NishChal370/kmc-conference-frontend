@@ -24,7 +24,7 @@ function ModalText({ title, data, containerClassName = "", dataClassName = "" }:
 
                   {!Array.isArray(data) && (
                         <p className={"py-2 " + dataClassName}>
-                              {typeof data === "number" ? data ?? "---" : data || "---"}
+                              {typeof data === "number" ? data ?? "N/A" : data || "N/A"}
                         </p>
                   )}
             </div>

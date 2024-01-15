@@ -29,7 +29,7 @@ interface ITableMenuButton {
 export function TableMenuButton({ children, message, disabled = false }: ITableMenuButton) {
       return (
             <HeadlessMenu.Button
-                  className="relative flex gap-2 items-center text-start text-primary"
+                  className="flex gap-2 items-center text-start text-primary"
                   title={message}
                   disabled={disabled}
             >

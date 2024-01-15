@@ -43,7 +43,7 @@ function NavHeaderContainer({
 
       const isActive = () => {
             if (isSubNav) {
-                  return pathname.replace(`/${ADMIN_BASE_PATH}/`, "") === pathName;
+                  return pathname === pathName;
             }
 
             const firstPathSegment = pathname.split("/")[2];

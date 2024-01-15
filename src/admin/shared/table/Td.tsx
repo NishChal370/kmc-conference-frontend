@@ -16,7 +16,7 @@ interface ITd {
 function Td({ dataName, id, children, className, type = "string" }: ITd) {
       return (
             <td data-name={dataName} {...{ id, className }}>
-                  {type === "string" ? children || "---" : children}
+                  {type === "string" ? children || "N/A" : children}
             </td>
       );
 }

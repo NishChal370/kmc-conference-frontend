@@ -1,5 +1,6 @@
 
 import { ADMIN_DASHBOARD_PATH, ADMIN_DAYS_PATH, ADMIN_DAY_THEME_PATH, ADMIN_SCHEDULE_PATH, ADMIN_APPLICANT_PATH } from "@/admin/constants/routePath";
+import { ADMIN_ADMINISTRATION_PATH } from "@/admin/constants/routePath/adminAdministrationPath";
 import { ISideNavDetail } from "@/admin/model/sideNav/sideNavModel";
 import getUniqueId from "@/utils/uniqueId/getUniqueId"
 
@@ -56,6 +57,21 @@ export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [
                         title: "Participant",
                         Icon: "dashboard",
                         pathName: ADMIN_APPLICANT_PATH.participant.full,
+                  },
+            ]
+      },
+
+      {
+            id: getUniqueId(),
+            title: "Administration",
+            Icon: "dashboard",
+            pathName: ADMIN_ADMINISTRATION_PATH.base.basic,
+            subNav: [
+                  {
+                        id: getUniqueId(),
+                        title: "User",
+                        Icon: "dashboard",
+                        pathName: ADMIN_ADMINISTRATION_PATH.user.full,
                   },
             ]
       },

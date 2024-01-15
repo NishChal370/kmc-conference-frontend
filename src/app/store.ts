@@ -18,7 +18,7 @@ import scheduleTopicReducer from "@/admin/pages/scheduleTopic/feature/scheduleTo
 import speakerReducer from "@/admin/pages/speaker/feature/speakerSlice";
 import callForPaperReducer from "@/admin/pages/callForPaper/feature/callForPaperSlice";
 import participantReducer from "@/admin/pages/participant/feature/participantSlice";
-
+import userReducer from "@/admin/pages/user/feature/userSlice";
 
 
 export const store = configureStore({
@@ -38,6 +38,7 @@ export const store = configureStore({
             speaker: speakerReducer,
             callForPaper: callForPaperReducer,
             participant: participantReducer,
+            user: userReducer,
       },
 });
 
