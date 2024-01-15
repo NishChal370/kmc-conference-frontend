@@ -30,7 +30,7 @@ function ModalSanitizedText({ title, htmlContent, containerClassName }: IModalSa
                         theme="snow"
                         readOnly
                         className="rich-text--reader w-full h-fit !rounded-md"
-                        value={value}
+                        value={value || "---"}
                   />
             </div>
       );

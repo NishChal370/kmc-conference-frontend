@@ -23,4 +23,5 @@ export type TIconType =
       | "view"
       | "update"
       | "delete"
-      | "add";
+      | "add"
+      | "download";

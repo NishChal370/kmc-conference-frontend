@@ -7,7 +7,7 @@ export interface ICallForPaperBasicModel {
       id: number,
       name: string,
       email: string,
-      phone: string,
+      phoneNumber: string,
       jobTitle?: string,
       affiliation?: string,
       proposedPaperSessionTitle: string,

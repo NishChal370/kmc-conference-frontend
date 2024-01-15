@@ -1,6 +1,7 @@
 import SpeakerProfileSection from "./SpeakerProfileSection";
 import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
 import { ISpeakerDetailModel } from "@/admin/model/speaker/adminSpeakerModel";
+import FileViewer from "@/admin/shared/file/FileViewer";
 
 interface IAdminSpeakerViewModal {
       closeModalHandler: () => void;
@@ -93,27 +94,27 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                                 title="Expertise in Field"
                                                 data={speakerDetail.expertiseInField}
                                           />
-
                                           <ModalText title="Publications" data={speakerDetail.publications} />
 
                                           <ModalText
                                                 title="Previous Speaking Engagements"
                                                 data={speakerDetail.previousSpeakingEngagements}
                                           />
+                                          <br />
 
-                                          <ModalText
+                                          <ModalSanitizedText
                                                 title="Previous Experience"
-                                                data={speakerDetail.previousExperience}
+                                                htmlContent={speakerDetail.previousExperience}
                                           />
 
-                                          <ModalText
+                                          <ModalSanitizedText
                                                 title="Previous Conference"
-                                                data={speakerDetail.previousConferences}
+                                                htmlContent={speakerDetail.previousConferences}
                                           />
                                     </article>
                               </section>
                               <section className="flex flex-col gap-6 w-full">
-                                    <ModalSectionHeader title="Session Background" />
+                                    <ModalSectionHeader title="Session Information" />
 
                                     <article
                                           className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
@@ -134,10 +135,21 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                                 title="Preferred session length (in minutes)"
                                                 data={speakerDetail.preferredSessionLengthMinutes}
                                           />
+                                          <br />
 
-                                          <ModalText
+                                          <ModalSanitizedText
+                                                containerClassName="sm:col-span-2"
                                                 title="Accommodation Needs"
-                                                data={speakerDetail.accommodationNeeds}
+                                                htmlContent={speakerDetail.accommodationNeeds}
+                                          />
+
+                                          <FileViewer
+                                                files={
+                                                      speakerDetail.sessionProposal
+                                                            ? [speakerDetail.sessionProposal]
+                                                            : null
+                                                }
+                                                containerClassName="sm:col-span-2"
                                           />
                                     </article>
                               </section>

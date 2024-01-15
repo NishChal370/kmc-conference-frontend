@@ -11,6 +11,7 @@ import {
       IconChevronDown,
       IconClockHour2,
       IconDots,
+      IconDownload,
       IconEdit,
       IconEye,
       IconHome2,
@@ -120,6 +121,9 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "add":
                         return <IconPlus className={className} size={size ?? ICON.size} />;
+
+                  case "download":
+                        return <IconDownload className={className} size={size ?? ICON.size} />;
 
                   default:
                         alert("Please select icon");

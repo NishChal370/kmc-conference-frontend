@@ -1,3 +1,4 @@
+import FileViewerContainer from "@/admin/shared/file/FileViewer";
 import { ICallForPaperDetailModel } from "@/admin/model/callForPaper/callForPaperModel";
 import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
 
@@ -30,7 +31,7 @@ function AdminCallForPaperViewModal({ callForPaperDetail, closeModalHandler }: I
 
                                     <ModalText title="Email Address" data={callForPaperDetail.email} />
 
-                                    <ModalText title="Phone Number" data={callForPaperDetail.phone} />
+                                    <ModalText title="Phone Number" data={callForPaperDetail.phoneNumber} />
                               </article>
                         </section>
 
@@ -139,7 +140,16 @@ function AdminCallForPaperViewModal({ callForPaperDetail, closeModalHandler }: I
                                           data={callForPaperDetail.audioVisualRequirements}
                                     />
 
-                                    <ModalText title="Full Paper / Extended Abstract (file)" data={""} />
+                                    <span className="sm:col-span-2">
+                                          <FileViewerContainer
+                                                label="Full Paper / Extended Abstract"
+                                                files={
+                                                      callForPaperDetail.fullPaperORExtendedAbstract
+                                                            ? [callForPaperDetail.fullPaperORExtendedAbstract]
+                                                            : null
+                                                }
+                                          />
+                                    </span>
                               </article>
                         </section>
 
