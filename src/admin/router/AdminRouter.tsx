@@ -2,7 +2,14 @@ import { Suspense } from "react";
 import { Navigate, Outlet, RouteObject } from "react-router-dom";
 import AdminApp from "@/admin/AdminApp";
 import Loading from "@/shared/loading/Loading";
-import { AdminSchedule, AdminSpeakers, Days, AdminDayTheme, AdminCallForPaper } from "./adminIndex";
+import {
+      AdminSchedule,
+      AdminSpeakers,
+      Days,
+      AdminDayTheme,
+      AdminCallForPaper,
+      AdminParticipant,
+} from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
 import {
       ADMIN_BASE_PATH,
@@ -78,6 +85,10 @@ export const AdminRouter: RouteObject = {
                                     {
                                           path: ADMIN_APPLICANT_PATH.callForPaper.basic,
                                           element: <AdminCallForPaper />,
+                                    },
+                                    {
+                                          path: ADMIN_APPLICANT_PATH.participant.basic,
+                                          element: <AdminParticipant />,
                                     },
                               ],
                         },

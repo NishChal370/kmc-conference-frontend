@@ -14,5 +14,10 @@ export const ADMIN_APPLICANT_PATH = {
       callForPaper: {
             basic: "call-for-paper",
             full: `applicant/call-for-paper`,
-      }
+      },
+
+      participant: {
+            basic: "participant",
+            full: `applicant/participant`,
+      },
 } as const;

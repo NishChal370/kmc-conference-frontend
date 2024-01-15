@@ -34,3 +34,10 @@ export interface IScheduleDeleteRequest {
 
 
 export type IScheduleForm = ISchedulePostRequest;
+
+
+
+export interface IScheduleChoice {
+      sessionId: IScheduleModel["id"];
+      sessionTitle: IScheduleModel["title"]
+}

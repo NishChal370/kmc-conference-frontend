@@ -25,8 +25,8 @@
       }
 
       #page-table thead th {
-            @apply font-semibold
-            bg-primary/5
+            @apply font-medium
+            bg-rose-50/50 text-primary
             whitespace-nowrap;
       }
 

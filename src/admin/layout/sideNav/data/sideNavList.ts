@@ -50,6 +50,13 @@ export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [
                         Icon: "dashboard",
                         pathName: ADMIN_APPLICANT_PATH.callForPaper.full,
                   },
+
+                  {
+                        id: getUniqueId(),
+                        title: "Participant",
+                        Icon: "dashboard",
+                        pathName: ADMIN_APPLICANT_PATH.participant.full,
+                  },
             ]
       },
 
