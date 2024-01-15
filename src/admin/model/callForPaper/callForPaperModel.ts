@@ -17,7 +17,7 @@ export interface ICallForPaperBasicModel {
 export interface ICallForPaperDetailModel extends ICallForPaperBasicModel {
       briefBiography: string;
       linkedInProfile?: string;
-      twitterHandler?: string;
+      twitterHandle?: string;
       professionalWebsite?: string;
       abstractSummary: string;
       keywords: string[] | null;

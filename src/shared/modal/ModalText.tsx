@@ -9,13 +9,13 @@ function ModalText({ title, data, containerClassName = "", dataClassName = "" }:
       return (
             <div
                   className={`flex flex-col justify-between gap-2 border-b text-sm border-b-mute
-                        sm:flex-row sm:items-center sm:text-end ${containerClassName}
+                        sm:flex-row items-start sm:text-end ${containerClassName}
                   `}
             >
                   <h3 className="font-semibold py-2 text-start text-sm">{title}</h3>
 
                   {Array.isArray(data) && data && (
-                        <ul>
+                        <ul className="py-2">
                               {data.map((value, index) => (
                                     <li key={index}>{value}</li>
                               ))}
@@ -23,7 +23,7 @@ function ModalText({ title, data, containerClassName = "", dataClassName = "" }:
                   )}
 
                   {!Array.isArray(data) && (
-                        <p className={dataClassName}>
+                        <p className={"py-2 " + dataClassName}>
                               {typeof data === "number" ? data ?? "---" : data || "---"}
                         </p>
                   )}

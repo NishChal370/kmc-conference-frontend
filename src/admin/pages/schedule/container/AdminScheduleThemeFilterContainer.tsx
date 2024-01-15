@@ -11,7 +11,7 @@ import { dayThemeSliceAction, dayThemesMinState } from "../../dayTheme/feature/d
 function AdminScheduleThemeFilterContainer() {
       const dispatch = useAppDispatch();
 
-      const { status, error, data } = useAppSelector(dayThemesMinState);
+      const { status, data } = useAppSelector(dayThemesMinState);
 
       const { getDayThemesMin } = useDayThemeApi();
 

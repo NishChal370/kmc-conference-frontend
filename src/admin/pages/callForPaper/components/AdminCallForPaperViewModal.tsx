@@ -10,7 +10,7 @@ function AdminCallForPaperViewModal({ callForPaperDetail, closeModalHandler }: I
       return (
             <Modal
                   title="View Call For Paper Detail"
-                  size="min-w-full sm:min-w-[95%] xl:min-w-[80%] max-w-[84rem]"
+                  size="w-full lg:!max-w-[76rem]"
                   closeHandler={closeModalHandler}
             >
                   <span
@@ -48,7 +48,7 @@ function AdminCallForPaperViewModal({ callForPaperDetail, closeModalHandler }: I
 
                                     <ModalText title="LinkedIn" data={callForPaperDetail.linkedInProfile} />
 
-                                    <ModalText title="Twitter" data={callForPaperDetail.twitterHandler} />
+                                    <ModalText title="Twitter" data={callForPaperDetail.twitterHandle} />
 
                                     <ModalText
                                           title="Personal Website"
@@ -115,6 +115,11 @@ function AdminCallForPaperViewModal({ callForPaperDetail, closeModalHandler }: I
                                     "
                               >
                                     <ModalText
+                                          title="Preferred Presentation Format"
+                                          data={callForPaperDetail.preferredPresentationFormat}
+                                    />
+
+                                    <ModalText
                                           title="Key Objectives"
                                           data={callForPaperDetail.keyObjectives}
                                     />
@@ -164,7 +169,7 @@ function AdminCallForPaperViewModal({ callForPaperDetail, closeModalHandler }: I
                         </section>
 
                         <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Previous Experience and References" />
+                              <ModalSectionHeader title="Participation Preferences" />
 
                               <article
                                     className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
