@@ -12,12 +12,7 @@ function ScheduleDayFilter() {
                               lg:w-[20rem] lg:max-w-[20rem]
                         "
                   >
-                        {[
-                              { date: "26th January, 2080" },
-                              { date: "27th January, 2080" },
-                              { date: "28th January, 2080" },
-                              { date: "29th January, 2080" },
-                        ].map(({ date }, index) => (
+                        {[{ date: "4th April, 2024" }, { date: "5th April, 2024" }].map(({ date }, index) => (
                               <button
                                     key={index}
                                     className={`flex flex-col  w-full min-w-fit h-fit px-4 py-4 

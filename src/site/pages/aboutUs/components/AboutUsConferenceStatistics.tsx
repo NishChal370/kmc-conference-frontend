@@ -7,11 +7,10 @@ function AboutUsConferenceStatistics() {
                   "
             >
                   {[
-                        { count: "2,100+", title: "organizers" },
-                        { count: "320+", title: "speakers" },
-                        { count: "70,000+", title: "attendees" },
-                        { count: "43%", title: "women attendees" },
-                        { count: "100+", title: "exhibitors" },
+                        { count: "01", title: "organizer" },
+                        { count: "10+", title: "exhibitors" },
+                        { count: "200+", title: "attendees" },
+                        { count: "15+", title: "speakers" },
                   ].map(({ count, title }, index) => (
                         <span key={index}>
                               <div

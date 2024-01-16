@@ -17,12 +17,14 @@ import {
       IconHome2,
       IconLock,
       IconLockOpen,
+      IconLogout,
       IconMapPin,
       IconMenu2,
       IconPlus,
       IconShare2,
       IconTrash,
       IconTriangle,
+      IconUser,
       IconX,
 } from "@tabler/icons-react";
 import { ICON } from "@/constants/icon";
@@ -124,6 +126,12 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "download":
                         return <IconDownload className={className} size={size ?? ICON.size} />;
+
+                  case "user":
+                        return <IconUser className={className} size={size ?? ICON.size} />;
+
+                  case "logout":
+                        return <IconLogout className={className} size={size ?? ICON.size} />;
 
                   default:
                         alert("Please select icon");

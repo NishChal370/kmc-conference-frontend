@@ -7,7 +7,7 @@ function TopNav() {
       const handleScroll = () => {
             const topNavContainer = document.getElementById("top-nav");
             const topNavAppLogo = document.getElementById("top-nav--app-log");
-            const topNavActionButtons = document.getElementById("top-nav--action-buttons");
+            // const topNavActionButtons = document.getElementById("top-nav--action-buttons");
 
             if (!topNavContainer || !topNavAppLogo) return;
 
@@ -21,16 +21,16 @@ function TopNav() {
                   topNavAppLogoInitialColor = topNavAppLogo.style.width;
                   topNavAppLogo.style.width = "10rem";
 
-                  if (topNavActionButtons) {
-                        topNavActionButtons.style.setProperty("color", "#bd1701", "important");
-                  }
+                  // if (topNavActionButtons) {
+                  //       topNavActionButtons.style.setProperty("color", "#bd1701", "important");
+                  // }
             } else {
                   topNavContainer.style.backgroundColor = topNavInitialColor;
                   topNavAppLogo.style.width = topNavAppLogoInitialColor;
 
-                  if (topNavActionButtons) {
-                        topNavActionButtons.style.setProperty("color", "white", "important");
-                  }
+                  // if (topNavActionButtons) {
+                  //       topNavActionButtons.style.setProperty("color", "white", "important");
+                  // }
             }
       };
 

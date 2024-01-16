@@ -15,7 +15,7 @@ function ExploreScheduleButton() {
                   variant="outlined"
                   title="EXPLORE SCHEDULES"
                   extraClassName="text-white border-white py-2.5
-                        active:text-primary active:border-primary
+                        active:text-white active:border-white
                   "
             ></Button>
       );

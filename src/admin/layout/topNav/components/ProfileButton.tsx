@@ -3,6 +3,7 @@ import AppIcon from "@/shared/icon/AppIcon";
 import Menu, { MenuButton, MenuItems } from "@/admin/shared/menu/Menu";
 import useAuthApi from "@/hooks/auth/useAuthApi";
 import getTokenDetail from "@/utils/token/getTokenDetail";
+// import { ADMIN_PROFILE_SETTING_PATH } from "@/admin/constants/routePath";
 
 function ProfileButton() {
       const { logout } = useAuthApi();
@@ -21,20 +22,25 @@ function ProfileButton() {
                         <AppIcon name="down-arrow" />
                   </MenuButton>
 
-                  {/* <MenuItems
+                  <MenuItems
                         items={[
                               {
                                     title: "My Profile",
-                                    icon: <AppIcon icon="user" />,
-                                    clickHandler: () => navigate(PROFILE_SETTING_PATH.main.full),
+                                    icon: <AppIcon name="user" />,
+                                    clickHandler: () => {},
+                              },
+                              {
+                                    title: "Website",
+                                    icon: <AppIcon name="arrow-left" />,
+                                    clickHandler: () => navigate("/"),
                               },
                               {
                                     title: "Logout",
-                                    icon: <AppIcon icon="logout" />,
+                                    icon: <AppIcon name="logout" />,
                                     clickHandler: logout,
                               },
                         ]}
-                  /> */}
+                  />
             </Menu>
       );
 }

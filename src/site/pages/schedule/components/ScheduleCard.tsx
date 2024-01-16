@@ -1,3 +1,4 @@
+import { SPEAKERS_DETAILS } from "@/site/pages/speakers/seed.tsx/speakersDetailList";
 import ScheduleCardTitle from "./ScheduleCardTitle";
 
 interface IScheduleCard {
@@ -71,18 +72,10 @@ function ScheduleCard({ status }: IScheduleCard) {
                                     [&>*]:w-12 [&>*]:h-12 [&>img]:object-cover [&>img]:rounded-md
                               "
                         >
-                              <img
-                                    src="https://web-summit-avenger.imgix.net/production/avatars/original/72580bd9508f9029943eb42756b8acb88b17d3bc.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300"
-                                    alt="speaker"
-                              />
-                              <img
-                                    src="https://web-summit-avenger.imgix.net/production/avatars/original/72580bd9508f9029943eb42756b8acb88b17d3bc.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300"
-                                    alt="speaker"
-                              />
-                              <img
-                                    src="https://web-summit-avenger.imgix.net/production/avatars/original/72580bd9508f9029943eb42756b8acb88b17d3bc.png?ixlib=rb-3.2.1&auto=format&fit=crop&crop=faces&w=300&h=300"
-                                    alt="speaker"
-                              />
+                              <img src={SPEAKERS_DETAILS.at(0)?.image} alt="speaker" />
+                              <img src={SPEAKERS_DETAILS.at(1)?.image} alt="speaker" />
+                              <img src={SPEAKERS_DETAILS.at(2)?.image} alt="speaker" />
+
                               <div className="flex items-center justify-center rounded-md font-bold text-white bg-primary">
                                     <p>+10</p>
                               </div>

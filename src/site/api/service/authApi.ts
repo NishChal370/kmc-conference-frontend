@@ -51,7 +51,12 @@ export const authApi = {
             const options: AxiosRequestConfig = {
                   method: "POST",
                   url: `auth/user-register`,
-                  data: userDetail,
+                  data: {
+                        "title": "MR.",
+                        "affiliation": "KMC",
+                        "jobTitle": "Dev",
+                        ...userDetail,
+                  },
             };
 
 

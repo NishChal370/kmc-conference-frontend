@@ -7,7 +7,7 @@ function HomeAboutConference() {
       const navigate = useNavigate();
 
       return (
-            <article className="bg-mute py-24 flex  justify-center text-black">
+            <article className="bg-black py-24 flex  justify-center text-white">
                   <span
                         className="home-section--width flex flex-col justify-between gap-6
                               md:flex-row

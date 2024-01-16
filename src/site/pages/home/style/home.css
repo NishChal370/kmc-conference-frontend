@@ -2,7 +2,7 @@
 
 @layer utilities {
       .home-section--width {
-            @apply w-[90%]
+            @apply relative w-[90%]
             sm:w-[96%]
             md:w-[90%]
             lg:w-[92%]
