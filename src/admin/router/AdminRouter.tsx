@@ -11,6 +11,7 @@ import {
       AdminParticipant,
       AdminUser,
       Profile,
+      ProfileSetting,
       ChangePasswordContainer,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
@@ -24,7 +25,6 @@ import {
       ADMIN_PROFILE_SETTING_PATH,
 } from "@/admin/constants/routePath";
 import { CheckDynamicRouteType } from "@/helper/validateRoute";
-import ProfileSetting from "../pages/profileSetting/ProfileSetting";
 
 export const AdminRouter: RouteObject = {
       path: ADMIN_BASE_PATH,

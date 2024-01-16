@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import ProfileBody from "../components/ProfileBody";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
-import { useAppSelector } from "@/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useAdminProfileApi from "@/admin/hooks/profile/useAdminProfile";
-import { adminProfileDetailSliceState } from "../feature/profileSlice";
+import { adminProfileDetailSliceState, adminProfileSliceAction } from "../feature/profileSlice";
 import { Status } from "@/enum/commonEnum";
 import { IAdminProfileModel } from "@/admin/model/profile/adminProfileModel";
 
@@ -12,8 +12,10 @@ interface IProfileBodyContainer {
       openAdminProfileEditModal: (data: IAdminProfileModel) => void;
 }
 function ProfileBodyContainer({ openAdminProfileEditModal }: IProfileBodyContainer) {
-      const { getAdminProfile } = useAdminProfileApi();
+      const dispatch = useAppDispatch();
       const { status, data, isToRefetch, error } = useAppSelector(adminProfileDetailSliceState);
+
+      const { getAdminProfile } = useAdminProfileApi();
 
       const fetchData = () => {
             getAdminProfile();
@@ -30,6 +32,12 @@ function ProfileBodyContainer({ openAdminProfileEditModal }: IProfileBodyContain
       useEffect(() => {
             fetchData();
       }, [isToRefetch]);
+
+      useEffect(() => {
+            return () => {
+                  dispatch(adminProfileSliceAction.resetAdminProfileSlice());
+            };
+      }, []);
 
       return (
             <>

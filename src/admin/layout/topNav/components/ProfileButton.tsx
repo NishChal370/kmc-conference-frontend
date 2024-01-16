@@ -4,10 +4,15 @@ import Menu, { MenuButton, MenuItems } from "@/admin/shared/menu/Menu";
 import useAuthApi from "@/hooks/auth/useAuthApi";
 import getTokenDetail from "@/utils/token/getTokenDetail";
 import { ADMIN_PROFILE_SETTING_PATH } from "@/admin/constants/routePath";
+import { HOME_PATH } from "@/site/constants/routePath";
 
 function ProfileButton() {
       const { logout } = useAuthApi();
       const navigate = useNavigate();
+
+      const navigationHandler = (pathName: string) => () => {
+            navigate(pathName);
+      };
 
       return (
             <Menu>
@@ -27,9 +32,17 @@ function ProfileButton() {
                               {
                                     title: "My Profile",
                                     icon: <AppIcon name="user" />,
-                                    clickHandler: () =>
-                                          navigate(ADMIN_PROFILE_SETTING_PATH.profileSetting.full),
+                                    clickHandler: navigationHandler(
+                                          ADMIN_PROFILE_SETTING_PATH.profileSetting.full
+                                    ),
                               },
+
+                              {
+                                    title: "View Site",
+                                    icon: <AppIcon name="arrow-left" />,
+                                    clickHandler: navigationHandler(HOME_PATH.home.full),
+                              },
+
                               {
                                     title: "Logout",
                                     icon: <AppIcon name="logout" />,
