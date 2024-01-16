@@ -9,6 +9,9 @@ const AdminCallForPaper = lazy(() => import("@/admin/pages/callForPaper/AdminCal
 const AdminParticipant = lazy(() => import("@/admin/pages/participant/AdminParticipant"));
 const AdminUser = lazy(() => import("@/admin/pages/user/AdminUser"));
 const Profile = lazy(() => import("@/admin/pages/profileSetting/profile/Profile"));
+const ChangePasswordContainer = lazy(
+      () => import("@/admin/pages/profileSetting/changePassword/container/ChangePasswordContainer")
+);
 
 export {
       Days,
@@ -19,4 +22,5 @@ export {
       AdminParticipant,
       AdminUser,
       Profile,
+      ChangePasswordContainer,
 };

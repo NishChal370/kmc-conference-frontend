@@ -11,6 +11,7 @@ import {
       AdminParticipant,
       AdminUser,
       Profile,
+      ChangePasswordContainer,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
 import {
@@ -134,7 +135,7 @@ export const AdminRouter: RouteObject = {
                                     },
                                     {
                                           path: ADMIN_PROFILE_SETTING_PATH.changePassword.basic,
-                                          element: <h1>Chnage passprd setting</h1>,
+                                          element: <ChangePasswordContainer />,
                                     },
                               ],
                         },

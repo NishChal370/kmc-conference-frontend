@@ -28,7 +28,7 @@ function ProfileCard({ cardTitle, editButtonHandler, detail }: IProfileCard) {
                               <span key={index} className="flex flex-col gap-0.5 w-full">
                                     <h6 className="font-medium text-gray-700">{data.label}</h6>
 
-                                    {data.type === "link" && data.linkLabel ? (
+                                    {data.type === "link" && data.data ? (
                                           <button
                                                 type="button"
                                                 onClick={data.linkHandler}
