@@ -10,6 +10,7 @@ import {
       AdminCallForPaper,
       AdminParticipant,
       AdminUser,
+      Profile,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
 import {
@@ -18,9 +19,11 @@ import {
       ADMIN_DAYS_PATH,
       ADMIN_DAY_THEME_PATH,
       ADMIN_APPLICANT_PATH,
+      ADMIN_ADMINISTRATION_PATH,
+      ADMIN_PROFILE_SETTING_PATH,
 } from "@/admin/constants/routePath";
 import { CheckDynamicRouteType } from "@/helper/validateRoute";
-import { ADMIN_ADMINISTRATION_PATH } from "../constants/routePath/adminAdministrationPath";
+import ProfileSetting from "../pages/profileSetting/ProfileSetting";
 
 export const AdminRouter: RouteObject = {
       path: ADMIN_BASE_PATH,
@@ -108,6 +111,30 @@ export const AdminRouter: RouteObject = {
                                     {
                                           path: ADMIN_ADMINISTRATION_PATH.user.basic,
                                           element: <AdminUser />,
+                                    },
+                              ],
+                        },
+
+                        {
+                              path: ADMIN_PROFILE_SETTING_PATH.base.basic,
+                              element: <ProfileSetting />,
+                              children: [
+                                    {
+                                          index: true,
+                                          element: (
+                                                <Navigate
+                                                      to={ADMIN_PROFILE_SETTING_PATH.profileSetting.basic}
+                                                      replace
+                                                />
+                                          ),
+                                    },
+                                    {
+                                          path: ADMIN_PROFILE_SETTING_PATH.profileSetting.basic,
+                                          element: <Profile />,
+                                    },
+                                    {
+                                          path: ADMIN_PROFILE_SETTING_PATH.changePassword.basic,
+                                          element: <h1>Chnage passprd setting</h1>,
                                     },
                               ],
                         },

@@ -19,6 +19,7 @@ import speakerReducer from "@/admin/pages/speaker/feature/speakerSlice";
 import callForPaperReducer from "@/admin/pages/callForPaper/feature/callForPaperSlice";
 import participantReducer from "@/admin/pages/participant/feature/participantSlice";
 import userReducer from "@/admin/pages/user/feature/userSlice";
+import adminProfileReducer from "@/admin/pages/profileSetting/profile/feature/profileSlice";
 
 
 export const store = configureStore({
@@ -39,6 +40,7 @@ export const store = configureStore({
             callForPaper: callForPaperReducer,
             participant: participantReducer,
             user: userReducer,
+            adminProfile: adminProfileReducer,
       },
 });
 

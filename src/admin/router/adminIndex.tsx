@@ -8,5 +8,15 @@ const AdminSchedule = lazy(() => import("@/admin/pages/schedule/AdminSchedule"))
 const AdminCallForPaper = lazy(() => import("@/admin/pages/callForPaper/AdminCallForPaper"));
 const AdminParticipant = lazy(() => import("@/admin/pages/participant/AdminParticipant"));
 const AdminUser = lazy(() => import("@/admin/pages/user/AdminUser"));
+const Profile = lazy(() => import("@/admin/pages/profileSetting/profile/Profile"));
 
-export { Days, AdminDayTheme, AdminSchedule, AdminSpeakers, AdminCallForPaper, AdminParticipant, AdminUser };
+export {
+      Days,
+      AdminDayTheme,
+      AdminSchedule,
+      AdminSpeakers,
+      AdminCallForPaper,
+      AdminParticipant,
+      AdminUser,
+      Profile,
+};

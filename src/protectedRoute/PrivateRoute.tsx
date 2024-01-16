@@ -8,7 +8,7 @@ import getTokenDetail from "@/utils/token/getTokenDetail";
 function PrivateRoute() {
       const { status } = useAppSelector(verifyLoginState);
 
-      if (status === Status.FAILED) return <Navigate to="/not-found" replace />;
+      if (status === Status.FAILED) return <Navigate to="/" replace />;
 
       if (status === Status.SUCCEEDED && getTokenDetail.loggedInUserRole() === UserRole.PARTICIPANTS)
             return <Navigate to="/not-found" replace />;

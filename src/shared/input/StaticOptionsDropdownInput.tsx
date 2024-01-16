@@ -23,7 +23,11 @@ function StaticOptionsDropdownInput({
       return (
             //NOTE: In value if we don't add empty object when `selected` is `undefined` then previous selected status will not be removed from the List box.
             <Listbox by="value" value={selected || {}} onChange={onChangeHandler}>
-                  <div className="relative w-full min-w-[14rem] flex flex-col gap-0">
+                  <div
+                        className={`relative w-full min-w-[14rem] flex flex-col gap-0
+                              ${variant === "secondary" ? "justify-between" : ""}
+                        `}
+                  >
                         {variant === "secondary" ? (
                               <span className="flex w-full justify-between gap-1 pl-1">
                                     <label

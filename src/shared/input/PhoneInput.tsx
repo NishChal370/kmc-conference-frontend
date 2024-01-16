@@ -38,7 +38,7 @@ function PhoneInput<TControl extends FieldValues>({
                   render={({ field: { onChange, value }, formState: { errors } }) => (
                         <div
                               className={`relative flex flex-col 
-                                    ${variant === "secondary" ? "gap-1" : "gap-0"}  
+                                    ${variant === "secondary" ? " justify-between gap-1" : "gap-0"}  
                                     ${containerClassName}`}
                         >
                               {variant === "secondary" ? (

@@ -24,4 +24,6 @@ export type TIconType =
       | "update"
       | "delete"
       | "add"
-      | "download";
+      | "download"
+      | "user"
+      | "logout";
