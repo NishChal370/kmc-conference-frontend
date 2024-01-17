@@ -1,6 +1,7 @@
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import { IScheduleModel } from "../schedule/scheduleModel";
 import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum";
+import { IAttachment } from "@/models/file/fileModel";
 
 export interface IAppliedParticipationModel {
       sessionId: IScheduleModel["id"];
@@ -54,7 +55,40 @@ export interface IAppliedSpeakerModel {
       approvalStatus: SpeakerApprovalStatus;
 }
 
+//Speakers
+
 export type IAppliedSpeakerResponse = IAppliedSpeakerModel[];
+
+export interface IAppliedSpeakerDetailedModel extends IAppliedSpeakerModel {
+      photo: IAttachment | null;
+      affiliation: string;
+      approvalStatus: SpeakerApprovalStatus;
+      bio: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience?: string;
+      previousConferences?: string;
+      expertiseInField: string;
+      previousSpeakingEngagements: string[] | null;
+      publications: string[] | null;
+      preferredSessionLengthMinutes?: number;
+      availabilityInfo: string[] | null; // THis is not in used
+      willingToTravel: boolean;
+      avRequirements?: string;
+      accommodationNeeds?: string;
+      sessionProposal: IAttachment | null;
+      referenceContacts: string[] | null;
+      agreedToDates: boolean;
+}
+
+export interface IAppliedSpeakerDetailSearch {
+      sessionId: IScheduleModel["id"];
+}
+
+export type IAppliedSpeakerDetailedResponse = IAppliedSpeakerDetailedModel;
+
+//CFP
 
 export interface IAppliedCallForPaperModel {
       sessionId: IScheduleModel["id"];
@@ -66,6 +100,40 @@ export interface IAppliedCallForPaperModel {
 }
 
 export type IAppliedCallForPaperResponse = IAppliedCallForPaperModel[];
+
+export interface IAppliedCallForPaperDetailedModel extends IAppliedCallForPaperModel {
+      proposedPaperSessionTitle: string;
+      briefBiography: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      abstractSummary: string;
+      keywords: string[] | null;
+      primaryFieldCategory: string;
+      researchMethodology: string;
+      keyObjectives: string[] | null;
+      contributions: string[] | null;
+      significanceRelevance?: string;
+      preferredPresentationFormat: string;
+      audioVisualRequirements: string;
+      previousExperience: string[] | null;
+      listOfConferences: string[] | null;
+      referencesOrCitations: string[] | null;
+      availabilityDaysTimes?: string; // no in use
+      willParticipateInPanel: boolean;
+      willParticipateInWorkshop: boolean;
+      specialAccommodationNeeds: string;
+      additionalRequirements: string;
+      confirmPresent: boolean;
+      acceptTandC: boolean;
+      fullPaperORExtendedAbstract: IAttachment | null;
+}
+
+export interface IAppliedCallForPaperDetailSearch {
+      sessionId: IScheduleModel["id"];
+}
+
+export type IAppliedCallForPaperDetailedResponse = IAppliedCallForPaperDetailedModel;
 
 export interface IAppliedHistoryModel {
       sessionId: IScheduleModel["id"];

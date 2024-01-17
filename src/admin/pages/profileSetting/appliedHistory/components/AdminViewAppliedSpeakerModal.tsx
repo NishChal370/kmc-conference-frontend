@@ -1,14 +1,13 @@
-import SpeakerProfileSection from "./SpeakerProfileSection";
-import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
-import { ISpeakerDetailModel } from "@/admin/model/speaker/adminSpeakerModel";
 import FileViewer from "@/admin/shared/file/FileViewer";
+import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
+import SpeakerProfileSection from "@/admin/pages/speaker/components/adminSpeakerViewModal/SpeakerProfileSection";
+import { IAppliedSpeakerDetailedModel } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
-interface IAdminSpeakerViewModal {
+interface IAdminViewAppliedSpeakerModal {
+      speakerDetail: IAppliedSpeakerDetailedModel;
       closeModalHandler: () => void;
-      speakerDetail: ISpeakerDetailModel;
 }
-
-function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeakerViewModal) {
+function AdminViewAppliedSpeakerModal({ speakerDetail, closeModalHandler }: IAdminViewAppliedSpeakerModal) {
       return (
             <Modal
                   title="View Speaker Detail"
@@ -20,11 +19,7 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                               lg:flex-row
                         "
                   >
-                        <SpeakerProfileSection
-                              image={"speakerDetail.photo"}
-                              name={speakerDetail.name}
-                              designation={speakerDetail.jobTitle}
-                        />
+                        <SpeakerProfileSection image={"speakerDetail.photo"} name={""} designation={""} />
 
                         <main
                               className="mb-6 w-full flex flex-col gap-y-20 tracking-wide
@@ -32,18 +27,28 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                               "
                         >
                               <section className="flex flex-col gap-6 w-full">
-                                    <ModalSectionHeader title="Personal Information" />
+                                    <ModalSectionHeader title="Session Detail" />
 
                                     <article
                                           className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
                                                 sm:grid-cols-2 sm:px-2
                                           "
                                     >
-                                          <ModalText title="Speaker Name" data={speakerDetail.name} />
+                                          <ModalText title="Session Title" data={speakerDetail.title} />
 
-                                          <ModalText title="Email Address" data={speakerDetail.email} />
+                                          <ModalText title="Session Location" data={speakerDetail.location} />
 
-                                          <ModalText title="Phone Number" data={speakerDetail.phone} />
+                                          <ModalText
+                                                title="Session Time"
+                                                data={
+                                                      speakerDetail.startTime + " -  " + speakerDetail.endTime
+                                                }
+                                          />
+
+                                          <ModalText
+                                                title="Approval Status"
+                                                data={speakerDetail.approvalStatus}
+                                          />
                                     </article>
                               </section>
 
@@ -58,8 +63,6 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                           <ModalText title="Title" data={speakerDetail.title} />
 
                                           <ModalText title="Affiliation" data={speakerDetail.affiliation} />
-
-                                          <ModalText title="Designation" data={speakerDetail.jobTitle} />
 
                                           <ModalText title="LinkedIn" data={speakerDetail.linkedInProfile} />
 
@@ -140,7 +143,7 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                           <ModalSanitizedText
                                                 containerClassName="sm:col-span-2"
                                                 title="Accommodation Needs"
-                                                htmlContent={speakerDetail.accommodationNeeds}
+                                                htmlContent={"speakerDetail.accommodationNeeds"}
                                           />
 
                                           <FileViewer
@@ -173,4 +176,4 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
       );
 }
 
-export default AdminSpeakerViewModal;
+export default AdminViewAppliedSpeakerModal;

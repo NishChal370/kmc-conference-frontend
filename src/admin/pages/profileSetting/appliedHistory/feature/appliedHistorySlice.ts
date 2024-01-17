@@ -2,8 +2,8 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { IAppliedCallForPaperResponse, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
-import { getApplicationCallForPaper, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeaker } from "./appliedHistoryRequest";
+import { IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { getApplicationCallForPaper, getApplicationCallForPaperDetailed, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeaker, getApplicationSpeakerDetailed } from "./appliedHistoryRequest";
 
 
 interface IAppliedParticipationSlice extends IBasicSliceState {
@@ -24,12 +24,22 @@ interface IAppliedParticipationDetailedSlice extends IBasicSliceState {
       data?: IAppliedParticipationDetailedResponse;
 }
 
+interface IAppliedSpeakerDetailedSlice extends IBasicSliceState {
+      data?: IAppliedSpeakerDetailedResponse;
+}
+
+interface IAppliedCallForPaperDetailedSlice extends IBasicSliceState {
+      data?: IAppliedCallForPaperDetailedResponse;
+}
+
 
 type IAppliedHistory = {
       appliedParticipation: IAppliedParticipationSlice,
       appliedSpeaker: IAppliedSpeakerSlice,
       appliedCallForPaper: IAppliedCallForPaperSlice,
       appliedParticipationDetailed: IAppliedParticipationDetailedSlice,
+      appliedSpeakerDetailed: IAppliedSpeakerDetailedSlice,
+      appliedCallForPaperDetailed: IAppliedCallForPaperDetailedSlice,
 };
 
 
@@ -48,6 +58,12 @@ const initialState: IAppliedHistory = {
             data: []
       },
       appliedParticipationDetailed: {
+            status: Status.IDEL,
+      },
+      appliedSpeakerDetailed: {
+            status: Status.IDEL,
+      },
+      appliedCallForPaperDetailed: {
             status: Status.IDEL,
       },
 }
@@ -79,6 +95,20 @@ const appliedHistorySlice = createSlice({
 
             resetAppliedParticipationDetailedSlice: (state) => {
                   state.appliedParticipationDetailed = {
+                        status: Status.IDEL,
+                        data: undefined,
+                  }
+            },
+
+            resetAppliedSpeakerDetailedSlice: (state) => {
+                  state.appliedSpeakerDetailed = {
+                        status: Status.IDEL,
+                        data: undefined,
+                  }
+            },
+
+            resetAppliedCallForPaperDetailedSlice: (state) => {
+                  state.appliedCallForPaperDetailed = {
                         status: Status.IDEL,
                         data: undefined,
                   }
@@ -145,6 +175,34 @@ const appliedHistorySlice = createSlice({
                   .addCase(getApplicationParticipationDetailed.rejected, (state, action) => {
                         state.appliedParticipationDetailed.status = Status.FAILED;
                         state.appliedParticipationDetailed.error = action.payload;
+                  })
+
+
+                  .addCase(getApplicationSpeakerDetailed.pending, (state) => {
+                        state.appliedSpeakerDetailed.status = Status.LOADING;
+                  })
+                  .addCase(getApplicationSpeakerDetailed.fulfilled, (state, action) => {
+                        state.appliedSpeakerDetailed.status = Status.SUCCEEDED;
+                        state.appliedSpeakerDetailed.data = action.payload;
+
+                  })
+                  .addCase(getApplicationSpeakerDetailed.rejected, (state, action) => {
+                        state.appliedSpeakerDetailed.status = Status.FAILED;
+                        state.appliedSpeakerDetailed.error = action.payload;
+                  })
+
+
+                  .addCase(getApplicationCallForPaperDetailed.pending, (state) => {
+                        state.appliedCallForPaperDetailed.status = Status.LOADING;
+                  })
+                  .addCase(getApplicationCallForPaperDetailed.fulfilled, (state, action) => {
+                        state.appliedCallForPaperDetailed.status = Status.SUCCEEDED;
+                        state.appliedCallForPaperDetailed.data = action.payload;
+
+                  })
+                  .addCase(getApplicationCallForPaperDetailed.rejected, (state, action) => {
+                        state.appliedCallForPaperDetailed.status = Status.FAILED;
+                        state.appliedCallForPaperDetailed.error = action.payload;
                   })
       },
 })

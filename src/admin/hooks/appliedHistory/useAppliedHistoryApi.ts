@@ -3,9 +3,11 @@ import {
       getApplicationSpeaker as getApplicationSpeakerReq,
       getApplicationParticipation as getApplicationParticipationReq,
       getApplicationCallForPaper as getApplicationCallForPaperReq,
-      getApplicationParticipationDetailed as getApplicationParticipationDetailedReq
+      getApplicationParticipationDetailed as getApplicationParticipationDetailedReq,
+      getApplicationSpeakerDetailed as getApplicationSpeakerDetailedReq,
+      getApplicationCallForPaperDetailed as getApplicationCallForPaperDetailedReq,
 } from '@/admin/pages/profileSetting/appliedHistory/feature/appliedHistoryRequest';
-import { IAppliedParticipationDetailSearch } from '@/admin/model/appliedHistory/appliedHistoryModel';
+import { IAppliedCallForPaperDetailSearch, IAppliedParticipationDetailSearch, IAppliedSpeakerDetailSearch } from '@/admin/model/appliedHistory/appliedHistoryModel';
 import { errorToastMessage, loadingAlertWithMessage, swalAlertClose } from '@/utils/alert';
 
 function useAppliedHistoryApi() {
@@ -37,8 +39,30 @@ function useAppliedHistoryApi() {
                   .finally(swalAlertClose)
       }
 
+      const getApplicationSpeakerDetailed = (searchDetail: IAppliedSpeakerDetailSearch) => {
+            loadingAlertWithMessage({ title: "Loading", text: "Please wait while getting data" });
 
-      return { getApplicationSpeaker, getApplicationParticipation, getApplicationCallForPaper, getApplicationParticipationDetailed } as const;
+            dispatch(getApplicationSpeakerDetailedReq(searchDetail))
+                  .unwrap()
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+      const getApplicationCallForPaperDetailed = (searchDetail: IAppliedCallForPaperDetailSearch) => {
+            loadingAlertWithMessage({ title: "Loading", text: "Please wait while getting data" });
+
+            dispatch(getApplicationCallForPaperDetailedReq(searchDetail))
+                  .unwrap()
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
+      return { getApplicationSpeaker, getApplicationParticipation, getApplicationCallForPaper, getApplicationParticipationDetailed, getApplicationSpeakerDetailed, getApplicationCallForPaperDetailed } as const;
 }
 
 export default useAppliedHistoryApi
