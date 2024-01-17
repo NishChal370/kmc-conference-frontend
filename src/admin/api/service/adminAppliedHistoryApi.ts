@@ -34,7 +34,7 @@ export const adminAppliedHistoryApi = {
       getApplicationParticipationDetail: ({ sessionId }: IAppliedParticipationDetailSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `ApplicationHistory/participant/sessionId=${sessionId}`,
+                  url: `Participant/my-participant?SessionId=${sessionId}`,
             };
 
             return AXIOS.request(options);
