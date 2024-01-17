@@ -1,4 +1,3 @@
-import { BaseSyntheticEvent } from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
 import Input from "@/shared/input/Input";
 import Button from "@/shared/button/Button";
@@ -12,7 +11,7 @@ import validateDateOfBirth from "@/utils/validation/validateDateOfBirth";
 
 interface IRegisterUserBasicFormProps {
       registerUserBasicForm: UseFormReturn<IRegisterUserBasicForm>;
-      basicFormSubmitHandler: (e?: BaseSyntheticEvent) => void;
+      basicFormSubmitHandler: (fields: (keyof IRegisterUserBasicForm)[]) => () => void;
 }
 
 function RegisterUserBasicForm({
@@ -24,7 +23,7 @@ function RegisterUserBasicForm({
       basicFormSubmitHandler,
 }: IRegisterUserBasicFormProps) {
       return (
-            <form onSubmit={basicFormSubmitHandler}>
+            <div>
                   <section
                         className="grid gap-y-10 gap-x-4 w-full
                               lg:grid-cols-3
@@ -119,16 +118,25 @@ function RegisterUserBasicForm({
 
                         <PhoneInput control={control} isRequired name="phoneNumber" />
 
-                        <span className="flex items-center justify-center w-full lg:col-span-2">
+                        <span className="flex items-center justify-center w-full  lg:col-span-2">
                               <Button
                                     variant="outlined"
-                                    type="submit"
+                                    type="button"
                                     title="Next"
                                     extraClassName="!w-full"
+                                    onClickHandler={basicFormSubmitHandler([
+                                          "firstName",
+                                          "middleName",
+                                          "lastName",
+                                          "gender",
+                                          "dateOfBirth",
+                                          "emailAddress",
+                                          "phoneNumber",
+                                    ])}
                               />
                         </span>
                   </section>
-            </form>
+            </div>
       );
 }
 

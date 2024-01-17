@@ -1,27 +1,17 @@
-import useAppForm from "@/hooks/form/useAppForm";
+import { useFormContext } from "react-hook-form";
 import RegisterUserPasswordForm from "../components/RegisterUserPasswordForm";
 import { IRegisterUserPasswordForm } from "@/site/model/registerUser/registerUserModel";
 
 interface IRegisterUserPasswordFormContainer {
       slideToPrevious: () => void;
-      submitToParentHandler: (data: any) => void;
 }
 
-function RegisterUserPasswordFormContainer({
-      slideToPrevious,
-      submitToParentHandler,
-}: IRegisterUserPasswordFormContainer) {
-      const registerUserPasswordForm = useAppForm<IRegisterUserPasswordForm>();
-      const { handleSubmit } = registerUserPasswordForm;
-
-      const formSubmitHandler = handleSubmit((data) => {
-            submitToParentHandler(data);
-      });
+function RegisterUserPasswordFormContainer({ slideToPrevious }: IRegisterUserPasswordFormContainer) {
+      const registerUserPasswordForm = useFormContext<IRegisterUserPasswordForm>();
 
       return (
             <RegisterUserPasswordForm
                   registerUserPasswordForm={registerUserPasswordForm}
-                  passwordFormSubmitHandler={formSubmitHandler}
                   previousButtonHandler={slideToPrevious}
             />
       );

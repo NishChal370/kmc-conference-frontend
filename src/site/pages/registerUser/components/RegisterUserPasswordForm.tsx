@@ -1,4 +1,3 @@
-import { BaseSyntheticEvent } from "react";
 import { UseFormReturn } from "react-hook-form";
 import Button from "@/shared/button/Button";
 import PasswordInput from "@/shared/input/PasswordInput";
@@ -8,7 +7,6 @@ import { REGEX } from "@/helper/regex";
 
 interface IRegisterUserPasswordFormProps {
       registerUserPasswordForm: UseFormReturn<IRegisterUserPasswordForm>;
-      passwordFormSubmitHandler: (e?: BaseSyntheticEvent) => void;
       previousButtonHandler: () => void;
 }
 
@@ -18,11 +16,10 @@ function RegisterUserPasswordForm({
             getValues,
             formState: { errors },
       },
-      passwordFormSubmitHandler,
       previousButtonHandler,
 }: IRegisterUserPasswordFormProps) {
       return (
-            <form onSubmit={passwordFormSubmitHandler} className="flex w-full h-full">
+            <div className="flex w-full h-full">
                   <PasswordInput errorMessage={errors.password?.message}>
                         {register("password", {
                               required: {
@@ -47,16 +44,22 @@ function RegisterUserPasswordForm({
                         })}
                   </PasswordInput>
 
-                  <Button
-                        variant="outlined"
-                        type="button"
-                        title="Previous"
-                        extraClassName="!w-full"
-                        onClickHandler={previousButtonHandler}
-                  />
+                  <span
+                        className="w-full flex flex-col gap-6  items-center justify-center 
+                              lg:flex-row
+                        "
+                  >
+                        <Button
+                              variant="outlined"
+                              type="button"
+                              title="Previous"
+                              extraClassName="!w-full"
+                              onClickHandler={previousButtonHandler}
+                        />
 
-                  <Button type="submit" title="Register" extraClassName="py-2" />
-            </form>
+                        <Button type="submit" title="Register" extraClassName="py-2" />
+                  </span>
+            </div>
       );
 }
 

@@ -1,36 +1,43 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import RegisterUserForm from "../components/RegisterUserForm";
 import useRegisterUserApi from "@/site/hooks/registerUser/useRegisterUserApi";
 import { IRegisterUserForm } from "@/site/model/registerUser/registerUserModel";
 import { useAppSelector } from "@/app/hooks";
-import { registerUserState } from "../feature/registerUserSlice";
 import { AUTH_PATH } from "@/site/constants/routePath";
+import { registerUserState } from "../feature/registerUserSlice";
 
 function RegisterUserFormContainer() {
       const navigate = useNavigate();
 
-      const [allData, setAllData] = useState<IRegisterUserForm>();
+      const methods = useForm<IRegisterUserForm>();
+      const { handleSubmit, trigger } = methods;
 
       const { registerUser } = useRegisterUserApi();
 
       const { status } = useAppSelector(registerUserState);
 
-      const submitFullForm = (data: any, isLastForm: () => boolean) => {
-            const isFinalForm = isLastForm();
+      const partialSubmitHandler = async (fields: any) => {
+            const result = await trigger(fields);
 
-            if (!isFinalForm) {
-                  setAllData((prev) => ({ ...prev, ...data }) as IRegisterUserForm);
-
-                  return;
-            }
-
-            registerUser({ ...data, ...allData }).then(() => {
-                  navigate(AUTH_PATH.login.full);
-            });
+            if (!result) throw new Error("Error in submitted fields " + fields);
       };
 
-      return <RegisterUserForm status={status} submitFullForm={submitFullForm} />;
+      const formSubmitHandler = handleSubmit((registrationData) => {
+            registerUser(registrationData).then(() => {
+                  navigate(AUTH_PATH.login.full);
+            });
+      });
+
+      return (
+            <FormProvider {...methods}>
+                  <RegisterUserForm
+                        status={status}
+                        submitFullForm={formSubmitHandler}
+                        partialSubmitHandler={partialSubmitHandler}
+                  />
+            </FormProvider>
+      );
 }
 
 export default RegisterUserFormContainer;

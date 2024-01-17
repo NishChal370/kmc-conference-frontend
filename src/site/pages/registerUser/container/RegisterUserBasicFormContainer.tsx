@@ -1,28 +1,21 @@
-import useAppForm from "@/hooks/form/useAppForm";
+import { useFormContext } from "react-hook-form";
 import RegisterUserBasicForm from "../components/RegisterUserBasicForm";
 import { IRegisterUserBasicForm } from "@/site/model/registerUser/registerUserModel";
 
 interface IRegisterUserBasicFormContainer {
-      slideToNext: () => void;
-      submitToParentHandler: (data: any) => void;
+      submitToParentHandler: (fields: (keyof IRegisterUserBasicForm)[]) => void;
 }
-function RegisterUserBasicFormContainer({
-      slideToNext,
-      submitToParentHandler,
-}: IRegisterUserBasicFormContainer) {
-      const registerUserBasicForm = useAppForm<IRegisterUserBasicForm>();
-      const { handleSubmit } = registerUserBasicForm;
+function RegisterUserBasicFormContainer({ submitToParentHandler }: IRegisterUserBasicFormContainer) {
+      const registerUserBasicForm = useFormContext<IRegisterUserBasicForm>();
 
-      const formSubmitHandler = handleSubmit((data) => {
-            submitToParentHandler(data);
-
-            slideToNext();
-      });
+      const basicFormSubmitHandler = (fields: (keyof IRegisterUserBasicForm)[]) => () => {
+            submitToParentHandler(fields);
+      };
 
       return (
             <RegisterUserBasicForm
                   registerUserBasicForm={registerUserBasicForm}
-                  basicFormSubmitHandler={formSubmitHandler}
+                  basicFormSubmitHandler={basicFormSubmitHandler}
             />
       );
 }

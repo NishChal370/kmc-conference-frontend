@@ -10,6 +10,9 @@ export interface IRegisterUserPostRequest {
       phoneNumber: string;
       password: string;
       confirmPassword: string;
+      title: string,
+      affiliation: string,
+      jobTitle: string,
 }
 
 
@@ -29,4 +32,11 @@ export interface IRegisterUserBasicForm {
 export interface IRegisterUserPasswordForm {
       password: string;
       confirmPassword: string;
+}
+
+
+export interface IRegisterUserProfessionalForm {
+      title: string,
+      affiliation: string,
+      jobTitle: string,
 }

@@ -6,11 +6,7 @@ import { Swiper, SwiperClass } from "swiper/react";
 import "swiper/css";
 
 interface IRegisterFormSwiperWrapper {
-      children: (swiperHandler: {
-            isLastForm: () => boolean;
-            slideToNext: () => void;
-            slideToPrev: () => void;
-      }) => ReactElement;
+      children: (swiperHandler: { slideToNext: () => void; slideToPrev: () => void }) => ReactElement;
 }
 function RegisterFormSwiperWrapper({ children }: IRegisterFormSwiperWrapper) {
       const [swiperRef, setSwiperRef] = useState<SwiperClass | null>(null);
@@ -18,19 +14,13 @@ function RegisterFormSwiperWrapper({ children }: IRegisterFormSwiperWrapper) {
       const slideToNext = () => {
             if (!swiperRef) return;
 
-            swiperRef.slideTo(swiperRef.activeIndex + 1);
+            swiperRef.slideNext();
       };
 
       const slideToPrev = () => {
             if (!swiperRef) return;
 
-            swiperRef.slideTo(swiperRef.activeIndex - 1);
-      };
-
-      const isLastForm = () => {
-            const length = swiperRef?.slides.length ? swiperRef.slides.length - 1 : undefined;
-
-            return swiperRef?.activeIndex === length;
+            swiperRef.slidePrev();
       };
 
       return (
@@ -45,7 +35,6 @@ function RegisterFormSwiperWrapper({ children }: IRegisterFormSwiperWrapper) {
                   className="w-full h-full flex"
             >
                   {children({
-                        isLastForm,
                         slideToNext,
                         slideToPrev,
                   })}
