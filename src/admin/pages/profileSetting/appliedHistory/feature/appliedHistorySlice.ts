@@ -137,7 +137,9 @@ const appliedHistorySlice = createSlice({
                         state.appliedCallForPaper.status = Status.LOADING;
                   })
                   .addCase(getApplicationCallForPaper.fulfilled, (state, action) => {
-                        state.appliedCallForPaper.status = Status.SUCCEEDED;
+                        state.appliedCallForPaper.status = action.payload.length <= 0
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
                         state.appliedCallForPaper.data = action.payload;
 
                   })
@@ -153,7 +155,9 @@ const appliedHistorySlice = createSlice({
                         state.appliedParticipation.status = Status.LOADING;
                   })
                   .addCase(getApplicationParticipation.fulfilled, (state, action) => {
-                        state.appliedParticipation.status = Status.SUCCEEDED;
+                        state.appliedParticipation.status = action.payload.length <= 0
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
                         state.appliedParticipation.data = action.payload;
 
                   })
