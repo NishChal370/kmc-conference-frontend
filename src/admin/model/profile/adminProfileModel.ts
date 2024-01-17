@@ -29,6 +29,9 @@ export type IAdminProfileResponse = IAdminProfileModel;
 
 export interface IAdminProfilePutRequest extends Omit<IAdminProfileBasicModel, "email"> {
       emailAddress: string;
+      title: string,
+      affiliation: string,
+      jobTitle: string,
 };
 
 

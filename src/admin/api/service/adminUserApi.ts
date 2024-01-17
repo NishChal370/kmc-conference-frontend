@@ -1,6 +1,6 @@
-import { IUserSearch } from "@/admin/model/user/userModel";
 import AXIOS from "@/api/constant";
 import { AxiosRequestConfig } from "axios";
+import { IUserPostRequest, IUserSearch } from "@/admin/model/user/userModel";
 
 export const adminUserApi = {
       getUsers: (searchDetail: IUserSearch) => {
@@ -11,4 +11,16 @@ export const adminUserApi = {
 
             return AXIOS.request(options);
       },
+
+
+      postUser: (newUser: IUserPostRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "POST",
+                  url: `Auth/admin-register`,
+                  data: newUser
+            };
+
+            return AXIOS.request(options);
+      },
+
 }

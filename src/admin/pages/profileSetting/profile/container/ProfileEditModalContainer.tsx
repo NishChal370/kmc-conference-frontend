@@ -31,6 +31,9 @@ function ProfileEditModalContainer({ adminProfileDetail, closeModalHandler }: IP
                   dateOfBirth: adminProfileDetail.dateOfBirth,
                   gender: adminProfileDetail.gender,
                   phoneNumber: adminProfileDetail.phoneNumber,
+                  title: adminProfileDetail.title,
+                  affiliation: adminProfileDetail.affiliation,
+                  jobTitle: adminProfileDetail.jobTitle,
             };
 
             reset(initialValue);

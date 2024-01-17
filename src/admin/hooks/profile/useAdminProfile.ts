@@ -1,6 +1,6 @@
+import { useAppDispatch } from "@/app/hooks";
 import { IAdminProfilePutRequest } from "@/admin/model/profile/adminProfileModel";
 import { getAdminProfile as getAdminProfileReq, putAdminProfile } from "@/admin/pages/profileSetting/profile/feature/profileRequest";
-import { useAppDispatch } from "@/app/hooks";
 import { errorToastMessage, loadingAlertWithMessage, successMessage, swalAlertClose } from "@/utils/alert";
 
 function useAdminProfileApi() {
@@ -17,7 +17,7 @@ function useAdminProfileApi() {
             await dispatch(putAdminProfile(adminProfileDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ title: "Updated", message: "Theme detail has been updated." });
+                        successMessage({ title: "Updated", message: "User detail has been updated." });
                   })
                   .catch((error) => {
                         errorToastMessage(error.detail);

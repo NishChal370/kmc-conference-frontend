@@ -8,6 +8,7 @@ interface IStaticOptionsDropdownInput {
       data: IDropdownOptionModel[];
       selected?: IDropdownOptionModel;
       errorMessage?: string;
+      isRequired?: boolean;
       variant?: "primary" | "secondary";
       onChangeHandler?: (data: IDropdownOptionModel) => void;
 }
@@ -17,6 +18,7 @@ function StaticOptionsDropdownInput({
       data,
       variant = "primary",
       selected,
+      isRequired = false,
       onChangeHandler,
       errorMessage,
 }: IStaticOptionsDropdownInput) {
@@ -24,8 +26,8 @@ function StaticOptionsDropdownInput({
             //NOTE: In value if we don't add empty object when `selected` is `undefined` then previous selected status will not be removed from the List box.
             <Listbox by="value" value={selected || {}} onChange={onChangeHandler}>
                   <div
-                        className={`relative w-full min-w-[14rem] flex flex-col gap-0
-                              ${variant === "secondary" ? "justify-between" : ""}
+                        className={`relative w-full min-w-[14rem] flex flex-col 
+                              ${variant === "secondary" ? "justify-between gap-1" : "gap-0"}
                         `}
                   >
                         {variant === "secondary" ? (
@@ -40,7 +42,8 @@ function StaticOptionsDropdownInput({
                                                       } 
                                                 `}
                                     >
-                                          {label}
+                                          {label}&nbsp;
+                                          {isRequired && "*"}
                                     </label>
 
                                     {errorMessage && (

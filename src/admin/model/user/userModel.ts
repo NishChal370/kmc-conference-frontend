@@ -1,8 +1,9 @@
-import { GENDER } from "@/enum/commonEnum"
+import { GENDER, UserRole } from "@/enum/commonEnum"
 import { IBasicApiResponse } from "@/models/commonModel";
 import { ISpeakerBasicModel } from "../speaker/adminSpeakerModel"
 import { IParticipantBasicModel } from "../participant/participantModel"
 import { ICallForPaperBasicModel } from "../callForPaper/callForPaperModel"
+import { IRegisterUserPostRequest } from '@/site/model/registerUser/registerUserModel';
 
 export interface IUserModel {
       id: string;
@@ -17,6 +18,7 @@ export interface IUserModel {
       speakerId?: ISpeakerBasicModel["id"];
       callForPaperId?: ICallForPaperBasicModel["id"];
       participantId?: IParticipantBasicModel["id"];
+      userRole: UserRole;
 }
 
 
@@ -31,3 +33,11 @@ export interface IUserSearch {
 
 
 export type IUserViewOrEditModal = IUserModel;
+
+
+export interface IUserPostRequest extends IRegisterUserPostRequest {
+      role: UserRole,
+};
+
+
+export type IAdminUserAddForm = IUserPostRequest;

@@ -1,83 +1,88 @@
 import { BaseSyntheticEvent } from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
+import { IAdminUserAddForm } from "@/admin/model/user/userModel";
 import SecondaryInput from "@/shared/input/SecondaryInput";
-import PhoneInput from "@/shared/input/PhoneInput";
 import StaticOptionsDropdownInput from "@/shared/input/StaticOptionsDropdownInput";
-import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 import { Modal, ModalActionButtons, ModalFooter, ModalSectionHeader } from "@/shared/modal";
-import { IAdminProfileEditForm } from "@/admin/model/profile/adminProfileModel";
 import { GENDER_OPTIONS } from "@/site/pages/registerUser/data/genderList";
+import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 import { REGEX } from "@/helper/regex";
+import PhoneInput from "@/shared/input/PhoneInput";
+import { USER_ROLE_OPTIONS } from "@/shared/input/data/userRoleOprionList";
 
-interface IProfileEditModal {
+interface IAdminUserAddModal {
+      modalType?: "Add" | "Edit";
       closeModalHandler: () => void;
       formResetHandler: () => void;
       formSubmitHandler: (e?: BaseSyntheticEvent) => Promise<void>;
-      adminProfileForm: UseFormReturn<IAdminProfileEditForm>;
+      userForm: UseFormReturn<IAdminUserAddForm>;
 }
-function ProfileEditModal({
+function AdminUserAddModal({
+      modalType = "Add",
+      closeModalHandler,
       formResetHandler,
       formSubmitHandler,
-      closeModalHandler,
-      adminProfileForm: {
-            register,
+      userForm: {
             control,
+            register,
             formState: { errors },
       },
-}: IProfileEditModal) {
+}: IAdminUserAddModal) {
       return (
             <Modal
-                  title={`Edit Profile Detail`}
-                  size="w-full md:!w-[70%] md:!max-w-[60rem]"
+                  title={`${modalType} User Detail`}
+                  size="w-full lg:!max-w-[76rem]"
                   closeHandler={closeModalHandler}
             >
                   <form
+                        onSubmit={formSubmitHandler}
                         className="flex flex-col gap-12 w-full
                               [&>section]:flex [&>section]:flex-col  [&>section]:gap-10
-                              [&>section>span]:grid [&>section>span]:sm:grid-cols-2 [&>section>span]:gap-x-6  [&>section>span]:gap-y-6
+                              [&>section>span]:grid [&>section>span]:sm:grid-cols-2 [&>section>span]:gap-x-10  [&>section>span]:gap-y-7
                         "
-                        onSubmit={formSubmitHandler}
                   >
                         <section>
-                              <ModalSectionHeader title="Professional Information" />
+                              <ModalSectionHeader title="Personal Information" />
 
                               <span>
-                                    <SecondaryInput
-                                          isRequired
-                                          label="First Name"
-                                          errorMessage={errors.firstName?.message}
-                                    >
-                                          {register("firstName", {
-                                                required: {
-                                                      value: true,
-                                                      message: INPUT_ERROR_MESSAGE.empty,
-                                                },
-                                          })}
-                                    </SecondaryInput>
+                                    <span className="sm:col-span-2 grid grid-cols-3 gap-x-4 w-full">
+                                          <SecondaryInput
+                                                isRequired
+                                                label="First Name"
+                                                errorMessage={errors.firstName?.message}
+                                          >
+                                                {register("firstName", {
+                                                      required: {
+                                                            value: true,
+                                                            message: INPUT_ERROR_MESSAGE.empty,
+                                                      },
+                                                })}
+                                          </SecondaryInput>
+
+                                          <SecondaryInput
+                                                label="Middle Name"
+                                                errorMessage={errors.middleName?.message}
+                                          >
+                                                {register("middleName")}
+                                          </SecondaryInput>
+
+                                          <SecondaryInput
+                                                isRequired
+                                                label="Last Name"
+                                                errorMessage={errors.lastName?.message}
+                                          >
+                                                {register("lastName", {
+                                                      required: {
+                                                            value: true,
+                                                            message: INPUT_ERROR_MESSAGE.empty,
+                                                      },
+                                                })}
+                                          </SecondaryInput>
+                                    </span>
 
                                     <SecondaryInput
-                                          label="Middle Name"
-                                          errorMessage={errors.middleName?.message}
-                                    >
-                                          {register("middleName")}
-                                    </SecondaryInput>
-
-                                    <SecondaryInput
-                                          isRequired
-                                          label="Last Name"
-                                          errorMessage={errors.lastName?.message}
-                                    >
-                                          {register("lastName", {
-                                                required: {
-                                                      value: true,
-                                                      message: INPUT_ERROR_MESSAGE.empty,
-                                                },
-                                          })}
-                                    </SecondaryInput>
-
-                                    <SecondaryInput
-                                          isRequired
                                           type="date"
+                                          isRequired
                                           label="Date Of Birth"
                                           errorMessage={errors.dateOfBirth?.message}
                                     >
@@ -98,11 +103,12 @@ function ProfileEditModal({
                                                       message: INPUT_ERROR_MESSAGE.empty,
                                                 },
                                           }}
-                                          render={({ field }) => (
+                                          render={({ field, fieldState }) => (
                                                 <StaticOptionsDropdownInput
                                                       label="Gender"
-                                                      data={GENDER_OPTIONS}
+                                                      isRequired
                                                       variant="secondary"
+                                                      data={GENDER_OPTIONS}
                                                       selected={
                                                             field.value
                                                                   ? {
@@ -114,14 +120,13 @@ function ProfileEditModal({
                                                       onChangeHandler={function (data): void {
                                                             field.onChange(data.value);
                                                       }}
-                                                      errorMessage={errors.gender?.message}
+                                                      errorMessage={fieldState.error?.message}
                                                 />
                                           )}
                                     />
-
                                     <SecondaryInput
-                                          isRequired
                                           label="Email"
+                                          isRequired
                                           errorMessage={errors.emailAddress?.message}
                                     >
                                           {register("emailAddress", {
@@ -137,10 +142,11 @@ function ProfileEditModal({
                                     </SecondaryInput>
 
                                     <PhoneInput
-                                          variant="secondary"
-                                          control={control}
                                           isRequired
+                                          variant="secondary"
+                                          label="Phone Number"
                                           name="phoneNumber"
+                                          control={control}
                                     />
                               </span>
                         </section>
@@ -150,11 +156,24 @@ function ProfileEditModal({
 
                               <span>
                                     <SecondaryInput
-                                          isRequired
                                           label="Title"
+                                          isRequired
                                           errorMessage={errors.title?.message}
                                     >
                                           {register("title", {
+                                                required: {
+                                                      value: true,
+                                                      message: INPUT_ERROR_MESSAGE.empty,
+                                                },
+                                          })}
+                                    </SecondaryInput>
+
+                                    <SecondaryInput
+                                          label="Job Title"
+                                          isRequired
+                                          errorMessage={errors.jobTitle?.message}
+                                    >
+                                          {register("jobTitle", {
                                                 required: {
                                                       value: true,
                                                       message: INPUT_ERROR_MESSAGE.empty,
@@ -174,22 +193,45 @@ function ProfileEditModal({
                                                 },
                                           })}
                                     </SecondaryInput>
+                              </span>
+                        </section>
 
-                                    <SecondaryInput
-                                          isRequired
-                                          label="Job Title"
-                                          errorMessage={errors.jobTitle?.message}
-                                    >
-                                          {register("jobTitle", {
+                        <section>
+                              <ModalSectionHeader title="System Information" />
+
+                              <span>
+                                    <Controller
+                                          name="role"
+                                          control={control}
+                                          rules={{
                                                 required: {
                                                       value: true,
                                                       message: INPUT_ERROR_MESSAGE.empty,
                                                 },
-                                          })}
-                                    </SecondaryInput>
+                                          }}
+                                          render={({ field, fieldState }) => (
+                                                <StaticOptionsDropdownInput
+                                                      label="User Role"
+                                                      isRequired
+                                                      variant="secondary"
+                                                      data={USER_ROLE_OPTIONS}
+                                                      selected={
+                                                            field.value
+                                                                  ? {
+                                                                          value: field.value,
+                                                                          option: field.value,
+                                                                    }
+                                                                  : undefined
+                                                      }
+                                                      onChangeHandler={function (data): void {
+                                                            field.onChange(data.value);
+                                                      }}
+                                                      errorMessage={fieldState.error?.message}
+                                                />
+                                          )}
+                                    />
                               </span>
                         </section>
-
                         <ModalFooter>
                               <ModalActionButtons resetHandler={formResetHandler} />
                         </ModalFooter>
@@ -198,4 +240,4 @@ function ProfileEditModal({
       );
 }
 
-export default ProfileEditModal;
+export default AdminUserAddModal;

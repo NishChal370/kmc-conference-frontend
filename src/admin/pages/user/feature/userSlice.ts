@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { IUserResponse } from "@/admin/model/user/userModel";
-import { getUsers } from "./userRequest";
+import { getUsers, postUser } from "./userRequest";
 
 
 interface IUserSlice extends IBasicSliceState {
@@ -56,6 +56,11 @@ const userSlice = createSlice({
                   .addCase(getUsers.rejected, (state, action) => {
                         state.users.status = Status.FAILED;
                         state.users.error = action.payload;
+                  })
+
+
+                  .addCase(postUser.fulfilled, (state) => {
+                        state.users.isToRefetch = !state.users.isToRefetch;
                   })
       },
 })

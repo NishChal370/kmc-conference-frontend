@@ -8,13 +8,9 @@ interface IAdminUserViewModal {
 }
 function AdminUserViewModal({ user, closeModalHandler }: IAdminUserViewModal) {
       return (
-            <Modal
-                  title="View Speaker Detail"
-                  size="w-full sm:!max-w-[60rem]"
-                  closeHandler={closeModalHandler}
-            >
+            <Modal title="View User Detail" size="w-full sm:!max-w-[60rem]" closeHandler={closeModalHandler}>
                   <span
-                        className="mb-6 w-full flex flex-col gap-y-20 tracking-wide
+                        className="mb-6 w-full flex flex-col gap-y-10 tracking-wide
                               sm:px-2
                         "
                   >
@@ -44,6 +40,8 @@ function AdminUserViewModal({ user, closeModalHandler }: IAdminUserViewModal) {
                                     <ModalText title="Job Title" data={user.jobTitle} />
 
                                     <ModalText title="Affiliation" data={user.affiliation} />
+
+                                    <ModalText title="User Role" data={user.userRole} />
                               </article>
                         </section>
 
