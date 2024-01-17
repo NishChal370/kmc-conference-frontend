@@ -14,5 +14,20 @@ export const ADMIN_PROFILE_SETTING_PATH = {
       changePassword: {
             basic: "change-password",
             full: `/${ADMIN_BASE_PATH}/profile-setting/change-password`,
+      },
+
+      appliedSpeaking: {
+            basic: "speaking-history",
+            full: `/${ADMIN_BASE_PATH}/profile-setting/speaking-history`,
+      },
+
+      appliedCallForPaper: {
+            basic: "applied-call-for-paper",
+            full: `/${ADMIN_BASE_PATH}/profile-setting/applied-call-for-paper`,
+      },
+
+      appliedParticipation: {
+            basic: "applied-participation",
+            full: `/${ADMIN_BASE_PATH}/profile-setting/applied-participation`,
       }
 }

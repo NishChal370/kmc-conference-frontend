@@ -12,6 +12,9 @@ import {
       AdminUser,
       Profile,
       ProfileSetting,
+      AppliedSpeaking,
+      AppliedParticipation,
+      AppliedCallForPaper,
       ChangePasswordContainer,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
@@ -136,6 +139,22 @@ export const AdminRouter: RouteObject = {
                                     {
                                           path: ADMIN_PROFILE_SETTING_PATH.changePassword.basic,
                                           element: <ChangePasswordContainer />,
+                                    },
+                                    {
+                                          path: ADMIN_PROFILE_SETTING_PATH.appliedSpeaking.basic,
+                                          element: <AppliedSpeaking />,
+                                    },
+                                    {
+                                          path: ADMIN_PROFILE_SETTING_PATH.appliedCallForPaper.basic,
+                                          element: <AppliedCallForPaper />,
+                                    },
+                                    {
+                                          path: ADMIN_PROFILE_SETTING_PATH.appliedParticipation.basic,
+                                          element: <AppliedParticipation />,
+                                    },
+                                    {
+                                          path: "*",
+                                          element: <h1>Not found from admin</h1>,
                                     },
                               ],
                         },

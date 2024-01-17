@@ -38,18 +38,20 @@ function ProfileBody({ detail, editButtonHandler, navigateHandler }: IProfileBod
                               {
                                     label: "Speaker",
                                     type: "link",
+                                    data: detail.speakerId || undefined,
                                     linkLabel: "View Detail",
                                     linkHandler: navigateHandler("detail.speakerId"),
                               },
                               {
                                     label: "Call For Paper",
                                     type: "link",
+                                    data: detail.callForPaperId || undefined,
                                     linkLabel: "View Detail",
                                     linkHandler: navigateHandler("detail.callFOrPaperId"),
                               },
                               {
                                     label: "Participation",
-                                    data: "Y Chief header",
+                                    data: detail.participantId || undefined,
                                     type: "link",
                                     linkLabel: "View Detail",
                                     linkHandler: navigateHandler("detail.participantId"),

@@ -5,8 +5,8 @@ import { IChangePasswordRequest } from "@/admin/model/changePassword/changePassw
 export const adminChangePasswordApi = {
       putChangePassword: (passwordDetail: IChangePasswordRequest) => {
             const options: AxiosRequestConfig = {
-                  method: "PUT",
-                  url: `change-password`,
+                  method: "POST",
+                  url: `Auth/change-password`,
                   data: passwordDetail,
             };
 

@@ -10,6 +10,7 @@ import {
       IconCheck,
       IconChevronDown,
       IconClockHour2,
+      IconColorFilter,
       IconDots,
       IconDownload,
       IconEdit,
@@ -20,11 +21,18 @@ import {
       IconLogout,
       IconMapPin,
       IconMenu2,
+      IconNews,
       IconPlus,
       IconShare2,
       IconTrash,
       IconTriangle,
       IconUser,
+      IconUserCog,
+      IconUserHexagon,
+      IconUserPentagon,
+      IconUserShield,
+      IconUserSquare,
+      IconUsersGroup,
       IconX,
 } from "@tabler/icons-react";
 import { ICON } from "@/constants/icon";
@@ -100,6 +108,33 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "dashboard":
                         return <IconHome2 className={className} size={size ?? ICON.size} />;
+
+                  case "conference-day":
+                        return <IconCalendarEvent className={className} size={size ?? ICON.size} />;
+
+                  case "theme":
+                        return <IconColorFilter className={className} size={size ?? ICON.size} />;
+
+                  case "session":
+                        return <IconUsersGroup className={className} size={size ?? ICON.size} />;
+
+                  case "applicants":
+                        return <IconNews className={className} size={size ?? ICON.size} />;
+
+                  case "speaker":
+                        return <IconUserSquare className={className} size={size ?? ICON.size} />;
+
+                  case "callForPaper":
+                        return <IconUserHexagon className={className} size={size ?? ICON.size} />;
+
+                  case "participant":
+                        return <IconUserPentagon className={className} size={size ?? ICON.size} />;
+
+                  case "administration":
+                        return <IconUserCog className={className} size={size ?? ICON.size} />;
+
+                  case "registered-user":
+                        return <IconUserShield className={className} size={size ?? ICON.size} />;
 
                   case "more-horizontal":
                         return <IconDots className={className} size={size ?? ICON.size} />;

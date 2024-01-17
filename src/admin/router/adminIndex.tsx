@@ -15,6 +15,14 @@ const ChangePasswordContainer = lazy(
       () => import("@/admin/pages/profileSetting/changePassword/container/ChangePasswordContainer")
 );
 
+const AppliedSpeaking = lazy(() => import("@/admin/pages/profileSetting/appliedHistory/AppliedSpeaking"));
+const AppliedParticipation = lazy(
+      () => import("@/admin/pages/profileSetting/appliedHistory/AppliedParticipation")
+);
+const AppliedCallForPaper = lazy(
+      () => import("@/admin/pages/profileSetting/appliedHistory/AppliedCallForPaper")
+);
+
 export {
       Days,
       AdminDayTheme,
@@ -26,4 +34,7 @@ export {
       Profile,
       ProfileSetting,
       ChangePasswordContainer,
+      AppliedSpeaking,
+      AppliedParticipation,
+      AppliedCallForPaper,
 };

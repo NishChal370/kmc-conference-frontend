@@ -25,7 +25,7 @@ function UserAccessPanel({ closeMenuHandler }: IUserAccessPanel) {
                         {
                               name: "Admin Panel",
                               path: ADMIN_DASHBOARD_PATH.dashboard.full,
-                              isVisible: getTokenDetail.loggedInUserRole() !== UserRole.PARTICIPANTS,
+                              isVisible: getTokenDetail.loggedInUserRole() !== UserRole.USER,
                         },
                         { name: "Profile", path: "/profile", isVisible: true },
                   ].map(({ name, path, isVisible }, index) =>

@@ -14,47 +14,47 @@ export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [
       {
             id: getUniqueId(),
             title: "Conference Day",
-            Icon: "dashboard",
+            Icon: "conference-day",
             pathName: ADMIN_DAYS_PATH.day.full,
       },
 
       {
             id: getUniqueId(),
             title: "Theme",
-            Icon: "dashboard",
+            Icon: "theme",
             pathName: ADMIN_DAY_THEME_PATH.theme.full(),
       },
 
       {
             id: getUniqueId(),
             title: "Session",
-            Icon: "dashboard",
+            Icon: "session",
             pathName: ADMIN_SCHEDULE_PATH.schedule.full(),
       },
 
       {
             id: getUniqueId(),
             title: "Applicants",
-            Icon: "dashboard",
+            Icon: "applicants",
             pathName: ADMIN_APPLICANT_PATH.base.basic,
             subNav: [
                   {
                         id: getUniqueId(),
                         title: "Speaker",
-                        Icon: "dashboard",
+                        Icon: "speaker",
                         pathName: ADMIN_APPLICANT_PATH.speaker.full,
                   },
                   {
                         id: getUniqueId(),
                         title: "Call For Paper",
-                        Icon: "dashboard",
+                        Icon: "callForPaper",
                         pathName: ADMIN_APPLICANT_PATH.callForPaper.full,
                   },
 
                   {
                         id: getUniqueId(),
                         title: "Participant",
-                        Icon: "dashboard",
+                        Icon: "participant",
                         pathName: ADMIN_APPLICANT_PATH.participant.full,
                   },
             ]
@@ -63,13 +63,13 @@ export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [
       {
             id: getUniqueId(),
             title: "Administration",
-            Icon: "dashboard",
+            Icon: "administration",
             pathName: ADMIN_ADMINISTRATION_PATH.base.basic,
             subNav: [
                   {
                         id: getUniqueId(),
                         title: "User",
-                        Icon: "dashboard",
+                        Icon: "registered-user",
                         pathName: ADMIN_ADMINISTRATION_PATH.user.full,
                   },
             ]

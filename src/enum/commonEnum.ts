@@ -23,7 +23,7 @@ export enum UserRole {
       SITE_MANAGER = "SiteManager",
       REVIEWER = "Reviewer",
       READ_ONLY = "ReadOnly",
-      PARTICIPANTS = "User",
+      USER = "User",
 }
 
 

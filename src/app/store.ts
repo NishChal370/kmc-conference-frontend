@@ -20,7 +20,7 @@ import callForPaperReducer from "@/admin/pages/callForPaper/feature/callForPaper
 import participantReducer from "@/admin/pages/participant/feature/participantSlice";
 import userReducer from "@/admin/pages/user/feature/userSlice";
 import adminProfileReducer from "@/admin/pages/profileSetting/profile/feature/profileSlice";
-
+import appliedHistoryReducer from "@/admin/pages/profileSetting/appliedHistory/feature/appliedHistorySlice";
 
 export const store = configureStore({
       reducer: {
@@ -41,6 +41,7 @@ export const store = configureStore({
             participant: participantReducer,
             user: userReducer,
             adminProfile: adminProfileReducer,
+            appliedHistory: appliedHistoryReducer,
       },
 });
 
