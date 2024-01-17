@@ -1,0 +1,36 @@
+.nested {
+      transition: all 0.5s ease-in-out;
+}
+
+.nested td {
+      transition: all 0.5s ease-in-out;
+}
+
+.nested table {
+      transition: all 0.5s ease-in-out;
+}
+
+.on table,
+.off table {
+      opacity: 1 !important;
+      position: static !important;
+}
+
+.off table {
+      opacity: 0 !important;
+      position: absolute !important;
+
+      pointer-events: none !important;
+}
+
+.on td {
+      position: static !important;
+      padding: 0.6rem 0.5rem !important;
+      overflow: hidden !important;
+}
+
+.off td {
+      position: relative !important;
+      padding: 0rem 0rem !important;
+      overflow: hidden !important;
+}

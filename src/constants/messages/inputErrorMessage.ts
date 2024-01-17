@@ -7,4 +7,5 @@ export const INPUT_ERROR_MESSAGE = {
       invalidContactNumber: "Invalid number",
       invalidEmail: "Invalid email address",
       invalidDob: "Please enter a valid date of birth",
+      invalidUrl: "Invalid url/link"
 } as const;

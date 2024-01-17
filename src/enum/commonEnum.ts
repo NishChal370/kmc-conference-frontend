@@ -23,7 +23,7 @@ export enum UserRole {
       SITE_MANAGER = "SiteManager",
       REVIEWER = "Reviewer",
       READ_ONLY = "ReadOnly",
-      PARTICIPANTS = "User",
+      USER = "User",
 }
 
 
@@ -40,3 +40,12 @@ export enum Status {
       DATA_NOT_FOUND,
 }
 
+
+/**
+ * @enum
+ * For table sort
+ */
+export enum OrderBy {
+      Ascending,
+      Descending,
+}

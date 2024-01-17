@@ -1,6 +1,6 @@
 import axios from "axios";
 import { cookiesStore } from "@/utils/cookiesHandler";
-import { authApi } from "./service-normalUser/authApi";
+import { authApi } from "../site/api/service/authApi";
 
 export const BASE_URL = import.meta.env.VITE_BASE_URL;
 

@@ -22,3 +22,23 @@
       -ms-overflow-style: none; /* IE and Edge */
       scrollbar-width: none; /* Firefox */
 }
+
+.blink-class {
+      @apply bg-error/0;
+      animation: blink 1s linear;
+}
+
+@keyframes blink {
+      0% {
+            @apply bg-error/5;
+      }
+      25% {
+            @apply bg-error/20;
+      }
+      75% {
+            @apply bg-error/5;
+      }
+      100% {
+            @apply bg-white/0;
+      }
+}

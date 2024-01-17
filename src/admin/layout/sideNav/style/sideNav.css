@@ -1,0 +1,17 @@
+#admin-subNav-container {
+      animation-duration: 900ms;
+      animation-name: smooth;
+      transition: all ease-in-out;
+}
+
+@keyframes smooth {
+      from {
+            opacity: 0;
+            transform: translateY(1);
+      }
+
+      to {
+            opacity: 100;
+            transform: translateY(0);
+      }
+}

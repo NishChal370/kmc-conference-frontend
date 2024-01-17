@@ -10,11 +10,29 @@ import {
       IconCheck,
       IconChevronDown,
       IconClockHour2,
+      IconColorFilter,
+      IconDots,
+      IconDownload,
+      IconEdit,
+      IconEye,
+      IconHome2,
       IconLock,
       IconLockOpen,
+      IconLogout,
       IconMapPin,
       IconMenu2,
+      IconNews,
+      IconPlus,
       IconShare2,
+      IconTrash,
+      IconTriangle,
+      IconUser,
+      IconUserCog,
+      IconUserHexagon,
+      IconUserPentagon,
+      IconUserShield,
+      IconUserSquare,
+      IconUsersGroup,
       IconX,
 } from "@tabler/icons-react";
 import { ICON } from "@/constants/icon";
@@ -87,6 +105,69 @@ function AppIcon({ name, className, size }: IIcon) {
                                     size={size ?? ICON.size}
                               />
                         );
+
+                  case "dashboard":
+                        return <IconHome2 className={className} size={size ?? ICON.size} />;
+
+                  case "conference-day":
+                        return <IconCalendarEvent className={className} size={size ?? ICON.size} />;
+
+                  case "theme":
+                        return <IconColorFilter className={className} size={size ?? ICON.size} />;
+
+                  case "session":
+                        return <IconUsersGroup className={className} size={size ?? ICON.size} />;
+
+                  case "applicants":
+                        return <IconNews className={className} size={size ?? ICON.size} />;
+
+                  case "speaker":
+                        return <IconUserSquare className={className} size={size ?? ICON.size} />;
+
+                  case "callForPaper":
+                        return <IconUserHexagon className={className} size={size ?? ICON.size} />;
+
+                  case "participant":
+                        return <IconUserPentagon className={className} size={size ?? ICON.size} />;
+
+                  case "administration":
+                        return <IconUserCog className={className} size={size ?? ICON.size} />;
+
+                  case "registered-user":
+                        return <IconUserShield className={className} size={size ?? ICON.size} />;
+
+                  case "more-horizontal":
+                        return <IconDots className={className} size={size ?? ICON.size} />;
+
+                  case "sort-ascending":
+                        return <IconTriangle className={className} size={size ?? ICON.size} />;
+
+                  case "sort-descending":
+                        return (
+                              <IconTriangle className={className + " rotate-180"} size={size ?? ICON.size} />
+                        );
+
+                  case "view":
+                        return <IconEye className={className} size={size ?? ICON.size + 2} />;
+
+                  case "update":
+                        return <IconEdit className={className} size={size ?? ICON.size} />;
+
+                  case "delete":
+                        return <IconTrash className={className} size={size ?? ICON.size} />;
+
+                  case "add":
+                        return <IconPlus className={className} size={size ?? ICON.size} />;
+
+                  case "download":
+                        return <IconDownload className={className} size={size ?? ICON.size} />;
+
+                  case "user":
+                        return <IconUser className={className} size={size ?? ICON.size} />;
+
+                  case "logout":
+                        return <IconLogout className={className} size={size ?? ICON.size} />;
+
                   default:
                         alert("Please select icon");
                         break;

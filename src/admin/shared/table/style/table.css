@@ -1,0 +1,101 @@
+@tailwind utilities;
+
+@layer utilities {
+      #page-table td:first-child,
+      #page-table th:first-child {
+            @apply min-w-[2rem];
+      }
+      #page-table th:first-child > span {
+            @apply !pl-[1rem];
+      }
+
+      #page-table > tbody #index {
+            @apply font-semibold text-center !min-w-[2rem];
+      }
+
+      #page-table td,
+      #page-table th {
+            @apply min-w-[6rem]
+            max-w-xs
+            py-2 sm:!px-4;
+      }
+
+      #page-table tr > td > p {
+            @apply line-clamp-2;
+      }
+
+      #page-table thead th {
+            @apply font-medium
+            bg-rose-50/50 text-primary
+            whitespace-nowrap;
+      }
+
+      #page-table tbody > tr > * {
+            @apply border-b border-mute/5 p-3;
+      }
+
+      @media (max-width: 640px) {
+            #page-table > thead:not(.nested-thead) {
+                  display: none;
+            }
+
+            #page-table tbody:not(.nested-tbody) {
+                  @apply flex
+                  flex-col
+                  gap-8;
+            }
+
+            #page-table tbody > tr > * {
+                  @apply border-none p-2;
+            }
+
+            #page-table tbody tr:not(.nested-tr) {
+                  @apply border border-mute relative
+                  rounded-md
+                  p-4
+                  w-full;
+            }
+
+            #page-table tbody td:before {
+                  content: attr(data-name);
+                  @apply float-left
+                  pr-3
+                  text-mute;
+            }
+
+            #page-table tbody #index {
+                  display: none;
+            }
+
+            #page-table tbody td:not(.nested-td) {
+                  display: block;
+                  @apply text-right;
+            }
+            #page-table tbody td {
+                  @apply w-full
+                  max-w-full
+                  text-default;
+            }
+
+            #page-table tr > td:not(.nested-td) > p {
+                  @apply line-clamp-none;
+            }
+
+            /* if table have action button */
+            #page-table tbody tr:has(#table-action-container) {
+                  @apply pt-10
+                  pb-4
+                  px-4;
+            }
+
+            #table-action-container::before {
+                  content: "" !important;
+            }
+
+            #table-action-container {
+                  position: absolute;
+                  top: 0rem;
+                  padding-right: 1rem;
+            }
+      }
+}

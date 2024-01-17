@@ -10,10 +10,12 @@ type IconButtonVariant = "filled" | "lightFilled" | "outlined";
 
 export type IButton = {
       id?: string;
+      suggestion?: string;
       extraClassName?: string;
       variant?: ButtonVariant;
       title: string;
       iconName?: TIconType;
+      disable?: boolean;
 } & ({ type: "submit"; onClickHandler?: never } | { type?: ButtonType; onClickHandler: () => void })
 
 

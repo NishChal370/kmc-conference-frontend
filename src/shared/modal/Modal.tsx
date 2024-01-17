@@ -10,11 +10,17 @@ interface IModal {
 }
 
 function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
+      const initialScrollTop = () => {
+            const modalContainer = document.querySelector(".scroll--container");
+            if (modalContainer) {
+                  modalContainer.scrollTo(0, 0);
+            }
+      };
       return (
-            <Transition appear show={toShow} as={Fragment}>
+            <Transition appear show={toShow} afterEnter={initialScrollTop} as={Fragment}>
                   <Dialog
                         as="div"
-                        className="relative z-40 w-fit"
+                        className="relative z-40 min-w-fit"
                         onClose={() => null} // this work like backDrop
                   >
                         <Transition.Child
@@ -29,7 +35,7 @@ function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
                               <div className="fixed inset-0 bg-[#000000] bg-opacity-30 " />
                         </Transition.Child>
 
-                        <div className="fixed inset-0 overflow-y-auto">
+                        <div className="scroll--container fixed inset-0 overflow-y-auto">
                               <div className="flex min-h-full items-center justify-center p-4 text-center">
                                     <Transition.Child
                                           as={Fragment}
@@ -41,7 +47,10 @@ function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
                                           leaveTo="opacity-0 scale-95"
                                     >
                                           <Dialog.Panel
-                                                className={`flex flex-col gap-8 min-w-fit max-w-7xl ${size} transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all`}
+                                                className={
+                                                      `flex flex-col gap-8  transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all ` +
+                                                      size
+                                                }
                                           >
                                                 <Dialog.Title
                                                       as="h3"
@@ -50,7 +59,7 @@ function Modal({ title, closeHandler, size, toShow = true, children }: IModal) {
                                                       }`}
                                                 >
                                                       {title && (
-                                                            <header className=" text-base  tracking-wide font-semibold">
+                                                            <header className=" text-base  min-w-min tracking-wide font-semibold">
                                                                   {title}
                                                             </header>
                                                       )}
