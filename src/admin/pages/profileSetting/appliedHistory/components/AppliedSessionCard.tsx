@@ -7,7 +7,8 @@ interface IAppliedSessionCard {
       time: string;
       location: string;
       approvalStatus?: SpeakerApprovalStatus | CallForPaperApprovalStatus;
-      viewButtonHandler: () => void;
+      viewSessionDetailButtonHandler: () => void;
+      viewDetailButtonHandler: () => void;
 }
 
 function AppliedSessionCard({
@@ -15,7 +16,8 @@ function AppliedSessionCard({
       title,
       location,
       approvalStatus,
-      viewButtonHandler,
+      viewSessionDetailButtonHandler,
+      viewDetailButtonHandler,
 }: IAppliedSessionCard) {
       const badge = useMemo(() => {
             let badge = null;
@@ -76,13 +78,21 @@ function AppliedSessionCard({
                         </span>
                   </section>
 
-                  <footer className="flex self-end">
+                  <footer className="flex gap-4 self-end">
                         <button
                               type="button"
-                              onClick={viewButtonHandler}
-                              className="text-primary active:text-primary/80"
+                              onClick={viewSessionDetailButtonHandler}
+                              className="text-error active:text-primary/80"
                         >
                               View Session
+                        </button>
+
+                        <button
+                              type="button"
+                              onClick={viewDetailButtonHandler}
+                              className="text-primary active:text-primary/80"
+                        >
+                              View Detail
                         </button>
                   </footer>
             </div>

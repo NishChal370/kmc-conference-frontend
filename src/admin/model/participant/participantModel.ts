@@ -19,7 +19,7 @@ export interface IParticipantModel extends IParticipantBasicModel {
       state: string;
       postalCode: number;
       country: string;
-      registrationFeePaymentDetails: string;
+      registrationFeePaymentDetails: string; // add it if they asked. now not implemented
       specialRequirements: string;
       trackPreferences: string;
       bio: string;

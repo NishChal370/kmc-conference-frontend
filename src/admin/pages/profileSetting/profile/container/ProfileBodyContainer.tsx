@@ -25,10 +25,6 @@ function ProfileBodyContainer({ openAdminProfileEditModal }: IProfileBodyContain
             openAdminProfileEditModal(adminProfileDetail);
       };
 
-      const navigateHandler = (path?: string) => () => {
-            //TODO: ad navigateor here
-      };
-
       useEffect(() => {
             fetchData();
       }, [isToRefetch]);
@@ -42,11 +38,7 @@ function ProfileBodyContainer({ openAdminProfileEditModal }: IProfileBodyContain
       return (
             <>
                   {status === Status.SUCCEEDED && data && (
-                        <ProfileBody
-                              detail={data}
-                              navigateHandler={navigateHandler}
-                              editButtonHandler={editButtonHandler}
-                        />
+                        <ProfileBody detail={data} editButtonHandler={editButtonHandler} />
                   )}
 
                   {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}

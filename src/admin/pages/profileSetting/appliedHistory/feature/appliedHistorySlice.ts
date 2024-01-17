@@ -2,8 +2,8 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { IAppliedCallForPaperResponse, IAppliedParticipationResponse, IAppliedSpeakerResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
-import { getApplicationCallForPaper, getApplicationParticipation, getApplicationSpeaker } from "./appliedHistoryRequest";
+import { IAppliedCallForPaperResponse, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { getApplicationCallForPaper, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeaker } from "./appliedHistoryRequest";
 
 
 interface IAppliedParticipationSlice extends IBasicSliceState {
@@ -19,10 +19,17 @@ interface IAppliedCallForPaperSlice extends IBasicSliceState {
 }
 
 
+
+interface IAppliedParticipationDetailedSlice extends IBasicSliceState {
+      data?: IAppliedParticipationDetailedResponse;
+}
+
+
 type IAppliedHistory = {
       appliedParticipation: IAppliedParticipationSlice,
       appliedSpeaker: IAppliedSpeakerSlice,
       appliedCallForPaper: IAppliedCallForPaperSlice,
+      appliedParticipationDetailed: IAppliedParticipationDetailedSlice,
 };
 
 
@@ -39,6 +46,9 @@ const initialState: IAppliedHistory = {
       appliedCallForPaper: {
             status: Status.IDEL,
             data: []
+      },
+      appliedParticipationDetailed: {
+            status: Status.IDEL,
       },
 }
 
@@ -64,6 +74,13 @@ const appliedHistorySlice = createSlice({
                   state.appliedCallForPaper = {
                         status: Status.IDEL,
                         data: [],
+                  }
+            },
+
+            resetAppliedParticipationDetailedSlice: (state) => {
+                  state.appliedParticipationDetailed = {
+                        status: Status.IDEL,
+                        data: undefined,
                   }
             },
       },
@@ -113,6 +130,21 @@ const appliedHistorySlice = createSlice({
                   .addCase(getApplicationParticipation.rejected, (state, action) => {
                         state.appliedParticipation.status = Status.FAILED;
                         state.appliedParticipation.error = action.payload;
+                  })
+
+
+
+                  .addCase(getApplicationParticipationDetailed.pending, (state) => {
+                        state.appliedParticipationDetailed.status = Status.LOADING;
+                  })
+                  .addCase(getApplicationParticipationDetailed.fulfilled, (state, action) => {
+                        state.appliedParticipationDetailed.status = Status.SUCCEEDED;
+                        state.appliedParticipationDetailed.data = action.payload;
+
+                  })
+                  .addCase(getApplicationParticipationDetailed.rejected, (state, action) => {
+                        state.appliedParticipationDetailed.status = Status.FAILED;
+                        state.appliedParticipationDetailed.error = action.payload;
                   })
       },
 })

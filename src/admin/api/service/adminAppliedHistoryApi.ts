@@ -1,5 +1,6 @@
-import AXIOS from "@/api/constant";
 import { AxiosRequestConfig } from "axios";
+import AXIOS from "@/api/constant";
+import { IAppliedParticipationDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 export const adminAppliedHistoryApi = {
       getApplicationSpeaker: () => {
@@ -21,7 +22,6 @@ export const adminAppliedHistoryApi = {
       },
 
 
-
       getApplicationParticipant: () => {
             const options: AxiosRequestConfig = {
                   method: "GET",
@@ -30,5 +30,15 @@ export const adminAppliedHistoryApi = {
 
             return AXIOS.request(options);
       },
+
+      getApplicationParticipationDetail: ({ sessionId }: IAppliedParticipationDetailSearch) => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `ApplicationHistory/participant/sessionId=${sessionId}`,
+            };
+
+            return AXIOS.request(options);
+      },
+
 
 }

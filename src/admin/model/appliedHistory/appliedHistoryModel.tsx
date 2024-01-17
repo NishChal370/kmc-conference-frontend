@@ -12,6 +12,39 @@ export interface IAppliedParticipationModel {
 
 export type IAppliedParticipationResponse = IAppliedParticipationModel[];
 
+export interface IAppliedParticipationDetailedModel extends IAppliedParticipationModel {
+      address: string;
+      registrationType: string;
+      city: string;
+      state: string;
+      postalCode: number;
+      country: string;
+      registrationFeePaymentDetails: string;
+      specialRequirements: string;
+      trackPreferences: string;
+      bio: string;
+      linkedInProfile: string;
+      twitterHandle: string;
+      hotelPreferences: string;
+      roommatePreferences: string;
+      arrivalDate: string;
+      departureDate: string;
+      modeOfTransportation: string;
+      emergencyContactName: string;
+      relationshipWithEmergencyContact: string;
+      emergencyContactNumber: string;
+      conferenceDiscoverySource: string;
+      expectationsGoals: string;
+      hasReadPrivacy: boolean;
+      consentToPhotography: boolean;
+}
+
+export type IAppliedParticipationDetailedResponse = IAppliedParticipationDetailedModel;
+
+export interface IAppliedParticipationDetailSearch {
+      sessionId: IScheduleModel["id"];
+}
+
 export interface IAppliedSpeakerModel {
       sessionId: IScheduleModel["id"];
       title: IScheduleModel["title"];

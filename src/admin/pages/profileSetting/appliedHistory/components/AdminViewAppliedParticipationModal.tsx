@@ -1,15 +1,18 @@
-import { IParticipantModel } from "@/admin/model/participant/participantModel";
+import { IAppliedParticipationDetailedModel } from "@/admin/model/appliedHistory/appliedHistoryModel";
 import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 
-interface IAdminParticipantViewModal {
-      participant: IParticipantModel;
+interface IAdminViewAppliedParticipationModal {
+      participationDetail: IAppliedParticipationDetailedModel;
       closeModalHandler: () => void;
 }
-function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminParticipantViewModal) {
+function AdminViewAppliedParticipationModal({
+      participationDetail,
+      closeModalHandler,
+}: IAdminViewAppliedParticipationModal) {
       return (
             <Modal
-                  title="View Participant Detail"
+                  title="View Participation Detail"
                   size="w-full lg:!max-w-[76rem]"
                   closeHandler={closeModalHandler}
             >
@@ -19,16 +22,36 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
                         "
                   >
                         <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Participant Identification" />
+                              <ModalSectionHeader title="Session Information" />
 
                               <article
                                     className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
                                           sm:grid-cols-2 sm:px-2
                                     "
                               >
-                                    <ModalText title="Participant Name" data={participant.name} />
-                                    <ModalText title="Job Title" data={participant.jobTitle} />
-                                    <ModalText title="Affiliation" data={participant.affiliation} />
+                                    <ModalText title="Session Title" data={participationDetail.title} />
+
+                                    <ModalText title="Session Location" data={participationDetail.location} />
+
+                                    <ModalText
+                                          title="Session Time"
+                                          data={
+                                                participationDetail.startTime +
+                                                " " +
+                                                participationDetail.endTime
+                                          }
+                                    />
+
+                                    {/* //TODO: add this if they asked */}
+                                    {/* <ModalText
+                                    title="Registration Fee Payment Details"
+                                    data={participationDetail.registrationFeePaymentDetails}
+                              /> */}
+
+                                    <ModalText
+                                          title="Special Requirements"
+                                          data={participationDetail.specialRequirements}
+                                    />
                               </article>
                         </section>
 
@@ -40,19 +63,15 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
                                           sm:grid-cols-2 sm:px-2
                                     "
                               >
-                                    <ModalText title="Email Address" data={participant.email} />
+                                    <ModalText title="Country" data={participationDetail.country} />
 
-                                    <ModalText title="Phone Number" data={participant.phoneNumber} />
+                                    <ModalText title="State" data={participationDetail.state} />
 
-                                    <ModalText title="Country" data={participant.country} />
+                                    <ModalText title="City" data={participationDetail.city} />
 
-                                    <ModalText title="State" data={participant.state} />
+                                    <ModalText title="Address" data={participationDetail.address} />
 
-                                    <ModalText title="City" data={participant.city} />
-
-                                    <ModalText title="Address" data={participant.address} />
-
-                                    <ModalText title="Postal Code" data={participant.postalCode} />
+                                    <ModalText title="Postal Code" data={participationDetail.postalCode} />
                               </article>
                         </section>
 
@@ -61,22 +80,22 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
 
                               <article
                                     className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
-                                          sm:grid-cols-2 sm:px-2
-                                    "
+                                    sm:grid-cols-2 sm:px-2
+                              "
                               >
                                     <ModalText
                                           title="Emergency Contact Name"
-                                          data={participant.emergencyContactName}
+                                          data={participationDetail.emergencyContactName}
                                     />
 
                                     <ModalText
                                           title="Relationship With Emergency Contact"
-                                          data={participant.relationshipWithEmergencyContact}
+                                          data={participationDetail.relationshipWithEmergencyContact}
                                     />
 
                                     <ModalText
                                           title="Emergency Contact Number"
-                                          data={participant.emergencyContactName}
+                                          data={participationDetail.emergencyContactName}
                                     />
                               </article>
                         </section>
@@ -89,14 +108,20 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
                                           sm:grid-cols-2 sm:px-2
                                     "
                               >
-                                    <ModalText title="LinkedIn Profile" data={participant.linkedInProfile} />
+                                    <ModalText
+                                          title="LinkedIn Profile"
+                                          data={participationDetail.linkedInProfile}
+                                    />
 
-                                    <ModalText title="Twitter Handle" data={participant.twitterHandle} />
+                                    <ModalText
+                                          title="Twitter Handle"
+                                          data={participationDetail.twitterHandle}
+                                    />
 
                                     <ModalSanitizedText
                                           title="Bio"
                                           containerClassName="sm:col-span-2"
-                                          htmlContent={participant.bio}
+                                          htmlContent={participationDetail.bio}
                                     />
                               </article>
                         </section>
@@ -111,28 +136,23 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
                               >
                                     <ModalText
                                           title="Registration Type"
-                                          data={participant.registrationType}
-                                    />
-
-                                    <ModalText
-                                          title="Session Choices"
-                                          data={participant.sessionChoices.map(({ title }) => title)}
+                                          data={participationDetail.registrationType}
                                     />
 
                                     <ModalText
                                           title="Track Preferences"
-                                          data={participant.trackPreferences}
+                                          data={participationDetail.trackPreferences}
                                     />
 
                                     {/* //TODO: add this if they asked */}
                                     {/* <ModalText
-                                          title="Registration Fee Payment Details"
-                                          data={participant.registrationFeePaymentDetails}
-                                    /> */}
+                                    title="Registration Fee Payment Details"
+                                    data={participationDetail.registrationFeePaymentDetails}
+                              /> */}
 
                                     <ModalText
                                           title="Special Requirements"
-                                          data={participant.specialRequirements}
+                                          data={participationDetail.specialRequirements}
                                     />
                               </article>
                         </section>
@@ -147,27 +167,27 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
                               >
                                     <ModalText
                                           title="Hotel Preferences"
-                                          data={participant.hotelPreferences}
+                                          data={participationDetail.hotelPreferences}
                                     />
 
                                     <ModalText
                                           title="Roommate Preferences"
-                                          data={participant.roommatePreferences}
+                                          data={participationDetail.roommatePreferences}
                                     />
 
                                     <ModalText
                                           title="Arrival Date"
-                                          data={changeDateFormat(participant.arrivalDate)}
+                                          data={changeDateFormat(participationDetail.arrivalDate)}
                                     />
 
                                     <ModalText
                                           title="Departure Date"
-                                          data={changeDateFormat(participant.departureDate)}
+                                          data={changeDateFormat(participationDetail.departureDate)}
                                     />
 
                                     <ModalText
                                           title="Mode of Transportation"
-                                          data={participant.modeOfTransportation}
+                                          data={participationDetail.modeOfTransportation}
                                     />
                               </article>
                         </section>
@@ -182,22 +202,22 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
                               >
                                     <ModalText
                                           title="Conference Discovery Source"
-                                          data={participant.conferenceDiscoverySource}
+                                          data={participationDetail.conferenceDiscoverySource}
                                     />
 
                                     <ModalText
                                           title="Expectations/Goals"
-                                          data={participant.expectationsGoals}
+                                          data={participationDetail.expectationsGoals}
                                     />
 
                                     <ModalText
                                           title="Consent to Photography"
-                                          data={participant.consentToPhotography ? "YES" : "NO"}
+                                          data={participationDetail.consentToPhotography ? "YES" : "NO"}
                                     />
 
                                     <ModalText
                                           title="Has Read Privacy Policy"
-                                          data={participant.hasReadPrivacy ? "YES" : "NO"}
+                                          data={participationDetail.hasReadPrivacy ? "YES" : "NO"}
                                     />
                               </article>
                         </section>
@@ -206,4 +226,4 @@ function AdminParticipantViewModal({ participant, closeModalHandler }: IAdminPar
       );
 }
 
-export default AdminParticipantViewModal;
+export default AdminViewAppliedParticipationModal;
