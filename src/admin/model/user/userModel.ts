@@ -41,3 +41,17 @@ export interface IUserPostRequest extends IRegisterUserPostRequest {
 
 
 export type IAdminUserAddForm = IUserPostRequest;
+
+
+
+export interface IAdminUserRoleChangeRequest {
+      id: string,
+      userRole: UserRole,
+}
+
+
+export interface IAdminUserRoleChangeModal {
+      id: IUserModel["id"],
+      fullName: IUserModel["fullName"];
+      userRole: IUserModel["userRole"],
+}

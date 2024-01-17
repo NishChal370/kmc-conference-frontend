@@ -2,17 +2,17 @@ import AppIcon from "@/shared/icon/AppIcon";
 import { Table, TableBody, TableHead, Td } from "@/admin/shared/table";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
 import { Status } from "@/enum/commonEnum";
-import { IUserModel } from "@/admin/model/user/userModel";
+import { IAdminUserRoleChangeModal, IUserModel } from "@/admin/model/user/userModel";
 import { USER_HEADER_LIST } from "../data/userHeaderList";
 
 interface IAdminUserTable {
       status: Status;
       users: IUserModel[];
       openViewModalHandler: (viewingData: IUserModel) => () => void;
-      openEditModalHandler: (editingData: IUserModel) => () => void;
+      openEditRoleModalHandler: (editingData: IAdminUserRoleChangeModal) => () => void;
 }
 
-function AdminUserTable({ users, status, openViewModalHandler, openEditModalHandler }: IAdminUserTable) {
+function AdminUserTable({ users, status, openViewModalHandler, openEditRoleModalHandler }: IAdminUserTable) {
       return (
             <Table>
                   <TableHead headers={USER_HEADER_LIST} />
@@ -51,17 +51,21 @@ function AdminUserTable({ users, status, openViewModalHandler, openEditModalHand
                                                                   clickHandler: openViewModalHandler(user),
                                                             },
                                                             {
-                                                                  title: "Update",
+                                                                  title: "Update Role",
                                                                   type: "Update",
                                                                   icon: <AppIcon name="update" />,
-                                                                  clickHandler: openEditModalHandler(user),
+                                                                  clickHandler: openEditRoleModalHandler({
+                                                                        id: user.id,
+                                                                        fullName: user.fullName,
+                                                                        userRole: user.userRole,
+                                                                  }),
                                                             },
-                                                            {
-                                                                  title: "Delete",
-                                                                  type: "Danger",
-                                                                  icon: <AppIcon name="delete" />,
-                                                                  clickHandler: () => {},
-                                                            },
+                                                            // {
+                                                            //       title: "Delete",
+                                                            //       type: "Danger",
+                                                            //       icon: <AppIcon name="delete" />,
+                                                            //       clickHandler: () => {},
+                                                            // },
                                                       ]}
                                                 />
                                           </Td>

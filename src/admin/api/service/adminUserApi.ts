@@ -1,6 +1,6 @@
 import AXIOS from "@/api/constant";
 import { AxiosRequestConfig } from "axios";
-import { IUserPostRequest, IUserSearch } from "@/admin/model/user/userModel";
+import { IAdminUserRoleChangeRequest, IUserPostRequest, IUserSearch } from "@/admin/model/user/userModel";
 
 export const adminUserApi = {
       getUsers: (searchDetail: IUserSearch) => {
@@ -22,5 +22,16 @@ export const adminUserApi = {
 
             return AXIOS.request(options);
       },
+
+
+      putUserRole: (roleDetail: IAdminUserRoleChangeRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "PUT",
+                  url: `Auth/update-role`,
+                  data: roleDetail
+            };
+
+            return AXIOS.request(options);
+      }
 
 }

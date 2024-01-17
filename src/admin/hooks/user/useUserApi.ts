@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/app/hooks";
-import { IUserPostRequest, IUserSearch } from "@/admin/model/user/userModel";
-import { getUsers as getUsersReq, postUser } from "@/admin/pages/user/feature/userRequest";
+import { IAdminUserRoleChangeRequest, IUserPostRequest, IUserSearch } from "@/admin/model/user/userModel";
+import { getUsers as getUsersReq, postUser, putUserRole } from "@/admin/pages/user/feature/userRequest";
 import { errorToastMessage, loadingAlertWithMessage, successMessage, swalAlertClose } from "@/utils/alert";
 
 function useUserApi() {
@@ -28,7 +28,25 @@ function useUserApi() {
       }
 
 
-      return { getUsers, addUserDetail } as const;
+      const updateUserRole = async (roleDetail: IAdminUserRoleChangeRequest) => {
+            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
+
+            await dispatch(putUserRole(roleDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Updated", message: "User role has been updated." });
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
+      return { getUsers, addUserDetail, updateUserRole } as const;
 }
 
 export default useUserApi;

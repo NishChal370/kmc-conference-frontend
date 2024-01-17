@@ -4,18 +4,18 @@ import AdminUserTable from "../components/AdminUserTable";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
 import { Status } from "@/enum/commonEnum";
-import { IUserViewOrEditModal } from "@/admin/model/user/userModel";
+import { IAdminUserRoleChangeModal, IUserViewOrEditModal } from "@/admin/model/user/userModel";
 import useUserApi from "@/admin/hooks/user/useUserApi";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { userSliceAction, userSliceState } from "../feature/userSlice";
 
 interface IAdminUserTableContainer {
-      openEditModal: ({ editingData }: { editingData: IUserViewOrEditModal }) => void;
+      openEditRoleModal: (data: IAdminUserRoleChangeModal) => void;
       openViewModal: ({ viewingData }: { viewingData: IUserViewOrEditModal }) => void;
 }
 
-function AdminUserTableContainer({ openEditModal, openViewModal }: IAdminUserTableContainer) {
+function AdminUserTableContainer({ openEditRoleModal, openViewModal }: IAdminUserTableContainer) {
       const { search } = useLocation();
 
       const dispatch = useAppDispatch();
@@ -36,8 +36,8 @@ function AdminUserTableContainer({ openEditModal, openViewModal }: IAdminUserTab
             openViewModal({ viewingData });
       };
 
-      const openEditModalHandler = (editingData: IUserViewOrEditModal) => () => {
-            openEditModal({ editingData });
+      const openEditRoleModalHandler = (editingData: IAdminUserRoleChangeModal) => () => {
+            openEditRoleModal(editingData);
       };
 
       useEffect(() => {
@@ -56,7 +56,7 @@ function AdminUserTableContainer({ openEditModal, openViewModal }: IAdminUserTab
                         status={status}
                         users={data.registeredUsers}
                         openViewModalHandler={openViewModalHandler}
-                        openEditModalHandler={openEditModalHandler}
+                        openEditRoleModalHandler={openEditRoleModalHandler}
                   />
 
                   {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}

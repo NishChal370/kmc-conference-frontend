@@ -7,11 +7,16 @@ import AdminUserPaginationContainer from "./container/AdminUserPaginationContain
 import useModal from "@/admin/hooks/modal/useModal";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 import { IModal } from "@/admin/model/modal/useModalModel";
-import { IUserViewOrEditModal } from "@/admin/model/user/userModel";
+import { IAdminUserRoleChangeModal, IUserViewOrEditModal } from "@/admin/model/user/userModel";
+import AdminUserRoleUpdateModalContainer from "./container/AdminUserRoleUpdateModalContainer";
+import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 
 function AdminUser() {
-      const { modalState, openAddModal, openEditModal, openViewModal, closeModal } =
+      const { modalState, openAddModal, openViewModal, closeModal } =
             useModal<IModal<IUserViewOrEditModal>>();
+
+      const [roleChangeModal, openRoleChangeModal, closeRoleChangeModal] =
+            useExtraModal<IAdminUserRoleChangeModal>();
 
       return (
             <>
@@ -24,7 +29,7 @@ function AdminUser() {
                   <section className="w-full h-full flex flex-col gap-6 items-center justify-center">
                         <AdminUserTableContainer
                               openViewModal={openViewModal}
-                              openEditModal={openEditModal}
+                              openEditRoleModal={openRoleChangeModal}
                         />
 
                         <AdminUserPaginationContainer />
@@ -36,6 +41,13 @@ function AdminUser() {
 
                   {[FieldStatus.Add].includes(modalState.modalStatus) && (
                         <AdminUserAddModalContainer closeModal={closeModal} />
+                  )}
+
+                  {roleChangeModal?.isOpen && roleChangeModal?.data?.id && (
+                        <AdminUserRoleUpdateModalContainer
+                              userRoleDetail={roleChangeModal.data}
+                              closeModalHandler={closeRoleChangeModal}
+                        />
                   )}
             </>
       );
