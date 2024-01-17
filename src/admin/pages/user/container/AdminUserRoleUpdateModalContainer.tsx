@@ -23,7 +23,7 @@ function AdminUserRoleUpdateModalContainer({
       const formSubmitHandler = () => {
             if (!userRole) return;
 
-            updateUserRole({ id: userRoleDetail.id, userRole: userRole }).then(closeModalHandler);
+            updateUserRole({ userId: userRoleDetail.id, newRole: userRole }).then(closeModalHandler);
       };
 
       return (

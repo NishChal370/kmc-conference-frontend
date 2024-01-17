@@ -45,8 +45,8 @@ export type IAdminUserAddForm = IUserPostRequest;
 
 
 export interface IAdminUserRoleChangeRequest {
-      id: string,
-      userRole: UserRole,
+      userId: string,
+      newRole: UserRole,
 }
 
 
