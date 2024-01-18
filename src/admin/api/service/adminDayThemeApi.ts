@@ -17,7 +17,7 @@ export const adminDayThemeApi = {
       getDayThemeById: (searchDetail: IDayThemeByIdSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Themes/${searchDetail.themeId}`,
+                  url: `Themes/${searchDetail.id}`,
             };
 
             return AXIOS.request(options);

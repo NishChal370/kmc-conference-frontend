@@ -47,7 +47,7 @@ export type IDayThemeByIdResponse = Omit<IDayThemeModel, "day">;
 
 
 export interface IDayThemeByIdSearch {
-      themeId: IDayThemeModel["id"];
+      id: IDayThemeModel["id"];
 }
 
 

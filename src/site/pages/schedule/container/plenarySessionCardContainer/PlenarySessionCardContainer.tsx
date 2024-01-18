@@ -17,7 +17,7 @@ function PlenarySessionCardContainer() {
       useEffect(() => {
             if (!paramThemeId) return;
 
-            getDayThemeById({ themeId: +paramThemeId });
+            getDayThemeById({ id: +paramThemeId });
       }, [paramThemeId]);
 
       return (
