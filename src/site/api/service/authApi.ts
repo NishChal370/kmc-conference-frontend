@@ -3,6 +3,7 @@ import AXIOS from "../../../api/constant";
 import { ITokenModel } from "@/models/auth/authModel";
 import { ILogin } from "@/site/model/login/loginModel";
 import { IRegisterUserPostRequest } from "@/site/model/registerUser/registerUserModel";
+import { IForgotPasswordRequest } from "@/site/model/forgotPassword/forgotPasswordModel";
 
 export const authApi = {
       login: (loginDetail: ILogin) => {
@@ -41,6 +42,17 @@ export const authApi = {
                   method: "POST",
                   url: `auth/logout`,
                   data: {} //Backend requirement
+            };
+
+            return AXIOS.request(options);
+      },
+
+
+      forgotPassword: (detail: IForgotPasswordRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "POST",
+                  url: `auth/forget-password`,
+                  data: detail,
             };
 
             return AXIOS.request(options);
