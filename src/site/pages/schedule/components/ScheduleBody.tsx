@@ -1,4 +1,4 @@
-import ScheduleCard from "./ScheduleCard";
+import ScheduleList from "./scheduleList/ScheduleList";
 import ScheduleDayFilter from "./dayFilter/ScheduleDayFilter";
 import PlenarySessionCardContainer from "../container/plenarySessionCardContainer/PlenarySessionCardContainer";
 
@@ -16,25 +16,7 @@ function ScheduleBody() {
                   <span className="flex flex-col justify-start items-start gap-y-10 w-full h-full">
                         <PlenarySessionCardContainer />
 
-                        <section className="flex flex-col justify-start items-start gap-y-20 w-full h-full">
-                              <ScheduleCard />
-
-                              <ScheduleCard
-                                    status={[
-                                          { status: "Registration closed" },
-                                          { status: "i don't know" },
-                                          { status: "i don't know" },
-                                          { status: "i don't know why" },
-                                          { status: "i don't know" },
-                                          { status: "i don't know" },
-                                          { status: "i don't know" },
-                                    ]}
-                              />
-
-                              <ScheduleCard />
-
-                              <ScheduleCard />
-                        </section>
+                        <ScheduleList />
                   </span>
             </div>
       );

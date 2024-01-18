@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/app/hooks";
-import { IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
-import { deleteSchedule, getSchedules as getSchedulesReq, postSchedule, putSchedule, } from "@/admin/pages/schedule/feature/scheduleRequest";
+import { IScheduleContentDetailSearch, IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
+import { deleteSchedule, getScheduleContentDetail as getScheduleContentDetailReq, getSchedules as getSchedulesReq, postSchedule, putSchedule, } from "@/admin/pages/schedule/feature/scheduleRequest";
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from "@/utils/alert";
 
 
@@ -70,7 +70,12 @@ function useScheduleApi() {
       }
 
 
-      return { getSchedules, addAdminSchedule, updateAdminSchedule, deleteAdminSchedule } as const;
+      const getScheduleContentDetail = (searchDetail: IScheduleContentDetailSearch) => {
+            dispatch(getScheduleContentDetailReq(searchDetail))
+      }
+
+
+      return { getSchedules, addAdminSchedule, updateAdminSchedule, deleteAdminSchedule, getScheduleContentDetail } as const;
 }
 
 export default useScheduleApi

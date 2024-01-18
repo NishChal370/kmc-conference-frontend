@@ -1,17 +1,22 @@
 import Button from "@/shared/button/Button";
 import ScheduleCardTitle from "./ScheduleCardTitle";
+import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleModel";
+import getMonth from "@/utils/dateFormat/getMonth";
+import getDateDay from "@/utils/dateFormat/getDateDay";
+import SanitizedContent from "@/shared/sanitizedContent/SanitizedContent";
 
 interface IScheduleCard {
+      schedule: IScheduleContentDetailModel;
       status?: { status: string }[];
 }
 
-function ScheduleCard({ status }: IScheduleCard) {
+function ScheduleCard({ schedule, status }: IScheduleCard) {
       return (
             <div className="flex flex-col gap-10 w-full h-full px-6 py-4 border border-l-2 border-l-primary border-default">
                   <section className="flex justify-between items-start gap-1 w-full h-full">
                         <article className="flex flex-col items-start justify-center gap-y-10 w-full h-full">
                               <section className="flex flex-col gap-y-2 w-full h-full">
-                                    <ScheduleCardTitle title="Session Title" />
+                                    <ScheduleCardTitle title={schedule.sessionTitle} />
 
                                     <span
                                           className="flex flex-col gap-2
@@ -20,11 +25,13 @@ function ScheduleCard({ status }: IScheduleCard) {
                                                 lg:flex-row md:gap-2
                                           "
                                     >
-                                          <p className="text-sm">16:00 -19:00</p>
+                                          <p className="text-sm">
+                                                {schedule.sessionStart} -{schedule.sessionEnd}
+                                          </p>
                                           <span className="flex gap-2">
-                                                <p className="text-sm">Day location, Session location</p>
-
-                                                <p className="text-sm"></p>
+                                                <p className="text-sm">
+                                                      {schedule.dayLocation}, {schedule.sessionLocation}
+                                                </p>
                                           </span>
                                     </span>
                               </section>
@@ -48,58 +55,32 @@ function ScheduleCard({ status }: IScheduleCard) {
                         </article>
 
                         <span className="flex flex-col items-center text-sm w-fit">
-                              <h5 className="text-3xl font-semibold text-primary">Day</h5>
-                              <h6 className="font-semibold text-primary">Date</h6>
+                              <h5 className="text-3xl font-semibold text-primary">
+                                    {getDateDay(schedule.dayDate)}
+                              </h5>
+                              <h6 className="font-semibold text-primary uppercase">
+                                    {getMonth(schedule.dayDate)}
+                              </h6>
                         </span>
                   </section>
 
                   <section className="flex flex-col gap-6 w-full h-fit">
-                        <div className="flex flex-col w-full h-fit">
-                              <p className="text-sm font-semibold text-gray-900">Session Title 1</p>
-                              <p className="text-sm line-clamp-2">
-                                    Manaslu circuit trek is a 2 weeks long tea house mode trek around the
-                                    mount Manaslu scaling 8163m above sea level. You will get the highest
-                                    elevation gain of 5105m at the Larke Pass. Since this is also one of the
-                                    restricted regions you will need a group of at least two people to obtain
-                                    the trekking permit. The 177 Km long trail follows an ancient salt trading
-                                    route along the Budhi Gandaki river. On this trek, you will see 10 peaks
-                                    over 6500m and a few over 7000m including the eighteenth-highest
-                                    Himalchuli with an elevation of 7,893m. The major attractions of the area
-                                    are high glacial lakes, Gurung villages, and rich biodiversity. Manaslu
-                                    circuit trek starts by taking a jeep drive to Machha Khola in Gorkha
-                                    district. From there the trail leads through the villages inhabited mostly
-                                    by the Gurung communities. Through the misty alpine meadows accompanied by
-                                    several river streams, you will cross the Larke Pass and descend to
-                                    Bhimtang in the Marsyangdi valley. From Bhimtang you will follow an easy
-                                    trekking trail to Dharmashala where you will catch a jeep drive back to
-                                    Kathmandu.
-                              </p>
-                        </div>
+                        {schedule.sessionTopics.map((topic, index) => (
+                              <div key={topic.id} className="flex flex-col gap-1 w-full h-fit">
+                                    <p className="text-sm font-semibold text-gray-900">{topic.title}</p>
+                                    <SanitizedContent htmlContent={topic.description} truncate />
 
-                        <div className="flex flex-col w-full h-fit">
-                              <p className="text-sm font-semibold text-gray-900">Session Title 2</p>
-                              <p className="text-sm line-clamp-2">
-                                    Manaslu circuit trek is a 2 weeks long tea house mode trek around the
-                                    mount Manaslu scaling 8163m above sea level. You will get the highest
-                                    elevation gain of 5105m at the Larke Pass. Since this is also one of the
-                                    restricted regions you will need a group of at least two people to obtain
-                                    the trekking permit. The 177 Km long trail follows an ancient salt trading
-                                    route along the Budhi Gandaki river. On this trek, you will see 10 peaks
-                                    over 6500m and a few over 7000m including the eighteenth-highest
-                                    Himalchuli with an elevation of 7,893m. The major attractions of the area
-                                    are high glacial lakes, Gurung villages, and rich biodiversity. Manaslu
-                                    circuit trek starts by taking a jeep drive to Machha Khola in Gorkha
-                                    district. From there the trail leads through the villages inhabited mostly
-                                    by the Gurung communities. Through the misty alpine meadows accompanied by
-                                    several river streams, you will cross the Larke Pass and descend to
-                                    Bhimtang in the Marsyangdi valley. From Bhimtang you will follow an easy
-                                    trekking trail to Dharmashala where you will catch a jeep drive back to
-                                    Kathmandu.
-                              </p>
-                              <span className="self-end text-sm mt-2">
-                                    <Button title="view more" variant="text" onClickHandler={() => {}} />
-                              </span>
-                        </div>
+                                    {index + 1 === schedule.sessionTopics.length && (
+                                          <span className="self-end text-sm mt-2">
+                                                <Button
+                                                      title="view more"
+                                                      variant="text"
+                                                      onClickHandler={() => {}}
+                                                />
+                                          </span>
+                                    )}
+                              </div>
+                        ))}
                   </section>
 
                   <section className="flex flex-col gap-4 w-full h-full">
@@ -125,9 +106,33 @@ function ScheduleCard({ status }: IScheduleCard) {
                               </div>
                         </div>
 
-                        <button type="button" className="text-sm font-bold text-primary self-end">
-                              Mark my place
-                        </button>
+                        <span className="flex gap-8 justify-end">
+                              <button
+                                    type="button"
+                                    className="text-sm font-bold text-primary self-end 
+                                          hover:text-rose-600 active:underline
+                                    "
+                              >
+                                    Submit Proposal
+                              </button>
+
+                              <button
+                                    type="button"
+                                    className="text-sm font-bold text-primary self-end 
+                                          hover:text-rose-600 active:underline
+                                    "
+                              >
+                                    Become a Speaker
+                              </button>
+                              <button
+                                    type="button"
+                                    className="text-sm font-bold text-primary self-end 
+                                          hover:text-rose-600 active:underline
+                                    "
+                              >
+                                    Reserve my Spot
+                              </button>
+                        </span>
                   </section>
             </div>
       );

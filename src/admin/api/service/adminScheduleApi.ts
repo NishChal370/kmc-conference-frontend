@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import { createQueryString } from "@/utils/stringFormat/createQueryString";
-import { IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
+import { IScheduleContentDetailSearch, IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
 
 export const adminScheduleApi = {
       getSchedules: (searchDetail: IScheduleSearch) => {
@@ -41,6 +41,16 @@ export const adminScheduleApi = {
                   method: "DELETE",
                   url: `Session`,
                   data: scheduleDetail
+            };
+
+            return AXIOS.request(options);
+      },
+
+
+      getScheduleContentDetail: ({ themeId }: IScheduleContentDetailSearch) => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Themes/content/${themeId}`,
             };
 
             return AXIOS.request(options);

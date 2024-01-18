@@ -2,16 +2,22 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { ISchedulesResponse } from "@/admin/model/schedule/scheduleModel";
-import { deleteSchedule, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
+import { IScheduleContentDetailResponse, ISchedulesResponse } from "@/admin/model/schedule/scheduleModel";
+import { deleteSchedule, getScheduleContentDetail, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
 
 interface ISchedulesSlice extends IBasicSliceState {
       data: ISchedulesResponse;
 }
 
 
+interface IScheduleContentDetailSlice extends IBasicSliceState {
+      data: IScheduleContentDetailResponse;
+}
+
+
 type IScheduleSlice = {
       schedules: ISchedulesSlice,
+      scheduleContentDetail: IScheduleContentDetailSlice,
 };
 
 
@@ -22,6 +28,10 @@ const initialState: IScheduleSlice = {
                   totalPages: 0,
                   sessions: []
             }
+      },
+      scheduleContentDetail: {
+            status: Status.IDEL,
+            data: [],
       },
 }
 
@@ -38,6 +48,12 @@ const scheduleSlice = createSlice({
                               totalPages: 0,
                               sessions: []
                         }
+                  }
+            },
+            resetScheduleContentDetailsSlice: (state) => {
+                  state.scheduleContentDetail = {
+                        status: Status.IDEL,
+                        data: [],
                   }
             },
       },
@@ -72,6 +88,23 @@ const scheduleSlice = createSlice({
                         state.schedules.isToRefetch = !state.schedules.isToRefetch;
 
                   })
+
+
+
+                  .addCase(getScheduleContentDetail.pending, (state) => {
+                        state.scheduleContentDetail.status = Status.LOADING;
+                  })
+                  .addCase(getScheduleContentDetail.fulfilled, (state, action) => {
+                        state.scheduleContentDetail.status = action.payload.length <= 0
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.scheduleContentDetail.data = action.payload;
+
+                  })
+                  .addCase(getScheduleContentDetail.rejected, (state, action) => {
+                        state.scheduleContentDetail.status = Status.FAILED;
+                        state.scheduleContentDetail.error = action.payload;
+                  })
       },
 })
 
@@ -81,3 +114,4 @@ export default scheduleSlice.reducer;
 export const scheduleSliceAction = scheduleSlice.actions;
 
 export const schedulesSliceState = (state: RootState) => state.schedule.schedules;
+export const scheduleContentDetailSliceState = (state: RootState) => state.schedule.scheduleContentDetail;
