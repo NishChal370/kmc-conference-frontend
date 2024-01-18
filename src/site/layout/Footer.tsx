@@ -14,7 +14,7 @@ function Footer() {
                         <button
                               type="button"
                               className="active:text-primary"
-                              onClick={() => navigate(SCHEDULE_PATH.schedule.full)}
+                              onClick={() => navigate(SCHEDULE_PATH.schedule.full())}
                         >
                               Looking for schedule?
                         </button>

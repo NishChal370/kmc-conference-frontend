@@ -28,7 +28,7 @@ const PublicRouter: RouteObject = {
                         },
 
                         {
-                              path: SCHEDULE_PATH.schedule.basic,
+                              path: `${SCHEDULE_PATH.schedule.basic}`,
                               element: <Outlet />,
                               children: [
                                     {

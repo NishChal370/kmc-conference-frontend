@@ -25,6 +25,11 @@ export interface IDayThemeMinModel {
 export type IDayThemeMinResponse = IDayThemeMinModel[];
 
 
+export interface IDayThemeMinSearch {
+      dayId?: IDayThemeMinModel["day"]["dayId"];
+}
+
+
 export interface IDayThemeResponse extends IBasicApiResponse {
       themes: IDayThemeModel[];
 }

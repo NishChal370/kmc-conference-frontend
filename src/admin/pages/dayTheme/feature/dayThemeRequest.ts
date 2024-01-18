@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminDayThemeApi } from "@/admin/api/service/adminDayThemeApi";
-import { IDayThemeDeleteRequest, IDayThemeMinResponse, IDayThemePostRequest, IDayThemePutRequest, IDayThemeResponse, IDayThemeSearch } from "@/admin/model/dayTheme/dayThemeModel";
+import { IDayThemeDeleteRequest, IDayThemeMinResponse, IDayThemeMinSearch, IDayThemePostRequest, IDayThemePutRequest, IDayThemeResponse, IDayThemeSearch } from "@/admin/model/dayTheme/dayThemeModel";
 
 export const getDayThemes = createAppAsyncThunk<IDayThemeResponse, IDayThemeSearch>(
       "day/themes",
@@ -16,11 +16,11 @@ export const getDayThemes = createAppAsyncThunk<IDayThemeResponse, IDayThemeSear
 );
 
 
-export const getDayThemesMin = createAppAsyncThunk<IDayThemeMinResponse>(
+export const getDayThemesMin = createAppAsyncThunk<IDayThemeMinResponse, IDayThemeMinSearch>(
       "day/themes/min-info",
-      async (_, { rejectWithValue }) => {
+      async (searchDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminDayThemeApi.getDayThemesMin();
+                  const response = await adminDayThemeApi.getDayThemesMin(searchDetail);
 
                   return response.data;
             } catch (error: any) {

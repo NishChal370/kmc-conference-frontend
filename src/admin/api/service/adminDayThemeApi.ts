@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
-import { IDayThemeDeleteRequest, IDayThemePostRequest, IDayThemePutRequest, IDayThemeSearch } from "@/admin/model/dayTheme/dayThemeModel";
+import { IDayThemeDeleteRequest, IDayThemeMinSearch, IDayThemePostRequest, IDayThemePutRequest, IDayThemeSearch } from "@/admin/model/dayTheme/dayThemeModel";
 import { createQueryString } from "@/utils/stringFormat/createQueryString";
 
 export const adminDayThemeApi = {
@@ -13,10 +13,10 @@ export const adminDayThemeApi = {
             return AXIOS.request(options);
       },
 
-      getDayThemesMin: () => {
+      getDayThemesMin: ({ dayId }: IDayThemeMinSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Themes/min`,
+                  url: `Themes/min${createQueryString({ dayId })}`,
             };
 
             return AXIOS.request(options);

@@ -4,10 +4,15 @@ import errorImage from "@/assets/image/webp/warning.webp";
 interface IErrorMessage {
       title?: IApiErrorDetail["title"];
       detail?: IApiErrorDetail["detail"];
+      needTopPadding?: boolean;
 }
-function ErrorMessage({ title, detail }: IErrorMessage) {
+function ErrorMessage({ title, detail, needTopPadding = true }: IErrorMessage) {
       return (
-            <div className="w-full h-full pt-20 flex flex-col justify-center items-center text-center gap-6">
+            <div
+                  className={`w-full h-full flex flex-col justify-center items-center text-center gap-6 ${
+                        needTopPadding ? "pt-20" : "p-0"
+                  }`}
+            >
                   <figure className=" bg-red-50 rounded-full w-[8rem] h-[8rem] flex justify-center items-center">
                         <img className="w-[50%] h-[50%]" src={errorImage} alt="error" />
                   </figure>

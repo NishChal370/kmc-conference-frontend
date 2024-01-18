@@ -75,7 +75,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                                 [&>*]:text-start [&>*]:tracking-widest
                                           "
                                     >
-                                          {[{ name: "Schedule", path: SCHEDULE_PATH.schedule.full }].map(
+                                          {[{ name: "Schedule", path: SCHEDULE_PATH.schedule.full() }].map(
                                                 ({ name, path }, index) => (
                                                       <NavMenuItemButton
                                                             key={index}

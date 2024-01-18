@@ -15,7 +15,7 @@ export const adminAppliedHistoryApi = {
       getApplicationCallForPaper: () => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `ApplicationHistory/callForPaper`,
+                  url: `ApplicationHistory/call-for-paper`,
             };
 
             return AXIOS.request(options);
@@ -44,7 +44,7 @@ export const adminAppliedHistoryApi = {
       getApplicationSpeakerDetail: ({ sessionId }: IAppliedSpeakerDetailSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `ApplicationHistory/speaker/sessionId=${sessionId}`,
+                  url: `Speaker/my-speaker/SessionId=${sessionId}`,
             };
 
             return AXIOS.request(options);
@@ -53,7 +53,7 @@ export const adminAppliedHistoryApi = {
       getApplicationCallForPaperDetail: ({ sessionId }: IAppliedCallForPaperDetailSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `ApplicationHistory/callForPaper/sessionId=${sessionId}`,
+                  url: `CallForPaper/my-calls?SessionId=${sessionId}`,
             };
 
             return AXIOS.request(options);

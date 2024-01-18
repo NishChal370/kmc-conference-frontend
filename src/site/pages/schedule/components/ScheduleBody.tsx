@@ -1,11 +1,11 @@
 import ScheduleCard from "./ScheduleCard";
-import ScheduleDayFilter from "./ScheduleDayFilter";
+import ScheduleDayFilter from "./dayFilter/ScheduleDayFilter";
 
 function ScheduleBody() {
       return (
             <div
                   className="flex flex-col justify-center items-start gap-10 w-full px-6 
-                        sm:flex-row
+                        md:flex-row
                         xl:px-0 xl:w-[84%]
                         2xl:w-3/5 2xl:max-w-7xl
                   "

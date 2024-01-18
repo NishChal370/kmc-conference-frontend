@@ -6,7 +6,7 @@ function ExploreScheduleButton() {
       const navigate = useNavigate();
 
       const buttonHandler = () => {
-            navigate(SCHEDULE_PATH.schedule.full);
+            navigate(SCHEDULE_PATH.schedule.full());
       };
 
       return (
