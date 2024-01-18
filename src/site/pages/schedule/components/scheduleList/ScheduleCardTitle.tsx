@@ -1,15 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { SCHEDULE_PATH } from "@/site/constants/routePath";
+import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleModel";
 
 interface IScheduleCardTitle {
-      title: string;
+      title: IScheduleContentDetailModel["sessionTitle"];
+      scheduleId: IScheduleContentDetailModel["sessionId"];
 }
 
-function ScheduleCardTitle({ title }: IScheduleCardTitle) {
+function ScheduleCardTitle({ scheduleId, title }: IScheduleCardTitle) {
       const navigate = useNavigate();
 
       const navigateToDetailPage = () => {
-            navigate(SCHEDULE_PATH.detail.full(1));
+            navigate(SCHEDULE_PATH.detail.full(scheduleId));
       };
 
       return (

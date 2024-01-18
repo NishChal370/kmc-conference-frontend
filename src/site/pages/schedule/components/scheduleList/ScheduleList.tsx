@@ -1,5 +1,5 @@
 import useScheduleApi from "@/admin/hooks/schedule/useScheduleApi";
-import ScheduleCard from "../ScheduleCard";
+import ScheduleCard from "./ScheduleCard";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "@/app/hooks";

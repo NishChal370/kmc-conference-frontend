@@ -1,6 +1,8 @@
 import axios from "axios";
 import { cookiesStore } from "@/utils/cookiesHandler";
 import { authApi } from "../site/api/service/authApi";
+import { ADMIN_BASE_PATH } from "@/admin/constants/routePath";
+import { HOME_PATH } from "@/site/constants/routePath";
 
 export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -111,13 +113,10 @@ async function refreshAccessToken() {
             });
       } catch (error) {
 
-            console.log("here in error ");
-            //TODO: check here if user is in admin page or not
             //move to login page if token is invalid and if present location is not page associated with login
-            // if (window.location.pathname !== "/") {
-            //       window.location.replace("/")
-            // }
-
+            if (window.location.pathname.includes(ADMIN_BASE_PATH)) {
+                  window.location.replace(HOME_PATH.home.full)
+            }
             // Reject all pending requests in the refresh queue with the error
             refreshQueue.forEach(request_1 => {
                   request_1.reject(error);

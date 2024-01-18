@@ -1,9 +1,9 @@
-import Button from "@/shared/button/Button";
 import ScheduleCardTitle from "./ScheduleCardTitle";
 import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleModel";
 import getMonth from "@/utils/dateFormat/getMonth";
 import getDateDay from "@/utils/dateFormat/getDateDay";
 import SanitizedContent from "@/shared/sanitizedContent/SanitizedContent";
+import ScheduleViewMoreButton from "./ScheduleViewMoreButton";
 
 interface IScheduleCard {
       schedule: IScheduleContentDetailModel;
@@ -16,7 +16,10 @@ function ScheduleCard({ schedule, status }: IScheduleCard) {
                   <section className="flex justify-between items-start gap-1 w-full h-full">
                         <article className="flex flex-col items-start justify-center gap-y-10 w-full h-full">
                               <section className="flex flex-col gap-y-2 w-full h-full">
-                                    <ScheduleCardTitle title={schedule.sessionTitle} />
+                                    <ScheduleCardTitle
+                                          scheduleId={schedule.sessionId}
+                                          title={schedule.sessionTitle}
+                                    />
 
                                     <span
                                           className="flex flex-col gap-2
@@ -71,13 +74,7 @@ function ScheduleCard({ schedule, status }: IScheduleCard) {
                                     <SanitizedContent htmlContent={topic.description} truncate />
 
                                     {index + 1 === schedule.sessionTopics.length && (
-                                          <span className="self-end text-sm mt-2">
-                                                <Button
-                                                      title="view more"
-                                                      variant="text"
-                                                      onClickHandler={() => {}}
-                                                />
-                                          </span>
+                                          <ScheduleViewMoreButton scheduleId={schedule.sessionId} />
                                     )}
                               </div>
                         ))}
