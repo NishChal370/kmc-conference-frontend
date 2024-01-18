@@ -1,6 +1,6 @@
-import { deleteDayTheme as deleteDayThemeReq, getDayThemesMin as getDayThemesMinReq, getDayThemes as getDayThemesReq, postDayTheme, putDayTheme } from '@/admin/pages/dayTheme/feature/dayThemeRequest';
-import { IDayThemeDeleteRequest, IDayThemeMinSearch, IDayThemePostRequest, IDayThemePutRequest, IDayThemeSearch } from '@/admin/model/dayTheme/dayThemeModel';
 import { useAppDispatch } from '@/app/hooks';
+import { deleteDayTheme as deleteDayThemeReq, getDayThemesMin as getDayThemesMinReq, getDayThemes as getDayThemesReq, postDayTheme, putDayTheme, getDayThemeById as getDayThemeByIdReq } from '@/admin/pages/dayTheme/feature/dayThemeRequest';
+import { IDayThemeByIdSearch, IDayThemeDeleteRequest, IDayThemeMinSearch, IDayThemePostRequest, IDayThemePutRequest, IDayThemeSearch } from '@/admin/model/dayTheme/dayThemeModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 
@@ -10,6 +10,12 @@ function useDayThemeApi() {
       const getDayThemes = (searchDetail: IDayThemeSearch) => {
             dispatch(getDayThemesReq(searchDetail))
       }
+
+
+      const getDayThemeById = (searchDetail: IDayThemeByIdSearch) => {
+            dispatch(getDayThemeByIdReq(searchDetail))
+      }
+
 
       const getDayThemesMin = (searchDetail: IDayThemeMinSearch = {}) => {
             dispatch(getDayThemesMinReq(searchDetail))
@@ -70,7 +76,7 @@ function useDayThemeApi() {
       }
 
 
-      return { getDayThemes, getDayThemesMin, addAdminDayTheme, updateAdminDayTheme, deleteAdminDayTheme } as const;
+      return { getDayThemes, getDayThemesMin, getDayThemeById, addAdminDayTheme, updateAdminDayTheme, deleteAdminDayTheme } as const;
 
 }
 

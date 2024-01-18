@@ -1,9 +1,16 @@
+import { IDayThemeByIdResponse } from './../../../model/dayTheme/dayThemeModel';
 import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
-import { deleteDayTheme, getDayThemes, getDayThemesMin, postDayTheme, putDayTheme } from "./dayThemeRequest";
+import { deleteDayTheme, getDayThemeById, getDayThemes, getDayThemesMin, postDayTheme, putDayTheme } from "./dayThemeRequest";
 import { IBasicSliceState } from "@/models/commonModel";
 import { IDayThemeMinResponse, IDayThemeResponse } from "@/admin/model/dayTheme/dayThemeModel";
+
+
+
+interface IDayThemeByIdSlice extends IBasicSliceState {
+      data?: IDayThemeByIdResponse;
+}
 
 
 interface IDayThemesSlice extends IBasicSliceState {
@@ -16,12 +23,18 @@ interface IDayThemesMinSlice extends IBasicSliceState {
 
 
 type IDayThemeSlice = {
+      dayTheme: IDayThemeByIdSlice, // it stores single theme.
       dayThemes: IDayThemesSlice,
       dayThemesMin: IDayThemesMinSlice,
 };
 
 
 const initialState: IDayThemeSlice = {
+      dayTheme: {
+            status: Status.IDEL,
+            data: undefined,
+      },
+
       dayThemes: {
             status: Status.IDEL,
             data: {
@@ -100,6 +113,24 @@ const dayThemeSlice = createSlice({
                         state.dayThemesMin.status = Status.FAILED;
                         state.dayThemesMin.error = action.payload;
                   })
+
+
+
+                  .addCase(getDayThemeById.pending, (state) => {
+                        state.dayTheme.status = Status.LOADING;
+                  })
+                  .addCase(getDayThemeById.fulfilled, (state, action) => {
+                        state.dayTheme.status = !action.payload
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+
+                        state.dayTheme.data = action.payload;
+
+                  })
+                  .addCase(getDayThemeById.rejected, (state, action) => {
+                        state.dayTheme.status = Status.FAILED;
+                        state.dayTheme.error = action.payload;
+                  })
       },
 })
 
@@ -108,5 +139,6 @@ export default dayThemeSlice.reducer;
 
 export const dayThemeSliceAction = dayThemeSlice.actions;
 
+export const dayThemeState = (state: RootState) => state.dayTheme.dayTheme;
 export const dayThemesState = (state: RootState) => state.dayTheme.dayThemes;
 export const dayThemesMinState = (state: RootState) => state.dayTheme.dayThemesMin;

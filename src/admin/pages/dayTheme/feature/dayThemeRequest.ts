@@ -1,12 +1,26 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminDayThemeApi } from "@/admin/api/service/adminDayThemeApi";
-import { IDayThemeDeleteRequest, IDayThemeMinResponse, IDayThemeMinSearch, IDayThemePostRequest, IDayThemePutRequest, IDayThemeResponse, IDayThemeSearch } from "@/admin/model/dayTheme/dayThemeModel";
+import { IDayThemeByIdResponse, IDayThemeByIdSearch, IDayThemeDeleteRequest, IDayThemeMinResponse, IDayThemeMinSearch, IDayThemePostRequest, IDayThemePutRequest, IDayThemeResponse, IDayThemeSearch } from "@/admin/model/dayTheme/dayThemeModel";
 
 export const getDayThemes = createAppAsyncThunk<IDayThemeResponse, IDayThemeSearch>(
       "day/themes",
       async (searchDetail, { rejectWithValue }) => {
             try {
                   const response = await adminDayThemeApi.getDayThemes(searchDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+export const getDayThemeById = createAppAsyncThunk<IDayThemeByIdResponse, IDayThemeByIdSearch>(
+      "day/theme/bt-id",
+      async (searchDetail, { rejectWithValue }) => {
+            try {
+                  const response = await adminDayThemeApi.getDayThemeById(searchDetail);
 
                   return response.data;
             } catch (error: any) {

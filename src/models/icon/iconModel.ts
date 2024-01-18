@@ -35,4 +35,5 @@ export type TIconType =
       | "add"
       | "download"
       | "user"
-      | "logout";
+      | "logout"
+      | "error";

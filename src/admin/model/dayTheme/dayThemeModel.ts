@@ -41,6 +41,19 @@ export interface IDayThemeSearch {
 }
 
 
+
+
+export type IDayThemeByIdResponse = Omit<IDayThemeModel, "day">;
+
+
+export interface IDayThemeByIdSearch {
+      themeId: IDayThemeModel["id"];
+}
+
+
+
+
+
 export interface IDayThemePostRequest extends Omit<IDayThemeModel, "id" | "day"> {
       dayId: IDayThemeModel["day"]["dayId"];
 };

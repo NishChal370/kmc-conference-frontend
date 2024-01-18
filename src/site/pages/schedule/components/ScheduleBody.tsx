@@ -1,5 +1,6 @@
 import ScheduleCard from "./ScheduleCard";
 import ScheduleDayFilter from "./dayFilter/ScheduleDayFilter";
+import PlenarySessionCardContainer from "../container/plenarySessionCardContainer/PlenarySessionCardContainer";
 
 function ScheduleBody() {
       return (
@@ -12,25 +13,29 @@ function ScheduleBody() {
             >
                   <ScheduleDayFilter />
 
-                  <section className="flex flex-col justify-start items-start gap-y-20 w-full h-full">
-                        <ScheduleCard />
+                  <span className="flex flex-col justify-start items-start gap-y-10 w-full h-full">
+                        <PlenarySessionCardContainer />
 
-                        <ScheduleCard
-                              status={[
-                                    { status: "Registration closed" },
-                                    { status: "i don't know" },
-                                    { status: "i don't know" },
-                                    { status: "i don't know why" },
-                                    { status: "i don't know" },
-                                    { status: "i don't know" },
-                                    { status: "i don't know" },
-                              ]}
-                        />
+                        <section className="flex flex-col justify-start items-start gap-y-20 w-full h-full">
+                              <ScheduleCard />
 
-                        <ScheduleCard />
+                              <ScheduleCard
+                                    status={[
+                                          { status: "Registration closed" },
+                                          { status: "i don't know" },
+                                          { status: "i don't know" },
+                                          { status: "i don't know why" },
+                                          { status: "i don't know" },
+                                          { status: "i don't know" },
+                                          { status: "i don't know" },
+                                    ]}
+                              />
 
-                        <ScheduleCard />
-                  </section>
+                              <ScheduleCard />
+
+                              <ScheduleCard />
+                        </section>
+                  </span>
             </div>
       );
 }
