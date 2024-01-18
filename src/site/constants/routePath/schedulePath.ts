@@ -1,6 +1,8 @@
 export const SCHEDULE_PATH = {
       schedule: {
             basic: "conference-schedule/:dayId?/:themeId?",
+            paramNameOne: "dayId",
+            paramNameTwo: "themeId",
             full: (scheduleDetail?: { dayId?: number, themeId?: number }) =>
                   !scheduleDetail
                         ? `/conference-schedule/`

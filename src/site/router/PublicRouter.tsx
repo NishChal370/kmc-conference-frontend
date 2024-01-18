@@ -9,6 +9,7 @@ import {
       SCHEDULE_PATH,
       SPEAKER_PATH,
 } from "@/site/constants/routePath";
+import CheckDynamicRouteListType from "@/helper/validateRoute/CheckDynamicRouteListType";
 
 const PublicRouter: RouteObject = {
       path: "/",
@@ -29,7 +30,20 @@ const PublicRouter: RouteObject = {
 
                         {
                               path: `${SCHEDULE_PATH.schedule.basic}`,
-                              element: <Outlet />,
+                              element: (
+                                    <CheckDynamicRouteListType
+                                          params={[
+                                                {
+                                                      type: "number",
+                                                      paramName: SCHEDULE_PATH.schedule.paramNameOne,
+                                                },
+                                                {
+                                                      type: "number",
+                                                      paramName: SCHEDULE_PATH.schedule.paramNameTwo,
+                                                },
+                                          ]}
+                                    />
+                              ),
                               children: [
                                     {
                                           index: true,
