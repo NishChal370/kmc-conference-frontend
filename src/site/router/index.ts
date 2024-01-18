@@ -20,6 +20,9 @@ export const Organizer = lazy(() => import("@/site/pages/organizer/Organizer"));
 export const Login = lazy(() => import("@/site/pages/login/Login"));
 export const RegisterUser = lazy(() => import("@/site/pages/registerUser/RegisterUser"));
 export const ForgotPassword = lazy(() => import("@/site/pages/forgotPassword/ForgotPassword"));
+export const ResetPassword = lazy(() => import("@/site/pages/resetPassword/ResetPassword"));
+
+
 
 
 

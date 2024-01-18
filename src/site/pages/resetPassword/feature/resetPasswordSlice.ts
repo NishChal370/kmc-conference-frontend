@@ -2,18 +2,18 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { postForgotPassword } from "./forgotPasswordRequest";
+import { postResetPassword } from "./resetPasswordRequest";
 
 
-type IForgotPasswordSlice = IBasicSliceState;
+type IResetPasswordSlice = IBasicSliceState;
 
 
-const initialState: IForgotPasswordSlice = {
-      status: Status.IDEL,
+const initialState: IResetPasswordSlice = {
+      status: Status.SUCCEEDED,
 }
 
-const forgotPasswordSlice = createSlice({
-      name: "forgotPassword",
+const resetPasswordSlice = createSlice({
+      name: "resetPassword",
       initialState,
       reducers: {
             resetSlice: (status) => {
@@ -23,14 +23,14 @@ const forgotPasswordSlice = createSlice({
       },
       extraReducers(builder) {
             builder
-                  .addCase(postForgotPassword.pending, (state) => {
+                  .addCase(postResetPassword.pending, (state) => {
                         state.status = Status.LOADING;
                   })
-                  .addCase(postForgotPassword.fulfilled, (state) => {
+                  .addCase(postResetPassword.fulfilled, (state) => {
                         state.status = Status.SUCCEEDED
 
                   })
-                  .addCase(postForgotPassword.rejected, (state, action) => {
+                  .addCase(postResetPassword.rejected, (state, action) => {
                         state.status = Status.FAILED;
                         state.error = action.payload;
                   })
@@ -38,8 +38,8 @@ const forgotPasswordSlice = createSlice({
 })
 
 
-export default forgotPasswordSlice.reducer;
+export default resetPasswordSlice.reducer;
 
-export const forgotPasswordSliceAction = forgotPasswordSlice.actions;
+export const resetPasswordSliceAction = resetPasswordSlice.actions;
 
-export const forgotPasswordSliceState = (state: RootState) => state.forgotPassword;
+export const resetPasswordSliceState = (state: RootState) => state.resetPassword;

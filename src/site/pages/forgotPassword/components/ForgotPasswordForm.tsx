@@ -36,7 +36,7 @@ function ForgotPasswordForm({
                         })}
                   </Input>
 
-                  <Button type="submit" title="Reset Password" />
+                  <Button type="submit" title="Confirm Email" />
 
                   {isLoading && <LoadingAnimation />}
             </form>

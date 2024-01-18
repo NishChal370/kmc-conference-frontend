@@ -14,4 +14,9 @@ export const AUTH_PATH = {
             full: "/login/forgot-password",
       },
 
+      restPassword: {
+            basic: "reset-password",
+            full: "/login/reset-password",
+      },
+
 }

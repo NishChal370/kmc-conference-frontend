@@ -3,7 +3,7 @@ import { UseFormRegisterReturn } from "react-hook-form";
 import AppIcon from "../icon/AppIcon";
 
 interface IPasswordInput {
-      children: UseFormRegisterReturn<string>;
+      children?: UseFormRegisterReturn<string>;
       errorMessage?: string;
       label?: string;
 }

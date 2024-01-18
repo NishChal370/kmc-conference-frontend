@@ -1,9 +1,10 @@
 import { AxiosRequestConfig } from "axios";
-import AXIOS from "../../../api/constant";
+import AXIOS from "@/api/constant";
 import { ITokenModel } from "@/models/auth/authModel";
 import { ILogin } from "@/site/model/login/loginModel";
 import { IRegisterUserPostRequest } from "@/site/model/registerUser/registerUserModel";
 import { IForgotPasswordRequest } from "@/site/model/forgotPassword/forgotPasswordModel";
+import { IResetPasswordRequest } from "@/site/model/resetPassword/resetPasswordModel";
 
 export const authApi = {
       login: (loginDetail: ILogin) => {
@@ -52,6 +53,17 @@ export const authApi = {
             const options: AxiosRequestConfig = {
                   method: "POST",
                   url: `auth/forget-password`,
+                  data: detail,
+            };
+
+            return AXIOS.request(options);
+      },
+
+
+      resetPassword: (detail: IResetPasswordRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "POST",
+                  url: `auth/reset-password`,
                   data: detail,
             };
 

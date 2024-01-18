@@ -1,5 +1,5 @@
 import Button from "@/shared/button/Button";
-import tickIcon from "@/assets/image/webp/check-mark.png";
+import tickIcon from "@/assets/image/webp/mail.webp";
 
 interface IForgotPasswordSuccessMessage {
       reverifyUserHandler: () => void;
@@ -15,14 +15,11 @@ function ForgotPasswordSuccessMessage({
                   <section className="w-full flex flex-col gap-6 items-center">
                         <img src={tickIcon} alt="success-icon" className="w-28" />
 
-                        <h2 className="text-xl font-bold">Email Address Verified !</h2>
-
-                        <span className="flex flex-col justify-center items-center gap-1">
-                              <p>Check your email to reset the password</p>
-
-                              <i className="text-xs">
+                        <span className="flex flex-col justify-center items-center gap-1.5">
+                              <h2 className="text-2xl font-bold">Check Your Email</h2>
+                              <p className="text-xs">
                                     If you do not find email. Check spam or Try reset password again
-                              </i>
+                              </p>
                         </span>
                   </section>
 
