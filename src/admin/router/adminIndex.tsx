@@ -23,6 +23,8 @@ const AppliedCallForPaper = lazy(
       () => import("@/admin/pages/profileSetting/appliedHistory/AppliedCallForPaper")
 );
 
+const NotFound = lazy(() => import("@/site/pages/notFound/NotFound"));
+
 export {
       Days,
       AdminDayTheme,
@@ -37,4 +39,5 @@ export {
       AppliedSpeaking,
       AppliedParticipation,
       AppliedCallForPaper,
+      NotFound,
 };

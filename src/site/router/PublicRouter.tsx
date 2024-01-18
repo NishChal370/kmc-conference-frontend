@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Outlet, RouteObject } from "react-router-dom";
 import Loading from "@/shared/loading/Loading";
-import { AboutUs, App, Home, Organizer, Schedule, ScheduleDetail, Speaker } from "./index";
+import { AboutUs, App, Home, Organizer, Schedule, ScheduleDetail, Speaker, NotFound } from "./index";
 import {
       ABOUT_US_PATH,
       HOME_PATH,
@@ -39,6 +39,10 @@ const PublicRouter: RouteObject = {
                                           path: SCHEDULE_PATH.detail.basic,
                                           element: <ScheduleDetail />,
                                     },
+                                    {
+                                          path: "*",
+                                          element: <NotFound />,
+                                    },
                               ],
                         },
 
@@ -59,7 +63,7 @@ const PublicRouter: RouteObject = {
 
                         {
                               path: "*",
-                              element: <h1>Not found public</h1>,
+                              element: <NotFound />,
                         },
                   ],
             },

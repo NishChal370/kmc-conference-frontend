@@ -6,6 +6,8 @@ export const App = lazy(() => import("@/site/App"));
 export const AuthApp = lazy(() => import("@/AuthApp"));
 
 
+export const NotFound = lazy(() => import("@/site/pages/notFound/NotFound"));
+
 
 export const Home = lazy(() => import("@/site/pages/home/Home"));
 
