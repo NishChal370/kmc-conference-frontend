@@ -23,12 +23,6 @@ function ErrorMessage({ title, detail, needTopPadding = true }: IErrorMessage) {
                         </h1>
                         <p className="text-sm">{detail}</p>
                   </article>
-
-                  <footer>
-                        <a href={"mailto:" + "SERVICE_PROVIDER_EMAIL"} className="text-sm text-primary">
-                              contact service provider
-                        </a>
-                  </footer>
             </div>
       );
 }

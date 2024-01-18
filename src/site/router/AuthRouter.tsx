@@ -3,7 +3,7 @@ import { RouteObject } from "react-router-dom";
 import AuthApp from "@/AuthApp";
 import Loading from "@/shared/loading/Loading";
 import { AuthRoute } from "@/protectedRoute";
-import { Login, RegisterUser, ForgotPassword, ResetPassword, NotFound } from "./index";
+import { Login, RegisterUser, ForgotPassword, ResetPassword, NotFound, VerifyEmail } from "./index";
 import { AUTH_PATH } from "@/site/constants/routePath";
 
 const AuthRouter: RouteObject = {
@@ -34,6 +34,11 @@ const AuthRouter: RouteObject = {
                         {
                               path: AUTH_PATH.restPassword.basic,
                               element: <ResetPassword />,
+                        },
+
+                        {
+                              path: AUTH_PATH.verifyEmail.basic,
+                              element: <VerifyEmail />,
                         },
 
                         {

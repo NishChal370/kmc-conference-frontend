@@ -9,7 +9,7 @@ type IResetPasswordSlice = IBasicSliceState;
 
 
 const initialState: IResetPasswordSlice = {
-      status: Status.SUCCEEDED,
+      status: Status.IDEL,
 }
 
 const resetPasswordSlice = createSlice({

@@ -5,6 +5,7 @@ import { ILogin } from "@/site/model/login/loginModel";
 import { IRegisterUserPostRequest } from "@/site/model/registerUser/registerUserModel";
 import { IForgotPasswordRequest } from "@/site/model/forgotPassword/forgotPasswordModel";
 import { IResetPasswordRequest } from "@/site/model/resetPassword/resetPasswordModel";
+import { IVerifyEmailRequest } from "@/site/model/verifyEmail/verifyEmailModel";
 
 export const authApi = {
       login: (loginDetail: ILogin) => {
@@ -37,6 +38,18 @@ export const authApi = {
 
             return AXIOS.request(options);
       },
+
+
+      verifyEmail: (detail: IVerifyEmailRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "POST",
+                  url: `auth/confirm-email`,
+                  data: detail,
+            };
+
+            return AXIOS.request(options);
+      },
+
 
       logout: () => {
             const options: AxiosRequestConfig = {

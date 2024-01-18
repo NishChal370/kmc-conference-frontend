@@ -19,4 +19,10 @@ export const AUTH_PATH = {
             full: "/login/reset-password",
       },
 
+
+      verifyEmail: {
+            basic: "verify-email",
+            full: "/login/verify-email",
+      },
+
 }

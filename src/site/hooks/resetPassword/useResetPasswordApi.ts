@@ -14,7 +14,7 @@ function useResetPasswordApi() {
                   .then(() => {
                         successMessage({
                               message: "Your password has been set. Use it while logging in.",
-                              title: "Password rested"
+                              title: "Password reset"
                         })
 
                   })
