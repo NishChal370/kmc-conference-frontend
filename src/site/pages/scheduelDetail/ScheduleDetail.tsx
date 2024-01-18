@@ -3,6 +3,8 @@ import ScheduleDetailHeader from "./components/ScheduleDetailHeader";
 import ScheduleActionHeader from "./components/ScheduleActionHeader";
 import ScheduleScheduleCard from "./components/ScheduleScheduleCard";
 import ScheduleSpeakerBanner from "./components/ScheduleSpeakerBanner";
+import { Listbox } from "@headlessui/react";
+import AppIcon from "@/shared/icon/AppIcon";
 
 function ScheduleDetail() {
       return (
@@ -50,8 +52,32 @@ function ScheduleDetail() {
                                     <p>Kmc, Tridevi Marg 29, Kathmandu 44600</p>
                               </span>
 
+                              <section>
+                                    <Listbox by="value" value={{}} onChange={() => {}}>
+                                          <Listbox.Button
+                                                title="Session Title"
+                                                className={`relative border-b border-mute-1 w-full px-0 py-1.5 text-start`}
+                                          >
+                                                {({ open }) => (
+                                                      <>
+                                                            <span className="flex items-center  font-medium truncate min-h-[1.6rem] text-2xl pr-6">
+                                                                  {" E-Government Services"}
+                                                            </span>
+                                                            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                                                                  <AppIcon
+                                                                        name="down-arrow"
+                                                                        className={
+                                                                              open ? "rotate-180" : "rotate-0"
+                                                                        }
+                                                                  />
+                                                            </span>
+                                                      </>
+                                                )}
+                                          </Listbox.Button>
+                                    </Listbox>
+                              </section>
                               <ScheduleArticle
-                                    title="About this session"
+                                    title="About"
                                     article=" Manaslu circuit trek is a 2 weeks long tea house mode trek around
                                           the mount Manaslu scaling 8163m above sea level. You will get the
                                           highest elevation gain of 5105m at the Larke Pass. Since this is
@@ -72,7 +98,7 @@ function ScheduleDetail() {
                               />
 
                               <ScheduleArticle
-                                    title="Agenda"
+                                    title="KMC Highlights"
                                     article="Keynote Intro to Imagine Cup & How to Build a Winning Imagine Cup
                                     Project Team (Tips & Tricks) Imagine Cup Experience Sharing
                                     Leveraging Azure in Imagine Cup Projects Leveraging AI & ML in Your
@@ -80,16 +106,6 @@ function ScheduleDetail() {
                                     Ambassadors Program and Team Info IDEATHON Workshop with Team
                                     Building Here is a quick summary of what you need in order to
                                     participate in the Imagine Cup:"
-                              />
-
-                              <ScheduleArticle
-                                    title="Goals"
-                                    article="Here is a quick summary of what you need in order to participate in
-                                          the Imagine Cup: Global competition for students aged 18+ You’re
-                                          welcome to imagine any solution that you’re passionate about but
-                                          must include a Microsoft product/ tech and take into consideration
-                                          diversity, inclusion, and accessibility. Maximum four (4) members
-                                          per team"
                               />
 
                               <ScheduleArticle
@@ -103,7 +119,17 @@ function ScheduleDetail() {
                               />
 
                               <ScheduleArticle
-                                    title="Accessibility Information"
+                                    title="International cases"
+                                    article="Here is a quick summary of what you need in order to participate in
+                                          the Imagine Cup: Global competition for students aged 18+ You’re
+                                          welcome to imagine any solution that you’re passionate about but
+                                          must include a Microsoft product/ tech and take into consideration
+                                          diversity, inclusion, and accessibility. Maximum four (4) members
+                                          per team"
+                              />
+
+                              <ScheduleArticle
+                                    title="Work shop"
                                     article="Elevator Access: Our venue, located on the third floor of Civil Mall, is equipped with reliable elevator services to assist attendees who require support with stairs. 
                                     Wheelchair Accessibility: The entire venue, including the workshop spaces and restrooms, is wheelchair accessible. We also have designated wheelchair seating areas in the workshop rooms."
                               />
