@@ -19,7 +19,7 @@ function ScheduleCardContainer({ schedule }: IScheduleCardContainer) {
 
       const openParticipationFormHandler = (data: IParticipationAddModal) => () => {
             if (loggedInStatus !== Status.SUCCEEDED) {
-                  errorToastMessage("Please login before registration");
+                  errorToastMessage("Please login to attend.");
                   return;
             }
 

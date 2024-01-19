@@ -8,6 +8,7 @@ export interface IScheduleContentBriefDetailModel {
       startTime: string,
       endTime: string,
       date: string,
+      location: string,
       sessionTopics:
       {
             id: number,

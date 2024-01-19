@@ -28,7 +28,9 @@ function ScheduleScheduleCard({ scheduleDetail }: IScheduleScheduleCard) {
                         <span title="Location">
                               <AppIcon name="location" size={ICON.size + 4} />
                               <article>
-                                    <p className="font-semibold">{scheduleDetail.venueInfo.location}</p>
+                                    <p className="font-semibold">
+                                          {scheduleDetail.venueInfo.location}; {scheduleDetail.location}
+                                    </p>
                                     <p>
                                           {scheduleDetail.venueInfo.venueCity},{" "}
                                           {scheduleDetail.venueInfo.venueState}
