@@ -15,7 +15,7 @@ interface IAdminScheduleAddOrEditModal {
 }
 
 function AdminScheduleAddOrEditModal({
-      modalType,
+      modalType = "Add",
       scheduleForm: {
             register,
             formState: { errors },

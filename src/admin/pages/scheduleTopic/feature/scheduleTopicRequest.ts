@@ -1,6 +1,7 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminScheduleTopicApi } from "@/admin/api/service/adminScheduleTopicApi";
 import { IScheduleTopicDeleteRequest, IScheduleTopicPostRequest, IScheduleTopicPutRequest, IScheduleTopicsResponse, IScheduleTopicsSearch } from "@/admin/model/scheduleTopic/scheduleTopicModel";
+import { IScheduleTopicContentResponse, IScheduleTopicContentSearch } from "@/admin/model/scheduleTopic/scheduleTopicContentModel";
 
 
 export const getScheduleTopics = createAppAsyncThunk<IScheduleTopicsResponse, IScheduleTopicsSearch>(
@@ -47,6 +48,21 @@ export const deleteScheduleTopic = createAppAsyncThunk<undefined, IScheduleTopic
       async (scheduleDetail, { rejectWithValue }) => {
             try {
                   const response = await adminScheduleTopicApi.deleteScheduleTopic(scheduleDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+
+export const getScheduleTopicContent = createAppAsyncThunk<IScheduleTopicContentResponse, IScheduleTopicContentSearch>(
+      "site/schedule-topic/content/by-id/get",
+      async (searchDetail, { rejectWithValue }) => {
+            try {
+                  const response = await adminScheduleTopicApi.getScheduleTopicContent(searchDetail);
 
                   return response.data;
             } catch (error: any) {

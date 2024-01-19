@@ -1,3 +1,5 @@
+import ScheduleActionHeaderArticle from "./ScheduleActionHeaderArticle";
+
 function ScheduleActionHeader() {
       return (
             <div className="sticky bottom-0 bg-white w-full py-4 flex justify-center px-4">
@@ -8,10 +10,7 @@ function ScheduleActionHeader() {
                               xl:w-[70%]
                         "
                   >
-                        <article className="flex flex-col items-start w-full">
-                              <h3 className=" text-sm uppercase">Saturday, January 27</h3>
-                              <h1 className="text-lg font-bold">Marketing Workshop #2</h1>
-                        </article>
+                        <ScheduleActionHeaderArticle />
 
                         <aside className="flex gap-4 self-end">
                               <button

@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { IScheduleContentDetailResponse, ISchedulesResponse } from "@/admin/model/schedule/scheduleModel";
-import { deleteSchedule, getScheduleContentDetail, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
+import { deleteSchedule, getScheduleContentBriefDetail, getScheduleContentDetail, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
+import { IScheduleContentBriefDetailResponse } from "@/admin/model/schedule/scheduleContentModel";
 
 interface ISchedulesSlice extends IBasicSliceState {
       data: ISchedulesResponse;
@@ -14,10 +15,15 @@ interface IScheduleContentDetailSlice extends IBasicSliceState {
       data: IScheduleContentDetailResponse;
 }
 
+interface IScheduleContentBriefDetailSlice extends IBasicSliceState {
+      data?: IScheduleContentBriefDetailResponse;
+}
+
 
 type IScheduleSlice = {
       schedules: ISchedulesSlice,
       scheduleContentDetail: IScheduleContentDetailSlice,
+      scheduleContentBriefDetail: IScheduleContentBriefDetailSlice,
 };
 
 
@@ -33,6 +39,10 @@ const initialState: IScheduleSlice = {
             status: Status.IDEL,
             data: [],
       },
+      scheduleContentBriefDetail: {
+            status: Status.IDEL,
+            data: undefined
+      }
 }
 
 
@@ -54,6 +64,13 @@ const scheduleSlice = createSlice({
                   state.scheduleContentDetail = {
                         status: Status.IDEL,
                         data: [],
+                  }
+            },
+
+            resetScheduleContentBriefDetailsSlice: (state) => {
+                  state.scheduleContentBriefDetail = {
+                        status: Status.IDEL,
+                        data: undefined,
                   }
             },
       },
@@ -105,6 +122,22 @@ const scheduleSlice = createSlice({
                         state.scheduleContentDetail.status = Status.FAILED;
                         state.scheduleContentDetail.error = action.payload;
                   })
+
+
+                  .addCase(getScheduleContentBriefDetail.pending, (state) => {
+                        state.scheduleContentBriefDetail.status = Status.LOADING;
+                  })
+                  .addCase(getScheduleContentBriefDetail.fulfilled, (state, action) => {
+                        state.scheduleContentBriefDetail.status = !action.payload
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.scheduleContentBriefDetail.data = action.payload;
+
+                  })
+                  .addCase(getScheduleContentBriefDetail.rejected, (state, action) => {
+                        state.scheduleContentBriefDetail.status = Status.FAILED;
+                        state.scheduleContentBriefDetail.error = action.payload;
+                  })
       },
 })
 
@@ -115,3 +148,4 @@ export const scheduleSliceAction = scheduleSlice.actions;
 
 export const schedulesSliceState = (state: RootState) => state.schedule.schedules;
 export const scheduleContentDetailSliceState = (state: RootState) => state.schedule.scheduleContentDetail;
+export const scheduleContentBriefDetailSliceState = (state: RootState) => state.schedule.scheduleContentBriefDetail;

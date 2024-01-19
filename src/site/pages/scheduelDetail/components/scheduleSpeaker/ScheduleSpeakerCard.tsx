@@ -1,9 +1,9 @@
 interface IScheduleSpeakerCard {
-      openDetailModalHandler: () => void;
       img: string;
+      company: string;
       speakerName: string;
       designation: string;
-      company: string;
+      openDetailModalHandler: () => void;
 }
 
 function ScheduleSpeakerCard({

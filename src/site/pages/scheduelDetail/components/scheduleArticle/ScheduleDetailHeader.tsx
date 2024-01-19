@@ -1,5 +1,5 @@
 import PageHeader from "@/site/shared/pageHeader/PageHeader";
-import "../style/scheduleDetailHeader.css";
+import "../../style/scheduleDetailHeader.css";
 
 function ScheduleDetailHeader() {
       return (

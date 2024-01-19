@@ -1,7 +1,8 @@
 import { useAppDispatch } from "@/app/hooks";
 import { IScheduleContentDetailSearch, IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
-import { deleteSchedule, getScheduleContentDetail as getScheduleContentDetailReq, getSchedules as getSchedulesReq, postSchedule, putSchedule, } from "@/admin/pages/schedule/feature/scheduleRequest";
+import { deleteSchedule, getScheduleContentDetail as getScheduleContentDetailReq, getSchedules as getSchedulesReq, postSchedule, putSchedule, getScheduleContentBriefDetail as getScheduleContentBriefDetailReq } from "@/admin/pages/schedule/feature/scheduleRequest";
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from "@/utils/alert";
+import { IScheduleContentBriefDetailSearch } from "@/admin/model/schedule/scheduleContentModel";
 
 
 
@@ -74,8 +75,12 @@ function useScheduleApi() {
             dispatch(getScheduleContentDetailReq(searchDetail))
       }
 
+      const getScheduleContentBriefDetail = (searchDetail: IScheduleContentBriefDetailSearch) => {
+            dispatch(getScheduleContentBriefDetailReq(searchDetail))
+      }
 
-      return { getSchedules, addAdminSchedule, updateAdminSchedule, deleteAdminSchedule, getScheduleContentDetail } as const;
+
+      return { getSchedules, addAdminSchedule, updateAdminSchedule, deleteAdminSchedule, getScheduleContentDetail, getScheduleContentBriefDetail } as const;
 }
 
 export default useScheduleApi

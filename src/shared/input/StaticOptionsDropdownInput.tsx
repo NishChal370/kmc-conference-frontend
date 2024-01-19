@@ -5,22 +5,22 @@ import { IDropdownOptionModel } from "@/models/input/dropDownModel";
 
 interface IStaticOptionsDropdownInput {
       label: string;
+      isRequired?: boolean;
+      errorMessage?: string;
       data: IDropdownOptionModel[];
       selected?: IDropdownOptionModel;
-      errorMessage?: string;
-      isRequired?: boolean;
       variant?: "primary" | "secondary";
       onChangeHandler?: (data: IDropdownOptionModel) => void;
 }
 
 function StaticOptionsDropdownInput({
-      label,
       data,
-      variant = "primary",
+      label,
       selected,
-      isRequired = false,
-      onChangeHandler,
       errorMessage,
+      onChangeHandler,
+      isRequired = false,
+      variant = "primary",
 }: IStaticOptionsDropdownInput) {
       return (
             //NOTE: In value if we don't add empty object when `selected` is `undefined` then previous selected status will not be removed from the List box.
@@ -66,8 +66,6 @@ function StaticOptionsDropdownInput({
                               >
                                     {({ open }) => (
                                           <>
-                                                {console.log(selected?.option)}
-
                                                 <span className="flex items-center truncate text-base min-h-[1.6rem]">
                                                       {selected?.option ? selected?.option : label}
                                                 </span>

@@ -9,6 +9,10 @@ import {
       IScheduleContentDetailSearch,
 } from "@/admin/model/schedule/scheduleModel";
 import { adminScheduleApi } from "@/admin/api/service/adminScheduleApi";
+import {
+      IScheduleContentBriefDetailResponse,
+      IScheduleContentBriefDetailSearch,
+} from "@/admin/model/schedule/scheduleContentModel";
 
 export const getSchedules = createAppAsyncThunk<ISchedulesResponse, IScheduleSearch>(
       "admin/schedules/list/get",
@@ -68,6 +72,19 @@ export const getScheduleContentDetail = createAppAsyncThunk<
 >("site/schedules/content-detail/get/by-themeId", async (searchDetail, { rejectWithValue }) => {
       try {
             const response = await adminScheduleApi.getScheduleContentDetail(searchDetail);
+
+            return response.data;
+      } catch (error: any) {
+            return rejectWithValue(error.response.data);
+      }
+});
+
+export const getScheduleContentBriefDetail = createAppAsyncThunk<
+      IScheduleContentBriefDetailResponse,
+      IScheduleContentBriefDetailSearch
+>("site/schedules/content-detail/brief/get/by-session", async (searchDetail, { rejectWithValue }) => {
+      try {
+            const response = await adminScheduleApi.getScheduleContentBriefDetail(searchDetail);
 
             return response.data;
       } catch (error: any) {

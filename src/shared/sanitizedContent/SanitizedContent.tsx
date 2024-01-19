@@ -7,11 +7,12 @@ import "react-quill/dist/quill.snow.css";
 interface ISanitizedContent {
       htmlContent?: string;
       truncate?: boolean;
+      extraClassName?: string;
 }
 
 const MAX_DISPLAY_LENGTH = 200; // Set the maximum display length as needed
 
-const SanitizedContent: React.FC<ISanitizedContent> = ({ htmlContent, truncate = false }) => {
+const SanitizedContent: React.FC<ISanitizedContent> = ({ htmlContent, truncate = false, extraClassName }) => {
       const content = useSanitizedHtml(htmlContent); // Assuming useSanitizedHtml is a custom hook you've defined
       const [value, setValue] = useState<string>();
 
@@ -30,7 +31,7 @@ const SanitizedContent: React.FC<ISanitizedContent> = ({ htmlContent, truncate =
             <ReactQuill
                   theme="snow"
                   readOnly
-                  className="rich-text--reader w-full h-fit !rounded-none"
+                  className={`rich-text--reader w-full h-fit !rounded-none [&>*]:!leading-loose ${extraClassName}`}
                   value={value || "N/A"}
             />
       );
