@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "@/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useDayThemeApi from "@/admin/hooks/dayTheme/useDayThemeApi";
-import { dayThemeState } from "@/admin/pages/dayTheme/feature/dayThemeSlice";
+import { dayThemeSliceAction, dayThemeState } from "@/admin/pages/dayTheme/feature/dayThemeSlice";
 import LoadingAnimation from "@/shared/loading/LoadingAnimation";
 import { ErrorBanner, NotFoundMessage } from "@/shared/errorMessage";
 import { Status } from "@/enum/commonEnum";
 import PlenarySessionCard from "../../components/PlenarySessionCard";
 
 function PlenarySessionCardContainer() {
+      const dispatch = useAppDispatch();
       const { themeId: paramThemeId } = useParams();
       const { getDayThemeById } = useDayThemeApi();
 
@@ -19,6 +20,10 @@ function PlenarySessionCardContainer() {
 
             getDayThemeById({ id: +paramThemeId });
       }, [paramThemeId]);
+
+      useEffect(() => {
+            dispatch(dayThemeSliceAction.resetDayThemeSlice());
+      }, []);
 
       return (
             <>

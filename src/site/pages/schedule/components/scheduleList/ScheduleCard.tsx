@@ -5,6 +5,7 @@ import getDateDay from "@/utils/dateFormat/getDateDay";
 import SanitizedContent from "@/shared/sanitizedContent/SanitizedContent";
 import ScheduleViewMoreButton from "./ScheduleViewMoreButton";
 import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
+import ScheduleCardActionButton from "./ScheduleCardActionButton";
 
 interface IScheduleCard {
       schedule: IScheduleContentDetailModel;
@@ -105,44 +106,25 @@ function ScheduleCard({ schedule, status, openParticipationFormHandler }: ISched
                               </div>
                         </div>
 
-                        <span className="flex gap-8 justify-end">
-                              <button
-                                    type="button"
-                                    className="text-sm font-bold text-primary self-end 
-                                          hover:text-rose-600 active:underline
-                                    "
-                              >
-                                    Submit Proposal
-                              </button>
-
-                              <button
-                                    type="button"
-                                    className="text-sm font-bold text-primary self-end 
-                                          hover:text-rose-600 active:underline
-                                    "
-                              >
-                                    Become a Speaker
-                              </button>
-                              <button
-                                    type="button"
-                                    className="text-sm font-bold text-primary self-end 
-                                          hover:text-rose-600 active:underline
-                                    "
-                                    onClick={openParticipationFormHandler({
-                                          sessionChoice: {
-                                                sessionId: schedule.sessionId,
-                                                title: schedule.sessionTitle,
-                                          },
-                                          dayDate: schedule.dayDate,
-                                          startTime: schedule.sessionStart,
-                                          endTime: schedule.sessionEnd,
-                                          dayLocation: schedule.dayLocation,
-                                          sessionLocation: schedule.sessionLocation,
-                                    })}
-                              >
-                                    Reserve my Spot
-                              </button>
-                        </span>
+                        <ScheduleCardActionButton
+                              participationHandler={openParticipationFormHandler({
+                                    sessionChoice: {
+                                          sessionId: schedule.sessionId,
+                                          title: schedule.sessionTitle,
+                                    },
+                                    dayDate: schedule.dayDate,
+                                    startTime: schedule.sessionStart,
+                                    endTime: schedule.sessionEnd,
+                                    dayLocation: schedule.dayLocation,
+                                    sessionLocation: schedule.sessionLocation,
+                              })}
+                              speakerButtonHandler={function (): void {
+                                    throw new Error("Function not implemented.");
+                              }}
+                              callForPaperButtonHandler={function (): void {
+                                    throw new Error("Function not implemented.");
+                              }}
+                        />
                   </section>
             </div>
       );

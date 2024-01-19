@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import useConferenceDayApi from "@/admin/hooks/conferenceDay/useConferenceDayApi";
-import { conferenceDaysBasicInfoState } from "@/admin/pages/conferenceDay/feature/conferenceDaySlice";
-import { useAppSelector } from "@/app/hooks";
+import {
+      conferenceDayAction,
+      conferenceDaysBasicInfoState,
+} from "@/admin/pages/conferenceDay/feature/conferenceDaySlice";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import DayFilterNav from "../../components/dayFilter/DayFilterNav";
 import { Status } from "@/enum/commonEnum";
 import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
@@ -13,11 +16,16 @@ interface IDayFilterNavContainer {
 }
 
 function DayFilterNavContainer({ subNavHandler, showingSubNav }: IDayFilterNavContainer) {
+      const dispatch = useAppDispatch();
       const { getConferenceDaysBasicInfo } = useConferenceDayApi();
       const { status, data } = useAppSelector(conferenceDaysBasicInfoState);
 
       useEffect(() => {
             getConferenceDaysBasicInfo();
+
+            return () => {
+                  dispatch(conferenceDayAction.resetConferenceDaysBasicInfoSlice());
+            };
       }, []);
 
       return (

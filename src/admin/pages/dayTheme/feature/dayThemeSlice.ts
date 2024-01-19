@@ -68,6 +68,12 @@ const dayThemeSlice = createSlice({
                         data: []
                   }
             },
+            resetDayThemeSlice: (state) => {
+                  state.dayTheme = {
+                        status: Status.IDEL,
+                        data: undefined,
+                  }
+            }
       },
       extraReducers(builder) {
             builder
