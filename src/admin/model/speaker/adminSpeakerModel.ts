@@ -2,6 +2,7 @@ import { SpeakerApprovalStatus } from '@/enum/speaker/speakerEnum';
 import { IBasicApiResponse, } from '@/models/commonModel';
 import { IAttachment, IFilUpdateDetail } from '@/models/file/fileModel';
 import { IMultipleInputFields, IMultiplePhoneNumberInput } from '@/models/input/multiplePhoneInputModel';
+import { IScheduleChoice, IScheduleModel } from '../schedule/scheduleModel';
 
 
 
@@ -64,7 +65,7 @@ export interface ISpeakerByIdSearch {
 
 
 
-export interface IAdminSpeakerPostRequest {
+export interface ISpeakerPostRequest {
       bio: string;
       photo: File | null,
       linkedInProfile?: string;
@@ -84,6 +85,7 @@ export interface IAdminSpeakerPostRequest {
       referenceContacts: string[] | null;
       agreedToDates: boolean;
       agreedTandC: boolean;
+      sessions: IScheduleChoice["sessionId"][];
 }
 
 
@@ -159,4 +161,75 @@ export interface IAdminSpeakerStatusChangeModal {
       id: ISpeakerDetailModel["id"],
       speakerName: ISpeakerDetailModel["name"];
       approvalStatus: ISpeakerDetailModel["approvalStatus"],
+}
+
+
+
+export interface ISpeakerAddForm {
+      bio: string;
+      photo: IFilUpdateDetail,
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience?: string;
+      previousConferences?: string;
+      expertiseInField: string;
+      previousSpeakingEngagements: IMultipleInputFields;
+      publications: IMultipleInputFields;
+      preferredSessionLengthMinutes?: number;
+      availabilityInfo: string[] | null; // THis is not in used
+      willingToTravel: boolean;
+      avRequirements?: string;
+      accommodationNeeds?: string;
+      sessionProposal: IFilUpdateDetail;
+      referenceContacts: IMultiplePhoneNumberInput;
+      agreedToDates: boolean;
+      agreedTandC: boolean;
+      sessions: IScheduleChoice["sessionId"][];
+}
+
+
+export interface ISpeakerProfessionalAddForm {
+      expertiseInField: string;
+      publications: IMultipleInputFields;
+      previousSpeakingEngagements: IMultipleInputFields;
+      previousExperience?: string;
+      previousConferences?: string;
+}
+
+export interface ISpeakerPersonalAddForm {
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      bio: string;
+}
+
+export interface ISpeakerSessionDetailAddFrom {
+      avRequirements?: string;
+      preferredSessionLengthMinutes?: number;
+      willingToTravel: boolean;
+      accommodationNeeds?: string;
+      sessionProposal: IFilUpdateDetail;
+}
+
+
+export interface ISpeakerAdditionalDetailAddFrom {
+      referenceContacts: IMultiplePhoneNumberInput;
+      agreedToDates: boolean;
+      agreedTandC: boolean;
+}
+
+
+/**
+ * used speaker apply modal
+ */
+export interface ISpeakerAddModal {
+      sessionChoice: IScheduleChoice;
+      dayDate: string;
+      startTime: IScheduleModel["startTime"]
+      endTime: IScheduleModel["endTime"];
+      dayLocation: string;
+      sessionLocation: IScheduleModel["location"]
+
+
 }

@@ -2,19 +2,19 @@ import { IParticipationPreferenceForm } from "@/admin/model/participant/particip
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 import Button from "@/shared/button/Button";
 import Input from "@/shared/input/Input";
-import { UseFormReturn, useFormContext } from "react-hook-form";
+import { UseFormReturn } from "react-hook-form";
 
 interface IScheduleSpecificForm {
       scheduleSpecificForm: UseFormReturn<IParticipationPreferenceForm>;
       formSubmitHandler: (fields: (keyof IParticipationPreferenceForm)[]) => () => void;
 }
-function ScheduleSpecificForm({ formSubmitHandler }: IScheduleSpecificForm) {
-      const registerUserBasicForm = useFormContext<IParticipationPreferenceForm>();
-      const {
+function ScheduleSpecificForm({
+      formSubmitHandler,
+      scheduleSpecificForm: {
             register,
             formState: { errors },
-      } = registerUserBasicForm;
-
+      },
+}: IScheduleSpecificForm) {
       return (
             <div>
                   <Input label="Registration Type" errorMessage={errors.registrationType?.message}>

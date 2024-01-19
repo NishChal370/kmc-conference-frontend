@@ -1,7 +1,7 @@
 import { useAppDispatch } from '@/app/hooks';
-import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, putAdminSpeakerApprovalStatus, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById } from '@/admin/pages/speaker/feature/speakerRequest';
+import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, putAdminSpeakerApprovalStatus, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById, postSpeakerDetail as postSpeakerDetailReq } from '@/admin/pages/speaker/feature/speakerRequest';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
-import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from '@/admin/model/speaker/adminSpeakerModel';
+import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerPostRequest } from '@/admin/model/speaker/adminSpeakerModel';
 
 function useSpeakerApi() {
       const dispatch = useAppDispatch();
@@ -60,6 +60,25 @@ function useSpeakerApi() {
       }
 
 
+      const addSpeakerDetail = async (speakerUpdateDetail: ISpeakerPostRequest) => {
+            loadingAlertWithMessage();
+
+            await dispatch(postSpeakerDetailReq(speakerUpdateDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Success", message: "Your request for speaker has been placed." });
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
+
       const deleteSpeakerDetail = async (deletingDetail: ISpeakerDeleteRequest) => {
             await showSuccessfulConfirmation({ buttonText: "Delete", showCancelButton: true }).then(() => {
                   loadingAlertWithMessage({ title: "Deleting", text: "Please wait while deleting" });
@@ -79,7 +98,7 @@ function useSpeakerApi() {
             })
       }
 
-      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getSpeakerDetailedInfo, updateSpeakerApprovalStatus, deleteSpeakerDetail } as const;
+      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getSpeakerDetailedInfo, updateSpeakerApprovalStatus, deleteSpeakerDetail, addSpeakerDetail } as const;
 }
 
 export default useSpeakerApi

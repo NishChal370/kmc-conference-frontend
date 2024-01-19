@@ -8,6 +8,7 @@ import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 import { Status } from "@/enum/commonEnum";
 import { errorToastMessage } from "@/utils/alert";
 import BecomeSpeakerFormModal from "@/site/components/becomeSpeakerForm/BecomeSpeakerFormModal";
+import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IScheduleCardContainer {
       schedule: IScheduleContentDetailModel;
@@ -15,6 +16,8 @@ interface IScheduleCardContainer {
 function ScheduleCardContainer({ schedule }: IScheduleCardContainer) {
       const [participationForm, openParticipationForm, closeParticipationForm] =
             useExtraModal<IParticipationAddModal>();
+
+      const [speakerForm, openSpeakerForm, closeSpeakerForm] = useExtraModal<ISpeakerAddModal>();
 
       const { status: loggedInStatus } = useAppSelector(verifyLoginState);
 
@@ -27,11 +30,21 @@ function ScheduleCardContainer({ schedule }: IScheduleCardContainer) {
             openParticipationForm(data);
       };
 
+      const openSpeakerFormHandler = (data: ISpeakerAddModal) => () => {
+            if (loggedInStatus !== Status.SUCCEEDED) {
+                  errorToastMessage("Please login to become speaker.");
+                  return;
+            }
+
+            openSpeakerForm(data);
+      };
+
       return (
             <>
                   <ScheduleCard
                         schedule={schedule}
                         openParticipationFormHandler={openParticipationFormHandler}
+                        openSpeakerFormHandler={openSpeakerFormHandler}
                   />
 
                   {participationForm?.isOpen && participationForm.data && (
@@ -41,7 +54,12 @@ function ScheduleCardContainer({ schedule }: IScheduleCardContainer) {
                         />
                   )}
 
-                  <BecomeSpeakerFormModal />
+                  {speakerForm?.isOpen && speakerForm.data && (
+                        <BecomeSpeakerFormModal
+                              closeModalHandler={closeSpeakerForm}
+                              selectedSession={speakerForm.data}
+                        />
+                  )}
             </>
       );
 }

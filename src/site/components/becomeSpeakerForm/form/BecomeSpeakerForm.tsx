@@ -6,10 +6,16 @@ import FormSwiperWrapper from "@/shared/swiper/FormSwiperWrapper";
 import PersonalInformation from "./PersonalInformation";
 import SessionForm from "./SessionForm";
 import AdditionalInformation from "./AdditionalInformation";
+import { BaseSyntheticEvent } from "react";
 
-function BecomeSpeakerForm() {
+interface IBecomeSpeakerForm {
+      submitFullForm: (e?: BaseSyntheticEvent) => void;
+      partialSubmitHandler: (fields: any) => Promise<void>;
+}
+
+function BecomeSpeakerForm({ submitFullForm, partialSubmitHandler }: IBecomeSpeakerForm) {
       return (
-            <form className="flex w-full flex-col justify-center h-auto py-4">
+            <form className="flex w-full flex-col justify-center h-auto py-4" onSubmit={submitFullForm}>
                   <FormSwiperWrapper>
                         {({ slideToNext, slideToPrev }) => (
                               <>
@@ -29,8 +35,10 @@ function BecomeSpeakerForm() {
                                                 />
 
                                                 <ProfessionalInformationForm
-                                                      submitToParent={() => {
-                                                            slideToNext();
+                                                      submitToParent={(fields) => {
+                                                            partialSubmitHandler(fields).then(() => {
+                                                                  slideToNext();
+                                                            });
                                                       }}
                                                 />
                                           </>
@@ -48,8 +56,10 @@ function BecomeSpeakerForm() {
 
                                                 <PersonalInformation
                                                       slideToPrev={slideToPrev}
-                                                      submitToParent={() => {
-                                                            slideToNext();
+                                                      submitToParent={(fields) => {
+                                                            partialSubmitHandler(fields).then(() => {
+                                                                  slideToNext();
+                                                            });
                                                       }}
                                                 />
                                           </>
@@ -67,8 +77,10 @@ function BecomeSpeakerForm() {
 
                                                 <SessionForm
                                                       slideToPrev={slideToPrev}
-                                                      submitToParent={() => {
-                                                            slideToNext();
+                                                      submitToParent={(fields) => {
+                                                            partialSubmitHandler(fields).then(() => {
+                                                                  slideToNext();
+                                                            });
                                                       }}
                                                 />
                                           </>

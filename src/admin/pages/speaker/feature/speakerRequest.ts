@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminSpeakerApi } from "@/admin/api/service/adminSpeakerApi";
-import { ISpeakerBasicSearch, IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicResponse, ISpeakerByIdResponse, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerBasicSearch, IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicResponse, ISpeakerByIdResponse, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerPostRequest } from "@/admin/model/speaker/adminSpeakerModel";
 
 export const getSpeakerBasicInfo = createAppAsyncThunk<ISpeakerBasicResponse, ISpeakerBasicSearch>(
       "speaker/basic/get",
@@ -51,6 +51,20 @@ export const putAdminSpeakerApprovalStatus = createAppAsyncThunk<undefined, IAdm
       async (approvalDetail, { rejectWithValue }) => {
             try {
                   const response = await adminSpeakerApi.putSpeakerApprovalStatus(approvalDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+export const postSpeakerDetail = createAppAsyncThunk<undefined, ISpeakerPostRequest>(
+      "site/speaker/detail/post",
+      async (detail, { rejectWithValue }) => {
+            try {
+                  const response = await adminSpeakerApi.postSpeakerDetail(detail);
 
                   return response.data;
             } catch (error: any) {
