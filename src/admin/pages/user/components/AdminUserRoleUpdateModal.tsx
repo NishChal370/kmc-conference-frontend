@@ -22,11 +22,6 @@ function AdminUserRoleUpdateModal({
       onChangeHandler,
       closeModalHandler,
 }: IAdminUserRoleUpdateModal) {
-      console.log({
-            value: value,
-            // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
-            option: USER_ROLE_OPTIONS.find((data) => data.value === value)?.option!,
-      });
       return (
             <Modal title="Update User Role" size="w-full md:!w-[34rem]" closeHandler={closeModalHandler}>
                   <div className="flex flex-col gap-8 text-sm tracking-widest">

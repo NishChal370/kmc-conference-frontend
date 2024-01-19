@@ -20,33 +20,9 @@ function AttendScheduleFormContainer({ closeModal, selectedSessionId }: IAttendS
       };
 
       const formSubmitHandler = handleSubmit((participationData) => {
-            console.log("Submitted ", participationData);
             addParticipation({
-                  address: participationData.address,
-                  city: participationData.city,
-                  state: participationData.state,
-                  postalCode: participationData.postalCode,
-                  country: participationData.country,
-                  registrationType: participationData.registrationType,
-                  registrationFeePaymentDetails: participationData.registrationFeePaymentDetails,
-                  specialRequirements: participationData.specialRequirements,
+                  ...participationData,
                   sessionChoices: [selectedSessionId],
-                  trackPreferences: participationData.trackPreferences,
-                  bio: participationData.bio,
-                  linkedInProfile: participationData.linkedInProfile,
-                  twitterHandle: participationData.twitterHandle,
-                  hotelPreferences: participationData.hotelPreferences,
-                  roommatePreferences: participationData.roommatePreferences,
-                  arrivalDate: participationData.arrivalDate,
-                  departureDate: participationData.departureDate,
-                  modeOfTransportation: participationData.modeOfTransportation,
-                  emergencyContactName: participationData.emergencyContactName,
-                  relationshipWithEmergencyContact: participationData.relationshipWithEmergencyContact,
-                  emergencyContactNumber: participationData.emergencyContactNumber,
-                  conferenceDiscoverySource: participationData.conferenceDiscoverySource,
-                  expectationsGoals: participationData.expectationsGoals,
-                  hasReadPrivacy: participationData.hasReadPrivacy,
-                  consentToPhotography: participationData.consentToPhotography,
             }).then(closeModal);
       });
       return (
