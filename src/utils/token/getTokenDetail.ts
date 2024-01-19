@@ -14,7 +14,15 @@ const getTokenDetail = {
             const token = getDecodedToken();
 
             return token["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
-      }
+      },
+
+      loggedInUserEmail: () => {
+            const token = getDecodedToken();
+
+            const email = token["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"];
+
+            return email;
+      },
 
 }
 

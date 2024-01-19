@@ -4,13 +4,15 @@ import getMonth from "@/utils/dateFormat/getMonth";
 import getDateDay from "@/utils/dateFormat/getDateDay";
 import SanitizedContent from "@/shared/sanitizedContent/SanitizedContent";
 import ScheduleViewMoreButton from "./ScheduleViewMoreButton";
+import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
 
 interface IScheduleCard {
       schedule: IScheduleContentDetailModel;
       status?: { status: string }[];
+      openParticipationFormHandler: (data: IParticipationAddModal) => () => void;
 }
 
-function ScheduleCard({ schedule, status }: IScheduleCard) {
+function ScheduleCard({ schedule, status, openParticipationFormHandler }: IScheduleCard) {
       return (
             <div className="flex flex-col gap-10 w-full h-full px-6 py-4 border border-l-2 border-l-primary border-default">
                   <section className="flex justify-between items-start gap-1 w-full h-full">
@@ -126,6 +128,17 @@ function ScheduleCard({ schedule, status }: IScheduleCard) {
                                     className="text-sm font-bold text-primary self-end 
                                           hover:text-rose-600 active:underline
                                     "
+                                    onClick={openParticipationFormHandler({
+                                          sessionChoice: {
+                                                sessionId: schedule.sessionId,
+                                                title: schedule.sessionTitle,
+                                          },
+                                          dayDate: schedule.dayDate,
+                                          startTime: schedule.sessionStart,
+                                          endTime: schedule.sessionEnd,
+                                          dayLocation: schedule.dayLocation,
+                                          sessionLocation: schedule.sessionLocation,
+                                    })}
                               >
                                     Reserve my Spot
                               </button>

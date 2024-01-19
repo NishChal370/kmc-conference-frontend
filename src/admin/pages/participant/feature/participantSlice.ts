@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { IParticipantBasicResponse, IParticipantByIdResponse } from "@/admin/model/participant/participantModel";
-import { deleteParticipantDetail, getParticipantBasicInfo, getParticipantDetailedById } from "./participantRequest";
+import { deleteParticipantDetail, getParticipantBasicInfo, getParticipantDetailedById, postParticipation } from "./participantRequest";
 
 
 interface IParticipantBasicSlice extends IBasicSliceState {

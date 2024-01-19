@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@/app/hooks';
-import { deleteParticipantDetail as deleteParticipantDetailReq, getParticipantBasicInfo as getParticipantBasicInfoReq, getParticipantDetailedById } from '@/admin/pages/participant/feature/participantRequest';
-import { IAdminParticipantDeleteRequest, IParticipantBasicSearch, IParticipantByIdSearch } from '@/admin/model/participant/participantModel';
+import { deleteParticipantDetail as deleteParticipantDetailReq, getParticipantBasicInfo as getParticipantBasicInfoReq, getParticipantDetailedById, postParticipation } from '@/admin/pages/participant/feature/participantRequest';
+import { IAdminParticipantDeleteRequest, IParticipantBasicSearch, IParticipantByIdSearch, IParticipantPostRequest } from '@/admin/model/participant/participantModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useParticipantApi() {
@@ -43,7 +43,25 @@ function useParticipantApi() {
             })
       }
 
-      return { getParticipantBasicInfo, getParticipantDetailedInfo, deleteParticipantDetail } as const;
+      const addParticipation = async (dayThemeDetail: IParticipantPostRequest) => {
+            loadingAlertWithMessage({ title: "Submitting", text: "Please wait while submitting the form." });
+
+            await dispatch(postParticipation(dayThemeDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Success", message: "Form submitted successfully! Thank you for participating." });
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
+      return { getParticipantBasicInfo, getParticipantDetailedInfo, deleteParticipantDetail, addParticipation } as const;
 }
 
 export default useParticipantApi

@@ -1,5 +1,4 @@
 import useScheduleApi from "@/admin/hooks/schedule/useScheduleApi";
-import ScheduleCard from "./ScheduleCard";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "@/app/hooks";
@@ -8,6 +7,7 @@ import { Status } from "@/enum/commonEnum";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
 import ScheduleNotSelected from "./ScheduleNotSelected";
+import ScheduleCardContainer from "../../container/scheduleList/ScheduleCardContainer";
 
 function ScheduleList() {
       const { themeId } = useParams();
@@ -23,7 +23,7 @@ function ScheduleList() {
       return (
             <section className="flex flex-col justify-start items-start gap-y-20 w-full h-full min-h-[60vh]">
                   {data.map((schedule) => (
-                        <ScheduleCard key={schedule.sessionId} schedule={schedule} />
+                        <ScheduleCardContainer key={schedule.sessionId} schedule={schedule} />
                   ))}
 
                   {status === Status.IDEL && <ScheduleNotSelected />}
