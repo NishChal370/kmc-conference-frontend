@@ -7,6 +7,7 @@ import { useAppSelector } from "@/app/hooks";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 import { Status } from "@/enum/commonEnum";
 import { errorToastMessage } from "@/utils/alert";
+import BecomeSpeakerFormModal from "@/site/components/becomeSpeakerForm/BecomeSpeakerFormModal";
 
 interface IScheduleCardContainer {
       schedule: IScheduleContentDetailModel;
@@ -39,6 +40,8 @@ function ScheduleCardContainer({ schedule }: IScheduleCardContainer) {
                               selectedSessionDetail={participationForm.data}
                         />
                   )}
+
+                  <BecomeSpeakerFormModal />
             </>
       );
 }
