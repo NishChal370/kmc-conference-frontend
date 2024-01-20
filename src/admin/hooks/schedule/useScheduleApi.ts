@@ -1,8 +1,8 @@
 import { useAppDispatch } from "@/app/hooks";
-import { IScheduleContentDetailSearch, IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
-import { deleteSchedule, getScheduleContentDetail as getScheduleContentDetailReq, getSchedules as getSchedulesReq, postSchedule, putSchedule, getScheduleContentBriefDetail as getScheduleContentBriefDetailReq } from "@/admin/pages/schedule/feature/scheduleRequest";
+import { deleteSchedule, getScheduleContentDetail as getScheduleContentDetailReq, getSchedules as getSchedulesReq, postSchedule, putSchedule, getScheduleContentBriefDetail as getScheduleContentBriefDetailReq, getScheduleContentPrivateDetail as getScheduleContentPrivateDetailReq } from "@/admin/pages/schedule/feature/scheduleRequest";
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from "@/utils/alert";
-import { IScheduleContentBriefDetailSearch } from "@/admin/model/schedule/scheduleContentModel";
+import { IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
+import { IScheduleContentDetailSearch, IScheduleContentBriefDetailSearch } from "@/admin/model/schedule/scheduleContentModel";
 
 
 
@@ -75,12 +75,16 @@ function useScheduleApi() {
             dispatch(getScheduleContentDetailReq(searchDetail))
       }
 
+      const getScheduleContentPrivateDetail = (searchDetail: IScheduleContentDetailSearch) => {
+            dispatch(getScheduleContentPrivateDetailReq(searchDetail))
+      }
+
       const getScheduleContentBriefDetail = (searchDetail: IScheduleContentBriefDetailSearch) => {
             dispatch(getScheduleContentBriefDetailReq(searchDetail))
       }
 
 
-      return { getSchedules, addAdminSchedule, updateAdminSchedule, deleteAdminSchedule, getScheduleContentDetail, getScheduleContentBriefDetail } as const;
+      return { getSchedules, addAdminSchedule, updateAdminSchedule, deleteAdminSchedule, getScheduleContentDetail, getScheduleContentPrivateDetail, getScheduleContentBriefDetail } as const;
 }
 
 export default useScheduleApi

@@ -1,8 +1,8 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import { createQueryString } from "@/utils/stringFormat/createQueryString";
-import { IScheduleContentDetailSearch, IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
-import { IScheduleContentBriefDetailSearch } from "@/admin/model/schedule/scheduleContentModel";
+import { IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
+import { IScheduleContentBriefDetailSearch, IScheduleContentDetailSearch } from "@/admin/model/schedule/scheduleContentModel";
 
 export const adminScheduleApi = {
       getSchedules: (searchDetail: IScheduleSearch) => {
@@ -52,6 +52,15 @@ export const adminScheduleApi = {
             const options: AxiosRequestConfig = {
                   method: "GET",
                   url: `Themes/content/${themeId}`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      getScheduleContentPrivateDetail: ({ themeId }: IScheduleContentDetailSearch) => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Themes/content-private/${themeId}`,
             };
 
             return AXIOS.request(options);

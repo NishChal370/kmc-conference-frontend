@@ -5,13 +5,13 @@ import {
       ISchedulePutRequest,
       ISchedulesResponse,
       IScheduleSearch,
-      IScheduleContentDetailResponse,
-      IScheduleContentDetailSearch,
 } from "@/admin/model/schedule/scheduleModel";
 import { adminScheduleApi } from "@/admin/api/service/adminScheduleApi";
 import {
       IScheduleContentBriefDetailResponse,
       IScheduleContentBriefDetailSearch,
+      IScheduleContentDetailResponse,
+      IScheduleContentDetailSearch,
 } from "@/admin/model/schedule/scheduleContentModel";
 
 export const getSchedules = createAppAsyncThunk<ISchedulesResponse, IScheduleSearch>(
@@ -72,6 +72,19 @@ export const getScheduleContentDetail = createAppAsyncThunk<
 >("site/schedules/content-detail/get/by-themeId", async (searchDetail, { rejectWithValue }) => {
       try {
             const response = await adminScheduleApi.getScheduleContentDetail(searchDetail);
+
+            return response.data;
+      } catch (error: any) {
+            return rejectWithValue(error.response.data);
+      }
+});
+
+export const getScheduleContentPrivateDetail = createAppAsyncThunk<
+      IScheduleContentDetailResponse,
+      IScheduleContentDetailSearch
+>("site/schedules/private/content-detail/get/by-themeId", async (searchDetail, { rejectWithValue }) => {
+      try {
+            const response = await adminScheduleApi.getScheduleContentPrivateDetail(searchDetail);
 
             return response.data;
       } catch (error: any) {

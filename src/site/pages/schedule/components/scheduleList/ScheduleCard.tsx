@@ -1,30 +1,25 @@
 import ScheduleCardTitle from "./ScheduleCardTitle";
-import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleModel";
+import ScheduleViewMoreButton from "./ScheduleViewMoreButton";
+import ScheduleCardStatusBadge from "./ScheduleCardStatusBadge";
+import ScheduleCardActionButton from "./ScheduleCardActionButton";
+import SanitizedContent from "@/shared/sanitizedContent/SanitizedContent";
 import getMonth from "@/utils/dateFormat/getMonth";
 import getDateDay from "@/utils/dateFormat/getDateDay";
-import SanitizedContent from "@/shared/sanitizedContent/SanitizedContent";
-import ScheduleViewMoreButton from "./ScheduleViewMoreButton";
 import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
-import ScheduleCardActionButton from "./ScheduleCardActionButton";
 import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
 
 interface IScheduleCard {
       schedule: IScheduleContentDetailModel;
-      status?: { status: string }[];
       openSpeakerFormHandler: (data: ISpeakerAddModal) => () => void;
       openParticipationFormHandler: (data: IParticipationAddModal) => () => void;
 }
 
-function ScheduleCard({
-      schedule,
-      status,
-      openParticipationFormHandler,
-      openSpeakerFormHandler,
-}: IScheduleCard) {
+function ScheduleCard({ schedule, openSpeakerFormHandler, openParticipationFormHandler }: IScheduleCard) {
       return (
             <div className="flex flex-col gap-10 w-full h-full px-6 py-4 border border-l-2 border-l-primary border-default">
                   <section className="flex justify-between items-start gap-1 w-full h-full">
-                        <article className="flex flex-col items-start justify-center gap-y-10 w-full h-full">
+                        <article className="flex flex-col items-start justify-center gap-y-4 w-full h-full">
                               <section className="flex flex-col gap-y-2 w-full h-full">
                                     <ScheduleCardTitle
                                           scheduleId={schedule.sessionId}
@@ -49,28 +44,18 @@ function ScheduleCard({
                                     </span>
                               </section>
 
-                              {status ? (
-                                    <section className="w-full flex flex-col min-w-[90%] max-w-fit">
-                                          <span className="min-w-[90%] max-w-[10rem] md:max-w-[20rem] overflow-scroll no-scrollbar">
-                                                <div className="flex gap-1.5 w-full text-xs">
-                                                      {status.map(({ status }, index) => (
-                                                            <p
-                                                                  key={index}
-                                                                  className="px-1.5 py-0.5 select-none bg-primary/20 text-primary rounded-sm min-w-fit"
-                                                            >
-                                                                  {status}
-                                                            </p>
-                                                      ))}
-                                                </div>
-                                          </span>
-                                    </section>
-                              ) : null}
+                              <ScheduleCardStatusBadge
+                                    isParticipant={schedule.isUserParticipant}
+                                    speakerApproval={schedule.userSpeakerApproval}
+                                    callForPaperApproval={schedule.userCallApproval}
+                              />
                         </article>
 
                         <span className="flex flex-col items-center text-sm w-fit">
                               <h5 className="text-3xl font-semibold text-primary">
                                     {getDateDay(schedule.dayDate)}
                               </h5>
+
                               <h6 className="font-semibold text-primary uppercase">
                                     {getMonth(schedule.dayDate)}
                               </h6>
@@ -114,6 +99,9 @@ function ScheduleCard({
                         </div>
 
                         <ScheduleCardActionButton
+                              isParticipant={schedule.isUserParticipant}
+                              isSpeaker={!!schedule.userSpeakerApproval?.toString()}
+                              isCallForPaper={!!schedule.userCallApproval?.toString()}
                               participationHandler={openParticipationFormHandler({
                                     sessionChoice: {
                                           sessionId: schedule.sessionId,

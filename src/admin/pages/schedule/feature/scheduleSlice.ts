@@ -2,9 +2,9 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { IScheduleContentDetailResponse, ISchedulesResponse } from "@/admin/model/schedule/scheduleModel";
-import { deleteSchedule, getScheduleContentBriefDetail, getScheduleContentDetail, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
-import { IScheduleContentBriefDetailResponse } from "@/admin/model/schedule/scheduleContentModel";
+import { ISchedulesResponse } from "@/admin/model/schedule/scheduleModel";
+import { deleteSchedule, getScheduleContentBriefDetail, getScheduleContentDetail, getScheduleContentPrivateDetail, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
+import { IScheduleContentDetailResponse, IScheduleContentBriefDetailResponse } from "@/admin/model/schedule/scheduleContentModel";
 
 interface ISchedulesSlice extends IBasicSliceState {
       data: ISchedulesResponse;
@@ -119,6 +119,23 @@ const scheduleSlice = createSlice({
 
                   })
                   .addCase(getScheduleContentDetail.rejected, (state, action) => {
+                        state.scheduleContentDetail.status = Status.FAILED;
+                        state.scheduleContentDetail.error = action.payload;
+                  })
+
+
+
+                  .addCase(getScheduleContentPrivateDetail.pending, (state) => {
+                        state.scheduleContentDetail.status = Status.LOADING;
+                  })
+                  .addCase(getScheduleContentPrivateDetail.fulfilled, (state, action) => {
+                        state.scheduleContentDetail.status = action.payload.length <= 0
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.scheduleContentDetail.data = action.payload;
+
+                  })
+                  .addCase(getScheduleContentPrivateDetail.rejected, (state, action) => {
                         state.scheduleContentDetail.status = Status.FAILED;
                         state.scheduleContentDetail.error = action.payload;
                   })

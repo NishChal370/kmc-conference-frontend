@@ -16,7 +16,7 @@ interface IBecomeSpeakerForm {
 function BecomeSpeakerForm({ submitFullForm, partialSubmitHandler }: IBecomeSpeakerForm) {
       return (
             <form className="flex w-full flex-col justify-center h-auto py-4" onSubmit={submitFullForm}>
-                  <FormSwiperWrapper>
+                  <FormSwiperWrapper extraClassName="min-h-[70rem]">
                         {({ slideToNext, slideToPrev }, refSetter) => (
                               <>
                                     <SwiperSlide
