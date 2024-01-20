@@ -8,10 +8,12 @@ import { ISpeakerProfessionalAddForm } from "@/admin/model/speaker/adminSpeakerM
 import { REGEX } from "@/helper/regex";
 
 interface IProfessionalInformationForm {
+      slideToPrev: () => void;
       professionalInformationForm: UseFormReturn<ISpeakerProfessionalAddForm>;
       formSubmitHandler: () => void;
 }
 function ProfessionalInformationForm({
+      slideToPrev,
       professionalInformationForm: {
             control,
             register,
@@ -23,6 +25,7 @@ function ProfessionalInformationForm({
             <>
                   <div>
                         <SecondaryInput
+                              isRequired
                               label="Expertise in Field"
                               errorMessage={errors.expertiseInField?.message}
                         >
@@ -90,8 +93,13 @@ function ProfessionalInformationForm({
                               )}
                         />
                   </div>
+                  <span
+                        className="flex  flex-col justify-end w-full self-end gap-6
+                              md:flex-row md:w-fit md:min-w-[20rem]
+                        "
+                  >
+                        <Button title="Previous" variant="outlined" onClickHandler={slideToPrev} />
 
-                  <span className="flex justify-end w-full md:w-fit min-w-[10rem] self-end">
                         <Button title="Next" onClickHandler={formSubmitHandler} />
                   </span>
             </>

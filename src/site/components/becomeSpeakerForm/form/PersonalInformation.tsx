@@ -7,13 +7,11 @@ import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 import { ISpeakerPersonalAddForm } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IPersonalInformation {
-      slideToPrev: () => void;
       formSubmitHandler: () => void;
       formContext: UseFormReturn<ISpeakerPersonalAddForm>;
 }
 
 function PersonalInformation({
-      slideToPrev,
       formSubmitHandler,
       formContext: {
             control,
@@ -24,7 +22,11 @@ function PersonalInformation({
       return (
             <>
                   <div>
-                        <SecondaryInput label="LinkedIn" errorMessage={errors.linkedInProfile?.message}>
+                        <SecondaryInput
+                              isRequired
+                              label="LinkedIn"
+                              errorMessage={errors.linkedInProfile?.message}
+                        >
                               {register("linkedInProfile", {
                                     pattern: {
                                           value: REGEX.URL,
@@ -77,13 +79,7 @@ function PersonalInformation({
                         />
                   </div>
 
-                  <span
-                        className="flex  flex-col justify-end w-full self-end gap-6
-                              md:flex-row md:w-fit md:min-w-[20rem]
-                        "
-                  >
-                        <Button title="Previous" variant="outlined" onClickHandler={slideToPrev} />
-
+                  <span className="flex justify-end w-full md:w-fit min-w-[10rem] self-end">
                         <Button title="Next" onClickHandler={formSubmitHandler} />
                   </span>
             </>

@@ -16,7 +16,7 @@ interface IBecomeSpeakerForm {
 function BecomeSpeakerForm({ submitFullForm, partialSubmitHandler }: IBecomeSpeakerForm) {
       return (
             <form className="flex w-full flex-col justify-center h-auto py-4" onSubmit={submitFullForm}>
-                  <FormSwiperWrapper extraClassName="min-h-[70rem]">
+                  <FormSwiperWrapper extraClassName="min-h-[50rem] sm:min-h-[45rem] lg:min-h-[45rem]">
                         {({ slideToNext, slideToPrev }, refSetter) => (
                               <>
                                     <SwiperSlide
@@ -28,13 +28,13 @@ function BecomeSpeakerForm({ submitFullForm, partialSubmitHandler }: IBecomeSpea
                                     >
                                           <span ref={refSetter}>
                                                 <BecomeSpeakerFormHeader
-                                                      title="Professional Information"
+                                                      title="Personal Information"
                                                       subTitle={
                                                             "Logged in " + getTokenDetail.loggedInUserEmail()
                                                       }
                                                 />
 
-                                                <ProfessionalInformationFormContainer
+                                                <PersonalInformationContainer
                                                       submitToParent={(fields) => {
                                                             partialSubmitHandler(fields).then(() => {
                                                                   slideToNext();
@@ -52,9 +52,9 @@ function BecomeSpeakerForm({ submitFullForm, partialSubmitHandler }: IBecomeSpea
                                           virtualIndex={1}
                                     >
                                           <span ref={refSetter}>
-                                                <BecomeSpeakerFormHeader title="Personal Information" />
+                                                <BecomeSpeakerFormHeader title="Professional Information" />
 
-                                                <PersonalInformationContainer
+                                                <ProfessionalInformationFormContainer
                                                       slideToPrev={slideToPrev}
                                                       submitToParent={(fields) => {
                                                             partialSubmitHandler(fields).then(() => {

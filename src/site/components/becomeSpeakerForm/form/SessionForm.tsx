@@ -33,6 +33,7 @@ function SessionForm({
                         </SecondaryInput>
 
                         <SecondaryInput
+                              isRequired
                               type="number"
                               label="Preferred session length (in minutes)"
                               errorMessage={errors.preferredSessionLengthMinutes?.message}
@@ -48,6 +49,7 @@ function SessionForm({
                         <Controller
                               name="willingToTravel"
                               control={control}
+                              defaultValue={false}
                               render={({ field }) => (
                                     <ToggleButton
                                           label="Willing to travel"

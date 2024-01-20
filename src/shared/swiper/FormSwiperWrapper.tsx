@@ -68,8 +68,10 @@ function FormSwiperWrapper({ children, extraClassName }: IFormSwiperWrapper) {
                   centeredSlides={true}
                   spaceBetween={30}
                   allowTouchMove={false}
-                  className={`w-full h-auto flex ${
-                        swiperRef?.activeIndex === undefined ? extraClassName : ""
+                  className={`w-full  h-auto flex ${
+                        swiperRef?.activeIndex === undefined || swiperRef?.activeIndex == 0
+                              ? extraClassName
+                              : ""
                   }`}
             >
                   {children(

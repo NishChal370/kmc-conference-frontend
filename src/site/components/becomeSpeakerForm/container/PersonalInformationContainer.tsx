@@ -5,11 +5,10 @@ import { ISpeakerPersonalAddForm } from "@/admin/model/speaker/adminSpeakerModel
 type IField = (keyof ISpeakerPersonalAddForm)[];
 
 interface IPersonalInformationContainer {
-      slideToPrev: () => void;
       submitToParent: (fields: IField) => void;
 }
 
-function PersonalInformationContainer({ slideToPrev, submitToParent }: IPersonalInformationContainer) {
+function PersonalInformationContainer({ submitToParent }: IPersonalInformationContainer) {
       const formContext = useFormContext<ISpeakerPersonalAddForm>();
 
       const formSubmitHandler = () => {
@@ -18,13 +17,7 @@ function PersonalInformationContainer({ slideToPrev, submitToParent }: IPersonal
             submitToParent(fields);
       };
 
-      return (
-            <PersonalInformation
-                  formContext={formContext}
-                  formSubmitHandler={formSubmitHandler}
-                  slideToPrev={slideToPrev}
-            />
-      );
+      return <PersonalInformation formContext={formContext} formSubmitHandler={formSubmitHandler} />;
 }
 
 export default PersonalInformationContainer;

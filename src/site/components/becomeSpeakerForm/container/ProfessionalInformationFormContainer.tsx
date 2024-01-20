@@ -5,10 +5,14 @@ import { ISpeakerProfessionalAddForm } from "@/admin/model/speaker/adminSpeakerM
 type IField = (keyof ISpeakerProfessionalAddForm)[];
 
 interface IProfessionalInformationFormContainer {
+      slideToPrev: () => void;
       submitToParent: (fields: IField) => void;
 }
 
-function ProfessionalInformationFormContainer({ submitToParent }: IProfessionalInformationFormContainer) {
+function ProfessionalInformationFormContainer({
+      submitToParent,
+      slideToPrev,
+}: IProfessionalInformationFormContainer) {
       const formContext = useFormContext<ISpeakerProfessionalAddForm>();
 
       const formSubmitHandler = () => {
@@ -25,6 +29,7 @@ function ProfessionalInformationFormContainer({ submitToParent }: IProfessionalI
 
       return (
             <ProfessionalInformationForm
+                  slideToPrev={slideToPrev}
                   professionalInformationForm={formContext}
                   formSubmitHandler={formSubmitHandler}
             />
