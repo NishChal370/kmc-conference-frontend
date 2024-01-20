@@ -202,6 +202,7 @@ export interface ISpeakerPersonalAddForm {
       twitterHandle?: string;
       professionalWebsite?: string;
       bio: string;
+      photo: IFilUpdateDetail,
 }
 
 export interface ISpeakerSessionDetailAddFrom {

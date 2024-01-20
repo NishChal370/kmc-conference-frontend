@@ -2,6 +2,7 @@ import { Controller, UseFormReturn } from "react-hook-form";
 import Button from "@/shared/button/Button";
 import RichTextEditor from "@/shared/input/RichTextEditor";
 import SecondaryInput from "@/shared/input/SecondaryInput";
+import ImageSelectInput from "@/shared/fileInput/ImageSelectInput";
 import { REGEX } from "@/helper/regex";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 import { ISpeakerPersonalAddForm } from "@/admin/model/speaker/adminSpeakerModel";
@@ -22,6 +23,9 @@ function PersonalInformation({
       return (
             <>
                   <div>
+                        <span className="md:col-span-2">
+                              <ImageSelectInput name="photo" control={control} />
+                        </span>
                         <SecondaryInput
                               isRequired
                               label="LinkedIn"

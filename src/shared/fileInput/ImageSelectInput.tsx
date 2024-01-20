@@ -77,7 +77,7 @@ function ImageSelectInput<TControl extends FieldValues>({ name, control }: IImag
                                     />
 
                                     <p className="text-xs">
-                                          Allowed JPEG, PNG, WEP or SVG. Max size of {FILE_SIZE_LIMIT}MB
+                                          Allowed JPEG, PNG, WEBp. Max size of {FILE_SIZE_LIMIT}MB
                                     </p>
                               </aside>
                         </figure>
