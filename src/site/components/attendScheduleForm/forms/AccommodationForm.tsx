@@ -1,13 +1,13 @@
 import { UseFormReturn } from "react-hook-form";
-import Input from "@/shared/input/Input";
 import Button from "@/shared/button/Button";
-import { IParticipationAccommodationForm } from "@/admin/model/participant/participantModel";
+import SecondaryInput from "@/shared/input/SecondaryInput";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import { IParticipationAccommodationForm } from "@/admin/model/participant/participantModel";
 
 interface IAccommodationForm {
       slideToPrev: () => void;
+      formSubmitHandler: () => void;
       form: UseFormReturn<IParticipationAccommodationForm>;
-      formSubmitHandler: (fields: (keyof IParticipationAccommodationForm)[]) => () => void;
 }
 
 function AccommodationForm({
@@ -19,58 +19,70 @@ function AccommodationForm({
       formSubmitHandler,
 }: IAccommodationForm) {
       return (
-            <div className="sm:grid-cols-2">
-                  <Input type="date" label="Arrival Date" errorMessage={errors.arrivalDate?.message}>
-                        {register("arrivalDate", {
-                              required: {
-                                    value: true,
-                                    message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                        })}
-                  </Input>
+            <>
+                  <div>
+                        <SecondaryInput
+                              isRequired
+                              type="date"
+                              label="Arrival Date"
+                              errorMessage={errors.arrivalDate?.message}
+                        >
+                              {register("arrivalDate", {
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              })}
+                        </SecondaryInput>
 
-                  <Input type="date" label="Departure Date" errorMessage={errors.departureDate?.message}>
-                        {register("departureDate", {
-                              required: {
-                                    value: true,
-                                    message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                        })}
-                  </Input>
+                        <SecondaryInput
+                              isRequired
+                              type="date"
+                              label="Departure Date"
+                              errorMessage={errors.departureDate?.message}
+                        >
+                              {register("departureDate", {
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              })}
+                        </SecondaryInput>
 
-                  <Input label="Transportation mode" errorMessage={errors.modeOfTransportation?.message}>
-                        {register("modeOfTransportation")}
-                  </Input>
+                        <SecondaryInput
+                              label="Transportation mode"
+                              errorMessage={errors.modeOfTransportation?.message}
+                        >
+                              {register("modeOfTransportation")}
+                        </SecondaryInput>
 
-                  <br className="hidden sm:flex" />
-                  <Input label="Hotel Preference" errorMessage={errors.hotelPreferences?.message}>
-                        {register("hotelPreferences")}
-                  </Input>
+                        <br className="hidden md:flex" />
 
-                  <Input label="Room Preference" errorMessage={errors.roommatePreferences?.message}>
-                        {register("roommatePreferences")}
-                  </Input>
-                  <span className="sm:col-span-2 w-full sm:w-fit place-self-end grid sm:grid-cols-2 gap-4">
-                        <Button
-                              variant="outlined"
-                              type="button"
-                              title="Previous"
-                              onClickHandler={slideToPrev}
-                        />
+                        <SecondaryInput
+                              label="Hotel Preference"
+                              errorMessage={errors.hotelPreferences?.message}
+                        >
+                              {register("hotelPreferences")}
+                        </SecondaryInput>
 
-                        <Button
-                              type="button"
-                              title="Next"
-                              onClickHandler={formSubmitHandler([
-                                    "arrivalDate",
-                                    "departureDate",
-                                    "modeOfTransportation",
-                                    "hotelPreferences",
-                                    "roommatePreferences",
-                              ])}
-                        />
+                        <SecondaryInput
+                              label="Room Preference"
+                              errorMessage={errors.roommatePreferences?.message}
+                        >
+                              {register("roommatePreferences")}
+                        </SecondaryInput>
+                  </div>
+
+                  <span
+                        className="flex flex-col justify-end w-full  md:min-w-[20rem] self-end gap-6
+                              md:flex-row md:w-fit 
+                        "
+                  >
+                        <Button title="Previous" variant="outlined" onClickHandler={slideToPrev} />
+
+                        <Button title="Next" onClickHandler={formSubmitHandler} />
                   </span>
-            </div>
+            </>
       );
 }
 

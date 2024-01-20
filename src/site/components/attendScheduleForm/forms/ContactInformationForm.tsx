@@ -1,91 +1,86 @@
-import { IParticipationContactForm } from "@/admin/model/participant/participantModel";
-import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import Button from "@/shared/button/Button";
-import Input from "@/shared/input/Input";
 import { UseFormReturn } from "react-hook-form";
+import Button from "@/shared/button/Button";
+import SecondaryInput from "@/shared/input/SecondaryInput";
+import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import { IParticipationContactForm } from "@/admin/model/participant/participantModel";
 
 interface IContactInformationForm {
       slideToPrev: () => void;
       form: UseFormReturn<IParticipationContactForm>;
-      formSubmitHandler: (fields: (keyof IParticipationContactForm)[]) => () => void;
+      formSubmitHandler: () => void;
 }
 
 function ContactInformationForm({
-      slideToPrev,
       form: {
             register,
             formState: { errors },
       },
+      slideToPrev,
       formSubmitHandler,
 }: IContactInformationForm) {
       return (
-            <div className="sm:grid-cols-2">
-                  <Input label="Address" errorMessage={errors.address?.message}>
-                        {register("address", {
-                              required: {
-                                    value: true,
-                                    message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                        })}
-                  </Input>
+            <>
+                  <div>
+                        <SecondaryInput isRequired label="Address" errorMessage={errors.address?.message}>
+                              {register("address", {
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              })}
+                        </SecondaryInput>
 
-                  <Input label="City" errorMessage={errors.city?.message}>
-                        {register("city", {
-                              required: {
-                                    value: true,
-                                    message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                        })}
-                  </Input>
+                        <SecondaryInput isRequired label="City" errorMessage={errors.city?.message}>
+                              {register("city", {
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              })}
+                        </SecondaryInput>
 
-                  <Input label="State" errorMessage={errors.state?.message}>
-                        {register("state", {
-                              required: {
-                                    value: true,
-                                    message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                        })}
-                  </Input>
+                        <SecondaryInput isRequired label="State" errorMessage={errors.state?.message}>
+                              {register("state", {
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              })}
+                        </SecondaryInput>
 
-                  <Input label="Country" errorMessage={errors.country?.message}>
-                        {register("country", {
-                              required: {
-                                    value: true,
-                                    message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                        })}
-                  </Input>
+                        <SecondaryInput isRequired label="Country" errorMessage={errors.country?.message}>
+                              {register("country", {
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              })}
+                        </SecondaryInput>
 
-                  <Input label="Postal Code" errorMessage={errors.postalCode?.message}>
-                        {register("postalCode", {
-                              required: {
-                                    value: true,
-                                    message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                        })}
-                  </Input>
+                        <SecondaryInput
+                              isRequired
+                              label="Postal Code"
+                              errorMessage={errors.postalCode?.message}
+                        >
+                              {register("postalCode", {
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              })}
+                        </SecondaryInput>
+                  </div>
 
-                  <span className="sm:col-span-2 sm:w-fit sm:place-self-end grid sm:grid-cols-2 gap-4">
-                        <Button
-                              variant="outlined"
-                              type="button"
-                              title="Previous"
-                              onClickHandler={slideToPrev}
-                        />
+                  <span
+                        className="flex flex-col justify-end w-full  md:min-w-[20rem] self-end gap-6
+                              md:flex-row md:w-fit 
+                        "
+                  >
+                        <Button title="Previous" variant="outlined" onClickHandler={slideToPrev} />
 
-                        <Button
-                              type="button"
-                              title="Next"
-                              onClickHandler={formSubmitHandler([
-                                    "address",
-                                    "city",
-                                    "state",
-                                    "country",
-                                    "postalCode",
-                              ])}
-                        />
+                        <Button title="Next" onClickHandler={formSubmitHandler} />
                   </span>
-            </div>
+            </>
       );
 }
 

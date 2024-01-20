@@ -1,10 +1,11 @@
-import { IParticipationContactForm } from "@/admin/model/participant/participantModel";
 import { useFormContext } from "react-hook-form";
 import ContactInformationForm from "../forms/ContactInformationForm";
+import { IParticipationContactForm } from "@/admin/model/participant/participantModel";
 
+type IField = (keyof IParticipationContactForm)[];
 interface IContactInformationFormContainer {
       slideToPrev: () => void;
-      submitToParentHandler: (data: (keyof IParticipationContactForm)[]) => void;
+      submitToParentHandler: (data: IField) => void;
 }
 
 function ContactInformationFormContainer({
@@ -13,9 +14,12 @@ function ContactInformationFormContainer({
 }: IContactInformationFormContainer) {
       const form = useFormContext<IParticipationContactForm>();
 
-      const formSubmitHandler = (fields: (keyof IParticipationContactForm)[]) => () => {
+      const formSubmitHandler = () => {
+            const fields: IField = ["address", "city", "state", "country", "postalCode"];
+
             submitToParentHandler(fields);
       };
+
       return (
             <ContactInformationForm
                   slideToPrev={slideToPrev}

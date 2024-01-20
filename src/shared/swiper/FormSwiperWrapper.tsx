@@ -1,16 +1,17 @@
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperClass } from "swiper/react";
-
+import { Virtual } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 
 interface IFormSwiperWrapper {
+      extraClassName?: string;
       children: (
             swiperHandler: { slideToNext: () => void; slideToPrev: () => void },
             refSetter: (node: HTMLElement | null) => void
       ) => ReactElement;
 }
-function FormSwiperWrapper({ children }: IFormSwiperWrapper) {
+function FormSwiperWrapper({ children, extraClassName }: IFormSwiperWrapper) {
       const [swiperRef, setSwiperRef] = useState<SwiperClass | null>(null);
       const resizeObserver = useRef<ResizeObserver | null>(null);
 
@@ -59,13 +60,15 @@ function FormSwiperWrapper({ children }: IFormSwiperWrapper) {
 
       return (
             <Swiper
+                  modules={[Virtual]}
                   onSwiper={setSwiperRef}
                   slidesPerView={1}
+                  virtual={true}
+                  autoHeight={true}
                   centeredSlides={true}
                   spaceBetween={30}
-                  autoHeight={true}
                   allowTouchMove={false}
-                  className="w-full h-auto flex"
+                  className={"w-full h-auto flex " + extraClassName}
             >
                   {children(
                         {

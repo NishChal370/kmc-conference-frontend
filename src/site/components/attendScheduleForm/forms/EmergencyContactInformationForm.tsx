@@ -1,14 +1,14 @@
-import { IParticipationEmergencyContactForm } from "@/admin/model/participant/participantModel";
-import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import Button from "@/shared/button/Button";
-import Input from "@/shared/input/Input";
-import PhoneInput from "@/shared/input/PhoneInput";
 import { UseFormReturn } from "react-hook-form";
+import Button from "@/shared/button/Button";
+import PhoneInput from "@/shared/input/PhoneInput";
+import SecondaryInput from "@/shared/input/SecondaryInput";
+import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import { IParticipationEmergencyContactForm } from "@/admin/model/participant/participantModel";
 
 interface IEmergencyContactInformationForm {
       slideToPrev: () => void;
       form: UseFormReturn<IParticipationEmergencyContactForm>;
-      formSubmitHandler: (fields: (keyof IParticipationEmergencyContactForm)[]) => () => void;
+      formSubmitHandler: () => void;
 }
 
 function EmergencyContactInformationForm({
@@ -21,9 +21,10 @@ function EmergencyContactInformationForm({
       formSubmitHandler,
 }: IEmergencyContactInformationForm) {
       return (
-            <div className="sm:justify-between !h-[17rem]">
-                  <span className="sm:col-span-2  grid grid-col-1 gap-x-6 gap-y-6 w-full sm:grid-cols-2">
-                        <Input
+            <>
+                  <div>
+                        <SecondaryInput
+                              isRequired
                               label="Emergency Contact Name"
                               errorMessage={errors.emergencyContactName?.message}
                         >
@@ -33,11 +34,18 @@ function EmergencyContactInformationForm({
                                           message: INPUT_ERROR_MESSAGE.empty,
                                     },
                               })}
-                        </Input>
+                        </SecondaryInput>
 
-                        <PhoneInput control={control} isRequired name="emergencyContactNumber" />
+                        <PhoneInput
+                              isRequired
+                              control={control}
+                              variant="secondary"
+                              label="Emergency Contact Number"
+                              name="emergencyContactNumber"
+                        />
 
-                        <Input
+                        <SecondaryInput
+                              isRequired
                               label="Emergency Contact Relation"
                               errorMessage={errors.relationshipWithEmergencyContact?.message}
                         >
@@ -47,28 +55,19 @@ function EmergencyContactInformationForm({
                                           message: INPUT_ERROR_MESSAGE.empty,
                                     },
                               })}
-                        </Input>
-                  </span>
+                        </SecondaryInput>
+                  </div>
 
-                  <span className=" sm:col-span-2 w-full sm:w-fit place-self-end grid sm:grid-cols-2 gap-4">
-                        <Button
-                              variant="outlined"
-                              type="button"
-                              title="Previous"
-                              onClickHandler={slideToPrev}
-                        />
+                  <span
+                        className="flex flex-col justify-end w-full  md:min-w-[20rem] self-end gap-6
+                              md:flex-row md:w-fit 
+                        "
+                  >
+                        <Button title="Previous" variant="outlined" onClickHandler={slideToPrev} />
 
-                        <Button
-                              type="button"
-                              title="Next"
-                              onClickHandler={formSubmitHandler([
-                                    "emergencyContactName",
-                                    "emergencyContactNumber",
-                                    "relationshipWithEmergencyContact",
-                              ])}
-                        />
+                        <Button type="button" title="Next" onClickHandler={formSubmitHandler} />
                   </span>
-            </div>
+            </>
       );
 }
 

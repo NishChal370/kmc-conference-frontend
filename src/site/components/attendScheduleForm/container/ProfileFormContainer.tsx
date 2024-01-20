@@ -1,6 +1,8 @@
-import { IParticipationPersonalProfileForm } from "@/admin/model/participant/participantModel";
 import { useFormContext } from "react-hook-form";
 import ProfileForm from "../forms/ProfileForm";
+import { IParticipationPersonalProfileForm } from "@/admin/model/participant/participantModel";
+
+type IField = (keyof IParticipationPersonalProfileForm)[];
 
 interface IProfileFormContainer {
       slideToPrev: () => void;
@@ -10,7 +12,9 @@ interface IProfileFormContainer {
 function ProfileFormContainer({ slideToPrev, submitToParentHandler }: IProfileFormContainer) {
       const form = useFormContext<IParticipationPersonalProfileForm>();
 
-      const formSubmitHandler = (fields: (keyof IParticipationPersonalProfileForm)[]) => () => {
+      const formSubmitHandler = () => () => {
+            const fields: IField = ["bio", "linkedInProfile", "twitterHandle"];
+
             submitToParentHandler(fields);
       };
       return <ProfileForm slideToPrev={slideToPrev} form={form} formSubmitHandler={formSubmitHandler} />;

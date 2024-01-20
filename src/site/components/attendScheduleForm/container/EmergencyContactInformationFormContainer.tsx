@@ -1,10 +1,11 @@
-import { IParticipationEmergencyContactForm } from "@/admin/model/participant/participantModel";
-import EmergencyContactInformationForm from "../forms/EmergencyContactInformationForm";
 import { useFormContext } from "react-hook-form";
+import EmergencyContactInformationForm from "../forms/EmergencyContactInformationForm";
+import { IParticipationEmergencyContactForm } from "@/admin/model/participant/participantModel";
 
+type IField = (keyof IParticipationEmergencyContactForm)[];
 interface IEmergencyContactInformationFormContainer {
       slideToPrev: () => void;
-      submitToParentHandler: (data: (keyof IParticipationEmergencyContactForm)[]) => void;
+      submitToParentHandler: (data: IField) => void;
 }
 
 function EmergencyContactInformationFormContainer({
@@ -13,7 +14,13 @@ function EmergencyContactInformationFormContainer({
 }: IEmergencyContactInformationFormContainer) {
       const form = useFormContext<IParticipationEmergencyContactForm>();
 
-      const formSubmitHandler = (fields: (keyof IParticipationEmergencyContactForm)[]) => () => {
+      const formSubmitHandler = () => () => {
+            const fields: IField = [
+                  "emergencyContactName",
+                  "emergencyContactNumber",
+                  "relationshipWithEmergencyContact",
+            ];
+
             submitToParentHandler(fields);
       };
 

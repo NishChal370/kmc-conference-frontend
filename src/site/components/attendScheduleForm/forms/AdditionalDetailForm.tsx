@@ -1,9 +1,9 @@
+import { Controller, UseFormReturn } from "react-hook-form";
+import Button from "@/shared/button/Button";
+import SecondaryInput from "@/shared/input/SecondaryInput";
+import AgreementCheckBox from "@/shared/input/AgreementCheckBox";
 import { IParticipationAdditionalForm } from "@/admin/model/participant/participantModel";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import Button from "@/shared/button/Button";
-import AgreementCheckBox from "@/shared/input/AgreementCheckBox";
-import Input from "@/shared/input/Input";
-import { Controller, UseFormReturn } from "react-hook-form";
 
 interface IAdditionalDetailForm {
       slideToPrev: () => void;
@@ -19,76 +19,80 @@ function AdditionalDetailForm({
       slideToPrev,
 }: IAdditionalDetailForm) {
       return (
-            <div className="sm:grid-cols-2  !min-h-[20rem]">
-                  <span className="col-span-2  grid grid-col-1 gap-x-6 gap-y-6 h-fit w-full">
-                        <Input
+            <>
+                  <div className="md:!grid-cols-1 !gap-y-10">
+                        <SecondaryInput
+                              isRequired
                               label="conference Discovery Source"
                               errorMessage={errors.conferenceDiscoverySource?.message}
                         >
-                              {register("conferenceDiscoverySource")}
-                        </Input>
+                              {register("conferenceDiscoverySource", {
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              })}
+                        </SecondaryInput>
 
-                        <Input label="Expectation" errorMessage={errors.expectationsGoals?.message}>
+                        <SecondaryInput label="Expectation" errorMessage={errors.expectationsGoals?.message}>
                               {register("expectationsGoals")}
-                        </Input>
-                  </span>
+                        </SecondaryInput>
 
-                  <span className="col-span-2 flex flex-col gap-2.5 justify-end">
-                        <Controller
-                              name="consentToPhotography"
-                              control={control}
-                              rules={{
-                                    required: {
-                                          value: true,
-                                          message: INPUT_ERROR_MESSAGE.empty,
-                                    },
-                              }}
-                              render={({ field }) => (
-                                    <AgreementCheckBox
-                                          label="I give consent to be photographed during the event."
-                                          name="consent"
-                                          checked={field.value}
-                                          onChange={field.onChange}
-                                    />
-                              )}
-                        />
-
-                        <Controller
-                              name="hasReadPrivacy"
-                              control={control}
-                              rules={{
-                                    required: {
-                                          value: true,
-                                          message: INPUT_ERROR_MESSAGE.empty,
-                                    },
-                              }}
-                              render={({ field }) => (
-                                    <AgreementCheckBox
-                                          label="I understand the event terms and conditions and privacy policy."
-                                          name="understand"
-                                          checked={field.value}
-                                          onChange={field.onChange}
-                                    />
-                              )}
-                        />
-
-                        <span className="sm:col-span-2 w-full sm:w-[30rem] sm:place-self-end mt-4 grid sm:grid-cols-2 gap-4 ">
-                              <Button
-                                    variant="outlined"
-                                    type="button"
-                                    title="Previous"
-                                    onClickHandler={slideToPrev}
+                        <span className="flex flex-col w-full gap-4">
+                              <Controller
+                                    name="consentToPhotography"
+                                    control={control}
+                                    rules={{
+                                          required: {
+                                                value: true,
+                                                message: INPUT_ERROR_MESSAGE.empty,
+                                          },
+                                    }}
+                                    render={({ field }) => (
+                                          <AgreementCheckBox
+                                                label="I give consent to be photographed during the event."
+                                                name="consent"
+                                                checked={field.value}
+                                                onChange={field.onChange}
+                                          />
+                                    )}
                               />
 
-                              <Button
-                                    disable={!watch("consentToPhotography") || !watch("hasReadPrivacy")}
-                                    type="submit"
-                                    title="Submit"
-                                    extraClassName=" disabled:bg-primary/80  disabled:cursor-not-allowed disabled:active:!shadow-none"
+                              <Controller
+                                    name="hasReadPrivacy"
+                                    control={control}
+                                    rules={{
+                                          required: {
+                                                value: true,
+                                                message: INPUT_ERROR_MESSAGE.empty,
+                                          },
+                                    }}
+                                    render={({ field }) => (
+                                          <AgreementCheckBox
+                                                label="I understand the event terms and conditions and privacy policy."
+                                                name="understand"
+                                                checked={field.value}
+                                                onChange={field.onChange}
+                                          />
+                                    )}
                               />
                         </span>
+                  </div>
+                  <span
+                        className="flex flex-col justify-end w-full  md:min-w-[20rem] self-end gap-6
+                              md:flex-row md:w-fit 
+                        "
+                  >
+                        <Button title="Previous" variant="outlined" onClickHandler={slideToPrev} />
+
+                        <Button
+                              disable={!watch("consentToPhotography") || !watch("hasReadPrivacy")}
+                              type="submit"
+                              title="Submit"
+                              extraClassName=" disabled:bg-primary/80  disabled:cursor-not-allowed disabled:active:!shadow-none"
+                        />
                   </span>
-            </div>
+            </>
       );
 }
 

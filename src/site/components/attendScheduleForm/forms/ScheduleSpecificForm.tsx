@@ -1,12 +1,12 @@
-import { IParticipationPreferenceForm } from "@/admin/model/participant/participantModel";
-import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import Button from "@/shared/button/Button";
-import Input from "@/shared/input/Input";
 import { UseFormReturn } from "react-hook-form";
+import Button from "@/shared/button/Button";
+import SecondaryInput from "@/shared/input/SecondaryInput";
+import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import { IParticipationPreferenceForm } from "@/admin/model/participant/participantModel";
 
 interface IScheduleSpecificForm {
       scheduleSpecificForm: UseFormReturn<IParticipationPreferenceForm>;
-      formSubmitHandler: (fields: (keyof IParticipationPreferenceForm)[]) => () => void;
+      formSubmitHandler: () => void;
 }
 function ScheduleSpecificForm({
       formSubmitHandler,
@@ -16,41 +16,49 @@ function ScheduleSpecificForm({
       },
 }: IScheduleSpecificForm) {
       return (
-            <div>
-                  <Input label="Registration Type" errorMessage={errors.registrationType?.message}>
-                        {register("registrationType", {
-                              required: {
-                                    value: true,
-                                    message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                        })}
-                  </Input>
+            <>
+                  <div>
+                        <SecondaryInput
+                              isRequired
+                              label="Registration Type"
+                              errorMessage={errors.registrationType?.message}
+                        >
+                              {register("registrationType", {
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              })}
+                        </SecondaryInput>
 
-                  <Input label="Tack Preferences" errorMessage={errors.trackPreferences?.message}>
-                        {register("trackPreferences", {
-                              required: {
-                                    value: true,
-                                    message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                        })}
-                  </Input>
+                        <SecondaryInput
+                              isRequired
+                              label="Track Preferences"
+                              errorMessage={errors.trackPreferences?.message}
+                        >
+                              {register("trackPreferences", {
+                                    required: {
+                                          value: true,
+                                          message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                              })}
+                        </SecondaryInput>
 
-                  <Input label="Special Requirements" errorMessage={errors.specialRequirements?.message}>
-                        {register("specialRequirements")}
-                  </Input>
-
-                  <span className="sm:w-fit sm:place-self-end">
-                        <Button
-                              type="button"
-                              title="Next"
-                              onClickHandler={formSubmitHandler([
-                                    "registrationType",
-                                    "specialRequirements",
-                                    "trackPreferences",
-                              ])}
-                        />
+                        <SecondaryInput
+                              label="Special Requirements"
+                              errorMessage={errors.specialRequirements?.message}
+                        >
+                              {register("specialRequirements")}
+                        </SecondaryInput>
+                  </div>
+                  <span
+                        className="flex justify-end w-full  min-w-[10rem] self-end
+                              md:w-fit
+                        "
+                  >
+                        <Button type="button" title="Next" onClickHandler={formSubmitHandler} />
                   </span>
-            </div>
+            </>
       );
 }
 
