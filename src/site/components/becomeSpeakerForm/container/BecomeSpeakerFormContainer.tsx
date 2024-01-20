@@ -1,11 +1,12 @@
-import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
-import { ISpeakerAddForm, ISpeakerPostRequest } from "@/admin/model/speaker/adminSpeakerModel";
 import { FormProvider, useForm } from "react-hook-form";
 import BecomeSpeakerForm from "../form/BecomeSpeakerForm";
+import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
+import { ISpeakerAddForm, ISpeakerPostRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { assignIfTruthy, convertToNumberIfTruthy, extractValue, getFileOrNull } from "@/utils/dataHelpers";
 
 interface IBecomeSpeakerFormContainer {
-      selectedSessionId: ISpeakerPostRequest["sessions"][0];
       closeModalHandler: () => void;
+      selectedSessionId: ISpeakerPostRequest["sessions"][0];
 }
 function BecomeSpeakerFormContainer({ selectedSessionId, closeModalHandler }: IBecomeSpeakerFormContainer) {
       const methods = useForm<ISpeakerAddForm>({
@@ -34,42 +35,40 @@ function BecomeSpeakerFormContainer({ selectedSessionId, closeModalHandler }: IB
       };
 
       const formSubmitHandler = handleSubmit((speakerNewDetail) => {
-            console.log(speakerNewDetail);
-            const previousSpeakingEngagements = speakerNewDetail.previousSpeakingEngagements.map(
-                  ({ value }) => value
+            const previousSpeakingEngagements = extractValue(
+                  speakerNewDetail.previousSpeakingEngagements,
+                  "value"
             );
-
-            const publications = speakerNewDetail.publications.map(({ value }) => value);
-            const referenceContacts = speakerNewDetail.referenceContacts.map(({ phone }) => phone);
+            const publications = extractValue(speakerNewDetail.publications, "value");
+            const referenceContacts = extractValue(speakerNewDetail.referenceContacts, "phone");
 
             const newSpeaker: ISpeakerPostRequest = {
-                  photo: speakerNewDetail.photo.newFiles?.length ? speakerNewDetail.photo.newFiles[0] : null,
+                  photo: getFileOrNull(speakerNewDetail.photo),
                   bio: speakerNewDetail.bio,
-                  linkedInProfile: speakerNewDetail.linkedInProfile || undefined, // un
-                  twitterHandle: speakerNewDetail.twitterHandle || undefined, //un
-                  professionalWebsite: speakerNewDetail.professionalWebsite || undefined, //
-                  previousExperience: speakerNewDetail.previousExperience || undefined, //
-                  previousConferences: speakerNewDetail.previousConferences || undefined, //
+                  linkedInProfile: assignIfTruthy(speakerNewDetail.linkedInProfile, undefined),
+                  twitterHandle: assignIfTruthy(speakerNewDetail.twitterHandle, undefined),
+                  professionalWebsite: assignIfTruthy(speakerNewDetail.professionalWebsite, undefined),
+                  previousExperience: assignIfTruthy(speakerNewDetail.previousExperience, undefined),
+                  previousConferences: assignIfTruthy(speakerNewDetail.previousConferences, undefined),
                   expertiseInField: speakerNewDetail.expertiseInField,
-                  previousSpeakingEngagements: previousSpeakingEngagements.filter(Boolean).length
+                  previousSpeakingEngagements: previousSpeakingEngagements.length
                         ? previousSpeakingEngagements
                         : null,
-                  publications: publications.filter(Boolean).length ? publications : null,
-                  preferredSessionLengthMinutes: speakerNewDetail.preferredSessionLengthMinutes
-                        ? +speakerNewDetail.preferredSessionLengthMinutes
-                        : 0,
-                  availabilityInfo: null, // THis is not in used
+                  publications: publications.length ? publications : null,
+                  preferredSessionLengthMinutes: convertToNumberIfTruthy(
+                        speakerNewDetail.preferredSessionLengthMinutes
+                  ),
+                  availabilityInfo: null, // This is not in use
                   willingToTravel: speakerNewDetail.willingToTravel,
-                  avRequirements: speakerNewDetail.avRequirements || undefined,
-                  accommodationNeeds: speakerNewDetail.accommodationNeeds || undefined,
-                  sessionProposal: speakerNewDetail.sessionProposal.newFiles?.length
-                        ? speakerNewDetail.sessionProposal.newFiles[0]
-                        : null,
-                  referenceContacts: referenceContacts.filter(Boolean).length ? referenceContacts : null,
+                  avRequirements: assignIfTruthy(speakerNewDetail.avRequirements, undefined),
+                  accommodationNeeds: assignIfTruthy(speakerNewDetail.accommodationNeeds, undefined),
+                  sessionProposal: getFileOrNull(speakerNewDetail.sessionProposal),
+                  referenceContacts: referenceContacts.length ? referenceContacts : null,
                   agreedTandC: speakerNewDetail.agreedTandC,
                   agreedToDates: speakerNewDetail.agreedToDates,
                   sessions: [selectedSessionId],
             };
+
             addSpeakerDetail(newSpeaker).then(closeModalHandler);
       });
 

@@ -1,28 +1,26 @@
-import { ISpeakerPersonalAddForm } from "@/admin/model/speaker/adminSpeakerModel";
-import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { REGEX } from "@/helper/regex";
+import { Controller, UseFormReturn } from "react-hook-form";
 import Button from "@/shared/button/Button";
 import RichTextEditor from "@/shared/input/RichTextEditor";
 import SecondaryInput from "@/shared/input/SecondaryInput";
-import { Controller, useFormContext } from "react-hook-form";
+import { REGEX } from "@/helper/regex";
+import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import { ISpeakerPersonalAddForm } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IPersonalInformation {
       slideToPrev: () => void;
-      submitToParent: (fields: (keyof ISpeakerPersonalAddForm)[]) => void;
+      formSubmitHandler: () => void;
+      formContext: UseFormReturn<ISpeakerPersonalAddForm>;
 }
-function PersonalInformation({ slideToPrev, submitToParent }: IPersonalInformation) {
-      const scheduleSpecificForm = useFormContext<ISpeakerPersonalAddForm>();
 
-      const formSubmitHandler = (fields: (keyof ISpeakerPersonalAddForm)[]) => () => {
-            submitToParent(fields);
-      };
-
-      const {
+function PersonalInformation({
+      slideToPrev,
+      formSubmitHandler,
+      formContext: {
             control,
             register,
             formState: { errors },
-      } = scheduleSpecificForm;
-
+      },
+}: IPersonalInformation) {
       return (
             <>
                   <div>
@@ -35,8 +33,6 @@ function PersonalInformation({ slideToPrev, submitToParent }: IPersonalInformati
                               })}
                         </SecondaryInput>
 
-                        {/* <SecondaryInput label="Twitter" /> */}
-
                         <SecondaryInput label="Twitter" errorMessage={errors.twitterHandle?.message}>
                               {register("twitterHandle", {
                                     pattern: {
@@ -46,7 +42,6 @@ function PersonalInformation({ slideToPrev, submitToParent }: IPersonalInformati
                               })}
                         </SecondaryInput>
 
-                        {/* <SecondaryInput label="Personal website" /> */}
                         <SecondaryInput
                               label="Personal website"
                               errorMessage={errors.professionalWebsite?.message}
@@ -59,12 +54,6 @@ function PersonalInformation({ slideToPrev, submitToParent }: IPersonalInformati
                               })}
                         </SecondaryInput>
 
-                        {/* <RichTextEditor
-                              label="Add Biography"
-                              placeHolder="Write your biography"
-                              value=""
-                              onChangeHandler={() => {}}
-                        /> */}
                         <Controller
                               name="bio"
                               control={control}
@@ -89,20 +78,13 @@ function PersonalInformation({ slideToPrev, submitToParent }: IPersonalInformati
                   </div>
 
                   <span
-                        className="flex  flex-col justify-end w-full  md:min-w-[20rem] self-end gap-6
-                              md:flex-row md:w-fit 
+                        className="flex  flex-col justify-end w-full self-end gap-6
+                              md:flex-row md:w-fit md:min-w-[20rem]
                         "
                   >
                         <Button title="Previous" variant="outlined" onClickHandler={slideToPrev} />
-                        <Button
-                              title="Next"
-                              onClickHandler={formSubmitHandler([
-                                    "bio",
-                                    "linkedInProfile",
-                                    "professionalWebsite",
-                                    "twitterHandle",
-                              ])}
-                        />
+
+                        <Button title="Next" onClickHandler={formSubmitHandler} />
                   </span>
             </>
       );

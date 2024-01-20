@@ -1,27 +1,24 @@
-import { ISpeakerProfessionalAddForm } from "@/admin/model/speaker/adminSpeakerModel";
-import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { REGEX } from "@/helper/regex";
+import { Controller, UseFormReturn } from "react-hook-form";
 import Button from "@/shared/button/Button";
-import MultipleSecondaryInput from "@/shared/input/MultipleSecondaryInput";
-import RichTextEditor from "@/shared/input/RichTextEditor";
 import SecondaryInput from "@/shared/input/SecondaryInput";
-import { Controller, useFormContext } from "react-hook-form";
+import RichTextEditor from "@/shared/input/RichTextEditor";
+import MultipleSecondaryInput from "@/shared/input/MultipleSecondaryInput";
+import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import { ISpeakerProfessionalAddForm } from "@/admin/model/speaker/adminSpeakerModel";
+import { REGEX } from "@/helper/regex";
 
 interface IProfessionalInformationForm {
-      submitToParent: (fields: (keyof ISpeakerProfessionalAddForm)[]) => void;
+      professionalInformationForm: UseFormReturn<ISpeakerProfessionalAddForm>;
+      formSubmitHandler: () => void;
 }
-function ProfessionalInformationForm({ submitToParent }: IProfessionalInformationForm) {
-      const scheduleSpecificForm = useFormContext<ISpeakerProfessionalAddForm>();
-
-      const formSubmitHandler = (fields: (keyof ISpeakerProfessionalAddForm)[]) => () => {
-            submitToParent(fields);
-      };
-
-      const {
+function ProfessionalInformationForm({
+      professionalInformationForm: {
             control,
             register,
             formState: { errors },
-      } = scheduleSpecificForm;
+      },
+      formSubmitHandler,
+}: IProfessionalInformationForm) {
       return (
             <>
                   <div>
@@ -37,7 +34,6 @@ function ProfessionalInformationForm({ submitToParent }: IProfessionalInformatio
                               })}
                         </SecondaryInput>
 
-                        {/* <SecondaryInput label="Publication" /> */}
                         <MultipleSecondaryInput
                               control={control}
                               name="publications"
@@ -52,7 +48,6 @@ function ProfessionalInformationForm({ submitToParent }: IProfessionalInformatio
                               }}
                         />
 
-                        {/* <SecondaryInput label="Previous Speaking Engagement" /> */}
                         <MultipleSecondaryInput
                               control={control}
                               name="previousSpeakingEngagements"
@@ -66,13 +61,6 @@ function ProfessionalInformationForm({ submitToParent }: IProfessionalInformatio
                                     },
                               }}
                         />
-
-                        {/* <RichTextEditor
-                              containerClassName="col-span-1 md:col-span-2 pb-10 sm:pb-6 md:pb-0"
-                              label="Previous Experience"
-                              value=""
-                              onChangeHandler={() => {}}
-                        /> */}
 
                         <Controller
                               control={control}
@@ -88,8 +76,6 @@ function ProfessionalInformationForm({ submitToParent }: IProfessionalInformatio
                               )}
                         />
 
-                        {/* <RichTextEditor label="Previous Conference" value="" onChangeHandler={() => {}} /> */}
-
                         <Controller
                               control={control}
                               name="previousConferences"
@@ -99,23 +85,14 @@ function ProfessionalInformationForm({ submitToParent }: IProfessionalInformatio
                                           value={field.value}
                                           onChangeHandler={field.onChange}
                                           placeHolder="Write about your previous conference"
-                                          containerClassName="md:col-span-2  pb-10 sm:pb-6 md:pb-0"
+                                          containerClassName="pb-10 sm:pb-6 md:pb-0 md:col-span-2"
                                     />
                               )}
                         />
                   </div>
 
                   <span className="flex justify-end w-full md:w-fit min-w-[10rem] self-end">
-                        <Button
-                              title="Next"
-                              onClickHandler={formSubmitHandler([
-                                    "expertiseInField",
-                                    "previousConferences",
-                                    "previousExperience",
-                                    "previousSpeakingEngagements",
-                                    "publications",
-                              ])}
-                        />
+                        <Button title="Next" onClickHandler={formSubmitHandler} />
                   </span>
             </>
       );

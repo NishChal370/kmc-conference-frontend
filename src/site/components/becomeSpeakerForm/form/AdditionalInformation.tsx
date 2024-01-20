@@ -1,26 +1,25 @@
-import { ISpeakerAdditionalDetailAddFrom } from "@/admin/model/speaker/adminSpeakerModel";
-import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import { Controller, UseFormReturn } from "react-hook-form";
 import Button from "@/shared/button/Button";
 import AgreementCheckBox from "@/shared/input/AgreementCheckBox";
 import MultiplePhoneInput from "@/shared/input/MultiplePhoneInput";
-import { Controller, useFormContext } from "react-hook-form";
+import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import { ISpeakerAdditionalDetailAddFrom } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IAdditionalInformation {
       slideToPrev: () => void;
+      formContext: UseFormReturn<ISpeakerAdditionalDetailAddFrom>;
 }
-function AdditionalInformation({ slideToPrev }: IAdditionalInformation) {
-      const scheduleSpecificForm = useFormContext<ISpeakerAdditionalDetailAddFrom>();
-
-      const {
+function AdditionalInformation({
+      slideToPrev,
+      formContext: {
             watch,
             formState: { errors },
             control,
-      } = scheduleSpecificForm;
-
+      },
+}: IAdditionalInformation) {
       return (
             <>
                   <div className="!flex flex-col gap-6 w-full">
-                        {/* <SecondaryInput label="Reference Contact" /> */}
                         <MultiplePhoneInput
                               control={control}
                               label="Reference Contact"
@@ -29,15 +28,6 @@ function AdditionalInformation({ slideToPrev }: IAdditionalInformation) {
                         />
 
                         <span className="!flex flex-col gap-4 w-full">
-                              {/* <AgreementCheckBox
-                                    label="I Agree to the Conference Participation Dates"
-                                    name="Agreed Dates"
-                                    checked={false}
-                                    onChange={function (event: ChangeEvent<HTMLInputElement>): void {
-                                          throw new Error("Function not implemented.");
-                                    }}
-                              /> */}
-
                               <Controller
                                     name="agreedToDates"
                                     control={control}
@@ -56,15 +46,6 @@ function AdditionalInformation({ slideToPrev }: IAdditionalInformation) {
                                           />
                                     )}
                               />
-
-                              {/* <AgreementCheckBox
-                                    label="I Agree to the Terms and Conditions"
-                                    name={""}
-                                    checked={false}
-                                    onChange={function (event: ChangeEvent<HTMLInputElement>): void {
-                                          throw new Error("Function not implemented.");
-                                    }}
-                              /> */}
 
                               <Controller
                                     name="agreedTandC"
@@ -88,10 +69,11 @@ function AdditionalInformation({ slideToPrev }: IAdditionalInformation) {
                   </div>
                   <span
                         className="flex  flex-col justify-end w-full  md:min-w-[20rem] self-end gap-6
-                        md:flex-row md:w-fit 
-                  "
+                              md:flex-row md:w-fit 
+                        "
                   >
                         <Button title="Previous" variant="outlined" onClickHandler={slideToPrev} />
+
                         <Button
                               disable={!watch("agreedToDates") || !watch("agreedTandC")}
                               type="submit"

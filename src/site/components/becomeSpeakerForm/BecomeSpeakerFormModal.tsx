@@ -4,8 +4,8 @@ import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 
 interface IBecomeSpeakerFormModal {
-      selectedSession: ISpeakerAddModal;
       closeModalHandler: () => void;
+      selectedSession: ISpeakerAddModal;
 }
 
 function BecomeSpeakerFormModal({ selectedSession, closeModalHandler }: IBecomeSpeakerFormModal) {
@@ -20,18 +20,20 @@ function BecomeSpeakerFormModal({ selectedSession, closeModalHandler }: IBecomeS
                               <h5 className="text-xl font-medium text-default line-clamp-1">
                                     {selectedSession.sessionChoice.title}
                               </h5>
+
                               <p>
                                     {changeDateFormat(selectedSession.dayDate, "long")} ·{" "}
                                     {selectedSession.startTime} - {selectedSession.endTime}
                               </p>
+
                               <p>
                                     {selectedSession.dayLocation}, {selectedSession.sessionLocation}
                               </p>
                         </header>
 
                         <BecomeSpeakerFormContainer
-                              selectedSessionId={selectedSession.sessionChoice.sessionId}
                               closeModalHandler={closeModalHandler}
+                              selectedSessionId={selectedSession.sessionChoice.sessionId}
                         />
                   </>
             </Modal>

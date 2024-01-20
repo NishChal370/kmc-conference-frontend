@@ -1,33 +1,30 @@
-import { ISpeakerSessionDetailAddFrom } from "@/admin/model/speaker/adminSpeakerModel";
-import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import { Controller, UseFormReturn } from "react-hook-form";
 import Button from "@/shared/button/Button";
 import ToggleButton from "@/shared/button/ToggleButton";
-import FileDragDropContainer from "@/shared/fileInput/FileDragDropContainer";
-import RichTextEditor from "@/shared/input/RichTextEditor";
 import SecondaryInput from "@/shared/input/SecondaryInput";
-import { Controller, useFormContext } from "react-hook-form";
+import RichTextEditor from "@/shared/input/RichTextEditor";
+import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import FileDragDropContainer from "@/shared/fileInput/FileDragDropContainer";
+import { ISpeakerSessionDetailAddFrom } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface ISessionForm {
       slideToPrev: () => void;
-      submitToParent: (fields: (keyof ISpeakerSessionDetailAddFrom)[]) => void;
+      formSubmitHandler: () => void;
+      formContext: UseFormReturn<ISpeakerSessionDetailAddFrom>;
 }
-function SessionForm({ slideToPrev, submitToParent }: ISessionForm) {
-      const scheduleSpecificForm = useFormContext<ISpeakerSessionDetailAddFrom>();
 
-      const formSubmitHandler = (fields: (keyof ISpeakerSessionDetailAddFrom)[]) => () => {
-            submitToParent(fields);
-      };
-
-      const {
+function SessionForm({
+      slideToPrev,
+      formContext: {
             register,
             formState: { errors },
             control,
-      } = scheduleSpecificForm;
-
+      },
+      formSubmitHandler,
+}: ISessionForm) {
       return (
             <>
                   <div>
-                        {/* <SecondaryInput label="Audio/View Requirement" /> */}
                         <SecondaryInput
                               label="Audio/View Requirement"
                               errorMessage={errors.avRequirements?.message}
@@ -35,7 +32,6 @@ function SessionForm({ slideToPrev, submitToParent }: ISessionForm) {
                               {register("avRequirements")}
                         </SecondaryInput>
 
-                        {/* <SecondaryInput label="Preferred session length (in minutes)" /> */}
                         <SecondaryInput
                               type="number"
                               label="Preferred session length (in minutes)"
@@ -49,15 +45,6 @@ function SessionForm({ slideToPrev, submitToParent }: ISessionForm) {
                               })}
                         </SecondaryInput>
 
-                        {/* <ToggleButton
-                              label="Willing to travel"
-                              value={false}
-                              onChangeHandler={() => {}}
-                              buttonName={{
-                                    one: "Yes, I will",
-                                    two: "No, I can not",
-                              }}
-                        /> */}
                         <Controller
                               name="willingToTravel"
                               control={control}
@@ -73,13 +60,6 @@ function SessionForm({ slideToPrev, submitToParent }: ISessionForm) {
                                     />
                               )}
                         />
-
-                        {/* <RichTextEditor
-                              label="Accommodation Needs"
-                              placeHolder="Write about your accommodation needs"
-                              value=""
-                              onChangeHandler={() => {}}
-                        /> */}
 
                         <Controller
                               control={control}
@@ -116,16 +96,7 @@ function SessionForm({ slideToPrev, submitToParent }: ISessionForm) {
                         "
                   >
                         <Button title="Previous" variant="outlined" onClickHandler={slideToPrev} />
-                        <Button
-                              title="Next"
-                              onClickHandler={formSubmitHandler([
-                                    "accommodationNeeds",
-                                    "avRequirements",
-                                    "preferredSessionLengthMinutes",
-                                    "sessionProposal",
-                                    "willingToTravel",
-                              ])}
-                        />
+                        <Button title="Next" onClickHandler={formSubmitHandler} />
                   </span>
             </>
       );
