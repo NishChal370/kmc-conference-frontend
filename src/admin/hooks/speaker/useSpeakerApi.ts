@@ -1,9 +1,9 @@
 import { store } from '@/app/store';
 import { useAppDispatch } from '@/app/hooks';
 import { scheduleSliceAction } from '@/admin/pages/schedule/feature/scheduleSlice';
-import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, putAdminSpeakerApprovalStatus, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById, postSpeakerDetail as postSpeakerDetailReq } from '@/admin/pages/speaker/feature/speakerRequest';
+import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, putAdminSpeakerApprovalStatus, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById, postSpeakerDetail as postSpeakerDetailReq, postSpeakerNewSession } from '@/admin/pages/speaker/feature/speakerRequest';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
-import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerPostRequest } from '@/admin/model/speaker/adminSpeakerModel';
+import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from '@/admin/model/speaker/adminSpeakerModel';
 
 function useSpeakerApi() {
       const dispatch = useAppDispatch();
@@ -102,7 +102,29 @@ function useSpeakerApi() {
             })
       }
 
-      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getSpeakerDetailedInfo, updateSpeakerApprovalStatus, deleteSpeakerDetail, addSpeakerDetail } as const;
+
+      const addSpeakerNewSession = async (sessionDetail: ISpeakerNewSessionPostRequest) => {
+            loadingAlertWithMessage({ title: "Submitting", text: "Please wait while submitting the form." });
+
+            await dispatch(postSpeakerNewSession(sessionDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Success", message: "Your request for speaker has been placed." });
+
+                        store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
+
+      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getSpeakerDetailedInfo, updateSpeakerApprovalStatus, deleteSpeakerDetail, addSpeakerDetail, addSpeakerNewSession } as const;
 }
 
 export default useSpeakerApi

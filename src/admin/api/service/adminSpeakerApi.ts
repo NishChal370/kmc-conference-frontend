@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
-import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerPostRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from "@/admin/model/speaker/adminSpeakerModel";
 
 export const adminSpeakerApi = {
       getBasicInfo: (searchDetail: ISpeakerBasicSearch) => {
@@ -40,6 +40,17 @@ export const adminSpeakerApi = {
                   method: "POST",
                   url: `Speaker`,
                   data: convertObjectToFormData(detail)
+            };
+
+            return AXIOS.request(options);
+      },
+
+
+      postSpeakerNewSession: (sessionDetail: ISpeakerNewSessionPostRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "POST",
+                  url: `Speaker/add-session`,
+                  data: sessionDetail,
             };
 
 

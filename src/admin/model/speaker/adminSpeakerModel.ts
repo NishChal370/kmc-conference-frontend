@@ -231,6 +231,15 @@ export interface ISpeakerAddModal {
       endTime: IScheduleModel["endTime"];
       dayLocation: string;
       sessionLocation: IScheduleModel["location"]
+}
 
 
+
+
+/**
+ * @interface
+ * Represent add new session for speaker
+ */
+export interface ISpeakerNewSessionPostRequest {
+      sessionId: IScheduleChoice["sessionId"];
 }
