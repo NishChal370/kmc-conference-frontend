@@ -1,6 +1,7 @@
 import ScheduleCard from "../../components/scheduleList/ScheduleCard";
 import AttendScheduleModal from "@/site/components/attendScheduleForm/AttendScheduleModal";
 import BecomeSpeakerFormModal from "@/site/components/becomeSpeakerForm/BecomeSpeakerFormModal";
+import BecomeCallForPaperModal from "@/site/components/becomeCallForPaperForm/BecomeCallForPaperModal";
 import UpdateBecomeSpeakerFormContainer from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerFormContainer";
 import UpdateAttendScheduleFormContainer from "@/site/components/updateAttendScheduleForm/container/UpdateAttendScheduleFormContainer";
 import { useAppSelector } from "@/app/hooks";
@@ -11,6 +12,7 @@ import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
 import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
 import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
+import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";
 import { IPreviouslyAppliedHistory } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 interface IScheduleCardContainer {
@@ -22,6 +24,9 @@ function ScheduleCardContainer({ schedule, hasAddedPreviously }: IScheduleCardCo
             useExtraModal<IParticipationAddModal>();
 
       const [speakerForm, openSpeakerForm, closeSpeakerForm] = useExtraModal<ISpeakerAddModal>();
+
+      const [callForPaperForm, openCallForPaperForm, closeCallForPaperForm] =
+            useExtraModal<ICallForPaperAddModal>();
 
       const { status: loggedInStatus } = useAppSelector(verifyLoginState);
 
@@ -43,11 +48,21 @@ function ScheduleCardContainer({ schedule, hasAddedPreviously }: IScheduleCardCo
             openSpeakerForm(data);
       };
 
+      const openCallForPaperFormHandler = (data: ICallForPaperAddModal) => () => {
+            if (loggedInStatus !== Status.SUCCEEDED) {
+                  errorToastMessage("Please login to request proposal.");
+                  return;
+            }
+
+            openCallForPaperForm(data);
+      };
+
       return (
             <>
                   <ScheduleCard
                         schedule={schedule}
                         openSpeakerFormHandler={openSpeakerFormHandler}
+                        openCallForPaperFormHandler={openCallForPaperFormHandler}
                         openParticipationFormHandler={openParticipationFormHandler}
                   />
 
@@ -78,6 +93,13 @@ function ScheduleCardContainer({ schedule, hasAddedPreviously }: IScheduleCardCo
                         <UpdateBecomeSpeakerFormContainer
                               closeModal={closeSpeakerForm}
                               selectedSessionDetail={speakerForm.data}
+                        />
+                  )}
+
+                  {callForPaperForm?.isOpen && callForPaperForm.data && (
+                        <BecomeCallForPaperModal
+                              closeModal={closeCallForPaperForm}
+                              selectedSessionDetail={callForPaperForm.data}
                         />
                   )}
             </>

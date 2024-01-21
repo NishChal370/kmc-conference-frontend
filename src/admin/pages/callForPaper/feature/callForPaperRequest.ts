@@ -1,6 +1,7 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminCallForPaperApi } from "@/admin/api/service/adminCallForPaperApi";
 import { IAdminCallForPaperDeleteRequest, IAdminCallForPaperPutRequest, IAdminCallForPaperStatusChangeReq, ICallForPaperBasicResponse, ICallForPaperBasicSearch, ICallForPaperByIdResponse, ICallForPaperByIdSearch } from "@/admin/model/callForPaper/callForPaperModel";
+import { ICallForPaperPostRequest } from "@/admin/model/callForPaper/callForPaperApplyModel";
 
 export const getCallForPaperBasicInfo = createAppAsyncThunk<ICallForPaperBasicResponse, ICallForPaperBasicSearch>(
       "callForPaper/basic/get",
@@ -29,6 +30,19 @@ export const getCallForPaperDetailedById = createAppAsyncThunk<ICallForPaperById
       }
 );
 
+
+export const postCallForPaperDetail = createAppAsyncThunk<undefined, ICallForPaperPostRequest>(
+      "site/callForPaper/post",
+      async (callForPaperDetail, { rejectWithValue }) => {
+            try {
+                  const response = await adminCallForPaperApi.postCallForPaperDetail(callForPaperDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
 
 
 

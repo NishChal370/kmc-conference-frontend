@@ -1,7 +1,10 @@
+import { store } from '@/app/store';
 import { useAppDispatch } from '@/app/hooks';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
+import { ICallForPaperPostRequest } from '@/admin/model/callForPaper/callForPaperApplyModel';
 import { IAdminCallForPaperDeleteRequest, IAdminCallForPaperPutRequest, IAdminCallForPaperStatusChangeReq, ICallForPaperBasicSearch, ICallForPaperByIdSearch } from '@/admin/model/callForPaper/callForPaperModel';
-import { getCallForPaperBasicInfo as getCallForPaperBasicInfoReq, getCallForPaperDetailedById, putAdminCallForPaperApprovalStatus, putAdminCallForPaperFullDetail, deleteCallForPaperDetail as deleteCallForPaperDetailReq } from '@/admin/pages/callForPaper/feature/callForPaperRequest';
+import { scheduleSliceAction } from '@/admin/pages/schedule/feature/scheduleSlice';
+import { getCallForPaperBasicInfo as getCallForPaperBasicInfoReq, getCallForPaperDetailedById, putAdminCallForPaperApprovalStatus, putAdminCallForPaperFullDetail, deleteCallForPaperDetail as deleteCallForPaperDetailReq, postCallForPaperDetail } from '@/admin/pages/callForPaper/feature/callForPaperRequest';
 
 function useCallForPaperApi() {
       const dispatch = useAppDispatch();
@@ -21,6 +24,28 @@ function useCallForPaperApi() {
                   })
                   .finally(swalAlertClose)
       }
+
+
+
+      const addCallForPaperDetail = async (speakerUpdateDetail: ICallForPaperPostRequest) => {
+            loadingAlertWithMessage();
+
+            await dispatch(postCallForPaperDetail(speakerUpdateDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Success", message: "Your request for proposal has been placed." });
+
+                        store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
 
 
 
@@ -79,7 +104,7 @@ function useCallForPaperApi() {
             })
       }
 
-      return { getCallForPaperBasicInfo, getCallForPaperDetailedInfo, updateAdminCallForPaperFullDetail, updateCallForPaperApprovalStatus, deleteCallForPaperDetail } as const;
+      return { getCallForPaperBasicInfo, getCallForPaperDetailedInfo, updateAdminCallForPaperFullDetail, updateCallForPaperApprovalStatus, deleteCallForPaperDetail, addCallForPaperDetail } as const;
 }
 
 export default useCallForPaperApi

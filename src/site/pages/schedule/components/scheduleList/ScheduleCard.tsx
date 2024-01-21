@@ -9,14 +9,21 @@ import { IParticipationAddModal } from "@/admin/model/participant/participantMod
 import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
 import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
 import { SPEAKERS_DETAILS } from "@/site/pages/speakers/seed.tsx/speakersDetailList";
+import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";
 
 interface IScheduleCard {
       schedule: IScheduleContentDetailModel;
       openSpeakerFormHandler: (data: ISpeakerAddModal) => () => void;
+      openCallForPaperFormHandler: (data: ICallForPaperAddModal) => () => void;
       openParticipationFormHandler: (data: IParticipationAddModal) => () => void;
 }
 
-function ScheduleCard({ schedule, openSpeakerFormHandler, openParticipationFormHandler }: IScheduleCard) {
+function ScheduleCard({
+      schedule,
+      openSpeakerFormHandler,
+      openParticipationFormHandler,
+      openCallForPaperFormHandler,
+}: IScheduleCard) {
       return (
             <div className="flex flex-col gap-10 w-full h-full px-6 py-4 border border-l-2 border-l-primary border-default">
                   <section className="flex justify-between items-start gap-1 w-full h-full">
@@ -116,9 +123,17 @@ function ScheduleCard({ schedule, openSpeakerFormHandler, openParticipationFormH
                                     dayLocation: schedule.dayLocation,
                                     sessionLocation: schedule.sessionLocation,
                               })}
-                              callForPaperButtonHandler={function (): void {
-                                    throw new Error("Function not implemented.");
-                              }}
+                              callForPaperButtonHandler={openCallForPaperFormHandler({
+                                    sessionChoice: {
+                                          sessionId: schedule.sessionId,
+                                          title: schedule.sessionTitle,
+                                    },
+                                    dayDate: schedule.dayDate,
+                                    startTime: schedule.sessionStart,
+                                    endTime: schedule.sessionEnd,
+                                    dayLocation: schedule.dayLocation,
+                                    sessionLocation: schedule.sessionLocation,
+                              })}
                         />
                   </section>
             </div>

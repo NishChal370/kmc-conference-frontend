@@ -1,8 +1,9 @@
-interface IBecomeSpeakerFormHeader {
+interface IBecomeCallForPaperHeader {
       title: string;
       subTitle?: string;
 }
-function BecomeSpeakerFormHeader({ subTitle, title }: IBecomeSpeakerFormHeader) {
+
+function BecomeCallForPaperHeader({ title, subTitle }: IBecomeCallForPaperHeader) {
       return (
             <span className="flex flex-col gap-0.5">
                   <h5 className="text-2xl font-bold tracking-wide text-default">{title}</h5>
@@ -12,4 +13,4 @@ function BecomeSpeakerFormHeader({ subTitle, title }: IBecomeSpeakerFormHeader) 
       );
 }
 
-export default BecomeSpeakerFormHeader;
+export default BecomeCallForPaperHeader;
