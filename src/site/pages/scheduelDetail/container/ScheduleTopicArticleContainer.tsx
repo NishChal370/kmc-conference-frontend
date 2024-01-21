@@ -16,6 +16,7 @@ function ScheduleTopicArticleContainer({ selectedTitleId }: IScheduleTopicArticl
       const { status, error, data } = useAppSelector(scheduleTopicContentSliceState);
 
       useEffect(() => {
+            console.log("Called ", selectedTitleId);
             getScheduleTopicContent({ sessionTopicId: selectedTitleId });
       }, [selectedTitleId]);
 

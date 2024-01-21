@@ -1,7 +1,7 @@
+import ScheduleScheduleCard from "../ScheduleScheduleCard";
 import ScheduleArticleHeader from "./ScheduleArticleHeader";
 import ScheduleTopicDetail from "../scheduleTopic/ScheduleTopicDetail";
 import ScheduleSpeakerBanner from "../scheduleSpeaker/ScheduleSpeakerBanner";
-import ScheduleScheduleCard from "../ScheduleScheduleCard";
 import { IScheduleContentBriefDetailModel } from "@/admin/model/schedule/scheduleContentModel";
 
 interface IScheduleArticle {
@@ -10,7 +10,7 @@ interface IScheduleArticle {
 function ScheduleArticle({ scheduleDetail }: IScheduleArticle) {
       return (
             <span
-                  className="flex justify-center items-start gap-32 px-6 
+                  className="flex justify-center items-start gap-32 px-6 w-full 
                         lg:w-[90%]
                         xl:w-[70%]
                   "

@@ -5,7 +5,14 @@ function Footer() {
       const navigate = useNavigate();
 
       return (
-            <div className="w-full bg-black text-white flex flex-col md:flex-row justify-between gap-4 py-4 px-6 sm:px-40 text-sm">
+            <div
+                  className="w-full bg-black text-white flex flex-col justify-between gap-4 py-4 px-6 text-sm
+                        sm:px-4
+                        lg:flex-row
+                        xl:px-32 
+                        2xl:px-40 
+                  "
+            >
                   <p>
                         Privacy — Terms & Conditions — Code of Conduct © 2080 Kathmandu Metropolitan city
                         Reserved

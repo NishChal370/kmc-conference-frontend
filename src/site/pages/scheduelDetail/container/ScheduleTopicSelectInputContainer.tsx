@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScheduleTopicSelectInput from "../components/scheduleTopic/ScheduleTopicSelectInput";
 import { IScheduleContentBriefDetailModel } from "@/admin/model/schedule/scheduleContentModel";
 
@@ -10,11 +10,15 @@ interface IScheduleTopicSelectInputContainer {
 }
 
 function ScheduleTopicSelectInputContainer({ options, children }: IScheduleTopicSelectInputContainer) {
-      const [topic, setTopic] = useState<ITopic | undefined>(options[0]);
+      const [topic, setTopic] = useState<ITopic | undefined>();
 
       const onChangeHandler = (value: ITopic) => {
             setTopic(value);
       };
+
+      useEffect(() => {
+            setTopic(options[0]);
+      }, []);
 
       return (
             <>
