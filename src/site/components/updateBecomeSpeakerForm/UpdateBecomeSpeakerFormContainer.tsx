@@ -1,10 +1,10 @@
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import UpdateBecomeSpeakerForm from "./UpdateBecomeSpeakerForm";
-import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
+import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IUpdateBecomeSpeakerFormContainer {
       closeModal: () => void;
-      selectedSessionDetail: IParticipationAddModal;
+      selectedSessionDetail: ISpeakerAddModal;
 }
 function UpdateBecomeSpeakerFormContainer({
       selectedSessionDetail,

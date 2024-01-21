@@ -4,6 +4,7 @@ import BecomeSpeakerFormModal from "@/site/components/becomeSpeakerForm/BecomeSp
 import BecomeCallForPaperModal from "@/site/components/becomeCallForPaperForm/BecomeCallForPaperModal";
 import UpdateBecomeSpeakerFormContainer from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerFormContainer";
 import UpdateAttendScheduleFormContainer from "@/site/components/updateAttendScheduleForm/container/UpdateAttendScheduleFormContainer";
+import UpdateBecomeCallForPaperFormContainer from "@/site/components/updateBecomeCallForPaperForm/container/UpdateBecomeCallForPaperFormContainer";
 import { useAppSelector } from "@/app/hooks";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import { Status } from "@/enum/commonEnum";
@@ -96,8 +97,15 @@ function ScheduleCardContainer({ schedule, hasAddedPreviously }: IScheduleCardCo
                         />
                   )}
 
-                  {callForPaperForm?.isOpen && callForPaperForm.data && (
+                  {!hasAddedPreviously?.callForPaper && callForPaperForm?.isOpen && callForPaperForm.data && (
                         <BecomeCallForPaperModal
+                              closeModal={closeCallForPaperForm}
+                              selectedSessionDetail={callForPaperForm.data}
+                        />
+                  )}
+
+                  {hasAddedPreviously?.callForPaper && callForPaperForm?.isOpen && callForPaperForm.data && (
+                        <UpdateBecomeCallForPaperFormContainer
                               closeModal={closeCallForPaperForm}
                               selectedSessionDetail={callForPaperForm.data}
                         />

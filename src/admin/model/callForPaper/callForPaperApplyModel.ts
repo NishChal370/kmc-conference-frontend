@@ -133,3 +133,10 @@ export interface IParticipationPostAdditionalForm {
       confirmPresent: boolean;
       acceptTandC: boolean;
 }
+
+
+
+
+export interface ICallForPaperAddNewSessionPostRequest {
+      sessionId: IScheduleChoice["sessionId"];
+}

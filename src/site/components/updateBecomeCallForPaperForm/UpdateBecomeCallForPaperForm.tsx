@@ -1,23 +1,23 @@
-import Button from "@/shared/button/Button";
 import { Modal } from "@/shared/modal";
-import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
+import Button from "@/shared/button/Button";
 import getTokenDetail from "@/utils/token/getTokenDetail";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
+import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";
 
-interface IUpdateBecomeSpeakerForm {
+interface IUpdateBecomeCallForPaperForm {
       closeForm: () => void;
       confirmHandler: () => void;
-      selectedSessionDetail: ISpeakerAddModal;
+      selectedSessionDetail: ICallForPaperAddModal;
 }
 
-function UpdateBecomeSpeakerForm({
+function UpdateBecomeCallForPaperForm({
       closeForm,
       confirmHandler,
       selectedSessionDetail,
-}: IUpdateBecomeSpeakerForm) {
+}: IUpdateBecomeCallForPaperForm) {
       return (
             <Modal
-                  title="Speaker Application"
+                  title="Proposal Application"
                   size="w-full lg:!max-w-[46rem] !gap-4"
                   closeHandler={closeForm}
             >
@@ -32,7 +32,7 @@ function UpdateBecomeSpeakerForm({
 
                         <section
                               className="flex flex-col gap-3 [&>span]:flex [&>span]:gap-2
-                              [&>span>h5]:min-w-[7.5rem] [&>span>h5]:font-semibold"
+                        [&>span>h5]:min-w-[7.5rem] [&>span>h5]:font-semibold"
                         >
                               <span>
                                     <h5>Session Name: </h5>
@@ -81,4 +81,4 @@ function UpdateBecomeSpeakerForm({
       );
 }
 
-export default UpdateBecomeSpeakerForm;
+export default UpdateBecomeCallForPaperForm;

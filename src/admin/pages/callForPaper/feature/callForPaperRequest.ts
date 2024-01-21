@@ -1,7 +1,7 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminCallForPaperApi } from "@/admin/api/service/adminCallForPaperApi";
 import { IAdminCallForPaperDeleteRequest, IAdminCallForPaperPutRequest, IAdminCallForPaperStatusChangeReq, ICallForPaperBasicResponse, ICallForPaperBasicSearch, ICallForPaperByIdResponse, ICallForPaperByIdSearch } from "@/admin/model/callForPaper/callForPaperModel";
-import { ICallForPaperPostRequest } from "@/admin/model/callForPaper/callForPaperApplyModel";
+import { ICallForPaperAddNewSessionPostRequest, ICallForPaperPostRequest } from "@/admin/model/callForPaper/callForPaperApplyModel";
 
 export const getCallForPaperBasicInfo = createAppAsyncThunk<ICallForPaperBasicResponse, ICallForPaperBasicSearch>(
       "callForPaper/basic/get",
@@ -79,6 +79,21 @@ export const deleteCallForPaperDetail = createAppAsyncThunk<undefined, IAdminCal
       async (deletingDetail, { rejectWithValue }) => {
             try {
                   const response = await adminCallForPaperApi.deleteCallForPaperDetail(deletingDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+
+export const postCallForPaperNewSession = createAppAsyncThunk<undefined, ICallForPaperAddNewSessionPostRequest>(
+      "site/callForPaper/new-session/post",
+      async (detail, { rejectWithValue }) => {
+            try {
+                  const response = await adminCallForPaperApi.postCallForPaperNewSession(detail);
 
                   return response.data;
             } catch (error: any) {
