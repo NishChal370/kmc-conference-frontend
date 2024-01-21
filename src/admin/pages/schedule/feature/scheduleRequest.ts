@@ -12,6 +12,7 @@ import {
       IScheduleContentBriefDetailSearch,
       IScheduleContentBriefDetailResponse,
       IScheduleContentDetailPrivateResponse,
+      IScheduleContentBriefDetailPrivateResponse,
 } from "@/admin/model/schedule/scheduleContentModel";
 import { adminScheduleApi } from "@/admin/api/service/adminScheduleApi";
 
@@ -68,6 +69,8 @@ export const deleteSchedule = createAppAsyncThunk<undefined, IScheduleDeleteRequ
       }
 );
 
+
+
 export const getScheduleContentDetail = createAppAsyncThunk<
       IScheduleContentDetailResponse,
       IScheduleContentDetailSearch
@@ -94,12 +97,30 @@ export const getScheduleContentPrivateDetail = createAppAsyncThunk<
       }
 });
 
+
+
 export const getScheduleContentBriefDetail = createAppAsyncThunk<
       IScheduleContentBriefDetailResponse,
       IScheduleContentBriefDetailSearch
 >("site/schedules/content-detail/brief/get/by-session", async (searchDetail, { rejectWithValue }) => {
       try {
             const response = await adminScheduleApi.getScheduleContentBriefDetail(searchDetail);
+
+            return response.data;
+      } catch (error: any) {
+            return rejectWithValue(error.response.data);
+      }
+});
+
+
+
+
+export const getScheduleContentBriefPrivateDetail = createAppAsyncThunk<
+      IScheduleContentBriefDetailPrivateResponse,
+      IScheduleContentBriefDetailSearch
+>("site/schedules/content-detail/private/brief/get/by-session", async (searchDetail, { rejectWithValue }) => {
+      try {
+            const response = await adminScheduleApi.getScheduleContentBriefPrivateDetail(searchDetail);
 
             return response.data;
       } catch (error: any) {

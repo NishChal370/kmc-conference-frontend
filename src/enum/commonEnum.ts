@@ -27,6 +27,17 @@ export enum UserRole {
 }
 
 
+/**
+ * @enum
+ * Represent user Type
+ */
+export enum UserType {
+      PARTICIPANT = "Participant",
+      SPEAKER = "Speaker",
+      CALL_FOR_PAPER = "CallForPaper"
+}
+
+
 
 /**
  * @enum

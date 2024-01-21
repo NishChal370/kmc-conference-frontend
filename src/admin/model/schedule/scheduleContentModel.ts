@@ -76,7 +76,10 @@ export interface IScheduleContentBriefDetailModel {
                   fullName: ISpeakerBasicModel["name"],
                   photo: IAttachment
             }
-      ]
+      ],
+      isUserParticipant?: boolean,
+      userSpeakerApproval?: SpeakerApprovalStatus,
+      userCallApproval?: CallForPaperApprovalStatus
 }
 
 
@@ -87,4 +90,10 @@ export type IScheduleContentBriefDetailResponse = IScheduleContentBriefDetailMod
 
 export interface IScheduleContentBriefDetailSearch {
       sessionId: IScheduleModel["id"]
+}
+
+
+export interface IScheduleContentBriefDetailPrivateResponse {
+      hasAddedPreviously?: IPreviouslyAppliedHistory;
+      sessionContent: IScheduleContentBriefDetailModel;
 }

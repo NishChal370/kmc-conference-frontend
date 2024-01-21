@@ -1,4 +1,5 @@
 import { IScheduleContentBriefDetailModel } from "@/admin/model/schedule/scheduleContentModel";
+import ScheduleCardStatusBadge from "@/site/pages/schedule/components/scheduleList/ScheduleCardStatusBadge";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 
 interface IScheduleArticleHeader {
@@ -12,6 +13,12 @@ function ScheduleArticleHeader({ scheduleDetail }: IScheduleArticleHeader) {
                               {changeDateFormat(scheduleDetail.date, "medium")}
                         </h3>
                         <h1 className="text-4xl font-bold">{scheduleDetail.title}</h1>
+
+                        <ScheduleCardStatusBadge
+                              isParticipant={scheduleDetail.isUserParticipant}
+                              speakerApproval={scheduleDetail.userSpeakerApproval}
+                              callForPaperApproval={scheduleDetail.userCallApproval}
+                        />
                   </span>
 
                   <span className="lg:!hidden">

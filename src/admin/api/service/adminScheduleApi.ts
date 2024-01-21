@@ -75,4 +75,13 @@ export const adminScheduleApi = {
 
             return AXIOS.request(options);
       },
+
+      getScheduleContentBriefPrivateDetail: ({ sessionId }: IScheduleContentBriefDetailSearch) => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Session/content-private/${sessionId}`,
+            };
+
+            return AXIOS.request(options);
+      },
 }

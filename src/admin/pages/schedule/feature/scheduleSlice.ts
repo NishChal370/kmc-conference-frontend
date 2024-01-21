@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { ISchedulesResponse } from "@/admin/model/schedule/scheduleModel";
-import { deleteSchedule, getScheduleContentBriefDetail, getScheduleContentDetail, getScheduleContentPrivateDetail, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
-import { IScheduleContentBriefDetailResponse, IScheduleContentDetailPrivateResponse } from "@/admin/model/schedule/scheduleContentModel";
+import { deleteSchedule, getScheduleContentBriefDetail, getScheduleContentBriefPrivateDetail, getScheduleContentDetail, getScheduleContentPrivateDetail, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
+import { IScheduleContentBriefDetailPrivateResponse, IScheduleContentDetailPrivateResponse } from "@/admin/model/schedule/scheduleContentModel";
 
 interface ISchedulesSlice extends IBasicSliceState {
       data: ISchedulesResponse;
@@ -16,7 +16,7 @@ interface IScheduleContentDetailSlice extends IBasicSliceState {
 }
 
 interface IScheduleContentBriefDetailSlice extends IBasicSliceState {
-      data?: IScheduleContentBriefDetailResponse;
+      data?: IScheduleContentBriefDetailPrivateResponse;// it stores both private and public data.
 }
 
 
@@ -69,6 +69,7 @@ const scheduleSlice = createSlice({
 
             refetchScheduleContentDetails: (state) => {
                   state.scheduleContentDetail.isToRefetch = !state.scheduleContentDetail.isToRefetch;
+                  state.scheduleContentBriefDetail.isToRefetch = !state.scheduleContentBriefDetail.isToRefetch;
             },
 
             resetScheduleContentBriefDetailsSlice: (state) => {
@@ -152,10 +153,27 @@ const scheduleSlice = createSlice({
                         state.scheduleContentBriefDetail.status = !action.payload
                               ? Status.DATA_NOT_FOUND
                               : Status.SUCCEEDED;
-                        state.scheduleContentBriefDetail.data = action.payload;
+                        state.scheduleContentBriefDetail.data = { sessionContent: action.payload };
 
                   })
                   .addCase(getScheduleContentBriefDetail.rejected, (state, action) => {
+                        state.scheduleContentBriefDetail.status = Status.FAILED;
+                        state.scheduleContentBriefDetail.error = action.payload;
+                  })
+
+
+
+                  .addCase(getScheduleContentBriefPrivateDetail.pending, (state) => {
+                        state.scheduleContentBriefDetail.status = Status.LOADING;
+                  })
+                  .addCase(getScheduleContentBriefPrivateDetail.fulfilled, (state, action) => {
+                        state.scheduleContentBriefDetail.status = !action.payload.sessionContent
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.scheduleContentBriefDetail.data = action.payload;
+
+                  })
+                  .addCase(getScheduleContentBriefPrivateDetail.rejected, (state, action) => {
                         state.scheduleContentBriefDetail.status = Status.FAILED;
                         state.scheduleContentBriefDetail.error = action.payload;
                   })

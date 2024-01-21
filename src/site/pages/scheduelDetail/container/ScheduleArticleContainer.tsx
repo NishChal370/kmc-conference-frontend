@@ -7,22 +7,36 @@ import { scheduleContentBriefDetailSliceState } from "@/admin/pages/schedule/fea
 import { Status } from "@/enum/commonEnum";
 import { useAppSelector } from "@/app/hooks";
 import useScheduleApi from "@/admin/hooks/schedule/useScheduleApi";
+import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 
 function ScheduleArticleContainer() {
       const { sessionId } = useParams();
-      const { getScheduleContentBriefDetail } = useScheduleApi();
 
-      const { status, error, data } = useAppSelector(scheduleContentBriefDetailSliceState);
+      const { status: loggedInStatus } = useAppSelector(verifyLoginState);
 
-      useEffect(() => {
+      const { status, error, data, isToRefetch } = useAppSelector(scheduleContentBriefDetailSliceState);
+
+      const { getScheduleContentBriefDetail, getScheduleContentBriefPrivateDetail } = useScheduleApi();
+
+      const fetchData = () => {
             if (!sessionId) return;
 
-            getScheduleContentBriefDetail({ sessionId: +sessionId });
-      }, []);
+            if (loggedInStatus === Status.SUCCEEDED) {
+                  getScheduleContentBriefPrivateDetail({ sessionId: +sessionId });
+            } else {
+                  getScheduleContentBriefDetail({ sessionId: +sessionId });
+            }
+      };
+
+      useEffect(() => {
+            fetchData();
+      }, [isToRefetch]);
 
       return (
             <>
-                  {status === Status.SUCCEEDED && data && <ScheduleArticle scheduleDetail={data} />}
+                  {status === Status.SUCCEEDED && data && (
+                        <ScheduleArticle scheduleDetail={data.sessionContent} />
+                  )}
 
                   {status === Status.LOADING && <LoadingMessage />}
 

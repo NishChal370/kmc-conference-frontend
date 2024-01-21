@@ -1,13 +1,13 @@
 import { Modal } from "@/shared/modal";
 import AttendScheduleFormContainer from "./container/AttendScheduleFormContainer";
-import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
+import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
 
 interface IAttendScheduleModal {
       closeParticipationForm: () => void;
       selectedSessionDetail: IParticipationAddModal;
 }
-function AttendScheduleModal({ closeParticipationForm, selectedSessionDetail }: IAttendScheduleModal) {
+function AttendScheduleModal({ selectedSessionDetail, closeParticipationForm }: IAttendScheduleModal) {
       return (
             <Modal
                   title="Be Part the of Conference"
