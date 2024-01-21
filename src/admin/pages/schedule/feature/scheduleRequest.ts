@@ -1,18 +1,20 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import {
-      IScheduleDeleteRequest,
-      ISchedulePostRequest,
-      ISchedulePutRequest,
-      ISchedulesResponse,
       IScheduleSearch,
+      ISchedulesResponse,
+      ISchedulePutRequest,
+      ISchedulePostRequest,
+      IScheduleDeleteRequest,
 } from "@/admin/model/schedule/scheduleModel";
-import { adminScheduleApi } from "@/admin/api/service/adminScheduleApi";
 import {
-      IScheduleContentBriefDetailResponse,
-      IScheduleContentBriefDetailSearch,
-      IScheduleContentDetailResponse,
       IScheduleContentDetailSearch,
+      IScheduleContentDetailResponse,
+      IScheduleContentBriefDetailSearch,
+      IScheduleContentBriefDetailResponse,
+      IScheduleContentDetailPrivateResponse,
 } from "@/admin/model/schedule/scheduleContentModel";
+import { adminScheduleApi } from "@/admin/api/service/adminScheduleApi";
+
 
 export const getSchedules = createAppAsyncThunk<ISchedulesResponse, IScheduleSearch>(
       "admin/schedules/list/get",
@@ -80,7 +82,7 @@ export const getScheduleContentDetail = createAppAsyncThunk<
 });
 
 export const getScheduleContentPrivateDetail = createAppAsyncThunk<
-      IScheduleContentDetailResponse,
+      IScheduleContentDetailPrivateResponse,
       IScheduleContentDetailSearch
 >("site/schedules/private/content-detail/get/by-themeId", async (searchDetail, { rejectWithValue }) => {
       try {

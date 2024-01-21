@@ -26,11 +26,7 @@ function PersonalInformation({
                         <span className="md:col-span-2">
                               <ImageSelectInput name="photo" control={control} />
                         </span>
-                        <SecondaryInput
-                              isRequired
-                              label="LinkedIn"
-                              errorMessage={errors.linkedInProfile?.message}
-                        >
+                        <SecondaryInput label="LinkedIn" errorMessage={errors.linkedInProfile?.message}>
                               {register("linkedInProfile", {
                                     pattern: {
                                           value: REGEX.URL,

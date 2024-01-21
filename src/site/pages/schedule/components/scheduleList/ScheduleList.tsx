@@ -8,8 +8,8 @@ import { Status } from "@/enum/commonEnum";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useScheduleApi from "@/admin/hooks/schedule/useScheduleApi";
 import {
-      scheduleContentDetailSliceState,
       scheduleSliceAction,
+      scheduleContentDetailSliceState,
 } from "@/admin/pages/schedule/feature/scheduleSlice";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 
@@ -18,11 +18,11 @@ function ScheduleList() {
       const dispatch = useAppDispatch();
 
       const { status: loggedInStatus } = useAppSelector(verifyLoginState);
-      const { status, error, data } = useAppSelector(scheduleContentDetailSliceState);
+      const { status, error, data, isToRefetch } = useAppSelector(scheduleContentDetailSliceState);
 
       const { getScheduleContentDetail, getScheduleContentPrivateDetail } = useScheduleApi();
 
-      useEffect(() => {
+      const fetchData = () => {
             if (!themeId) return;
 
             if (loggedInStatus === Status.SUCCEEDED) {
@@ -30,7 +30,10 @@ function ScheduleList() {
             } else if (loggedInStatus === Status.FAILED) {
                   getScheduleContentDetail({ themeId: +themeId });
             }
-      }, [themeId, loggedInStatus]);
+      };
+      useEffect(() => {
+            fetchData();
+      }, [themeId, loggedInStatus, isToRefetch]);
 
       useEffect(() => {
             dispatch(scheduleSliceAction.resetScheduleContentDetailsSlice());
@@ -38,8 +41,12 @@ function ScheduleList() {
 
       return (
             <section className="flex flex-col justify-start items-start gap-y-20 w-full h-full min-h-[60vh]">
-                  {data.map((schedule) => (
-                        <ScheduleCardContainer key={schedule.sessionId} schedule={schedule} />
+                  {data.themeContents.map((schedule) => (
+                        <ScheduleCardContainer
+                              key={schedule.sessionId}
+                              hasAddedPreviously={data.hasAddedPreviously}
+                              schedule={schedule}
+                        />
                   ))}
 
                   {status === Status.IDEL && <ScheduleNotSelected />}

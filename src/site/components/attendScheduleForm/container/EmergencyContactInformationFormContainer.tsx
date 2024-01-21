@@ -14,7 +14,7 @@ function EmergencyContactInformationFormContainer({
 }: IEmergencyContactInformationFormContainer) {
       const form = useFormContext<IParticipationEmergencyContactForm>();
 
-      const formSubmitHandler = () => () => {
+      const formSubmitHandler = () => {
             const fields: IField = [
                   "emergencyContactName",
                   "emergencyContactNumber",

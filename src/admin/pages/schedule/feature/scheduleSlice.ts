@@ -4,7 +4,7 @@ import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { ISchedulesResponse } from "@/admin/model/schedule/scheduleModel";
 import { deleteSchedule, getScheduleContentBriefDetail, getScheduleContentDetail, getScheduleContentPrivateDetail, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
-import { IScheduleContentDetailResponse, IScheduleContentBriefDetailResponse } from "@/admin/model/schedule/scheduleContentModel";
+import { IScheduleContentBriefDetailResponse, IScheduleContentDetailPrivateResponse } from "@/admin/model/schedule/scheduleContentModel";
 
 interface ISchedulesSlice extends IBasicSliceState {
       data: ISchedulesResponse;
@@ -12,7 +12,7 @@ interface ISchedulesSlice extends IBasicSliceState {
 
 
 interface IScheduleContentDetailSlice extends IBasicSliceState {
-      data: IScheduleContentDetailResponse;
+      data: IScheduleContentDetailPrivateResponse; // it stores both private and public data.
 }
 
 interface IScheduleContentBriefDetailSlice extends IBasicSliceState {
@@ -37,7 +37,7 @@ const initialState: IScheduleSlice = {
       },
       scheduleContentDetail: {
             status: Status.IDEL,
-            data: [],
+            data: { themeContents: [] },
       },
       scheduleContentBriefDetail: {
             status: Status.IDEL,
@@ -63,8 +63,12 @@ const scheduleSlice = createSlice({
             resetScheduleContentDetailsSlice: (state) => {
                   state.scheduleContentDetail = {
                         status: Status.IDEL,
-                        data: [],
+                        data: { themeContents: [] },
                   }
+            },
+
+            refetchScheduleContentDetails: (state) => {
+                  state.scheduleContentDetail.isToRefetch = !state.scheduleContentDetail.isToRefetch;
             },
 
             resetScheduleContentBriefDetailsSlice: (state) => {
@@ -115,7 +119,7 @@ const scheduleSlice = createSlice({
                         state.scheduleContentDetail.status = action.payload.length <= 0
                               ? Status.DATA_NOT_FOUND
                               : Status.SUCCEEDED;
-                        state.scheduleContentDetail.data = action.payload;
+                        state.scheduleContentDetail.data = { themeContents: action.payload };
 
                   })
                   .addCase(getScheduleContentDetail.rejected, (state, action) => {
@@ -129,7 +133,7 @@ const scheduleSlice = createSlice({
                         state.scheduleContentDetail.status = Status.LOADING;
                   })
                   .addCase(getScheduleContentPrivateDetail.fulfilled, (state, action) => {
-                        state.scheduleContentDetail.status = action.payload.length <= 0
+                        state.scheduleContentDetail.status = action.payload.themeContents.length <= 0
                               ? Status.DATA_NOT_FOUND
                               : Status.SUCCEEDED;
                         state.scheduleContentDetail.data = action.payload;

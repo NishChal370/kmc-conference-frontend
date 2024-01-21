@@ -6,8 +6,7 @@ import { IConferenceDayModel } from "../conferenceDay/conferenceDayModel"
 import { IScheduleTopicModel } from "../scheduleTopic/scheduleTopicModel"
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum"
 import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum"
-
-
+import { IPreviouslyAppliedHistory } from "../appliedHistory/appliedHistoryModel"
 
 
 
@@ -38,7 +37,13 @@ export interface IScheduleContentDetailModel {
 }
 
 
+export interface IScheduleContentDetailPrivateResponse {
+      hasAddedPreviously?: IPreviouslyAppliedHistory;
+      themeContents: IScheduleContentDetailModel[];
+}
+
 export type IScheduleContentDetailResponse = IScheduleContentDetailModel[];
+
 
 export interface IScheduleContentDetailSearch {
       themeId: IDayThemeModel['id']

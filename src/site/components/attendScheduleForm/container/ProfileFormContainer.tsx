@@ -12,7 +12,7 @@ interface IProfileFormContainer {
 function ProfileFormContainer({ slideToPrev, submitToParentHandler }: IProfileFormContainer) {
       const form = useFormContext<IParticipationPersonalProfileForm>();
 
-      const formSubmitHandler = () => () => {
+      const formSubmitHandler = () => {
             const fields: IField = ["bio", "linkedInProfile", "twitterHandle"];
 
             submitToParentHandler(fields);

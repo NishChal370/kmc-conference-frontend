@@ -101,6 +101,17 @@ export interface IParticipantPostRequest {
 export type IParticipationAddForm = IParticipantPostRequest;
 
 
+
+/**
+ * @interface
+ * 
+ * Represent the add new session of participant.
+ */
+export interface IParticipationNewSessionPostRequest {
+      sessionId: IScheduleChoice["sessionId"];
+}
+
+
 export interface IParticipationPreferenceForm {
       registrationType: string,
       trackPreferences: string,
@@ -157,6 +168,4 @@ export interface IParticipationAddModal {
       endTime: IScheduleModel["endTime"];
       dayLocation: string;
       sessionLocation: IScheduleModel["location"]
-
-
 }
