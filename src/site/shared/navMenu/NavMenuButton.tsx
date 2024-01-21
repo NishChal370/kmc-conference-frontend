@@ -18,7 +18,7 @@ function NavMenuButton() {
             <>
                   <button
                         type="button"
-                        className="w-fit flex items-center gap-1"
+                        className="w-fit flex items-center gap-1 text-primary"
                         onClick={menuOpenButtonHandler}
                   >
                         <AppIcon name="menu" className="" size={ICON.size + 8} />

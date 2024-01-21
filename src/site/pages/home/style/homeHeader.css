@@ -1,5 +1,15 @@
-#home-header {
-      background: url("https://image.tourismnpl.com/Landmark/Kathmandu_Durbar_Square_968.jpeg") no-repeat
-            center;
-      background-size: cover;
+.header {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.288);
+      background: linear-gradient(to right, hsla(197, 62%, 58%, 0.63), transparent 60%);
+}
+
+.button-appear {
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out 1.5s forwards;
+}
+
+@keyframes fadeIn {
+      to {
+            opacity: 1;
+      }
 }

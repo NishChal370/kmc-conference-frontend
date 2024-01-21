@@ -13,8 +13,9 @@ function ExploreScheduleButton() {
             <Button
                   onClickHandler={buttonHandler}
                   variant="outlined"
-                  title="EXPLORE SCHEDULES"
-                  extraClassName="text-white border-white py-2.5
+                  title="Explore"
+                  extraClassName="button-appear border border-white text-base !px-10 !py-1 font-medium text-white !w-fit !rounded-sm
+                        sm:text-xl
                         active:text-primary active:border-primary
                   "
             ></Button>

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 
-const variants = {
+const initialVariants = {
       open: {
             y: 0,
             opacity: 1,
@@ -20,9 +20,10 @@ const variants = {
 
 interface IRaiseUpAnimationWrapper {
       children: JSX.Element | string;
+      variants?: Variants;
 }
 
-function RaiseUpAnimationWrapper({ children }: IRaiseUpAnimationWrapper) {
+function RaiseUpAnimationWrapper({ children, variants = initialVariants }: IRaiseUpAnimationWrapper) {
       const [isInView, setIsInView] = useState<boolean>(false);
 
       return (

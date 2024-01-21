@@ -12,7 +12,7 @@ function NavActionButtons() {
       return (
             <section
                   id="top-nav--action-buttons"
-                  className={`flex gap-4 justify-center items-center max-w-fit font-semibold text-white
+                  className={`flex gap-4 justify-center items-center max-w-fit font-semibold text-default
                         ${status === Status.FAILED ? "flex-row" : "flex-row-reverse"}
                   `}
             >

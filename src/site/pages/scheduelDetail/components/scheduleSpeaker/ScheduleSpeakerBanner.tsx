@@ -23,7 +23,8 @@ function ScheduleSpeakerBanner({ speakers }: IScheduleSpeakerBanner) {
                               <span className="w-full flex flex-col min-w-full max-w-fit mt-2">
                                     <span className="min-w-full max-w-[10rem] overflow-scroll pb-2">
                                           <section className="flex gap-4 w-full min-w-fit max-w-4xl items-center mt-4">
-                                                {speakers.map(({ id, fullName, photo }) => (
+                                                {speakers.map(({ id, fullName }) => (
+                                                      // {speakers.map(({ id, fullName, photo }) => (
                                                       <ScheduleSpeakerCard
                                                             key={id}
                                                             img={"photo"}

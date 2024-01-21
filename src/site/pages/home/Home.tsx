@@ -1,6 +1,5 @@
 import HomeHeader from "./components/HomeHeader";
 import HomeSpeakers from "./components/HomeSpeakers";
-import HomeOrganizers from "./components/HomeOrganizers";
 import HomeAboutConference from "./components/HomeAboutConference";
 import HomeFeaturedExhibitors from "./components/HomeFeaturedExhibitors";
 import HomeStatisticalCounter from "./components/HomeStatisticalCounter";
@@ -18,8 +17,6 @@ function Home() {
                   </span>
 
                   <HomeSpeakers />
-
-                  <HomeOrganizers />
 
                   <HomeFeaturedExhibitors />
             </span>
