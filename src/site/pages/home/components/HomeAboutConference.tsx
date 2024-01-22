@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import ViewMoreButton from "@/site/shared/buttons/ViewMoreButton";
 import { ABOUT_US_PATH } from "@/site/constants/routePath";
 import HeaderAnimatedText from "@/template/animation/HeadingAnimatedText";
+import { ABOUT_CONFERENCE } from "../../aboutUs/data/aboutConference";
 
 function HomeAboutConference() {
       const navigate = useNavigate();
@@ -20,26 +21,12 @@ function HomeAboutConference() {
                         />
 
                         <p
-                              className="w-full flex flex-col gap-2 leading-loose
+                              className="w-full flex flex-col gap-2 leading-loose text-justify
                                     md:w-[80%] 
                                     xl:w-[60%]
                               "
                         >
-                              <span>
-                                    We are an innovative event organization based in Kathmandu, Nepal,
-                                    orchestrating premier tech conferences across the region. Our flagship
-                                    event, Kathmandu IT Summit, is a convergence point for tech enthusiasts,
-                                    industry leaders, and visionaries.
-                              </span>
-                              <span>
-                                    Renowned for hosting the most influential technology conference in the
-                                    region, our events have been recognized by leading media outlets. Politico
-                                    has described our conferences as &apos;a pivotal tech gathering,&apos; the
-                                    Atlantic has remarked that our summit is &apos;a cradle for
-                                    tomorrow&apos;s tech innovations,&apos; and the New York Times has noted
-                                    our ability to bring together &apos;the tech elite and visionary
-                                    leaders.&apos;
-                              </span>
+                              {ABOUT_CONFERENCE}
 
                               <ViewMoreButton clickHandler={() => navigate(ABOUT_US_PATH.aboutUs.full)} />
                         </p>

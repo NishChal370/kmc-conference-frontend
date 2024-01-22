@@ -1,7 +1,15 @@
 import { useAppDispatch } from "@/app/hooks";
-import { IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
-import { deleteSchedule, getSchedules as getSchedulesReq, postSchedule, putSchedule, } from "@/admin/pages/schedule/feature/scheduleRequest";
+import {
+      deleteSchedule,
+      getScheduleContentDetail as getScheduleContentDetailReq,
+      getSchedules as getSchedulesReq, postSchedule, putSchedule,
+      getScheduleContentBriefDetail as getScheduleContentBriefDetailReq,
+      getScheduleContentPrivateDetail as getScheduleContentPrivateDetailReq,
+      getScheduleContentBriefPrivateDetail as getScheduleContentBriefPrivateDetailReq
+} from "@/admin/pages/schedule/feature/scheduleRequest";
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from "@/utils/alert";
+import { IScheduleDeleteRequest, ISchedulePostRequest, ISchedulePutRequest, IScheduleSearch } from "@/admin/model/schedule/scheduleModel";
+import { IScheduleContentDetailSearch, IScheduleContentBriefDetailSearch } from "@/admin/model/schedule/scheduleContentModel";
 
 
 
@@ -70,7 +78,24 @@ function useScheduleApi() {
       }
 
 
-      return { getSchedules, addAdminSchedule, updateAdminSchedule, deleteAdminSchedule } as const;
+      const getScheduleContentDetail = (searchDetail: IScheduleContentDetailSearch) => {
+            dispatch(getScheduleContentDetailReq(searchDetail))
+      }
+
+      const getScheduleContentPrivateDetail = (searchDetail: IScheduleContentDetailSearch) => {
+            dispatch(getScheduleContentPrivateDetailReq(searchDetail))
+      }
+
+      const getScheduleContentBriefDetail = (searchDetail: IScheduleContentBriefDetailSearch) => {
+            dispatch(getScheduleContentBriefDetailReq(searchDetail))
+      }
+
+
+      const getScheduleContentBriefPrivateDetail = (searchDetail: IScheduleContentBriefDetailSearch) => {
+            dispatch(getScheduleContentBriefPrivateDetailReq(searchDetail))
+      }
+
+      return { getSchedules, addAdminSchedule, updateAdminSchedule, deleteAdminSchedule, getScheduleContentDetail, getScheduleContentPrivateDetail, getScheduleContentBriefDetail, getScheduleContentBriefPrivateDetail } as const;
 }
 
 export default useScheduleApi

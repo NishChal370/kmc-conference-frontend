@@ -13,6 +13,7 @@ interface ILoginFormProps {
       status: Status;
       loginForm: UseFormReturn<ILogin>;
       formSubmitHandler: (e?: BaseSyntheticEvent) => void;
+      forgotPasswordHandler: () => void;
 }
 
 function LoginForm({
@@ -22,6 +23,7 @@ function LoginForm({
             formState: { errors },
       },
       formSubmitHandler,
+      forgotPasswordHandler,
 }: ILoginFormProps) {
       return (
             <form className="flex flex-col gap-y-8 w-full h-full" onSubmit={formSubmitHandler}>
@@ -56,7 +58,7 @@ function LoginForm({
                               type="button"
                               variant="text"
                               title="Forgot Password?"
-                              onClickHandler={() => {}}
+                              onClickHandler={forgotPasswordHandler}
                               extraClassName="!text-mute self-end !tracking-wider"
                         />
                   </span>

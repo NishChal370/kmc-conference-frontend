@@ -1,15 +1,18 @@
 import balenShah from "@/assets/image/speakers/balen-shah.jpg"
 import sunitaDongol from "@/assets/image/speakers/sunita-dongol.jpg"
-import mahabirPun from "@/assets/image/speakers/mahabir-pun.jpg"
 import muniShakya from "@/assets/image/speakers/muni-shakya.jpg"
-import dannySullivan from "@/assets/image/speakers/danny-sullivan.jpg"
 import elonMusk from "@/assets/image/speakers/elon-musk.jpg"
-import linusTorvalds from "@/assets/image/speakers/linus-torvalds.jpg"
 import ryanHoover from "@/assets/image/speakers/ryan-hoover.jpg"
 import billGates from "@/assets/image/speakers/bill-gates.jpg"
 import marcBenioff from "@/assets/image/speakers/marc-benioff.jpg"
 import reedHastings from "@/assets/image/speakers/reed-hastings.png"
 import rayKurzweil from "@/assets/image/speakers/ray-kurzweil.jpg"
+import nabinManandhar from "@/assets/image/speakers/nabinManandhar.png";
+// import ramSapkota from "@/assets/image/speakers/ram-sapkota.jpg";
+import maheshKafle from "@/assets/image/speakers/mahesh-kafle.jpg";
+import agmaMalakar from "@/assets/image/speakers/agmaMalakar.jpg";
+import sushaShakya from "@/assets/image/speakers/sushaShakya.jpg";
+
 
 export const SPEAKERS_DETAILS = [
       {
@@ -32,11 +35,37 @@ Shah has been a popular figure in Nepalese hip-hop since the early 2010s. Shah a
             Before being elected as the deputy mayor of Kathmandu, she was active as a Newa heritage conservationist and indigenous–script (Ranjana) activist.`,
       },
       {
-            image: mahabirPun,
-            name: "Mahabir Pun",
-            designation: "Nepali researcher,teacher,social entrepreneur",
+            image: agmaMalakar,
+            name: "Agma Malakar",
+            designation: "Civil Servant",
+            company: "Tech Professional",
+            description: ``
+      },
+      // {
+      //       image: mahabirPun,
+      //       name: "Mahabir Pun",
+      //       designation: "Nepali researcher,teacher,social entrepreneur",
+      //       company: "",
+      //       description: "Mahabir Pun  is a Nepali researcher,teacher,social entrepreneur and an activist known for his work in applying wireless technologies to develop remote areas of the Himalayas, also known as the Nepal Wireless Networking Project He is a widely known figure in Nepal, and his work has been recognised by the Ashoka Foundation, the Ramon Magsaysay Foundation, [University of Nebraska Kearney],and Global Ideas Bank.",
+      // },
+
+
+      {
+            image: nabinManandhar,
+            name: "Nabin Manandhar",
+            designation: "",
             company: "",
-            description: "Mahabir Pun  is a Nepali researcher,teacher,social entrepreneur and an activist known for his work in applying wireless technologies to develop remote areas of the Himalayas, also known as the Nepal Wireless Networking Project He is a widely known figure in Nepal, and his work has been recognised by the Ashoka Foundation, the Ramon Magsaysay Foundation, [University of Nebraska Kearney],and Global Ideas Bank.",
+            description: `Nabin Manandhar is the coordinator of the Information Technology Committee of the KMC.    
+
+
+            The sixth executive meeting of the KMC presided by Mayor Balendra Shah on Sunday took the decision. Likewise, the meeting has decided to extend an invitation to chiefs and representatives of the municipalities having sisterly relations with KMC to observe Indra Jatra this year.    
+            
+            
+            Earlier, KMC had invited chiefs, deputy chiefs, and representatives from 13 municipal units across the country to observe Indra Jatra in the year 2076 BS.    
+            A total of 41 guests, including four chiefs, had attended the procession at the moment.  
+            
+              
+            The meeting has given consent for amending KMC's public procurement regulation. According to the current fiscal year's policy and program, wards would procure services and goods on open competition from this year onward. (RSS)`
       },
 
       {
@@ -47,12 +76,29 @@ Shah has been a popular figure in Nepalese hip-hop since the early 2010s. Shah a
             description: `Muni Bahadhur Shakya or Muni Shakya is a Nepalese computer programmer. He is credited with helping bring information technology to Nepal.He is also known for designing computer systems that can be operated in the Nepali language.`
       },
 
+      // {
+      //       image: ramSapkota,
+      //       name: "Ram Sapkota",
+      //       designation: "",
+      //       company: "",
+      //       description: ``
+      // },
+
+
       {
-            image: dannySullivan,
-            name: "Danny Sullivan",
-            designation: "American technologist, journalist, and entrepreneur",
+            image: sushaShakya,
+            name: "Susha Shakya",
+            designation: "Assistant Director,KMC",
             company: "",
-            description: `Danny Sullivan is an American technologist, journalist, and entrepreneur. He is the founder of Search Engine Watch in 1997, one of the earliest online publications about search engine marketing. He also launched Search Engine Strategies, one of the earliest search marketing trade shows.`
+            description: ``
+      },
+
+      {
+            image: maheshKafle,
+            name: "Mahesh Kafle",
+            designation: "",
+            company: "",
+            description: ``
       },
       {
             image: elonMusk,
@@ -60,15 +106,6 @@ Shah has been a popular figure in Nepalese hip-hop since the early 2010s. Shah a
             designation: "Businessman and investor",
             company: "Tesla and SpaceX",
             description: `Elon Reeve Musk is a businessman and investor. He is the founder, chairman, CEO, and chief technology officer of SpaceX; angel investor, CEO, product architect and former chairman of Tesla, Inc.; owner, chairman and CTO of X Corp.; founder of the Boring Company and xAI; co-founder of Neuralink and OpenAI; and president of the Musk Foundation. He is the wealthiest person in the world, with an estimated net worth of US$232 billion as of December 2023, according to the Bloomberg Billionaires Index, and $254 billion according to Forbes, primarily from his ownership stakes in Tesla and SpaceX.`
-      },
-      {
-            image: linusTorvalds,
-            name: "Linus Benedict Torvalds",
-            designation: "Finnish-American software engineer",
-            company: "",
-            description: `Linus Benedict Torvalds is a Finnish-American software engineer who is the creator and lead developer of the Linux kernel, used by Linux distributions like Debian, Arch and Android. He also created the distributed version control system Git.
-
-            He was honored, along with Shinya Yamanaka, with the 2012 Millennium Technology Prize by the Technology Academy Finland in recognition of his creation of a new open source operating system for computers leading to the widely used Linux kernel.He is also the recipient of the 2014 IEEE Computer Society Computer Pioneer Award and the 2018 IEEE Masaru Ibuka Consumer Electronics Award.`
       },
       {
             image: ryanHoover,

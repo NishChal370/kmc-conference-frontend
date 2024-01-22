@@ -14,6 +14,7 @@ import {
       IconDots,
       IconDownload,
       IconEdit,
+      IconExclamationCircle,
       IconEye,
       IconHome2,
       IconLock,
@@ -167,6 +168,9 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "logout":
                         return <IconLogout className={className} size={size ?? ICON.size} />;
+
+                  case "error":
+                        return <IconExclamationCircle className={className} size={size ?? ICON.size} />;
 
                   default:
                         alert("Please select icon");

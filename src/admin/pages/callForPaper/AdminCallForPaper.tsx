@@ -11,9 +11,11 @@ import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 import { IModal } from "@/admin/model/modal/useModalModel";
 import useModal from "@/admin/hooks/modal/useModal";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
+import AdminCallForPaperEditForm from "./container/AdminCallForPaperEditFormContainer";
 
 function AdminCallForPaper() {
-      const { modalState, openViewModal, closeModal } = useModal<IModal<IAdminCallForPaperViewOrEditModal>>();
+      const { modalState, openViewModal, openEditModal, closeModal } =
+            useModal<IModal<IAdminCallForPaperViewOrEditModal>>();
 
       const [statusChangeModal, openStatusChangeModal, closeStatusChangeModal] =
             useExtraModal<IAdminCallForPaperStatusChangeModal>();
@@ -26,6 +28,7 @@ function AdminCallForPaper() {
                         <AdminCallForPaperTableContainer
                               openStatusChangeModal={openStatusChangeModal}
                               openViewModal={openViewModal}
+                              openEditModal={openEditModal}
                         />
 
                         <AdminCallForPaperPaginationContainer />
@@ -42,6 +45,13 @@ function AdminCallForPaper() {
                         <AdminCallForPaperStatusUpdateModalContainer
                               callForPaperStatusDetail={statusChangeModal.data}
                               closeModalHandler={closeStatusChangeModal}
+                        />
+                  )}
+
+                  {[FieldStatus.Edit].includes(modalState.modalStatus) && modalState.modalData?.edit?.id && (
+                        <AdminCallForPaperEditForm
+                              selectedCallForPaperId={modalState.modalData?.edit?.id}
+                              closeModalHandler={closeModal}
                         />
                   )}
             </>

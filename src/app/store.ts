@@ -2,6 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import loginReducer from "@/site/pages/login/feature/loginSlice";
 import verifyLoginReducer from "@/protectedRoute/feature/verifyLoginSlice";
+import forgotPasswordReducer from "@/site/pages/forgotPassword/feature/forgotPasswordSlice";
+import resetPasswordReducer from "@/site/pages/resetPassword/feature/resetPasswordSlice";
+import verifyEmailReducer from "@/site/pages/verifyEmail/feature/verifyEmailSlice";
 
 import registerUserReducer from "@/site/pages/registerUser/feature/registerUserSlice";
 
@@ -25,10 +28,12 @@ import appliedHistoryReducer from "@/admin/pages/profileSetting/appliedHistory/f
 export const store = configureStore({
       reducer: {
             registerUser: registerUserReducer,
-
+            forgotPassword: forgotPasswordReducer,
+            resetPassword: resetPasswordReducer,
 
             login: loginReducer,
             verifyLogin: verifyLoginReducer,
+            verifyEmail: verifyEmailReducer,
 
             adminSideNav: adminSideNavReducer,
 

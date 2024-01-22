@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Outlet, RouteObject } from "react-router-dom";
 import Loading from "@/shared/loading/Loading";
-import { AboutUs, App, Home, Organizer, Schedule, ScheduleDetail, Speaker } from "./index";
+import { AboutUs, App, Home, Organizer, Schedule, ScheduleDetail, Speaker, NotFound } from "./index";
 import {
       ABOUT_US_PATH,
       HOME_PATH,
@@ -9,6 +9,8 @@ import {
       SCHEDULE_PATH,
       SPEAKER_PATH,
 } from "@/site/constants/routePath";
+import CheckDynamicRouteListType from "@/helper/validateRoute/CheckDynamicRouteListType";
+import { CheckDynamicRouteType } from "@/helper/validateRoute";
 
 const PublicRouter: RouteObject = {
       path: "/",
@@ -28,8 +30,21 @@ const PublicRouter: RouteObject = {
                         },
 
                         {
-                              path: SCHEDULE_PATH.schedule.basic,
-                              element: <Outlet />,
+                              path: `${SCHEDULE_PATH.schedule.basic}`,
+                              element: (
+                                    <CheckDynamicRouteListType
+                                          params={[
+                                                {
+                                                      type: "number",
+                                                      paramName: SCHEDULE_PATH.schedule.paramNameOne,
+                                                },
+                                                {
+                                                      type: "number",
+                                                      paramName: SCHEDULE_PATH.schedule.paramNameTwo,
+                                                },
+                                          ]}
+                                    />
+                              ),
                               children: [
                                     {
                                           index: true,
@@ -37,7 +52,17 @@ const PublicRouter: RouteObject = {
                                     },
                                     {
                                           path: SCHEDULE_PATH.detail.basic,
-                                          element: <ScheduleDetail />,
+                                          element: (
+                                                <CheckDynamicRouteType
+                                                      type="number"
+                                                      paramName={SCHEDULE_PATH.detail.paramName}
+                                                />
+                                          ),
+                                          children: [{ index: true, element: <ScheduleDetail /> }],
+                                    },
+                                    {
+                                          path: "*",
+                                          element: <NotFound />,
                                     },
                               ],
                         },
@@ -59,7 +84,7 @@ const PublicRouter: RouteObject = {
 
                         {
                               path: "*",
-                              element: <h1>Not found public</h1>,
+                              element: <NotFound />,
                         },
                   ],
             },

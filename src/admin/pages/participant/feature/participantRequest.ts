@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminParticipantApi } from "@/admin/api/service/adminParticipantApi";
-import { IAdminParticipantDeleteRequest, IParticipantBasicResponse, IParticipantBasicSearch, IParticipantByIdResponse, IParticipantByIdSearch } from "@/admin/model/participant/participantModel";
+import { IAdminParticipantDeleteRequest, IParticipantBasicResponse, IParticipantBasicSearch, IParticipantByIdResponse, IParticipantByIdSearch, IParticipantPostRequest, IParticipationNewSessionPostRequest } from "@/admin/model/participant/participantModel";
 
 export const getParticipantBasicInfo = createAppAsyncThunk<IParticipantBasicResponse, IParticipantBasicSearch>(
       "participant/basic/get",
@@ -35,6 +35,36 @@ export const deleteParticipantDetail = createAppAsyncThunk<undefined, IAdminPart
       async (deletingDetail, { rejectWithValue }) => {
             try {
                   const response = await adminParticipantApi.deleteParticipantDetail(deletingDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+
+export const postParticipation = createAppAsyncThunk<unknown, IParticipantPostRequest>(
+      "participation/post",
+      async (detail, { rejectWithValue }) => {
+            try {
+                  const response = await adminParticipantApi.postParticipation(detail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+
+export const postParticipationNewSession = createAppAsyncThunk<unknown, IParticipationNewSessionPostRequest>(
+      "participation/new-session/post",
+      async (detail, { rejectWithValue }) => {
+            try {
+                  const response = await adminParticipantApi.postParticipationSession(detail);
 
                   return response.data;
             } catch (error: any) {

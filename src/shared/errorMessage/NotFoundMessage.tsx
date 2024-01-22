@@ -8,6 +8,8 @@ interface INotFoundMessage {
       viewAllHandler?: () => void;
       showViewAllButton?: boolean;
       buttonTitle?: string;
+      imageSize?: string;
+      needTopPadding?: boolean;
 }
 
 function NotFoundMessage({
@@ -16,10 +18,21 @@ function NotFoundMessage({
       viewAllHandler,
       showViewAllButton = true,
       buttonTitle,
+      needTopPadding = true,
+      imageSize = "",
 }: INotFoundMessage) {
       return (
-            <div className="w-full h-full pt-20 flex flex-col justify-center items-center text-center gap-6">
-                  <figure className="bg-gray-100 rounded-full w-[8rem] h-[8rem] flex justify-center items-center">
+            <div
+                  className={`w-full h-full flex flex-col justify-center items-center text-center gap-6 + ${
+                        needTopPadding ? "pt-20" : "p-0"
+                  } `}
+            >
+                  <figure
+                        className={
+                              "bg-gray-100 rounded-full w-[8rem] h-[8rem] flex justify-center items-center " +
+                              imageSize
+                        }
+                  >
                         <img className="w-[50%] h-[50%]" src={noResultImg} alt="no-result" />
                   </figure>
 

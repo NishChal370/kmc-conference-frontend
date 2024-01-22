@@ -3,15 +3,27 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { ISchedulesResponse } from "@/admin/model/schedule/scheduleModel";
-import { deleteSchedule, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
+import { deleteSchedule, getScheduleContentBriefDetail, getScheduleContentBriefPrivateDetail, getScheduleContentDetail, getScheduleContentPrivateDetail, getSchedules, postSchedule, putSchedule } from "./scheduleRequest";
+import { IScheduleContentBriefDetailPrivateResponse, IScheduleContentDetailPrivateResponse } from "@/admin/model/schedule/scheduleContentModel";
 
 interface ISchedulesSlice extends IBasicSliceState {
       data: ISchedulesResponse;
 }
 
 
+interface IScheduleContentDetailSlice extends IBasicSliceState {
+      data: IScheduleContentDetailPrivateResponse; // it stores both private and public data.
+}
+
+interface IScheduleContentBriefDetailSlice extends IBasicSliceState {
+      data?: IScheduleContentBriefDetailPrivateResponse;// it stores both private and public data.
+}
+
+
 type IScheduleSlice = {
       schedules: ISchedulesSlice,
+      scheduleContentDetail: IScheduleContentDetailSlice,
+      scheduleContentBriefDetail: IScheduleContentBriefDetailSlice,
 };
 
 
@@ -23,6 +35,14 @@ const initialState: IScheduleSlice = {
                   sessions: []
             }
       },
+      scheduleContentDetail: {
+            status: Status.IDEL,
+            data: { themeContents: [] },
+      },
+      scheduleContentBriefDetail: {
+            status: Status.IDEL,
+            data: undefined
+      }
 }
 
 
@@ -38,6 +58,24 @@ const scheduleSlice = createSlice({
                               totalPages: 0,
                               sessions: []
                         }
+                  }
+            },
+            resetScheduleContentDetailsSlice: (state) => {
+                  state.scheduleContentDetail = {
+                        status: Status.IDEL,
+                        data: { themeContents: [] },
+                  }
+            },
+
+            refetchScheduleContentDetails: (state) => {
+                  state.scheduleContentDetail.isToRefetch = !state.scheduleContentDetail.isToRefetch;
+                  state.scheduleContentBriefDetail.isToRefetch = !state.scheduleContentBriefDetail.isToRefetch;
+            },
+
+            resetScheduleContentBriefDetailsSlice: (state) => {
+                  state.scheduleContentBriefDetail = {
+                        status: Status.IDEL,
+                        data: undefined,
                   }
             },
       },
@@ -72,6 +110,73 @@ const scheduleSlice = createSlice({
                         state.schedules.isToRefetch = !state.schedules.isToRefetch;
 
                   })
+
+
+
+                  .addCase(getScheduleContentDetail.pending, (state) => {
+                        state.scheduleContentDetail.status = Status.LOADING;
+                  })
+                  .addCase(getScheduleContentDetail.fulfilled, (state, action) => {
+                        state.scheduleContentDetail.status = action.payload.length <= 0
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.scheduleContentDetail.data = { themeContents: action.payload };
+
+                  })
+                  .addCase(getScheduleContentDetail.rejected, (state, action) => {
+                        state.scheduleContentDetail.status = Status.FAILED;
+                        state.scheduleContentDetail.error = action.payload;
+                  })
+
+
+
+                  .addCase(getScheduleContentPrivateDetail.pending, (state) => {
+                        state.scheduleContentDetail.status = Status.LOADING;
+                  })
+                  .addCase(getScheduleContentPrivateDetail.fulfilled, (state, action) => {
+                        state.scheduleContentDetail.status = action.payload.themeContents.length <= 0
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.scheduleContentDetail.data = action.payload;
+
+                  })
+                  .addCase(getScheduleContentPrivateDetail.rejected, (state, action) => {
+                        state.scheduleContentDetail.status = Status.FAILED;
+                        state.scheduleContentDetail.error = action.payload;
+                  })
+
+
+                  .addCase(getScheduleContentBriefDetail.pending, (state) => {
+                        state.scheduleContentBriefDetail.status = Status.LOADING;
+                  })
+                  .addCase(getScheduleContentBriefDetail.fulfilled, (state, action) => {
+                        state.scheduleContentBriefDetail.status = !action.payload
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.scheduleContentBriefDetail.data = { sessionContent: action.payload };
+
+                  })
+                  .addCase(getScheduleContentBriefDetail.rejected, (state, action) => {
+                        state.scheduleContentBriefDetail.status = Status.FAILED;
+                        state.scheduleContentBriefDetail.error = action.payload;
+                  })
+
+
+
+                  .addCase(getScheduleContentBriefPrivateDetail.pending, (state) => {
+                        state.scheduleContentBriefDetail.status = Status.LOADING;
+                  })
+                  .addCase(getScheduleContentBriefPrivateDetail.fulfilled, (state, action) => {
+                        state.scheduleContentBriefDetail.status = !action.payload.sessionContent
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.scheduleContentBriefDetail.data = action.payload;
+
+                  })
+                  .addCase(getScheduleContentBriefPrivateDetail.rejected, (state, action) => {
+                        state.scheduleContentBriefDetail.status = Status.FAILED;
+                        state.scheduleContentBriefDetail.error = action.payload;
+                  })
       },
 })
 
@@ -81,3 +186,5 @@ export default scheduleSlice.reducer;
 export const scheduleSliceAction = scheduleSlice.actions;
 
 export const schedulesSliceState = (state: RootState) => state.schedule.schedules;
+export const scheduleContentDetailSliceState = (state: RootState) => state.schedule.scheduleContentDetail;
+export const scheduleContentBriefDetailSliceState = (state: RootState) => state.schedule.scheduleContentBriefDetail;

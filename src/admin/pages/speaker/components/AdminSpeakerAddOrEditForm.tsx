@@ -48,7 +48,7 @@ function AdminAddOrEditSpeakerForm({
                                     <section>
                                           <ImageSelectInput name="photo" control={control} />
 
-                                          <ModalSectionHeader title="Professional Information" />
+                                          <ModalSectionHeader title="Social Profile" />
 
                                           <span>
                                                 <SecondaryInput

@@ -2,27 +2,29 @@
 export const ALLOWED_IMAGE_FILE = [
       'image/jpeg',
       'image/png',
-      // 'image/bmp',
       'image/webp',
-      // 'image/tiff',
-      // 'image/avif',
-      'image/svg+xml',
-      // 'image/x-icon',
 ]
 
 
 
 export const ALLOWED_FILE_TYPE = [
       ...ALLOWED_IMAGE_FILE,
-      'application/zip',
-      'application/x-7z-compresssed',
-      'application/x-rar-compressed',
       "application/pdf",
       "application/vnd.ms-excel",
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "application/msword",
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "text/plain",
+      // 'application/zip',
+      // 'application/x-7z-compresssed',
+      // 'application/x-rar-compressed',
+      // "application/pdf",
+      // "application/vnd.ms-excel",
+      // "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      // "application/msword",
+      // "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      // 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
 ];
 
 

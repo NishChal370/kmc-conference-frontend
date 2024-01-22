@@ -69,6 +69,7 @@ function MultipleSecondaryInput<TControl extends FieldValues>({
                   `}
                         >
                               {label}
+                              {isRequired && " *"}
                         </label>
                   </span>
 

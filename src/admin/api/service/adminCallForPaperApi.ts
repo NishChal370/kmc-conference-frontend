@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
+import { ICallForPaperAddNewSessionPostRequest, ICallForPaperPostRequest } from "@/admin/model/callForPaper/callForPaperApplyModel";
 import { IAdminCallForPaperDeleteRequest, IAdminCallForPaperPutRequest, IAdminCallForPaperStatusChangeReq, ICallForPaperBasicSearch, ICallForPaperByIdSearch } from "@/admin/model/callForPaper/callForPaperModel";
 
 export const adminCallForPaperApi = {
@@ -22,6 +23,28 @@ export const adminCallForPaperApi = {
 
             return AXIOS.request(options);
       },
+
+      postCallForPaperDetail: (callForPaperDetail: ICallForPaperPostRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "POST",
+                  url: `CallForPaper`,
+                  data: convertObjectToFormData(callForPaperDetail)
+            };
+
+            return AXIOS.request(options);
+      },
+
+      postCallForPaperNewSession: (sessionDetail: ICallForPaperAddNewSessionPostRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "POST",
+                  url: `CallForPaper/add-session`,
+                  data: sessionDetail,
+            };
+
+
+            return AXIOS.request(options);
+      },
+
 
       putCallForPaperDetailed: (callForPaperUpdateDetail: IAdminCallForPaperPutRequest) => {
             const options: AxiosRequestConfig = {

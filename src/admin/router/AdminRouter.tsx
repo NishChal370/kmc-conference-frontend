@@ -16,6 +16,7 @@ import {
       AppliedParticipation,
       AppliedCallForPaper,
       ChangePasswordContainer,
+      NotFound,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
 import {
@@ -154,13 +155,13 @@ export const AdminRouter: RouteObject = {
                                     },
                                     {
                                           path: "*",
-                                          element: <h1>Not found from admin</h1>,
+                                          element: <NotFound />,
                                     },
                               ],
                         },
                         {
                               path: "*",
-                              element: <h1>Not found from admin</h1>,
+                              element: <NotFound />,
                         },
                   ],
             },

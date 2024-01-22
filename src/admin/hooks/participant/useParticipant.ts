@@ -1,6 +1,8 @@
+import { store } from '@/app/store';
 import { useAppDispatch } from '@/app/hooks';
-import { deleteParticipantDetail as deleteParticipantDetailReq, getParticipantBasicInfo as getParticipantBasicInfoReq, getParticipantDetailedById } from '@/admin/pages/participant/feature/participantRequest';
-import { IAdminParticipantDeleteRequest, IParticipantBasicSearch, IParticipantByIdSearch } from '@/admin/model/participant/participantModel';
+import { scheduleSliceAction } from '@/admin/pages/schedule/feature/scheduleSlice';
+import { deleteParticipantDetail as deleteParticipantDetailReq, getParticipantBasicInfo as getParticipantBasicInfoReq, getParticipantDetailedById, postParticipation, postParticipationNewSession } from '@/admin/pages/participant/feature/participantRequest';
+import { IAdminParticipantDeleteRequest, IParticipantBasicSearch, IParticipantByIdSearch, IParticipantPostRequest, IParticipationNewSessionPostRequest } from '@/admin/model/participant/participantModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useParticipantApi() {
@@ -43,7 +45,46 @@ function useParticipantApi() {
             })
       }
 
-      return { getParticipantBasicInfo, getParticipantDetailedInfo, deleteParticipantDetail } as const;
+      const addParticipation = async (dayThemeDetail: IParticipantPostRequest) => {
+            loadingAlertWithMessage({ title: "Submitting", text: "Please wait while submitting the form." });
+
+            await dispatch(postParticipation(dayThemeDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Success", message: "Form submitted successfully! Thank you for participating." });
+
+                        store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+      const addParticipationNewSession = async (sessionDetail: IParticipationNewSessionPostRequest) => {
+            loadingAlertWithMessage({ title: "Submitting", text: "Please wait while submitting the form." });
+
+            await dispatch(postParticipationNewSession(sessionDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Success", message: "Form submitted successfully! Thank you for participating." });
+
+                        store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
+      return { getParticipantBasicInfo, getParticipantDetailedInfo, deleteParticipantDetail, addParticipation, addParticipationNewSession } as const;
 }
 
 export default useParticipantApi

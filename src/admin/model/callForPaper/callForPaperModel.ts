@@ -38,7 +38,7 @@ export interface ICallForPaperDetailModel extends ICallForPaperBasicModel {
       additionalRequirements: string;
       confirmPresent: boolean;
       acceptTandC: boolean;
-      fullPaperORExtendedAbstract: IAttachment | null;
+      fullPaperOrExtendedAbstract: IAttachment | null;
 }
 
 
@@ -60,38 +60,6 @@ export interface ICallForPaperByIdSearch {
 }
 
 
-
-export interface IAdminCallForPaperPostRequest {
-      briefBiography: string;
-      linkedInProfile?: string;
-      twitterHandler?: string;
-      professionalWebsite?: string;
-      proposedPaperSessionTitle: string;
-      abstractSummary: string;
-      keywords: string[] | null;
-      primaryFieldCategory: string;
-      researchMethodology: string;
-      keyObjectives: string[] | null;
-      contributions: string[] | null;
-      significanceRelevance?: string;
-      preferredPresentationFormat: string;
-      audioVisualRequirements: string;
-      previousExperience: string[] | null;
-      listOfConferences: string[] | null;
-      referencesOrCitations: string[] | null;
-      availabilityDaysTimes?: string; // no in use
-      willParticipateInPanel: boolean;
-      willParticipateInWorkshop: boolean;
-      specialAccommodationNeeds: string;
-      additionalRequirements: string;
-      confirmPresent: boolean;
-      acceptTandC: boolean;
-      fullPaperORExtendedAbstract?: File | null;
-}
-
-
-
-
 export interface IAdminCallForPaperPutRequest {
       callId: ICallForPaperBasicModel["id"];
       briefBiography: string;
@@ -111,13 +79,13 @@ export interface IAdminCallForPaperPutRequest {
       previousExperience: string[] | null;
       listOfConferences: string[] | null;
       referencesOrCitations: string[] | null;
-      availabilityDaysTimes?: string; // no in use
+      availabilityDaysTimes?: string | null; // no in use
       willParticipateInPanel: boolean;
       willParticipateInWorkshop: boolean;
       specialAccommodationNeeds: string;
       additionalRequirements: string;
-      fullPaperORExtendedAbstract?: File | null;
-      oldFullPaperOrExtendedAbstract?: IAttachment["fileName"]
+      fullPaperOrExtendedAbstract?: File | null;
+      oldFullPaperOrExtendedAbstract?: IAttachment["fileName"] | null;
 }
 
 

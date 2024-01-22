@@ -1,7 +1,8 @@
-import { deleteScheduleTopic, getScheduleTopics as getScheduleTopicsReq, postScheduleTopic, putScheduleTopic } from "@/admin/pages/scheduleTopic/feature/scheduleTopicRequest";
+import { deleteScheduleTopic, getScheduleTopicContent as getScheduleTopicContentReq, getScheduleTopics as getScheduleTopicsReq, postScheduleTopic, putScheduleTopic } from "@/admin/pages/scheduleTopic/feature/scheduleTopicRequest";
 import { useAppDispatch } from "@/app/hooks";
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from "@/utils/alert";
 import { IScheduleTopicDeleteRequest, IScheduleTopicPostRequest, IScheduleTopicPutRequest, IScheduleTopicsSearch } from "@/admin/model/scheduleTopic/scheduleTopicModel";
+import { IScheduleTopicContentSearch } from "@/admin/model/scheduleTopic/scheduleTopicContentModel";
 
 
 
@@ -11,6 +12,10 @@ function useScheduleTopicApi() {
 
       const getScheduleTopics = (searchDetail: IScheduleTopicsSearch) => {
             dispatch(getScheduleTopicsReq(searchDetail))
+      }
+
+      const getScheduleTopicContent = (searchDetail: IScheduleTopicContentSearch) => {
+            dispatch(getScheduleTopicContentReq(searchDetail))
       }
 
 
@@ -71,7 +76,7 @@ function useScheduleTopicApi() {
       }
 
 
-      return { getScheduleTopics, addAdminScheduleTopic, updateAdminScheduleTopic, deleteAdminScheduleTopic } as const;
+      return { getScheduleTopics, getScheduleTopicContent, addAdminScheduleTopic, updateAdminScheduleTopic, deleteAdminScheduleTopic } as const;
 }
 
 export default useScheduleTopicApi

@@ -25,6 +25,11 @@ export interface IDayThemeMinModel {
 export type IDayThemeMinResponse = IDayThemeMinModel[];
 
 
+export interface IDayThemeMinSearch {
+      dayId?: IDayThemeMinModel["day"]["dayId"];
+}
+
+
 export interface IDayThemeResponse extends IBasicApiResponse {
       themes: IDayThemeModel[];
 }
@@ -34,6 +39,19 @@ export interface IDayThemeSearch {
       dayId?: IConferenceDayDate["dayId"]
       pageNumber?: number;
 }
+
+
+
+
+export type IDayThemeByIdResponse = Omit<IDayThemeModel, "day">;
+
+
+export interface IDayThemeByIdSearch {
+      id: IDayThemeModel["id"];
+}
+
+
+
 
 
 export interface IDayThemePostRequest extends Omit<IDayThemeModel, "id" | "day"> {

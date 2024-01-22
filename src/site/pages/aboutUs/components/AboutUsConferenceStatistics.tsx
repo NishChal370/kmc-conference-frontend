@@ -1,3 +1,5 @@
+import { CONFERENCE_STATISTICS } from "../data/conferenceStatistics";
+
 function AboutUsConferenceStatistics() {
       return (
             <section
@@ -6,13 +8,7 @@ function AboutUsConferenceStatistics() {
                         lg:grid-cols-3 
                   "
             >
-                  {[
-                        { count: "2,100+", title: "organizers" },
-                        { count: "320+", title: "speakers" },
-                        { count: "70,000+", title: "attendees" },
-                        { count: "43%", title: "women attendees" },
-                        { count: "100+", title: "exhibitors" },
-                  ].map(({ count, title }, index) => (
+                  {CONFERENCE_STATISTICS.map(({ count, title }, index) => (
                         <span key={index}>
                               <div
                                     className="w-full self-center flex flex-col items-center text-center hover:text-primary

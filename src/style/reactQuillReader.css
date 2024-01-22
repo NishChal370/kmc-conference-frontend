@@ -9,6 +9,10 @@
 @tailwind utilities;
 
 @layer utilities {
+      .rich-text--loose .ql-editor {
+            @apply leading-loose;
+      }
+
       .rich-text--reader .ql-editor {
             @apply p-0;
       }

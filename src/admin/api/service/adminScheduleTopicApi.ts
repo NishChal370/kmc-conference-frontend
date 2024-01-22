@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import { createQueryString } from "@/utils/stringFormat/createQueryString";
 import { IScheduleTopicDeleteRequest, IScheduleTopicPostRequest, IScheduleTopicPutRequest, IScheduleTopicsSearch } from "@/admin/model/scheduleTopic/scheduleTopicModel";
+import { IScheduleTopicContentSearch } from "@/admin/model/scheduleTopic/scheduleTopicContentModel";
 
 export const adminScheduleTopicApi = {
       getScheduleTopics: (searchDetail: IScheduleTopicsSearch) => {
@@ -41,6 +42,16 @@ export const adminScheduleTopicApi = {
                   method: "DELETE",
                   url: `SessionTopic`,
                   data: scheduleTopicDetail
+            };
+
+            return AXIOS.request(options);
+      },
+
+
+      getScheduleTopicContent: ({ sessionTopicId }: IScheduleTopicContentSearch) => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `SessionTopic/content/${sessionTopicId}`,
             };
 
             return AXIOS.request(options);

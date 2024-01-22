@@ -38,9 +38,7 @@ function UserAccessPanel({ closeMenuHandler }: IUserAccessPanel) {
                                           closeMenuHandler();
                                     }}
                               />
-                        ) : (
-                              <></>
-                        )
+                        ) : undefined
                   )}
             </section>
       ) : (

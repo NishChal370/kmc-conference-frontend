@@ -11,7 +11,7 @@ function EventParticipationButton() {
       return (
             <button
                   type="button"
-                  className="bg-primary py-2.5 px-10 rounded-md min-w-fit w-full
+                  className="bg-primary py-2.5 px-10 rounded-md min-w-fit w-full text-white
                         active:bg-white  active:text-primary
                   "
                   onClick={buttonHandler}

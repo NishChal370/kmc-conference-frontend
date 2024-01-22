@@ -3,6 +3,12 @@ import { IScheduleModel } from "../schedule/scheduleModel";
 import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum";
 import { IAttachment } from "@/models/file/fileModel";
 
+export interface IPreviouslyAppliedHistory {
+      participant: boolean;
+      speaker: boolean;
+      callForPaper: boolean;
+}
+
 export interface IAppliedParticipationModel {
       sessionId: IScheduleModel["id"];
       title: IScheduleModel["title"];

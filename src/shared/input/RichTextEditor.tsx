@@ -7,6 +7,7 @@ interface IRichTextEditor {
       label: string;
       errorMessage?: string;
       containerClassName?: string;
+      textBoxClassName?: string;
       isRequired?: boolean;
       value?: string;
       placeHolder?: string;
@@ -20,6 +21,7 @@ function RichTextEditor({
       placeHolder,
       errorMessage,
       onChangeHandler,
+      textBoxClassName,
       containerClassName,
 }: IRichTextEditor) {
       const sanitizedHtml = useSanitizedHtml(value);
@@ -41,7 +43,7 @@ function RichTextEditor({
 
                   <ReactQuill
                         theme="snow"
-                        className="rich-text--editor h-[300px] w-full !rounded-md"
+                        className={"rich-text--editor h-[300px] w-full !rounded-md " + textBoxClassName}
                         value={sanitizedHtml}
                         placeholder={placeHolder || label}
                         onChange={(value) => {

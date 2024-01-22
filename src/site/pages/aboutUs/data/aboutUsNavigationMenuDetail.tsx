@@ -4,7 +4,7 @@ export const ABOUT_US_NAVIGATION_DETAIL = [
       {
             title: "Schedule",
             subTitle: "Find you schedule",
-            path: SCHEDULE_PATH.schedule.full,
+            path: SCHEDULE_PATH.schedule.full(),
             img: "https://images.pexels.com/photos/2104882/pexels-photo-2104882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {

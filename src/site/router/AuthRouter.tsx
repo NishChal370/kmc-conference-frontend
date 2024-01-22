@@ -3,7 +3,7 @@ import { RouteObject } from "react-router-dom";
 import AuthApp from "@/AuthApp";
 import Loading from "@/shared/loading/Loading";
 import { AuthRoute } from "@/protectedRoute";
-import { Login, RegisterUser } from "./index";
+import { Login, RegisterUser, ForgotPassword, ResetPassword, NotFound, VerifyEmail } from "./index";
 import { AUTH_PATH } from "@/site/constants/routePath";
 
 const AuthRouter: RouteObject = {
@@ -25,9 +25,25 @@ const AuthRouter: RouteObject = {
                               path: AUTH_PATH.registerUser.basic,
                               element: <RegisterUser />,
                         },
+
+                        {
+                              path: AUTH_PATH.forgotPassword.basic,
+                              element: <ForgotPassword />,
+                        },
+
+                        {
+                              path: AUTH_PATH.restPassword.basic,
+                              element: <ResetPassword />,
+                        },
+
+                        {
+                              path: AUTH_PATH.verifyEmail.basic,
+                              element: <VerifyEmail />,
+                        },
+
                         {
                               path: "*",
-                              element: <h1>Not found from auth</h1>,
+                              element: <NotFound />,
                         },
                   ],
             },

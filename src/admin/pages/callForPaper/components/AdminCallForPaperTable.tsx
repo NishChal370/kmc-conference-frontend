@@ -14,6 +14,7 @@ import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum
 interface IAdminCallForPaperTable {
       status: Status;
       callForPaperBasicInfo: ICallForPaperBasicModel[];
+      openEditModalHandler: (editingData: IAdminCallForPaperViewOrEditModal) => () => void;
       openViewModalHandler: (viewingData: IAdminCallForPaperViewOrEditModal) => () => void;
       deleteCallForPaperDetailHandler: (deletingDetail: IAdminCallForPaperDeleteRequest) => () => void;
       openStatusChangeModalHandler: (speakerDetail: IAdminCallForPaperStatusChangeModal) => () => void;
@@ -22,6 +23,7 @@ interface IAdminCallForPaperTable {
 function AdminCallForPaperTable({
       status,
       callForPaperBasicInfo,
+      openEditModalHandler,
       openViewModalHandler,
       openStatusChangeModalHandler,
       deleteCallForPaperDetailHandler,
@@ -62,6 +64,14 @@ function AdminCallForPaperTable({
                                                                   type: "View",
                                                                   icon: <AppIcon name="view" />,
                                                                   clickHandler: openViewModalHandler({
+                                                                        id: callForPaper.id,
+                                                                  }),
+                                                            },
+                                                            {
+                                                                  title: "Update Detail",
+                                                                  type: "Update",
+                                                                  icon: <AppIcon name="update" />,
+                                                                  clickHandler: openEditModalHandler({
                                                                         id: callForPaper.id,
                                                                   }),
                                                             },

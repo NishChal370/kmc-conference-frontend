@@ -6,6 +6,8 @@ export const App = lazy(() => import("@/site/App"));
 export const AuthApp = lazy(() => import("@/AuthApp"));
 
 
+export const NotFound = lazy(() => import("@/site/pages/notFound/NotFound"));
+
 
 export const Home = lazy(() => import("@/site/pages/home/Home"));
 
@@ -19,6 +21,12 @@ export const Organizer = lazy(() => import("@/site/pages/organizer/Organizer"));
 
 export const Login = lazy(() => import("@/site/pages/login/Login"));
 export const RegisterUser = lazy(() => import("@/site/pages/registerUser/RegisterUser"));
+export const ForgotPassword = lazy(() => import("@/site/pages/forgotPassword/ForgotPassword"));
+export const ResetPassword = lazy(() => import("@/site/pages/resetPassword/ResetPassword"));
+export const VerifyEmail = lazy(() => import("@/site/pages/verifyEmail/VerifyEmail"));
+
+
+
 
 
 
