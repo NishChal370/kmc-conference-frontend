@@ -24,7 +24,12 @@ function FilePlaceholder({
                   title={contentType}
                   className="relative group flex flex-col justify-center items-center min-w-[8rem] max-w-[8rem] min-h-[8rem] max-h-[8rem] border border-mute-1 px-2"
             >
-                  <img src={filePlaceHolder} alt="file-placeholder" className="w-20 h-20 object-cover" />
+                  <img
+                        loading="lazy"
+                        src={filePlaceHolder}
+                        alt="file-placeholder"
+                        className="w-20 h-20 object-cover"
+                  />
 
                   <span className="min-h-[2rem] h-fit w-full flex flex-col items-center gap-0.5">
                         <p className=" line-clamp-1 w-full  text-sm">{name}</p>

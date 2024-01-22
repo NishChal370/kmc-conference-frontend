@@ -11,6 +11,7 @@ function HomeSpeakerCard({ img, name, designation, company }: IHomeSpeakerCard) 
             <ScaleRaiseUpAnimationWrapper>
                   <div className="relative w-full h-full">
                         <img
+                              loading="lazy"
                               className=" w-72 h-72 min-w-[18rem] min-h-[18rem] object-cover  hover:grayscale
                                     xl:w-64 xl:h-64 xl:min-w-[256px] xl:min-h-[256px]
                                     2xl:w-72 2xl:h-72 2xl:min-w-[18rem] 2xl:min-h-[18rem] 

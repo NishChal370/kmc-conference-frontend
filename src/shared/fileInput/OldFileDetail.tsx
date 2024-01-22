@@ -16,7 +16,12 @@ function OldFileDetail({ file, removeButtonHandler }: IOldFileDetail) {
                         target="_blank"
                         rel="noreferrer"
                   >
-                        <img src={filePlaceHolder} alt="uploaded-file" className=" w-32 h-16 object-cover" />
+                        <img
+                              loading="lazy"
+                              src={filePlaceHolder}
+                              alt="uploaded-file"
+                              className=" w-32 h-16 object-cover"
+                        />
                         <article className="flex w-full flex-col">
                               <p className="w-full break-words line-clamp-2">{atob(file.originalName)}</p>
                               <p className="text-xs font-semibold">{convertBytesToMB(file.sizeBytes)} MB</p>

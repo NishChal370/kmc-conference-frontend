@@ -16,6 +16,7 @@ function FileDetail({ file, removeButtonHandler }: IFileDetail) {
                         href={URL.createObjectURL(file)}
                   >
                         <img
+                              loading="lazy"
                               src={URL.createObjectURL(file)}
                               alt="uploaded-file"
                               className=" w-32 h-16 object-cover"

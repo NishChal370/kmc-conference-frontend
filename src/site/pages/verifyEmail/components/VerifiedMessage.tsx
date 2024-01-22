@@ -5,7 +5,7 @@ function VerifiedMessage() {
       return (
             <div className="flex flex-col justify-center items-center gap-16 text-center w-full sm:w-[80%]">
                   <section className="w-full flex flex-col gap-8 items-center">
-                        <img src={checkMark} alt="success-icon" className="w-28" />
+                        <img loading="lazy" src={checkMark} alt="success-icon" className="w-28" />
 
                         <span className="flex flex-col justify-center items-center gap-4">
                               <h2 className="text-2xl font-bold">Email Verified</h2>

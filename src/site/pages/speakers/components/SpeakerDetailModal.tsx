@@ -14,6 +14,7 @@ function SpeakerDetailModal({ closeModal }: ISpeakerDetailModal) {
                               "
                         >
                               <img
+                                    loading="lazy"
                                     className="w-full h-70 
                                           sm:h-60 
                                           lg:h-80

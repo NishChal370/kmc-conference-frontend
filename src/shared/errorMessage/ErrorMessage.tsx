@@ -14,7 +14,7 @@ function ErrorMessage({ title, detail, needTopPadding = true }: IErrorMessage) {
                   }`}
             >
                   <figure className=" bg-red-50 rounded-full w-[8rem] h-[8rem] flex justify-center items-center">
-                        <img className="w-[50%] h-[50%]" src={errorImage} alt="error" />
+                        <img loading="lazy" className="w-[50%] h-[50%]" src={errorImage} alt="error" />
                   </figure>
 
                   <article className="flex flex-col gap-4 max-w-md">

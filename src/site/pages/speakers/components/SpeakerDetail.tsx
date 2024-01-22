@@ -13,6 +13,7 @@ function SpeakerDetail() {
                         "
                   >
                         <img
+                              loading="lazy"
                               className="w-full h-[20rem] object-cover"
                               src={SPEAKERS_DETAILS.at(0)?.image}
                               alt="speaker"

@@ -56,11 +56,12 @@ function HomeOrganizersBody({
                         <span className="flex xl:flex-row flex-col justify-center gap-6 items-center">
                               <section
                                     className="w-[12rem] max-w-[12rem] h-[12rem] max-h-[12rem]
-                                    sm:w-[16rem]  sm:max-w-[16rem]  sm:h-[16rem]  sm:max-h-[16rem]
-                                      xl:w-[36rem] xl:max-w-[36rem] xl:h-[36rem] xl:max-h-[36rem]
-                              "
+                                          sm:w-[16rem]  sm:max-w-[16rem]  sm:h-[16rem]  sm:max-h-[16rem]
+                                          xl:w-[36rem] xl:max-w-[36rem] xl:h-[36rem] xl:max-h-[36rem]
+                                    "
                               >
                                     <img
+                                          loading="lazy"
                                           className="w-full h-full object-contain  drop-shadow-2xl"
                                           src={ORGANIZERS_DETAIL.at(selectedOrganizer)?.image}
                                           alt="organizer"

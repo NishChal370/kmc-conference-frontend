@@ -89,9 +89,9 @@ function ScheduleCard({
                                     [&>*]:w-12 [&>*]:h-12 [&>img]:object-cover [&>img]:rounded-md
                               "
                         >
-                              <img src={SPEAKERS_DETAILS.at(0)?.image} alt="speaker" />
-                              <img src={SPEAKERS_DETAILS.at(1)?.image} alt="speaker" />
-                              <img src={SPEAKERS_DETAILS.at(2)?.image} alt="speaker" />
+                              <img loading="lazy" src={SPEAKERS_DETAILS.at(0)?.image} alt="speaker" />
+                              <img loading="lazy" src={SPEAKERS_DETAILS.at(1)?.image} alt="speaker" />
+                              <img loading="lazy" src={SPEAKERS_DETAILS.at(2)?.image} alt="speaker" />
                               <div className="flex items-center justify-center rounded-md font-bold text-white bg-primary">
                                     <p>+10</p>
                               </div>

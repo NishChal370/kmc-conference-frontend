@@ -23,7 +23,7 @@ function AppMainLogo({ id = "app-logo", onClick, size = "w-[10rem] sm:w-[14rem]"
                   className="flex justify-center items-center w-fit h-fit scale-110"
                   onClick={buttonHandler}
             >
-                  <img id={id} className={size + " object-contain"} src={log} alt="app-logo" />
+                  <img loading="lazy" id={id} className={size + " object-contain"} src={log} alt="app-logo" />
             </button>
       );
 }

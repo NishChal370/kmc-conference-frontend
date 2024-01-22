@@ -22,6 +22,7 @@ function AboutUsNavigationMenu() {
                   {ABOUT_US_NAVIGATION_DETAIL.map(({ title, subTitle, path, img }) => (
                         <div key={title} className="relative group overflow-hidden">
                               <img
+                                    loading="lazy"
                                     className="w-full h-full transition-transform duration-500 hover:scale-110 group-hover:scale-110"
                                     src={img}
                                     alt={title}

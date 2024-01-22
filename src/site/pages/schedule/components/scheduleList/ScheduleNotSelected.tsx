@@ -7,6 +7,7 @@ function ScheduleNotSelected() {
                         <header className="w-[100%] self-center text-center flex justify-center items-center flex-col gap-3 opacity-[1]">
                               <figure className="w-40">
                                     <img
+                                          loading="lazy"
                                           className="w-full h-full object-cover"
                                           src={appLogo}
                                           alt="app-logo"

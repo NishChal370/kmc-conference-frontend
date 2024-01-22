@@ -12,7 +12,12 @@ function TopNav() {
             >
                   <section className="flex items-center gap-4">
                         <figure className="w-40 h-fit">
-                              <img className="w-full h-full object-contain" src={appLogo} alt="app-logo" />
+                              <img
+                                    loading="lazy"
+                                    className="w-full h-full object-contain"
+                                    src={appLogo}
+                                    alt="app-logo"
+                              />
                         </figure>
 
                         <SideNavOpenButton />

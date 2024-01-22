@@ -51,6 +51,7 @@ function HomeFeaturedExhibitors() {
                               ].map(({ img }, index) => (
                                     <ScaleRaiseUpAnimationWrapper key={index}>
                                           <img
+                                                loading="lazy"
                                                 className="h-20 w-auto object-content"
                                                 src={img}
                                                 alt="featured-exhibitors"

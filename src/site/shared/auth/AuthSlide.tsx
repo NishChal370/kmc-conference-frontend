@@ -56,6 +56,7 @@ function AuthSlide() {
                         >
                               {ORGANIZERS_DETAIL.map(({ image }, index) => (
                                     <img
+                                          loading="lazy"
                                           className="w-[4rem] h-[4rem] 
                                                 md:w-[8rem] md:h-[8rem]
                                           "

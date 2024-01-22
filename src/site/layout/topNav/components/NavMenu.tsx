@@ -43,7 +43,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
 
                         <section className="flex justify-center items-center w-full h-full">
                               <span
-                                    className="grid grid-cols-1 gap-x-2 gap-y-6 justify-between w-full h-[40rem] max-h-screen
+                                    className="grid grid-cols-1 gap-x-2 gap-y-6 justify-between w-full h-fit max-h-screen
                                           sm:w-[60%]
                                           lg:w-[70%]  lg:grid-cols-2 lg:h-3/5 lg:gap-y-1
                                           xl:w-[50%] xl:max-w-[50rem]
@@ -57,7 +57,7 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                           {[
                                                 { name: "Speakers", path: SPEAKER_PATH.speaker.full },
                                                 { name: "Organizers", path: ORGANIZERS_PATH.organizer.full },
-                                                { name: "Exhibitors", path: "" },
+                                                // { name: "Exhibitors", path: "" }, //TODO: add this after this page has been created
                                           ].map(({ name, path }, index) => (
                                                 <NavMenuItemButton
                                                       key={index}
@@ -96,8 +96,8 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                     >
                                           {[
                                                 { name: "About us", path: ABOUT_US_PATH.aboutUs.full },
-                                                { name: "Gallery", path: "" },
-                                                { name: "News and Updates", path: "" },
+                                                // { name: "Gallery", path: "" },//TODO: add this after this page has been created
+                                                // { name: "News and Updates", path: "" },
                                                 { name: "Privacy Policy", path: "" },
                                           ].map(({ name, path }, index) => (
                                                 <NavMenuItemButton
@@ -118,14 +118,14 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
 
                                           <span className="flex gap-2 items-center justify-start [&>a]:active:text-whited">
                                                 {[
-                                                      { name: "facebook", link: "http://www.facebook.com" },
+                                                      { name: "facebook", link: "" }, //TODO: Add links here
                                                       {
                                                             name: "instagram",
-                                                            link: "http://www.instagram.com",
+                                                            link: "",
                                                       },
                                                       {
                                                             name: "linkedin",
-                                                            link: "http://www.linkedin.com",
+                                                            link: "",
                                                       },
                                                 ].map(({ name, link }, index) => (
                                                       <RaiseUpAnimationWrapper key={index}>

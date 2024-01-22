@@ -24,6 +24,7 @@ function ImageSelectInput<TControl extends FieldValues>({ name, control }: IImag
                               "
                         >
                               <img
+                                    loading="lazy"
                                     className="w-[10rem] max-w-[10rem] h-[10rem] max-h-[10rem] rounded-md object-cover"
                                     src={
                                           field.value["newFiles"] && field.value["newFiles"].length

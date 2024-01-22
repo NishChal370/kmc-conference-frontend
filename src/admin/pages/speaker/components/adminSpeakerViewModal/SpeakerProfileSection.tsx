@@ -17,6 +17,7 @@ function SpeakerProfileSection({ image, name, designation }: ISpeakerProfileSect
                   >
                         {image ? (
                               <img
+                                    loading="lazy"
                                     className="w-[8.5rem] h-[8.5rem] rounded-full object-cover"
                                     src={image}
                                     alt="speaker-img"

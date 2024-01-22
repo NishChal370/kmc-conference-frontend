@@ -5,7 +5,7 @@ function VerifyLoading() {
       return (
             <div className="flex flex-col text-center justify-center items-center gap-20  w-[80%] lg:max-w-[70%]">
                   <section className="flex flex-col justify-center items-center gap-8 w-full h-full">
-                        <img src={emailIcon} alt="" className=" w-24" />
+                        <img loading="lazy" src={emailIcon} alt="" className=" w-24" />
 
                         <span className="flex flex-col gap-2">
                               <p className=" text-4xl font-bold text-primary ">Verifying Email</p>
