@@ -95,7 +95,6 @@ function AdminCallForPaperEditFormContainer({
       const setInitialData = () => {
             if (!data) return;
 
-            console.log(data.fullPaperOrExtendedAbstract);
             const callForPaperDetail: IAdminCallForPaperForm = {
                   callId: data.id,
                   briefBiography: data.briefBiography,

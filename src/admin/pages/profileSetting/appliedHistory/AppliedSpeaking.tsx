@@ -18,10 +18,6 @@ function AppliedSpeaking() {
 
       const { getApplicationSpeaker } = useAppliedHistoryApi();
 
-      const viewSessionDetailHandler = (sessionId: IAppliedSpeakerModel["sessionId"]) => () => {
-            console.log(sessionId);
-      };
-
       const viewDetailHandler = (sessionId: IAppliedSpeakerModel["sessionId"]) => () => {
             openViewModal(sessionId);
       };
@@ -38,7 +34,6 @@ function AppliedSpeaking() {
                         error={error}
                         data={data}
                         viewDetail={viewDetailHandler}
-                        viewSessionDetailButtonHandler={viewSessionDetailHandler}
                   />
 
                   {viewModal?.isOpen && viewModal.data && (

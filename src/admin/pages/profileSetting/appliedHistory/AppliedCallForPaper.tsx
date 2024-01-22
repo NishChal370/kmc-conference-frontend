@@ -18,10 +18,6 @@ function AppliedCallForPaper() {
 
       const { getApplicationCallForPaper } = useAppliedHistoryApi();
 
-      const viewSessionDetailHandler = (sessionId: IAppliedCallForPaperModel["sessionId"]) => () => {
-            console.log(sessionId);
-      };
-
       const viewDetailHandler = (sessionId: IAppliedCallForPaperModel["sessionId"]) => () => {
             openViewModal(sessionId);
       };
@@ -38,7 +34,6 @@ function AppliedCallForPaper() {
                         error={error}
                         data={data}
                         viewDetail={viewDetailHandler}
-                        viewSessionDetailButtonHandler={viewSessionDetailHandler}
                   />
 
                   {viewModal?.isOpen && viewModal.data && (

@@ -10,18 +10,10 @@ interface IAdminAppliedHistory {
       data: IAppliedHistoryModel[];
       status: Status;
       error?: IApiErrorDetail;
-      viewSessionDetailButtonHandler: (sessionId: IAppliedHistoryModel["sessionId"]) => () => void;
       viewDetail: (sessionId: IAppliedHistoryModel["sessionId"]) => () => void;
 }
 
-function AdminAppliedHistory({
-      pageTitle,
-      data,
-      status,
-      error,
-      viewDetail,
-      viewSessionDetailButtonHandler,
-}: IAdminAppliedHistory) {
+function AdminAppliedHistory({ pageTitle, data, status, error, viewDetail }: IAdminAppliedHistory) {
       return (
             <div className="flex flex-col gap-10 w-full h-full">
                   <h1 className="font-bold text-base tracking-wide">{pageTitle}</h1>
@@ -40,9 +32,6 @@ function AdminAppliedHistory({
                                           time={session.startTime + " - " + session.endTime}
                                           location={session.location}
                                           approvalStatus={session.approvalStatus}
-                                          viewSessionDetailButtonHandler={viewSessionDetailButtonHandler(
-                                                session.sessionId
-                                          )}
                                           viewDetailButtonHandler={viewDetail(session.sessionId)}
                                     />
                               ))}

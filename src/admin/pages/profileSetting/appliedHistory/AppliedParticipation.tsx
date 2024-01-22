@@ -18,10 +18,6 @@ function AppliedParticipation() {
 
       const { getApplicationParticipation } = useAppliedHistoryApi();
 
-      const viewSessionDetailHandler = (sessionId: IAppliedParticipationModel["sessionId"]) => () => {
-            console.log(sessionId);
-      };
-
       const viewDetailHandler = (sessionId: IAppliedParticipationModel["sessionId"]) => () => {
             openViewModal(sessionId);
       };
@@ -38,7 +34,6 @@ function AppliedParticipation() {
                         error={error}
                         data={data}
                         viewDetail={viewDetailHandler}
-                        viewSessionDetailButtonHandler={viewSessionDetailHandler}
                   />
 
                   {viewModal?.isOpen && viewModal.data && (
