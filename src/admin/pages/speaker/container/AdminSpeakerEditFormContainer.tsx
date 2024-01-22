@@ -3,8 +3,8 @@ import AdminAddOrEditSpeakerForm from "../components/AdminSpeakerAddOrEditForm";
 import useAppForm from "@/hooks/form/useAppForm";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { speakerDetailedSliceState, speakerSliceAction } from "../feature/speakerSlice";
 import { Status } from "@/enum/commonEnum";
+import { speakerDetailedSliceState, speakerSliceAction } from "../feature/speakerSlice";
 import { IAdminSpeakerForm, IAdminSpeakerPutRequest } from "@/admin/model/speaker/adminSpeakerModel";
 
 interface IAdminSpeakerEditFormContainer {
@@ -52,11 +52,11 @@ function AdminSpeakerEditFormContainer({
                         ? speakerUpdatedDetail.photo.oldFiles[0].fileName
                         : undefined,
                   bio: speakerUpdatedDetail.bio,
-                  linkedInProfile: speakerUpdatedDetail.linkedInProfile || undefined, // un
-                  twitterHandle: speakerUpdatedDetail.twitterHandle || undefined, //un
-                  professionalWebsite: speakerUpdatedDetail.professionalWebsite || undefined, //
-                  previousExperience: speakerUpdatedDetail.previousExperience || undefined, //
-                  previousConferences: speakerUpdatedDetail.previousConferences || undefined, //
+                  linkedInProfile: speakerUpdatedDetail.linkedInProfile,
+                  twitterHandle: speakerUpdatedDetail.twitterHandle,
+                  professionalWebsite: speakerUpdatedDetail.professionalWebsite,
+                  previousExperience: speakerUpdatedDetail.previousExperience,
+                  previousConferences: speakerUpdatedDetail.previousConferences,
                   expertiseInField: speakerUpdatedDetail.expertiseInField,
                   previousSpeakingEngagements: previousSpeakingEngagements.filter(Boolean).length
                         ? previousSpeakingEngagements
@@ -67,8 +67,8 @@ function AdminSpeakerEditFormContainer({
                         : 0,
                   availabilityInfo: null, // THis is not in used
                   willingToTravel: speakerUpdatedDetail.willingToTravel,
-                  avRequirements: speakerUpdatedDetail.avRequirements || undefined,
-                  accommodationNeeds: speakerUpdatedDetail.accommodationNeeds || undefined,
+                  avRequirements: speakerUpdatedDetail.avRequirements,
+                  accommodationNeeds: speakerUpdatedDetail.accommodationNeeds,
                   sessionProposal: speakerUpdatedDetail.proposalFile.newFiles?.length
                         ? speakerUpdatedDetail.proposalFile.newFiles[0]
                         : null,

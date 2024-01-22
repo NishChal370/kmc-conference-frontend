@@ -2,6 +2,9 @@ function convertObjectToFormData(obj: Record<string, any>): FormData {
       const formData = new FormData();
 
       Object.entries(obj).forEach(([key, value]) => {
+
+            if (value === undefined) return;
+
             if (value instanceof File) {
                   // Handle File
                   formData.append(key, value, value.name);
@@ -20,7 +23,7 @@ function convertObjectToFormData(obj: Record<string, any>): FormData {
                   formData.append(key, JSON.stringify(value));
             } else {
                   // Append other values directly
-                  formData.append(key, value === null ? '' : value);
+                  formData.append(key, value === null || value === undefined ? '' : value);
             }
       });
 

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import useAppForm from "@/hooks/form/useAppForm";
 import {
       IAdminCallForPaperForm,
@@ -6,10 +7,9 @@ import {
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { callForPaperDetailedSliceState, callForPaperSliceAction } from "../feature/callForPaperSlice";
 import useCallForPaperApi from "@/admin/hooks/callForPaper/useCallForPaperApi";
-import { useEffect } from "react";
 import { Status } from "@/enum/commonEnum";
 import AdminCallForPaperAddOrEditForm from "../components/AdminCallForPaperAddOrEditForm";
-import { assignIfTruthy, extractValue, getFileOrNull } from "@/utils/dataHelpers";
+import { extractValue, getFileOrNull } from "@/utils/dataHelpers";
 
 interface IAdminCallForPaperEditFormContainer {
       selectedCallForPaperId: number;
@@ -53,33 +53,27 @@ function AdminCallForPaperEditFormContainer({
             const updatedCallForPaper: IAdminCallForPaperPutRequest = {
                   callId: selectedCallForPaperId,
                   briefBiography: callForPaperUpdates.briefBiography,
-                  linkedInProfile: assignIfTruthy(callForPaperUpdates.linkedInProfile, undefined),
-                  twitterHandler: assignIfTruthy(callForPaperUpdates.twitterHandler, undefined),
-                  professionalWebsite: assignIfTruthy(callForPaperUpdates.professionalWebsite, ""),
+                  linkedInProfile: callForPaperUpdates.linkedInProfile,
+                  twitterHandler: callForPaperUpdates.twitterHandler,
+                  professionalWebsite: callForPaperUpdates.professionalWebsite,
                   proposedPaperSessionTitle: callForPaperUpdates.proposedPaperSessionTitle,
                   abstractSummary: callForPaperUpdates.abstractSummary,
                   keywords: keywords.length ? keywords : null,
-                  primaryFieldCategory: assignIfTruthy(callForPaperUpdates.primaryFieldCategory, ""),
-                  researchMethodology: assignIfTruthy(callForPaperUpdates.researchMethodology, ""),
+                  primaryFieldCategory: callForPaperUpdates.primaryFieldCategory,
+                  researchMethodology: callForPaperUpdates.researchMethodology,
                   keyObjectives: keyObjectives.length ? keyObjectives : null,
                   contributions: contributions.length ? contributions : null,
-                  significanceRelevance: assignIfTruthy(callForPaperUpdates.significanceRelevance, undefined),
-                  preferredPresentationFormat: assignIfTruthy(
-                        callForPaperUpdates.preferredPresentationFormat,
-                        ""
-                  ),
-                  audioVisualRequirements: assignIfTruthy(callForPaperUpdates.audioVisualRequirements, ""),
+                  significanceRelevance: callForPaperUpdates.significanceRelevance,
+                  preferredPresentationFormat: callForPaperUpdates.preferredPresentationFormat,
+                  audioVisualRequirements: callForPaperUpdates.audioVisualRequirements,
                   previousExperience: previousExperience.length ? previousExperience : null,
                   listOfConferences: listOfConferences.length ? listOfConferences : null,
                   referencesOrCitations: referencesOrCitations.length ? referencesOrCitations : null,
                   availabilityDaysTimes: null, // no in use
                   willParticipateInPanel: callForPaperUpdates.willParticipateInPanel,
                   willParticipateInWorkshop: callForPaperUpdates.willParticipateInWorkshop,
-                  specialAccommodationNeeds: assignIfTruthy(
-                        callForPaperUpdates.specialAccommodationNeeds,
-                        ""
-                  ),
-                  additionalRequirements: assignIfTruthy(callForPaperUpdates.additionalRequirements, ""),
+                  specialAccommodationNeeds: callForPaperUpdates.specialAccommodationNeeds,
+                  additionalRequirements: callForPaperUpdates.additionalRequirements,
                   fullPaperOrExtendedAbstract: getFileOrNull(callForPaperUpdates.fullPaperORExtendedAbstract),
                   oldFullPaperOrExtendedAbstract: callForPaperUpdates.fullPaperORExtendedAbstract.oldFiles
                         ?.length
@@ -88,7 +82,6 @@ function AdminCallForPaperEditFormContainer({
             };
 
             updateAdminCallForPaperFullDetail(updatedCallForPaper).then(closeModalHandler);
-            console.log(":SD", updatedCallForPaper);
       });
 
       const formResetHandler = () => {

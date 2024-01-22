@@ -219,6 +219,7 @@ function AdminAddOrEditSpeakerForm({
                                                 </SecondaryInput>
 
                                                 <SecondaryInput
+                                                      isRequired
                                                       type="number"
                                                       label="Preferred session length (in minutes)"
                                                       errorMessage={
