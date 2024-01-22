@@ -1,6 +1,3 @@
-import { useAppSelector } from "@/app/hooks";
-import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
-
 interface IScheduleCardActionButton {
       isParticipant?: boolean;
       isSpeaker?: boolean;

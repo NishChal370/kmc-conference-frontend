@@ -8,14 +8,16 @@ interface IFileViewerContainer {
       containerClassName?: string;
 }
 function FileViewerContainer({ label, files, containerClassName }: IFileViewerContainer) {
-      const viewButtonHandler = (fileName: string) => () => {
+      // const viewButtonHandler = (fileName: string) => () => {
+      const viewButtonHandler = () => () => {
             //TODO: do it after api complete
             // getClientProductContractFile(fileName).then((fileUrl) => {
             //       window.open(`${fileUrl}`, "_blank");
             // });
       };
 
-      const downloadButtonHandler = (fileName: string, originalName: string) => () => {
+      // const downloadButtonHandler = (fileName: string, originalName: string) => () => {
+      const downloadButtonHandler = () => () => {
             //TODO: do it after api complete
             // getClientProductContractFile(fileName).then((fileUrl) => {
             //       const aTag = document.createElement("a");

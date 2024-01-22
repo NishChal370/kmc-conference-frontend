@@ -144,8 +144,8 @@ function AdminCallForPaperViewModal({ callForPaperDetail, closeModalHandler }: I
                                           <FileViewerContainer
                                                 label="Full Paper / Extended Abstract"
                                                 files={
-                                                      callForPaperDetail.fullPaperORExtendedAbstract
-                                                            ? [callForPaperDetail.fullPaperORExtendedAbstract]
+                                                      callForPaperDetail.fullPaperOrExtendedAbstract
+                                                            ? [callForPaperDetail.fullPaperOrExtendedAbstract]
                                                             : null
                                                 }
                                           />

@@ -1,4 +1,4 @@
-import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleModel";
+import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
 import Button from "@/shared/button/Button";
 import { SCHEDULE_PATH } from "@/site/constants/routePath";
 import { useNavigate } from "react-router-dom";

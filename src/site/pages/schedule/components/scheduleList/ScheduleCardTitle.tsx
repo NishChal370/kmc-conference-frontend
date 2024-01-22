@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { SCHEDULE_PATH } from "@/site/constants/routePath";
-import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleModel";
+import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
 
 interface IScheduleCardTitle {
       title: IScheduleContentDetailModel["sessionTitle"];
