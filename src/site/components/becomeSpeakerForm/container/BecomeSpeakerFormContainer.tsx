@@ -45,11 +45,11 @@ function BecomeSpeakerFormContainer({ selectedSessionId, closeModalHandler }: IB
             const newSpeaker: ISpeakerPostRequest = {
                   photo: getFileOrNull(speakerNewDetail.photo),
                   bio: speakerNewDetail.bio,
-                  linkedInProfile: assignIfTruthy(speakerNewDetail.linkedInProfile, undefined),
-                  twitterHandle: assignIfTruthy(speakerNewDetail.twitterHandle, undefined),
-                  professionalWebsite: assignIfTruthy(speakerNewDetail.professionalWebsite, undefined),
-                  previousExperience: assignIfTruthy(speakerNewDetail.previousExperience, undefined),
-                  previousConferences: assignIfTruthy(speakerNewDetail.previousConferences, undefined),
+                  linkedInProfile: speakerNewDetail.linkedInProfile,
+                  twitterHandle: speakerNewDetail.twitterHandle,
+                  professionalWebsite: speakerNewDetail.professionalWebsite,
+                  previousExperience: speakerNewDetail.previousExperience,
+                  previousConferences: speakerNewDetail.previousConferences,
                   expertiseInField: speakerNewDetail.expertiseInField,
                   previousSpeakingEngagements: previousSpeakingEngagements.length
                         ? previousSpeakingEngagements
@@ -60,8 +60,8 @@ function BecomeSpeakerFormContainer({ selectedSessionId, closeModalHandler }: IB
                   ),
                   availabilityInfo: null, // This is not in use
                   willingToTravel: speakerNewDetail.willingToTravel,
-                  avRequirements: assignIfTruthy(speakerNewDetail.avRequirements, undefined),
-                  accommodationNeeds: assignIfTruthy(speakerNewDetail.accommodationNeeds, undefined),
+                  avRequirements: speakerNewDetail.avRequirements,
+                  accommodationNeeds: speakerNewDetail.accommodationNeeds,
                   sessionProposal: getFileOrNull(speakerNewDetail.sessionProposal),
                   referenceContacts: referenceContacts.length ? referenceContacts : null,
                   agreedTandC: speakerNewDetail.agreedTandC,
