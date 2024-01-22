@@ -1,4 +1,4 @@
-import { ADMIN_BASE_PATH } from "./index";
+import { ADMIN_BASE_PATH } from "./adminBasePath";
 
 export const ADMIN_SCHEDULE_PATH = {
       schedule: {

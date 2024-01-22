@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { ADMIN_SCHEDULE_PATH } from "@/admin/constants/routePath";
+import { ADMIN_SCHEDULE_PATH } from "@/admin/constants/routePath/adminSchedulePath";
 import RadioButtonGroup from "@/admin/shared/button/RadioButtonGroup";
 import { IRadioButtonGroupOptions } from "@/admin/model/button/radioButtonGroupModel";
 

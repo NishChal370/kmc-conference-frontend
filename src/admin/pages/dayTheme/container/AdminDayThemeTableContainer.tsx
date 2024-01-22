@@ -8,7 +8,7 @@ import { dayThemeSliceAction, dayThemesState } from "../feature/dayThemeSlice";
 import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useDayThemeApi from "@/admin/hooks/dayTheme/useDayThemeApi";
-import { ADMIN_SCHEDULE_PATH } from "@/admin/constants/routePath";
+import { ADMIN_SCHEDULE_PATH } from "@/admin/constants/routePath/adminSchedulePath";
 import { Status } from "@/enum/commonEnum";
 import { IDayThemeDeleteRequest, IDayThemeModel } from "@/admin/model/dayTheme/dayThemeModel";
 

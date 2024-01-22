@@ -1,4 +1,4 @@
-import { ADMIN_BASE_PATH } from ".";
+import { ADMIN_BASE_PATH } from "./adminBasePath";
 
 export const ADMIN_DAY_THEME_PATH = {
       theme: {

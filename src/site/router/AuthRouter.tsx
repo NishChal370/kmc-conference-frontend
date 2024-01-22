@@ -1,9 +1,8 @@
 import { Suspense } from "react";
 import { RouteObject } from "react-router-dom";
-import AuthApp from "@/AuthApp";
 import Loading from "@/shared/loading/Loading";
 import { AuthRoute } from "@/protectedRoute";
-import { Login, RegisterUser, ForgotPassword, ResetPassword, NotFound, VerifyEmail } from "./index";
+import { Login, RegisterUser, ForgotPassword, ResetPassword, NotFound, VerifyEmail, AuthApp } from "./index";
 import { AUTH_PATH } from "@/site/constants/routePath";
 
 const AuthRouter: RouteObject = {

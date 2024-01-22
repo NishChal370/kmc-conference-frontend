@@ -1,4 +1,4 @@
-import { ADMIN_PROFILE_SETTING_PATH } from "@/admin/constants/routePath";
+import { ADMIN_PROFILE_SETTING_PATH } from "@/admin/constants/routePath/adminProfileSettingPath";
 import getUniqueId from "@/utils/uniqueId/getUniqueId";
 
 export const PROFILE_NAV_BAR = [
