@@ -1,13 +1,13 @@
 import { useState } from "react";
 import ScheduleSpeakerCard from "./ScheduleSpeakerCard";
-import SpeakerDetailModal from "@/site/pages/speakers/components/SpeakerDetailModal";
+// import SpeakerDetailModal from "@/site/pages/speakers/components/SpeakerDetailModal";
 import { IScheduleContentBriefDetailResponse } from "@/admin/model/schedule/scheduleContentModel";
 
 interface IScheduleSpeakerBanner {
       speakers: IScheduleContentBriefDetailResponse["speakers"];
 }
 function ScheduleSpeakerBanner({ speakers }: IScheduleSpeakerBanner) {
-      const [isOpen, setIsOpen] = useState<boolean>(false);
+      const [_, setIsOpen] = useState<boolean>(false);
 
       return (
             <>
@@ -42,7 +42,8 @@ function ScheduleSpeakerBanner({ speakers }: IScheduleSpeakerBanner) {
                         )}
                   </span>
 
-                  {isOpen && <SpeakerDetailModal closeModal={() => setIsOpen(false)} />}
+                  {/* //TODO: DO it by fetching API */}
+                  {/* {isOpen && <SpeakerDetailModal closeModal={() => setIsOpen(false)} />} */}
             </>
       );
 }
