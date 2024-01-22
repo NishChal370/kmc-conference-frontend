@@ -17,7 +17,7 @@ export const adminSpeakerApi = {
       getSpeakerDetailedById: ({ id }: ISpeakerByIdSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Speaker/${id}`,
+                  url: `Speaker${id}`,
             };
 
             return AXIOS.request(options);

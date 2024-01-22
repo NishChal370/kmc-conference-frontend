@@ -1,9 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import AppIcon from "@/shared/icon/AppIcon";
-import { PROFILE_NAV_BAR } from "../data/profileNavList";
+import { MEMBER_PROFILE_NAV_BAR } from "../data/memberProfileNavList";
 import { TIconType } from "@/models/icon/iconModel";
 
-function ProfileSettingNav() {
+function MemberProfileSettingNav() {
       const location = useLocation();
       const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ function ProfileSettingNav() {
 
       return (
             <div className="flex flex-col items-start justify-start gap-10 min-w-full sm:min-w-[20rem] min-h-[24rem] max-h-96 border rounded-2xl py-6 px-4 text-sm">
-                  {PROFILE_NAV_BAR.map((nav) => (
+                  {MEMBER_PROFILE_NAV_BAR.map((nav) => (
                         <section key={nav.id} className="flex flex-col items-start gap-6 w-full">
                               <p className="text-gray-700 font-semibold border-b w-full">{nav.title}</p>
 
@@ -47,4 +47,4 @@ function ProfileSettingNav() {
       );
 }
 
-export default ProfileSettingNav;
+export default MemberProfileSettingNav;

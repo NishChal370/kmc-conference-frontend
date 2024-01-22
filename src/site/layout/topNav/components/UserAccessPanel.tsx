@@ -5,6 +5,7 @@ import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 import { Status, UserRole } from "@/enum/commonEnum";
 import getTokenDetail from "@/utils/token/getTokenDetail";
 import { ADMIN_DASHBOARD_PATH } from "@/admin/constants/routePath";
+import { MEMBER_PATH } from "@/site/constants/routePath";
 
 interface IUserAccessPanel {
       closeMenuHandler: () => void;
@@ -27,7 +28,11 @@ function UserAccessPanel({ closeMenuHandler }: IUserAccessPanel) {
                               path: ADMIN_DASHBOARD_PATH.dashboard.full,
                               isVisible: getTokenDetail.loggedInUserRole() !== UserRole.USER,
                         },
-                        { name: "Profile", path: "/profile", isVisible: true },
+                        {
+                              name: "Profile",
+                              path: MEMBER_PATH.profileSetting.full,
+                              isVisible: getTokenDetail.loggedInUserRole() === UserRole.USER,
+                        },
                   ].map(({ name, path, isVisible }, index) =>
                         isVisible ? (
                               <NavMenuItemButton

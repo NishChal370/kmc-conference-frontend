@@ -27,6 +27,23 @@ export const VerifyEmail = lazy(() => import("@/site/pages/verifyEmail/VerifyEma
 
 
 
+export const MemberProfileSetting = lazy(() => import("@/site/pages/memberProfileSetting/MemberProfileSetting"));
+export const Profile = lazy(() => import("@/admin/pages/profileSetting/profile/Profile"));
+export const ChangePasswordContainer = lazy(
+      () => import("@/admin/pages/profileSetting/changePassword/container/ChangePasswordContainer")
+);
+
+export const AppliedSpeaking = lazy(() => import("@/admin/pages/profileSetting/appliedHistory/AppliedSpeaking"));
+export const AppliedParticipation = lazy(
+      () => import("@/admin/pages/profileSetting/appliedHistory/AppliedParticipation")
+);
+export const AppliedCallForPaper = lazy(
+      () => import("@/admin/pages/profileSetting/appliedHistory/AppliedCallForPaper")
+);
+
+
+
+
 
 
 

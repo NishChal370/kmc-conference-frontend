@@ -44,7 +44,7 @@ export const adminAppliedHistoryApi = {
       getApplicationSpeakerDetail: ({ sessionId }: IAppliedSpeakerDetailSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Speaker/my-speaker/SessionId=${sessionId}`,
+                  url: `Speaker/my-speaker?SessionId=${sessionId}`,
             };
 
             return AXIOS.request(options);

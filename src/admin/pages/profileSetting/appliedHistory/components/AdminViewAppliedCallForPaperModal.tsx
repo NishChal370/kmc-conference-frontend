@@ -1,6 +1,7 @@
-import { IAppliedCallForPaperDetailedModel } from "@/admin/model/appliedHistory/appliedHistoryModel";
 import FileViewerContainer from "@/admin/shared/file/FileViewer";
 import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
+import { IAppliedCallForPaperDetailedModel } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum";
 
 interface IAdminViewAppliedCallForPaperModal {
       callForPaperDetail: IAppliedCallForPaperDetailedModel;
@@ -36,12 +37,16 @@ function AdminViewAppliedCallForPaperModal({
 
                                     <ModalText
                                           title="Session Time"
-                                          data={`callForPaperDetail.startTime + " -  " + callForPaperDetail.endTime`}
+                                          data={
+                                                callForPaperDetail.startTime +
+                                                " -  " +
+                                                callForPaperDetail.endTime
+                                          }
                                     />
 
                                     <ModalText
                                           title="Approval Status"
-                                          data={callForPaperDetail.approvalStatus}
+                                          data={CallForPaperApprovalStatus[callForPaperDetail.approvalStatus]}
                                     />
                               </article>
                         </section>
@@ -195,12 +200,12 @@ function AdminViewAppliedCallForPaperModal({
                               >
                                     <ModalText
                                           title="Willing Participate In Panel"
-                                          data={`callForPaperDetail.willParticipateInPanel ? "YES" : "NO"`}
+                                          data={callForPaperDetail.willParticipateInPanel ? "YES" : "NO"}
                                     />
 
                                     <ModalText
                                           title="Will Participate in Workshop"
-                                          data={`callForPaperDetail.willParticipateInWorkshop ? "YES" : "NO"`}
+                                          data={callForPaperDetail.willParticipateInWorkshop ? "YES" : "NO"}
                                     />
 
                                     <span className="sm:col-span-2">

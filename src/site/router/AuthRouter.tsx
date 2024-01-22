@@ -46,6 +46,10 @@ const AuthRouter: RouteObject = {
                         },
                   ],
             },
+            {
+                  path: "profile",
+                  element: <h1>Profile</h1>,
+            },
       ],
 };
 
