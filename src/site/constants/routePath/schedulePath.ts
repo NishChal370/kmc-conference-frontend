@@ -11,6 +11,7 @@ export const SCHEDULE_PATH = {
 
       detail: {
             basic: "schedule-detail/:sessionId",
+            paramName: "sessionId",
             full: (sessionId: number) => `/conference-schedule/schedule-detail/${sessionId}`
       }
 };

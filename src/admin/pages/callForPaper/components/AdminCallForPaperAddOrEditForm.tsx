@@ -46,7 +46,10 @@ function AdminCallForPaperAddOrEditForm({
                               <ModalSectionHeader title="Personal and Professional Information" />
 
                               <span>
-                                    <SecondaryInput label="LinkedIn">
+                                    <SecondaryInput
+                                          label="LinkedIn"
+                                          errorMessage={errors.linkedInProfile?.message}
+                                    >
                                           {register("linkedInProfile", {
                                                 pattern: {
                                                       value: REGEX.URL,
@@ -55,7 +58,10 @@ function AdminCallForPaperAddOrEditForm({
                                           })}
                                     </SecondaryInput>
 
-                                    <SecondaryInput label="Twitter Handler">
+                                    <SecondaryInput
+                                          label="Twitter Handler"
+                                          errorMessage={errors.twitterHandler?.message}
+                                    >
                                           {register("twitterHandler", {
                                                 pattern: {
                                                       value: REGEX.URL,
@@ -64,7 +70,10 @@ function AdminCallForPaperAddOrEditForm({
                                           })}
                                     </SecondaryInput>
 
-                                    <SecondaryInput label="Professional Website">
+                                    <SecondaryInput
+                                          label="Professional Website"
+                                          errorMessage={errors.professionalWebsite?.message}
+                                    >
                                           {register("professionalWebsite", {
                                                 pattern: {
                                                       value: REGEX.URL,
@@ -101,7 +110,11 @@ function AdminCallForPaperAddOrEditForm({
                               <ModalSectionHeader title="Paper and Session Proposals" />
 
                               <span>
-                                    <SecondaryInput isRequired label="Proposed Paper/Session Title">
+                                    <SecondaryInput
+                                          isRequired
+                                          label="Proposed Paper/Session Title"
+                                          errorMessage={errors.proposedPaperSessionTitle?.message}
+                                    >
                                           {register("proposedPaperSessionTitle", {
                                                 required: {
                                                       value: true,
@@ -118,7 +131,11 @@ function AdminCallForPaperAddOrEditForm({
                                           errorMessage={errors.keywords}
                                     />
 
-                                    <SecondaryInput isRequired label="Primary Field Category">
+                                    <SecondaryInput
+                                          isRequired
+                                          label="Primary Field Category"
+                                          errorMessage={errors.primaryFieldCategory?.message}
+                                    >
                                           {register("primaryFieldCategory", {
                                                 required: {
                                                       value: true,
@@ -164,6 +181,7 @@ function AdminCallForPaperAddOrEditForm({
                                           name="keyObjectives"
                                           label="Key Objectives"
                                           placeholder="Key Objectives"
+                                          errorMessage={errors.keyObjectives}
                                     />
 
                                     <MultipleSecondaryInput
@@ -171,13 +189,17 @@ function AdminCallForPaperAddOrEditForm({
                                           name="contributions"
                                           label="Contributions"
                                           placeholder="Contributions"
+                                          errorMessage={errors.contributions}
                                     />
 
                                     <SecondaryInput label="Significance/Relevance">
                                           {register("significanceRelevance")}
                                     </SecondaryInput>
 
-                                    <SecondaryInput label="Preferred Presentation Format">
+                                    <SecondaryInput
+                                          label="Preferred Presentation Format"
+                                          errorMessage={errors.preferredPresentationFormat?.message}
+                                    >
                                           {register("preferredPresentationFormat", {
                                                 required: {
                                                       value: true,
@@ -222,6 +244,7 @@ function AdminCallForPaperAddOrEditForm({
                                           name="listOfConferences"
                                           label="List of Conferences"
                                           placeholder="List of Conferences"
+                                          errorMessage={errors.listOfConferences}
                                           validation={{
                                                 pattern: {
                                                       value: REGEX.URL,
@@ -235,6 +258,7 @@ function AdminCallForPaperAddOrEditForm({
                                           name="referencesOrCitations"
                                           label="References or Citations"
                                           placeholder="References or Citations"
+                                          errorMessage={errors.referencesOrCitations}
                                     />
                               </span>
                         </section>
@@ -279,12 +303,13 @@ function AdminCallForPaperAddOrEditForm({
                                           <Controller
                                                 control={control}
                                                 name="specialAccommodationNeeds"
-                                                render={({ field }) => (
+                                                render={({ field, fieldState }) => (
                                                       <RichTextEditor
                                                             value={field.value}
                                                             onChangeHandler={field.onChange}
                                                             label="Special Accommodation Needs"
                                                             placeHolder="Write about your accommodation needs"
+                                                            errorMessage={fieldState.error?.message}
                                                       />
                                                 )}
                                           />
@@ -294,12 +319,13 @@ function AdminCallForPaperAddOrEditForm({
                                           <Controller
                                                 control={control}
                                                 name="additionalRequirements"
-                                                render={({ field }) => (
+                                                render={({ field, fieldState }) => (
                                                       <RichTextEditor
                                                             value={field.value}
                                                             onChangeHandler={field.onChange}
                                                             label="Additional Requirements"
                                                             placeHolder="Write about your  additional requirements"
+                                                            errorMessage={fieldState.error?.message}
                                                       />
                                                 )}
                                           />

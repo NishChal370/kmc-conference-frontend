@@ -17,10 +17,12 @@ import { callForPaperBasicInfoSliceState, callForPaperSliceAction } from "../fea
 interface IAdminCallForPaperTableContainer {
       openStatusChangeModal: (callForPaperDetail: IAdminCallForPaperStatusChangeModal) => void;
       openViewModal: ({ viewingData }: { viewingData: IAdminCallForPaperViewOrEditModal }) => void;
+      openEditModal: ({ editingData }: { editingData: IAdminCallForPaperViewOrEditModal }) => void;
 }
 
 function AdminCallForPaperTableContainer({
       openViewModal,
+      openEditModal,
       openStatusChangeModal,
 }: IAdminCallForPaperTableContainer) {
       const { search } = useLocation();
@@ -46,6 +48,10 @@ function AdminCallForPaperTableContainer({
                   openStatusChangeModal(callForPaperDetail);
             };
 
+      const openEditModalHandler = (editingData: IAdminCallForPaperViewOrEditModal) => () => {
+            openEditModal({ editingData });
+      };
+
       const deleteCallForPaperDetailHandler = (deletingDetail: IAdminCallForPaperDeleteRequest) => () => {
             deleteCallForPaperDetail(deletingDetail);
       };
@@ -66,6 +72,7 @@ function AdminCallForPaperTableContainer({
                         status={status}
                         callForPaperBasicInfo={data.calls}
                         openViewModalHandler={openViewModalHandler}
+                        openEditModalHandler={openEditModalHandler}
                         openStatusChangeModalHandler={openStatusChangeModalHandler}
                         deleteCallForPaperDetailHandler={deleteCallForPaperDetailHandler}
                   />

@@ -38,7 +38,7 @@ export interface ICallForPaperDetailModel extends ICallForPaperBasicModel {
       additionalRequirements: string;
       confirmPresent: boolean;
       acceptTandC: boolean;
-      fullPaperORExtendedAbstract: IAttachment | null;
+      fullPaperOrExtendedAbstract: IAttachment | null;
 }
 
 
@@ -79,13 +79,13 @@ export interface IAdminCallForPaperPutRequest {
       previousExperience: string[] | null;
       listOfConferences: string[] | null;
       referencesOrCitations: string[] | null;
-      availabilityDaysTimes?: string; // no in use
+      availabilityDaysTimes?: string | null; // no in use
       willParticipateInPanel: boolean;
       willParticipateInWorkshop: boolean;
       specialAccommodationNeeds: string;
       additionalRequirements: string;
-      fullPaperORExtendedAbstract?: File | null;
-      oldFullPaperOrExtendedAbstract?: IAttachment["fileName"]
+      fullPaperOrExtendedAbstract?: File | null;
+      oldFullPaperOrExtendedAbstract?: IAttachment["fileName"] | null;
 }
 
 

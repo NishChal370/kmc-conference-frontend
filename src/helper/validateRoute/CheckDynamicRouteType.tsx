@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useParams } from "react-router-dom";
 
-const NotFoundPage = <Navigate to="not-found" replace />;
+const NotFoundPage = <Navigate to="/not-found" replace />;
 
 interface CheckDynamicRouteType {
       paramName: string;
