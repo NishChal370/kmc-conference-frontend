@@ -2,7 +2,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import BecomeSpeakerForm from "../form/BecomeSpeakerForm";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { ISpeakerAddForm, ISpeakerPostRequest } from "@/admin/model/speaker/adminSpeakerModel";
-import { assignIfTruthy, convertToNumberIfTruthy, extractValue, getFileOrNull } from "@/utils/dataHelpers";
+import { convertToNumberIfTruthy, extractValue, getFileOrNull } from "@/utils/dataHelpers";
 
 interface IBecomeSpeakerFormContainer {
       closeModalHandler: () => void;
