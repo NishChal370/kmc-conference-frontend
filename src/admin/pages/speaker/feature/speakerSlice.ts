@@ -242,7 +242,9 @@ const speakerSlice = createSlice({
                         state.speakersContent.status = Status.LOADING;
                   })
                   .addCase(getSpeakersContent.fulfilled, (state, action) => {
-                        state.speakersContent.status = Status.SUCCEEDED;
+                        state.speakersContent.status = action.payload.speakers.length <= 0
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
                         state.speakersContent.data = action.payload;
 
                   })
@@ -258,7 +260,9 @@ const speakerSlice = createSlice({
                         state.speakerContentDetail.status = Status.LOADING;
                   })
                   .addCase(getSpeakerContentDetail.fulfilled, (state, action) => {
-                        state.speakerContentDetail.status = Status.SUCCEEDED;
+                        state.speakerContentDetail.status = !action.payload
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
                         state.speakerContentDetail.data = action.payload;
 
                   })
