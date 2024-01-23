@@ -1,5 +1,8 @@
+import { IAttachment } from "@/models/file/fileModel";
+import ServerImage from "@/shared/serverImage/ServerImage";
+
 interface ISpeakerProfileSection {
-      image: string;
+      image: IAttachment | null;
       name: string;
       designation: string;
 }
@@ -16,10 +19,9 @@ function SpeakerProfileSection({ image, name, designation }: ISpeakerProfileSect
                         className="min-w-[10rem] max-w-[10rem] min-h-[10rem] max-h-[10rem] rounded-full bg-white flex justify-center items-center"
                   >
                         {image ? (
-                              <img
-                                    loading="lazy"
+                              <ServerImage
                                     className="w-[8.5rem] h-[8.5rem] rounded-full object-cover"
-                                    src={image}
+                                    image={image}
                                     alt="speaker-img"
                               />
                         ) : (

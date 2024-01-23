@@ -1,7 +1,7 @@
+import FileViewer from "@/admin/shared/file/FileViewer";
 import SpeakerProfileSection from "./SpeakerProfileSection";
 import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
 import { ISpeakerDetailModel } from "@/admin/model/speaker/adminSpeakerModel";
-import FileViewer from "@/admin/shared/file/FileViewer";
 
 interface IAdminSpeakerViewModal {
       closeModalHandler: () => void;
@@ -21,7 +21,7 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                         "
                   >
                         <SpeakerProfileSection
-                              image={"speakerDetail.photo"}
+                              image={speakerDetail.photo}
                               name={speakerDetail.name}
                               designation={speakerDetail.jobTitle}
                         />

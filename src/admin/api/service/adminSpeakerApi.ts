@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
+import { ISpeakerContentDetailSearch } from "@/admin/model/speaker/speakerContentModel";
 import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from "@/admin/model/speaker/adminSpeakerModel";
 
 export const adminSpeakerApi = {
@@ -17,7 +18,7 @@ export const adminSpeakerApi = {
       getSpeakerDetailedById: ({ id }: ISpeakerByIdSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Speaker${id}`,
+                  url: `Speaker/${id}`,
             };
 
             return AXIOS.request(options);
@@ -78,5 +79,24 @@ export const adminSpeakerApi = {
 
 
             return AXIOS.request(options);
-      }
+      },
+
+
+      getSpeakersContent: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Speaker/content`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      getSpeakerContentDetail: ({ id }: ISpeakerContentDetailSearch) => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Speaker/content/${id}`,
+            };
+
+            return AXIOS.request(options);
+      },
 }

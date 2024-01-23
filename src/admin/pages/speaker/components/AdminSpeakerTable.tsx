@@ -39,7 +39,7 @@ function AdminSpeakerTable({
                                           <Td id="index" dataName="index">
                                                 {index + 1}
                                           </Td>
-                                          <Ti /> {/*//TODO:Add image here */}
+                                          <Ti image={speaker.photo} />
                                           <Td dataName="Speaker Name">{speaker.name}</Td>
                                           <Td dataName="Designation">{speaker.jobTitle}</Td>
                                           <Td dataName="Company">{speaker.affiliation}</Td>

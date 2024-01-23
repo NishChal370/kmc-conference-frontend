@@ -8,7 +8,7 @@ import getDateDay from "@/utils/dateFormat/getDateDay";
 import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
 import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
 import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
-import { SPEAKERS_DETAILS } from "@/site/pages/speakers/seed.tsx/speakersDetailList";
+import { SPEAKERS_DETAILS } from "@/site/pages/speakers/seed/speakersDetailList";
 import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";
 
 interface IScheduleCard {
