@@ -1,7 +1,7 @@
 import { Modal } from "@/shared/modal";
 import AttendScheduleFormContainer from "./container/AttendScheduleFormContainer";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
-import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
+import { IParticipationAddModal } from "@/admin/model/participant/attendScheduleModel";
 
 interface IAttendScheduleModal {
       closeParticipationForm: () => void;

@@ -11,7 +11,7 @@ import { Status } from "@/enum/commonEnum";
 import { errorToastMessage } from "@/utils/alert";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
-import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
+import { IParticipationAddModal } from "@/admin/model/participant/attendScheduleModel";
 import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
 import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";
 import { IPreviouslyAppliedHistory } from "@/admin/model/appliedHistory/appliedHistoryModel";

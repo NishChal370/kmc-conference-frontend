@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import ProfileForm from "../forms/ProfileForm";
-import { IParticipationPersonalProfileForm } from "@/admin/model/participant/participantModel";
+import { IParticipationPersonalProfileForm } from "@/admin/model/participant/attendScheduleModel";
 
 type IField = (keyof IParticipationPersonalProfileForm)[];
 

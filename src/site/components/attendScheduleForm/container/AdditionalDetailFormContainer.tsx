@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import AdditionalDetailForm from "../forms/AdditionalDetailForm";
-import { IParticipationAdditionalForm } from "@/admin/model/participant/participantModel";
+import { IParticipationAdditionalForm } from "@/admin/model/participant/attendScheduleModel";
 
 interface IAdditionalDetailFormContainer {
       slideToPrev: () => void;

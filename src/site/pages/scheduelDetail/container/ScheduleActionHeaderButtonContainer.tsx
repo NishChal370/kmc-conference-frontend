@@ -13,7 +13,7 @@ import { errorToastMessage } from "@/utils/alert";
 import { useAppSelector } from "@/app/hooks";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
-import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
+import { IParticipationAddModal } from "@/admin/model/participant/attendScheduleModel";
 import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
 import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";
 

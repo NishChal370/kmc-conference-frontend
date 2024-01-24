@@ -2,7 +2,7 @@ import { UseFormReturn } from "react-hook-form";
 import Button from "@/shared/button/Button";
 import SecondaryInput from "@/shared/input/SecondaryInput";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { IParticipationPreferenceForm } from "@/admin/model/participant/participantModel";
+import { IParticipationPreferenceForm } from "@/admin/model/participant/attendScheduleModel";
 
 interface IScheduleSpecificForm {
       scheduleSpecificForm: UseFormReturn<IParticipationPreferenceForm>;

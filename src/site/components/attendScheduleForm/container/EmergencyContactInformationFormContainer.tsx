@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import EmergencyContactInformationForm from "../forms/EmergencyContactInformationForm";
-import { IParticipationEmergencyContactForm } from "@/admin/model/participant/participantModel";
+import { IParticipationEmergencyContactForm } from "@/admin/model/participant/attendScheduleModel";
 
 type IField = (keyof IParticipationEmergencyContactForm)[];
 interface IEmergencyContactInformationFormContainer {
