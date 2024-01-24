@@ -18,7 +18,6 @@ function AdditionalForm({ slideToPrev, formContext: { control, watch } }: IAddit
                               control={control}
                               render={({ field, fieldState }) => (
                                     <RichTextEditor
-                                          isRequired
                                           label="Additional Requirement"
                                           value={field.value}
                                           onChangeHandler={field.onChange}
