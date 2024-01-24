@@ -1,10 +1,10 @@
 import { store } from '@/app/store';
 import { useAppDispatch } from '@/app/hooks';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
-import { ICallForPaperAddNewSessionPostRequest, ICallForPaperPostRequest } from '@/admin/model/callForPaper/callForPaperApplyModel';
+import { ICallForPaperAddNewSessionPutRequest, ICallForPaperPostRequest } from '@/admin/model/callForPaper/callForPaperApplyModel';
 import { IAdminCallForPaperDeleteRequest, IAdminCallForPaperPutRequest, IAdminCallForPaperStatusChangeReq, ICallForPaperBasicSearch, ICallForPaperByIdSearch } from '@/admin/model/callForPaper/callForPaperModel';
 import { scheduleSliceAction } from '@/admin/pages/schedule/feature/scheduleSlice';
-import { getCallForPaperBasicInfo as getCallForPaperBasicInfoReq, getCallForPaperDetailedById, putAdminCallForPaperApprovalStatus, putAdminCallForPaperFullDetail, deleteCallForPaperDetail as deleteCallForPaperDetailReq, postCallForPaperDetail, postCallForPaperNewSession } from '@/admin/pages/callForPaper/feature/callForPaperRequest';
+import { getCallForPaperBasicInfo as getCallForPaperBasicInfoReq, getCallForPaperDetailedById, putAdminCallForPaperApprovalStatus, putAdminCallForPaperFullDetail, deleteCallForPaperDetail as deleteCallForPaperDetailReq, postCallForPaperDetail, putCallForPaperNewSession } from '@/admin/pages/callForPaper/feature/callForPaperRequest';
 
 function useCallForPaperApi() {
       const dispatch = useAppDispatch();
@@ -106,10 +106,10 @@ function useCallForPaperApi() {
 
 
 
-      const addCallForPaperNewSession = async (sessionDetail: ICallForPaperAddNewSessionPostRequest) => {
+      const addCallForPaperNewSession = async (sessionDetail: ICallForPaperAddNewSessionPutRequest) => {
             loadingAlertWithMessage({ title: "Submitting", text: "Please wait while submitting the form." });
 
-            await dispatch(postCallForPaperNewSession(sessionDetail))
+            await dispatch(putCallForPaperNewSession(sessionDetail))
                   .unwrap()
                   .then(() => {
                         successMessage({ title: "Success", message: "Your request for proposal has been placed." });

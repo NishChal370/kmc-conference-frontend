@@ -142,6 +142,47 @@ export interface IParticipationPostAdditionalForm {
 
 
 
-export interface ICallForPaperAddNewSessionPostRequest {
-      sessionId: IScheduleChoice["sessionId"];
+
+
+// Add new session in existing callForPaper (proposal)
+
+export type ICallForPaperAddNewSessionPutRequest = ICallForPaperSession;
+
+
+
+export interface ICallForPaperAddSessionForm {
+      abstractSummary: string;
+      keywords: IMultipleInputFields;
+      proposedPaperSessionTitle: string;
+      primaryFieldCategory: string;
+      researchMethodology?: string;
+      keyObjectives: IMultipleInputFields;
+      contributions: IMultipleInputFields;
+      significanceRelevance?: string;
+      preferredPresentationFormat: string;
+      audioVisualRequirements?: string;
+      fullPaperORExtendedAbstract: IFilUpdateDetail;
+      referencesOrCitations: IMultipleInputFields;
+}
+
+
+export interface ICallForPaperAddSessionProposalForm {
+      proposedPaperSessionTitle: string;
+      keywords: IMultipleInputFields;
+      primaryFieldCategory: string;
+      researchMethodology?: string;
+      abstractSummary: string;
+      referencesOrCitations: IMultipleInputFields;
+}
+
+
+
+
+export interface ICallForPaperAddSessionPresentationForm {
+      preferredPresentationFormat: string;
+      keyObjectives: IMultipleInputFields;
+      contributions: IMultipleInputFields;
+      significanceRelevance?: string;
+      audioVisualRequirements: string;
+      fullPaperORExtendedAbstract: IFilUpdateDetail;
 }

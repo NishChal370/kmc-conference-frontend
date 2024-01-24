@@ -5,8 +5,8 @@ import ScheduleAttendOptionModal from "../components/scheduleActionHeader/Schedu
 import BecomeCallForPaperModal from "@/site/components/becomeCallForPaperForm/BecomeCallForPaperModal";
 import ScheduleActionHeaderButton from "../components/scheduleActionHeader/ScheduleActionHeaderButton";
 import UpdateBecomeSpeakerModal from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerModal";
+import UpdateBecomeCallForPaperModal from "@/site/components/updateBecomeCallForPaperForm/UpdateBecomeCallForPaperModal";
 import UpdateAttendScheduleFormContainer from "@/site/components/updateAttendScheduleForm/container/UpdateAttendScheduleFormContainer";
-import UpdateBecomeCallForPaperFormContainer from "@/site/components/updateBecomeCallForPaperForm/container/UpdateBecomeCallForPaperFormContainer";
 import { scheduleContentBriefDetailSliceState } from "@/admin/pages/schedule/feature/scheduleSlice";
 import { Status, UserType } from "@/enum/commonEnum";
 import { errorToastMessage } from "@/utils/alert";
@@ -163,9 +163,9 @@ function ScheduleActionHeaderButtonContainer() {
                   {data?.hasAddedPreviously?.callForPaper &&
                         callForPaperForm?.isOpen &&
                         callForPaperForm.data && (
-                              <UpdateBecomeCallForPaperFormContainer
+                              <UpdateBecomeCallForPaperModal
                                     closeModal={closeCallForPaperForm}
-                                    selectedSessionDetail={callForPaperForm.data}
+                                    selectedSession={callForPaperForm.data}
                               />
                         )}
             </>

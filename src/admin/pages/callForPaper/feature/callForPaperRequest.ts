@@ -1,13 +1,13 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
-import { adminCallForPaperApi } from "@/admin/api/service/adminCallForPaperApi";
+import { callForPaperApi } from "@/admin/api/service/callForPaperApi";
+import { ICallForPaperAddNewSessionPutRequest, ICallForPaperPostRequest } from "@/admin/model/callForPaper/callForPaperApplyModel";
 import { IAdminCallForPaperDeleteRequest, IAdminCallForPaperPutRequest, IAdminCallForPaperStatusChangeReq, ICallForPaperBasicResponse, ICallForPaperBasicSearch, ICallForPaperByIdResponse, ICallForPaperByIdSearch } from "@/admin/model/callForPaper/callForPaperModel";
-import { ICallForPaperAddNewSessionPostRequest, ICallForPaperPostRequest } from "@/admin/model/callForPaper/callForPaperApplyModel";
 
 export const getCallForPaperBasicInfo = createAppAsyncThunk<ICallForPaperBasicResponse, ICallForPaperBasicSearch>(
       "callForPaper/basic/get",
       async (searchDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminCallForPaperApi.getBasicInfo(searchDetail);
+                  const response = await callForPaperApi.getBasicInfo(searchDetail);
 
                   return response.data;
             } catch (error: any) {
@@ -21,7 +21,7 @@ export const getCallForPaperDetailedById = createAppAsyncThunk<ICallForPaperById
       "admin/callForPaper/detailed-info/get",
       async (CallForPaperDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminCallForPaperApi.getCallForPaperDetailedById(CallForPaperDetail);
+                  const response = await callForPaperApi.getCallForPaperDetailedById(CallForPaperDetail);
 
                   return response.data;
             } catch (error: any) {
@@ -35,7 +35,7 @@ export const postCallForPaperDetail = createAppAsyncThunk<undefined, ICallForPap
       "site/callForPaper/post",
       async (callForPaperDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminCallForPaperApi.postCallForPaperDetail(callForPaperDetail);
+                  const response = await callForPaperApi.postCallForPaperDetail(callForPaperDetail);
 
                   return response.data;
             } catch (error: any) {
@@ -50,7 +50,7 @@ export const putAdminCallForPaperFullDetail = createAppAsyncThunk<undefined, IAd
       "admin/callForPaper/put",
       async (CallForPaperUpdateDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminCallForPaperApi.putCallForPaperDetailed(CallForPaperUpdateDetail);
+                  const response = await callForPaperApi.putCallForPaperDetailed(CallForPaperUpdateDetail);
 
                   return response.data;
             } catch (error: any) {
@@ -64,7 +64,7 @@ export const putAdminCallForPaperApprovalStatus = createAppAsyncThunk<undefined,
       "admin/callForPaper/approval-status/put",
       async (approvalDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminCallForPaperApi.putCallForPaperApprovalStatus(approvalDetail);
+                  const response = await callForPaperApi.putCallForPaperApprovalStatus(approvalDetail);
 
                   return response.data;
             } catch (error: any) {
@@ -78,7 +78,7 @@ export const deleteCallForPaperDetail = createAppAsyncThunk<undefined, IAdminCal
       "admin/callForPaper/delete",
       async (deletingDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminCallForPaperApi.deleteCallForPaperDetail(deletingDetail);
+                  const response = await callForPaperApi.deleteCallForPaperDetail(deletingDetail);
 
                   return response.data;
             } catch (error: any) {
@@ -89,11 +89,11 @@ export const deleteCallForPaperDetail = createAppAsyncThunk<undefined, IAdminCal
 
 
 
-export const postCallForPaperNewSession = createAppAsyncThunk<undefined, ICallForPaperAddNewSessionPostRequest>(
+export const putCallForPaperNewSession = createAppAsyncThunk<undefined, ICallForPaperAddNewSessionPutRequest>(
       "site/callForPaper/new-session/post",
       async (detail, { rejectWithValue }) => {
             try {
-                  const response = await adminCallForPaperApi.postCallForPaperNewSession(detail);
+                  const response = await callForPaperApi.postCallForPaperNewSession(detail);
 
                   return response.data;
             } catch (error: any) {

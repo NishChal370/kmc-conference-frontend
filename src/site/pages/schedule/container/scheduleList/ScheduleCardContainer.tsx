@@ -3,8 +3,8 @@ import AttendScheduleModal from "@/site/components/attendScheduleForm/AttendSche
 import BecomeSpeakerFormModal from "@/site/components/becomeSpeakerForm/BecomeSpeakerFormModal";
 import BecomeCallForPaperModal from "@/site/components/becomeCallForPaperForm/BecomeCallForPaperModal";
 import UpdateBecomeSpeakerModal from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerModal";
+import UpdateBecomeCallForPaperModal from "@/site/components/updateBecomeCallForPaperForm/UpdateBecomeCallForPaperModal";
 import UpdateAttendScheduleFormContainer from "@/site/components/updateAttendScheduleForm/container/UpdateAttendScheduleFormContainer";
-import UpdateBecomeCallForPaperFormContainer from "@/site/components/updateBecomeCallForPaperForm/container/UpdateBecomeCallForPaperFormContainer";
 import { useAppSelector } from "@/app/hooks";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import { Status } from "@/enum/commonEnum";
@@ -105,9 +105,9 @@ function ScheduleCardContainer({ schedule, hasAddedPreviously }: IScheduleCardCo
                   )}
 
                   {hasAddedPreviously?.callForPaper && callForPaperForm?.isOpen && callForPaperForm.data && (
-                        <UpdateBecomeCallForPaperFormContainer
+                        <UpdateBecomeCallForPaperModal
                               closeModal={closeCallForPaperForm}
-                              selectedSessionDetail={callForPaperForm.data}
+                              selectedSession={callForPaperForm.data}
                         />
                   )}
             </>
