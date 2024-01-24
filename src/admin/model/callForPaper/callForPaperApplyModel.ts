@@ -23,20 +23,9 @@ export interface ICallForPaperPostRequest {
       linkedInProfile?: string;
       twitterHandler?: string;
       professionalWebsite?: string;
-      sessions: IScheduleChoice["sessionId"][];
-      proposedPaperSessionTitle: string;
-      abstractSummary: string;
-      keywords: string[] | null;
-      primaryFieldCategory: string;
-      researchMethodology: string;
-      keyObjectives: string[] | null;
-      contributions: string[] | null;
-      significanceRelevance?: string;
-      preferredPresentationFormat: string;
-      audioVisualRequirements: string;
+      session: ICallForPaperSession;
       previousExperience: string[] | null;
       listOfConferences: string[] | null;
-      referencesOrCitations: string[] | null;
       availabilityDaysTimes?: string | null; // no in use
       willParticipateInPanel: boolean;
       willParticipateInWorkshop: boolean;
@@ -44,7 +33,23 @@ export interface ICallForPaperPostRequest {
       additionalRequirements: string;
       confirmPresent: boolean;
       acceptTandC: boolean;
-      fullPaperORExtendedAbstract?: File | null;
+}
+
+
+export interface ICallForPaperSession {
+      sessionId: IScheduleModel["id"];
+      abstractSummary: string;
+      keywords: string[] | null;
+      proposedPaperSessionTitle: string;
+      primaryFieldCategory: string;
+      researchMethodology?: string;
+      keyObjectives: string[] | null;
+      contributions: string[] | null;
+      significanceRelevance?: string;
+      preferredPresentationFormat: string;
+      audioVisualRequirements?: string;
+      fullPaperOrExtendedAbstract: File | null;
+      referencesOrCitations: string[] | null;
 }
 
 
@@ -60,12 +65,12 @@ export interface ICallForPaperPostForm {
       abstractSummary: string;
       keywords: IMultipleInputFields;
       primaryFieldCategory: string;
-      researchMethodology: string;
+      researchMethodology?: string;
       keyObjectives: IMultipleInputFields;
       contributions: IMultipleInputFields;
       significanceRelevance?: string;
       preferredPresentationFormat: string;
-      audioVisualRequirements: string;
+      audioVisualRequirements?: string;
       previousExperience: IMultipleInputFields;
       listOfConferences: IMultipleInputFields;
       referencesOrCitations: IMultipleInputFields;
@@ -94,7 +99,7 @@ export interface ICallForPaperPostSessionProposalForm {
       proposedPaperSessionTitle: string;
       keywords: IMultipleInputFields;
       primaryFieldCategory: string;
-      researchMethodology: string;
+      researchMethodology?: string;
       abstractSummary: string;
       referencesOrCitations: IMultipleInputFields;
 }
