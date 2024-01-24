@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
 import { ISpeakerContentDetailSearch } from "@/admin/model/speaker/speakerContentModel";
-import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerPutRequest, ISpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from "@/admin/model/speaker/speakerModel";
 
 export const adminSpeakerApi = {
       getBasicInfo: (searchDetail: ISpeakerBasicSearch) => {
@@ -24,7 +24,7 @@ export const adminSpeakerApi = {
             return AXIOS.request(options);
       },
 
-      putSpeakerDetailed: (speakerUpdateDetail: IAdminSpeakerPutRequest) => {
+      putSpeakerDetailed: (speakerUpdateDetail: ISpeakerPutRequest) => {
             const options: AxiosRequestConfig = {
                   method: "PUT",
                   url: `Speaker`,
@@ -59,7 +59,7 @@ export const adminSpeakerApi = {
       },
 
 
-      putSpeakerApprovalStatus: (approvalDetail: IAdminSpeakerStatusChangeReq) => {
+      putSpeakerApprovalStatus: (approvalDetail: ISpeakerStatusChangeReq) => {
             const options: AxiosRequestConfig = {
                   method: "PUT",
                   url: `Speaker/update-status`,

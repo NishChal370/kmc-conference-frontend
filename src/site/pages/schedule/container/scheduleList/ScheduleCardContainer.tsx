@@ -10,7 +10,7 @@ import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import { Status } from "@/enum/commonEnum";
 import { errorToastMessage } from "@/utils/alert";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
-import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
 import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
 import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
 import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";

@@ -1,6 +1,6 @@
 import Button from "@/shared/button/Button";
 import { Modal } from "@/shared/modal";
-import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
 import getTokenDetail from "@/utils/token/getTokenDetail";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 

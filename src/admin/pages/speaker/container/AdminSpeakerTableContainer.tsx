@@ -12,7 +12,7 @@ import {
       ISpeakerDeleteRequest,
       IAdminSpeakerViewOrEditModal,
       IAdminSpeakerStatusChangeModal,
-} from "@/admin/model/speaker/adminSpeakerModel";
+} from "@/admin/model/speaker/speakerModel";
 import { speakerBasicInfoSliceState, speakerSliceAction } from "../feature/speakerSlice";
 
 interface IAdminSpeakerTableContainer {

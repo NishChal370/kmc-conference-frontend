@@ -14,7 +14,7 @@ import { useAppSelector } from "@/app/hooks";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
 import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
-import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
 import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";
 
 function ScheduleActionHeaderButtonContainer() {

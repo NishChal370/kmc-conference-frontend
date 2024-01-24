@@ -12,7 +12,6 @@ export interface ISpeakerBasicModel {
       photo: IAttachment | null,
       jobTitle: string,
       affiliation: string,
-      approvalStatus: SpeakerApprovalStatus
 }
 
 export interface ISpeakerDetailModel extends ISpeakerBasicModel {
@@ -28,14 +27,21 @@ export interface ISpeakerDetailModel extends ISpeakerBasicModel {
       expertiseInField: string;
       previousSpeakingEngagements: string[] | null;
       publications: string[] | null;
-      preferredSessionLengthMinutes?: number;
-      availabilityInfo: string[] | null; // THis is not in used
       willingToTravel: boolean;
-      avRequirements?: string;
       accommodationNeeds?: string;
-      sessionProposal: IAttachment | null;
+      sessions: ISpeakerSession[],
       referenceContacts: string[] | null;
       agreedToDates: boolean;
+}
+
+
+export interface ISpeakerSession {
+      sessionId: IScheduleModel["id"],
+      title: IScheduleModel["title"],
+      avRequirements?: string,
+      approvalStatus: SpeakerApprovalStatus,
+      preferredSessionLengthMinutes?: number,
+      sessionProposal: IAttachment | null;
 }
 
 
@@ -67,7 +73,6 @@ export interface ISpeakerByIdSearch {
 
 export interface ISpeakerPostRequest {
       bio: string;
-      photo: File | null,
       linkedInProfile?: string;
       twitterHandle?: string;
       professionalWebsite?: string;
@@ -76,22 +81,21 @@ export interface ISpeakerPostRequest {
       expertiseInField: string;
       previousSpeakingEngagements: string[] | null;
       publications: string[] | null;
-      preferredSessionLengthMinutes?: number;
-      availabilityInfo: string[] | null; // THis is not in used
       willingToTravel: boolean;
-      avRequirements?: string;
       accommodationNeeds?: string;
-      sessionProposal: File | null;
+      photo: File | null,
       referenceContacts: string[] | null;
+      sessionSelection: Omit<ISpeakerSession, "title" | "approvalStatus" | "sessionProposal"> & {
+            sessionProposal: File | null
+      };
       agreedToDates: boolean;
       agreedTandC: boolean;
-      sessions: IScheduleChoice["sessionId"][];
 }
 
 
 
 
-export interface IAdminSpeakerPutRequest {
+export interface ISpeakerPutRequest {
       speakerId: ISpeakerDetailModel["id"];
       bio: string;
       linkedInProfile?: string;
@@ -102,16 +106,11 @@ export interface IAdminSpeakerPutRequest {
       expertiseInField: string;
       previousSpeakingEngagements: string[] | null;
       publications: string[] | null;
-      preferredSessionLengthMinutes?: number;
-      availabilityInfo: string[] | null; // THis is not in used
       willingToTravel: boolean;
-      avRequirements?: string;
       accommodationNeeds?: string;
       referenceContacts: string[] | null;
       photo: File | null,
       oldPhoto?: string;
-      sessionProposal: File | null;
-      oldSessionProposal?: string;
 }
 
 
@@ -122,9 +121,8 @@ export interface ISpeakerDeleteRequest {
 
 
 
-export interface IAdminSpeakerForm {
+export interface ISpeakerUpdateForm {
       speakerId: ISpeakerDetailModel["id"];
-      photo: IFilUpdateDetail,
       bio: string;
       linkedInProfile?: string;
       twitterHandle?: string;
@@ -134,105 +132,34 @@ export interface IAdminSpeakerForm {
       expertiseInField: string;
       previousSpeakingEngagements: IMultipleInputFields;
       publications: IMultipleInputFields;
-      preferredSessionLengthMinutes?: number;
-      availabilityInfo: string[] | null; // THis is not in used
       willingToTravel: boolean;
-      avRequirements?: string;
       accommodationNeeds?: string;
       referenceContacts: IMultiplePhoneNumberInput;
       proposalFile: IFilUpdateDetail,
 }
 
 
-export interface IAdminSpeakerViewOrEditModal {
+export interface ISpeakerViewOrEditModal {
       id: ISpeakerDetailModel["id"],
 }
 
 
 
 
-export interface IAdminSpeakerStatusChangeReq {
-      id: ISpeakerDetailModel["id"],
-      approvalStatus: ISpeakerDetailModel["approvalStatus"],
+export interface ISpeakerStatusChangeReq {
+      speakerId: ISpeakerDetailModel["id"];
+      sessionId: ISpeakerSession["sessionId"];
+      approvalStatus: ISpeakerSession["approvalStatus"];
 }
 
 
 export interface IAdminSpeakerStatusChangeModal {
       id: ISpeakerDetailModel["id"],
       speakerName: ISpeakerDetailModel["name"];
-      approvalStatus: ISpeakerDetailModel["approvalStatus"],
+      sessionId: ISpeakerSession["sessionId"];
+      sessionTitle: ISpeakerSession["title"];
+      approvalStatus: ISpeakerSession["approvalStatus"],
 }
-
-
-
-export interface ISpeakerAddForm {
-      bio: string;
-      photo: IFilUpdateDetail,
-      linkedInProfile?: string;
-      twitterHandle?: string;
-      professionalWebsite?: string;
-      previousExperience?: string;
-      previousConferences?: string;
-      expertiseInField: string;
-      previousSpeakingEngagements: IMultipleInputFields;
-      publications: IMultipleInputFields;
-      preferredSessionLengthMinutes?: number;
-      availabilityInfo: string[] | null; // THis is not in used
-      willingToTravel: boolean;
-      avRequirements?: string;
-      accommodationNeeds?: string;
-      sessionProposal: IFilUpdateDetail;
-      referenceContacts: IMultiplePhoneNumberInput;
-      agreedToDates: boolean;
-      agreedTandC: boolean;
-      sessions: IScheduleChoice["sessionId"][];
-}
-
-
-export interface ISpeakerProfessionalAddForm {
-      expertiseInField: string;
-      publications: IMultipleInputFields;
-      previousSpeakingEngagements: IMultipleInputFields;
-      previousExperience?: string;
-      previousConferences?: string;
-}
-
-export interface ISpeakerPersonalAddForm {
-      linkedInProfile?: string;
-      twitterHandle?: string;
-      professionalWebsite?: string;
-      bio: string;
-      photo: IFilUpdateDetail,
-}
-
-export interface ISpeakerSessionDetailAddFrom {
-      avRequirements?: string;
-      preferredSessionLengthMinutes?: number;
-      willingToTravel: boolean;
-      accommodationNeeds?: string;
-      sessionProposal: IFilUpdateDetail;
-}
-
-
-export interface ISpeakerAdditionalDetailAddFrom {
-      referenceContacts: IMultiplePhoneNumberInput;
-      agreedToDates: boolean;
-      agreedTandC: boolean;
-}
-
-
-/**
- * used speaker apply modal
- */
-export interface ISpeakerAddModal {
-      sessionChoice: IScheduleChoice;
-      dayDate: string;
-      startTime: IScheduleModel["startTime"]
-      endTime: IScheduleModel["endTime"];
-      dayLocation: string;
-      sessionLocation: IScheduleModel["location"]
-}
-
 
 
 

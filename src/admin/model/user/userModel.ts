@@ -1,6 +1,6 @@
 import { GENDER, UserRole } from "@/enum/commonEnum"
 import { IBasicApiResponse } from "@/models/commonModel";
-import { ISpeakerBasicModel } from "../speaker/adminSpeakerModel"
+import { ISpeakerBasicModel } from "../speaker/speakerModel"
 import { IParticipantBasicModel } from "../participant/participantModel"
 import { ICallForPaperBasicModel } from "../callForPaper/callForPaperModel"
 import { IRegisterUserPostRequest } from '@/site/model/registerUser/registerUserModel';

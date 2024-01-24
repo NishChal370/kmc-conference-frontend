@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminSpeakerApi } from "@/admin/api/service/adminSpeakerApi";
-import { ISpeakerBasicSearch, IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicResponse, ISpeakerByIdResponse, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerPostRequest, ISpeakerNewSessionPostRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerBasicSearch, IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicResponse, ISpeakerByIdResponse, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerPostRequest, ISpeakerNewSessionPostRequest } from "@/admin/model/speaker/speakerModel";
 
 export const getSpeakerBasicInfo = createAppAsyncThunk<ISpeakerBasicResponse, ISpeakerBasicSearch>(
       "speaker/basic/get",

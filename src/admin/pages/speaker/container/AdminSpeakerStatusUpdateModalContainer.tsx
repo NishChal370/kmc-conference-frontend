@@ -2,7 +2,7 @@ import { useState } from "react";
 import AdminSpeakerStatusUpdateModal from "../components/AdminSpeakerStatusUpdateModal";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
-import { IAdminSpeakerStatusChangeModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerStatusChangeModal } from "@/admin/model/speaker/speakerModel";
 
 interface IAdminSpeakerStatusUpdateModalContainer {
       speakerStatusDetail: IAdminSpeakerStatusChangeModal;

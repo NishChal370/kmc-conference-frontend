@@ -1,6 +1,6 @@
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import UpdateBecomeSpeakerForm from "./UpdateBecomeSpeakerForm";
-import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
 
 interface IUpdateBecomeSpeakerFormContainer {
       closeModal: () => void;

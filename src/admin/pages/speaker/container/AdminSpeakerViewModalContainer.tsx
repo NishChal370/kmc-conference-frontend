@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { speakerDetailedSliceState, speakerSliceAction } from "../feature/speakerSlice";
 import { Status } from "@/enum/commonEnum";
-import { ISpeakerBasicModel } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerBasicModel } from "@/admin/model/speaker/speakerModel";
 
 interface IAdminSpeakerViewModalContainer {
       selectedSpeakerId: ISpeakerBasicModel["id"];

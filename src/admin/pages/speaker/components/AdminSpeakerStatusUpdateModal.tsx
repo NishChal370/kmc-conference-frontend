@@ -3,7 +3,7 @@ import Button from "@/shared/button/Button";
 import StaticOptionsDropdownInput from "@/shared/input/StaticOptionsDropdownInput";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import { SPEAKER_APPROVAL_STATUS_OPTION } from "../data/speakerApprovalStatusOption";
-import { IAdminSpeakerStatusChangeModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerStatusChangeModal } from "@/admin/model/speaker/speakerModel";
 
 interface IAdminSpeakerStatusUpdateModal {
       value: SpeakerApprovalStatus;

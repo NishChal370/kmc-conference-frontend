@@ -3,7 +3,7 @@ import { useAppDispatch } from '@/app/hooks';
 import { scheduleSliceAction } from '@/admin/pages/schedule/feature/scheduleSlice';
 import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, putAdminSpeakerApprovalStatus, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById, postSpeakerDetail as postSpeakerDetailReq, postSpeakerNewSession } from '@/admin/pages/speaker/feature/speakerRequest';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
-import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from '@/admin/model/speaker/adminSpeakerModel';
+import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from '@/admin/model/speaker/speakerModel';
 
 function useSpeakerApi() {
       const dispatch = useAppDispatch();

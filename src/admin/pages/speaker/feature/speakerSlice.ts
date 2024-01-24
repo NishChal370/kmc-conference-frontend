@@ -2,7 +2,7 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { ISpeakerBasicResponse, ISpeakerByIdResponse } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerBasicResponse, ISpeakerByIdResponse } from "@/admin/model/speaker/speakerModel";
 import { ISpeakerContentDetailResponse, ISpeakersContentResponse } from "@/admin/model/speaker/speakerContentModel";
 import { getSpeakerContentDetail, getSpeakersContent } from "./speakerContentRequest";
 import { deleteSpeakerDetail, getSpeakerBasicInfo, getSpeakerDetailedById, putAdminSpeakerApprovalStatus, putAdminSpeakerFullDetail } from "./speakerRequest";

@@ -6,7 +6,7 @@ import SanitizedContent from "@/shared/sanitizedContent/SanitizedContent";
 import getMonth from "@/utils/dateFormat/getMonth";
 import getDateDay from "@/utils/dateFormat/getDateDay";
 import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
-import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
 import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
 import { SPEAKERS_DETAILS } from "@/site/pages/speakers/seed/speakersDetailList";
 import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";

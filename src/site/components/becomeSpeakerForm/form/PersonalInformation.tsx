@@ -5,7 +5,7 @@ import SecondaryInput from "@/shared/input/SecondaryInput";
 import ImageSelectInput from "@/shared/fileInput/ImageSelectInput";
 import { REGEX } from "@/helper/regex";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { ISpeakerPersonalAddForm } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerPersonalAddForm } from "@/admin/model/speaker/becomeSpeakerModel";
 
 interface IPersonalInformation {
       formSubmitHandler: () => void;

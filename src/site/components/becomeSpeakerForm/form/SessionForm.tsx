@@ -5,7 +5,7 @@ import SecondaryInput from "@/shared/input/SecondaryInput";
 import RichTextEditor from "@/shared/input/RichTextEditor";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 import FileDragDropContainer from "@/shared/fileInput/FileDragDropContainer";
-import { ISpeakerSessionDetailAddFrom } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerSessionDetailAddFrom } from "@/admin/model/speaker/becomeSpeakerModel";
 
 interface ISessionForm {
       slideToPrev: () => void;
@@ -79,7 +79,7 @@ function SessionForm({
 
                         <span className="sm:col-span-2">
                               <Controller
-                                    name="sessionProposal"
+                                    name="proposalFile"
                                     control={control}
                                     render={({ field }) => (
                                           <FileDragDropContainer

@@ -9,7 +9,7 @@ import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import {
       IAdminSpeakerViewOrEditModal,
       IAdminSpeakerStatusChangeModal,
-} from "@/admin/model/speaker/adminSpeakerModel";
+} from "@/admin/model/speaker/speakerModel";
 import { IModal } from "@/admin/model/modal/useModalModel";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 

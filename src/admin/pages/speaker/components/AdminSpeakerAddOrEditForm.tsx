@@ -10,7 +10,7 @@ import FileDragDropContainer from "@/shared/fileInput/FileDragDropContainer";
 import { Modal, ModalSectionHeader, ModalFooter, ModalActionButtons } from "@/shared/modal";
 import { REGEX } from "@/helper/regex";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { IAdminSpeakerForm } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerForm } from "@/admin/model/speaker/speakerModel";
 
 interface IAdminAddOrEditSpeakerForm {
       modalType?: "Add" | "Edit";

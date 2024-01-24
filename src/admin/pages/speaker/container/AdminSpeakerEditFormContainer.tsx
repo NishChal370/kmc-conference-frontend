@@ -5,7 +5,7 @@ import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { Status } from "@/enum/commonEnum";
 import { speakerDetailedSliceState, speakerSliceAction } from "../feature/speakerSlice";
-import { IAdminSpeakerForm, IAdminSpeakerPutRequest } from "@/admin/model/speaker/adminSpeakerModel";
+import { IAdminSpeakerForm, IAdminSpeakerPutRequest } from "@/admin/model/speaker/speakerModel";
 
 interface IAdminSpeakerEditFormContainer {
       selectedSpeakerId: number;

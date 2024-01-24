@@ -7,7 +7,7 @@ import {
       ISpeakerDeleteRequest,
       IAdminSpeakerStatusChangeModal,
       IAdminSpeakerViewOrEditModal,
-} from "@/admin/model/speaker/adminSpeakerModel";
+} from "@/admin/model/speaker/speakerModel";
 import { Status } from "@/enum/commonEnum";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 

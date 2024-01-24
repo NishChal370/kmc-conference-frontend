@@ -1,6 +1,6 @@
 import { Modal } from "@/shared/modal";
 import BecomeSpeakerFormContainer from "./container/BecomeSpeakerFormContainer";
-import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 
 interface IBecomeSpeakerFormModal {

@@ -1,7 +1,7 @@
 import FileViewer from "@/admin/shared/file/FileViewer";
 import SpeakerProfileSection from "./SpeakerProfileSection";
 import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
-import { ISpeakerDetailModel } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerDetailModel } from "@/admin/model/speaker/speakerModel";
 
 interface IAdminSpeakerViewModal {
       closeModalHandler: () => void;

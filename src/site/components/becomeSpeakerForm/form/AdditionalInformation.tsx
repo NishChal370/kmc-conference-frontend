@@ -3,7 +3,7 @@ import Button from "@/shared/button/Button";
 import AgreementCheckBox from "@/shared/input/AgreementCheckBox";
 import MultiplePhoneInput from "@/shared/input/MultiplePhoneInput";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { ISpeakerAdditionalDetailAddFrom } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerAdditionalDetailAddFrom } from "@/admin/model/speaker/becomeSpeakerModel";
 
 interface IAdditionalInformation {
       slideToPrev: () => void;

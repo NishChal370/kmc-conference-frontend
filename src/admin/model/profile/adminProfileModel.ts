@@ -1,5 +1,5 @@
 import { GENDER } from "@/enum/commonEnum"
-import { ISpeakerBasicModel } from "../speaker/adminSpeakerModel"
+import { ISpeakerBasicModel } from "../speaker/speakerModel"
 import { ICallForPaperBasicModel } from "../callForPaper/callForPaperModel"
 import { IParticipantBasicModel } from "../participant/participantModel"
 

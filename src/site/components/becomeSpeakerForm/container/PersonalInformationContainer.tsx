@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import PersonalInformation from "../form/PersonalInformation";
-import { ISpeakerPersonalAddForm } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerPersonalAddForm } from "@/admin/model/speaker/becomeSpeakerModel";
 
 type IField = (keyof ISpeakerPersonalAddForm)[];
 
