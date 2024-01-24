@@ -10,15 +10,15 @@ import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { Status } from "@/enum/commonEnum";
 import {
       ISpeakerDeleteRequest,
-      IAdminSpeakerViewOrEditModal,
-      IAdminSpeakerStatusChangeModal,
+      ISpeakerViewOrEditModal,
+      ISpeakerApprovalStatusChangeModal,
 } from "@/admin/model/speaker/speakerModel";
 import { speakerBasicInfoSliceState, speakerSliceAction } from "../feature/speakerSlice";
 
 interface IAdminSpeakerTableContainer {
-      openStatusChangeModal: (speakerDetail: IAdminSpeakerStatusChangeModal) => void;
-      openEditModal: ({ editingData }: { editingData: IAdminSpeakerViewOrEditModal }) => void;
-      openViewModal: ({ viewingData }: { viewingData: IAdminSpeakerViewOrEditModal }) => void;
+      openStatusChangeModal: (speakerDetail: ISpeakerApprovalStatusChangeModal) => void;
+      openEditModal: ({ editingData }: { editingData: ISpeakerViewOrEditModal }) => void;
+      openViewModal: ({ viewingData }: { viewingData: ISpeakerViewOrEditModal }) => void;
 }
 
 function AdminSpeakerTableContainer({
@@ -42,15 +42,15 @@ function AdminSpeakerTableContainer({
             getSpeakerBasicInfo({ pageNumber: currentPageNumber });
       };
 
-      const openViewModalHandler = (viewingData: IAdminSpeakerViewOrEditModal) => () => {
+      const openViewModalHandler = (viewingData: ISpeakerViewOrEditModal) => () => {
             openViewModal({ viewingData });
       };
 
-      const openEditModalHandler = (editingData: IAdminSpeakerViewOrEditModal) => () => {
+      const openEditModalHandler = (editingData: ISpeakerViewOrEditModal) => () => {
             openEditModal({ editingData });
       };
 
-      const openStatusChangeModalHandler = (speakerDetail: IAdminSpeakerStatusChangeModal) => () => {
+      const openStatusChangeModalHandler = (speakerDetail: ISpeakerApprovalStatusChangeModal) => () => {
             openStatusChangeModal(speakerDetail);
       };
 

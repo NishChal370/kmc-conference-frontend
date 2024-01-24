@@ -23,6 +23,7 @@ export interface ISpeakersContentResponse {
 
 export type ISpeakerContentDetailResponse = Omit<ISpeakerContentModel, "linkedInProfile" | "twitterHandler" | "professionalWebsite">;
 
+
 export interface ISpeakerContentDetailSearch {
       id: number
 }

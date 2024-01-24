@@ -1,8 +1,8 @@
 import { SpeakerApprovalStatus } from '@/enum/speaker/speakerEnum';
 import { IBasicApiResponse, } from '@/models/commonModel';
+import { IScheduleModel } from '../schedule/scheduleModel';
 import { IAttachment, IFilUpdateDetail } from '@/models/file/fileModel';
 import { IMultipleInputFields, IMultiplePhoneNumberInput } from '@/models/input/multiplePhoneInputModel';
-import { IScheduleChoice, IScheduleModel } from '../schedule/scheduleModel';
 
 
 
@@ -71,30 +71,6 @@ export interface ISpeakerByIdSearch {
 
 
 
-export interface ISpeakerPostRequest {
-      bio: string;
-      linkedInProfile?: string;
-      twitterHandle?: string;
-      professionalWebsite?: string;
-      previousExperience?: string;
-      previousConferences?: string;
-      expertiseInField: string;
-      previousSpeakingEngagements: string[] | null;
-      publications: string[] | null;
-      willingToTravel: boolean;
-      accommodationNeeds?: string;
-      photo: File | null,
-      referenceContacts: string[] | null;
-      sessionSelection: Omit<ISpeakerSession, "title" | "approvalStatus" | "sessionProposal"> & {
-            sessionProposal: File | null
-      };
-      agreedToDates: boolean;
-      agreedTandC: boolean;
-}
-
-
-
-
 export interface ISpeakerPutRequest {
       speakerId: ISpeakerDetailModel["id"];
       bio: string;
@@ -153,20 +129,10 @@ export interface ISpeakerStatusChangeReq {
 }
 
 
-export interface IAdminSpeakerStatusChangeModal {
+export interface ISpeakerApprovalStatusChangeModal {
       id: ISpeakerDetailModel["id"],
       speakerName: ISpeakerDetailModel["name"];
       sessionId: ISpeakerSession["sessionId"];
       sessionTitle: ISpeakerSession["title"];
       approvalStatus: ISpeakerSession["approvalStatus"],
-}
-
-
-
-/**
- * @interface
- * Represent add new session for speaker
- */
-export interface ISpeakerNewSessionPostRequest {
-      sessionId: IScheduleChoice["sessionId"];
 }

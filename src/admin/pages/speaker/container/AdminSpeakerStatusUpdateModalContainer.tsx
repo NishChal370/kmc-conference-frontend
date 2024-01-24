@@ -1,11 +1,11 @@
 import { useState } from "react";
-import AdminSpeakerStatusUpdateModal from "../components/AdminSpeakerStatusUpdateModal";
-import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
-import { IAdminSpeakerStatusChangeModal } from "@/admin/model/speaker/speakerModel";
+import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
+import { ISpeakerApprovalStatusChangeModal } from "@/admin/model/speaker/speakerModel";
+import AdminSpeakerStatusUpdateModal from "../components/AdminSpeakerStatusUpdateModal";
 
 interface IAdminSpeakerStatusUpdateModalContainer {
-      speakerStatusDetail: IAdminSpeakerStatusChangeModal;
+      speakerStatusDetail: ISpeakerApprovalStatusChangeModal;
       closeModalHandler: () => void;
 }
 function AdminSpeakerStatusUpdateModalContainer({

@@ -7,18 +7,18 @@ import AdminSpeakerStatusUpdateModalContainer from "./container/AdminSpeakerStat
 import useModal from "@/admin/hooks/modal/useModal";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import {
-      IAdminSpeakerViewOrEditModal,
-      IAdminSpeakerStatusChangeModal,
+      ISpeakerViewOrEditModal,
+      ISpeakerApprovalStatusChangeModal,
 } from "@/admin/model/speaker/speakerModel";
 import { IModal } from "@/admin/model/modal/useModalModel";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 
 function AdminSpeakers() {
       const { modalState, openEditModal, openViewModal, closeModal } =
-            useModal<IModal<IAdminSpeakerViewOrEditModal>>();
+            useModal<IModal<ISpeakerViewOrEditModal>>();
 
       const [statusChangeModal, openStatusChangeModal, closeStatusChangeModal] =
-            useExtraModal<IAdminSpeakerStatusChangeModal>();
+            useExtraModal<ISpeakerApprovalStatusChangeModal>();
 
       return (
             <>

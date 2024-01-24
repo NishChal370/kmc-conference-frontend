@@ -5,8 +5,8 @@ import { SPEAKER_HEADER_LIST } from "../data/speakerHeaderList";
 import {
       ISpeakerBasicModel,
       ISpeakerDeleteRequest,
-      IAdminSpeakerStatusChangeModal,
-      IAdminSpeakerViewOrEditModal,
+      ISpeakerApprovalStatusChangeModal,
+      ISpeakerViewOrEditModal,
 } from "@/admin/model/speaker/speakerModel";
 import { Status } from "@/enum/commonEnum";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
@@ -14,10 +14,10 @@ import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 interface IAdminSpeakerTable {
       status: Status;
       speakersBasicInfo: ISpeakerBasicModel[];
-      openEditModalHandler: (editingData: IAdminSpeakerViewOrEditModal) => () => void;
-      openViewModalHandler: (viewingData: IAdminSpeakerViewOrEditModal) => () => void;
+      openEditModalHandler: (editingData: ISpeakerViewOrEditModal) => () => void;
+      openViewModalHandler: (viewingData: ISpeakerViewOrEditModal) => () => void;
       deleteSpeakerDetailHandler: (deletingDetail: ISpeakerDeleteRequest) => () => void;
-      openStatusChangeModalHandler: (speakerDetail: IAdminSpeakerStatusChangeModal) => () => void;
+      openStatusChangeModalHandler: (speakerDetail: ISpeakerApprovalStatusChangeModal) => () => void;
 }
 
 function AdminSpeakerTable({
@@ -44,7 +44,7 @@ function AdminSpeakerTable({
                                           <Td dataName="Designation">{speaker.jobTitle}</Td>
                                           <Td dataName="Company">{speaker.affiliation}</Td>
                                           <Td dataName="Approval Status">
-                                                {SpeakerApprovalStatus[speaker.approvalStatus]}
+                                                {/* {SpeakerApprovalStatus[speaker.approvalStatus]} //FIXME */}
                                           </Td>
                                           <Td id="table-action-container" dataName="Action">
                                                 <TableActionButton
@@ -72,8 +72,10 @@ function AdminSpeakerTable({
                                                                   clickHandler: openStatusChangeModalHandler({
                                                                         id: speaker.id,
                                                                         approvalStatus:
-                                                                              speaker.approvalStatus,
+                                                                              speaker.approvalStatus, //FIXME change this
                                                                         speakerName: speaker.name,
+                                                                        sessionId: 0, // FIXME: change this
+                                                                        sessionTitle: "", //FIXME
                                                                   }),
                                                             },
                                                             {

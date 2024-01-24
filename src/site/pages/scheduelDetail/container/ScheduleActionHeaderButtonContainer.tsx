@@ -4,7 +4,7 @@ import BecomeSpeakerFormModal from "@/site/components/becomeSpeakerForm/BecomeSp
 import ScheduleAttendOptionModal from "../components/scheduleActionHeader/ScheduleAttendOptionModal";
 import BecomeCallForPaperModal from "@/site/components/becomeCallForPaperForm/BecomeCallForPaperModal";
 import ScheduleActionHeaderButton from "../components/scheduleActionHeader/ScheduleActionHeaderButton";
-import UpdateBecomeSpeakerFormContainer from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerFormContainer";
+import UpdateBecomeSpeakerModal from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerModal";
 import UpdateAttendScheduleFormContainer from "@/site/components/updateAttendScheduleForm/container/UpdateAttendScheduleFormContainer";
 import UpdateBecomeCallForPaperFormContainer from "@/site/components/updateBecomeCallForPaperForm/container/UpdateBecomeCallForPaperFormContainer";
 import { scheduleContentBriefDetailSliceState } from "@/admin/pages/schedule/feature/scheduleSlice";
@@ -145,9 +145,9 @@ function ScheduleActionHeaderButtonContainer() {
                   )}
 
                   {data?.hasAddedPreviously?.speaker && speakerForm?.isOpen && speakerForm.data && (
-                        <UpdateBecomeSpeakerFormContainer
+                        <UpdateBecomeSpeakerModal
                               closeModal={closeSpeakerForm}
-                              selectedSessionDetail={speakerForm.data}
+                              selectedSession={speakerForm.data}
                         />
                   )}
 

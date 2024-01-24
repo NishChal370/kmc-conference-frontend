@@ -2,9 +2,10 @@ import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
 import { ISpeakerContentDetailSearch } from "@/admin/model/speaker/speakerContentModel";
-import { ISpeakerPutRequest, ISpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from "@/admin/model/speaker/speakerModel";
+import { ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from "@/admin/model/speaker/becomeSpeakerModel";
+import { ISpeakerPutRequest, ISpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/speakerModel";
 
-export const adminSpeakerApi = {
+const speakerApi = {
       getBasicInfo: (searchDetail: ISpeakerBasicSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
@@ -49,9 +50,9 @@ export const adminSpeakerApi = {
 
       postSpeakerNewSession: (sessionDetail: ISpeakerNewSessionPostRequest) => {
             const options: AxiosRequestConfig = {
-                  method: "POST",
+                  method: "PUT",
                   url: `Speaker/add-session`,
-                  data: sessionDetail,
+                  data: convertObjectToFormData(sessionDetail),
             };
 
 
@@ -99,4 +100,7 @@ export const adminSpeakerApi = {
 
             return AXIOS.request(options);
       },
-}
+} as const;
+
+
+export default speakerApi;

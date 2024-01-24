@@ -1,13 +1,16 @@
 import { FormProvider, useForm } from "react-hook-form";
 import BecomeSpeakerForm from "../form/BecomeSpeakerForm";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
-import { ISpeakerAddForm } from "@/admin/model/speaker/becomeSpeakerModel";
-import { ISpeakerPostRequest } from "@/admin/model/speaker/speakerModel";
+import {
+      ISpeakerAddForm,
+      ISpeakerAddModal,
+      ISpeakerPostRequest,
+} from "@/admin/model/speaker/becomeSpeakerModel";
 import { extractValue, getFileOrNull } from "@/utils/dataHelpers";
 
 interface IBecomeSpeakerFormContainer {
       closeModalHandler: () => void;
-      selectedSessionId: ISpeakerPostRequest["sessionSelection"]["sessionId"];
+      selectedSessionId: ISpeakerAddModal["sessionChoice"]["sessionId"];
 }
 function BecomeSpeakerFormContainer({ selectedSessionId, closeModalHandler }: IBecomeSpeakerFormContainer) {
       const methods = useForm<ISpeakerAddForm>({

@@ -3,7 +3,7 @@ import Button from "@/shared/button/Button";
 import StaticOptionsDropdownInput from "@/shared/input/StaticOptionsDropdownInput";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import { SPEAKER_APPROVAL_STATUS_OPTION } from "../data/speakerApprovalStatusOption";
-import { IAdminSpeakerStatusChangeModal } from "@/admin/model/speaker/speakerModel";
+import { ISpeakerApprovalStatusChangeModal } from "@/admin/model/speaker/speakerModel";
 
 interface IAdminSpeakerStatusUpdateModal {
       value: SpeakerApprovalStatus;
@@ -11,7 +11,7 @@ interface IAdminSpeakerStatusUpdateModal {
       closeModalHandler: () => void;
       currentStatus: SpeakerApprovalStatus;
       onChangeHandler: (value: SpeakerApprovalStatus) => void;
-      speakerName: IAdminSpeakerStatusChangeModal["speakerName"];
+      speakerName: ISpeakerApprovalStatusChangeModal["speakerName"];
 }
 
 function AdminSpeakerStatusUpdateModal({

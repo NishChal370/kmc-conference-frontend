@@ -1,6 +1,52 @@
+import { ISpeakerSession } from "./speakerModel";
 import { IFilUpdateDetail } from "@/models/file/fileModel";
 import { IScheduleChoice, IScheduleModel } from "../schedule/scheduleModel";
 import { IMultipleInputFields, IMultiplePhoneNumberInput } from "@/models/input/multiplePhoneInputModel";
+
+
+/**
+ * @interface
+ * Represent apply for speaker Modal
+ */
+export interface ISpeakerAddModal {
+      sessionChoice: IScheduleChoice;
+      dayDate: string;
+      startTime: IScheduleModel["startTime"];
+      endTime: IScheduleModel["endTime"];
+      dayLocation: string;
+      sessionLocation: IScheduleModel["location"];
+}
+
+
+
+
+
+
+// Become Speaker
+
+export interface ISpeakerPostRequest {
+      bio: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience?: string;
+      previousConferences?: string;
+      expertiseInField: string;
+      previousSpeakingEngagements: string[] | null;
+      publications: string[] | null;
+      willingToTravel: boolean;
+      accommodationNeeds?: string;
+      photo: File | null,
+      referenceContacts: string[] | null;
+      sessionSelection: Omit<ISpeakerSession, "title" | "approvalStatus" | "sessionProposal"> & {
+            sessionProposal: File | null
+      };
+      agreedTandC: boolean;
+      agreedToDates: boolean;
+}
+
+
+
 
 export interface ISpeakerAddForm {
       bio: string;
@@ -18,8 +64,8 @@ export interface ISpeakerAddForm {
       referenceContacts: IMultiplePhoneNumberInput;
       agreedToDates: boolean;
       agreedTandC: boolean;
-      avRequirements?: string,
-      preferredSessionLengthMinutes?: number,
+      avRequirements?: string;
+      preferredSessionLengthMinutes?: number;
       proposalFile: IFilUpdateDetail;
 }
 
@@ -62,15 +108,30 @@ export interface ISpeakerAdditionalDetailAddFrom {
 
 
 
+
+
+
+
+
+// Add new session for existing speaker
+
+
 /**
- * used speaker apply modal
+ * @interface
+ * Represent add new session for existing speaker
  */
-export interface ISpeakerAddModal {
-      sessionChoice: IScheduleChoice;
-      dayDate: string;
-      startTime: IScheduleModel["startTime"]
-      endTime: IScheduleModel["endTime"];
-      dayLocation: string;
-      sessionLocation: IScheduleModel["location"]
+export interface ISpeakerNewSessionPostRequest {
+      sessionId: IScheduleChoice["sessionId"];
+      avRequirements?: string;
+      sessionProposal: File | null;
+      preferredSessionLengthMinutes?: number;
 }
 
+
+
+
+export interface ISpeakerNewSessionAddForm {
+      avRequirements?: string;
+      preferredSessionLengthMinutes?: number;
+      proposalFile: IFilUpdateDetail;
+}

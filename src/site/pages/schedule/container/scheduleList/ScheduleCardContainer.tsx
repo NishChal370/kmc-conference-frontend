@@ -2,7 +2,7 @@ import ScheduleCard from "../../components/scheduleList/ScheduleCard";
 import AttendScheduleModal from "@/site/components/attendScheduleForm/AttendScheduleModal";
 import BecomeSpeakerFormModal from "@/site/components/becomeSpeakerForm/BecomeSpeakerFormModal";
 import BecomeCallForPaperModal from "@/site/components/becomeCallForPaperForm/BecomeCallForPaperModal";
-import UpdateBecomeSpeakerFormContainer from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerFormContainer";
+import UpdateBecomeSpeakerModal from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerModal";
 import UpdateAttendScheduleFormContainer from "@/site/components/updateAttendScheduleForm/container/UpdateAttendScheduleFormContainer";
 import UpdateBecomeCallForPaperFormContainer from "@/site/components/updateBecomeCallForPaperForm/container/UpdateBecomeCallForPaperFormContainer";
 import { useAppSelector } from "@/app/hooks";
@@ -91,9 +91,9 @@ function ScheduleCardContainer({ schedule, hasAddedPreviously }: IScheduleCardCo
                   )}
 
                   {hasAddedPreviously?.speaker && speakerForm?.isOpen && speakerForm.data && (
-                        <UpdateBecomeSpeakerFormContainer
+                        <UpdateBecomeSpeakerModal
                               closeModal={closeSpeakerForm}
-                              selectedSessionDetail={speakerForm.data}
+                              selectedSession={speakerForm.data}
                         />
                   )}
 
