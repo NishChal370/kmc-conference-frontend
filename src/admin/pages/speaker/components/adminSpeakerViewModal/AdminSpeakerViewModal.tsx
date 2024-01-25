@@ -1,4 +1,3 @@
-import FileViewer from "@/admin/shared/file/FileViewer";
 import SpeakerProfileSection from "./SpeakerProfileSection";
 import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
 import { ISpeakerDetailModel } from "@/admin/model/speaker/speakerModel";
@@ -82,6 +81,7 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                           <ModalSanitizedText title="" htmlContent={speakerDetail.bio} />
                                     </article>
                               </section>
+
                               <section className="flex flex-col gap-6 w-full">
                                     <ModalSectionHeader title="Professional Background" />
 
@@ -100,7 +100,7 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                                 title="Previous Speaking Engagements"
                                                 data={speakerDetail.previousSpeakingEngagements}
                                           />
-                                          <br />
+                                          <br className="hidden sm:flex" />
 
                                           <ModalSanitizedText
                                                 title="Previous Experience"
@@ -113,8 +113,9 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                           />
                                     </article>
                               </section>
+
                               <section className="flex flex-col gap-6 w-full">
-                                    <ModalSectionHeader title="Session Information" />
+                                    <ModalSectionHeader title="Additional Information" />
 
                                     <article
                                           className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
@@ -126,41 +127,6 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                                 data={speakerDetail.willingToTravel ? "Yes" : "No"}
                                           />
 
-                                          <ModalText
-                                                title="Audio/view Requirement"
-                                                data={speakerDetail.avRequirements}
-                                          />
-
-                                          <ModalText
-                                                title="Preferred session length (in minutes)"
-                                                data={speakerDetail.preferredSessionLengthMinutes}
-                                          />
-                                          <br />
-
-                                          <ModalSanitizedText
-                                                containerClassName="sm:col-span-2"
-                                                title="Accommodation Needs"
-                                                htmlContent={speakerDetail.accommodationNeeds}
-                                          />
-
-                                          <FileViewer
-                                                files={
-                                                      speakerDetail.sessionProposal
-                                                            ? [speakerDetail.sessionProposal]
-                                                            : null
-                                                }
-                                                containerClassName="sm:col-span-2"
-                                          />
-                                    </article>
-                              </section>
-                              <section className="flex flex-col gap-6 w-full">
-                                    <ModalSectionHeader title="Additional Information" />
-
-                                    <article
-                                          className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
-                                                sm:grid-cols-2 sm:px-2
-                                          "
-                                    >
                                           <ModalText
                                                 title="Reference Contact"
                                                 data={speakerDetail.referenceContacts}

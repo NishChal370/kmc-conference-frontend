@@ -38,7 +38,7 @@ export interface ISpeakerPostRequest {
       accommodationNeeds?: string;
       photo: File | null,
       referenceContacts: string[] | null;
-      sessionSelection: Omit<ISpeakerSession, "title" | "approvalStatus" | "sessionProposal"> & {
+      sessionSelection: Omit<ISpeakerSession, "sessionProposal"> & {
             sessionProposal: File | null
       };
       agreedTandC: boolean;

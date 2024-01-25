@@ -29,7 +29,6 @@ export interface ISpeakerDetailModel extends ISpeakerBasicModel {
       publications: string[] | null;
       willingToTravel: boolean;
       accommodationNeeds?: string;
-      sessions: ISpeakerSession[],
       referenceContacts: string[] | null;
       agreedToDates: boolean;
 }

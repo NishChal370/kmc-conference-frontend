@@ -25,8 +25,8 @@ function ScheduleCard({
       openCallForPaperFormHandler,
 }: IScheduleCard) {
       return (
-            <div className="flex flex-col gap-10 w-full h-full px-6 py-4 border border-l-2 border-l-primary border-default">
-                  <section className="flex justify-between items-start gap-1 w-full h-full">
+            <div className="flex flex-col justify-between gap-10 w-full h-full px-6 py-4 border border-l-2 border-l-primary border-default min-h-[16rem]">
+                  <section className="flex justify-between items-start gap-1 sm:gap-20 md:gap-24 w-full h-full">
                         <article className="flex flex-col items-start justify-center gap-y-4 w-full h-full">
                               <section className="flex flex-col gap-y-2 w-full h-full">
                                     <ScheduleCardTitle

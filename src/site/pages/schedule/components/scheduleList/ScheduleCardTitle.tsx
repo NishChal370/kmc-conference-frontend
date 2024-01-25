@@ -17,7 +17,7 @@ function ScheduleCardTitle({ scheduleId, title }: IScheduleCardTitle) {
       return (
             <h1
                   onClick={navigateToDetailPage}
-                  className="text-xl font-bold cursor-pointer
+                  className="text-xl font-bold cursor-pointer line-clamp-2
                         hover:underline
                   "
             >
