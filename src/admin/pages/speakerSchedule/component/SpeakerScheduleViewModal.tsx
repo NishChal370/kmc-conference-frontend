@@ -12,7 +12,7 @@ function SpeakerScheduleViewModal({ closeViewModal, speakerSession }: ISpeakerSc
       return (
             <Modal
                   title="View Speaker Session Detail"
-                  size="min-w-full sm:min-w-[95%] xl:min-w-[40%] max-w-[40rem]"
+                  size="min-w-full sm:min-w-[95%] xl:min-w-[55%] max-w-[55rem]"
                   closeHandler={closeViewModal}
             >
                   <>

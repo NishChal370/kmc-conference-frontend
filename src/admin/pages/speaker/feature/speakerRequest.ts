@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import speakerApi from "@/admin/api/service/speakerApi";
-import { ISpeakerBasicSearch, ISpeakerPutRequest, ISpeakerBasicResponse, ISpeakerByIdResponse, ISpeakerByIdSearch, ISpeakerDeleteRequest, } from "@/admin/model/speaker/speakerModel";
+import { ISpeakerBasicSearch, ISpeakerBasicResponse, ISpeakerByIdResponse, ISpeakerByIdSearch, ISpeakerDeleteRequest, } from "@/admin/model/speaker/speakerModel";
 
 export const getSpeakerBasicInfo = createAppAsyncThunk<ISpeakerBasicResponse, ISpeakerBasicSearch>(
       "speaker/basic/get",
@@ -30,20 +30,6 @@ export const getSpeakerDetailedById = createAppAsyncThunk<ISpeakerByIdResponse, 
 );
 
 
-
-
-export const putAdminSpeakerFullDetail = createAppAsyncThunk<undefined, ISpeakerPutRequest>(
-      "admin/speaker/put",
-      async (speakerUpdateDetail, { rejectWithValue }) => {
-            try {
-                  const response = await speakerApi.putSpeakerDetailed(speakerUpdateDetail);
-
-                  return response.data;
-            } catch (error: any) {
-                  return rejectWithValue(error.response.data);
-            }
-      }
-);
 
 
 export const deleteSpeakerDetail = createAppAsyncThunk<undefined, ISpeakerDeleteRequest>(

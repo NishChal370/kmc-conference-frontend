@@ -1,8 +1,7 @@
 import { SpeakerApprovalStatus } from '@/enum/speaker/speakerEnum';
 import { IBasicApiResponse, } from '@/models/commonModel';
 import { IScheduleModel } from '../schedule/scheduleModel';
-import { IAttachment, IFilUpdateDetail } from '@/models/file/fileModel';
-import { IMultipleInputFields, IMultiplePhoneNumberInput } from '@/models/input/multiplePhoneInputModel';
+import { IAttachment, } from '@/models/file/fileModel';
 
 
 
@@ -70,48 +69,12 @@ export interface ISpeakerByIdSearch {
 
 
 
-export interface ISpeakerPutRequest {
-      speakerId: ISpeakerDetailModel["id"];
-      bio: string;
-      linkedInProfile?: string;
-      twitterHandle?: string;
-      professionalWebsite?: string;
-      previousExperience?: string;
-      previousConferences?: string;
-      expertiseInField: string;
-      previousSpeakingEngagements: string[] | null;
-      publications: string[] | null;
-      willingToTravel: boolean;
-      accommodationNeeds?: string;
-      referenceContacts: string[] | null;
-      photo: File | null,
-      oldPhoto?: string;
-}
 
 
 export interface ISpeakerDeleteRequest {
       speakerId: ISpeakerDetailModel["id"],
 }
 
-
-
-
-export interface ISpeakerUpdateForm {
-      speakerId: ISpeakerDetailModel["id"];
-      bio: string;
-      linkedInProfile?: string;
-      twitterHandle?: string;
-      professionalWebsite?: string;
-      previousExperience?: string;
-      previousConferences?: string;
-      expertiseInField: string;
-      previousSpeakingEngagements: IMultipleInputFields;
-      publications: IMultipleInputFields;
-      willingToTravel: boolean;
-      accommodationNeeds?: string;
-      referenceContacts: IMultiplePhoneNumberInput;
-      proposalFile: IFilUpdateDetail,
-}
 
 
 export interface ISpeakerViewModal {

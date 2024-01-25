@@ -8,8 +8,8 @@ import {
       ISpeakerViewModal,
 } from "@/admin/model/speaker/speakerModel";
 import { Status } from "@/enum/commonEnum";
-import { NestedRowWrapper, NestedRowContainer } from "@/admin/shared/table/nested-table";
 import SpeakerSchedule from "../../speakerSchedule/SpeakerSchedule";
+import { NestedRowWrapper, NestedRowContainer } from "@/admin/shared/table/nested-table";
 
 interface IAdminSpeakerTable {
       status: Status;
@@ -30,7 +30,7 @@ function AdminSpeakerTable({
 
                   <TableBody status={status}>
                         <NestedRowContainer>
-                              {({ selectedRowId, selectRowHandler, closeRowHandler }) =>
+                              {({ selectedRowId, selectRowHandler }) =>
                                     speakersBasicInfo.map((speaker, index) => (
                                           <NestedRowWrapper
                                                 key={speaker.id}

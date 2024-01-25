@@ -95,7 +95,7 @@ function FilePlaceholder({ file, uniqueId }: IFilePlaceholder) {
 
                   <span
                         id={`image-error-${uniqueId}-${file?.fileName}`}
-                        className="hidden flex-col items-center justify-center"
+                        className="hidden flex-col items-center justify-center mb-1"
                   >
                         <img
                               id={`image-error-${uniqueId}-${file?.fileName}`}

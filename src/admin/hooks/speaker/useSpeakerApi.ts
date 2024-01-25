@@ -2,10 +2,10 @@ import { store } from '@/app/store';
 import { useAppDispatch } from '@/app/hooks';
 import { scheduleSliceAction } from '@/admin/pages/schedule/feature/scheduleSlice';
 import { postSpeakerDetail, postSpeakerNewSession } from '@/admin/pages/speaker/feature/becomeSpeakerRequest';
-import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById } from '@/admin/pages/speaker/feature/speakerRequest';
+import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById } from '@/admin/pages/speaker/feature/speakerRequest';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 import { ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from '@/admin/model/speaker/becomeSpeakerModel';
-import { ISpeakerPutRequest, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, } from '@/admin/model/speaker/speakerModel';
+import { ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, } from '@/admin/model/speaker/speakerModel';
 
 
 function useSpeakerApi() {
@@ -28,23 +28,6 @@ function useSpeakerApi() {
       }
 
 
-
-      const updateAdminSpeakerFullDetail = async (speakerUpdateDetail: ISpeakerPutRequest) => {
-            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
-
-            await dispatch(putAdminSpeakerFullDetail(speakerUpdateDetail))
-                  .unwrap()
-                  .then(() => {
-                        successMessage({ title: "Updated", message: "Speaker detail has been updated." });
-                  })
-                  .catch((error) => {
-                        errorToastMessage(error.detail);
-
-
-                        throw new Error(error);
-                  })
-                  .finally(swalAlertClose)
-      }
 
       const addSpeakerDetail = async (speakerUpdateDetail: ISpeakerPostRequest) => {
             loadingAlertWithMessage();
@@ -108,7 +91,7 @@ function useSpeakerApi() {
 
 
 
-      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getSpeakerDetailedInfo, deleteSpeakerDetail, addSpeakerDetail, addSpeakerNewSession } as const;
+      return { getSpeakerBasicInfo, getSpeakerDetailedInfo, deleteSpeakerDetail, addSpeakerDetail, addSpeakerNewSession } as const;
 }
 
 export default useSpeakerApi

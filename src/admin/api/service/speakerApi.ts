@@ -3,7 +3,7 @@ import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
 import { ISpeakerContentDetailSearch } from "@/admin/model/speaker/speakerContentModel";
 import { ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from "@/admin/model/speaker/becomeSpeakerModel";
-import { ISpeakerPutRequest, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/speakerModel";
+import { ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/speakerModel";
 
 const speakerApi = {
       getBasicInfo: (searchDetail: ISpeakerBasicSearch) => {
@@ -21,17 +21,6 @@ const speakerApi = {
                   method: "GET",
                   url: `Speaker/${id}`,
             };
-
-            return AXIOS.request(options);
-      },
-
-      putSpeakerDetailed: (speakerUpdateDetail: ISpeakerPutRequest) => {
-            const options: AxiosRequestConfig = {
-                  method: "PUT",
-                  url: `Speaker`,
-                  data: convertObjectToFormData(speakerUpdateDetail)
-            };
-
 
             return AXIOS.request(options);
       },
