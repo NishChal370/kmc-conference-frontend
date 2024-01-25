@@ -19,10 +19,10 @@ export const authApi = {
             return AXIOS.request(options);
       },
 
-      baseURL: API_URL,
       refreshToken: (oldToken: ITokenModel) => {
             const options: AxiosRequestConfig = {
                   method: "POST",
+                  baseURL: API_URL,
                   url: `auth/refresh-token`,
                   data: oldToken,
             };

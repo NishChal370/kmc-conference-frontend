@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 import { Status } from "@/enum/commonEnum";
 
-interface INestedTBody {
+interface INestedChildTBody {
       status: Status;
       children: ReactNode;
 }
-function NestedTBody({ children, status }: INestedTBody) {
+function NestedChildTBody({ children, status }: INestedChildTBody) {
       return status === Status.SUCCEEDED ? <tbody className="nested-tbody">{children}</tbody> : undefined;
 }
 
-export default NestedTBody;
+export default NestedChildTBody;

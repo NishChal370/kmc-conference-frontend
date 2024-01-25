@@ -18,6 +18,7 @@ function ServerImage({ image, className, alt, title }: IServerImage) {
 
       const fetchImage = () => {
             if (!image) return;
+
             getImageFile(image).then((responseFile) => {
                   const img = document.getElementById(
                         `image-${uniqueId}-${image?.fileName}`

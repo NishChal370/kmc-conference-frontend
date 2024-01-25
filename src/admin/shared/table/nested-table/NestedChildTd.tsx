@@ -1,12 +1,12 @@
 import { ReactElement } from "react";
 
-interface INestedTd {
+interface INestedChildTd {
       type?: "string" | "number";
       id?: React.HTMLAttributes<HTMLTableCellElement>["id"];
       children?: ReactElement | string | number;
 }
 
-function NestedTd({ type, id, children }: INestedTd) {
+function NestedChildTd({ type, id, children }: INestedChildTd) {
       return (
             <>
                   {id === "index" && (
@@ -24,4 +24,4 @@ function NestedTd({ type, id, children }: INestedTd) {
       );
 }
 
-export default NestedTd;
+export default NestedChildTd;

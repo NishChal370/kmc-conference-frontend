@@ -5,18 +5,19 @@ import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { Status } from "@/enum/commonEnum";
 import { speakerDetailedSliceState, speakerSliceAction } from "../feature/speakerSlice";
-import { IAdminSpeakerForm, IAdminSpeakerPutRequest } from "@/admin/model/speaker/speakerModel";
+import { ISpeakerUpdateForm, ISpeakerPutRequest } from "@/admin/model/speaker/speakerModel";
 
 interface IAdminSpeakerEditFormContainer {
       selectedSpeakerId: number;
       closeModalHandler: () => void;
 }
 
+//FIXME: NOT in use
 function AdminSpeakerEditFormContainer({
       selectedSpeakerId,
       closeModalHandler,
 }: IAdminSpeakerEditFormContainer) {
-      const speakerEditForm = useAppForm<IAdminSpeakerForm>({
+      const speakerEditForm = useAppForm<ISpeakerUpdateForm>({
             defaultValues: {
                   photo: {
                         oldFiles: [],
@@ -36,14 +37,14 @@ function AdminSpeakerEditFormContainer({
 
       const { handleSubmit, reset } = speakerEditForm;
 
-      const formSubmitHandler = handleSubmit((speakerUpdatedDetail: IAdminSpeakerForm) => {
+      const formSubmitHandler = handleSubmit((speakerUpdatedDetail: ISpeakerUpdateForm) => {
             const previousSpeakingEngagements = speakerUpdatedDetail.previousSpeakingEngagements.map(
                   ({ value }) => value
             );
             const publications = speakerUpdatedDetail.publications.map(({ value }) => value);
             const referenceContacts = speakerUpdatedDetail.referenceContacts.map(({ phone }) => phone);
 
-            const updatedSpeaker: IAdminSpeakerPutRequest = {
+            const updatedSpeaker: ISpeakerPutRequest = {
                   speakerId: speakerUpdatedDetail.speakerId,
                   photo: speakerUpdatedDetail.photo.newFiles?.length
                         ? speakerUpdatedDetail.photo.newFiles[0]

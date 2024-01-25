@@ -2,7 +2,7 @@ import AppIcon from "@/shared/icon/AppIcon";
 import { Table, TableBody, TableHead, Td } from "@/admin/shared/table";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
 import AdminScheduleTopic from "@/admin/pages/scheduleTopic/AdminScheduleTopic";
-import { NestedTable, NestedTableContainer } from "@/admin/shared/table/nested-table";
+import { NestedRowWrapper, NestedRowContainer } from "@/admin/shared/table/nested-table";
 import { Status } from "@/enum/commonEnum";
 import { IScheduleDeleteRequest, IScheduleModel } from "@/admin/model/schedule/scheduleModel";
 import { ADMIN_SESSION_TABLE_HEADER } from "../data/adminScheduleHeaders";
@@ -28,10 +28,10 @@ function AdminScheduleTable({
                         <TableHead headers={ADMIN_SESSION_TABLE_HEADER} />
 
                         <TableBody status={status}>
-                              <NestedTableContainer>
+                              <NestedRowContainer>
                                     {({ selectedRowId, selectRowHandler, closeRowHandler }) =>
                                           schedules.map((schedule) => (
-                                                <NestedTable
+                                                <NestedRowWrapper
                                                       key={schedule.id}
                                                       childColSpan={5}
                                                       presentRowId={schedule.id}
@@ -158,10 +158,10 @@ function AdminScheduleTable({
                                                                   scheduleId={schedule.id}
                                                             />
                                                       )}
-                                                </NestedTable>
+                                                </NestedRowWrapper>
                                           ))
                                     }
-                              </NestedTableContainer>
+                              </NestedRowContainer>
                         </TableBody>
                   </Table>
             </>

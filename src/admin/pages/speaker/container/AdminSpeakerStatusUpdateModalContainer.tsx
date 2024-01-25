@@ -8,6 +8,8 @@ interface IAdminSpeakerStatusUpdateModalContainer {
       speakerStatusDetail: ISpeakerApprovalStatusChangeModal;
       closeModalHandler: () => void;
 }
+
+//FIXME: NOT in use
 function AdminSpeakerStatusUpdateModalContainer({
       speakerStatusDetail,
       closeModalHandler,
@@ -23,9 +25,11 @@ function AdminSpeakerStatusUpdateModalContainer({
       };
 
       const formSubmitHandler = () => {
-            updateSpeakerApprovalStatus({ id: speakerStatusDetail.id, approvalStatus: approvalStatus }).then(
-                  closeModalHandler
-            );
+            updateSpeakerApprovalStatus({
+                  sessionId: speakerStatusDetail.sessionId,
+                  approvalStatus: approvalStatus,
+                  speakerId: speakerStatusDetail.id,
+            }).then(closeModalHandler);
       };
 
       return (

@@ -113,6 +113,7 @@ async function refreshAccessToken() {
             });
       } catch (error: any) {
 
+            console.log("refresh Toke error ", error);
             store.dispatch(changeVerifyLoginStatus(Status.FAILED))
 
             // Reject all pending requests in the refresh queue with the error

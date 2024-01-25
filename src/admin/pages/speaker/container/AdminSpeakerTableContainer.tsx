@@ -8,24 +8,14 @@ import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { Status } from "@/enum/commonEnum";
-import {
-      ISpeakerDeleteRequest,
-      ISpeakerViewOrEditModal,
-      ISpeakerApprovalStatusChangeModal,
-} from "@/admin/model/speaker/speakerModel";
+import { ISpeakerDeleteRequest, ISpeakerViewModal } from "@/admin/model/speaker/speakerModel";
 import { speakerBasicInfoSliceState, speakerSliceAction } from "../feature/speakerSlice";
 
 interface IAdminSpeakerTableContainer {
-      openStatusChangeModal: (speakerDetail: ISpeakerApprovalStatusChangeModal) => void;
-      openEditModal: ({ editingData }: { editingData: ISpeakerViewOrEditModal }) => void;
-      openViewModal: ({ viewingData }: { viewingData: ISpeakerViewOrEditModal }) => void;
+      openViewModal: ({ viewingData }: { viewingData: ISpeakerViewModal }) => void;
 }
 
-function AdminSpeakerTableContainer({
-      openEditModal,
-      openViewModal,
-      openStatusChangeModal,
-}: IAdminSpeakerTableContainer) {
+function AdminSpeakerTableContainer({ openViewModal }: IAdminSpeakerTableContainer) {
       const { search } = useLocation();
 
       const dispatch = useAppDispatch();
@@ -42,16 +32,8 @@ function AdminSpeakerTableContainer({
             getSpeakerBasicInfo({ pageNumber: currentPageNumber });
       };
 
-      const openViewModalHandler = (viewingData: ISpeakerViewOrEditModal) => () => {
+      const openViewModalHandler = (viewingData: ISpeakerViewModal) => () => {
             openViewModal({ viewingData });
-      };
-
-      const openEditModalHandler = (editingData: ISpeakerViewOrEditModal) => () => {
-            openEditModal({ editingData });
-      };
-
-      const openStatusChangeModalHandler = (speakerDetail: ISpeakerApprovalStatusChangeModal) => () => {
-            openStatusChangeModal(speakerDetail);
       };
 
       const deleteSpeakerDetailHandler = (deletingDetail: ISpeakerDeleteRequest) => () => {
@@ -74,8 +56,6 @@ function AdminSpeakerTableContainer({
                         status={status}
                         speakersBasicInfo={data.speakers}
                         openViewModalHandler={openViewModalHandler}
-                        openEditModalHandler={openEditModalHandler}
-                        openStatusChangeModalHandler={openStatusChangeModalHandler}
                         deleteSpeakerDetailHandler={deleteSpeakerDetailHandler}
                   />
 

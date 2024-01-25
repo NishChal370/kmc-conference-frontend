@@ -1,14 +1,20 @@
 import { ReactNode } from "react";
 import "../style/nestedTable.css";
 
-interface INestedTable {
+interface INestedRowWrapper {
       presentRowId: number;
       childColSpan: number;
       selectedRowId?: number;
       parentTr: ({ isOpen }: { isOpen: boolean }) => ReactNode;
       children: ({ isOpen }: { isOpen: boolean }) => ReactNode;
 }
-function NestedTable({ presentRowId, selectedRowId, parentTr, children, childColSpan }: INestedTable) {
+function NestedRowWrapper({
+      presentRowId,
+      selectedRowId,
+      parentTr,
+      children,
+      childColSpan,
+}: INestedRowWrapper) {
       const isOpen = presentRowId === selectedRowId;
 
       return (
@@ -38,4 +44,4 @@ function NestedTable({ presentRowId, selectedRowId, parentTr, children, childCol
       );
 }
 
-export default NestedTable;
+export default NestedRowWrapper;

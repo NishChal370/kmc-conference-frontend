@@ -115,8 +115,8 @@ export interface ISpeakerUpdateForm {
 }
 
 
-export interface ISpeakerViewOrEditModal {
-      id: ISpeakerDetailModel["id"],
+export interface ISpeakerViewModal {
+      speakerId: ISpeakerDetailModel["id"],
 }
 
 
@@ -129,6 +129,8 @@ export interface ISpeakerStatusChangeReq {
 }
 
 
+
+//TODO: check this,  if it is in use or not
 export interface ISpeakerApprovalStatusChangeModal {
       id: ISpeakerDetailModel["id"],
       speakerName: ISpeakerDetailModel["name"];

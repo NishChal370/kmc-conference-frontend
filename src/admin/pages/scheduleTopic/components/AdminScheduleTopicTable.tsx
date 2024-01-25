@@ -1,6 +1,11 @@
 import AppIcon from "@/shared/icon/AppIcon";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
-import { NestedTBody, NestedTd, NestedTh, NestedTr } from "@/admin/shared/table/nested-table";
+import {
+      NestedChildTBody,
+      NestedChildTd,
+      NestedChildTh,
+      NestedChildTr,
+} from "@/admin/shared/table/nested-table";
 import {
       IScheduleTopicDeleteRequest,
       IScheduleTopicModel,
@@ -26,16 +31,19 @@ function AdminScheduleTopicTable({
       return (
             <>
                   <table className="w-full !h-full">
-                        <NestedTh headers={ADMIN_SESSION_TOPIC_TABLE_HEADER} />
-                        <NestedTBody status={status}>
+                        <NestedChildTh headers={ADMIN_SESSION_TOPIC_TABLE_HEADER} />
+
+                        <NestedChildTBody status={status}>
                               <>
                                     {scheduleTopics.map((scheduleTopic, index) => (
-                                          <NestedTr key={scheduleTopic.id}>
-                                                <NestedTd id="index">{index + 1}</NestedTd>
+                                          <NestedChildTr key={scheduleTopic.id}>
+                                                <NestedChildTd id="index">{index + 1}</NestedChildTd>
 
-                                                <NestedTd id="session-title">{scheduleTopic.title}</NestedTd>
+                                                <NestedChildTd id="session-title">
+                                                      {scheduleTopic.title}
+                                                </NestedChildTd>
 
-                                                <NestedTd id="action">
+                                                <NestedChildTd id="action">
                                                       <TableActionButton
                                                             items={[
                                                                   {
@@ -65,11 +73,11 @@ function AdminScheduleTopicTable({
                                                                   },
                                                             ]}
                                                       />
-                                                </NestedTd>
-                                          </NestedTr>
+                                                </NestedChildTd>
+                                          </NestedChildTr>
                                     ))}
                               </>
-                        </NestedTBody>
+                        </NestedChildTBody>
                   </table>
             </>
       );

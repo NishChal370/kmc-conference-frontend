@@ -19,6 +19,7 @@ import conferenceDayReducer from "@/admin/pages/conferenceDay/feature/conference
 import scheduleReducer from "@/admin/pages/schedule/feature/scheduleSlice";
 import scheduleTopicReducer from "@/admin/pages/scheduleTopic/feature/scheduleTopicSlice";
 import speakerReducer from "@/admin/pages/speaker/feature/speakerSlice";
+import speakerScheduleReducer from "@/admin/pages/speakerSchedule/feature/speakerScheduleSlice";
 import callForPaperReducer from "@/admin/pages/callForPaper/feature/callForPaperSlice";
 import participantReducer from "@/admin/pages/participant/feature/participantSlice";
 import userReducer from "@/admin/pages/user/feature/userSlice";
@@ -42,6 +43,7 @@ export const store = configureStore({
             schedule: scheduleReducer,
             scheduleTopic: scheduleTopicReducer,
             speaker: speakerReducer,
+            speakerSchedule: speakerScheduleReducer,
             callForPaper: callForPaperReducer,
             participant: participantReducer,
             user: userReducer,

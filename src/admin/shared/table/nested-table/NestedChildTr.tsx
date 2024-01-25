@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-interface INestedTr {
+interface INestedChildTr {
       children: ReactNode;
 }
-function NestedTr({ children }: INestedTr) {
+function NestedChildTr({ children }: INestedChildTr) {
       return <tr className="nested-tr text-start">{children}</tr>;
 }
 
-export default NestedTr;
+export default NestedChildTr;

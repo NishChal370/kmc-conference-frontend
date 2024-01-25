@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 import { ITableHeaderDataList } from "@/admin/model/commonModel";
 
-interface INestedTh {
+interface INestedChildTh {
       headers: ITableHeaderDataList;
 }
 
-function NestedTh({ headers }: INestedTh) {
+function NestedChildTh({ headers }: INestedChildTh) {
       return (
             <thead className="nested-thead">
                   <tr className="[&>*]:!bg-white">
@@ -33,4 +33,4 @@ function NestedTh({ headers }: INestedTh) {
       );
 }
 
-export default NestedTh;
+export default NestedChildTh;
