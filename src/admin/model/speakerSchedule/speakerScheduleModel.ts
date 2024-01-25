@@ -1,21 +1,25 @@
+import { IAttachment } from "@/models/file/fileModel";
 import { IScheduleModel } from "../schedule/scheduleModel";
 import { ISpeakerBasicModel, ISpeakerDetailModel } from "../speaker/speakerModel";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 
-export interface ISpeakerScheduleBasicModel {
+export interface ISpeakerScheduleModel {
       sessionId: IScheduleModel["id"];
       title: IScheduleModel["title"];
       approvalStatus: SpeakerApprovalStatus;
+      preferredSessionLengthMinutes: number,
+      avRequirements?: number,
+      sessionProposal: IAttachment | null,
 }
 
 
 
 
-export type ISpeakerScheduleBasicResponse = ISpeakerScheduleBasicModel[];
+export type ISpeakerScheduleResponse = ISpeakerScheduleModel[];
 
 
 
-export interface ISpeakerScheduleBasicSearch {
+export interface ISpeakerScheduleSearch {
       speakerId: ISpeakerBasicModel["id"]
 }
 
@@ -23,8 +27,8 @@ export interface ISpeakerScheduleBasicSearch {
 
 export interface ISpeakerScheduleApprovalStatusChangeReq {
       speakerId: ISpeakerDetailModel["id"];
-      sessionId: ISpeakerScheduleBasicModel["sessionId"];
-      approvalStatus: ISpeakerScheduleBasicModel["approvalStatus"];
+      sessionId: ISpeakerScheduleModel["sessionId"];
+      approvalStatus: ISpeakerScheduleModel["approvalStatus"];
 }
 
 
@@ -32,15 +36,18 @@ export interface ISpeakerScheduleApprovalStatusChangeReq {
 export interface ISpeakerScheduleApprovalStatusChangeModal {
       id: ISpeakerDetailModel["id"],
       speakerName: ISpeakerDetailModel["name"];
-      sessionId: ISpeakerScheduleBasicModel["sessionId"];
-      sessionTitle: ISpeakerScheduleBasicModel["title"];
-      approvalStatus: ISpeakerScheduleBasicModel["approvalStatus"];
+      sessionId: ISpeakerScheduleModel["sessionId"];
+      sessionTitle: ISpeakerScheduleModel["title"];
+      approvalStatus: ISpeakerScheduleModel["approvalStatus"];
 }
 
 
 
 
 export interface ISpeakerScheduleDeleteAdminReq {
-      speakerId: ISpeakerScheduleBasicModel["sessionId"];
+      speakerId: ISpeakerScheduleModel["sessionId"];
       sessionId: ISpeakerBasicModel["id"];
 }
+
+
+export type ISpeakerScheduleViewModal = ISpeakerScheduleModel;

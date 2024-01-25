@@ -11,19 +11,22 @@ import { Status } from "@/enum/commonEnum";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import {
       ISpeakerScheduleApprovalStatusChangeModal,
-      ISpeakerScheduleBasicResponse,
+      ISpeakerScheduleResponse,
       ISpeakerScheduleDeleteAdminReq,
+      ISpeakerScheduleViewModal,
 } from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
 interface ISpeakerScheduleTable {
       status: Status;
-      speakerSchedules: ISpeakerScheduleBasicResponse;
+      speakerSchedules: ISpeakerScheduleResponse;
+      openViewModalHandler: (detail: ISpeakerScheduleViewModal) => () => void;
       deleteSessionHandler: (sessionId: ISpeakerScheduleDeleteAdminReq["sessionId"]) => () => void;
       openApprovalStatusModalHandler: (data: ISpeakerScheduleApprovalStatusChangeModal) => () => void;
 }
 function SpeakerScheduleTable({
       status,
       speakerSchedules,
+      openViewModalHandler,
       deleteSessionHandler,
       openApprovalStatusModalHandler,
 }: ISpeakerScheduleTable) {
@@ -52,9 +55,8 @@ function SpeakerScheduleTable({
                                                                   title: "View",
                                                                   type: "View",
                                                                   icon: <AppIcon name="view" />,
-                                                                  clickHandler: () => () => {
-                                                                        console.log("hello view");
-                                                                  },
+                                                                  clickHandler:
+                                                                        openViewModalHandler(speakerSchedule),
                                                             },
                                                             {
                                                                   title: "Update Approval",

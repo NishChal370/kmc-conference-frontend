@@ -8,29 +8,36 @@ import { Status } from "@/enum/commonEnum";
 import { ISpeakerBasicModel } from "@/admin/model/speaker/speakerModel";
 import { speakerScheduleSliceAction, speakerScheduleSliceState } from "../feature/speakerScheduleSlice";
 import {
-      ISpeakerScheduleApprovalStatusChangeModal,
+      ISpeakerScheduleViewModal,
       ISpeakerScheduleDeleteAdminReq,
+      ISpeakerScheduleApprovalStatusChangeModal,
 } from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
 interface ISpeakerScheduleTableContainer {
       isVisible: boolean;
       speakerId: ISpeakerBasicModel["id"];
+      openViewModal: (data: ISpeakerScheduleViewModal) => void;
       openApprovalStatusModal: (data: ISpeakerScheduleApprovalStatusChangeModal) => void;
 }
 
 function SpeakerScheduleTableContainer({
       isVisible,
       speakerId,
+      openViewModal,
       openApprovalStatusModal,
 }: ISpeakerScheduleTableContainer) {
       const dispatch = useAppDispatch();
 
       const { status, data, error, isToRefetch } = useAppSelector(speakerScheduleSliceState);
 
-      const { getSpeakerScheduleBasic, deleteSpeakerScheduleByAdmin } = useSpeakerScheduleApi();
+      const { getSpeakerSchedule, deleteSpeakerScheduleByAdmin } = useSpeakerScheduleApi();
 
       const fetchData = () => {
-            getSpeakerScheduleBasic({ speakerId });
+            getSpeakerSchedule({ speakerId });
+      };
+
+      const openViewModalHandler = (detail: ISpeakerScheduleViewModal) => () => {
+            openViewModal(detail);
       };
 
       const openApprovalStatusModalHandler = (data: ISpeakerScheduleApprovalStatusChangeModal) => () => {
@@ -58,6 +65,7 @@ function SpeakerScheduleTableContainer({
                         status={status}
                         speakerSchedules={data}
                         deleteSessionHandler={deleteSessionHandler}
+                        openViewModalHandler={openViewModalHandler}
                         openApprovalStatusModalHandler={openApprovalStatusModalHandler}
                   />
 

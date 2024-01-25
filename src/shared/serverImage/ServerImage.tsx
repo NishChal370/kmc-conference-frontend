@@ -12,14 +12,14 @@ interface IServerImage {
 }
 
 function ServerImage({ image, className, alt, title }: IServerImage) {
-      const { getImageFile } = useFileApi();
+      const { getFile } = useFileApi();
 
       const uniqueId = useMemo(() => getUniqueId(), [image?.fileName]);
 
       const fetchImage = () => {
             if (!image) return;
 
-            getImageFile(image).then((responseFile) => {
+            getFile(image).then((responseFile) => {
                   const img = document.getElementById(
                         `image-${uniqueId}-${image?.fileName}`
                   ) as HTMLImageElement;

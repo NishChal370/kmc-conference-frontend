@@ -4,11 +4,11 @@ import { IAttachment } from "@/models/file/fileModel";
 
 
 
-export const fetchImageFile = createAsyncThunk(
-      "image-file/get",
-      async (fileName: IAttachment, { rejectWithValue }) => {
+export const fetchFile = createAsyncThunk(
+      "file/get",
+      async (file: IAttachment, { rejectWithValue }) => {
             try {
-                  const response = await fileApi.getImageFile(fileName);
+                  const response = await fileApi.getFile(file);
 
 
                   return response.data;

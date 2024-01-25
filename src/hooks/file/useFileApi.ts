@@ -1,14 +1,14 @@
 import { useAppDispatch } from '@/app/hooks';
 import { errorToastMessage } from '@/utils/alert';
 import { IAttachment } from '@/models/file/fileModel';
-import { fetchImageFile } from '@/service/file/feature/speakerFileRequest';
+import { fetchFile } from '@/service/file/feature/fileRequest';
 
 function useFileApi() {
       const dispatch = useAppDispatch()
 
-      const getImageFile = async (fileName: IAttachment) => {
+      const getFile = async (file: IAttachment) => {
 
-            return await dispatch(fetchImageFile(fileName))
+            return await dispatch(fetchFile(file))
                   .unwrap()
                   .then((message) => {
 
@@ -22,7 +22,7 @@ function useFileApi() {
                   });
       }
 
-      return { getImageFile } as const;
+      return { getFile } as const;
 
 }
 

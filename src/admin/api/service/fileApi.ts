@@ -3,7 +3,7 @@ import AXIOS, { BASE_URL } from "@/api/constant";
 import { IAttachment } from "@/models/file/fileModel";
 
 export const fileApi = {
-      getImageFile: (file: IAttachment) => {
+      getFile: (file: IAttachment) => {
 
             const options: AxiosRequestConfig = {
                   method: "GET",

@@ -1,12 +1,12 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import speakerScheduleApi from "@/admin/api/service/speakerScheduleApi";
-import { ISpeakerScheduleBasicResponse, ISpeakerScheduleBasicSearch, ISpeakerScheduleApprovalStatusChangeReq, ISpeakerScheduleDeleteAdminReq } from "@/admin/model/speakerSchedule/speakerScheduleModel";
+import { ISpeakerScheduleResponse, ISpeakerScheduleSearch, ISpeakerScheduleApprovalStatusChangeReq, ISpeakerScheduleDeleteAdminReq } from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
-export const fetchSpeakerScheduleBasic = createAppAsyncThunk<ISpeakerScheduleBasicResponse, ISpeakerScheduleBasicSearch>(
-      "speaker-schedules/basic/get",
+export const fetchSpeakerSchedule = createAppAsyncThunk<ISpeakerScheduleResponse, ISpeakerScheduleSearch>(
+      "speaker-schedules/get",
       async (searchDetail, { rejectWithValue }) => {
             try {
-                  const response = await speakerScheduleApi.getBasicInfo(searchDetail);
+                  const response = await speakerScheduleApi.get(searchDetail);
 
                   return response.data;
             } catch (error: any) {

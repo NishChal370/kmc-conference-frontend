@@ -1,13 +1,13 @@
 import { useAppDispatch } from '@/app/hooks';
-import { deleteSpeakerScheduleByAdmin as deleteSpeakerScheduleByAdminReq, fetchSpeakerScheduleBasic, putSpeakerScheduleApprovalStatus } from '@/admin/pages/speakerSchedule/feature/speakerScheduleRequest';
-import { ISpeakerScheduleBasicSearch, ISpeakerScheduleApprovalStatusChangeReq, ISpeakerScheduleDeleteAdminReq } from '@/admin/model/speakerSchedule/speakerScheduleModel';
+import { deleteSpeakerScheduleByAdmin as deleteSpeakerScheduleByAdminReq, fetchSpeakerSchedule, putSpeakerScheduleApprovalStatus } from '@/admin/pages/speakerSchedule/feature/speakerScheduleRequest';
+import { ISpeakerScheduleSearch, ISpeakerScheduleApprovalStatusChangeReq, ISpeakerScheduleDeleteAdminReq } from '@/admin/model/speakerSchedule/speakerScheduleModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useSpeakerScheduleApi() {
       const dispatch = useAppDispatch();
 
-      const getSpeakerScheduleBasic = (searchDetail: ISpeakerScheduleBasicSearch) => {
-            dispatch(fetchSpeakerScheduleBasic(searchDetail))
+      const getSpeakerSchedule = (searchDetail: ISpeakerScheduleSearch) => {
+            dispatch(fetchSpeakerSchedule(searchDetail))
       }
 
 
@@ -51,7 +51,7 @@ function useSpeakerScheduleApi() {
 
 
 
-      return { getSpeakerScheduleBasic, updateSpeakerApprovalStatus, deleteSpeakerScheduleByAdmin } as const;
+      return { getSpeakerSchedule, updateSpeakerApprovalStatus, deleteSpeakerScheduleByAdmin } as const;
 }
 
 export default useSpeakerScheduleApi

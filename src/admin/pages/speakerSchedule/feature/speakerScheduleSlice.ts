@@ -2,11 +2,11 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { ISpeakerScheduleBasicResponse } from "@/admin/model/speakerSchedule/speakerScheduleModel";
-import { deleteSpeakerScheduleByAdmin, fetchSpeakerScheduleBasic, putSpeakerScheduleApprovalStatus } from "./speakerScheduleRequest";
+import { ISpeakerScheduleResponse } from "@/admin/model/speakerSchedule/speakerScheduleModel";
+import { deleteSpeakerScheduleByAdmin, fetchSpeakerSchedule, putSpeakerScheduleApprovalStatus } from "./speakerScheduleRequest";
 
 interface ISpeakerScheduleSlice extends IBasicSliceState {
-      data: ISpeakerScheduleBasicResponse;
+      data: ISpeakerScheduleResponse;
 }
 
 
@@ -37,17 +37,17 @@ const speakerScheduleSlice = createSlice({
       },
       extraReducers(builder) {
             builder
-                  .addCase(fetchSpeakerScheduleBasic.pending, (state) => {
+                  .addCase(fetchSpeakerSchedule.pending, (state) => {
                         state.speakerSchedule.status = Status.LOADING;
                   })
-                  .addCase(fetchSpeakerScheduleBasic.fulfilled, (state, action) => {
+                  .addCase(fetchSpeakerSchedule.fulfilled, (state, action) => {
                         state.speakerSchedule.status = action.payload.length <= 0
                               ? Status.DATA_NOT_FOUND
                               : Status.SUCCEEDED;
                         state.speakerSchedule.data = action.payload;
 
                   })
-                  .addCase(fetchSpeakerScheduleBasic.rejected, (state, action) => {
+                  .addCase(fetchSpeakerSchedule.rejected, (state, action) => {
                         state.speakerSchedule.status = Status.FAILED;
                         state.speakerSchedule.error = action.payload;
                   })

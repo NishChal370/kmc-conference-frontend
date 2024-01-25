@@ -1,9 +1,9 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
-import { ISpeakerScheduleBasicSearch, ISpeakerScheduleApprovalStatusChangeReq, ISpeakerScheduleDeleteAdminReq } from "@/admin/model/speakerSchedule/speakerScheduleModel";
+import { ISpeakerScheduleSearch, ISpeakerScheduleApprovalStatusChangeReq, ISpeakerScheduleDeleteAdminReq } from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
 const speakerScheduleApi = {
-      getBasicInfo: (searchDetail: ISpeakerScheduleBasicSearch) => {
+      get: (searchDetail: ISpeakerScheduleSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
                   url: `Speaker/sessions/${searchDetail.speakerId}`,
