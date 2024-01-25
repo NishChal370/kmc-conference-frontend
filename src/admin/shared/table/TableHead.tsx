@@ -23,7 +23,7 @@ function TableHead<TSortBy = undefined, TOrderBy = undefined>({
                                     return sortValue && sortDetail ? (
                                           <th key={id} id={id}>
                                                 <span
-                                                      className={`${className} flex justify-center items-center w-full`}
+                                                      className={`flex justify-center items-center w-full ${className}`}
                                                 >
                                                       <span
                                                             className="cursor-pointer flex justify-center items-center gap-1 w-fit"

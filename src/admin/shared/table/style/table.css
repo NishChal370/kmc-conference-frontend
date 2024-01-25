@@ -14,10 +14,15 @@
       }
 
       #page-table td,
-      #page-table th {
-            @apply min-w-[6rem]
+      #page-table th:not(#table-image) {
+            @apply min-w-[2rem]
             max-w-xs
             py-2 sm:!px-4;
+      }
+
+      #page-table #table-image {
+            @apply md:min-w-fit md:!w-[2rem]
+            md:!max-w-fit;
       }
 
       #page-table tr > td > p {
