@@ -34,7 +34,13 @@ export interface ISpeakerScheduleApprovalStatusChangeModal {
       speakerName: ISpeakerDetailModel["name"];
       sessionId: ISpeakerScheduleBasicModel["sessionId"];
       sessionTitle: ISpeakerScheduleBasicModel["title"];
-      approvalStatus: ISpeakerScheduleBasicModel["approvalStatus"],
+      approvalStatus: ISpeakerScheduleBasicModel["approvalStatus"];
 }
 
 
+
+
+export interface ISpeakerScheduleDeleteAdminReq {
+      speakerId: ISpeakerScheduleBasicModel["sessionId"];
+      sessionId: ISpeakerBasicModel["id"];
+}

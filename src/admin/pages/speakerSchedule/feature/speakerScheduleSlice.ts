@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { ISpeakerScheduleBasicResponse } from "@/admin/model/speakerSchedule/speakerScheduleModel";
-import { fetchSpeakerScheduleBasic, putSpeakerScheduleApprovalStatus } from "./speakerScheduleRequest";
+import { deleteSpeakerScheduleByAdmin, fetchSpeakerScheduleBasic, putSpeakerScheduleApprovalStatus } from "./speakerScheduleRequest";
 
 interface ISpeakerScheduleSlice extends IBasicSliceState {
       data: ISpeakerScheduleBasicResponse;
@@ -54,6 +54,10 @@ const speakerScheduleSlice = createSlice({
 
 
                   .addCase(putSpeakerScheduleApprovalStatus.fulfilled, (state) => {
+                        state.speakerSchedule.isToRefetch = !state.speakerSchedule.isToRefetch;
+                  })
+
+                  .addCase(deleteSpeakerScheduleByAdmin.fulfilled, (state) => {
                         state.speakerSchedule.isToRefetch = !state.speakerSchedule.isToRefetch;
                   })
       },

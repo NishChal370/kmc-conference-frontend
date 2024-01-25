@@ -7,7 +7,10 @@ import useSpeakerScheduleApi from "@/admin/hooks/speakerSchedule/useSpeakerSched
 import { Status } from "@/enum/commonEnum";
 import { ISpeakerBasicModel } from "@/admin/model/speaker/speakerModel";
 import { speakerScheduleSliceAction, speakerScheduleSliceState } from "../feature/speakerScheduleSlice";
-import { ISpeakerScheduleApprovalStatusChangeModal } from "@/admin/model/speakerSchedule/speakerScheduleModel";
+import {
+      ISpeakerScheduleApprovalStatusChangeModal,
+      ISpeakerScheduleDeleteAdminReq,
+} from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
 interface ISpeakerScheduleTableContainer {
       isVisible: boolean;
@@ -24,7 +27,7 @@ function SpeakerScheduleTableContainer({
 
       const { status, data, error, isToRefetch } = useAppSelector(speakerScheduleSliceState);
 
-      const { getSpeakerScheduleBasic } = useSpeakerScheduleApi();
+      const { getSpeakerScheduleBasic, deleteSpeakerScheduleByAdmin } = useSpeakerScheduleApi();
 
       const fetchData = () => {
             getSpeakerScheduleBasic({ speakerId });
@@ -32,6 +35,10 @@ function SpeakerScheduleTableContainer({
 
       const openApprovalStatusModalHandler = (data: ISpeakerScheduleApprovalStatusChangeModal) => () => {
             openApprovalStatusModal(data);
+      };
+
+      const deleteSessionHandler = (sessionId: ISpeakerScheduleDeleteAdminReq["sessionId"]) => () => {
+            deleteSpeakerScheduleByAdmin({ sessionId: sessionId, speakerId });
       };
 
       useEffect(() => {
@@ -50,6 +57,7 @@ function SpeakerScheduleTableContainer({
                   <SpeakerScheduleTable
                         status={status}
                         speakerSchedules={data}
+                        deleteSessionHandler={deleteSessionHandler}
                         openApprovalStatusModalHandler={openApprovalStatusModalHandler}
                   />
 

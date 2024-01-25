@@ -1,7 +1,7 @@
 import { useAppDispatch } from '@/app/hooks';
-import { fetchSpeakerScheduleBasic, putSpeakerScheduleApprovalStatus } from '@/admin/pages/speakerSchedule/feature/speakerScheduleRequest';
-import { ISpeakerScheduleBasicSearch, ISpeakerScheduleApprovalStatusChangeReq } from '@/admin/model/speakerSchedule/speakerScheduleModel';
-import { errorToastMessage, loadingAlertWithMessage, successMessage, swalAlertClose } from '@/utils/alert';
+import { deleteSpeakerScheduleByAdmin as deleteSpeakerScheduleByAdminReq, fetchSpeakerScheduleBasic, putSpeakerScheduleApprovalStatus } from '@/admin/pages/speakerSchedule/feature/speakerScheduleRequest';
+import { ISpeakerScheduleBasicSearch, ISpeakerScheduleApprovalStatusChangeReq, ISpeakerScheduleDeleteAdminReq } from '@/admin/model/speakerSchedule/speakerScheduleModel';
+import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useSpeakerScheduleApi() {
       const dispatch = useAppDispatch();
@@ -29,8 +29,29 @@ function useSpeakerScheduleApi() {
       }
 
 
+      const deleteSpeakerScheduleByAdmin = async (deletingDetail: ISpeakerScheduleDeleteAdminReq) => {
+            await showSuccessfulConfirmation({ buttonText: "Delete", showCancelButton: true }).then(() => {
+                  loadingAlertWithMessage({ title: "Deleting", text: "Please wait while deleting" });
 
-      return { getSpeakerScheduleBasic, updateSpeakerApprovalStatus } as const;
+                  dispatch(deleteSpeakerScheduleByAdminReq(deletingDetail))
+                        .unwrap()
+                        .then(() => {
+
+                              successMessage({ title: "Deleted", message: "Speaker session has been deleted." });
+                        })
+                        .catch((error) => {
+                              errorToastMessage(error.detail);
+
+                              throw new Error(error);
+                        })
+                        .finally(swalAlertClose)
+            })
+      }
+
+
+
+
+      return { getSpeakerScheduleBasic, updateSpeakerApprovalStatus, deleteSpeakerScheduleByAdmin } as const;
 }
 
 export default useSpeakerScheduleApi

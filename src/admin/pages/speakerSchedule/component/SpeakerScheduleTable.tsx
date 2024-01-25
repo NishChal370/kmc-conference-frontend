@@ -12,16 +12,19 @@ import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import {
       ISpeakerScheduleApprovalStatusChangeModal,
       ISpeakerScheduleBasicResponse,
+      ISpeakerScheduleDeleteAdminReq,
 } from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
 interface ISpeakerScheduleTable {
       status: Status;
       speakerSchedules: ISpeakerScheduleBasicResponse;
+      deleteSessionHandler: (sessionId: ISpeakerScheduleDeleteAdminReq["sessionId"]) => () => void;
       openApprovalStatusModalHandler: (data: ISpeakerScheduleApprovalStatusChangeModal) => () => void;
 }
 function SpeakerScheduleTable({
       status,
       speakerSchedules,
+      deleteSessionHandler,
       openApprovalStatusModalHandler,
 }: ISpeakerScheduleTable) {
       return (
@@ -73,9 +76,9 @@ function SpeakerScheduleTable({
                                                                   title: "Delete",
                                                                   type: "Danger",
                                                                   icon: <AppIcon name="delete" />,
-                                                                  clickHandler: () => () => {
-                                                                        console.log("hello delete");
-                                                                  },
+                                                                  clickHandler: deleteSessionHandler(
+                                                                        speakerSchedule.sessionId
+                                                                  ),
                                                             },
                                                       ]}
                                                 />

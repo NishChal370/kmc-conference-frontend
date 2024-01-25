@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import speakerScheduleApi from "@/admin/api/service/speakerScheduleApi";
-import { ISpeakerScheduleBasicResponse, ISpeakerScheduleBasicSearch, ISpeakerScheduleApprovalStatusChangeReq } from "@/admin/model/speakerSchedule/speakerScheduleModel";
+import { ISpeakerScheduleBasicResponse, ISpeakerScheduleBasicSearch, ISpeakerScheduleApprovalStatusChangeReq, ISpeakerScheduleDeleteAdminReq } from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
 export const fetchSpeakerScheduleBasic = createAppAsyncThunk<ISpeakerScheduleBasicResponse, ISpeakerScheduleBasicSearch>(
       "speaker-schedules/basic/get",
@@ -22,6 +22,20 @@ export const putSpeakerScheduleApprovalStatus = createAppAsyncThunk<undefined, I
       async (approvalDetail, { rejectWithValue }) => {
             try {
                   const response = await speakerScheduleApi.putApprovalStatus(approvalDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+export const deleteSpeakerScheduleByAdmin = createAppAsyncThunk<undefined, ISpeakerScheduleDeleteAdminReq>(
+      "admin/speaker-schedules/delete",
+      async (deletingDetail, { rejectWithValue }) => {
+            try {
+                  const response = await speakerScheduleApi.deleteByAdmin(deletingDetail);
 
                   return response.data;
             } catch (error: any) {

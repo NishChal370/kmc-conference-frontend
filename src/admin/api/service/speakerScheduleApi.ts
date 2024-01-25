@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
-import { ISpeakerScheduleBasicSearch, ISpeakerScheduleApprovalStatusChangeReq } from "@/admin/model/speakerSchedule/speakerScheduleModel";
+import { ISpeakerScheduleBasicSearch, ISpeakerScheduleApprovalStatusChangeReq, ISpeakerScheduleDeleteAdminReq } from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
 const speakerScheduleApi = {
       getBasicInfo: (searchDetail: ISpeakerScheduleBasicSearch) => {
@@ -20,6 +20,17 @@ const speakerScheduleApi = {
                   data: approvalDetail
             };
 
+
+            return AXIOS.request(options);
+      },
+
+
+      deleteByAdmin: (deletingDetail: ISpeakerScheduleDeleteAdminReq) => {
+            const options: AxiosRequestConfig = {
+                  method: "DELETE",
+                  url: `Admin/speaker-session`,
+                  data: deletingDetail,
+            };
 
             return AXIOS.request(options);
       },
