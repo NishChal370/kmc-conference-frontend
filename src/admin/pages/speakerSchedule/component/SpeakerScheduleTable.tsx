@@ -9,13 +9,21 @@ import TableActionButton from "@/admin/shared/table/TableActionButton";
 import { ADMIN_SPEAKER_SCHEDULE_TABLE_HEADER } from "../data/adminSpeakerScheduleHeader";
 import { Status } from "@/enum/commonEnum";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
-import { ISpeakerScheduleBasicResponse } from "@/admin/model/speakerSchedule/speakerScheduleModel";
+import {
+      ISpeakerScheduleApprovalStatusChangeModal,
+      ISpeakerScheduleBasicResponse,
+} from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
 interface ISpeakerScheduleTable {
-      speakerSchedules: ISpeakerScheduleBasicResponse;
       status: Status;
+      speakerSchedules: ISpeakerScheduleBasicResponse;
+      openApprovalStatusModalHandler: (data: ISpeakerScheduleApprovalStatusChangeModal) => () => void;
 }
-function SpeakerScheduleTable({ status, speakerSchedules }: ISpeakerScheduleTable) {
+function SpeakerScheduleTable({
+      status,
+      speakerSchedules,
+      openApprovalStatusModalHandler,
+}: ISpeakerScheduleTable) {
       return (
             <table className="!w-full !h-full">
                   <NestedChildTh headers={ADMIN_SPEAKER_SCHEDULE_TABLE_HEADER} />
@@ -44,6 +52,22 @@ function SpeakerScheduleTable({ status, speakerSchedules }: ISpeakerScheduleTabl
                                                                   clickHandler: () => () => {
                                                                         console.log("hello view");
                                                                   },
+                                                            },
+                                                            {
+                                                                  title: "Update Approval",
+                                                                  type: "Update",
+                                                                  icon: <AppIcon name="update" />,
+                                                                  clickHandler:
+                                                                        openApprovalStatusModalHandler({
+                                                                              id: -1, // this is kept -1 here, cause. the speaker id will be passed from speaker table   parent component.
+                                                                              speakerName: "", // this is kept empty string here, cause. the speaker name will be passed from speaker table parent component.
+                                                                              sessionId:
+                                                                                    speakerSchedule.sessionId,
+                                                                              sessionTitle:
+                                                                                    speakerSchedule.title,
+                                                                              approvalStatus:
+                                                                                    speakerSchedule.approvalStatus,
+                                                                        }),
                                                             },
                                                             {
                                                                   title: "Delete",

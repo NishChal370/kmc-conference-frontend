@@ -114,6 +114,7 @@ function AdminSpeakerTable({
                                                       <SpeakerSchedule
                                                             isVisible={isOpen}
                                                             speakerId={speaker.id}
+                                                            speakerName={speaker.name}
                                                       />
                                                 )}
                                           </NestedRowWrapper>

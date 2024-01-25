@@ -46,21 +46,17 @@ function AdminScheduleTopicTableContainer({
             openViewModal({ viewingData });
       };
 
-      //NOTE: if we combine this two useEffect, data will be double fetch on Update.
       useEffect(() => {
             if (!isVisible) return;
 
             fetchData();
-      }, [isToRefetch]);
+      }, [isToRefetch, isVisible]);
 
       useEffect(() => {
-            if (isVisible) {
-                  fetchData();
-                  return;
-            } else if (!isVisible) {
+            return () => {
                   dispatch(scheduleTopicSliceAction.resetScheduleTopicsSlice());
-            }
-      }, [isVisible]);
+            };
+      }, []);
 
       return (
             <>

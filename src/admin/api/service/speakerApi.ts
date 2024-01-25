@@ -3,7 +3,7 @@ import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
 import { ISpeakerContentDetailSearch } from "@/admin/model/speaker/speakerContentModel";
 import { ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from "@/admin/model/speaker/becomeSpeakerModel";
-import { ISpeakerPutRequest, ISpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/speakerModel";
+import { ISpeakerPutRequest, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/speakerModel";
 
 const speakerApi = {
       getBasicInfo: (searchDetail: ISpeakerBasicSearch) => {
@@ -53,18 +53,6 @@ const speakerApi = {
                   method: "PUT",
                   url: `Speaker/add-session`,
                   data: convertObjectToFormData(sessionDetail),
-            };
-
-
-            return AXIOS.request(options);
-      },
-
-
-      putSpeakerApprovalStatus: (approvalDetail: ISpeakerStatusChangeReq) => {
-            const options: AxiosRequestConfig = {
-                  method: "PUT",
-                  url: `Speaker/update-status`,
-                  data: approvalDetail
             };
 
 

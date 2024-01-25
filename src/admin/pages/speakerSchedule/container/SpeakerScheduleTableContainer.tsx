@@ -7,13 +7,19 @@ import useSpeakerScheduleApi from "@/admin/hooks/speakerSchedule/useSpeakerSched
 import { Status } from "@/enum/commonEnum";
 import { ISpeakerBasicModel } from "@/admin/model/speaker/speakerModel";
 import { speakerScheduleSliceAction, speakerScheduleSliceState } from "../feature/speakerScheduleSlice";
+import { ISpeakerScheduleApprovalStatusChangeModal } from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
 interface ISpeakerScheduleTableContainer {
       isVisible: boolean;
       speakerId: ISpeakerBasicModel["id"];
+      openApprovalStatusModal: (data: ISpeakerScheduleApprovalStatusChangeModal) => void;
 }
 
-function SpeakerScheduleTableContainer({ isVisible, speakerId }: ISpeakerScheduleTableContainer) {
+function SpeakerScheduleTableContainer({
+      isVisible,
+      speakerId,
+      openApprovalStatusModal,
+}: ISpeakerScheduleTableContainer) {
       const dispatch = useAppDispatch();
 
       const { status, data, error, isToRefetch } = useAppSelector(speakerScheduleSliceState);
@@ -24,19 +30,28 @@ function SpeakerScheduleTableContainer({ isVisible, speakerId }: ISpeakerSchedul
             getSpeakerScheduleBasic({ speakerId });
       };
 
-      useEffect(() => {
-            if (!isVisible) {
-                  if (data) dispatch(speakerScheduleSliceAction.resetSpeakerScheduleSlice());
+      const openApprovalStatusModalHandler = (data: ISpeakerScheduleApprovalStatusChangeModal) => () => {
+            openApprovalStatusModal(data);
+      };
 
-                  return;
-            }
+      useEffect(() => {
+            if (!isVisible) return;
 
             fetchData();
-      }, [isVisible, isToRefetch]);
+      }, [isToRefetch, isVisible]);
 
+      useEffect(() => {
+            return () => {
+                  dispatch(speakerScheduleSliceAction.resetSpeakerScheduleSlice());
+            };
+      }, []);
       return (
             <>
-                  <SpeakerScheduleTable status={status} speakerSchedules={data} />
+                  <SpeakerScheduleTable
+                        status={status}
+                        speakerSchedules={data}
+                        openApprovalStatusModalHandler={openApprovalStatusModalHandler}
+                  />
 
                   {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}
 

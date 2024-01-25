@@ -118,23 +118,3 @@ export interface ISpeakerUpdateForm {
 export interface ISpeakerViewModal {
       speakerId: ISpeakerDetailModel["id"],
 }
-
-
-
-
-export interface ISpeakerStatusChangeReq {
-      speakerId: ISpeakerDetailModel["id"];
-      sessionId: ISpeakerSession["sessionId"];
-      approvalStatus: ISpeakerSession["approvalStatus"];
-}
-
-
-
-//TODO: check this,  if it is in use or not
-export interface ISpeakerApprovalStatusChangeModal {
-      id: ISpeakerDetailModel["id"],
-      speakerName: ISpeakerDetailModel["name"];
-      sessionId: ISpeakerSession["sessionId"];
-      sessionTitle: ISpeakerSession["title"];
-      approvalStatus: ISpeakerSession["approvalStatus"],
-}

@@ -3,28 +3,28 @@ import Button from "@/shared/button/Button";
 import StaticOptionsDropdownInput from "@/shared/input/StaticOptionsDropdownInput";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import { SPEAKER_APPROVAL_STATUS_OPTION } from "../data/speakerApprovalStatusOption";
-import { ISpeakerApprovalStatusChangeModal } from "@/admin/model/speaker/speakerModel";
+import { ISpeakerScheduleApprovalStatusChangeModal } from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
-interface IAdminSpeakerStatusUpdateModal {
+interface ISpeakerScheduleStatusUpdateModal {
       value: SpeakerApprovalStatus;
       submitHandler: () => void;
       closeModalHandler: () => void;
       currentStatus: SpeakerApprovalStatus;
       onChangeHandler: (value: SpeakerApprovalStatus) => void;
-      speakerName: ISpeakerApprovalStatusChangeModal["speakerName"];
+      speakerName: ISpeakerScheduleApprovalStatusChangeModal["speakerName"];
 }
 
-function AdminSpeakerStatusUpdateModal({
+function SpeakerScheduleStatusUpdateModal({
       value,
       currentStatus,
       speakerName,
       submitHandler,
       onChangeHandler,
       closeModalHandler,
-}: IAdminSpeakerStatusUpdateModal) {
+}: ISpeakerScheduleStatusUpdateModal) {
       return (
             <Modal
-                  title={`Update Speaker Application Status`}
+                  title={`Update Speaker Session Application Status`}
                   size="w-full md:!w-[34rem]"
                   closeHandler={closeModalHandler}
             >
@@ -69,4 +69,4 @@ function AdminSpeakerStatusUpdateModal({
       );
 }
 
-export default AdminSpeakerStatusUpdateModal;
+export default SpeakerScheduleStatusUpdateModal;

@@ -1,20 +1,19 @@
 import { useState } from "react";
-import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
-import { ISpeakerApprovalStatusChangeModal } from "@/admin/model/speaker/speakerModel";
-import AdminSpeakerStatusUpdateModal from "../components/AdminSpeakerStatusUpdateModal";
+import AdminSpeakerStatusUpdateModal from "../component/SpeakerScheduleStatusUpdateModal";
+import useSpeakerScheduleApi from "@/admin/hooks/speakerSchedule/useSpeakerScheduleApi";
+import { ISpeakerScheduleApprovalStatusChangeModal } from "@/admin/model/speakerSchedule/speakerScheduleModel";
 
-interface IAdminSpeakerStatusUpdateModalContainer {
-      speakerStatusDetail: ISpeakerApprovalStatusChangeModal;
+interface ISpeakerScheduleStatusUpdateModalContainer {
+      speakerStatusDetail: ISpeakerScheduleApprovalStatusChangeModal;
       closeModalHandler: () => void;
 }
 
-//FIXME: NOT in use
-function AdminSpeakerStatusUpdateModalContainer({
+function SpeakerScheduleStatusUpdateModalContainer({
       speakerStatusDetail,
       closeModalHandler,
-}: IAdminSpeakerStatusUpdateModalContainer) {
-      const { updateSpeakerApprovalStatus } = useSpeakerApi();
+}: ISpeakerScheduleStatusUpdateModalContainer) {
+      const { updateSpeakerApprovalStatus } = useSpeakerScheduleApi();
 
       const [approvalStatus, setApprovalStatus] = useState<SpeakerApprovalStatus>(
             speakerStatusDetail.approvalStatus
@@ -44,4 +43,4 @@ function AdminSpeakerStatusUpdateModalContainer({
       );
 }
 
-export default AdminSpeakerStatusUpdateModalContainer;
+export default SpeakerScheduleStatusUpdateModalContainer;
