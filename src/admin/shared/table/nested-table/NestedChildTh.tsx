@@ -9,20 +9,26 @@ function NestedChildTh({ headers }: INestedChildTh) {
       return (
             <thead className="nested-thead">
                   <tr className="[&>*]:!bg-white">
-                        {headers.map(({ id, title }) => (
+                        {headers.map(({ id, title, className }) => (
                               <Fragment key={id}>
                                     {id === "index" && (
-                                          <th key={id} className="nested-th px-2">
+                                          <th id={"nested-" + id} className={`nested-th px-2 ${className}`}>
                                                 {title}
                                           </th>
                                     )}
                                     {id === "action" && (
-                                          <th key={id} className="nested-th text-center">
+                                          <th
+                                                id={"nested-" + id}
+                                                className={`nested-th text-center ${className}`}
+                                          >
                                                 {title}
                                           </th>
                                     )}
                                     {!["index", "action"].includes(id) && (
-                                          <th key={id} className="nested-th text-start">
+                                          <th
+                                                id={"nested-" + id}
+                                                className={`nested-th text-start  ${className}`}
+                                          >
                                                 {title}
                                           </th>
                                     )}
