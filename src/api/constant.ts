@@ -1,12 +1,13 @@
 import axios from "axios";
+import { store } from "@/app/store";
 import { cookiesStore } from "@/utils/cookiesHandler";
 import { authApi } from "../site/api/service/authApi";
-import { ADMIN_BASE_PATH } from "@/admin/constants/routePath";
-import { HOME_PATH } from "@/site/constants/routePath";
+import { changeVerifyLoginStatus } from "@/protectedRoute/feature/verifyLoginSlice";
+import { Status } from "@/enum/commonEnum";
 
 export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-const API_URL = BASE_URL + "/api";
+export const API_URL = BASE_URL + "/api";
 
 
 const AXIOS = axios.create({
@@ -96,11 +97,10 @@ async function refreshAccessToken() {
       isRefreshing = true;
 
       try {
-
             const response = await authApi.refreshToken({
                   accessToken: cookiesStore.getItem("access_token") ?? "",
                   refreshToken: cookiesStore.getItem("refresh_token") ?? "",
-            });
+            })
 
             const { accessToken, refreshToken } = response.data;
 
@@ -111,17 +111,14 @@ async function refreshAccessToken() {
             refreshQueue.forEach(request => {
                   request.resolve();
             });
-      } catch (error) {
+      } catch (error: any) {
 
-            //move to login page if token is invalid and if present location is not page associated with login
-            if (window.location.pathname.includes(ADMIN_BASE_PATH)) {
-                  window.location.replace(HOME_PATH.home.full)
-            }
+            store.dispatch(changeVerifyLoginStatus(Status.FAILED))
+
             // Reject all pending requests in the refresh queue with the error
             refreshQueue.forEach(request_1 => {
                   request_1.reject(error);
             });
-
       }
 }
 
