@@ -25,16 +25,14 @@ function ScheduleSpeakerCard({
                   <ServerImage
                         image={img}
                         alt="speaker-img"
-                        className="w-20 h-20 rounded-full hover:grayscale"
+                        className=" w-20 h-20 rounded-full hover:grayscale"
                   />
 
                   <article>
                         <p className="font-semibold leading-relaxed">{speakerName}</p>
-                        {jobTitle && affiliation ? (
-                              <p>
-                                    {jobTitle}; {affiliation}
-                              </p>
-                        ) : undefined}
+                        <p title={jobTitle + "; " + affiliation} className="line-clamp-1">
+                              {jobTitle}
+                        </p>
                   </article>
             </button>
       );

@@ -2,7 +2,7 @@ import { DetailedHTMLProps, useEffect, useMemo } from "react";
 import useFileApi from "@/hooks/file/useFileApi";
 import { IAttachment } from "@/models/file/fileModel";
 import getUniqueId from "@/utils/uniqueId/getUniqueId";
-import generateRandomColor from "@/utils/generateRandomColor";
+import imagePlaceHolder from "@/assets/image/webp/imagePlaceHolder.webp";
 
 interface IServerImage {
       title?: string;
@@ -15,8 +15,6 @@ function ServerImage({ image, className, alt, title }: IServerImage) {
       const { getImageFile } = useFileApi();
 
       const uniqueId = useMemo(() => getUniqueId(), [image?.fileName]);
-
-      const color = useMemo(() => generateRandomColor(), [image?.fileName]);
 
       const fetchImage = () => {
             if (!image) return;
@@ -41,10 +39,9 @@ function ServerImage({ image, className, alt, title }: IServerImage) {
                   id={`image-${uniqueId}-${image?.fileName}`}
                   loading="lazy"
                   alt={alt}
-                  className={className}
-                  style={{ backgroundColor: color }}
+                  className={"bg-gray-300 " + className}
                   title={title ? title : image?.originalName ? atob(image.originalName) : ""}
-                  src=""
+                  src={imagePlaceHolder}
             ></img>
       );
 }
