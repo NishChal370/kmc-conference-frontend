@@ -33,8 +33,8 @@ function ScheduleCardActionButton({
                         <button
                               type="button"
                               className="text-sm font-bold text-primary self-end 
-                              hover:text-rose-600 active:underline
-                        "
+                                    hover:text-rose-600 active:underline
+                              "
                               onClick={speakerButtonHandler}
                         >
                               Become a Speaker
@@ -45,8 +45,8 @@ function ScheduleCardActionButton({
                         <button
                               type="button"
                               className="text-sm font-bold text-primary self-end 
-                              hover:text-rose-600 active:underline
-                        "
+                                    hover:text-rose-600 active:underline
+                              "
                               onClick={participationHandler}
                         >
                               Reserve my Spot

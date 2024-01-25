@@ -5,12 +5,13 @@ import getUniqueId from "@/utils/uniqueId/getUniqueId";
 import generateRandomColor from "@/utils/generateRandomColor";
 
 interface IServerImage {
+      title?: string;
       image: IAttachment | null;
       alt?: DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLElement>["alt"];
       className?: DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLElement>["className"];
 }
 
-function ServerImage({ image, className, alt }: IServerImage) {
+function ServerImage({ image, className, alt, title }: IServerImage) {
       const { getImageFile } = useFileApi();
 
       const uniqueId = useMemo(() => getUniqueId(), [image?.fileName]);
@@ -42,7 +43,7 @@ function ServerImage({ image, className, alt }: IServerImage) {
                   alt={alt}
                   className={className}
                   style={{ backgroundColor: color }}
-                  title={image?.originalName ? atob(image.originalName) : ""}
+                  title={title ? title : image?.originalName ? atob(image.originalName) : ""}
                   src=""
             ></img>
       );

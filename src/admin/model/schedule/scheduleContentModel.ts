@@ -74,7 +74,9 @@ export interface IScheduleContentBriefDetailModel {
             {
                   id: ISpeakerBasicModel["id"],
                   fullName: ISpeakerBasicModel["name"],
-                  photo: IAttachment
+                  photo: IAttachment | null;
+                  jobTitle: string,
+                  affiliation: string,
             }
       ],
       isUserParticipant?: boolean,
