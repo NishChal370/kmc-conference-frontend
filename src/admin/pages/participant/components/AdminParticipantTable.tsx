@@ -34,7 +34,7 @@ function AdminParticipantTable({
                               {participantBasicInfo.map((participant, index) => (
                                     <tr key={participant.id} className="text-start">
                                           <Td id="index" dataName="index">
-                                                {getIndex({ currentPageNumber: 0, index })}
+                                                {getIndex({ currentPageNumber: currentPageNumber, index })}
                                           </Td>
 
                                           <Td id="name" dataName="Name">

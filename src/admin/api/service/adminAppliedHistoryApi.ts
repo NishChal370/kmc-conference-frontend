@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
-import { IAppliedCallForPaperDetailSearch, IAppliedParticipationDetailSearch, IAppliedSpeakerDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 export const adminAppliedHistoryApi = {
       getApplicationSpeaker: () => {
@@ -60,4 +60,33 @@ export const adminAppliedHistoryApi = {
       },
 
 
+      deleteAppliedSpeakerSchedule: (detail: IAppliedSpeakerScheduleDeleteReq) => {
+            const options: AxiosRequestConfig = {
+                  method: "DELETE",
+                  url: `Speaker/remove-session`,
+                  data: detail,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      deleteAppliedCallForPaperSchedule: (detail: IAppliedCallForPaperScheduleDeleteReq) => {
+            const options: AxiosRequestConfig = {
+                  method: "DELETE",
+                  url: `CallForPaper/remove-session`,
+                  data: detail,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      deleteAppliedParticipationSchedule: (detail: IAppliedParticipationScheduleDeleteReq) => {
+            const options: AxiosRequestConfig = {
+                  method: "DELETE",
+                  url: `Participant/remove-session`,
+                  data: detail,
+            };
+
+            return AXIOS.request(options);
+      }
 }

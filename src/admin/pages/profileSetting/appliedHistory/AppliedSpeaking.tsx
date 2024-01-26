@@ -6,6 +6,7 @@ import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistory
 import {
       IAppliedSpeakerDetailSearch,
       IAppliedSpeakerModel,
+      IAppliedSpeakerScheduleDeleteReq,
 } from "@/admin/model/appliedHistory/appliedHistoryModel";
 import AdminViewAppliedSpeakerModalContainer from "./containers/AdminViewAppliedSpeakerModalContainer";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
@@ -14,17 +15,21 @@ function AppliedSpeaking() {
       const [viewModal, openViewModal, closeViewModal] =
             useExtraModal<IAppliedSpeakerDetailSearch["sessionId"]>();
 
-      const { status, error, data } = useAppSelector(appliedHistorySliceState).appliedSpeaker;
+      const { status, error, data, isToRefetch } = useAppSelector(appliedHistorySliceState).appliedSpeaker;
 
-      const { getApplicationSpeaker } = useAppliedHistoryApi();
+      const { getApplicationSpeaker, deleteApplicationSpeakerSchedule } = useAppliedHistoryApi();
 
       const viewDetailHandler = (sessionId: IAppliedSpeakerModel["sessionId"]) => () => {
             openViewModal(sessionId);
       };
 
+      const deleteScheduleHandler = (sessionId: IAppliedSpeakerScheduleDeleteReq["sessionId"]) => () => {
+            deleteApplicationSpeakerSchedule({ sessionId });
+      };
+
       useEffect(() => {
             getApplicationSpeaker();
-      }, []);
+      }, [isToRefetch]);
 
       return (
             <>
@@ -33,6 +38,7 @@ function AppliedSpeaking() {
                         status={status}
                         error={error}
                         data={data}
+                        deleteButtonHandler={deleteScheduleHandler}
                         viewDetail={viewDetailHandler}
                   />
 

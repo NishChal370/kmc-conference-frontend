@@ -8,23 +8,30 @@ import { appliedHistorySliceState } from "./feature/appliedHistorySlice";
 import {
       IAppliedParticipationDetailSearch,
       IAppliedParticipationModel,
+      IAppliedParticipationScheduleDeleteReq,
 } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 function AppliedParticipation() {
       const [viewModal, openViewModal, closeViewModal] =
             useExtraModal<IAppliedParticipationDetailSearch["sessionId"]>();
 
-      const { status, error, data } = useAppSelector(appliedHistorySliceState).appliedParticipation;
+      const { status, error, data, isToRefetch } =
+            useAppSelector(appliedHistorySliceState).appliedParticipation;
 
-      const { getApplicationParticipation } = useAppliedHistoryApi();
+      const { getApplicationParticipation, deleteApplicationParticipationSchedule } = useAppliedHistoryApi();
 
       const viewDetailHandler = (sessionId: IAppliedParticipationModel["sessionId"]) => () => {
             openViewModal(sessionId);
       };
 
+      const deleteScheduleHandler =
+            (sessionId: IAppliedParticipationScheduleDeleteReq["sessionId"]) => () => {
+                  deleteApplicationParticipationSchedule({ sessionId });
+            };
+
       useEffect(() => {
             getApplicationParticipation();
-      }, []);
+      }, [isToRefetch]);
 
       return (
             <>
@@ -33,6 +40,7 @@ function AppliedParticipation() {
                         status={status}
                         error={error}
                         data={data}
+                        deleteButtonHandler={deleteScheduleHandler}
                         viewDetail={viewDetailHandler}
                   />
 

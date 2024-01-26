@@ -46,7 +46,7 @@ export const adminParticipantApi = {
 
       postParticipationSession: (detail: IParticipationNewSessionPostRequest) => {
             const options: AxiosRequestConfig = {
-                  method: "POST",
+                  method: "PUT",
                   url: `Participant/add-session`,
                   data: detail
             };

@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminAppliedHistoryApi } from "@/admin/api/service/adminAppliedHistoryApi";
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerDetailSearch, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerDetailSearch, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 export const getApplicationSpeaker = createAppAsyncThunk<IAppliedSpeakerResponse>(
       "admin/applied-history/speaker",
@@ -75,6 +75,48 @@ export const getApplicationCallForPaperDetailed = createAppAsyncThunk<IAppliedCa
       async (searchDetail, { rejectWithValue }) => {
             try {
                   const response = await adminAppliedHistoryApi.getApplicationCallForPaperDetail(searchDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+
+export const deleteApplicationParticipationSchedule = createAppAsyncThunk<unknown, IAppliedParticipationScheduleDeleteReq>(
+      "applied-history/participation/delete",
+      async (searchDetail, { rejectWithValue }) => {
+            try {
+                  const response = await adminAppliedHistoryApi.deleteAppliedParticipationSchedule(searchDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+export const deleteApplicationCallForPaperSchedule = createAppAsyncThunk<unknown, IAppliedCallForPaperScheduleDeleteReq>(
+      "applied-history/callForPaper/delete",
+      async (searchDetail, { rejectWithValue }) => {
+            try {
+                  const response = await adminAppliedHistoryApi.deleteAppliedCallForPaperSchedule(searchDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+export const deleteApplicationSpeakerSchedule = createAppAsyncThunk<unknown, IAppliedSpeakerScheduleDeleteReq>(
+      "applied-history/speaker/delete",
+      async (searchDetail, { rejectWithValue }) => {
+            try {
+                  const response = await adminAppliedHistoryApi.deleteAppliedSpeakerSchedule(searchDetail);
 
                   return response.data;
             } catch (error: any) {

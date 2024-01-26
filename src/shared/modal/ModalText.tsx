@@ -19,6 +19,8 @@ function ModalText({ title, data, containerClassName = "", dataClassName = "" }:
                               {data.map((value, index) => (
                                     <li key={index}>{value}</li>
                               ))}
+
+                              {!data.length ? "N/A" : undefined}
                         </ul>
                   )}
 
