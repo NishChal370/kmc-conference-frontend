@@ -22,7 +22,7 @@ function AdminCallForPaperViewModalContainer({
       const { getCallForPaperDetailedInfo } = useCallForPaperApi();
 
       const fetchData = () => {
-            getCallForPaperDetailedInfo({ id: selectedCallForPaperId });
+            getCallForPaperDetailedInfo({ id: selectedCallForPaperId }).catch(closeModalHandler);
       };
 
       useEffect(() => {

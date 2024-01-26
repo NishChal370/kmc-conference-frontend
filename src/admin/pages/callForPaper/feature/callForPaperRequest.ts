@@ -1,7 +1,7 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { callForPaperApi } from "@/admin/api/service/callForPaperApi";
 import { ICallForPaperAddNewSessionPutRequest, ICallForPaperPostRequest } from "@/admin/model/callForPaper/callForPaperApplyModel";
-import { IAdminCallForPaperDeleteRequest, IAdminCallForPaperPutRequest, IAdminCallForPaperStatusChangeReq, ICallForPaperBasicResponse, ICallForPaperBasicSearch, ICallForPaperByIdResponse, ICallForPaperByIdSearch } from "@/admin/model/callForPaper/callForPaperModel";
+import { IAdminCallForPaperDeleteRequest, ICallForPaperBasicResponse, ICallForPaperBasicSearch, ICallForPaperByIdResponse, ICallForPaperByIdSearch } from "@/admin/model/callForPaper/callForPaperModel";
 
 export const getCallForPaperBasicInfo = createAppAsyncThunk<ICallForPaperBasicResponse, ICallForPaperBasicSearch>(
       "callForPaper/basic/get",
@@ -44,34 +44,6 @@ export const postCallForPaperDetail = createAppAsyncThunk<undefined, ICallForPap
       }
 );
 
-
-
-export const putAdminCallForPaperFullDetail = createAppAsyncThunk<undefined, IAdminCallForPaperPutRequest>(
-      "admin/callForPaper/put",
-      async (CallForPaperUpdateDetail, { rejectWithValue }) => {
-            try {
-                  const response = await callForPaperApi.putCallForPaperDetailed(CallForPaperUpdateDetail);
-
-                  return response.data;
-            } catch (error: any) {
-                  return rejectWithValue(error.response.data);
-            }
-      }
-);
-
-
-export const putAdminCallForPaperApprovalStatus = createAppAsyncThunk<undefined, IAdminCallForPaperStatusChangeReq>(
-      "admin/callForPaper/approval-status/put",
-      async (approvalDetail, { rejectWithValue }) => {
-            try {
-                  const response = await callForPaperApi.putCallForPaperApprovalStatus(approvalDetail);
-
-                  return response.data;
-            } catch (error: any) {
-                  return rejectWithValue(error.response.data);
-            }
-      }
-);
 
 
 export const deleteCallForPaperDetail = createAppAsyncThunk<undefined, IAdminCallForPaperDeleteRequest>(

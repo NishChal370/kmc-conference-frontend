@@ -21,6 +21,7 @@ import scheduleTopicReducer from "@/admin/pages/scheduleTopic/feature/scheduleTo
 import speakerReducer from "@/admin/pages/speaker/feature/speakerSlice";
 import speakerScheduleReducer from "@/admin/pages/speakerSchedule/feature/speakerScheduleSlice";
 import callForPaperReducer from "@/admin/pages/callForPaper/feature/callForPaperSlice";
+import callForPaperScheduleReducer from "@/admin/pages/callForPaperSchedule/feature/callForPaperScheduleSlice";
 import participantReducer from "@/admin/pages/participant/feature/participantSlice";
 import userReducer from "@/admin/pages/user/feature/userSlice";
 import adminProfileReducer from "@/admin/pages/profileSetting/profile/feature/profileSlice";
@@ -45,6 +46,7 @@ export const store = configureStore({
             speaker: speakerReducer,
             speakerSchedule: speakerScheduleReducer,
             callForPaper: callForPaperReducer,
+            callForPaperSchedule: callForPaperScheduleReducer,
             participant: participantReducer,
             user: userReducer,
             adminProfile: adminProfileReducer,

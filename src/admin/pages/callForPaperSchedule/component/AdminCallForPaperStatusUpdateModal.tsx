@@ -2,8 +2,8 @@ import { Modal } from "@/shared/modal";
 import Button from "@/shared/button/Button";
 import StaticOptionsDropdownInput from "@/shared/input/StaticOptionsDropdownInput";
 import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum";
-import { IAdminCallForPaperStatusChangeModal } from "@/admin/model/callForPaper/callForPaperModel";
 import { CALL_FOR_PAPER_APPROVAL_STATUS_OPTION } from "../data/callForPaperApprovalStatusOption";
+import { ICallForPaperScheduleApprovalStatusChangeModal } from "@/admin/model/callForPaperSchedule/callForPaperScheduleModel";
 
 interface IAdminCallForPaperStatusUpdateModal {
       value: CallForPaperApprovalStatus;
@@ -11,12 +11,14 @@ interface IAdminCallForPaperStatusUpdateModal {
       closeModalHandler: () => void;
       currentStatus: CallForPaperApprovalStatus;
       onChangeHandler: (value: CallForPaperApprovalStatus) => void;
-      callForPaperName: IAdminCallForPaperStatusChangeModal["callForPaperName"];
+      sessionTitle: ICallForPaperScheduleApprovalStatusChangeModal["sessionTitle"];
+      callForPaperName: ICallForPaperScheduleApprovalStatusChangeModal["callForPaperName"];
 }
 
 function AdminCallForPaperStatusUpdateModal({
       value,
       currentStatus,
+      sessionTitle,
       callForPaperName,
       submitHandler,
       onChangeHandler,
@@ -34,8 +36,13 @@ function AdminCallForPaperStatusUpdateModal({
                               [&>span>h5]:min-w-[7rem] [&>span>h5]:font-semibold"
                         >
                               <span>
-                                    <h5>Name: </h5>
+                                    <h5>User Name: </h5>
                                     <p>{callForPaperName}</p>
+                              </span>
+
+                              <span>
+                                    <h5>Session title: </h5>
+                                    <p>{sessionTitle}</p>
                               </span>
 
                               <span>

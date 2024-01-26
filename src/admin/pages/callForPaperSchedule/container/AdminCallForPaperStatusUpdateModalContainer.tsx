@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { IAdminCallForPaperStatusChangeModal } from "@/admin/model/callForPaper/callForPaperModel";
-import useCallForPaperApi from "@/admin/hooks/callForPaper/useCallForPaperApi";
+import AdminCallForPaperStatusUpdateModal from "../component/AdminCallForPaperStatusUpdateModal";
+import useCallForPaperScheduleApi from "@/admin/hooks/callForPaperSchedule/useCallForPaperScheduleApi";
 import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum";
-import AdminCallForPaperStatusUpdateModal from "../components/AdminCallForPaperStatusUpdateModal";
+import { ICallForPaperScheduleApprovalStatusChangeModal } from "@/admin/model/callForPaperSchedule/callForPaperScheduleModel";
 
 interface IAdminCallForPaperStatusUpdateModalContainer {
       closeModalHandler: () => void;
-      callForPaperStatusDetail: IAdminCallForPaperStatusChangeModal;
+      callForPaperStatusDetail: ICallForPaperScheduleApprovalStatusChangeModal;
 }
 function AdminCallForPaperStatusUpdateModalContainer({
       closeModalHandler,
       callForPaperStatusDetail,
 }: IAdminCallForPaperStatusUpdateModalContainer) {
-      const { updateCallForPaperApprovalStatus } = useCallForPaperApi();
+      const { updateCallForPaperScheduleApprovalStatus } = useCallForPaperScheduleApi();
 
       const [approvalStatus, setApprovalStatus] = useState<CallForPaperApprovalStatus>(
             callForPaperStatusDetail.approvalStatus
@@ -23,8 +23,9 @@ function AdminCallForPaperStatusUpdateModalContainer({
       };
 
       const formSubmitHandler = () => {
-            updateCallForPaperApprovalStatus({
-                  id: callForPaperStatusDetail.id,
+            updateCallForPaperScheduleApprovalStatus({
+                  callId: callForPaperStatusDetail.callId,
+                  sessionId: callForPaperStatusDetail.sessionId,
                   approvalStatus: approvalStatus,
             }).then(closeModalHandler);
       };
@@ -35,6 +36,7 @@ function AdminCallForPaperStatusUpdateModalContainer({
                   submitHandler={formSubmitHandler}
                   onChangeHandler={inputChangeHandler}
                   closeModalHandler={closeModalHandler}
+                  sessionTitle={callForPaperStatusDetail.sessionTitle}
                   callForPaperName={callForPaperStatusDetail.callForPaperName}
                   currentStatus={callForPaperStatusDetail.approvalStatus}
             />

@@ -1,4 +1,3 @@
-import FileViewerContainer from "@/admin/shared/file/FileViewer";
 import { ICallForPaperDetailModel } from "@/admin/model/callForPaper/callForPaperModel";
 import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
 
@@ -74,87 +73,7 @@ function AdminCallForPaperViewModal({ callForPaperDetail, closeModalHandler }: I
                         </section>
 
                         <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Paper and Session Proposals" />
-
-                              <article
-                                    className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
-                                          sm:grid-cols-2 sm:px-2
-                                    "
-                              >
-                                    <ModalText
-                                          title="Proposed Paper Session Title"
-                                          data={callForPaperDetail.proposedPaperSessionTitle}
-                                    />
-
-                                    <ModalText title="Keywords" data={callForPaperDetail.keywords} />
-
-                                    <ModalText
-                                          title="Primary Field Category"
-                                          data={callForPaperDetail.primaryFieldCategory}
-                                    />
-
-                                    <ModalText
-                                          title="Research Methodology"
-                                          data={callForPaperDetail.researchMethodology}
-                                    />
-
-                                    <span className="sm:col-span-2">
-                                          <ModalSanitizedText
-                                                title="Abstract Summary"
-                                                htmlContent={callForPaperDetail.abstractSummary}
-                                          />
-                                    </span>
-                              </article>
-                        </section>
-
-                        <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Presentation and Paper Details" />
-
-                              <article
-                                    className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
-                                          sm:grid-cols-2 sm:px-2
-                                    "
-                              >
-                                    <ModalText
-                                          title="Preferred Presentation Format"
-                                          data={callForPaperDetail.preferredPresentationFormat}
-                                    />
-
-                                    <ModalText
-                                          title="Key Objectives"
-                                          data={callForPaperDetail.keyObjectives}
-                                    />
-
-                                    <ModalText
-                                          title="Contributions"
-                                          data={callForPaperDetail.contributions}
-                                    />
-
-                                    <ModalText
-                                          title="Significance/Relevance"
-                                          data={callForPaperDetail.significanceRelevance}
-                                    />
-
-                                    <ModalText
-                                          title="Audio Visual Requirements"
-                                          data={callForPaperDetail.audioVisualRequirements}
-                                    />
-
-                                    <span className="sm:col-span-2">
-                                          <FileViewerContainer
-                                                label="Full Paper / Extended Abstract"
-                                                files={
-                                                      callForPaperDetail.fullPaperOrExtendedAbstract
-                                                            ? [callForPaperDetail.fullPaperOrExtendedAbstract]
-                                                            : null
-                                                }
-                                          />
-                                    </span>
-                              </article>
-                        </section>
-
-                        <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Previous Experience and References" />
+                              <ModalSectionHeader title="Previous Experience" />
 
                               <article
                                     className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
@@ -169,11 +88,6 @@ function AdminCallForPaperViewModal({ callForPaperDetail, closeModalHandler }: I
                                     <ModalText
                                           title="List of Conferences"
                                           data={callForPaperDetail.listOfConferences}
-                                    />
-
-                                    <ModalText
-                                          title="References or Citations"
-                                          data={callForPaperDetail.referencesOrCitations}
                                     />
                               </article>
                         </section>

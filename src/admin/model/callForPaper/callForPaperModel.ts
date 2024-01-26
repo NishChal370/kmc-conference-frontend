@@ -1,44 +1,28 @@
 import { IBasicApiResponse } from '@/models/commonModel';
-import { IAttachment, IFilUpdateDetail } from '@/models/file/fileModel';
-import { IMultipleInputFields } from '@/models/input/multiplePhoneInputModel';
-import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum";
 
 export interface ICallForPaperBasicModel {
       id: number,
       name: string,
       email: string,
-      phoneNumber: string,
       jobTitle?: string,
       affiliation?: string,
-      proposedPaperSessionTitle: string,
-      approvalStatus: CallForPaperApprovalStatus,
 }
 
 export interface ICallForPaperDetailModel extends ICallForPaperBasicModel {
+      phoneNumber: string;
       briefBiography: string;
       linkedInProfile?: string;
       twitterHandle?: string;
       professionalWebsite?: string;
-      abstractSummary: string;
-      keywords: string[] | null;
-      primaryFieldCategory: string;
-      researchMethodology: string;
-      keyObjectives: string[] | null;
-      contributions: string[] | null;
-      significanceRelevance?: string;
-      preferredPresentationFormat: string;
-      audioVisualRequirements: string;
       previousExperience: string[] | null;
       listOfConferences: string[] | null;
-      referencesOrCitations: string[] | null;
       availabilityDaysTimes?: string; // no in use
       willParticipateInPanel: boolean;
       willParticipateInWorkshop: boolean;
-      specialAccommodationNeeds: string;
-      additionalRequirements: string;
+      specialAccommodationNeeds?: string;
+      additionalRequirements?: string;
       confirmPresent: boolean;
       acceptTandC: boolean;
-      fullPaperOrExtendedAbstract: IAttachment | null;
 }
 
 
@@ -60,65 +44,7 @@ export interface ICallForPaperByIdSearch {
 }
 
 
-export interface IAdminCallForPaperPutRequest {
-      callId: ICallForPaperBasicModel["id"];
-      briefBiography: string;
-      linkedInProfile?: string;
-      twitterHandler?: string;
-      professionalWebsite?: string;
-      proposedPaperSessionTitle: string;
-      abstractSummary: string;
-      keywords: string[] | null;
-      primaryFieldCategory: string;
-      researchMethodology: string;
-      keyObjectives: string[] | null;
-      contributions: string[] | null;
-      significanceRelevance?: string;
-      preferredPresentationFormat: string;
-      audioVisualRequirements: string;
-      previousExperience: string[] | null;
-      listOfConferences: string[] | null;
-      referencesOrCitations: string[] | null;
-      availabilityDaysTimes?: string | null; // no in use
-      willParticipateInPanel: boolean;
-      willParticipateInWorkshop: boolean;
-      specialAccommodationNeeds: string;
-      additionalRequirements: string;
-      fullPaperOrExtendedAbstract?: File | null;
-      oldFullPaperOrExtendedAbstract?: IAttachment["fileName"] | null;
-}
-
-
-
-export interface IAdminCallForPaperForm {
-      callId: ICallForPaperBasicModel["id"];
-      briefBiography: string;
-      linkedInProfile?: string;
-      twitterHandler?: string;
-      professionalWebsite?: string;
-      proposedPaperSessionTitle: string;
-      abstractSummary: string;
-      keywords: IMultipleInputFields;
-      primaryFieldCategory: string;
-      researchMethodology: string;
-      keyObjectives: IMultipleInputFields;
-      contributions: IMultipleInputFields;
-      significanceRelevance?: string;
-      preferredPresentationFormat: string;
-      audioVisualRequirements: string;
-      previousExperience: IMultipleInputFields;
-      listOfConferences: IMultipleInputFields;
-      referencesOrCitations: IMultipleInputFields;
-      availabilityDaysTimes?: string; // no in use
-      willParticipateInPanel: boolean;
-      willParticipateInWorkshop: boolean;
-      specialAccommodationNeeds: string;
-      additionalRequirements: string;
-      fullPaperORExtendedAbstract: IFilUpdateDetail;
-}
-
-
-export interface IAdminCallForPaperViewOrEditModal {
+export interface IAdminCallForPaperViewModal {
       id: ICallForPaperBasicModel["id"]
 }
 
@@ -126,18 +52,4 @@ export interface IAdminCallForPaperViewOrEditModal {
 
 export interface IAdminCallForPaperDeleteRequest {
       callId: ICallForPaperBasicModel["id"];
-}
-
-
-
-export interface IAdminCallForPaperStatusChangeReq {
-      id: ICallForPaperDetailModel["id"],
-      approvalStatus: ICallForPaperDetailModel["approvalStatus"],
-}
-
-
-export interface IAdminCallForPaperStatusChangeModal {
-      id: ICallForPaperDetailModel["id"],
-      callForPaperName: ICallForPaperDetailModel["name"];
-      approvalStatus: ICallForPaperDetailModel["approvalStatus"],
 }

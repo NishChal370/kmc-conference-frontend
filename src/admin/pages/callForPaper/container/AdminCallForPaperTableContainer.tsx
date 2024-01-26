@@ -9,22 +9,15 @@ import useCallForPaperApi from "@/admin/hooks/callForPaper/useCallForPaperApi";
 import { Status } from "@/enum/commonEnum";
 import {
       IAdminCallForPaperDeleteRequest,
-      IAdminCallForPaperStatusChangeModal,
-      IAdminCallForPaperViewOrEditModal,
+      IAdminCallForPaperViewModal,
 } from "@/admin/model/callForPaper/callForPaperModel";
 import { callForPaperBasicInfoSliceState, callForPaperSliceAction } from "../feature/callForPaperSlice";
 
 interface IAdminCallForPaperTableContainer {
-      openStatusChangeModal: (callForPaperDetail: IAdminCallForPaperStatusChangeModal) => void;
-      openViewModal: ({ viewingData }: { viewingData: IAdminCallForPaperViewOrEditModal }) => void;
-      openEditModal: ({ editingData }: { editingData: IAdminCallForPaperViewOrEditModal }) => void;
+      openViewModal: (data: IAdminCallForPaperViewModal) => void;
 }
 
-function AdminCallForPaperTableContainer({
-      openViewModal,
-      openEditModal,
-      openStatusChangeModal,
-}: IAdminCallForPaperTableContainer) {
+function AdminCallForPaperTableContainer({ openViewModal }: IAdminCallForPaperTableContainer) {
       const { search } = useLocation();
 
       const dispatch = useAppDispatch();
@@ -39,17 +32,8 @@ function AdminCallForPaperTableContainer({
             getCallForPaperBasicInfo({ pageNumber: currentPageNumber });
       };
 
-      const openViewModalHandler = (viewingData: IAdminCallForPaperViewOrEditModal) => () => {
-            openViewModal({ viewingData });
-      };
-
-      const openStatusChangeModalHandler =
-            (callForPaperDetail: IAdminCallForPaperStatusChangeModal) => () => {
-                  openStatusChangeModal(callForPaperDetail);
-            };
-
-      const openEditModalHandler = (editingData: IAdminCallForPaperViewOrEditModal) => () => {
-            openEditModal({ editingData });
+      const openViewModalHandler = (viewingData: IAdminCallForPaperViewModal) => () => {
+            openViewModal(viewingData);
       };
 
       const deleteCallForPaperDetailHandler = (deletingDetail: IAdminCallForPaperDeleteRequest) => () => {
@@ -72,8 +56,6 @@ function AdminCallForPaperTableContainer({
                         status={status}
                         callForPaperBasicInfo={data.calls}
                         openViewModalHandler={openViewModalHandler}
-                        openEditModalHandler={openEditModalHandler}
-                        openStatusChangeModalHandler={openStatusChangeModalHandler}
                         deleteCallForPaperDetailHandler={deleteCallForPaperDetailHandler}
                   />
 

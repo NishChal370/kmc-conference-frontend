@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
 import { ICallForPaperAddNewSessionPutRequest, ICallForPaperPostRequest } from "@/admin/model/callForPaper/callForPaperApplyModel";
-import { IAdminCallForPaperDeleteRequest, IAdminCallForPaperPutRequest, IAdminCallForPaperStatusChangeReq, ICallForPaperBasicSearch, ICallForPaperByIdSearch } from "@/admin/model/callForPaper/callForPaperModel";
+import { IAdminCallForPaperDeleteRequest, ICallForPaperBasicSearch, ICallForPaperByIdSearch } from "@/admin/model/callForPaper/callForPaperModel";
 
 export const callForPaperApi = {
       getBasicInfo: (searchDetail: ICallForPaperBasicSearch) => {
@@ -39,29 +39,6 @@ export const callForPaperApi = {
                   method: "PUT",
                   url: `CallForPaper/add-session`,
                   data: convertObjectToFormData(sessionDetail),
-            };
-
-
-            return AXIOS.request(options);
-      },
-
-
-      putCallForPaperDetailed: (callForPaperUpdateDetail: IAdminCallForPaperPutRequest) => {
-            const options: AxiosRequestConfig = {
-                  method: "PUT",
-                  url: `CallForPaper`,
-                  data: convertObjectToFormData(callForPaperUpdateDetail)
-            };
-
-            return AXIOS.request(options);
-      },
-
-
-      putCallForPaperApprovalStatus: (approvalDetail: IAdminCallForPaperStatusChangeReq) => {
-            const options: AxiosRequestConfig = {
-                  method: "PUT",
-                  url: `CallForPaper/update-status`,
-                  data: approvalDetail
             };
 
 
