@@ -72,6 +72,7 @@ function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDay
             <>
                   <AdminDayThemeTable
                         status={status}
+                        currentPageNumber={currentPageNumber}
                         dayThemes={data.themes}
                         deleteHandler={deleteHandler}
                         openViewModalHandler={openViewModalHandler}

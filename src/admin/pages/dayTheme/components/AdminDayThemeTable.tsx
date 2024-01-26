@@ -4,9 +4,11 @@ import { DAY_THEME_HEADER_LIST } from "../data/dayThemeHeader";
 import { Status } from "@/enum/commonEnum";
 import AppIcon from "@/shared/icon/AppIcon";
 import { IDayThemeDeleteRequest, IDayThemeModel } from "@/admin/model/dayTheme/dayThemeModel";
+import getIndex from "@/utils/uniqueId/getIndex";
 
 interface IAdminDayTheme {
       status: Status;
+      currentPageNumber: number;
       dayThemes: IDayThemeModel[];
       openViewModalHandler: (viewingData: IDayThemeModel) => () => void;
       openEditModalHandler: (editingData: IDayThemeModel) => () => void;
@@ -16,6 +18,7 @@ interface IAdminDayTheme {
 
 function AdminDayThemeTable({
       status,
+      currentPageNumber,
       dayThemes,
       deleteHandler,
       viewScheduleHandler,
@@ -31,7 +34,7 @@ function AdminDayThemeTable({
                               {dayThemes.map((theme, index) => (
                                     <tr key={theme.id}>
                                           <Td id="index" dataName="index">
-                                                {index + 1}
+                                                {getIndex({ currentPageNumber, index })}
                                           </Td>
 
                                           <Td id="title" dataName="Date" className="sm:text-start">

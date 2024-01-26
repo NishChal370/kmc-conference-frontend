@@ -54,6 +54,7 @@ function AdminCallForPaperTableContainer({ openViewModal }: IAdminCallForPaperTa
             <>
                   <AdminCallForPaperTable
                         status={status}
+                        currentPageNumber={currentPageNumber}
                         callForPaperBasicInfo={data.calls}
                         openViewModalHandler={openViewModalHandler}
                         deleteCallForPaperDetailHandler={deleteCallForPaperDetailHandler}

@@ -10,9 +10,11 @@ import {
 import { Status } from "@/enum/commonEnum";
 import SpeakerSchedule from "../../speakerSchedule/SpeakerSchedule";
 import { NestedRowWrapper, NestedRowContainer } from "@/admin/shared/table/nested-table";
+import getIndex from "@/utils/uniqueId/getIndex";
 
 interface IAdminSpeakerTable {
       status: Status;
+      currentPageNumber: number;
       speakersBasicInfo: ISpeakerBasicModel[];
       openViewModalHandler: (viewingData: ISpeakerViewModal) => () => void;
       deleteSpeakerDetailHandler: (deletingDetail: ISpeakerDeleteRequest) => () => void;
@@ -20,6 +22,7 @@ interface IAdminSpeakerTable {
 
 function AdminSpeakerTable({
       status,
+      currentPageNumber,
       speakersBasicInfo,
       openViewModalHandler,
       deleteSpeakerDetailHandler,
@@ -40,7 +43,7 @@ function AdminSpeakerTable({
                                                 parentTr={({ isOpen }) => (
                                                       <tr key={index} className="text-start">
                                                             <Td id="index" dataName="index">
-                                                                  {index + 1}
+                                                                  {getIndex({ currentPageNumber, index })}
                                                             </Td>
                                                             <Ti image={speaker.photo} />
                                                             <Td dataName="Speaker Name">{speaker.name}</Td>
@@ -48,6 +51,7 @@ function AdminSpeakerTable({
                                                             <Td dataName="Affiliation">
                                                                   {speaker.affiliation}
                                                             </Td>
+                                                            <Td dataName="Email">{speaker.email}</Td>
                                                             <Td id="table-action-container" dataName="Action">
                                                                   <TableActionButton
                                                                         extraButton={[

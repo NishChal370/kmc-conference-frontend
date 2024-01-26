@@ -54,6 +54,7 @@ function AdminSpeakerTableContainer({ openViewModal }: IAdminSpeakerTableContain
             <>
                   <AdminSpeakerTable
                         status={status}
+                        currentPageNumber={currentPageNumber}
                         speakersBasicInfo={data.speakers}
                         openViewModalHandler={openViewModalHandler}
                         deleteSpeakerDetailHandler={deleteSpeakerDetailHandler}

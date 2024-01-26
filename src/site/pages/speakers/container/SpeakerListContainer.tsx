@@ -24,7 +24,7 @@ function SpeakerListContainer() {
 
       return (
             <>
-                  <SpeakerList speakers={data} />
+                  {status === Status.SUCCEEDED && <SpeakerList speakers={data} />}
 
                   {status === Status.FAILED && (
                         <ErrorMessage title={error?.title} detail={error?.detail} needTopPadding={false} />

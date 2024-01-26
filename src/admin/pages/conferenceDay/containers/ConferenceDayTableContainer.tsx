@@ -54,6 +54,7 @@ function ConferenceDayTableContainer({ openEditModal }: IConferenceDayTableConta
             <>
                   <ConferenceDayTable
                         status={status}
+                        currentPageNumber={currentPageNumber}
                         conferenceDay={data.days}
                         viewThemeHandler={viewThemeHandler}
                         deleteButtonHandler={deleteButtonHandler}

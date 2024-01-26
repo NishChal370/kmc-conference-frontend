@@ -7,9 +7,11 @@ import {
       IConferenceDayDeleteRequest,
       IConferenceDayModel,
 } from "@/admin/model/conferenceDay/conferenceDayModel";
+import getIndex from "@/utils/uniqueId/getIndex";
 
 interface IConferenceDayTable {
       status: Status;
+      currentPageNumber: number;
       conferenceDay: IConferenceDayModel[];
       viewThemeHandler: (dayId: IConferenceDayModel["id"]) => () => void;
       deleteButtonHandler: (conferenceDayDetail: IConferenceDayDeleteRequest) => () => void;
@@ -18,6 +20,7 @@ interface IConferenceDayTable {
 
 function ConferenceDayTable({
       status,
+      currentPageNumber,
       conferenceDay,
       viewThemeHandler,
       editButtonHandler,
@@ -33,7 +36,7 @@ function ConferenceDayTable({
                                     {conferenceDay.map((day, index) => (
                                           <tr key={day.id}>
                                                 <Td id="index" dataName="index">
-                                                      {index + 1}
+                                                      {getIndex({ currentPageNumber, index })}
                                                 </Td>
 
                                                 <Td id="Date" dataName="Date" className="xs:text-start">

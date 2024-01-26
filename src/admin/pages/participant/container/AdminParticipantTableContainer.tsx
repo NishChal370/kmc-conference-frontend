@@ -54,6 +54,7 @@ function AdminParticipantTableContainer({ openViewModal }: IAdminParticipantTabl
             <>
                   <AdminParticipantTable
                         status={status}
+                        currentPageNumber={currentPageNumber}
                         participantBasicInfo={data.participants}
                         openViewModalHandler={openViewModalHandler}
                         deleteParticipantDetailHandler={deleteParticipantDetailHandler}

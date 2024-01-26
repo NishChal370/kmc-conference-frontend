@@ -10,12 +10,12 @@ export interface ISpeakerBasicModel {
       name: string,
       photo: IAttachment | null,
       jobTitle: string,
+      email: string;
       affiliation: string,
 }
 
 export interface ISpeakerDetailModel extends ISpeakerBasicModel {
       title: string;
-      email: string;
       phone: string;
       bio: string;
       linkedInProfile?: string;

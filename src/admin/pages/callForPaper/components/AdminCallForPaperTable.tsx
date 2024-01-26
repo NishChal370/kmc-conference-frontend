@@ -10,9 +10,11 @@ import {
 import { Status } from "@/enum/commonEnum";
 import { NestedRowContainer, NestedRowWrapper } from "@/admin/shared/table/nested-table";
 import CallForPaperSchedule from "../../callForPaperSchedule/CallForPaperSchedule";
+import getIndex from "@/utils/uniqueId/getIndex";
 
 interface IAdminCallForPaperTable {
       status: Status;
+      currentPageNumber: number;
       callForPaperBasicInfo: ICallForPaperBasicModel[];
       openViewModalHandler: (viewingData: IAdminCallForPaperViewModal) => () => void;
       deleteCallForPaperDetailHandler: (deletingDetail: IAdminCallForPaperDeleteRequest) => () => void;
@@ -20,6 +22,7 @@ interface IAdminCallForPaperTable {
 
 function AdminCallForPaperTable({
       status,
+      currentPageNumber,
       callForPaperBasicInfo,
       openViewModalHandler,
       deleteCallForPaperDetailHandler,
@@ -40,7 +43,7 @@ function AdminCallForPaperTable({
                                                 parentTr={({ isOpen }) => (
                                                       <tr key={callForPaper.id} className="text-start">
                                                             <Td id="index" dataName="index">
-                                                                  {index + 1}
+                                                                  {getIndex({ currentPageNumber, index })}
                                                             </Td>
 
                                                             <Td id="name" dataName="Name">

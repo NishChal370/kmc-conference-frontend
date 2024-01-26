@@ -6,9 +6,11 @@ import { NestedRowWrapper, NestedRowContainer } from "@/admin/shared/table/neste
 import { Status } from "@/enum/commonEnum";
 import { IScheduleDeleteRequest, IScheduleModel } from "@/admin/model/schedule/scheduleModel";
 import { ADMIN_SESSION_TABLE_HEADER } from "../data/adminScheduleHeaders";
+import getIndex from "@/utils/uniqueId/getIndex";
 
 interface IAdminScheduleTable {
       status: Status;
+      currentPageNumber: number;
       schedules: IScheduleModel[];
       openTopicAddModalHandler: (data: IScheduleModel["id"]) => () => void;
       deleteScheduleHandler: (deletingDetail: IScheduleDeleteRequest) => void;
@@ -18,6 +20,7 @@ interface IAdminScheduleTable {
 function AdminScheduleTable({
       schedules,
       status,
+      currentPageNumber,
       editButtonHandler,
       deleteScheduleHandler,
       openTopicAddModalHandler,
@@ -30,7 +33,7 @@ function AdminScheduleTable({
                         <TableBody status={status}>
                               <NestedRowContainer>
                                     {({ selectedRowId, selectRowHandler, closeRowHandler }) =>
-                                          schedules.map((schedule) => (
+                                          schedules.map((schedule, index) => (
                                                 <NestedRowWrapper
                                                       key={schedule.id}
                                                       childColSpan={5}
@@ -39,7 +42,10 @@ function AdminScheduleTable({
                                                       parentTr={({ isOpen }) => (
                                                             <tr>
                                                                   <Td id="index" dataName="index">
-                                                                        1
+                                                                        {getIndex({
+                                                                              currentPageNumber,
+                                                                              index,
+                                                                        })}
                                                                   </Td>
 
                                                                   <Td

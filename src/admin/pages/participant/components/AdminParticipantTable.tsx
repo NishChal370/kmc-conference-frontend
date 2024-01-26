@@ -8,9 +8,11 @@ import {
 } from "@/admin/model/participant/participantModel";
 import { Status } from "@/enum/commonEnum";
 import { ADMIN_PARTICIPANT_HEADER_LIST } from "../data/adminParticipantHeader";
+import getIndex from "@/utils/uniqueId/getIndex";
 
 interface IAdminParticipantTable {
       status: Status;
+      currentPageNumber: number;
       participantBasicInfo: IParticipantBasicModel[];
       openViewModalHandler: (viewingData: IAdminParticipantViewModal) => () => void;
       deleteParticipantDetailHandler: (deletingDetail: IAdminParticipantDeleteRequest) => () => void;
@@ -18,6 +20,7 @@ interface IAdminParticipantTable {
 
 function AdminParticipantTable({
       status,
+      currentPageNumber,
       participantBasicInfo,
       openViewModalHandler,
       deleteParticipantDetailHandler,
@@ -31,7 +34,7 @@ function AdminParticipantTable({
                               {participantBasicInfo.map((participant, index) => (
                                     <tr key={participant.id} className="text-start">
                                           <Td id="index" dataName="index">
-                                                {index + 1}
+                                                {getIndex({ currentPageNumber: 0, index })}
                                           </Td>
 
                                           <Td id="name" dataName="Name">
