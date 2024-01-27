@@ -11,10 +11,10 @@ function HomeSpeakersContainer() {
       const { getSpeakersContent } = useSpeakerContentApi();
 
       useEffect(() => {
-            getSpeakersContent();
+            getSpeakersContent({ pageNumber: 1, pageSize: 5 });
 
             return () => {
-                  dispatch(speakerSliceAction.resetSpeakerContentSlice());
+                  dispatch(speakerSliceAction.resetSpeakersContentSlice());
             };
       }, []);
 

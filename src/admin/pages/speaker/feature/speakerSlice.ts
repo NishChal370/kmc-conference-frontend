@@ -142,6 +142,7 @@ const initialState: ISpeakerSlice = {
       speakersContent: {
             status: Status.IDEL,
             data: {
+                  totalPages: 0,
                   speakers: [],
             }
       },
@@ -177,6 +178,7 @@ const speakerSlice = createSlice({
                   state.speakersContent = {
                         status: Status.IDEL,
                         data: {
+                              totalPages: 0,
                               speakers: [],
                         }
                   }
@@ -237,8 +239,8 @@ const speakerSlice = createSlice({
                         state.speakersContent.status = action.payload.speakers.length <= 0
                               ? Status.DATA_NOT_FOUND
                               : Status.SUCCEEDED;
-                        state.speakersContent.data = action.payload;
 
+                        state.speakersContent.data = action.payload;
                   })
                   .addCase(getSpeakersContent.rejected, (state, action) => {
                         state.speakersContent.status = Status.FAILED;

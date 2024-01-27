@@ -1,7 +1,8 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
+import { createQueryString } from "@/utils/stringFormat/createQueryString";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
-import { ISpeakerContentDetailSearch } from "@/admin/model/speaker/speakerContentModel";
+import { ISpeakerContentDetailSearch, ISpeakerContentSearch } from "@/admin/model/speaker/speakerContentModel";
 import { ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from "@/admin/model/speaker/becomeSpeakerModel";
 import { ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/speakerModel";
 
@@ -60,10 +61,10 @@ const speakerApi = {
       },
 
 
-      getSpeakersContent: () => {
+      getSpeakersContent: (searchDetail: ISpeakerContentSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Speaker/content`,
+                  url: `Speaker/content${createQueryString(searchDetail)}`,
             };
 
             return AXIOS.request(options);

@@ -1,5 +1,6 @@
 import { IAttachment } from "@/models/file/fileModel";
 import { IScheduleChoice } from "../schedule/scheduleModel";
+import { IBasicApiResponse } from "@/models/commonModel";
 
 
 export interface ISpeakerContentModel {
@@ -16,7 +17,7 @@ export interface ISpeakerContentModel {
 }
 
 
-export interface ISpeakersContentResponse {
+export interface ISpeakersContentResponse extends IBasicApiResponse {
       speakers: Omit<ISpeakerContentModel, "sessionDetail" | "bio">[];
 }
 
@@ -26,4 +27,10 @@ export type ISpeakerContentDetailResponse = Omit<ISpeakerContentModel, "linkedIn
 
 export interface ISpeakerContentDetailSearch {
       id: number
+}
+
+
+export interface ISpeakerContentSearch {
+      pageNumber: number;
+      pageSize?: number;
 }

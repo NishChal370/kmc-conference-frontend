@@ -1,13 +1,13 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import speakerApi from "@/admin/api/service/speakerApi";
-import { ISpeakerContentDetailResponse, ISpeakerContentDetailSearch, ISpeakersContentResponse } from "@/admin/model/speaker/speakerContentModel";
+import { ISpeakerContentDetailResponse, ISpeakerContentDetailSearch, ISpeakerContentSearch, ISpeakersContentResponse } from "@/admin/model/speaker/speakerContentModel";
 
 
-export const getSpeakersContent = createAppAsyncThunk<ISpeakersContentResponse>(
+export const getSpeakersContent = createAppAsyncThunk<ISpeakersContentResponse, ISpeakerContentSearch>(
       "speakers/content/get",
-      async (_, { rejectWithValue }) => {
+      async (searchDetail, { rejectWithValue }) => {
             try {
-                  const response = await speakerApi.getSpeakersContent();
+                  const response = await speakerApi.getSpeakersContent(searchDetail);
 
                   return response.data;
             } catch (error: any) {

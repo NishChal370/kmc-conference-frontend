@@ -34,18 +34,20 @@ function SpeakerDetail({ speaker, navigateToSessionDetail }: ISpeakerDetail) {
                         </span>
                         <p className="line-clamp-2 hover:line-clamp-none cursor-pointer">{speaker?.bio}</p>
 
-                        <dl>
-                              <dt className="font-bold">View {speaker?.name} sessions</dt>
-                              {speaker?.sessionDetail.map(({ sessionId, title }) => (
-                                    <dd
-                                          key={sessionId}
-                                          className="w-fit cursor-pointer hover:underline"
-                                          onClick={navigateToSessionDetail(sessionId)}
-                                    >
-                                          - {title}
-                                    </dd>
-                              ))}
-                        </dl>
+                        {speaker.sessionDetail.length ? (
+                              <dl>
+                                    <dt className="font-bold">View {speaker?.name} sessions</dt>
+                                    {speaker?.sessionDetail.map(({ sessionId, title }) => (
+                                          <dd
+                                                key={sessionId}
+                                                className="w-fit cursor-pointer hover:underline"
+                                                onClick={navigateToSessionDetail(sessionId)}
+                                          >
+                                                - {title}
+                                          </dd>
+                                    ))}
+                              </dl>
+                        ) : undefined}
                   </article>
             </div>
       );

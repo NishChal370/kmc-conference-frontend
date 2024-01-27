@@ -1,13 +1,13 @@
 import { useAppDispatch } from '@/app/hooks';
-import { ISpeakerContentDetailSearch } from '@/admin/model/speaker/speakerContentModel';
+import { ISpeakerContentDetailSearch, ISpeakerContentSearch } from '@/admin/model/speaker/speakerContentModel';
 import { getSpeakersContent as getSpeakersContentReq, getSpeakerContentDetail as getSpeakerContentDetailReq } from '@/admin/pages/speaker/feature/speakerContentRequest';
 
 
 function useSpeakerContentApi() {
       const dispatch = useAppDispatch();
 
-      const getSpeakersContent = () => {
-            dispatch(getSpeakersContentReq())
+      const getSpeakersContent = (searchDetail: ISpeakerContentSearch) => {
+            dispatch(getSpeakersContentReq(searchDetail))
       }
 
 
