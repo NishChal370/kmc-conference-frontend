@@ -64,7 +64,7 @@ export function TableMenuItems({ items }: ITableMenuItems) {
                   leaveTo="opacity-0 translate-y-1"
             >
                   <HeadlessMenu.Items
-                        className="absolute z-10 right-[10%] flex flex-col gap-4 px-4 py-6 bg-white border border-default/25 shadow-md w-40 rounded-lg text-sm
+                        className="absolute z-10 right-[10%] flex flex-col gap-4 px-4 py-6 bg-white border border-default/25 shadow-md w-48 rounded-lg text-sm
                               sm:right-10 sm:left-auto
                         "
                   >
