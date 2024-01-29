@@ -1,7 +1,7 @@
 import AppIcon from "@/shared/icon/AppIcon";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
 import { Table, TableBody, TableHead, Td } from "@/admin/shared/table";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import { CONFERENCE_DAY_TABLE_HEADER } from "../data/conferenceDayTableHeader";
 import {
       IConferenceDayDeleteRequest,
@@ -94,6 +94,11 @@ function ConferenceDayTable({
                                                                         ),
                                                                   },
                                                                   {
+                                                                        allowToAllRole: false,
+                                                                        notAllowedRoles: [
+                                                                              UserRole.REVIEWER,
+                                                                              UserRole.READ_ONLY,
+                                                                        ],
                                                                         title: "Update",
                                                                         type: "Update",
                                                                         icon: <AppIcon name="update" />,
@@ -102,6 +107,11 @@ function ConferenceDayTable({
                                                                         }),
                                                                   },
                                                                   {
+                                                                        allowToAllRole: false,
+                                                                        notAllowedRoles: [
+                                                                              UserRole.REVIEWER,
+                                                                              UserRole.READ_ONLY,
+                                                                        ],
                                                                         title: "Delete",
                                                                         type: "Danger",
                                                                         icon: <AppIcon name="delete" />,

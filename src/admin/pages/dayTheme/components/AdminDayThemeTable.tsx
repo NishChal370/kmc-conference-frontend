@@ -1,7 +1,7 @@
 import TableActionButton from "@/admin/shared/table/TableActionButton";
 import { Table, TableBody, TableHead, Td } from "@/admin/shared/table";
 import { DAY_THEME_HEADER_LIST } from "../data/dayThemeHeader";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import AppIcon from "@/shared/icon/AppIcon";
 import { IDayThemeDeleteRequest, IDayThemeModel } from "@/admin/model/dayTheme/dayThemeModel";
 import getIndex from "@/utils/uniqueId/getIndex";
@@ -80,12 +80,22 @@ function AdminDayThemeTable({
                                                                   clickHandler: viewScheduleHandler(theme.id),
                                                             },
                                                             {
+                                                                  allowToAllRole: false,
+                                                                  notAllowedRoles: [
+                                                                        UserRole.REVIEWER,
+                                                                        UserRole.READ_ONLY,
+                                                                  ],
                                                                   title: "Update",
                                                                   type: "Update",
                                                                   icon: <AppIcon name="update" />,
                                                                   clickHandler: openEditModalHandler(theme),
                                                             },
                                                             {
+                                                                  allowToAllRole: false,
+                                                                  notAllowedRoles: [
+                                                                        UserRole.REVIEWER,
+                                                                        UserRole.READ_ONLY,
+                                                                  ],
                                                                   title: "Delete",
                                                                   type: "Danger",
                                                                   icon: <AppIcon name="delete" />,

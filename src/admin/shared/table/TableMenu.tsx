@@ -1,5 +1,7 @@
 import { Fragment, ReactNode } from "react";
 import { Menu as HeadlessMenu, Transition } from "@headlessui/react";
+import { UserRole } from "@/enum/commonEnum";
+import getTokenDetail from "@/utils/token/getTokenDetail";
 
 interface ITableMenu {
       children: ReactNode;
@@ -40,7 +42,8 @@ export function TableMenuButton({ children, message, disabled = false }: ITableM
 
 export interface ITableMenuItems {
       items: {
-            isVisible?: boolean;
+            allowToAllRole?: boolean;
+            notAllowedRoles?: UserRole[];
             title: string;
             clickHandler: () => void;
             icon: JSX.Element;
@@ -49,6 +52,7 @@ export interface ITableMenuItems {
 }
 
 export function TableMenuItems({ items }: ITableMenuItems) {
+      const userRole = getTokenDetail.loggedInUserRole();
       return (
             <Transition
                   as={Fragment}
@@ -65,8 +69,19 @@ export function TableMenuItems({ items }: ITableMenuItems) {
                         "
                   >
                         {items.map(
-                              ({ title, clickHandler, icon, type, isVisible = true }, index: number) =>
-                                    isVisible && (
+                              (
+                                    {
+                                          title,
+                                          clickHandler,
+                                          icon,
+                                          type,
+                                          allowToAllRole = true,
+                                          notAllowedRoles = [],
+                                    },
+                                    index: number
+                              ) =>
+                                    (allowToAllRole ||
+                                          (userRole ? !notAllowedRoles.includes(userRole) : false)) && (
                                           <HeadlessMenu.Item key={index + "menu-items"}>
                                                 {({ active }) => (
                                                       <button

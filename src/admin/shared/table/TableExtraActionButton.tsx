@@ -6,14 +6,12 @@ interface ITableExtraActionButton {
 function TableExtraActionButton({ extraButton }: ITableExtraActionButton) {
       return (
             extraButton &&
-            extraButton.map(
-                  ({ title, clickHandler, icon, type, isVisible = true }, index: number) =>
-                        isVisible && (
-                              <button
-                                    key={index}
-                                    type="button"
-                                    title={title}
-                                    className={`${type === "Danger" ? "text-error" : ""}
+            extraButton.map(({ title, clickHandler, icon, type }, index: number) => (
+                  <button
+                        key={index}
+                        type="button"
+                        title={title}
+                        className={`${type === "Danger" ? "text-error" : ""}
                                      ${
                                            type === "Danger"
                                                  ? "active:text-error/75"
@@ -24,12 +22,11 @@ function TableExtraActionButton({ extraButton }: ITableExtraActionButton) {
                                                      : "active:text-default"
                                      } 
                                      `}
-                                    onClick={clickHandler}
-                              >
-                                    {icon}
-                              </button>
-                        )
-            )
+                        onClick={clickHandler}
+                  >
+                        {icon}
+                  </button>
+            ))
       );
 }
 

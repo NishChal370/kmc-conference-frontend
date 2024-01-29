@@ -6,7 +6,7 @@ import {
       IAdminParticipantViewModal,
       IParticipantBasicModel,
 } from "@/admin/model/participant/participantModel";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import { ADMIN_PARTICIPANT_HEADER_LIST } from "../data/adminParticipantHeader";
 import getIndex from "@/utils/uniqueId/getIndex";
 
@@ -69,6 +69,11 @@ function AdminParticipantTable({
                                                             },
 
                                                             {
+                                                                  allowToAllRole: false,
+                                                                  notAllowedRoles: [
+                                                                        UserRole.REVIEWER,
+                                                                        UserRole.READ_ONLY,
+                                                                  ],
                                                                   title: "Delete",
                                                                   type: "Danger",
                                                                   icon: <AppIcon name="delete" />,

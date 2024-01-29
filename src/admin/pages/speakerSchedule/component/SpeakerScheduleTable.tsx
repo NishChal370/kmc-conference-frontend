@@ -7,7 +7,7 @@ import {
 import AppIcon from "@/shared/icon/AppIcon";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
 import { ADMIN_SPEAKER_SCHEDULE_TABLE_HEADER } from "../data/adminSpeakerScheduleHeader";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import {
       ISpeakerScheduleApprovalStatusChangeModal,
@@ -59,6 +59,8 @@ function SpeakerScheduleTable({
                                                                         openViewModalHandler(speakerSchedule),
                                                             },
                                                             {
+                                                                  allowToAllRole: false,
+                                                                  notAllowedRoles: [UserRole.READ_ONLY],
                                                                   title: "Update Approval",
                                                                   type: "Update",
                                                                   icon: <AppIcon name="update" />,
@@ -75,6 +77,11 @@ function SpeakerScheduleTable({
                                                                         }),
                                                             },
                                                             {
+                                                                  allowToAllRole: false,
+                                                                  notAllowedRoles: [
+                                                                        UserRole.REVIEWER,
+                                                                        UserRole.READ_ONLY,
+                                                                  ],
                                                                   title: "Delete",
                                                                   type: "Danger",
                                                                   icon: <AppIcon name="delete" />,

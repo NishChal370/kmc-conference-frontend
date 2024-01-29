@@ -10,7 +10,7 @@ import {
       IScheduleTopicDeleteRequest,
       IScheduleTopicModel,
 } from "@/admin/model/scheduleTopic/scheduleTopicModel";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import { ADMIN_SESSION_TOPIC_TABLE_HEADER } from "../data/adminScheduleTopicHeaders";
 
 interface IAdminScheduleTopicTable {
@@ -56,6 +56,11 @@ function AdminScheduleTopicTable({
                                                                               ),
                                                                   },
                                                                   {
+                                                                        allowToAllRole: false,
+                                                                        notAllowedRoles: [
+                                                                              UserRole.REVIEWER,
+                                                                              UserRole.READ_ONLY,
+                                                                        ],
                                                                         title: "Update",
                                                                         type: "Update",
                                                                         icon: <AppIcon name="update" />,
@@ -64,6 +69,11 @@ function AdminScheduleTopicTable({
                                                                         }),
                                                                   },
                                                                   {
+                                                                        allowToAllRole: false,
+                                                                        notAllowedRoles: [
+                                                                              UserRole.REVIEWER,
+                                                                              UserRole.READ_ONLY,
+                                                                        ],
                                                                         title: "Delete",
                                                                         type: "Danger",
                                                                         icon: <AppIcon name="delete" />,

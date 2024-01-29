@@ -6,7 +6,7 @@ import {
       NestedChildTr,
       NestedChildTBody,
 } from "@/admin/shared/table/nested-table";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum";
 import {
       ICallForPaperDeleteRequest,
@@ -72,6 +72,8 @@ function CallForPaperScheduleTable({
                                                                         ),
                                                             },
                                                             {
+                                                                  allowToAllRole: false,
+                                                                  notAllowedRoles: [UserRole.READ_ONLY],
                                                                   title: "Update Approval",
                                                                   type: "Update",
                                                                   icon: <AppIcon name="update" />,
@@ -87,6 +89,11 @@ function CallForPaperScheduleTable({
                                                                   }),
                                                             },
                                                             {
+                                                                  allowToAllRole: false,
+                                                                  notAllowedRoles: [
+                                                                        UserRole.REVIEWER,
+                                                                        UserRole.READ_ONLY,
+                                                                  ],
                                                                   title: "Delete",
                                                                   type: "Danger",
                                                                   icon: <AppIcon name="delete" />,

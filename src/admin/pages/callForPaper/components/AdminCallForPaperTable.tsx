@@ -7,7 +7,7 @@ import {
       IAdminCallForPaperViewModal,
       ICallForPaperBasicModel,
 } from "@/admin/model/callForPaper/callForPaperModel";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import { NestedRowContainer, NestedRowWrapper } from "@/admin/shared/table/nested-table";
 import CallForPaperSchedule from "../../callForPaperSchedule/CallForPaperSchedule";
 import getIndex from "@/utils/uniqueId/getIndex";
@@ -107,6 +107,11 @@ function AdminCallForPaperTable({
                                                                               },
                                                                               {
                                                                                     title: "Delete",
+                                                                                    allowToAllRole: false,
+                                                                                    notAllowedRoles: [
+                                                                                          UserRole.REVIEWER,
+                                                                                          UserRole.READ_ONLY,
+                                                                                    ],
                                                                                     type: "Danger",
                                                                                     icon: (
                                                                                           <AppIcon name="delete" />

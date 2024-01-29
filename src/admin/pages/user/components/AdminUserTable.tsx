@@ -1,7 +1,7 @@
 import AppIcon from "@/shared/icon/AppIcon";
 import { Table, TableBody, TableHead, Td } from "@/admin/shared/table";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import { IAdminUserRoleChangeModal, IUserModel } from "@/admin/model/user/userModel";
 import { USER_HEADER_LIST } from "../data/userHeaderList";
 import getIndex from "@/utils/uniqueId/getIndex";
@@ -66,18 +66,19 @@ function AdminUserTable({
                                                                   title: "Update Role",
                                                                   type: "Update",
                                                                   icon: <AppIcon name="update" />,
+                                                                  allowToAllRole: false,
+                                                                  notAllowedRoles: [
+                                                                        UserRole.SITE_MANAGER,
+                                                                        UserRole.REVIEWER,
+                                                                        UserRole.READ_ONLY,
+                                                                        UserRole.USER,
+                                                                  ],
                                                                   clickHandler: openEditRoleModalHandler({
                                                                         id: user.id,
                                                                         fullName: user.fullName,
                                                                         userRole: user.userRole,
                                                                   }),
                                                             },
-                                                            // {
-                                                            //       title: "Delete",
-                                                            //       type: "Danger",
-                                                            //       icon: <AppIcon name="delete" />,
-                                                            //       clickHandler: () => {},
-                                                            // },
                                                       ]}
                                                 />
                                           </Td>

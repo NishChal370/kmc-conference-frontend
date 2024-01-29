@@ -7,7 +7,7 @@ import {
       ISpeakerDeleteRequest,
       ISpeakerViewModal,
 } from "@/admin/model/speaker/speakerModel";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import SpeakerSchedule from "../../speakerSchedule/SpeakerSchedule";
 import { NestedRowWrapper, NestedRowContainer } from "@/admin/shared/table/nested-table";
 import getIndex from "@/utils/uniqueId/getIndex";
@@ -95,6 +95,11 @@ function AdminSpeakerTable({
                                                                                           ),
                                                                               },
                                                                               {
+                                                                                    allowToAllRole: false,
+                                                                                    notAllowedRoles: [
+                                                                                          UserRole.REVIEWER,
+                                                                                          UserRole.READ_ONLY,
+                                                                                    ],
                                                                                     title: "Delete",
                                                                                     type: "Danger",
                                                                                     icon: (
