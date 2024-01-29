@@ -15,8 +15,7 @@ function useFileApi() {
                         // converting blob file into url
                         return window.URL.createObjectURL(message);
                   })
-                  .catch((errorMessage) => {
-                        errorToastMessage(errorMessage);
+                  .catch(({ errorMessage }) => {
 
                         throw new Error(errorMessage)
                   });
