@@ -3,16 +3,19 @@ import useWindowSize from "@/site/hooks/windowsResize/useWindowSize";
 
 interface ISpeakerListWrapper {
       children: ({
+            showingSpeakerId,
             handleClick,
             activeRowIndex,
       }: {
+            showingSpeakerId?: number;
             activeRowIndex: number;
             getColumnsCount: number;
-            handleClick: (index: number) => () => void;
+            handleClick: ({ index, speakerId }: { index: number; speakerId: number }) => () => void;
       }) => JSX.Element;
 }
 
 function SpeakerListWrapper({ children }: ISpeakerListWrapper) {
+      const [showingSpeakerId, setShowingSpeakerId] = useState<number>();
       const [activeUserIndex, setActiveUserIndex] = useState<number | null>(null);
       const size = useWindowSize();
 
@@ -24,10 +27,16 @@ function SpeakerListWrapper({ children }: ISpeakerListWrapper) {
             return 1; // base: 1 column
       }, [size]);
 
-      const handleClick = (index: number) => () => {
-            // If the clicked image is already active, deactivate it, otherwise activate it
-            setActiveUserIndex((currentActiveUserIndex) => (currentActiveUserIndex === index ? null : index));
-      };
+      const handleClick =
+            ({ index, speakerId }: { index: number; speakerId: number }) =>
+            () => {
+                  // If the clicked image is already active, deactivate it, otherwise activate it
+                  setActiveUserIndex((currentActiveUserIndex) =>
+                        currentActiveUserIndex === index ? null : index
+                  );
+
+                  setShowingSpeakerId(speakerId);
+            };
 
       // Calculate the row index of the active user
       const activeRowIndex = useMemo(
@@ -35,7 +44,7 @@ function SpeakerListWrapper({ children }: ISpeakerListWrapper) {
             [activeUserIndex, getColumnsCount]
       );
 
-      return <>{children({ handleClick, activeRowIndex, getColumnsCount })}</>;
+      return <>{children({ showingSpeakerId, handleClick, activeRowIndex, getColumnsCount })}</>;
 }
 
 export default SpeakerListWrapper;

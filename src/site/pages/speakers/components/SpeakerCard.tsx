@@ -11,6 +11,7 @@ interface ISpeakerCard {
       affiliation: string;
       linkedInProfile?: string;
       twitterHandler?: string;
+      isShowingFullDetail: boolean;
       professionalWebsite?: string;
       clickHandler: () => void;
 }
@@ -23,21 +24,23 @@ function SpeakerCard({
       clickHandler,
       twitterHandler,
       linkedInProfile,
+      isShowingFullDetail,
       professionalWebsite,
 }: ISpeakerCard) {
       return (
             <div
-                  className="w-full h-full flex flex-col gap-2.5 text-center justify-center items-center
+                  className="w-full h-full flex flex-col gap-2.5 text-center justify-center items-center cursor-pointer
                         [&>article>h4]:font-bold
                   "
                   onClick={clickHandler}
             >
                   <figure className="relative  flex w-fit h-fit">
                         <ServerImage
-                              className="w-72 h-72 min-w-[18rem] min-h-[18rem] object-cover  hover:grayscale
+                              className={`w-72 h-72 min-w-[18rem] min-h-[18rem] object-cover  hover:grayscale
                                     xl:w-64 xl:h-64 xl:min-w-[256px] xl:min-h-[256px]
                                     2xl:w-72 2xl:h-72 2xl:min-w-[18rem] 2xl:min-h-[18rem] 
-                              "
+                                    ${isShowingFullDetail ? "grayscale" : ""}
+                              `}
                               image={image}
                         />
 

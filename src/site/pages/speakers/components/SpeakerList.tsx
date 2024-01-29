@@ -10,7 +10,7 @@ interface ISpeakerList {
 function SpeakerList({ speakers }: ISpeakerList) {
       return (
             <SpeakerListWrapper>
-                  {({ handleClick, activeRowIndex, getColumnsCount }) => (
+                  {({ handleClick, activeRowIndex, getColumnsCount, showingSpeakerId }) => (
                         <section
                               className="speaker-detail--width  grid grid-cols-1 gap-x-12 gap-y-10 sm:gap-y-20 justify-center items-center place-items-center
                                     sm:grid-cols-2 
@@ -21,6 +21,7 @@ function SpeakerList({ speakers }: ISpeakerList) {
                               {speakers.speakers.map((speaker, index) => (
                                     <Fragment key={speaker.id}>
                                           <SpeakerCard
+                                                isShowingFullDetail={showingSpeakerId === speaker.id}
                                                 image={speaker.photo}
                                                 name={speaker.name}
                                                 affiliation={speaker.affiliation}
@@ -28,7 +29,7 @@ function SpeakerList({ speakers }: ISpeakerList) {
                                                 linkedInProfile={speaker.linkedInProfile}
                                                 twitterHandler={speaker.twitterHandler}
                                                 professionalWebsite={speaker.professionalWebsite}
-                                                clickHandler={handleClick(index)}
+                                                clickHandler={handleClick({ index, speakerId: speaker.id })}
                                           />
 
                                           {/* Check if it's the last item in the row or the last item overall */}
@@ -43,8 +44,10 @@ function SpeakerList({ speakers }: ISpeakerList) {
                                                       }`}
                                                 >
                                                       {Math.floor(index / getColumnsCount) ===
-                                                      activeRowIndex ? (
-                                                            <SpeakerDetailContainer speakerId={speaker.id} />
+                                                            activeRowIndex && showingSpeakerId ? (
+                                                            <SpeakerDetailContainer
+                                                                  speakerId={showingSpeakerId}
+                                                            />
                                                       ) : undefined}
                                                 </div>
                                           )}

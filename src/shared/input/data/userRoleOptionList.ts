@@ -8,7 +8,7 @@ import { IDropdownOptionModel } from "@/models/input/dropDownModel";
  */
 export const USER_ROLE_OPTIONS: IDropdownOptionModel[] = [
       { value: UserRole.SUPER_ADMIN, option: "Super Admin" },
-      { value: UserRole.SITE_MANAGER, option: "Site Manage" },
+      { value: UserRole.SITE_MANAGER, option: "Site Manager" },
       { value: UserRole.REVIEWER, option: "Reviewer" },
-      { value: UserRole.READ_ONLY, option: "Read Only" },
+      { value: UserRole.READ_ONLY, option: "Readonly" },
 ]
