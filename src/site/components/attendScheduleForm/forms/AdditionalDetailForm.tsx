@@ -2,7 +2,7 @@ import { Controller, UseFormReturn } from "react-hook-form";
 import Button from "@/shared/button/Button";
 import SecondaryInput from "@/shared/input/SecondaryInput";
 import AgreementCheckBox from "@/shared/input/AgreementCheckBox";
-import { IParticipationAdditionalForm } from "@/admin/model/participant/participantModel";
+import { IParticipationAdditionalForm } from "@/admin/model/participant/attendScheduleModel";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 
 interface IAdditionalDetailForm {

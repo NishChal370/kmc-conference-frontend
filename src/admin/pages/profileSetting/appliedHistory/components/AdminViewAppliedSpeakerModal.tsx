@@ -19,7 +19,7 @@ function AdminViewAppliedSpeakerModal({ speakerDetail, closeModalHandler }: IAdm
                               lg:flex-row
                         "
                   >
-                        <SpeakerProfileSection image={"speakerDetail.photo"} name={""} designation={""} />
+                        <SpeakerProfileSection image={speakerDetail.photo} name="" designation="" />
 
                         <main
                               className="mb-6 w-full flex flex-col gap-y-20 tracking-wide

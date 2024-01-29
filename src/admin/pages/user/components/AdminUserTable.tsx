@@ -1,18 +1,26 @@
 import AppIcon from "@/shared/icon/AppIcon";
 import { Table, TableBody, TableHead, Td } from "@/admin/shared/table";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import { IAdminUserRoleChangeModal, IUserModel } from "@/admin/model/user/userModel";
 import { USER_HEADER_LIST } from "../data/userHeaderList";
+import getIndex from "@/utils/uniqueId/getIndex";
 
 interface IAdminUserTable {
       status: Status;
       users: IUserModel[];
+      currentPageNumber: number;
       openViewModalHandler: (viewingData: IUserModel) => () => void;
       openEditRoleModalHandler: (editingData: IAdminUserRoleChangeModal) => () => void;
 }
 
-function AdminUserTable({ users, status, openViewModalHandler, openEditRoleModalHandler }: IAdminUserTable) {
+function AdminUserTable({
+      users,
+      currentPageNumber,
+      status,
+      openViewModalHandler,
+      openEditRoleModalHandler,
+}: IAdminUserTable) {
       return (
             <Table>
                   <TableHead headers={USER_HEADER_LIST} />
@@ -22,7 +30,7 @@ function AdminUserTable({ users, status, openViewModalHandler, openEditRoleModal
                               {users.map((user, index) => (
                                     <tr key={index} className="text-start">
                                           <Td id="index" dataName="index">
-                                                {index + 1}
+                                                {getIndex({ currentPageNumber, index })}
                                           </Td>
 
                                           <Td id="title" dataName="Title">
@@ -41,6 +49,10 @@ function AdminUserTable({ users, status, openViewModalHandler, openEditRoleModal
                                                 {user.phoneNumber}
                                           </Td>
 
+                                          <Td id="email" dataName="Email">
+                                                {user.email}
+                                          </Td>
+
                                           <Td id="table-action-container" dataName="Action">
                                                 <TableActionButton
                                                       items={[
@@ -54,18 +66,19 @@ function AdminUserTable({ users, status, openViewModalHandler, openEditRoleModal
                                                                   title: "Update Role",
                                                                   type: "Update",
                                                                   icon: <AppIcon name="update" />,
+                                                                  allowToAllRole: false,
+                                                                  notAllowedRoles: [
+                                                                        UserRole.SITE_MANAGER,
+                                                                        UserRole.REVIEWER,
+                                                                        UserRole.READ_ONLY,
+                                                                        UserRole.USER,
+                                                                  ],
                                                                   clickHandler: openEditRoleModalHandler({
                                                                         id: user.id,
                                                                         fullName: user.fullName,
                                                                         userRole: user.userRole,
                                                                   }),
                                                             },
-                                                            // {
-                                                            //       title: "Delete",
-                                                            //       type: "Danger",
-                                                            //       icon: <AppIcon name="delete" />,
-                                                            //       clickHandler: () => {},
-                                                            // },
                                                       ]}
                                                 />
                                           </Td>

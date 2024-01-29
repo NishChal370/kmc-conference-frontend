@@ -58,6 +58,7 @@ function AdminScheduleTableContainer({ openEditModal, openTopicAddModal }: IAdmi
             <>
                   <AdminScheduleTable
                         status={status}
+                        currentPageNumber={currentPageNumber}
                         schedules={data.sessions}
                         editButtonHandler={editButtonHandler}
                         deleteScheduleHandler={deleteAdminSchedule}

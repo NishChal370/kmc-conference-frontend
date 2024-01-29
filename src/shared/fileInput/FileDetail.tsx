@@ -1,5 +1,7 @@
 import { convertFileSizeToMb } from "@/utils/converter/convertFileSizeToMb";
 import AppIcon from "../icon/AppIcon";
+import { ALLOWED_IMAGE_FILE } from "@/constants/fileData/fileData";
+import filePlaceHolder from "@/assets/image/webp/file-placeholder.webp";
 
 interface IFileDetail {
       removeButtonHandler: () => void;
@@ -7,6 +9,7 @@ interface IFileDetail {
 }
 
 function FileDetail({ file, removeButtonHandler }: IFileDetail) {
+      console.log();
       return (
             <div className="relative flex gap-3 justify-between px-0 py-0 bg-mute/0 rounded-lg w-32 h-fit items-center text-default">
                   <a
@@ -17,9 +20,13 @@ function FileDetail({ file, removeButtonHandler }: IFileDetail) {
                   >
                         <img
                               loading="lazy"
-                              src={URL.createObjectURL(file)}
+                              src={
+                                    ALLOWED_IMAGE_FILE.includes(file.type)
+                                          ? URL.createObjectURL(file)
+                                          : filePlaceHolder
+                              }
                               alt="uploaded-file"
-                              className=" w-32 h-16 object-cover"
+                              className="w-32 h-16 object-contain"
                         />
                         <article className="flex w-full flex-col">
                               <span className="flex gap-0 w-[100%]" title={file.name}>

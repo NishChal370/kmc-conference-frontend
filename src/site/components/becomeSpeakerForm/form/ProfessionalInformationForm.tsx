@@ -4,7 +4,7 @@ import SecondaryInput from "@/shared/input/SecondaryInput";
 import RichTextEditor from "@/shared/input/RichTextEditor";
 import MultipleSecondaryInput from "@/shared/input/MultipleSecondaryInput";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { ISpeakerProfessionalAddForm } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerProfessionalAddForm } from "@/admin/model/speaker/becomeSpeakerModel";
 import { REGEX } from "@/helper/regex";
 
 interface IProfessionalInformationForm {

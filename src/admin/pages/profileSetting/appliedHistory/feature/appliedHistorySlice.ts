@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
-import { getApplicationCallForPaper, getApplicationCallForPaperDetailed, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeaker, getApplicationSpeakerDetailed } from "./appliedHistoryRequest";
+import { deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule, getApplicationCallForPaper, getApplicationCallForPaperDetailed, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeaker, getApplicationSpeakerDetailed } from "./appliedHistoryRequest";
 
 
 interface IAppliedParticipationSlice extends IBasicSliceState {
@@ -207,6 +207,21 @@ const appliedHistorySlice = createSlice({
                   .addCase(getApplicationCallForPaperDetailed.rejected, (state, action) => {
                         state.appliedCallForPaperDetailed.status = Status.FAILED;
                         state.appliedCallForPaperDetailed.error = action.payload;
+                  })
+
+
+
+
+                  .addCase(deleteApplicationParticipationSchedule.fulfilled, (state) => {
+                        state.appliedParticipation.isToRefetch = !state.appliedParticipation.isToRefetch
+                  })
+
+                  .addCase(deleteApplicationCallForPaperSchedule.fulfilled, (state) => {
+                        state.appliedCallForPaper.isToRefetch = !state.appliedCallForPaper.isToRefetch
+                  })
+
+                  .addCase(deleteApplicationSpeakerSchedule.fulfilled, (state) => {
+                        state.appliedSpeaker.isToRefetch = !state.appliedSpeaker.isToRefetch
                   })
       },
 })

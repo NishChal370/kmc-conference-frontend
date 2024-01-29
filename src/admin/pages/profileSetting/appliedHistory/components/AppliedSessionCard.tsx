@@ -1,12 +1,14 @@
 import { useMemo } from "react";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum";
+import AppliedSessionCardMenu from "./AppliedSessionCardMenu";
 
 interface IAppliedSessionCard {
       title: string;
       time: string;
       location: string;
       approvalStatus?: SpeakerApprovalStatus | CallForPaperApprovalStatus;
+      deleteButtonHandler: () => void;
       viewDetailButtonHandler: () => void;
 }
 
@@ -15,6 +17,7 @@ function AppliedSessionCard({
       title,
       location,
       approvalStatus,
+      deleteButtonHandler,
       viewDetailButtonHandler,
 }: IAppliedSessionCard) {
       const badge = useMemo(() => {
@@ -51,6 +54,7 @@ function AppliedSessionCard({
 
             return badge;
       }, [approvalStatus]);
+
       return (
             <div
                   className="flex flex-col justify-between gap-4 border px-4 py-5 rounded-md 
@@ -60,7 +64,7 @@ function AppliedSessionCard({
                         lg:min-w-[24rem]  lg:max-w-[24rem]
                   "
             >
-                  <section className="flex flex-col gap-2 w-full h-full">
+                  <section className="relative flex flex-col gap-2 w-full h-full">
                         <header className="flex flex-col w-full h-full">
                               <h5 className="text-xl font-semibold">{title}</h5>
                               <span className="flex gap-1.5">
@@ -74,6 +78,10 @@ function AppliedSessionCard({
                                     {badge}
                               </span>
                         </span>
+
+                        <aside className="absolute top-0 right-0">
+                              <AppliedSessionCardMenu deleteButtonHandler={deleteButtonHandler} />
+                        </aside>
                   </section>
 
                   <footer className="flex gap-4 self-end">

@@ -2,7 +2,7 @@ import { Modal } from "@/shared/modal";
 import Button from "@/shared/button/Button";
 import getTokenDetail from "@/utils/token/getTokenDetail";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
-import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
+import { IParticipationAddModal } from "@/admin/model/participant/attendScheduleModel";
 
 interface IUpdateAttendScheduleForm {
       confirmHandler: () => void;

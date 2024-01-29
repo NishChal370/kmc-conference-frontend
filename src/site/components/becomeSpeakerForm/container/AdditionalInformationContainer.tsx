@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import AdditionalInformation from "../form/AdditionalInformation";
-import { ISpeakerAdditionalDetailAddFrom } from "@/admin/model/speaker/adminSpeakerModel";
+import { ISpeakerAdditionalDetailAddFrom } from "@/admin/model/speaker/becomeSpeakerModel";
 
 interface IAdditionalInformationContainer {
       slideToPrev: () => void;

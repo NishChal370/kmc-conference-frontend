@@ -1,6 +1,6 @@
-import { ISpeakerSessionDetailAddFrom } from "@/admin/model/speaker/adminSpeakerModel";
 import { useFormContext } from "react-hook-form";
 import SessionForm from "../form/SessionForm";
+import { ISpeakerSessionDetailAddFrom } from "@/admin/model/speaker/becomeSpeakerModel";
 
 type IField = (keyof ISpeakerSessionDetailAddFrom)[];
 
@@ -16,7 +16,7 @@ function SessionFormContainer({ slideToPrev, submitToParent }: ISessionFormConta
                   "accommodationNeeds",
                   "avRequirements",
                   "preferredSessionLengthMinutes",
-                  "sessionProposal",
+                  "proposalFile",
                   "willingToTravel",
             ];
 

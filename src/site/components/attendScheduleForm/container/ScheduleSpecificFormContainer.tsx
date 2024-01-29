@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import ScheduleSpecificForm from "../forms/ScheduleSpecificForm";
-import { IParticipationPreferenceForm } from "@/admin/model/participant/participantModel";
+import { IParticipationPreferenceForm } from "@/admin/model/participant/attendScheduleModel";
 
 type IField = (keyof IParticipationPreferenceForm)[];
 

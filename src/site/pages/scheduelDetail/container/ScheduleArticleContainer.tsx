@@ -23,14 +23,14 @@ function ScheduleArticleContainer() {
 
             if (loggedInStatus === Status.SUCCEEDED) {
                   getScheduleContentBriefPrivateDetail({ sessionId: +sessionId });
-            } else {
+            } else if (loggedInStatus === Status.FAILED) {
                   getScheduleContentBriefDetail({ sessionId: +sessionId });
             }
       };
 
       useEffect(() => {
             fetchData();
-      }, [isToRefetch]);
+      }, [isToRefetch, loggedInStatus]);
 
       return (
             <>

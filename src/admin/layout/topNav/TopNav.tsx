@@ -1,6 +1,6 @@
+import LogoButton from "./components/LogoButton";
 import ProfileButton from "./components/ProfileButton";
 import SideNavOpenButton from "./components/SideNavOpenButton";
-import appLogo from "@/assets/image/appLogo.png";
 
 function TopNav() {
       return (
@@ -11,14 +11,7 @@ function TopNav() {
                   "
             >
                   <section className="flex items-center gap-4">
-                        <figure className="w-40 h-fit">
-                              <img
-                                    loading="lazy"
-                                    className="w-full h-full object-contain"
-                                    src={appLogo}
-                                    alt="app-logo"
-                              />
-                        </figure>
+                        <LogoButton />
 
                         <SideNavOpenButton />
                   </section>

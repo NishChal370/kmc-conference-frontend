@@ -36,7 +36,7 @@ function ToggleButton({
                         {errorMessage && <p className=" text-error text-xs">{errorMessage}</p>}
                   </span>
                   <section
-                        className="flex gap-2 w-[60%] self-center 
+                        className="flex gap-2 w-[60%] min-w-fit self-center 
                               [&>button]:w-full [&>button]:h-fit [&>button]:py-2 [&>button]:text-sm [&>button]:border [&>button]:rounded-sm [&>button]:font-semibold [&>button]:transition-colors [&>button]:flex [&>button]:justify-center [&>button]:gap-1.5
                         "
                   >

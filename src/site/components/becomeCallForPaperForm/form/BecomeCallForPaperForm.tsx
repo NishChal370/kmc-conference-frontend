@@ -21,8 +21,7 @@ function BecomeCallForPaperForm({ submitFullForm, partialSubmitHandler }: IBecom
                   <FormSwiperWrapper
                         extraClassName="min-h-[52rem] 
                               xs:min-h-[50rem] 
-                              sm:min-h-[44rem] 
-                              lg:min-h-[44rem]
+                              sm:min-h-[45rem]
                         "
                   >
                         {({ slideToNext, slideToPrev }, refSetter) => (

@@ -17,6 +17,11 @@ const verifyLoginSlice = createSlice({
       reducers: {
             changeVerifyLoginStatus(state, status: PayloadAction<Status>) {
                   state.status = status.payload;
+
+                  if (status.payload === Status.FAILED) {
+                        cookiesStore.deleteItem("access_token");
+                        cookiesStore.deleteItem("refresh_token");
+                  }
             }
       },
       extraReducers(builder) {
@@ -31,9 +36,6 @@ const verifyLoginSlice = createSlice({
                   .addCase(fetchVeryLogin.rejected, (state, action) => {
                         state.status = Status.FAILED;
                         state.error = action.payload;
-
-                        cookiesStore.deleteItem("access_token");
-                        cookiesStore.deleteItem("refresh_token");
                   })
 
 

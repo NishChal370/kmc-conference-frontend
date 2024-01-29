@@ -2,16 +2,16 @@ import ScheduleCard from "../../components/scheduleList/ScheduleCard";
 import AttendScheduleModal from "@/site/components/attendScheduleForm/AttendScheduleModal";
 import BecomeSpeakerFormModal from "@/site/components/becomeSpeakerForm/BecomeSpeakerFormModal";
 import BecomeCallForPaperModal from "@/site/components/becomeCallForPaperForm/BecomeCallForPaperModal";
-import UpdateBecomeSpeakerFormContainer from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerFormContainer";
+import UpdateBecomeSpeakerModal from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerModal";
+import UpdateBecomeCallForPaperModal from "@/site/components/updateBecomeCallForPaperForm/UpdateBecomeCallForPaperModal";
 import UpdateAttendScheduleFormContainer from "@/site/components/updateAttendScheduleForm/container/UpdateAttendScheduleFormContainer";
-import UpdateBecomeCallForPaperFormContainer from "@/site/components/updateBecomeCallForPaperForm/container/UpdateBecomeCallForPaperFormContainer";
 import { useAppSelector } from "@/app/hooks";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import { Status } from "@/enum/commonEnum";
 import { errorToastMessage } from "@/utils/alert";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
-import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
-import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
+import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
+import { IParticipationAddModal } from "@/admin/model/participant/attendScheduleModel";
 import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
 import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";
 import { IPreviouslyAppliedHistory } from "@/admin/model/appliedHistory/appliedHistoryModel";
@@ -91,9 +91,9 @@ function ScheduleCardContainer({ schedule, hasAddedPreviously }: IScheduleCardCo
                   )}
 
                   {hasAddedPreviously?.speaker && speakerForm?.isOpen && speakerForm.data && (
-                        <UpdateBecomeSpeakerFormContainer
+                        <UpdateBecomeSpeakerModal
                               closeModal={closeSpeakerForm}
-                              selectedSessionDetail={speakerForm.data}
+                              selectedSession={speakerForm.data}
                         />
                   )}
 
@@ -105,9 +105,9 @@ function ScheduleCardContainer({ schedule, hasAddedPreviously }: IScheduleCardCo
                   )}
 
                   {hasAddedPreviously?.callForPaper && callForPaperForm?.isOpen && callForPaperForm.data && (
-                        <UpdateBecomeCallForPaperFormContainer
+                        <UpdateBecomeCallForPaperModal
                               closeModal={closeCallForPaperForm}
-                              selectedSessionDetail={callForPaperForm.data}
+                              selectedSession={callForPaperForm.data}
                         />
                   )}
             </>

@@ -1,14 +1,14 @@
 import ScheduleCardTitle from "./ScheduleCardTitle";
+import ServerImage from "@/shared/serverImage/ServerImage";
 import ScheduleViewMoreButton from "./ScheduleViewMoreButton";
 import ScheduleCardStatusBadge from "./ScheduleCardStatusBadge";
 import ScheduleCardActionButton from "./ScheduleCardActionButton";
 import SanitizedContent from "@/shared/sanitizedContent/SanitizedContent";
 import getMonth from "@/utils/dateFormat/getMonth";
 import getDateDay from "@/utils/dateFormat/getDateDay";
-import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
-import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { IParticipationAddModal } from "@/admin/model/participant/attendScheduleModel";
+import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
 import { IScheduleContentDetailModel } from "@/admin/model/schedule/scheduleContentModel";
-import { SPEAKERS_DETAILS } from "@/site/pages/speakers/seed.tsx/speakersDetailList";
 import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";
 
 interface IScheduleCard {
@@ -25,8 +25,8 @@ function ScheduleCard({
       openCallForPaperFormHandler,
 }: IScheduleCard) {
       return (
-            <div className="flex flex-col gap-10 w-full h-full px-6 py-4 border border-l-2 border-l-primary border-default">
-                  <section className="flex justify-between items-start gap-1 w-full h-full">
+            <div className="flex flex-col justify-between gap-10 w-full h-full px-6 py-4 border border-l-2 border-l-primary border-default min-h-[16rem]">
+                  <section className="flex justify-between items-start gap-1 sm:gap-20 md:gap-24 w-full h-full">
                         <article className="flex flex-col items-start justify-center gap-y-4 w-full h-full">
                               <section className="flex flex-col gap-y-2 w-full h-full">
                                     <ScheduleCardTitle
@@ -84,18 +84,40 @@ function ScheduleCard({
                   </section>
 
                   <section className="flex flex-col gap-4 w-full h-full">
-                        <div
-                              className="flex gap-3
-                                    [&>*]:w-12 [&>*]:h-12 [&>img]:object-cover [&>img]:rounded-md
-                              "
-                        >
-                              <img loading="lazy" src={SPEAKERS_DETAILS.at(0)?.image} alt="speaker" />
-                              <img loading="lazy" src={SPEAKERS_DETAILS.at(1)?.image} alt="speaker" />
-                              <img loading="lazy" src={SPEAKERS_DETAILS.at(2)?.image} alt="speaker" />
-                              <div className="flex items-center justify-center rounded-md font-bold text-white bg-primary">
-                                    <p>+10</p>
+                        {schedule.speakers.length ? (
+                              <div
+                                    className="flex gap-3
+                                          [&>*]:w-12 [&>*]:h-12
+                                    "
+                              >
+                                    {schedule.speakers.slice(0, 3).map(({ id, fullName, photo }) => (
+                                          <ServerImage
+                                                className="w-12 h-12 object-cover rounded-md text-[0.6rem]"
+                                                title={"Speaker: " + fullName}
+                                                key={id}
+                                                image={photo}
+                                                alt="no speaker image"
+                                          />
+                                    ))}
+                                    {schedule.speakers.length > 3 && (
+                                          <div
+                                                title={`more ${
+                                                      schedule.speakers.length < 10
+                                                            ? schedule.speakers.length - 3
+                                                            : "+10"
+                                                } speakers`}
+                                                className="flex items-center justify-center rounded-md font-bold text-white bg-primary"
+                                          >
+                                                <p>
+                                                      +
+                                                      {schedule.speakers.length < 10
+                                                            ? schedule.speakers.length - 3
+                                                            : "10"}
+                                                </p>
+                                          </div>
+                                    )}
                               </div>
-                        </div>
+                        ) : undefined}
 
                         <ScheduleCardActionButton
                               isParticipant={schedule.isUserParticipant}

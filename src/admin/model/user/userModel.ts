@@ -1,8 +1,5 @@
 import { GENDER, UserRole } from "@/enum/commonEnum"
 import { IBasicApiResponse } from "@/models/commonModel";
-import { ISpeakerBasicModel } from "../speaker/adminSpeakerModel"
-import { IParticipantBasicModel } from "../participant/participantModel"
-import { ICallForPaperBasicModel } from "../callForPaper/callForPaperModel"
 import { IRegisterUserPostRequest } from '@/site/model/registerUser/registerUserModel';
 
 export interface IUserModel {
@@ -15,9 +12,9 @@ export interface IUserModel {
       jobTitle: string;
       email: string;
       phoneNumber: string;
-      speakerId?: ISpeakerBasicModel["id"];
-      callForPaperId?: ICallForPaperBasicModel["id"];
-      participantId?: IParticipantBasicModel["id"];
+      isSpeaker: boolean;
+      isCallForPaper: boolean;
+      isParticipant: boolean;
       userRole: UserRole;
 }
 

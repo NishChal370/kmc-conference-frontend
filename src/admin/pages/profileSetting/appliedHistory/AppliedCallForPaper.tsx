@@ -6,6 +6,7 @@ import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistory
 import {
       IAppliedCallForPaperDetailSearch,
       IAppliedCallForPaperModel,
+      IAppliedCallForPaperScheduleDeleteReq,
 } from "@/admin/model/appliedHistory/appliedHistoryModel";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import AdminViewAppliedCallForPaperModalContainer from "./containers/AdminViewAppliedCallForPaperModalContainer";
@@ -14,17 +15,22 @@ function AppliedCallForPaper() {
       const [viewModal, openViewModal, closeViewModal] =
             useExtraModal<IAppliedCallForPaperDetailSearch["sessionId"]>();
 
-      const { status, error, data } = useAppSelector(appliedHistorySliceState).appliedCallForPaper;
+      const { status, error, data, isToRefetch } =
+            useAppSelector(appliedHistorySliceState).appliedCallForPaper;
 
-      const { getApplicationCallForPaper } = useAppliedHistoryApi();
+      const { getApplicationCallForPaper, deleteApplicationCallForPaperSchedule } = useAppliedHistoryApi();
 
       const viewDetailHandler = (sessionId: IAppliedCallForPaperModel["sessionId"]) => () => {
             openViewModal(sessionId);
       };
 
+      const deleteScheduleHandler = (sessionId: IAppliedCallForPaperScheduleDeleteReq["sessionId"]) => () => {
+            deleteApplicationCallForPaperSchedule({ sessionId });
+      };
+
       useEffect(() => {
             getApplicationCallForPaper();
-      }, []);
+      }, [isToRefetch]);
 
       return (
             <>
@@ -33,6 +39,7 @@ function AppliedCallForPaper() {
                         status={status}
                         error={error}
                         data={data}
+                        deleteButtonHandler={deleteScheduleHandler}
                         viewDetail={viewDetailHandler}
                   />
 

@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import AccommodationForm from "../forms/AccommodationForm";
-import { IParticipationAccommodationForm } from "@/admin/model/participant/participantModel";
+import { IParticipationAccommodationForm } from "@/admin/model/participant/attendScheduleModel";
 
 type IField = (keyof IParticipationAccommodationForm)[];
 interface IAccommodationFormContainer {

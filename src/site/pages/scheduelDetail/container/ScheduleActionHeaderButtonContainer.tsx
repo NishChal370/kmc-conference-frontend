@@ -4,17 +4,17 @@ import BecomeSpeakerFormModal from "@/site/components/becomeSpeakerForm/BecomeSp
 import ScheduleAttendOptionModal from "../components/scheduleActionHeader/ScheduleAttendOptionModal";
 import BecomeCallForPaperModal from "@/site/components/becomeCallForPaperForm/BecomeCallForPaperModal";
 import ScheduleActionHeaderButton from "../components/scheduleActionHeader/ScheduleActionHeaderButton";
-import UpdateBecomeSpeakerFormContainer from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerFormContainer";
+import UpdateBecomeSpeakerModal from "@/site/components/updateBecomeSpeakerForm/UpdateBecomeSpeakerModal";
+import UpdateBecomeCallForPaperModal from "@/site/components/updateBecomeCallForPaperForm/UpdateBecomeCallForPaperModal";
 import UpdateAttendScheduleFormContainer from "@/site/components/updateAttendScheduleForm/container/UpdateAttendScheduleFormContainer";
-import UpdateBecomeCallForPaperFormContainer from "@/site/components/updateBecomeCallForPaperForm/container/UpdateBecomeCallForPaperFormContainer";
 import { scheduleContentBriefDetailSliceState } from "@/admin/pages/schedule/feature/scheduleSlice";
 import { Status, UserType } from "@/enum/commonEnum";
 import { errorToastMessage } from "@/utils/alert";
 import { useAppSelector } from "@/app/hooks";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import { verifyLoginState } from "@/protectedRoute/feature/verifyLoginSlice";
-import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
-import { ISpeakerAddModal } from "@/admin/model/speaker/adminSpeakerModel";
+import { IParticipationAddModal } from "@/admin/model/participant/attendScheduleModel";
+import { ISpeakerAddModal } from "@/admin/model/speaker/becomeSpeakerModel";
 import { ICallForPaperAddModal } from "@/admin/model/callForPaper/callForPaperApplyModel";
 
 function ScheduleActionHeaderButtonContainer() {
@@ -145,9 +145,9 @@ function ScheduleActionHeaderButtonContainer() {
                   )}
 
                   {data?.hasAddedPreviously?.speaker && speakerForm?.isOpen && speakerForm.data && (
-                        <UpdateBecomeSpeakerFormContainer
+                        <UpdateBecomeSpeakerModal
                               closeModal={closeSpeakerForm}
-                              selectedSessionDetail={speakerForm.data}
+                              selectedSession={speakerForm.data}
                         />
                   )}
 
@@ -163,9 +163,9 @@ function ScheduleActionHeaderButtonContainer() {
                   {data?.hasAddedPreviously?.callForPaper &&
                         callForPaperForm?.isOpen &&
                         callForPaperForm.data && (
-                              <UpdateBecomeCallForPaperFormContainer
+                              <UpdateBecomeCallForPaperModal
                                     closeModal={closeCallForPaperForm}
-                                    selectedSessionDetail={callForPaperForm.data}
+                                    selectedSession={callForPaperForm.data}
                               />
                         )}
             </>

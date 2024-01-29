@@ -53,11 +53,17 @@ function AdminUserViewModal({ user, closeModalHandler }: IAdminUserViewModal) {
                                           sm:grid-cols-2 sm:px-2
                                     "
                               >
-                                    <ModalText title="Speaker" data={user.speakerId} />
+                                    <ModalText title="As speaker" data={user.isSpeaker ? "YES" : "NO"} />
 
-                                    <ModalText title="Call for Paper" data={user.callForPaperId} />
+                                    <ModalText
+                                          title="As call for paper"
+                                          data={user.isCallForPaper ? "YES" : "NO"}
+                                    />
 
-                                    <ModalText title="Participant" data={user.participantId} />
+                                    <ModalText
+                                          title="As participant"
+                                          data={user.isParticipant ? "YES" : "NO"}
+                                    />
                               </article>
                         </section>
                   </span>

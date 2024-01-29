@@ -6,13 +6,15 @@ import AdminScheduleAddModalContainer from "./container/AdminScheduleAddModalCon
 import AdminScheduleEditModalContainer from "./container/AdminScheduleEditModalContainer";
 import AdminSchedulePaginationContainer from "./container/AdminSchedulePaginationContainer";
 import AdminScheduleThemeFilterContainer from "./container/AdminScheduleThemeFilterContainer";
+import AdminScheduleTopicAddFormContainer from "../scheduleTopic/containers/AdminScheduleTopicAddFormContainer";
 import { errorToastMessage } from "@/utils/alert";
 import useModal from "@/admin/hooks/modal/useModal";
 import { IModal } from "@/admin/model/modal/useModalModel";
+import { UserRole } from "@/enum/commonEnum";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 import { IScheduleModel } from "@/admin/model/schedule/scheduleModel";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
-import AdminScheduleTopicAddFormContainer from "../scheduleTopic/containers/AdminScheduleTopicAddFormContainer";
+import RoleBasedAccess from "@/helper/RoleBasedAccess";
 
 function AdminSchedule() {
       const { themeId } = useParams();
@@ -30,7 +32,9 @@ function AdminSchedule() {
                   <span className="flex justify-between items-end">
                         <Header pageHeaderName="Session" />
 
-                        <AdminScheduleActionBar addButtonHandler={openAddModalHandler} />
+                        <RoleBasedAccess notAllowedRoles={[UserRole.REVIEWER, UserRole.READ_ONLY]}>
+                              <AdminScheduleActionBar addButtonHandler={openAddModalHandler} />
+                        </RoleBasedAccess>
                   </span>
 
                   <section className="w-full h-full flex flex-col gap-6 items-center justify-center">

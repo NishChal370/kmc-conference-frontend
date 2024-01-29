@@ -1,6 +1,7 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminParticipantApi } from "@/admin/api/service/adminParticipantApi";
-import { IAdminParticipantDeleteRequest, IParticipantBasicResponse, IParticipantBasicSearch, IParticipantByIdResponse, IParticipantByIdSearch, IParticipantPostRequest, IParticipationNewSessionPostRequest } from "@/admin/model/participant/participantModel";
+import { IParticipantPostRequest, IParticipationNewSessionPostRequest } from "@/admin/model/participant/attendScheduleModel";
+import { IAdminParticipantDeleteRequest, IParticipantBasicResponse, IParticipantBasicSearch, IParticipantByIdResponse, IParticipantByIdSearch } from "@/admin/model/participant/participantModel";
 
 export const getParticipantBasicInfo = createAppAsyncThunk<IParticipantBasicResponse, IParticipantBasicSearch>(
       "participant/basic/get",

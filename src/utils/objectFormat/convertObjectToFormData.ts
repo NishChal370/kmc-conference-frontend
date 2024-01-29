@@ -19,8 +19,11 @@ function convertObjectToFormData(obj: Record<string, any>): FormData {
                         formData.append(`${key}[]`, item);
                   });
             } else if (typeof value === 'object' && value !== null) {
-                  // Handle objects (excluding null) by converting to JSON
-                  formData.append(key, JSON.stringify(value));
+                  const objectArray = Object.entries(value);
+
+                  objectArray.forEach(([objKey, objValue]) => {
+                        formData.append(key + "." + objKey, objValue as Blob);
+                  });
             } else {
                   // Append other values directly
                   formData.append(key, value === null || value === undefined ? '' : value);

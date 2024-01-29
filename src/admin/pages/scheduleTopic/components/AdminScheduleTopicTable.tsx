@@ -1,11 +1,16 @@
 import AppIcon from "@/shared/icon/AppIcon";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
-import { NestedTBody, NestedTd, NestedTh, NestedTr } from "@/admin/shared/table/nested-table";
+import {
+      NestedChildTBody,
+      NestedChildTd,
+      NestedChildTh,
+      NestedChildTr,
+} from "@/admin/shared/table/nested-table";
 import {
       IScheduleTopicDeleteRequest,
       IScheduleTopicModel,
 } from "@/admin/model/scheduleTopic/scheduleTopicModel";
-import { Status } from "@/enum/commonEnum";
+import { Status, UserRole } from "@/enum/commonEnum";
 import { ADMIN_SESSION_TOPIC_TABLE_HEADER } from "../data/adminScheduleTopicHeaders";
 
 interface IAdminScheduleTopicTable {
@@ -26,16 +31,19 @@ function AdminScheduleTopicTable({
       return (
             <>
                   <table className="w-full !h-full">
-                        <NestedTh headers={ADMIN_SESSION_TOPIC_TABLE_HEADER} />
-                        <NestedTBody status={status}>
+                        <NestedChildTh headers={ADMIN_SESSION_TOPIC_TABLE_HEADER} />
+
+                        <NestedChildTBody status={status}>
                               <>
                                     {scheduleTopics.map((scheduleTopic, index) => (
-                                          <NestedTr key={scheduleTopic.id}>
-                                                <NestedTd id="index">{index + 1}</NestedTd>
+                                          <NestedChildTr key={scheduleTopic.id}>
+                                                <NestedChildTd id="index">{index + 1}</NestedChildTd>
 
-                                                <NestedTd id="session-title">{scheduleTopic.title}</NestedTd>
+                                                <NestedChildTd id="session-title">
+                                                      {scheduleTopic.title}
+                                                </NestedChildTd>
 
-                                                <NestedTd id="action">
+                                                <NestedChildTd id="action">
                                                       <TableActionButton
                                                             items={[
                                                                   {
@@ -48,6 +56,11 @@ function AdminScheduleTopicTable({
                                                                               ),
                                                                   },
                                                                   {
+                                                                        allowToAllRole: false,
+                                                                        notAllowedRoles: [
+                                                                              UserRole.REVIEWER,
+                                                                              UserRole.READ_ONLY,
+                                                                        ],
                                                                         title: "Update",
                                                                         type: "Update",
                                                                         icon: <AppIcon name="update" />,
@@ -56,6 +69,11 @@ function AdminScheduleTopicTable({
                                                                         }),
                                                                   },
                                                                   {
+                                                                        allowToAllRole: false,
+                                                                        notAllowedRoles: [
+                                                                              UserRole.REVIEWER,
+                                                                              UserRole.READ_ONLY,
+                                                                        ],
                                                                         title: "Delete",
                                                                         type: "Danger",
                                                                         icon: <AppIcon name="delete" />,
@@ -65,11 +83,11 @@ function AdminScheduleTopicTable({
                                                                   },
                                                             ]}
                                                       />
-                                                </NestedTd>
-                                          </NestedTr>
+                                                </NestedChildTd>
+                                          </NestedChildTr>
                                     ))}
                               </>
-                        </NestedTBody>
+                        </NestedChildTBody>
                   </table>
             </>
       );

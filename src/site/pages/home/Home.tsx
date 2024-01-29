@@ -1,9 +1,9 @@
 import HomeHeader from "./components/HomeHeader";
-import HomeSpeakers from "./components/HomeSpeakers";
 import HomeAboutConference from "./components/HomeAboutConference";
 // import HomeFeaturedExhibitors from "./components/HomeFeaturedExhibitors";
 import HomeStatisticalCounter from "./components/HomeStatisticalCounter";
 import "./style/home.css";
+import HomeSpeakersContainer from "./container/homeSpeaker/HomeSpeakersContainer";
 
 function Home() {
       return (
@@ -16,7 +16,7 @@ function Home() {
                         <HomeStatisticalCounter />
                   </span>
 
-                  <HomeSpeakers />
+                  <HomeSpeakersContainer />
 
                   {/* <HomeFeaturedExhibitors /> */}
             </span>

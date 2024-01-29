@@ -1,7 +1,8 @@
-import { IParticipationAddForm, IParticipationAddModal } from "@/admin/model/participant/participantModel";
 import { FormProvider, useForm } from "react-hook-form";
 import AttendScheduleForm from "../forms/AttendScheduleForm";
 import useParticipantApi from "@/admin/hooks/participant/useParticipant";
+import { IParticipationAddModal } from "@/admin/model/participant/attendScheduleModel";
+import { IParticipationAddForm } from "@/admin/model/participant/attendScheduleModel";
 
 interface IAttendScheduleFormContainer {
       closeModal: () => void;

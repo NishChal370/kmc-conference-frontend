@@ -3,7 +3,7 @@ import Button from "@/shared/button/Button";
 import PhoneInput from "@/shared/input/PhoneInput";
 import SecondaryInput from "@/shared/input/SecondaryInput";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { IParticipationEmergencyContactForm } from "@/admin/model/participant/participantModel";
+import { IParticipationEmergencyContactForm } from "@/admin/model/participant/attendScheduleModel";
 
 interface IEmergencyContactInformationForm {
       slideToPrev: () => void;

@@ -52,7 +52,6 @@ function PreferenceForm({ formContext: { control }, slideToPrev, formSubmitHandl
                               control={control}
                               render={({ field, fieldState }) => (
                                     <RichTextEditor
-                                          isRequired
                                           label="Special Accommodation Needs"
                                           value={field.value}
                                           onChangeHandler={field.onChange}

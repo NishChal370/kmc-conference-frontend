@@ -2,13 +2,15 @@ import AppIcon from "@/shared/icon/AppIcon";
 import { Table, TableBody, TableHead, Td } from "@/admin/shared/table";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
 import AdminScheduleTopic from "@/admin/pages/scheduleTopic/AdminScheduleTopic";
-import { NestedTable, NestedTableContainer } from "@/admin/shared/table/nested-table";
-import { Status } from "@/enum/commonEnum";
+import { NestedRowWrapper, NestedRowContainer } from "@/admin/shared/table/nested-table";
+import { Status, UserRole } from "@/enum/commonEnum";
 import { IScheduleDeleteRequest, IScheduleModel } from "@/admin/model/schedule/scheduleModel";
 import { ADMIN_SESSION_TABLE_HEADER } from "../data/adminScheduleHeaders";
+import getIndex from "@/utils/uniqueId/getIndex";
 
 interface IAdminScheduleTable {
       status: Status;
+      currentPageNumber: number;
       schedules: IScheduleModel[];
       openTopicAddModalHandler: (data: IScheduleModel["id"]) => () => void;
       deleteScheduleHandler: (deletingDetail: IScheduleDeleteRequest) => void;
@@ -18,6 +20,7 @@ interface IAdminScheduleTable {
 function AdminScheduleTable({
       schedules,
       status,
+      currentPageNumber,
       editButtonHandler,
       deleteScheduleHandler,
       openTopicAddModalHandler,
@@ -28,10 +31,10 @@ function AdminScheduleTable({
                         <TableHead headers={ADMIN_SESSION_TABLE_HEADER} />
 
                         <TableBody status={status}>
-                              <NestedTableContainer>
+                              <NestedRowContainer>
                                     {({ selectedRowId, selectRowHandler, closeRowHandler }) =>
-                                          schedules.map((schedule) => (
-                                                <NestedTable
+                                          schedules.map((schedule, index) => (
+                                                <NestedRowWrapper
                                                       key={schedule.id}
                                                       childColSpan={5}
                                                       presentRowId={schedule.id}
@@ -39,7 +42,10 @@ function AdminScheduleTable({
                                                       parentTr={({ isOpen }) => (
                                                             <tr>
                                                                   <Td id="index" dataName="index">
-                                                                        1
+                                                                        {getIndex({
+                                                                              currentPageNumber,
+                                                                              index,
+                                                                        })}
                                                                   </Td>
 
                                                                   <Td
@@ -74,6 +80,14 @@ function AdminScheduleTable({
                                                                         dataName="Action"
                                                                   >
                                                                         <TableActionButton
+                                                                              menuAccess={{
+                                                                                    message: "Not Allowed",
+                                                                                    allowToAllRole: false,
+                                                                                    notAllowedRoles: [
+                                                                                          UserRole.REVIEWER,
+                                                                                          UserRole.READ_ONLY,
+                                                                                    ],
+                                                                              }}
                                                                               extraButton={[
                                                                                     {
                                                                                           title:
@@ -103,7 +117,6 @@ function AdminScheduleTable({
                                                                                     {
                                                                                           title: "Update",
                                                                                           type: "Update",
-
                                                                                           icon: (
                                                                                                 <AppIcon name="update" />
                                                                                           ),
@@ -137,7 +150,6 @@ function AdminScheduleTable({
                                                                                     {
                                                                                           title: "Add Topic",
                                                                                           type: "View",
-
                                                                                           icon: (
                                                                                                 <AppIcon name="add" />
                                                                                           ),
@@ -158,10 +170,10 @@ function AdminScheduleTable({
                                                                   scheduleId={schedule.id}
                                                             />
                                                       )}
-                                                </NestedTable>
+                                                </NestedRowWrapper>
                                           ))
                                     }
-                              </NestedTableContainer>
+                              </NestedRowContainer>
                         </TableBody>
                   </Table>
             </>

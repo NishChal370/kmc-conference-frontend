@@ -1,9 +1,12 @@
 import { store } from '@/app/store';
 import { useAppDispatch } from '@/app/hooks';
 import { scheduleSliceAction } from '@/admin/pages/schedule/feature/scheduleSlice';
-import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, putAdminSpeakerFullDetail, putAdminSpeakerApprovalStatus, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById, postSpeakerDetail as postSpeakerDetailReq, postSpeakerNewSession } from '@/admin/pages/speaker/feature/speakerRequest';
+import { postSpeakerDetail, postSpeakerNewSession } from '@/admin/pages/speaker/feature/becomeSpeakerRequest';
+import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById } from '@/admin/pages/speaker/feature/speakerRequest';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
-import { IAdminSpeakerPutRequest, IAdminSpeakerStatusChangeReq, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from '@/admin/model/speaker/adminSpeakerModel';
+import { ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from '@/admin/model/speaker/becomeSpeakerModel';
+import { ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, } from '@/admin/model/speaker/speakerModel';
+
 
 function useSpeakerApi() {
       const dispatch = useAppDispatch();
@@ -26,46 +29,10 @@ function useSpeakerApi() {
 
 
 
-      const updateAdminSpeakerFullDetail = async (speakerUpdateDetail: IAdminSpeakerPutRequest) => {
-            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
-
-            await dispatch(putAdminSpeakerFullDetail(speakerUpdateDetail))
-                  .unwrap()
-                  .then(() => {
-                        successMessage({ title: "Updated", message: "Speaker detail has been updated." });
-                  })
-                  .catch((error) => {
-                        errorToastMessage(error.detail);
-
-
-                        throw new Error(error);
-                  })
-                  .finally(swalAlertClose)
-      }
-
-
-      const updateSpeakerApprovalStatus = async (approvalDetail: IAdminSpeakerStatusChangeReq) => {
-            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
-
-            await dispatch(putAdminSpeakerApprovalStatus(approvalDetail))
-                  .unwrap()
-                  .then(() => {
-                        successMessage({ title: "Updated", message: "Speaker approval has been updated." });
-                  })
-                  .catch((error) => {
-                        errorToastMessage(error.detail);
-
-
-                        throw new Error(error);
-                  })
-                  .finally(swalAlertClose)
-      }
-
-
       const addSpeakerDetail = async (speakerUpdateDetail: ISpeakerPostRequest) => {
             loadingAlertWithMessage();
 
-            await dispatch(postSpeakerDetailReq(speakerUpdateDetail))
+            await dispatch(postSpeakerDetail(speakerUpdateDetail))
                   .unwrap()
                   .then(() => {
                         successMessage({ title: "Success", message: "Your request for speaker has been placed." });
@@ -124,7 +91,7 @@ function useSpeakerApi() {
 
 
 
-      return { getSpeakerBasicInfo, updateAdminSpeakerFullDetail, getSpeakerDetailedInfo, updateSpeakerApprovalStatus, deleteSpeakerDetail, addSpeakerDetail, addSpeakerNewSession } as const;
+      return { getSpeakerBasicInfo, getSpeakerDetailedInfo, deleteSpeakerDetail, addSpeakerDetail, addSpeakerNewSession } as const;
 }
 
 export default useSpeakerApi

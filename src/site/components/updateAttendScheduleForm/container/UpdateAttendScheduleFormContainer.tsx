@@ -1,6 +1,6 @@
 import UpdateAttendScheduleForm from "../UpdateAttendScheduleForm";
 import useParticipantApi from "@/admin/hooks/participant/useParticipant";
-import { IParticipationAddModal } from "@/admin/model/participant/participantModel";
+import { IParticipationAddModal } from "@/admin/model/participant/attendScheduleModel";
 
 interface IUpdateAttendScheduleFormContainer {
       closeParticipationForm: () => void;

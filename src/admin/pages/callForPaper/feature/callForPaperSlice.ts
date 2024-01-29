@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { ICallForPaperBasicResponse, ICallForPaperByIdResponse } from "@/admin/model/callForPaper/callForPaperModel";
-import { deleteCallForPaperDetail, getCallForPaperBasicInfo, getCallForPaperDetailedById, putAdminCallForPaperApprovalStatus, putAdminCallForPaperFullDetail } from "./callForPaperRequest";
+import { deleteCallForPaperDetail, getCallForPaperBasicInfo, getCallForPaperDetailedById } from "./callForPaperRequest";
 
 
 interface ICallForPaperBasicSlice extends IBasicSliceState {
@@ -86,16 +86,6 @@ const callForPaperSlice = createSlice({
                   .addCase(getCallForPaperDetailedById.rejected, (state, action) => {
                         state.callForPaperDetailedInfo.status = Status.FAILED;
                         state.callForPaperDetailedInfo.error = action.payload;
-                  })
-
-
-
-                  .addCase(putAdminCallForPaperFullDetail.fulfilled, (state) => {
-                        state.callForPaperBasicInfo.isToRefetch = !state.callForPaperBasicInfo.isToRefetch;
-                  })
-
-                  .addCase(putAdminCallForPaperApprovalStatus.fulfilled, (state) => {
-                        state.callForPaperBasicInfo.isToRefetch = !state.callForPaperBasicInfo.isToRefetch;
                   })
 
                   .addCase(deleteCallForPaperDetail.fulfilled, (state) => {

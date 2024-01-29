@@ -1,5 +1,5 @@
 import { IAttachment } from "@/models/file/fileModel"
-import { ISpeakerBasicModel } from "../speaker/adminSpeakerModel"
+import { ISpeakerBasicModel } from "../speaker/speakerModel"
 import { IScheduleModel } from "./scheduleModel"
 import { IDayThemeModel } from "../dayTheme/dayThemeModel"
 import { IConferenceDayModel } from "../conferenceDay/conferenceDayModel"
@@ -74,7 +74,9 @@ export interface IScheduleContentBriefDetailModel {
             {
                   id: ISpeakerBasicModel["id"],
                   fullName: ISpeakerBasicModel["name"],
-                  photo: IAttachment
+                  photo: IAttachment | null;
+                  jobTitle: string,
+                  affiliation: string,
             }
       ],
       isUserParticipant?: boolean,

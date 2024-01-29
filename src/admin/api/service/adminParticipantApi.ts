@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
-import { IAdminParticipantDeleteRequest, IParticipantBasicSearch, IParticipantByIdSearch, IParticipantPostRequest, IParticipationNewSessionPostRequest } from "@/admin/model/participant/participantModel";
+import { IParticipantPostRequest, IParticipationNewSessionPostRequest } from "@/admin/model/participant/attendScheduleModel";
+import { IAdminParticipantDeleteRequest, IParticipantBasicSearch, IParticipantByIdSearch } from "@/admin/model/participant/participantModel";
 
 export const adminParticipantApi = {
       getBasicInfo: (searchDetail: IParticipantBasicSearch) => {
@@ -45,7 +46,7 @@ export const adminParticipantApi = {
 
       postParticipationSession: (detail: IParticipationNewSessionPostRequest) => {
             const options: AxiosRequestConfig = {
-                  method: "POST",
+                  method: "PUT",
                   url: `Participant/add-session`,
                   data: detail
             };

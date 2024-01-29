@@ -1,6 +1,12 @@
-import { SPEAKERS_DETAILS } from "../seed.tsx/speakersDetailList";
+import ServerImage from "@/shared/serverImage/ServerImage";
+import { IScheduleChoice } from "@/admin/model/schedule/scheduleModel";
+import { ISpeakerContentDetailResponse } from "@/admin/model/speaker/speakerContentModel";
 
-function SpeakerDetail() {
+interface ISpeakerDetail {
+      speaker: ISpeakerContentDetailResponse;
+      navigateToSessionDetail: (sessionId: IScheduleChoice["sessionId"]) => () => void;
+}
+function SpeakerDetail({ speaker, navigateToSessionDetail }: ISpeakerDetail) {
       return (
             <div
                   className="speaker-detail--width flex flex-col gap-10 justify-center items-center leading-loose
@@ -8,40 +14,40 @@ function SpeakerDetail() {
                   "
             >
                   <div
-                        className="self-start flex flex-col gap-2 justify-start items-start text-start w-full max-w-[20rem] h-[20rem] 
+                        className="hidden self-start md:flex flex-col gap-2 justify-start items-start text-start w-full max-w-[20rem] h-[20rem] 
                               sm:w-[26rem] sm:h-fit
                         "
                   >
-                        <img
-                              loading="lazy"
+                        <ServerImage
                               className="w-full h-[20rem] object-cover"
-                              src={SPEAKERS_DETAILS.at(0)?.image}
+                              image={speaker.photo}
                               alt="speaker"
                         />
                   </div>
+
                   <article className="flex flex-col gap-6 w-full">
                         <span>
-                              <p className="font-bold text-2xl">About {SPEAKERS_DETAILS.at(0)?.name}</p>
+                              <p className="font-bold text-2xl">About {speaker?.name}</p>
                               <p>
-                                    {SPEAKERS_DETAILS.at(0)?.designation}; {SPEAKERS_DETAILS.at(0)?.company}
+                                    {speaker?.jobTitle}; {speaker?.affiliation}
                               </p>
                         </span>
-                        <p className=" line-clamp-2 hover:line-clamp-none">
-                              {SPEAKERS_DETAILS.at(0)?.description}
-                        </p>
+                        <p className="line-clamp-2 hover:line-clamp-none cursor-pointer">{speaker?.bio}</p>
 
-                        <dl>
-                              <dt className="font-bold">View Angela schedules</dt>
-                              <dd className="w-fit cursor-pointer hover:underline">
-                                    - Marketing Workshop #1
-                              </dd>
-                              <dd className="w-fit cursor-pointer hover:underline">
-                                    - Marketing Workshop #2
-                              </dd>
-                              <dd className="w-fit cursor-pointer hover:underline">
-                                    - Marketing Workshop #3
-                              </dd>
-                        </dl>
+                        {speaker.sessionDetail.length ? (
+                              <dl>
+                                    <dt className="font-bold">View {speaker?.name} sessions</dt>
+                                    {speaker?.sessionDetail.map(({ sessionId, title }) => (
+                                          <dd
+                                                key={sessionId}
+                                                className="w-fit cursor-pointer hover:underline"
+                                                onClick={navigateToSessionDetail(sessionId)}
+                                          >
+                                                - {title}
+                                          </dd>
+                                    ))}
+                              </dl>
+                        ) : undefined}
                   </article>
             </div>
       );

@@ -1,8 +1,11 @@
+import { IAttachment } from "@/models/file/fileModel";
+import ServerImage from "@/shared/serverImage/ServerImage";
+
 interface IScheduleSpeakerCard {
-      img: string;
-      company: string;
+      img: IAttachment | null;
       speakerName: string;
-      designation: string;
+      jobTitle: string;
+      affiliation: string;
       openDetailModalHandler: () => void;
 }
 
@@ -10,8 +13,8 @@ function ScheduleSpeakerCard({
       openDetailModalHandler,
       img,
       speakerName,
-      designation,
-      company,
+      jobTitle,
+      affiliation,
 }: IScheduleSpeakerCard) {
       return (
             <button
@@ -19,17 +22,16 @@ function ScheduleSpeakerCard({
                   onClick={openDetailModalHandler}
                   className="w-36 h-44 border border-default flex flex-col items-center justify-center text-center text-xs gap-6 py-4 rounded-md"
             >
-                  <img
-                        loading="lazy"
-                        className="w-20 h-20 rounded-full hover:grayscale"
-                        src={img}
+                  <ServerImage
+                        image={img}
                         alt="speaker-img"
+                        className=" w-20 h-20 rounded-full hover:grayscale"
                   />
 
                   <article>
                         <p className="font-semibold leading-relaxed">{speakerName}</p>
-                        <p>
-                              {designation}; {company}
+                        <p title={jobTitle + "; " + affiliation} className="line-clamp-1">
+                              {jobTitle}
                         </p>
                   </article>
             </button>

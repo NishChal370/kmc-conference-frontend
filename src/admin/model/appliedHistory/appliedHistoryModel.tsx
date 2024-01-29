@@ -149,3 +149,15 @@ export interface IAppliedHistoryModel {
       endTime: IScheduleModel["endTime"];
       approvalStatus?: SpeakerApprovalStatus | CallForPaperApprovalStatus;
 }
+
+export interface IAppliedSpeakerScheduleDeleteReq {
+      sessionId: number;
+}
+
+export interface IAppliedParticipationScheduleDeleteReq {
+      sessionId: number;
+}
+
+export interface IAppliedCallForPaperScheduleDeleteReq {
+      sessionId: number;
+}

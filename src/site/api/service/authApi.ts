@@ -1,11 +1,11 @@
-import { AxiosRequestConfig } from "axios";
-import AXIOS from "@/api/constant";
+import axios, { AxiosRequestConfig } from "axios";
+import AXIOS, { API_URL } from "@/api/constant";
 import { ITokenModel } from "@/models/auth/authModel";
 import { ILogin } from "@/site/model/login/loginModel";
+import { IVerifyEmailRequest } from "@/site/model/verifyEmail/verifyEmailModel";
+import { IResetPasswordRequest } from "@/site/model/resetPassword/resetPasswordModel";
 import { IRegisterUserPostRequest } from "@/site/model/registerUser/registerUserModel";
 import { IForgotPasswordRequest } from "@/site/model/forgotPassword/forgotPasswordModel";
-import { IResetPasswordRequest } from "@/site/model/resetPassword/resetPasswordModel";
-import { IVerifyEmailRequest } from "@/site/model/verifyEmail/verifyEmailModel";
 
 export const authApi = {
       login: (loginDetail: ILogin) => {
@@ -20,13 +20,14 @@ export const authApi = {
       },
 
       refreshToken: (oldToken: ITokenModel) => {
-            const options = {
+            const options: AxiosRequestConfig = {
                   method: "POST",
+                  baseURL: API_URL,
                   url: `auth/refresh-token`,
                   data: oldToken,
             };
 
-            return AXIOS.request(options);
+            return axios.request(options);
       },
 
 

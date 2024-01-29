@@ -14,10 +14,16 @@
       }
 
       #page-table td,
-      #page-table th {
-            @apply min-w-[6rem]
+      #page-table th:not(#table-image) {
+            @apply min-w-[2rem]
             max-w-xs
             py-2 sm:!px-4;
+      }
+
+      #page-table #table-image {
+            @apply md:min-w-fit md:!w-[2rem]
+            lg:!max-w-[4rem]
+            xl:!min-w-[4rem] xl:!max-w-[4rem];
       }
 
       #page-table tr > td > p {
@@ -95,7 +101,7 @@
             #table-action-container {
                   position: absolute;
                   top: 0rem;
-                  padding-right: 1rem;
+                  padding-right: 4rem;
             }
       }
 }

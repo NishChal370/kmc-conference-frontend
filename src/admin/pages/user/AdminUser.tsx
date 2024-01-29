@@ -4,12 +4,14 @@ import AdminUserViewModal from "./components/AdminUserViewModal";
 import AdminUserTableContainer from "./container/AdminUserTableContainer";
 import AdminUserAddModalContainer from "./container/AdminUserAddModalContainer";
 import AdminUserPaginationContainer from "./container/AdminUserPaginationContainer";
+import AdminUserRoleUpdateModalContainer from "./container/AdminUserRoleUpdateModalContainer";
 import useModal from "@/admin/hooks/modal/useModal";
+import useExtraModal from "@/admin/hooks/modal/useExtraModal";
+import RoleBasedAccess from "@/helper/RoleBasedAccess";
+import { UserRole } from "@/enum/commonEnum";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 import { IModal } from "@/admin/model/modal/useModalModel";
 import { IAdminUserRoleChangeModal, IUserViewOrEditModal } from "@/admin/model/user/userModel";
-import AdminUserRoleUpdateModalContainer from "./container/AdminUserRoleUpdateModalContainer";
-import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 
 function AdminUser() {
       const { modalState, openAddModal, openViewModal, closeModal } =
@@ -23,7 +25,9 @@ function AdminUser() {
                   <span className="flex justify-between items-end">
                         <Header />
 
-                        <AdminUserActionBar addButtonHandler={openAddModal} />
+                        <RoleBasedAccess notAllowedRoles={[UserRole.REVIEWER, UserRole.READ_ONLY]}>
+                              <AdminUserActionBar addButtonHandler={openAddModal} />
+                        </RoleBasedAccess>
                   </span>
 
                   <section className="w-full h-full flex flex-col gap-6 items-center justify-center">

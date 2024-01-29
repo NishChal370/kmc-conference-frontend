@@ -54,6 +54,7 @@ function AdminUserTableContainer({ openEditRoleModal, openViewModal }: IAdminUse
             <>
                   <AdminUserTable
                         status={status}
+                        currentPageNumber={currentPageNumber}
                         users={data.registeredUsers}
                         openViewModalHandler={openViewModalHandler}
                         openEditRoleModalHandler={openEditRoleModalHandler}

@@ -3,7 +3,7 @@ import Button from "@/shared/button/Button";
 import RichTextEditor from "@/shared/input/RichTextEditor";
 import SecondaryInput from "@/shared/input/SecondaryInput";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
-import { IParticipationPersonalProfileForm } from "@/admin/model/participant/participantModel";
+import { IParticipationPersonalProfileForm } from "@/admin/model/participant/attendScheduleModel";
 import { REGEX } from "@/helper/regex";
 
 interface IProfileForm {
@@ -67,11 +67,12 @@ function ProfileForm({
                                           message: INPUT_ERROR_MESSAGE.empty,
                                     },
                               }}
-                              render={({ field }) => (
+                              render={({ field, fieldState }) => (
                                     <RichTextEditor
                                           isRequired
                                           label="Add Biography"
                                           value={field.value}
+                                          errorMessage={fieldState.error?.message}
                                           onChangeHandler={field.onChange}
                                           placeHolder="Write your biography"
                                           containerClassName="md:col-span-2"

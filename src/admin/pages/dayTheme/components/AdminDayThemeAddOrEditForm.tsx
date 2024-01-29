@@ -33,7 +33,7 @@ function AdminDayThemeAddOrEditForm({
                   closeHandler={closeModalHandler}
             >
                   <form className="flex flex-col gap-6 w-full" onSubmit={formSubmitHandler}>
-                        <SecondaryInput label="Theme Title" errorMessage={errors.title?.message}>
+                        <SecondaryInput isRequired label="Theme Title" errorMessage={errors.title?.message}>
                               {register("title", {
                                     required: {
                                           value: true,
@@ -73,6 +73,7 @@ function AdminDayThemeAddOrEditForm({
                               </span>
 
                               <SecondaryInput
+                                    isRequired
                                     label="Plenary Title"
                                     errorMessage={errors.plenaryTitle?.message}
                               >
@@ -86,6 +87,7 @@ function AdminDayThemeAddOrEditForm({
 
                               <span className="w-full flex items-center justify-between gap-5">
                                     <SecondaryInput
+                                          isRequired
                                           type="time"
                                           label="Start Time"
                                           containerClassName="w-full"
@@ -100,6 +102,7 @@ function AdminDayThemeAddOrEditForm({
                                     </SecondaryInput>
 
                                     <SecondaryInput
+                                          isRequired
                                           type="time"
                                           label="End Time"
                                           containerClassName="w-full"

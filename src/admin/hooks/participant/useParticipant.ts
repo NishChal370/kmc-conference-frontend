@@ -2,7 +2,8 @@ import { store } from '@/app/store';
 import { useAppDispatch } from '@/app/hooks';
 import { scheduleSliceAction } from '@/admin/pages/schedule/feature/scheduleSlice';
 import { deleteParticipantDetail as deleteParticipantDetailReq, getParticipantBasicInfo as getParticipantBasicInfoReq, getParticipantDetailedById, postParticipation, postParticipationNewSession } from '@/admin/pages/participant/feature/participantRequest';
-import { IAdminParticipantDeleteRequest, IParticipantBasicSearch, IParticipantByIdSearch, IParticipantPostRequest, IParticipationNewSessionPostRequest } from '@/admin/model/participant/participantModel';
+import { IParticipantPostRequest, IParticipationNewSessionPostRequest } from '@/admin/model/participant/attendScheduleModel';
+import { IAdminParticipantDeleteRequest, IParticipantBasicSearch, IParticipantByIdSearch } from '@/admin/model/participant/participantModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useParticipantApi() {
