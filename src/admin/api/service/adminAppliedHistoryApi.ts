@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
 
 export const adminAppliedHistoryApi = {
       getApplicationSpeakerBasicInfo: () => {
@@ -72,7 +73,7 @@ export const adminAppliedHistoryApi = {
             const options: AxiosRequestConfig = {
                   method: "PUT",
                   url: `Speaker`,
-                  data: updatedDetail,
+                  data: convertObjectToFormData(updatedDetail),
             };
 
             return AXIOS.request(options);
