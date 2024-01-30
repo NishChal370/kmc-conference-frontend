@@ -38,7 +38,7 @@ function ImageSelectInput<TControl extends FieldValues>({ name, control }: IImag
                               ) : (
                                     <ServerImage
                                           className="w-[10rem] max-w-[10rem] h-[10rem] max-h-[10rem] rounded-md object-cover"
-                                          image={field.value["oldFiles"][0]}
+                                          image={field.value["oldFiles"] ? field.value["oldFiles"][0] : null}
                                     />
                               )}
 
