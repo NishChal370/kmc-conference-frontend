@@ -46,19 +46,19 @@ function AppliedSpeakingDetail({ appliedSpeaking, openAppliedSpeakerEditForm }: 
                               >
                                     <AppliedDetailText
                                           title="LinkedIn"
-                                          containerClassName="break-words"
+                                          dataClassName="break-words"
                                           data={appliedSpeaking.linkedInProfile}
                                     />
 
                                     <AppliedDetailText
                                           title="Twitter"
-                                          containerClassName="break-words"
+                                          dataClassName="break-words"
                                           data={appliedSpeaking.twitterHandle}
                                     />
 
                                     <AppliedDetailText
                                           title="Personal Website"
-                                          containerClassName="break-words"
+                                          dataClassName="break-words"
                                           data={appliedSpeaking.professionalWebsite}
                                     />
 
