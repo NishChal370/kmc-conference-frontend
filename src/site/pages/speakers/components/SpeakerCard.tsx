@@ -3,6 +3,7 @@ import website from "@/assets/image/webp/web.webp";
 import twitter from "@/assets/image/webp/twitter.webp";
 import linkedInIcon from "@/assets/image/webp/linkedin.webp";
 import { IAttachment } from "@/models/file/fileModel";
+import getValidURL from "@/utils/validation/getValidURL";
 
 interface ISpeakerCard {
       name: string;
@@ -32,7 +33,7 @@ function SpeakerCard({
                   "
                   onClick={clickHandler}
             >
-                  <figure className="relative  flex w-fit h-fit">
+                  <figure className="relative  flex w-fit h-fit cursor-pointer">
                         <ServerImage
                               className="w-72 h-72 min-w-[18rem] min-h-[18rem] object-cover  hover:grayscale
                                     xl:w-64 xl:h-64 xl:min-w-[256px] xl:min-h-[256px]
@@ -44,7 +45,7 @@ function SpeakerCard({
                         <section className="absolute bottom-0 w-full flex justify-start items-center gap-2 text-shadow text-white pb-1 pl-2 ">
                               {linkedInProfile && (
                                     <a
-                                          href={linkedInProfile}
+                                          href={getValidURL(linkedInProfile)}
                                           target="_blank"
                                           rel="noreferrer"
                                           className="flex items-center justify-center w-fit h-fit bg-white rounded-md shadow-2xl"
@@ -60,7 +61,7 @@ function SpeakerCard({
 
                               {twitterHandler && (
                                     <a
-                                          href={twitterHandler}
+                                          href={getValidURL(twitterHandler)}
                                           target="_blank"
                                           rel="noreferrer"
                                           className="flex items-center justify-center h-fit w-fit  bg-white rounded-lg"
@@ -76,7 +77,7 @@ function SpeakerCard({
 
                               {professionalWebsite && (
                                     <a
-                                          href={professionalWebsite}
+                                          href={getValidURL(professionalWebsite)}
                                           target="_blank"
                                           rel="noreferrer"
                                           className="flex items-center justify-center h-fit w-fit  bg-white rounded-lg"

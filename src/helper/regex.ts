@@ -6,5 +6,6 @@ export const REGEX = {
 
       EMAIL: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_-]+)(\.[a-zA-Z]{2,5}){1,2}$/,
 
-      URL: /\b(?:https?|ftp):\/\/\S+\b/,
+      // eslint-disable-next-line no-useless-escape
+      URL: /^(http(s)?:\/\/)?([a-zA-Z0-9]+\.)+[a-zA-Z]{2,}([\/?]\S*)?$/,
 } as const;

@@ -11,7 +11,7 @@ export interface ISpeakerContentModel {
       photo: IAttachment | null,
       affiliation: string,
       linkedInProfile?: string;
-      twitterHandler?: string;
+      twitterHandle?: string;
       professionalWebsite?: string;
       sessionDetail: IScheduleChoice[];
 }
@@ -22,7 +22,7 @@ export interface ISpeakersContentResponse extends IBasicApiResponse {
 }
 
 
-export type ISpeakerContentDetailResponse = Omit<ISpeakerContentModel, "linkedInProfile" | "twitterHandler" | "professionalWebsite">;
+export type ISpeakerContentDetailResponse = Omit<ISpeakerContentModel, "linkedInProfile" | "twitterHandle" | "professionalWebsite">;
 
 
 export interface ISpeakerContentDetailSearch {

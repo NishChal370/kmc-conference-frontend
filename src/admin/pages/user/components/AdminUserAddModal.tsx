@@ -142,7 +142,6 @@ function AdminUserAddModal({
                                     </SecondaryInput>
 
                                     <PhoneInput
-                                          isRequired
                                           variant="secondary"
                                           label="Phone Number"
                                           name="phoneNumber"

@@ -136,12 +136,7 @@ function ProfileEditModal({
                                           })}
                                     </SecondaryInput>
 
-                                    <PhoneInput
-                                          variant="secondary"
-                                          control={control}
-                                          isRequired
-                                          name="phoneNumber"
-                                    />
+                                    <PhoneInput variant="secondary" control={control} name="phoneNumber" />
                               </span>
                         </section>
 
