@@ -26,7 +26,6 @@ function AppliedSpeakingDetailContainer() {
       };
 
       useEffect(() => {
-            console.log("called");
             getApplicationSpeakerBasicInfo();
       }, [isToRefetch]);
 

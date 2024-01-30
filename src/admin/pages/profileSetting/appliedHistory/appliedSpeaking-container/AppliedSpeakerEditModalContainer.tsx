@@ -5,8 +5,8 @@ import {
       IAppliedSpeakerEditForm,
 } from "@/admin/model/appliedHistory/appliedHistoryModel";
 import useAppForm from "@/hooks/form/useAppForm";
-import AppliedSpeakerEditModal from "../appliedSpeaking-components/AppliedSpeakerEditModal";
 import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistoryApi";
+import AppliedSpeakerEditModal from "../appliedSpeaking-components/AppliedSpeakerEditModal";
 
 interface IAppliedSpeakerEditModalContainer {
       editingDetail: IAppliedSpeakerBasic;

@@ -4,14 +4,16 @@ import {
       IAppliedSpeakerSessionModel,
       IAppliedSpeakerScheduleDeleteReq,
 } from "@/admin/model/appliedHistory/appliedHistoryModel";
-import { useAppSelector } from "@/app/hooks";
-import { appliedHistorySliceState } from "../feature/appliedHistorySlice";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { appliedHistorySliceAction, appliedHistorySliceState } from "../feature/appliedHistorySlice";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistoryApi";
 import AdminAppliedHistory from "../components/AdminAppliedHistory";
 import AdminViewAppliedSpeakerSessionModalContainer from "./AdminViewAppliedSpeakerSessionModalContainer";
 
 function AppliedSpeakingSessionContainer() {
+      const dispatch = useAppDispatch();
+
       const [viewModal, openViewModal, closeViewModal] =
             useExtraModal<IAppliedSpeakerSessionDetailSearch["sessionId"]>();
 
@@ -31,6 +33,12 @@ function AppliedSpeakingSessionContainer() {
       useEffect(() => {
             getApplicationSpeakerSession();
       }, [isToRefetch]);
+
+      useEffect(() => {
+            return () => {
+                  dispatch(appliedHistorySliceAction.resetAppliedSpeakerSessionSlice());
+            };
+      }, []);
 
       return (
             <>
