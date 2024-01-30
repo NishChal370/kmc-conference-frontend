@@ -61,12 +61,6 @@ function AdminViewAppliedSpeakerModal({ speakerDetail, closeModalHandler }: IAdm
                                           data={speakerDetail.preferredSessionLengthMinutes}
                                     />
 
-                                    <ModalSanitizedText
-                                          containerClassName="sm:col-span-2"
-                                          title="Accommodation Needs"
-                                          htmlContent={"speakerDetail.accommodationNeeds"}
-                                    />
-
                                     <FileViewer
                                           files={
                                                 speakerDetail.sessionProposal

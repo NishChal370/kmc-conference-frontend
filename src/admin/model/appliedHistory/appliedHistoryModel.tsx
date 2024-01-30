@@ -1,7 +1,8 @@
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 import { IScheduleModel } from "../schedule/scheduleModel";
 import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum";
-import { IAttachment } from "@/models/file/fileModel";
+import { IAttachment, IFilUpdateDetail } from "@/models/file/fileModel";
+import { IMultipleInputFields, IMultiplePhoneNumberInput } from "@/models/input/multiplePhoneInputModel";
 
 export interface IPreviouslyAppliedHistory {
       participant: boolean;
@@ -52,7 +53,7 @@ export interface IAppliedParticipationDetailSearch {
       sessionId: IScheduleModel["id"];
 }
 
-//Speakers
+// -------Speakers --------
 
 export interface IAppliedSpeakerBasic {
       bio: string;
@@ -97,7 +98,41 @@ export interface IAppliedSpeakerDetailSearch {
 
 export type IAppliedSpeakerDetailedResponse = IAppliedSpeakerDetailedModel;
 
-//CFP
+export interface IAppliedSpeakerBasicPutRequest {
+      bio: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience?: string;
+      previousConferences?: string;
+      expertiseInField: string;
+      previousSpeakingEngagements: string[] | null;
+      publications: string[] | null;
+      willingToTravel: boolean;
+      accommodationNeeds?: string;
+      referenceContacts: string[] | null;
+      photo: File | null;
+      oldPhoto?: string;
+      availabilityInfo: string[] | null; // THis is not in used
+}
+
+export interface IAppliedSpeakerEditForm {
+      bio: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience?: string;
+      previousConferences?: string;
+      expertiseInField: string;
+      previousSpeakingEngagements: IMultipleInputFields;
+      publications: IMultipleInputFields;
+      willingToTravel: boolean;
+      accommodationNeeds?: string;
+      referenceContacts: IMultiplePhoneNumberInput;
+      photo: IFilUpdateDetail;
+}
+
+// --------CFP -------
 
 export interface IAppliedCallForPaperModel {
       sessionId: IScheduleModel["id"];

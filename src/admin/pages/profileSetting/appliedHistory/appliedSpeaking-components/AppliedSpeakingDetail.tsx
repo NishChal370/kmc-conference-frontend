@@ -7,8 +7,9 @@ import { IAppliedSpeakerBasic } from "@/admin/model/appliedHistory/appliedHistor
 
 interface IAppliedSpeakingDetail {
       appliedSpeaking: IAppliedSpeakerBasic;
+      openAppliedSpeakerEditForm: () => void;
 }
-function AppliedSpeakingDetail({ appliedSpeaking }: IAppliedSpeakingDetail) {
+function AppliedSpeakingDetail({ appliedSpeaking, openAppliedSpeakerEditForm }: IAppliedSpeakingDetail) {
       return (
             <div className="flex flex-col gap-10">
                   <h4 className="font-bold text-base">Speaker Application</h4>
@@ -25,7 +26,12 @@ function AppliedSpeakingDetail({ appliedSpeaking }: IAppliedSpeakingDetail) {
                                           md:top-4 md:right-4
                                     "
                               >
-                                    <button type="button" title="edit" className="active:text-primary">
+                                    <button
+                                          type="button"
+                                          title="edit"
+                                          className="active:text-primary"
+                                          onClick={openAppliedSpeakerEditForm}
+                                    >
                                           <AppIcon name="update" />
                                     </button>
                               </aside>

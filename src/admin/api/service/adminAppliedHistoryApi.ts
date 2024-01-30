@@ -1,12 +1,12 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 export const adminAppliedHistoryApi = {
       getApplicationSpeakerBasicInfo: () => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Speaker/2`, //TODO: Change this api.
+                  url: `Speaker/my-speaker`,
             };
 
             return AXIOS.request(options);
@@ -53,7 +53,7 @@ export const adminAppliedHistoryApi = {
       getApplicationSpeakerDetail: ({ sessionId }: IAppliedSpeakerDetailSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Speaker/my-speaker?SessionId=${sessionId}`,
+                  url: `Speaker/my-session?SessionId=${sessionId}`,
             };
 
             return AXIOS.request(options);
@@ -68,6 +68,15 @@ export const adminAppliedHistoryApi = {
             return AXIOS.request(options);
       },
 
+      putAppliedSpeakerBasicInfo: (updatedDetail: IAppliedSpeakerBasicPutRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "PUT",
+                  url: `Speaker`,
+                  data: updatedDetail,
+            };
+
+            return AXIOS.request(options);
+      },
 
       deleteAppliedSpeakerSchedule: (detail: IAppliedSpeakerScheduleDeleteReq) => {
             const options: AxiosRequestConfig = {

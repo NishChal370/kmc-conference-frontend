@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
 import { IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerBasicResponse, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
-import { deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule, getApplicationCallForPaper, getApplicationCallForPaperDetailed, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeaker, getApplicationSpeakerBasicInfo, getApplicationSpeakerDetailed } from "./appliedHistoryRequest";
+import { deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule, getApplicationCallForPaper, getApplicationCallForPaperDetailed, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeaker, getApplicationSpeakerBasicInfo, getApplicationSpeakerDetailed, putAppliedSpeakerBasicInfo } from "./appliedHistoryRequest";
 
 
 
@@ -258,6 +258,12 @@ const appliedHistorySlice = createSlice({
 
                   .addCase(deleteApplicationSpeakerSchedule.fulfilled, (state) => {
                         state.appliedSpeaker.isToRefetch = !state.appliedSpeaker.isToRefetch
+                  })
+
+
+
+                  .addCase(putAppliedSpeakerBasicInfo.fulfilled, (state) => {
+                        state.appliedSpeakerBasic.isToRefetch = !state.appliedParticipation.isToRefetch
                   })
       },
 })

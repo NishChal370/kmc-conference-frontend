@@ -4,6 +4,7 @@ import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { FILE_SIZE_LIMIT } from "@/constants/fileData/fileData";
 import { validateImageFile } from "@/utils/validation/validateImageFile";
 import imagePlaceHolder from "@/assets/image/webp/file-placeholder.webp";
+import ServerImage from "../serverImage/ServerImage";
 
 interface IImageSelectInput<TControl extends FieldValues> {
       name: Path<TControl>;
@@ -23,16 +24,23 @@ function ImageSelectInput<TControl extends FieldValues>({ name, control }: IImag
                                     sm:flex-row sm:items-end
                               "
                         >
-                              <img
-                                    loading="lazy"
-                                    className="w-[10rem] max-w-[10rem] h-[10rem] max-h-[10rem] rounded-md object-cover"
-                                    src={
-                                          field.value["newFiles"] && field.value["newFiles"].length
-                                                ? URL.createObjectURL(field.value["newFiles"][0] || "")
-                                                : imagePlaceHolder
-                                    }
-                                    alt="Preview"
-                              />
+                              {field.value["newFiles"] && field.value["newFiles"].length ? (
+                                    <img
+                                          loading="lazy"
+                                          className="w-[10rem] max-w-[10rem] h-[10rem] max-h-[10rem] rounded-md object-cover"
+                                          src={
+                                                field.value["newFiles"] && field.value["newFiles"].length
+                                                      ? URL.createObjectURL(field.value["newFiles"][0] || "")
+                                                      : imagePlaceHolder
+                                          }
+                                          alt="Preview"
+                                    />
+                              ) : (
+                                    <ServerImage
+                                          className="w-[10rem] max-w-[10rem] h-[10rem] max-h-[10rem] rounded-md object-cover"
+                                          image={field.value["oldFiles"][0]}
+                                    />
+                              )}
 
                               <aside
                                     className="flex flex-col items-center justify-end gap-3 

@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminAppliedHistoryApi } from "@/admin/api/service/adminAppliedHistoryApi";
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicResponse, IAppliedSpeakerDetailSearch, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerBasicResponse, IAppliedSpeakerDetailSearch, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 
 
@@ -134,6 +134,21 @@ export const deleteApplicationSpeakerSchedule = createAppAsyncThunk<unknown, IAp
       async (searchDetail, { rejectWithValue }) => {
             try {
                   const response = await adminAppliedHistoryApi.deleteAppliedSpeakerSchedule(searchDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+
+export const putAppliedSpeakerBasicInfo = createAppAsyncThunk<unknown, IAppliedSpeakerBasicPutRequest>(
+      "applied-history/speaker/basic-info/put",
+      async (updatedDetail, { rejectWithValue }) => {
+            try {
+                  const response = await adminAppliedHistoryApi.putAppliedSpeakerBasicInfo(updatedDetail);
 
                   return response.data;
             } catch (error: any) {

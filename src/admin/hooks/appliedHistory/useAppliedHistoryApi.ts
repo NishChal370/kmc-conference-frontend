@@ -10,8 +10,9 @@ import {
       deleteApplicationParticipationSchedule as deleteApplicationParticipationScheduleReq,
       deleteApplicationSpeakerSchedule as deleteApplicationSpeakerScheduleReq,
       getApplicationSpeakerBasicInfo as getApplicationSpeakerBasicInfoReq,
+      putAppliedSpeakerBasicInfo,
 } from '@/admin/pages/profileSetting/appliedHistory/feature/appliedHistoryRequest';
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from '@/admin/model/appliedHistory/appliedHistoryModel';
+import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from '@/admin/model/appliedHistory/appliedHistoryModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useAppliedHistoryApi() {
@@ -130,6 +131,24 @@ function useAppliedHistoryApi() {
       }
 
 
+      const updateApplicationSpeakerBasic = async (updatedDetail: IAppliedSpeakerBasicPutRequest) => {
+            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
+
+            await dispatch(putAppliedSpeakerBasicInfo(updatedDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Updated", message: "Applied Speaker has been updated." });
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
 
       return {
             getApplicationSpeakerBasicInfo,
@@ -137,6 +156,7 @@ function useAppliedHistoryApi() {
             getApplicationCallForPaper, getApplicationParticipationDetailed,
             getApplicationSpeakerDetailed, getApplicationCallForPaperDetailed,
             deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule,
+            updateApplicationSpeakerBasic,
       } as const;
 }
 
