@@ -29,6 +29,7 @@ function UpdateBecomeSpeakerForm({
                   >
                         <SecondaryInput
                               isRequired
+                              type="number"
                               label="Preferred Session Length (in minutes)"
                               errorMessage={errors.preferredSessionLengthMinutes?.message}
                         >
@@ -36,6 +37,12 @@ function UpdateBecomeSpeakerForm({
                                     required: {
                                           value: true,
                                           message: INPUT_ERROR_MESSAGE.empty,
+                                    },
+                                    validate: (value) => {
+                                          if (value && (value < 5 || value > 120)) {
+                                                return INPUT_ERROR_MESSAGE.invalidPreferredSessionLength;
+                                          }
+                                          return true;
                                     },
                               })}
                         </SecondaryInput>

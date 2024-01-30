@@ -43,6 +43,13 @@ function SessionForm({
                                           value: true,
                                           message: INPUT_ERROR_MESSAGE.empty,
                                     },
+
+                                    validate: (value) => {
+                                          if (value && (value < 5 || value > 120)) {
+                                                return INPUT_ERROR_MESSAGE.invalidPreferredSessionLength;
+                                          }
+                                          return true;
+                                    },
                               })}
                         </SecondaryInput>
 

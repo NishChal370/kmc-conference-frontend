@@ -31,11 +31,17 @@ function SpeakerListWrapper({ children }: ISpeakerListWrapper) {
             ({ index, speakerId }: { index: number; speakerId: number }) =>
             () => {
                   // If the clicked image is already active, deactivate it, otherwise activate it
-                  setActiveUserIndex((currentActiveUserIndex) =>
-                        currentActiveUserIndex === index ? null : index
-                  );
+                  setActiveUserIndex((currentActiveUserIndex) => {
+                        if (currentActiveUserIndex !== index) {
+                              window.scroll(0, 400);
+                        }
+
+                        return currentActiveUserIndex === index ? null : index;
+                  });
 
                   setShowingSpeakerId(speakerId);
+
+                  window.scroll(0, 400);
             };
 
       // Calculate the row index of the active user
