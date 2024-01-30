@@ -1,26 +1,24 @@
 import AppIcon from "@/shared/icon/AppIcon";
 import { ModalSanitizedText } from "@/shared/modal";
-import ServerImage from "@/shared/serverImage/ServerImage";
 import AppliedDetailText from "../components/AppliedDetailText";
 import AppliedDetailTitle from "../components/AppliedDetailTitle";
-import { IAppliedSpeakerBasic } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperBasicModel } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
-interface IAppliedSpeakingDetail {
-      appliedSpeaking: IAppliedSpeakerBasic;
-      openAppliedSpeakerEditForm: () => void;
+interface IAppliedCallForPaperDetail {
+      appliedCallForPaper: IAppliedCallForPaperBasicModel;
+      openAppliedCallForPaperEditForm: () => void;
 }
-function AppliedSpeakingDetail({ appliedSpeaking, openAppliedSpeakerEditForm }: IAppliedSpeakingDetail) {
+
+function AppliedCallForPaperDetail({
+      appliedCallForPaper,
+      openAppliedCallForPaperEditForm,
+}: IAppliedCallForPaperDetail) {
       return (
             <div className="flex flex-col gap-10">
-                  <h4 className="font-bold text-base">Speaker Application</h4>
+                  <h4 className="font-bold text-base">Call For Paper Application</h4>
 
                   <span className="flex flex-col gap-6">
-                        <span
-                              className="relative w-full flex flex-col gap-10 border rounded-md py-8 px-8
-                                    sm:flex-row
-                                    md:gap-20
-                              "
-                        >
+                        <span className="relative w-full border rounded-md py-8 px-8">
                               <aside
                                     className="absolute top-2 right-2
                                           md:top-4 md:right-4
@@ -30,13 +28,11 @@ function AppliedSpeakingDetail({ appliedSpeaking, openAppliedSpeakerEditForm }: 
                                           type="button"
                                           title="edit"
                                           className="active:text-primary"
-                                          onClick={openAppliedSpeakerEditForm}
+                                          onClick={openAppliedCallForPaperEditForm}
                                     >
                                           <AppIcon name="update" />
                                     </button>
                               </aside>
-
-                              <ServerImage image={appliedSpeaking.photo} className="w-48 h-48 object-cover" />
 
                               <section
                                     className="grid grid-cols-1 gap-y-2 gap-x-8 w-full
@@ -47,25 +43,25 @@ function AppliedSpeakingDetail({ appliedSpeaking, openAppliedSpeakerEditForm }: 
                                     <AppliedDetailText
                                           title="LinkedIn"
                                           dataClassName="break-words"
-                                          data={appliedSpeaking.linkedInProfile}
+                                          data={appliedCallForPaper.linkedInProfile}
                                     />
 
                                     <AppliedDetailText
                                           title="Twitter"
                                           dataClassName="break-words"
-                                          data={appliedSpeaking.twitterHandle}
+                                          data={appliedCallForPaper.twitterHandle}
                                     />
 
                                     <AppliedDetailText
                                           title="Personal Website"
                                           dataClassName="break-words"
-                                          data={appliedSpeaking.professionalWebsite}
+                                          data={appliedCallForPaper.professionalWebsite}
                                     />
 
                                     <ModalSanitizedText
                                           title="Biography"
                                           containerClassName="md:col-span-2"
-                                          htmlContent={appliedSpeaking.bio}
+                                          htmlContent={appliedCallForPaper.briefBiography}
                                     />
                               </section>
                         </span>
@@ -76,30 +72,47 @@ function AppliedSpeakingDetail({ appliedSpeaking, openAppliedSpeakerEditForm }: 
                                     md:grid-cols-2
                               "
                         >
-                              <AppliedDetailTitle title="Professional Background" />
+                              <AppliedDetailTitle title="Previous Experience" />
 
                               <AppliedDetailText
-                                    title="Expertise In Field"
-                                    data={appliedSpeaking.expertiseInField}
-                              />
-
-                              <AppliedDetailText title="Publications" data={appliedSpeaking.publications} />
-
-                              <AppliedDetailText
-                                    title="Previous Speaking Engagement"
-                                    data={appliedSpeaking.previousSpeakingEngagements}
-                              />
-
-                              <br className="hidden md:flex" />
-
-                              <ModalSanitizedText
                                     title="Previous Experience"
-                                    htmlContent={appliedSpeaking.previousExperience}
+                                    data={appliedCallForPaper.previousExperience}
+                              />
+
+                              <AppliedDetailText
+                                    title="List of Conference"
+                                    data={appliedCallForPaper.listOfConferences}
+                              />
+                        </section>
+
+                        <section
+                              className="grid grid-cols-1 gap-y-2 gap-x-8 w-full gap-20 border rounded-md py-8 px-8
+                                    sm:gap-y-4
+                                    md:grid-cols-2
+                              "
+                        >
+                              <AppliedDetailTitle title="Participation Preferences" />
+
+                              <AppliedDetailText
+                                    title="Will Participate In Panel"
+                                    data={appliedCallForPaper.willParticipateInPanel ? "YES" : "NO"}
+                              />
+
+                              <AppliedDetailText
+                                    title="Will Participate In Workshop"
+                                    data={appliedCallForPaper.willParticipateInWorkshop ? "YES" : "NO"}
                               />
 
                               <ModalSanitizedText
-                                    title="Previous Conference"
-                                    htmlContent={appliedSpeaking.previousConferences}
+                                    title="Special Accommodation Needs"
+                                    containerClassName="md:col-span-2"
+                                    htmlContent={appliedCallForPaper.specialAccommodationNeeds}
+                              />
+
+                              <ModalSanitizedText
+                                    title="Additional Requirements"
+                                    containerClassName="md:col-span-2"
+                                    htmlContent={appliedCallForPaper.additionalRequirements}
                               />
                         </section>
 
@@ -112,24 +125,13 @@ function AppliedSpeakingDetail({ appliedSpeaking, openAppliedSpeakerEditForm }: 
                               <AppliedDetailTitle title="Additional Information" />
 
                               <AppliedDetailText
-                                    title="Willing To Travel"
-                                    data={appliedSpeaking.willingToTravel ? "YES" : "NO"}
+                                    title="Confirm Present"
+                                    data={appliedCallForPaper.confirmPresent ? "YES" : "NO"}
                               />
 
                               <AppliedDetailText
-                                    title="Reference Contacts"
-                                    data={appliedSpeaking.referenceContacts}
-                              />
-
-                              <AppliedDetailText
-                                    title="Agreed Dates"
-                                    data={appliedSpeaking.agreedToDates ? "YES" : "NO"}
-                              />
-
-                              <ModalSanitizedText
-                                    containerClassName="md:col-span-2"
-                                    title="Accommodation Needs"
-                                    htmlContent={appliedSpeaking.accommodationNeeds}
+                                    title="Accept Term and condition"
+                                    data={appliedCallForPaper.acceptTandC ? "YES" : "NO"}
                               />
                         </section>
                   </span>
@@ -137,4 +139,4 @@ function AppliedSpeakingDetail({ appliedSpeaking, openAppliedSpeakerEditForm }: 
       );
 }
 
-export default AppliedSpeakingDetail;
+export default AppliedCallForPaperDetail;

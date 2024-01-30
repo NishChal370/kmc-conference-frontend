@@ -1,10 +1,10 @@
 import FileViewerContainer from "@/admin/shared/file/FileViewer";
 import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
-import { IAppliedCallForPaperDetailedModel } from "@/admin/model/appliedHistory/appliedHistoryModel";
 import { CallForPaperApprovalStatus } from "@/enum/callForPaper/callForPaperEnum";
+import { IAppliedCallForPaperSessionDetailedModel } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 interface IAdminViewAppliedCallForPaperModal {
-      callForPaperDetail: IAppliedCallForPaperDetailedModel;
+      callForPaperDetail: IAppliedCallForPaperSessionDetailedModel;
       closeModalHandler: () => void;
 }
 
@@ -28,8 +28,8 @@ function AdminViewAppliedCallForPaperModal({
 
                               <article
                                     className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
-                                                sm:grid-cols-2 sm:px-2
-                                          "
+                                          sm:grid-cols-2 sm:px-2
+                                    "
                               >
                                     <ModalText title="Session Title" data={callForPaperDetail.title} />
 
@@ -47,40 +47,6 @@ function AdminViewAppliedCallForPaperModal({
                                     <ModalText
                                           title="Approval Status"
                                           data={CallForPaperApprovalStatus[callForPaperDetail.approvalStatus]}
-                                    />
-                              </article>
-                        </section>
-
-                        <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Professional Information" />
-
-                              <article
-                                    className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
-                                          sm:grid-cols-2 sm:px-2
-                                    "
-                              >
-                                    <ModalText title="LinkedIn" data={callForPaperDetail.linkedInProfile} />
-
-                                    <ModalText title="Twitter" data={callForPaperDetail.twitterHandle} />
-
-                                    <ModalText
-                                          title="Personal Website"
-                                          data={callForPaperDetail.professionalWebsite}
-                                    />
-                              </article>
-                        </section>
-
-                        <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Biographical Information" />
-
-                              <article
-                                    className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
-                                          sm:grid-cols-2 sm:px-2
-                                    "
-                              >
-                                    <ModalSanitizedText
-                                          title=""
-                                          htmlContent={callForPaperDetail.briefBiography}
                                     />
                               </article>
                         </section>
@@ -152,6 +118,11 @@ function AdminViewAppliedCallForPaperModal({
                                           data={callForPaperDetail.audioVisualRequirements}
                                     />
 
+                                    <ModalText
+                                          title="References or Citations"
+                                          data={callForPaperDetail.referencesOrCitations}
+                                    />
+
                                     <span className="sm:col-span-2">
                                           <FileViewerContainer
                                                 label="Full Paper / Extended Abstract"
@@ -160,65 +131,6 @@ function AdminViewAppliedCallForPaperModal({
                                                             ? [callForPaperDetail.fullPaperORExtendedAbstract]
                                                             : null
                                                 }
-                                          />
-                                    </span>
-                              </article>
-                        </section>
-
-                        <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Previous Experience and References" />
-
-                              <article
-                                    className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
-                                          sm:grid-cols-2 sm:px-2
-                                    "
-                              >
-                                    <ModalText
-                                          title="Previous Experience"
-                                          data={callForPaperDetail.previousExperience}
-                                    />
-
-                                    <ModalText
-                                          title="List of Conferences"
-                                          data={callForPaperDetail.listOfConferences}
-                                    />
-
-                                    <ModalText
-                                          title="References or Citations"
-                                          data={callForPaperDetail.referencesOrCitations}
-                                    />
-                              </article>
-                        </section>
-
-                        <section className="flex flex-col gap-6 w-full">
-                              <ModalSectionHeader title="Participation Preferences" />
-
-                              <article
-                                    className="grid grid-cols-1 gap-y-8 gap-x-10 w-full
-                                          sm:grid-cols-2 sm:px-2
-                                    "
-                              >
-                                    <ModalText
-                                          title="Willing Participate In Panel"
-                                          data={callForPaperDetail.willParticipateInPanel ? "YES" : "NO"}
-                                    />
-
-                                    <ModalText
-                                          title="Will Participate in Workshop"
-                                          data={callForPaperDetail.willParticipateInWorkshop ? "YES" : "NO"}
-                                    />
-
-                                    <span className="sm:col-span-2">
-                                          <ModalSanitizedText
-                                                title="Special Accommodation Needs"
-                                                htmlContent={callForPaperDetail.specialAccommodationNeeds}
-                                          />
-                                    </span>
-
-                                    <span className="sm:col-span-2">
-                                          <ModalSanitizedText
-                                                title="Additional Requirements"
-                                                htmlContent={callForPaperDetail.additionalRequirements}
                                           />
                                     </span>
                               </article>

@@ -1,13 +1,13 @@
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { appliedHistorySliceAction, appliedHistorySliceState } from "../feature/appliedHistorySlice";
 import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistoryApi";
-import { useEffect } from "react";
 import { Status } from "@/enum/commonEnum";
 import AdminViewAppliedCallForPaperModal from "../components/AdminViewAppliedCallForPaperModal";
-import { IAppliedCallForPaperDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperSessionDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 interface IAdminViewAppliedCallForPaperModalContainer {
-      selectedSessionId: IAppliedCallForPaperDetailSearch["sessionId"];
+      selectedSessionId: IAppliedCallForPaperSessionDetailSearch["sessionId"];
       closeModalHandler: () => void;
 }
 
@@ -17,19 +17,19 @@ function AdminViewAppliedCallForPaperModalContainer({
 }: IAdminViewAppliedCallForPaperModalContainer) {
       const dispatch = useAppDispatch();
 
-      const { status, data } = useAppSelector(appliedHistorySliceState).appliedCallForPaperDetailed;
+      const { status, data } = useAppSelector(appliedHistorySliceState).appliedCallForPaperSessionDetailed;
 
-      const { getApplicationCallForPaperDetailed } = useAppliedHistoryApi();
+      const { getApplicationCallForPaperSessionDetailed } = useAppliedHistoryApi();
 
       const fetchData = () => {
-            getApplicationCallForPaperDetailed({ sessionId: selectedSessionId });
+            getApplicationCallForPaperSessionDetailed({ sessionId: selectedSessionId });
       };
 
       useEffect(() => {
             fetchData();
 
             return () => {
-                  dispatch(appliedHistorySliceAction.resetAppliedParticipationDetailedSlice());
+                  dispatch(appliedHistorySliceAction.resetAppliedCallForPaperDetailedSlice());
             };
       }, []);
 

@@ -66,7 +66,7 @@ function AppliedSessionCard({
             >
                   <section className="relative flex flex-col gap-2 w-full h-full">
                         <header className="flex flex-col w-full h-full">
-                              <h5 className="text-xl font-semibold">{title}</h5>
+                              <h5 className="text-xl font-semibold line-clamp-1">{title}</h5>
                               <span className="flex gap-1.5">
                                     <p>{time}</p>
                                     <p className="text-mute">|</p>

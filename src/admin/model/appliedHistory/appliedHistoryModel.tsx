@@ -134,7 +134,25 @@ export interface IAppliedSpeakerEditForm {
 
 // --------CFP -------
 
-export interface IAppliedCallForPaperModel {
+export interface IAppliedCallForPaperBasicModel {
+      briefBiography: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience: string[] | null;
+      listOfConferences: string[] | null;
+      availabilityDaysTimes?: string; // no in use
+      willParticipateInPanel: boolean;
+      willParticipateInWorkshop: boolean;
+      specialAccommodationNeeds: string;
+      additionalRequirements: string;
+      confirmPresent: boolean;
+      acceptTandC: boolean;
+}
+
+export type IAppliedCallForPaperBasicResponse = IAppliedCallForPaperBasicModel;
+
+export interface IAppliedCallForPaperSessionModel {
       sessionId: IScheduleModel["id"];
       title: IScheduleModel["title"];
       location: IScheduleModel["location"];
@@ -143,14 +161,10 @@ export interface IAppliedCallForPaperModel {
       approvalStatus: CallForPaperApprovalStatus;
 }
 
-export type IAppliedCallForPaperResponse = IAppliedCallForPaperModel[];
+export type IAppliedCallForPaperSessionResponse = IAppliedCallForPaperSessionModel[];
 
-export interface IAppliedCallForPaperDetailedModel extends IAppliedCallForPaperModel {
+export interface IAppliedCallForPaperSessionDetailedModel extends IAppliedCallForPaperSessionModel {
       proposedPaperSessionTitle: string;
-      briefBiography: string;
-      linkedInProfile?: string;
-      twitterHandle?: string;
-      professionalWebsite?: string;
       abstractSummary: string;
       keywords: string[] | null;
       primaryFieldCategory: string;
@@ -160,32 +174,38 @@ export interface IAppliedCallForPaperDetailedModel extends IAppliedCallForPaperM
       significanceRelevance?: string;
       preferredPresentationFormat: string;
       audioVisualRequirements: string;
-      previousExperience: string[] | null;
-      listOfConferences: string[] | null;
       referencesOrCitations: string[] | null;
-      availabilityDaysTimes?: string; // no in use
-      willParticipateInPanel: boolean;
-      willParticipateInWorkshop: boolean;
-      specialAccommodationNeeds: string;
-      additionalRequirements: string;
-      confirmPresent: boolean;
-      acceptTandC: boolean;
       fullPaperORExtendedAbstract: IAttachment | null;
 }
 
-export interface IAppliedCallForPaperDetailSearch {
+export interface IAppliedCallForPaperSessionDetailSearch {
       sessionId: IScheduleModel["id"];
 }
 
-export type IAppliedCallForPaperDetailedResponse = IAppliedCallForPaperDetailedModel;
+export type IAppliedCallForPaperSessionDetailedResponse = IAppliedCallForPaperSessionDetailedModel;
 
-export interface IAppliedHistoryModel {
-      sessionId: IScheduleModel["id"];
-      title: IScheduleModel["title"];
-      location: IScheduleModel["location"];
-      startTime: IScheduleModel["startTime"];
-      endTime: IScheduleModel["endTime"];
-      approvalStatus?: SpeakerApprovalStatus | CallForPaperApprovalStatus;
+export interface IAppliedCallForPaperPutRequest {
+      briefBiography: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience: string[];
+      listOfConferences: string[];
+      availabilityDaysTimes?: string; // no in use
+      specialAccommodationNeeds: string;
+      additionalRequirements: string;
+}
+
+export interface IAppliedCallForPaperEditForm {
+      briefBiography: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      professionalWebsite?: string;
+      previousExperience: IMultipleInputFields;
+      listOfConferences: IMultipleInputFields;
+      availabilityDaysTimes?: string; // no in use
+      specialAccommodationNeeds: string;
+      additionalRequirements: string;
 }
 
 export interface IAppliedSpeakerScheduleDeleteReq {
@@ -198,4 +218,13 @@ export interface IAppliedParticipationScheduleDeleteReq {
 
 export interface IAppliedCallForPaperScheduleDeleteReq {
       sessionId: number;
+}
+
+export interface IAppliedHistoryModel {
+      sessionId: IScheduleModel["id"];
+      title: IScheduleModel["title"];
+      location: IScheduleModel["location"];
+      startTime: IScheduleModel["startTime"];
+      endTime: IScheduleModel["endTime"];
+      approvalStatus?: SpeakerApprovalStatus | CallForPaperApprovalStatus;
 }
