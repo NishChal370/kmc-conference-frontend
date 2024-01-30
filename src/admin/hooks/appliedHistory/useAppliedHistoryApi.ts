@@ -1,9 +1,9 @@
 import { useAppDispatch } from '@/app/hooks';
 import {
       getApplicationSpeakerSession as getApplicationSpeakerSessionReq,
-      getApplicationParticipation as getApplicationParticipationReq,
+      getApplicationParticipationSessions as getApplicationParticipationSessionsReq,
       getApplicationCallForPaperSession as getApplicationCallForPaperSessionReq,
-      getApplicationParticipationDetailed as getApplicationParticipationDetailedReq,
+      getApplicationParticipationSessionDetailed as getApplicationParticipationSessionDetailedReq,
       getApplicationSpeakerSessionDetailed as getApplicationSpeakerSessionDetailedReq,
       getApplicationCallForPaperSessionDetailed as getApplicationCallForPaperSessionDetailedReq,
       deleteApplicationCallForPaperSchedule as deleteApplicationCallForPaperScheduleReq,
@@ -11,10 +11,12 @@ import {
       deleteApplicationSpeakerSchedule as deleteApplicationSpeakerScheduleReq,
       getApplicationSpeakerBasicInfo as getApplicationSpeakerBasicInfoReq,
       getApplicationCallForPaperBasicInfo as getApplicationCallForPaperBasicInfoReq,
+      getApplicationParticipationBasicInfo as getApplicationParticipationBasicInfoReq,
       putAppliedSpeakerBasicInfo,
       putAppliedCallForPaperBasicInfo,
+      putAppliedParticipationBasicInfo,
 } from '@/admin/pages/profileSetting/appliedHistory/feature/appliedHistoryRequest';
-import { IAppliedCallForPaperSessionDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerScheduleDeleteReq, IAppliedCallForPaperPutRequest } from '@/admin/model/appliedHistory/appliedHistoryModel';
+import { IAppliedCallForPaperSessionDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationSessionDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerScheduleDeleteReq, IAppliedCallForPaperPutRequest, IAppliedParticipationBasicPutRequest } from '@/admin/model/appliedHistory/appliedHistoryModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useAppliedHistoryApi() {
@@ -29,8 +31,12 @@ function useAppliedHistoryApi() {
       }
 
 
-      const getApplicationParticipation = () => {
-            dispatch(getApplicationParticipationReq())
+      const getApplicationParticipationBasicInfo = () => {
+            dispatch(getApplicationParticipationBasicInfoReq())
+      }
+
+      const getApplicationParticipationSessions = () => {
+            dispatch(getApplicationParticipationSessionsReq())
       }
 
 
@@ -43,10 +49,10 @@ function useAppliedHistoryApi() {
       }
 
 
-      const getApplicationParticipationDetailed = (searchDetail: IAppliedParticipationDetailSearch) => {
+      const getApplicationParticipationSessionDetailed = (searchDetail: IAppliedParticipationSessionDetailSearch) => {
             loadingAlertWithMessage({ title: "Loading", text: "Please wait while getting data" });
 
-            dispatch(getApplicationParticipationDetailedReq(searchDetail))
+            dispatch(getApplicationParticipationSessionDetailedReq(searchDetail))
                   .unwrap()
                   .catch((error) => {
                         errorToastMessage(error.detail);
@@ -173,15 +179,33 @@ function useAppliedHistoryApi() {
                   .finally(swalAlertClose)
       }
 
+      const updateAppliedParticipationBasic = async (updatedDetail: IAppliedParticipationBasicPutRequest) => {
+            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
+
+            await dispatch(putAppliedParticipationBasicInfo(updatedDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Updated", message: "Applied Participation has been updated." });
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
 
       return {
             getApplicationSpeakerBasicInfo,
-            getApplicationSpeakerSession, getApplicationParticipation,
-            getApplicationCallForPaperSession, getApplicationParticipationDetailed,
+            getApplicationSpeakerSession, getApplicationParticipationSessions,
+            getApplicationCallForPaperSession, getApplicationParticipationSessionDetailed,
             getApplicationSpeakerSessionDetailed, getApplicationCallForPaperSessionDetailed,
             deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule,
-            getApplicationCallForPaperBasicInfo,
-            updateApplicationSpeakerBasic, updateAppliedCallForPaperBasic,
+            getApplicationCallForPaperBasicInfo, getApplicationParticipationBasicInfo,
+            updateApplicationSpeakerBasic, updateAppliedCallForPaperBasic, updateAppliedParticipationBasic,
       } as const;
 }
 

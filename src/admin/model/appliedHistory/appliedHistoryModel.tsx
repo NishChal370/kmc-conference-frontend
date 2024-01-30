@@ -10,7 +10,36 @@ export interface IPreviouslyAppliedHistory {
       callForPaper: boolean;
 }
 
-export interface IAppliedParticipationModel {
+export interface IAppliedParticipationBasicModel {
+      address: string;
+      city: string;
+      state: string;
+      postalCode: number;
+      country: string;
+      registrationType: string;
+      registrationFeePaymentDetails?: string;
+      specialRequirements?: string;
+      trackPreferences?: string;
+      bio: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      hotelPreferences?: string;
+      roommatePreferences?: string;
+      arrivalDate: string;
+      departureDate: string;
+      modeOfTransportation?: string;
+      emergencyContactName: string;
+      relationshipWithEmergencyContact: string;
+      emergencyContactNumber: string;
+      conferenceDiscoverySource?: string;
+      expectationsGoals: string;
+      hasReadPrivacy: boolean;
+      consentToPhotography: boolean;
+}
+
+export type IAppliedParticipationBasicResponse = IAppliedParticipationBasicModel;
+
+export interface IAppliedParticipationSessionModel {
       sessionId: IScheduleModel["id"];
       title: IScheduleModel["title"];
       location: IScheduleModel["location"];
@@ -18,40 +47,42 @@ export interface IAppliedParticipationModel {
       endTime: IScheduleModel["endTime"];
 }
 
-export type IAppliedParticipationResponse = IAppliedParticipationModel[];
+export type IAppliedParticipationSessionResponse = IAppliedParticipationSessionModel[];
 
-export interface IAppliedParticipationDetailedModel extends IAppliedParticipationModel {
+export type IAppliedParticipationSessionDetailedModel = IAppliedParticipationSessionModel;
+
+export type IAppliedParticipationSessionDetailedResponse = IAppliedParticipationSessionDetailedModel;
+
+export interface IAppliedParticipationBasicPutRequest {
       address: string;
-      registrationType: string;
       city: string;
       state: string;
       postalCode: number;
       country: string;
-      registrationFeePaymentDetails: string;
-      specialRequirements: string;
-      trackPreferences: string;
+      registrationType: string;
+      registrationFeePaymentDetails?: string;
+      specialRequirements?: string;
+      trackPreferences?: string;
       bio: string;
-      linkedInProfile: string;
-      twitterHandle: string;
-      hotelPreferences: string;
-      roommatePreferences: string;
+      linkedInProfile?: string;
+      twitterHandle?: string;
+      hotelPreferences?: string;
+      roommatePreferences?: string;
       arrivalDate: string;
       departureDate: string;
-      modeOfTransportation: string;
+      modeOfTransportation?: string;
       emergencyContactName: string;
       relationshipWithEmergencyContact: string;
       emergencyContactNumber: string;
-      conferenceDiscoverySource: string;
+      conferenceDiscoverySource?: string;
       expectationsGoals: string;
-      hasReadPrivacy: boolean;
-      consentToPhotography: boolean;
 }
 
-export type IAppliedParticipationDetailedResponse = IAppliedParticipationDetailedModel;
-
-export interface IAppliedParticipationDetailSearch {
+export interface IAppliedParticipationSessionDetailSearch {
       sessionId: IScheduleModel["id"];
 }
+
+export type IAppliedParticipationEditForm = IAppliedParticipationBasicPutRequest;
 
 // -------Speakers --------
 

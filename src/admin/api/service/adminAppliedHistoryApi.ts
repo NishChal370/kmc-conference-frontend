@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
-import { IAppliedCallForPaperSessionDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerScheduleDeleteReq, IAppliedCallForPaperPutRequest } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperSessionDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationSessionDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerScheduleDeleteReq, IAppliedCallForPaperPutRequest, IAppliedParticipationBasicPutRequest } from "@/admin/model/appliedHistory/appliedHistoryModel";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
 
 export const adminAppliedHistoryApi = {
@@ -106,7 +106,18 @@ export const adminAppliedHistoryApi = {
 
 
 
-      getApplicationParticipant: () => {
+
+      getApplicationParticipationBasicInfo: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Participant/my-participant`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+
+      getApplicationParticipantSessions: () => {
             const options: AxiosRequestConfig = {
                   method: "GET",
                   url: `ApplicationHistory/participant`,
@@ -115,10 +126,20 @@ export const adminAppliedHistoryApi = {
             return AXIOS.request(options);
       },
 
-      getApplicationParticipationDetail: ({ sessionId }: IAppliedParticipationDetailSearch) => {
+      getApplicationParticipationSessionDetail: ({ sessionId }: IAppliedParticipationSessionDetailSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Participant/my-participant?SessionId=${sessionId}`,
+                  url: `Participant/my-session?SessionId=${sessionId}`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      putAppliedParticipationBasicInfo: (updatedDetail: IAppliedParticipationBasicPutRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "PUT",
+                  url: `Participant`,
+                  data: updatedDetail,
             };
 
             return AXIOS.request(options);

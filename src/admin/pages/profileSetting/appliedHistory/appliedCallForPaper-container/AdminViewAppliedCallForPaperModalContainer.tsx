@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { appliedHistorySliceAction, appliedHistorySliceState } from "../feature/appliedHistorySlice";
 import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistoryApi";
 import { Status } from "@/enum/commonEnum";
-import AdminViewAppliedCallForPaperModal from "../components/AdminViewAppliedCallForPaperModal";
+import AdminViewAppliedCallForPaperModal from "../appliedCallForPaper-components/AdminViewAppliedCallForPaperModal";
 import { IAppliedCallForPaperSessionDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 interface IAdminViewAppliedCallForPaperModalContainer {

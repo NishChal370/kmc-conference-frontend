@@ -2,7 +2,7 @@ import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminAppliedHistoryApi } from "@/admin/api/service/adminAppliedHistoryApi";
 import {
       IAppliedCallForPaperSessionDetailSearch, IAppliedCallForPaperSessionDetailedResponse, IAppliedCallForPaperSessionResponse, IAppliedCallForPaperScheduleDeleteReq,
-      IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerBasicResponse, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerSessionDetailedResponse, IAppliedSpeakerSessionResponse, IAppliedSpeakerScheduleDeleteReq, IAppliedCallForPaperBasicResponse, IAppliedCallForPaperPutRequest
+      IAppliedParticipationSessionDetailSearch, IAppliedParticipationSessionDetailedResponse, IAppliedParticipationSessionResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerBasicResponse, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerSessionDetailedResponse, IAppliedSpeakerSessionResponse, IAppliedSpeakerScheduleDeleteReq, IAppliedCallForPaperBasicResponse, IAppliedCallForPaperPutRequest, IAppliedParticipationBasicResponse, IAppliedParticipationBasicPutRequest
 } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 
@@ -161,11 +161,25 @@ export const deleteApplicationCallForPaperSchedule = createAppAsyncThunk<unknown
 // ---- Participation -----
 
 
-export const getApplicationParticipation = createAppAsyncThunk<IAppliedParticipationResponse>(
-      "admin/applied-history/participation",
+
+export const getApplicationParticipationBasicInfo = createAppAsyncThunk<IAppliedParticipationBasicResponse>(
+      "admin/applied-history/participation/basic",
       async (_, { rejectWithValue }) => {
             try {
-                  const response = await adminAppliedHistoryApi.getApplicationParticipant();
+                  const response = await adminAppliedHistoryApi.getApplicationParticipationBasicInfo();
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+export const getApplicationParticipationSessions = createAppAsyncThunk<IAppliedParticipationSessionResponse>(
+      "admin/applied-history/participation/sessions",
+      async (_, { rejectWithValue }) => {
+            try {
+                  const response = await adminAppliedHistoryApi.getApplicationParticipantSessions();
 
                   return response.data;
             } catch (error: any) {
@@ -175,11 +189,25 @@ export const getApplicationParticipation = createAppAsyncThunk<IAppliedParticipa
 );
 
 
-export const getApplicationParticipationDetailed = createAppAsyncThunk<IAppliedParticipationDetailedResponse, IAppliedParticipationDetailSearch>(
-      "admin/applied-history/participation/detailed",
+export const getApplicationParticipationSessionDetailed = createAppAsyncThunk<IAppliedParticipationSessionDetailedResponse, IAppliedParticipationSessionDetailSearch>(
+      "admin/applied-history/participation/session/detailed",
       async (searchDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminAppliedHistoryApi.getApplicationParticipationDetail(searchDetail);
+                  const response = await adminAppliedHistoryApi.getApplicationParticipationSessionDetail(searchDetail);
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
+
+export const putAppliedParticipationBasicInfo = createAppAsyncThunk<unknown, IAppliedParticipationBasicPutRequest>(
+      "applied-history/participation/basic-info/put",
+      async (updatedDetail, { rejectWithValue }) => {
+            try {
+                  const response = await adminAppliedHistoryApi.putAppliedParticipationBasicInfo(updatedDetail);
 
                   return response.data;
             } catch (error: any) {
@@ -191,7 +219,7 @@ export const getApplicationParticipationDetailed = createAppAsyncThunk<IAppliedP
 
 
 export const deleteApplicationParticipationSchedule = createAppAsyncThunk<unknown, IAppliedParticipationScheduleDeleteReq>(
-      "applied-history/participation/delete",
+      "applied-history/participation/session/delete",
       async (searchDetail, { rejectWithValue }) => {
             try {
                   const response = await adminAppliedHistoryApi.deleteAppliedParticipationSchedule(searchDetail);

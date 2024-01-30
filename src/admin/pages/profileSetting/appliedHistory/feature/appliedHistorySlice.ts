@@ -2,14 +2,19 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { IAppliedCallForPaperBasicResponse, IAppliedCallForPaperSessionDetailedResponse, IAppliedCallForPaperSessionResponse, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerBasicResponse, IAppliedSpeakerSessionDetailedResponse, IAppliedSpeakerSessionResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import {
+      IAppliedCallForPaperBasicResponse, IAppliedCallForPaperSessionDetailedResponse, IAppliedCallForPaperSessionResponse, IAppliedParticipationBasicResponse, IAppliedParticipationSessionDetailedResponse,
+      IAppliedParticipationSessionResponse, IAppliedSpeakerBasicResponse, IAppliedSpeakerSessionDetailedResponse, IAppliedSpeakerSessionResponse
+} from "@/admin/model/appliedHistory/appliedHistoryModel";
 import {
       deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule,
-      getApplicationCallForPaperSession, getApplicationCallForPaperSessionDetailed, getApplicationParticipation,
-      getApplicationParticipationDetailed, getApplicationSpeakerSession, getApplicationSpeakerBasicInfo, getApplicationSpeakerSessionDetailed,
+      getApplicationCallForPaperSession, getApplicationCallForPaperSessionDetailed, getApplicationParticipationSessions,
+      getApplicationParticipationSessionDetailed, getApplicationSpeakerSession, getApplicationSpeakerBasicInfo, getApplicationSpeakerSessionDetailed,
       putAppliedSpeakerBasicInfo,
       getApplicationCallForPaperBasicInfo,
-      putAppliedCallForPaperBasicInfo
+      putAppliedCallForPaperBasicInfo,
+      getApplicationParticipationBasicInfo,
+      putAppliedParticipationBasicInfo
 } from "./appliedHistoryRequest";
 
 
@@ -42,12 +47,19 @@ interface IAppliedCallForPaperSessionDetailedSlice extends IBasicSliceState {
 }
 
 
-interface IAppliedParticipationSlice extends IBasicSliceState {
-      data: IAppliedParticipationResponse;
+
+interface IAppliedParticipationBasicSlice extends IBasicSliceState {
+      data?: IAppliedParticipationBasicResponse;
 }
 
-interface IAppliedParticipationDetailedSlice extends IBasicSliceState {
-      data?: IAppliedParticipationDetailedResponse;
+
+
+interface IAppliedParticipationSessionsSlice extends IBasicSliceState {
+      data: IAppliedParticipationSessionResponse;
+}
+
+interface IAppliedParticipationSessionDetailedSlice extends IBasicSliceState {
+      data?: IAppliedParticipationSessionDetailedResponse;
 }
 
 
@@ -56,8 +68,9 @@ type IAppliedHistory = {
       appliedSpeakerBasic: IAppliedSpeakerBasicSlice,
       appliedSpeakerSession: IAppliedSpeakerSessionSlice,
       appliedSpeakerDetailed: IAppliedSpeakerDetailedSlice,
-      appliedParticipation: IAppliedParticipationSlice,
-      appliedParticipationDetailed: IAppliedParticipationDetailedSlice,
+      appliedParticipationBasic: IAppliedParticipationBasicSlice,
+      appliedParticipationSessions: IAppliedParticipationSessionsSlice,
+      appliedParticipationSessionDetailed: IAppliedParticipationSessionDetailedSlice,
       appliedCallForPaperBasic: IAppliedCallForPaperBasicSlice,
       appliedCallForPaperSession: IAppliedCallForPaperSessionSlice,
       appliedCallForPaperSessionDetailed: IAppliedCallForPaperSessionDetailedSlice,
@@ -84,21 +97,22 @@ const initialState: IAppliedHistory = {
             status: Status.IDEL,
             data: []
       },
-
       appliedCallForPaperSessionDetailed: {
             status: Status.IDEL,
       },
 
-
-      appliedParticipation: {
+      appliedParticipationBasic: {
+            status: Status.IDEL,
+      },
+      appliedParticipationSessions: {
             status: Status.IDEL,
             data: []
       },
-
-      appliedParticipationDetailed: {
+      appliedParticipationSessionDetailed: {
             status: Status.IDEL,
       },
 }
+
 
 const appliedHistorySlice = createSlice({
       name: "appliedHistory",
@@ -147,18 +161,20 @@ const appliedHistorySlice = createSlice({
             },
 
 
-
-
-
-            resetAppliedParticipationSlice: (state) => {
-                  state.appliedParticipation = {
+            resetAppliedParticipationBasicSlice: (state) => {
+                  state.appliedParticipationBasic = {
+                        status: Status.IDEL,
+                        data: undefined,
+                  }
+            },
+            resetAppliedParticipationSessionsSlice: (state) => {
+                  state.appliedParticipationSessions = {
                         status: Status.IDEL,
                         data: []
                   }
             },
-
-            resetAppliedParticipationDetailedSlice: (state) => {
-                  state.appliedParticipationDetailed = {
+            resetAppliedParticipationSessionDetailedSlice: (state) => {
+                  state.appliedParticipationSessionDetailed = {
                         status: Status.IDEL,
                         data: undefined,
                   }
@@ -213,7 +229,7 @@ const appliedHistorySlice = createSlice({
                   })
 
                   .addCase(putAppliedSpeakerBasicInfo.fulfilled, (state) => {
-                        state.appliedSpeakerBasic.isToRefetch = !state.appliedParticipation.isToRefetch
+                        state.appliedSpeakerBasic.isToRefetch = !state.appliedSpeakerBasic.isToRefetch
                   })
 
                   .addCase(deleteApplicationSpeakerSchedule.fulfilled, (state) => {
@@ -282,40 +298,61 @@ const appliedHistorySlice = createSlice({
 
 
 
-
-                  .addCase(getApplicationParticipation.pending, (state) => {
-                        state.appliedParticipation.status = Status.LOADING;
+                  .addCase(getApplicationParticipationBasicInfo.pending, (state) => {
+                        state.appliedParticipationBasic.status = Status.LOADING;
                   })
-                  .addCase(getApplicationParticipation.fulfilled, (state, action) => {
-                        state.appliedParticipation.status = action.payload.length <= 0
+                  .addCase(getApplicationParticipationBasicInfo.fulfilled, (state, action) => {
+                        state.appliedParticipationBasic.status = !action.payload
                               ? Status.DATA_NOT_FOUND
                               : Status.SUCCEEDED;
-                        state.appliedParticipation.data = action.payload;
+                        state.appliedParticipationBasic.data = action.payload;
 
                   })
-                  .addCase(getApplicationParticipation.rejected, (state, action) => {
-                        state.appliedParticipation.status = Status.FAILED;
-                        state.appliedParticipation.error = action.payload;
+                  .addCase(getApplicationParticipationBasicInfo.rejected, (state, action) => {
+                        state.appliedParticipationBasic.status = Status.FAILED;
+                        state.appliedParticipationBasic.error = action.payload;
+                  })
+
+
+                  .addCase(getApplicationParticipationSessions.pending, (state) => {
+                        state.appliedParticipationSessions.status = Status.LOADING;
+                  })
+                  .addCase(getApplicationParticipationSessions.fulfilled, (state, action) => {
+                        state.appliedParticipationSessions.status = action.payload.length <= 0
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.appliedParticipationSessions.data = action.payload;
+
+                  })
+                  .addCase(getApplicationParticipationSessions.rejected, (state, action) => {
+                        state.appliedParticipationSessions.status = Status.FAILED;
+                        state.appliedParticipationSessions.error = action.payload;
                   })
 
 
 
-                  .addCase(getApplicationParticipationDetailed.pending, (state) => {
-                        state.appliedParticipationDetailed.status = Status.LOADING;
+                  .addCase(getApplicationParticipationSessionDetailed.pending, (state) => {
+                        state.appliedParticipationSessionDetailed.status = Status.LOADING;
                   })
-                  .addCase(getApplicationParticipationDetailed.fulfilled, (state, action) => {
-                        state.appliedParticipationDetailed.status = Status.SUCCEEDED;
-                        state.appliedParticipationDetailed.data = action.payload;
+                  .addCase(getApplicationParticipationSessionDetailed.fulfilled, (state, action) => {
+                        state.appliedParticipationSessionDetailed.status = Status.SUCCEEDED;
+                        state.appliedParticipationSessionDetailed.data = action.payload;
 
                   })
-                  .addCase(getApplicationParticipationDetailed.rejected, (state, action) => {
-                        state.appliedParticipationDetailed.status = Status.FAILED;
-                        state.appliedParticipationDetailed.error = action.payload;
+                  .addCase(getApplicationParticipationSessionDetailed.rejected, (state, action) => {
+                        state.appliedParticipationSessionDetailed.status = Status.FAILED;
+                        state.appliedParticipationSessionDetailed.error = action.payload;
                   })
 
+
+
+
+                  .addCase(putAppliedParticipationBasicInfo.fulfilled, (state) => {
+                        state.appliedParticipationBasic.isToRefetch = !state.appliedParticipationBasic.isToRefetch
+                  })
 
                   .addCase(deleteApplicationParticipationSchedule.fulfilled, (state) => {
-                        state.appliedParticipation.isToRefetch = !state.appliedParticipation.isToRefetch
+                        state.appliedParticipationSessionDetailed.isToRefetch = !state.appliedParticipationSessionDetailed.isToRefetch
                   })
       },
 })
