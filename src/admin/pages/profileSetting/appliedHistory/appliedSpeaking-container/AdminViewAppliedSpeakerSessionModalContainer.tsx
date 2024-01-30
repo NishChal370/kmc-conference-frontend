@@ -3,18 +3,18 @@ import { useEffect } from "react";
 import { appliedHistorySliceAction, appliedHistorySliceState } from "../feature/appliedHistorySlice";
 import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistoryApi";
 import { Status } from "@/enum/commonEnum";
-import AdminViewAppliedSpeakerModal from "../appliedSpeaking-components/AdminViewAppliedSpeakerModal";
+import AdminViewAppliedSpeakerSessionModal from "../appliedSpeaking-components/AdminViewAppliedSpeakerSessionModal";
 import { IAppliedSpeakerSessionDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
-interface IAdminViewAppliedSpeakerModalContainer {
+interface IAdminViewAppliedSpeakerSessionModalContainer {
       selectedSessionId: IAppliedSpeakerSessionDetailSearch["sessionId"];
       closeModalHandler: () => void;
 }
 
-function AdminViewAppliedSpeakerModalContainer({
+function AdminViewAppliedSpeakerSessionModalContainer({
       selectedSessionId,
       closeModalHandler,
-}: IAdminViewAppliedSpeakerModalContainer) {
+}: IAdminViewAppliedSpeakerSessionModalContainer) {
       const dispatch = useAppDispatch();
 
       const { status, data } = useAppSelector(appliedHistorySliceState).appliedSpeakerDetailed;
@@ -36,9 +36,12 @@ function AdminViewAppliedSpeakerModalContainer({
       return (
             status === Status.SUCCEEDED &&
             data && (
-                  <AdminViewAppliedSpeakerModal speakerDetail={data} closeModalHandler={closeModalHandler} />
+                  <AdminViewAppliedSpeakerSessionModal
+                        speakerDetail={data}
+                        closeModalHandler={closeModalHandler}
+                  />
             )
       );
 }
 
-export default AdminViewAppliedSpeakerModalContainer;
+export default AdminViewAppliedSpeakerSessionModalContainer;

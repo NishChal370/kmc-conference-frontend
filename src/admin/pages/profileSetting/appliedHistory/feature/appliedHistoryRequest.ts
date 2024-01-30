@@ -1,6 +1,9 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminAppliedHistoryApi } from "@/admin/api/service/adminAppliedHistoryApi";
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerBasicResponse, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerSessionDetailedResponse, IAppliedSpeakerResponse, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import {
+      IAppliedCallForPaperDetailSearch, IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedCallForPaperScheduleDeleteReq,
+      IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerBasicResponse, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerSessionDetailedResponse, IAppliedSpeakerSessionResponse, IAppliedSpeakerScheduleDeleteReq
+} from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 
 
@@ -19,11 +22,11 @@ export const getApplicationSpeakerBasicInfo = createAppAsyncThunk<IAppliedSpeake
 );
 
 
-export const getApplicationSpeaker = createAppAsyncThunk<IAppliedSpeakerResponse>(
+export const getApplicationSpeakerSession = createAppAsyncThunk<IAppliedSpeakerSessionResponse>(
       "admin/applied-history/speaker/session",
       async (_, { rejectWithValue }) => {
             try {
-                  const response = await adminAppliedHistoryApi.getApplicationSpeaker();
+                  const response = await adminAppliedHistoryApi.getApplicationSpeakerSession();
 
                   return response.data;
             } catch (error: any) {

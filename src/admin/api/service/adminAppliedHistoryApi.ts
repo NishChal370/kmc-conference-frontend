@@ -13,7 +13,7 @@ export const adminAppliedHistoryApi = {
             return AXIOS.request(options);
       },
 
-      getApplicationSpeaker: () => {
+      getApplicationSpeakerSession: () => {
             const options: AxiosRequestConfig = {
                   method: "GET",
                   url: `ApplicationHistory/speaker`,

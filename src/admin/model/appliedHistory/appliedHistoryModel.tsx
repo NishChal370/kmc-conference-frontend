@@ -84,7 +84,7 @@ export interface IAppliedSpeakerSessionModel {
       approvalStatus: SpeakerApprovalStatus;
 }
 
-export type IAppliedSpeakerResponse = IAppliedSpeakerSessionModel[];
+export type IAppliedSpeakerSessionResponse = IAppliedSpeakerSessionModel[];
 
 export interface IAppliedSpeakerSessionDetailedModel extends IAppliedSpeakerSessionModel {
       avRequirements?: string;

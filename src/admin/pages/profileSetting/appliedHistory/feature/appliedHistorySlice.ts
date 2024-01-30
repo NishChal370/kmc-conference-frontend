@@ -2,8 +2,8 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerBasicResponse, IAppliedSpeakerSessionDetailedResponse, IAppliedSpeakerResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
-import { deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule, getApplicationCallForPaper, getApplicationCallForPaperDetailed, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeaker, getApplicationSpeakerBasicInfo, getApplicationSpeakerSessionDetailed, putAppliedSpeakerBasicInfo } from "./appliedHistoryRequest";
+import { IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerBasicResponse, IAppliedSpeakerSessionDetailedResponse, IAppliedSpeakerSessionResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule, getApplicationCallForPaper, getApplicationCallForPaperDetailed, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeakerSession, getApplicationSpeakerBasicInfo, getApplicationSpeakerSessionDetailed, putAppliedSpeakerBasicInfo } from "./appliedHistoryRequest";
 
 
 
@@ -16,8 +16,8 @@ interface IAppliedParticipationSlice extends IBasicSliceState {
       data: IAppliedParticipationResponse;
 }
 
-interface IAppliedSpeakerSlice extends IBasicSliceState {
-      data: IAppliedSpeakerResponse;
+interface IAppliedSpeakerSessionSlice extends IBasicSliceState {
+      data: IAppliedSpeakerSessionResponse;
 }
 
 interface IAppliedCallForPaperSlice extends IBasicSliceState {
@@ -42,7 +42,7 @@ interface IAppliedCallForPaperDetailedSlice extends IBasicSliceState {
 type IAppliedHistory = {
       appliedSpeakerBasic: IAppliedSpeakerBasicSlice,
       appliedParticipation: IAppliedParticipationSlice,
-      appliedSpeaker: IAppliedSpeakerSlice,
+      appliedSpeakerSession: IAppliedSpeakerSessionSlice,
       appliedCallForPaper: IAppliedCallForPaperSlice,
       appliedParticipationDetailed: IAppliedParticipationDetailedSlice,
       appliedSpeakerDetailed: IAppliedSpeakerDetailedSlice,
@@ -60,7 +60,7 @@ const initialState: IAppliedHistory = {
             status: Status.IDEL,
             data: []
       },
-      appliedSpeaker: {
+      appliedSpeakerSession: {
             status: Status.IDEL,
             data: []
       },
@@ -98,8 +98,8 @@ const appliedHistorySlice = createSlice({
                   }
             },
 
-            resetAppliedSpeakerSlice: (state) => {
-                  state.appliedSpeaker = {
+            resetAppliedSpeakerSessionSlice: (state) => {
+                  state.appliedSpeakerSession = {
                         status: Status.IDEL,
                         data: [],
                   }
@@ -152,19 +152,19 @@ const appliedHistorySlice = createSlice({
 
 
 
-                  .addCase(getApplicationSpeaker.pending, (state) => {
-                        state.appliedSpeaker.status = Status.LOADING;
+                  .addCase(getApplicationSpeakerSession.pending, (state) => {
+                        state.appliedSpeakerSession.status = Status.LOADING;
                   })
-                  .addCase(getApplicationSpeaker.fulfilled, (state, action) => {
-                        state.appliedSpeaker.status = action.payload.length <= 0
+                  .addCase(getApplicationSpeakerSession.fulfilled, (state, action) => {
+                        state.appliedSpeakerSession.status = action.payload.length <= 0
                               ? Status.DATA_NOT_FOUND
                               : Status.SUCCEEDED;
-                        state.appliedSpeaker.data = action.payload;
+                        state.appliedSpeakerSession.data = action.payload;
 
                   })
-                  .addCase(getApplicationSpeaker.rejected, (state, action) => {
-                        state.appliedSpeaker.status = Status.FAILED;
-                        state.appliedSpeaker.error = action.payload;
+                  .addCase(getApplicationSpeakerSession.rejected, (state, action) => {
+                        state.appliedSpeakerSession.status = Status.FAILED;
+                        state.appliedSpeakerSession.error = action.payload;
                   })
 
 
@@ -257,7 +257,7 @@ const appliedHistorySlice = createSlice({
                   })
 
                   .addCase(deleteApplicationSpeakerSchedule.fulfilled, (state) => {
-                        state.appliedSpeaker.isToRefetch = !state.appliedSpeaker.isToRefetch
+                        state.appliedSpeakerSession.isToRefetch = !state.appliedSpeakerSession.isToRefetch
                   })
 
 

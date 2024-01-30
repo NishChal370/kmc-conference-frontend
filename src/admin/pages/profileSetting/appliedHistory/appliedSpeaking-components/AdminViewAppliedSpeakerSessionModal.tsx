@@ -3,11 +3,14 @@ import { Modal, ModalSectionHeader, ModalText } from "@/shared/modal";
 import { IAppliedSpeakerSessionDetailedModel } from "@/admin/model/appliedHistory/appliedHistoryModel";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 
-interface IAdminViewAppliedSpeakerModal {
+interface IAdminViewAppliedSpeakerSessionModal {
       speakerDetail: IAppliedSpeakerSessionDetailedModel;
       closeModalHandler: () => void;
 }
-function AdminViewAppliedSpeakerModal({ speakerDetail, closeModalHandler }: IAdminViewAppliedSpeakerModal) {
+function AdminViewAppliedSpeakerSessionModal({
+      speakerDetail,
+      closeModalHandler,
+}: IAdminViewAppliedSpeakerSessionModal) {
       return (
             <Modal
                   title="View Speaker Detail"
@@ -76,4 +79,4 @@ function AdminViewAppliedSpeakerModal({ speakerDetail, closeModalHandler }: IAdm
       );
 }
 
-export default AdminViewAppliedSpeakerModal;
+export default AdminViewAppliedSpeakerSessionModal;

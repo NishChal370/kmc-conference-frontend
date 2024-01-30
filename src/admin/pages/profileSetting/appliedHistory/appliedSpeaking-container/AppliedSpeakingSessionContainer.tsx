@@ -9,15 +9,16 @@ import { appliedHistorySliceState } from "../feature/appliedHistorySlice";
 import useExtraModal from "@/admin/hooks/modal/useExtraModal";
 import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistoryApi";
 import AdminAppliedHistory from "../components/AdminAppliedHistory";
-import AdminViewAppliedSpeakerModalContainer from "./AdminViewAppliedSpeakerModalContainer";
+import AdminViewAppliedSpeakerSessionModalContainer from "./AdminViewAppliedSpeakerSessionModalContainer";
 
 function AppliedSpeakingSessionContainer() {
       const [viewModal, openViewModal, closeViewModal] =
             useExtraModal<IAppliedSpeakerSessionDetailSearch["sessionId"]>();
 
-      const { status, error, data, isToRefetch } = useAppSelector(appliedHistorySliceState).appliedSpeaker;
+      const { status, error, data, isToRefetch } =
+            useAppSelector(appliedHistorySliceState).appliedSpeakerSession;
 
-      const { getApplicationSpeaker, deleteApplicationSpeakerSchedule } = useAppliedHistoryApi();
+      const { getApplicationSpeakerSession, deleteApplicationSpeakerSchedule } = useAppliedHistoryApi();
 
       const viewDetailHandler = (sessionId: IAppliedSpeakerSessionModel["sessionId"]) => () => {
             openViewModal(sessionId);
@@ -28,7 +29,7 @@ function AppliedSpeakingSessionContainer() {
       };
 
       useEffect(() => {
-            getApplicationSpeaker();
+            getApplicationSpeakerSession();
       }, [isToRefetch]);
 
       return (
@@ -43,7 +44,7 @@ function AppliedSpeakingSessionContainer() {
                   />
 
                   {viewModal?.isOpen && viewModal.data && (
-                        <AdminViewAppliedSpeakerModalContainer
+                        <AdminViewAppliedSpeakerSessionModalContainer
                               closeModalHandler={closeViewModal}
                               selectedSessionId={viewModal.data}
                         />

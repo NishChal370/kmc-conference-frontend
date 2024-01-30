@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@/app/hooks';
 import {
-      getApplicationSpeaker as getApplicationSpeakerReq,
+      getApplicationSpeakerSession as getApplicationSpeakerSessionReq,
       getApplicationParticipation as getApplicationParticipationReq,
       getApplicationCallForPaper as getApplicationCallForPaperReq,
       getApplicationParticipationDetailed as getApplicationParticipationDetailedReq,
@@ -22,8 +22,8 @@ function useAppliedHistoryApi() {
             dispatch(getApplicationSpeakerBasicInfoReq())
       }
 
-      const getApplicationSpeaker = () => {
-            dispatch(getApplicationSpeakerReq())
+      const getApplicationSpeakerSession = () => {
+            dispatch(getApplicationSpeakerSessionReq())
       }
 
 
@@ -152,7 +152,7 @@ function useAppliedHistoryApi() {
 
       return {
             getApplicationSpeakerBasicInfo,
-            getApplicationSpeaker, getApplicationParticipation,
+            getApplicationSpeakerSession, getApplicationParticipation,
             getApplicationCallForPaper, getApplicationParticipationDetailed,
             getApplicationSpeakerSessionDetailed, getApplicationCallForPaperDetailed,
             deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule,
