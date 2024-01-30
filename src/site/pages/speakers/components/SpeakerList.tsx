@@ -27,7 +27,7 @@ function SpeakerList({ speakers }: ISpeakerList) {
                                                 affiliation={speaker.affiliation}
                                                 jobTitle={speaker.jobTitle}
                                                 linkedInProfile={speaker.linkedInProfile}
-                                                twitterHandler={speaker.twitterHandler}
+                                                twitterHandler={speaker.twitterHandle}
                                                 professionalWebsite={speaker.professionalWebsite}
                                                 clickHandler={handleClick({ index, speakerId: speaker.id })}
                                           />

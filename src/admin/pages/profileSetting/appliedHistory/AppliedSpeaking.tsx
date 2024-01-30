@@ -1,54 +1,13 @@
-import { useEffect } from "react";
-import AdminAppliedHistory from "./components/AdminAppliedHistory";
-import { useAppSelector } from "@/app/hooks";
-import { appliedHistorySliceState } from "./feature/appliedHistorySlice";
-import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistoryApi";
-import {
-      IAppliedSpeakerDetailSearch,
-      IAppliedSpeakerModel,
-      IAppliedSpeakerScheduleDeleteReq,
-} from "@/admin/model/appliedHistory/appliedHistoryModel";
-import AdminViewAppliedSpeakerModalContainer from "./containers/AdminViewAppliedSpeakerModalContainer";
-import useExtraModal from "@/admin/hooks/modal/useExtraModal";
+import AppliedSpeakingDetailContainer from "./appliedSpeaking-container/AppliedSpeakingDetailContainer";
+import AppliedSpeakingSessionContainer from "./appliedSpeaking-container/AppliedSpeakingSessionContainer";
 
 function AppliedSpeaking() {
-      const [viewModal, openViewModal, closeViewModal] =
-            useExtraModal<IAppliedSpeakerDetailSearch["sessionId"]>();
-
-      const { status, error, data, isToRefetch } = useAppSelector(appliedHistorySliceState).appliedSpeaker;
-
-      const { getApplicationSpeaker, deleteApplicationSpeakerSchedule } = useAppliedHistoryApi();
-
-      const viewDetailHandler = (sessionId: IAppliedSpeakerModel["sessionId"]) => () => {
-            openViewModal(sessionId);
-      };
-
-      const deleteScheduleHandler = (sessionId: IAppliedSpeakerScheduleDeleteReq["sessionId"]) => () => {
-            deleteApplicationSpeakerSchedule({ sessionId });
-      };
-
-      useEffect(() => {
-            getApplicationSpeaker();
-      }, [isToRefetch]);
-
       return (
-            <>
-                  <AdminAppliedHistory
-                        pageTitle="Speaking History"
-                        status={status}
-                        error={error}
-                        data={data}
-                        deleteButtonHandler={deleteScheduleHandler}
-                        viewDetail={viewDetailHandler}
-                  />
+            <div className="flex flex-col gap-10">
+                  <AppliedSpeakingDetailContainer />
 
-                  {viewModal?.isOpen && viewModal.data && (
-                        <AdminViewAppliedSpeakerModalContainer
-                              closeModalHandler={closeViewModal}
-                              selectedSessionId={viewModal.data}
-                        />
-                  )}
-            </>
+                  <AppliedSpeakingSessionContainer />
+            </div>
       );
 }
 

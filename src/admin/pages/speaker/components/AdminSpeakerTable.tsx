@@ -5,7 +5,7 @@ import { SPEAKER_HEADER_LIST } from "../data/speakerHeaderList";
 import {
       ISpeakerBasicModel,
       ISpeakerDeleteRequest,
-      ISpeakerViewModal,
+      ISpeakerViewOrEditModal,
 } from "@/admin/model/speaker/speakerModel";
 import { Status, UserRole } from "@/enum/commonEnum";
 import SpeakerSchedule from "../../speakerSchedule/SpeakerSchedule";
@@ -16,7 +16,8 @@ interface IAdminSpeakerTable {
       status: Status;
       currentPageNumber: number;
       speakersBasicInfo: ISpeakerBasicModel[];
-      openViewModalHandler: (viewingData: ISpeakerViewModal) => () => void;
+      openEditModalHandler: (editingData: ISpeakerViewOrEditModal) => () => void;
+      openViewModalHandler: (viewingData: ISpeakerViewOrEditModal) => () => void;
       deleteSpeakerDetailHandler: (deletingDetail: ISpeakerDeleteRequest) => () => void;
 }
 
@@ -24,6 +25,7 @@ function AdminSpeakerTable({
       status,
       currentPageNumber,
       speakersBasicInfo,
+      openEditModalHandler,
       openViewModalHandler,
       deleteSpeakerDetailHandler,
 }: IAdminSpeakerTable) {
@@ -88,6 +90,20 @@ function AdminSpeakerTable({
                                                                                     ),
                                                                                     clickHandler:
                                                                                           openViewModalHandler(
+                                                                                                {
+                                                                                                      speakerId:
+                                                                                                            speaker.id,
+                                                                                                }
+                                                                                          ),
+                                                                              },
+                                                                              {
+                                                                                    title: "Update Detail",
+                                                                                    type: "Update",
+                                                                                    icon: (
+                                                                                          <AppIcon name="update" />
+                                                                                    ),
+                                                                                    clickHandler:
+                                                                                          openEditModalHandler(
                                                                                                 {
                                                                                                       speakerId:
                                                                                                             speaker.id,

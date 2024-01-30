@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import AdminViewAppliedParticipationModal from "../components/AdminViewAppliedParticipationModal";
+import AdminViewAppliedParticipationModal from "../appliedParticipant-components/AdminViewAppliedParticipationModal";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistoryApi";
 import { Status } from "@/enum/commonEnum";
-import { IAppliedParticipationDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedParticipationSessionDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
 import { appliedHistorySliceAction, appliedHistorySliceState } from "../feature/appliedHistorySlice";
 
 interface IAdminViewAppliedParticipationModalContainer {
-      selectedSessionId: IAppliedParticipationDetailSearch["sessionId"];
+      selectedSessionId: IAppliedParticipationSessionDetailSearch["sessionId"];
       closeModalHandler: () => void;
 }
 
@@ -17,19 +17,19 @@ function AdminViewAppliedParticipationModalContainer({
 }: IAdminViewAppliedParticipationModalContainer) {
       const dispatch = useAppDispatch();
 
-      const { status, data } = useAppSelector(appliedHistorySliceState).appliedParticipationDetailed;
+      const { status, data } = useAppSelector(appliedHistorySliceState).appliedParticipationSessionDetailed;
 
-      const { getApplicationParticipationDetailed } = useAppliedHistoryApi();
+      const { getApplicationParticipationSessionDetailed } = useAppliedHistoryApi();
 
       const fetchData = () => {
-            getApplicationParticipationDetailed({ sessionId: selectedSessionId });
+            getApplicationParticipationSessionDetailed({ sessionId: selectedSessionId });
       };
 
       useEffect(() => {
             fetchData();
 
             return () => {
-                  dispatch(appliedHistorySliceAction.resetAppliedParticipationDetailedSlice());
+                  dispatch(appliedHistorySliceAction.resetAppliedParticipationSessionDetailedSlice());
             };
       }, []);
 

@@ -131,6 +131,11 @@ function AdminSpeakerViewModal({ speakerDetail, closeModalHandler }: IAdminSpeak
                                                 title="Reference Contact"
                                                 data={speakerDetail.referenceContacts}
                                           />
+
+                                          <ModalSanitizedText
+                                                title="Accommodation Needs"
+                                                htmlContent={speakerDetail.accommodationNeeds}
+                                          />
                                     </article>
                               </section>
                         </main>

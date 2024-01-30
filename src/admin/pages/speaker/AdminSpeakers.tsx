@@ -5,17 +5,22 @@ import AdminSpeakerPaginationContainer from "./container/AdminSpeakerPaginationC
 import useModal from "@/admin/hooks/modal/useModal";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 import { IModal } from "@/admin/model/modal/useModalModel";
-import { ISpeakerViewModal } from "@/admin/model/speaker/speakerModel";
+import AdminSpeakerApplicationEditModalContainer from "./container/AdminSpeakerApplicationEditModalContainer";
+import { ISpeakerViewOrEditModal } from "@/admin/model/speaker/speakerModel";
 
 function AdminSpeakers() {
-      const { modalState, openViewModal, closeModal } = useModal<IModal<ISpeakerViewModal>>();
+      const { modalState, openViewModal, closeModal, openEditModal } =
+            useModal<IModal<ISpeakerViewOrEditModal>>();
 
       return (
             <>
                   <Header />
 
                   <section className="w-full h-full flex flex-col gap-6 items-center justify-center">
-                        <AdminSpeakerTableContainer openViewModal={openViewModal} />
+                        <AdminSpeakerTableContainer
+                              openViewModal={openViewModal}
+                              openEditModal={openEditModal}
+                        />
 
                         <AdminSpeakerPaginationContainer />
                   </section>
@@ -24,6 +29,14 @@ function AdminSpeakers() {
                         modalState.modalData?.view?.speakerId && (
                               <AdminSpeakerViewModalContainer
                                     selectedSpeakerId={modalState.modalData.view.speakerId}
+                                    closeModalHandler={closeModal}
+                              />
+                        )}
+
+                  {[FieldStatus.Edit].includes(modalState.modalStatus) &&
+                        modalState.modalData?.edit?.speakerId && (
+                              <AdminSpeakerApplicationEditModalContainer
+                                    selectedSpeakerId={modalState.modalData.edit?.speakerId}
                                     closeModalHandler={closeModal}
                               />
                         )}

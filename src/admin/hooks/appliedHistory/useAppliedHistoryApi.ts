@@ -1,40 +1,58 @@
 import { useAppDispatch } from '@/app/hooks';
 import {
-      getApplicationSpeaker as getApplicationSpeakerReq,
-      getApplicationParticipation as getApplicationParticipationReq,
-      getApplicationCallForPaper as getApplicationCallForPaperReq,
-      getApplicationParticipationDetailed as getApplicationParticipationDetailedReq,
-      getApplicationSpeakerDetailed as getApplicationSpeakerDetailedReq,
-      getApplicationCallForPaperDetailed as getApplicationCallForPaperDetailedReq,
+      getApplicationSpeakerSession as getApplicationSpeakerSessionReq,
+      getApplicationParticipationSessions as getApplicationParticipationSessionsReq,
+      getApplicationCallForPaperSession as getApplicationCallForPaperSessionReq,
+      getApplicationParticipationSessionDetailed as getApplicationParticipationSessionDetailedReq,
+      getApplicationSpeakerSessionDetailed as getApplicationSpeakerSessionDetailedReq,
+      getApplicationCallForPaperSessionDetailed as getApplicationCallForPaperSessionDetailedReq,
       deleteApplicationCallForPaperSchedule as deleteApplicationCallForPaperScheduleReq,
       deleteApplicationParticipationSchedule as deleteApplicationParticipationScheduleReq,
       deleteApplicationSpeakerSchedule as deleteApplicationSpeakerScheduleReq,
+      getApplicationSpeakerBasicInfo as getApplicationSpeakerBasicInfoReq,
+      getApplicationCallForPaperBasicInfo as getApplicationCallForPaperBasicInfoReq,
+      getApplicationParticipationBasicInfo as getApplicationParticipationBasicInfoReq,
+      putAppliedSpeakerBasicInfo,
+      putAppliedCallForPaperBasicInfo,
+      putAppliedParticipationBasicInfo,
 } from '@/admin/pages/profileSetting/appliedHistory/feature/appliedHistoryRequest';
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from '@/admin/model/appliedHistory/appliedHistoryModel';
+import { IAppliedCallForPaperSessionDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationSessionDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerScheduleDeleteReq, IAppliedCallForPaperPutRequest, IAppliedParticipationBasicPutRequest } from '@/admin/model/appliedHistory/appliedHistoryModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useAppliedHistoryApi() {
       const dispatch = useAppDispatch();
 
-      const getApplicationSpeaker = () => {
-            dispatch(getApplicationSpeakerReq())
+      const getApplicationSpeakerBasicInfo = () => {
+            dispatch(getApplicationSpeakerBasicInfoReq())
+      }
+
+      const getApplicationSpeakerSession = () => {
+            dispatch(getApplicationSpeakerSessionReq())
       }
 
 
-      const getApplicationParticipation = () => {
-            dispatch(getApplicationParticipationReq())
+      const getApplicationParticipationBasicInfo = () => {
+            dispatch(getApplicationParticipationBasicInfoReq())
+      }
+
+      const getApplicationParticipationSessions = () => {
+            dispatch(getApplicationParticipationSessionsReq())
       }
 
 
-      const getApplicationCallForPaper = () => {
-            dispatch(getApplicationCallForPaperReq())
+      const getApplicationCallForPaperBasicInfo = () => {
+            dispatch(getApplicationCallForPaperBasicInfoReq())
+      }
+
+      const getApplicationCallForPaperSession = () => {
+            dispatch(getApplicationCallForPaperSessionReq())
       }
 
 
-      const getApplicationParticipationDetailed = (searchDetail: IAppliedParticipationDetailSearch) => {
+      const getApplicationParticipationSessionDetailed = (searchDetail: IAppliedParticipationSessionDetailSearch) => {
             loadingAlertWithMessage({ title: "Loading", text: "Please wait while getting data" });
 
-            dispatch(getApplicationParticipationDetailedReq(searchDetail))
+            dispatch(getApplicationParticipationSessionDetailedReq(searchDetail))
                   .unwrap()
                   .catch((error) => {
                         errorToastMessage(error.detail);
@@ -42,10 +60,10 @@ function useAppliedHistoryApi() {
                   .finally(swalAlertClose)
       }
 
-      const getApplicationSpeakerDetailed = (searchDetail: IAppliedSpeakerDetailSearch) => {
+      const getApplicationSpeakerSessionDetailed = (searchDetail: IAppliedSpeakerSessionDetailSearch) => {
             loadingAlertWithMessage({ title: "Loading", text: "Please wait while getting data" });
 
-            dispatch(getApplicationSpeakerDetailedReq(searchDetail))
+            dispatch(getApplicationSpeakerSessionDetailedReq(searchDetail))
                   .unwrap()
                   .catch((error) => {
                         errorToastMessage(error.detail);
@@ -53,10 +71,10 @@ function useAppliedHistoryApi() {
                   .finally(swalAlertClose)
       }
 
-      const getApplicationCallForPaperDetailed = (searchDetail: IAppliedCallForPaperDetailSearch) => {
+      const getApplicationCallForPaperSessionDetailed = (searchDetail: IAppliedCallForPaperSessionDetailSearch) => {
             loadingAlertWithMessage({ title: "Loading", text: "Please wait while getting data" });
 
-            dispatch(getApplicationCallForPaperDetailedReq(searchDetail))
+            dispatch(getApplicationCallForPaperSessionDetailedReq(searchDetail))
                   .unwrap()
                   .catch((error) => {
                         errorToastMessage(error.detail);
@@ -125,12 +143,69 @@ function useAppliedHistoryApi() {
       }
 
 
+      const updateApplicationSpeakerBasic = async (updatedDetail: IAppliedSpeakerBasicPutRequest) => {
+            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
+
+            await dispatch(putAppliedSpeakerBasicInfo(updatedDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Updated", message: "Applied Speaker has been updated." });
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
+
+      const updateAppliedCallForPaperBasic = async (updatedDetail: IAppliedCallForPaperPutRequest) => {
+            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
+
+            await dispatch(putAppliedCallForPaperBasicInfo(updatedDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Updated", message: "Applied Call For Paper has been updated." });
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+      const updateAppliedParticipationBasic = async (updatedDetail: IAppliedParticipationBasicPutRequest) => {
+            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
+
+            await dispatch(putAppliedParticipationBasicInfo(updatedDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Updated", message: "Applied Participation has been updated." });
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
 
       return {
-            getApplicationSpeaker, getApplicationParticipation,
-            getApplicationCallForPaper, getApplicationParticipationDetailed,
-            getApplicationSpeakerDetailed, getApplicationCallForPaperDetailed,
+            getApplicationSpeakerBasicInfo,
+            getApplicationSpeakerSession, getApplicationParticipationSessions,
+            getApplicationCallForPaperSession, getApplicationParticipationSessionDetailed,
+            getApplicationSpeakerSessionDetailed, getApplicationCallForPaperSessionDetailed,
             deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule,
+            getApplicationCallForPaperBasicInfo, getApplicationParticipationBasicInfo,
+            updateApplicationSpeakerBasic, updateAppliedCallForPaperBasic, updateAppliedParticipationBasic,
       } as const;
 }
 

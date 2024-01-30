@@ -47,9 +47,11 @@ function AdminAppliedHistory({
                         </section>
                   )}
 
-                  {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}
+                  {status === Status.FAILED && (
+                        <ErrorMessage title={error?.title} detail={error?.detail} needTopPadding={false} />
+                  )}
 
-                  {status === Status.DATA_NOT_FOUND && <NotFoundMessage />}
+                  {status === Status.DATA_NOT_FOUND && <NotFoundMessage needTopPadding={false} />}
 
                   {(status === Status.IDEL || status === Status.LOADING) && <LoadingMessage />}
             </div>

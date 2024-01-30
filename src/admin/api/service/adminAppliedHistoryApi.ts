@@ -1,9 +1,19 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperSessionDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationSessionDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerScheduleDeleteReq, IAppliedCallForPaperPutRequest, IAppliedParticipationBasicPutRequest } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
 
 export const adminAppliedHistoryApi = {
-      getApplicationSpeaker: () => {
+      getApplicationSpeakerBasicInfo: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Speaker/my-speaker`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      getApplicationSpeakerSession: () => {
             const options: AxiosRequestConfig = {
                   method: "GET",
                   url: `ApplicationHistory/speaker`,
@@ -12,53 +22,24 @@ export const adminAppliedHistoryApi = {
             return AXIOS.request(options);
       },
 
-      getApplicationCallForPaper: () => {
+      getApplicationSpeakerSessionDetail: ({ sessionId }: IAppliedSpeakerSessionDetailSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `ApplicationHistory/call-for-paper`,
+                  url: `Speaker/my-session?SessionId=${sessionId}`,
             };
 
             return AXIOS.request(options);
       },
 
-
-      getApplicationParticipant: () => {
+      putAppliedSpeakerBasicInfo: (updatedDetail: IAppliedSpeakerBasicPutRequest) => {
             const options: AxiosRequestConfig = {
-                  method: "GET",
-                  url: `ApplicationHistory/participant`,
+                  method: "PUT",
+                  url: `Speaker`,
+                  data: convertObjectToFormData(updatedDetail),
             };
 
             return AXIOS.request(options);
       },
-
-      getApplicationParticipationDetail: ({ sessionId }: IAppliedParticipationDetailSearch) => {
-            const options: AxiosRequestConfig = {
-                  method: "GET",
-                  url: `Participant/my-participant?SessionId=${sessionId}`,
-            };
-
-            return AXIOS.request(options);
-      },
-
-
-      getApplicationSpeakerDetail: ({ sessionId }: IAppliedSpeakerDetailSearch) => {
-            const options: AxiosRequestConfig = {
-                  method: "GET",
-                  url: `Speaker/my-speaker?SessionId=${sessionId}`,
-            };
-
-            return AXIOS.request(options);
-      },
-
-      getApplicationCallForPaperDetail: ({ sessionId }: IAppliedCallForPaperDetailSearch) => {
-            const options: AxiosRequestConfig = {
-                  method: "GET",
-                  url: `CallForPaper/my-calls?SessionId=${sessionId}`,
-            };
-
-            return AXIOS.request(options);
-      },
-
 
       deleteAppliedSpeakerSchedule: (detail: IAppliedSpeakerScheduleDeleteReq) => {
             const options: AxiosRequestConfig = {
@@ -70,6 +51,49 @@ export const adminAppliedHistoryApi = {
             return AXIOS.request(options);
       },
 
+
+
+
+      getApplicationCallForPaperBasicInfo: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `CallForPaper/my-call`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+
+      getApplicationCallForPaperSession: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `ApplicationHistory/call-for-paper`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+
+      getApplicationCallForPaperSessionDetail: ({ sessionId }: IAppliedCallForPaperSessionDetailSearch) => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `CallForPaper/my-sessions?SessionId=${sessionId}`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      putAppliedCallForPaperBasicInfo: (updatedDetail: IAppliedCallForPaperPutRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "PUT",
+                  url: `CallForPaper`,
+                  data: updatedDetail,
+            };
+
+            return AXIOS.request(options);
+      },
+
+
       deleteAppliedCallForPaperSchedule: (detail: IAppliedCallForPaperScheduleDeleteReq) => {
             const options: AxiosRequestConfig = {
                   method: "DELETE",
@@ -79,6 +103,48 @@ export const adminAppliedHistoryApi = {
 
             return AXIOS.request(options);
       },
+
+
+
+
+      getApplicationParticipationBasicInfo: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Participant/my-participant`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+
+      getApplicationParticipantSessions: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `ApplicationHistory/participant`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      getApplicationParticipationSessionDetail: ({ sessionId }: IAppliedParticipationSessionDetailSearch) => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Participant/my-session?SessionId=${sessionId}`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      putAppliedParticipationBasicInfo: (updatedDetail: IAppliedParticipationBasicPutRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "PUT",
+                  url: `Participant`,
+                  data: updatedDetail,
+            };
+
+            return AXIOS.request(options);
+      },
+
 
       deleteAppliedParticipationSchedule: (detail: IAppliedParticipationScheduleDeleteReq) => {
             const options: AxiosRequestConfig = {

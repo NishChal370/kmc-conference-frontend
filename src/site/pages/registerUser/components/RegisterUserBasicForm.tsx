@@ -116,7 +116,7 @@ function RegisterUserBasicForm({
                               })}
                         </Input>
 
-                        <PhoneInput control={control} isRequired name="phoneNumber" />
+                        <PhoneInput control={control} name="phoneNumber" />
 
                         <span className="flex items-center justify-center w-full  lg:col-span-2">
                               <Button

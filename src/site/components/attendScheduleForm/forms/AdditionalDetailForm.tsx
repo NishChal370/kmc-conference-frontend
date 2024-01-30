@@ -34,7 +34,10 @@ function AdditionalDetailForm({
                               })}
                         </SecondaryInput>
 
-                        <SecondaryInput label="Expectation" errorMessage={errors.expectationsGoals?.message}>
+                        <SecondaryInput
+                              label="Expectation/Goals"
+                              errorMessage={errors.expectationsGoals?.message}
+                        >
                               {register("expectationsGoals")}
                         </SecondaryInput>
 

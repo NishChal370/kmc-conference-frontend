@@ -8,14 +8,15 @@ import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { Status } from "@/enum/commonEnum";
-import { ISpeakerDeleteRequest, ISpeakerViewModal } from "@/admin/model/speaker/speakerModel";
+import { ISpeakerDeleteRequest, ISpeakerViewOrEditModal } from "@/admin/model/speaker/speakerModel";
 import { speakerBasicInfoSliceState, speakerSliceAction } from "../feature/speakerSlice";
 
 interface IAdminSpeakerTableContainer {
-      openViewModal: ({ viewingData }: { viewingData: ISpeakerViewModal }) => void;
+      openEditModal: ({ editingData }: { editingData: ISpeakerViewOrEditModal }) => void;
+      openViewModal: ({ viewingData }: { viewingData: ISpeakerViewOrEditModal }) => void;
 }
 
-function AdminSpeakerTableContainer({ openViewModal }: IAdminSpeakerTableContainer) {
+function AdminSpeakerTableContainer({ openViewModal, openEditModal }: IAdminSpeakerTableContainer) {
       const { search } = useLocation();
 
       const dispatch = useAppDispatch();
@@ -32,8 +33,12 @@ function AdminSpeakerTableContainer({ openViewModal }: IAdminSpeakerTableContain
             getSpeakerBasicInfo({ pageNumber: currentPageNumber });
       };
 
-      const openViewModalHandler = (viewingData: ISpeakerViewModal) => () => {
+      const openViewModalHandler = (viewingData: ISpeakerViewOrEditModal) => () => {
             openViewModal({ viewingData });
+      };
+
+      const openEditModalHandler = (editingData: ISpeakerViewOrEditModal) => () => {
+            openEditModal({ editingData });
       };
 
       const deleteSpeakerDetailHandler = (deletingDetail: ISpeakerDeleteRequest) => () => {
@@ -57,6 +62,7 @@ function AdminSpeakerTableContainer({ openViewModal }: IAdminSpeakerTableContain
                         currentPageNumber={currentPageNumber}
                         speakersBasicInfo={data.speakers}
                         openViewModalHandler={openViewModalHandler}
+                        openEditModalHandler={openEditModalHandler}
                         deleteSpeakerDetailHandler={deleteSpeakerDetailHandler}
                   />
 
