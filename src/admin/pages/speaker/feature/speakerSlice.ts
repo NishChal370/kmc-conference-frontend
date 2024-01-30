@@ -6,6 +6,7 @@ import { ISpeakerBasicResponse, ISpeakerByIdResponse } from "@/admin/model/speak
 import { ISpeakerContentDetailResponse, ISpeakersContentResponse } from "@/admin/model/speaker/speakerContentModel";
 import { getSpeakerContentDetail, getSpeakersContent } from "./speakerContentRequest";
 import { deleteSpeakerDetail, getSpeakerBasicInfo, getSpeakerDetailedById } from "./speakerRequest";
+import { putSpeakerBasicDetail } from "./speakerRequest";
 
 
 // const defaultValueSpeakerContent = [ //TODO: Remove this
@@ -225,6 +226,11 @@ const speakerSlice = createSlice({
 
 
 
+
+
+                  .addCase(putSpeakerBasicDetail.fulfilled, (state) => {
+                        state.speakerBasicInfo.isToRefetch = !state.speakerBasicInfo.isToRefetch;
+                  })
 
                   .addCase(deleteSpeakerDetail.fulfilled, (state) => {
                         state.speakerBasicInfo.isToRefetch = !state.speakerBasicInfo.isToRefetch;

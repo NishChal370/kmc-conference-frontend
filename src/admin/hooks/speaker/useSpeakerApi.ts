@@ -2,10 +2,10 @@ import { store } from '@/app/store';
 import { useAppDispatch } from '@/app/hooks';
 import { scheduleSliceAction } from '@/admin/pages/schedule/feature/scheduleSlice';
 import { postSpeakerDetail, postSpeakerNewSession } from '@/admin/pages/speaker/feature/becomeSpeakerRequest';
-import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById } from '@/admin/pages/speaker/feature/speakerRequest';
+import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, deleteSpeakerDetail as deleteSpeakerDetailReq, getSpeakerDetailedById, putSpeakerBasicDetail } from '@/admin/pages/speaker/feature/speakerRequest';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 import { ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from '@/admin/model/speaker/becomeSpeakerModel';
-import { ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, } from '@/admin/model/speaker/speakerModel';
+import { ISpeakerApplicationBasicPutRequest, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, } from '@/admin/model/speaker/speakerModel';
 
 
 function useSpeakerApi() {
@@ -16,13 +16,15 @@ function useSpeakerApi() {
       }
 
 
-      const getSpeakerDetailedInfo = (speakerDetail: ISpeakerByIdSearch) => {
+      const getSpeakerDetailedInfo = async (speakerDetail: ISpeakerByIdSearch) => {
             loadingAlertWithMessage({ title: "Loading", text: "Please wait while getting data" });
 
-            dispatch(getSpeakerDetailedById(speakerDetail))
+            await dispatch(getSpeakerDetailedById(speakerDetail))
                   .unwrap()
                   .catch((error) => {
                         errorToastMessage(error.detail);
+
+                        throw new Error(error.detail)
                   })
                   .finally(swalAlertClose)
       }
@@ -38,6 +40,24 @@ function useSpeakerApi() {
                         successMessage({ title: "Success", message: "Your request for speaker has been placed." });
 
                         store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
+      const updateSpeakerApplicationBasic = async (updatedDetail: ISpeakerApplicationBasicPutRequest) => {
+            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
+
+            await dispatch(putSpeakerBasicDetail(updatedDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Updated", message: "Speaker Application has been updated." });
                   })
                   .catch((error) => {
                         errorToastMessage(error.detail);
@@ -91,7 +111,7 @@ function useSpeakerApi() {
 
 
 
-      return { getSpeakerBasicInfo, getSpeakerDetailedInfo, deleteSpeakerDetail, addSpeakerDetail, addSpeakerNewSession } as const;
+      return { getSpeakerBasicInfo, getSpeakerDetailedInfo, deleteSpeakerDetail, addSpeakerDetail, addSpeakerNewSession, updateSpeakerApplicationBasic } as const;
 }
 
 export default useSpeakerApi

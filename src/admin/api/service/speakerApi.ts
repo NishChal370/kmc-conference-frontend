@@ -4,7 +4,7 @@ import { createQueryString } from "@/utils/stringFormat/createQueryString";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
 import { ISpeakerContentDetailSearch, ISpeakerContentSearch } from "@/admin/model/speaker/speakerContentModel";
 import { ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from "@/admin/model/speaker/becomeSpeakerModel";
-import { ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/speakerModel";
+import { ISpeakerApplicationBasicPutRequest, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest } from "@/admin/model/speaker/speakerModel";
 
 const speakerApi = {
       getBasicInfo: (searchDetail: ISpeakerBasicSearch) => {
@@ -21,6 +21,16 @@ const speakerApi = {
             const options: AxiosRequestConfig = {
                   method: "GET",
                   url: `Speaker/${id}`,
+            };
+
+            return AXIOS.request(options);
+      },
+
+      putSpeakerApplicationBasicInfo: (updatedDetail: ISpeakerApplicationBasicPutRequest) => {
+            const options: AxiosRequestConfig = {
+                  method: "PUT",
+                  url: `Speaker/by-admin`,
+                  data: convertObjectToFormData(updatedDetail),
             };
 
             return AXIOS.request(options);
