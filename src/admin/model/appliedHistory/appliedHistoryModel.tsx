@@ -52,23 +52,9 @@ export interface IAppliedParticipationDetailSearch {
       sessionId: IScheduleModel["id"];
 }
 
-export interface IAppliedSpeakerModel {
-      sessionId: IScheduleModel["id"];
-      title: IScheduleModel["title"];
-      location: IScheduleModel["location"];
-      startTime: IScheduleModel["startTime"];
-      endTime: IScheduleModel["endTime"];
-      approvalStatus: SpeakerApprovalStatus;
-}
-
 //Speakers
 
-export type IAppliedSpeakerResponse = IAppliedSpeakerModel[];
-
-export interface IAppliedSpeakerDetailedModel extends IAppliedSpeakerModel {
-      photo: IAttachment | null;
-      affiliation: string;
-      approvalStatus: SpeakerApprovalStatus;
+export interface IAppliedSpeakerBasic {
       bio: string;
       linkedInProfile?: string;
       twitterHandle?: string;
@@ -78,14 +64,31 @@ export interface IAppliedSpeakerDetailedModel extends IAppliedSpeakerModel {
       expertiseInField: string;
       previousSpeakingEngagements: string[] | null;
       publications: string[] | null;
-      preferredSessionLengthMinutes?: number;
-      availabilityInfo: string[] | null; // THis is not in used
       willingToTravel: boolean;
-      avRequirements?: string;
       accommodationNeeds?: string;
-      sessionProposal: IAttachment | null;
+      availabilityInfo: string[] | null; // THis is not in used
+      photo: IAttachment | null;
       referenceContacts: string[] | null;
       agreedToDates: boolean;
+}
+
+export type IAppliedSpeakerBasicResponse = IAppliedSpeakerBasic;
+
+export interface IAppliedSpeakerSessionModel {
+      sessionId: IScheduleModel["id"];
+      title: IScheduleModel["title"];
+      location: IScheduleModel["location"];
+      startTime: IScheduleModel["startTime"];
+      endTime: IScheduleModel["endTime"];
+      approvalStatus: SpeakerApprovalStatus;
+}
+
+export type IAppliedSpeakerResponse = IAppliedSpeakerSessionModel[];
+
+export interface IAppliedSpeakerDetailedModel extends IAppliedSpeakerSessionModel {
+      avRequirements?: string;
+      sessionProposal: IAttachment | null;
+      preferredSessionLengthMinutes?: number;
 }
 
 export interface IAppliedSpeakerDetailSearch {

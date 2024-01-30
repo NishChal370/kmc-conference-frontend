@@ -2,8 +2,14 @@ import { RootState } from "@/app/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { Status } from "@/enum/commonEnum";
 import { IBasicSliceState } from "@/models/commonModel";
-import { IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
-import { deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule, getApplicationCallForPaper, getApplicationCallForPaperDetailed, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeaker, getApplicationSpeakerDetailed } from "./appliedHistoryRequest";
+import { IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedSpeakerBasicResponse, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule, getApplicationCallForPaper, getApplicationCallForPaperDetailed, getApplicationParticipation, getApplicationParticipationDetailed, getApplicationSpeaker, getApplicationSpeakerBasicInfo, getApplicationSpeakerDetailed } from "./appliedHistoryRequest";
+
+
+
+interface IAppliedSpeakerBasicSlice extends IBasicSliceState {
+      data?: IAppliedSpeakerBasicResponse;
+}
 
 
 interface IAppliedParticipationSlice extends IBasicSliceState {
@@ -34,6 +40,7 @@ interface IAppliedCallForPaperDetailedSlice extends IBasicSliceState {
 
 
 type IAppliedHistory = {
+      appliedSpeakerBasic: IAppliedSpeakerBasicSlice,
       appliedParticipation: IAppliedParticipationSlice,
       appliedSpeaker: IAppliedSpeakerSlice,
       appliedCallForPaper: IAppliedCallForPaperSlice,
@@ -45,6 +52,10 @@ type IAppliedHistory = {
 
 
 const initialState: IAppliedHistory = {
+      appliedSpeakerBasic: {
+            status: Status.IDEL,
+      },
+
       appliedParticipation: {
             status: Status.IDEL,
             data: []
@@ -57,6 +68,7 @@ const initialState: IAppliedHistory = {
             status: Status.IDEL,
             data: []
       },
+
       appliedParticipationDetailed: {
             status: Status.IDEL,
       },
@@ -72,6 +84,13 @@ const appliedHistorySlice = createSlice({
       name: "appliedHistory",
       initialState,
       reducers: {
+            resetAppliedSpeakerBasicSlice: (state) => {
+                  state.appliedSpeakerBasic = {
+                        status: Status.IDEL,
+                        data: undefined,
+                  }
+            },
+
             resetAppliedParticipationSlice: (state) => {
                   state.appliedParticipation = {
                         status: Status.IDEL,
@@ -116,6 +135,23 @@ const appliedHistorySlice = createSlice({
       },
       extraReducers(builder) {
             builder
+                  .addCase(getApplicationSpeakerBasicInfo.pending, (state) => {
+                        state.appliedSpeakerBasic.status = Status.LOADING;
+                  })
+                  .addCase(getApplicationSpeakerBasicInfo.fulfilled, (state, action) => {
+                        state.appliedSpeakerBasic.status = !action.payload
+                              ? Status.DATA_NOT_FOUND
+                              : Status.SUCCEEDED;
+                        state.appliedSpeakerBasic.data = action.payload;
+
+                  })
+                  .addCase(getApplicationSpeakerBasicInfo.rejected, (state, action) => {
+                        state.appliedSpeakerBasic.status = Status.FAILED;
+                        state.appliedSpeakerBasic.error = action.payload;
+                  })
+
+
+
                   .addCase(getApplicationSpeaker.pending, (state) => {
                         state.appliedSpeaker.status = Status.LOADING;
                   })

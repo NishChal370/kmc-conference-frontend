@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { appliedHistorySliceAction, appliedHistorySliceState } from "../feature/appliedHistorySlice";
 import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistoryApi";
 import { Status } from "@/enum/commonEnum";
-import AdminViewAppliedSpeakerModal from "../components/AdminViewAppliedSpeakerModal";
+import AdminViewAppliedSpeakerModal from "../appliedSpeaking-components/AdminViewAppliedSpeakerModal";
 import { IAppliedSpeakerDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 interface IAdminViewAppliedSpeakerModalContainer {

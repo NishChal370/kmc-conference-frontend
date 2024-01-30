@@ -1,9 +1,26 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminAppliedHistoryApi } from "@/admin/api/service/adminAppliedHistoryApi";
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerDetailSearch, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicResponse, IAppliedSpeakerDetailSearch, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
+
+
+
+
+export const getApplicationSpeakerBasicInfo = createAppAsyncThunk<IAppliedSpeakerBasicResponse>(
+      "admin/applied-history/speaker",
+      async (_, { rejectWithValue }) => {
+            try {
+                  const response = await adminAppliedHistoryApi.getApplicationSpeakerBasicInfo();
+
+                  return response.data;
+            } catch (error: any) {
+                  return rejectWithValue(error.response.data);
+            }
+      }
+);
+
 
 export const getApplicationSpeaker = createAppAsyncThunk<IAppliedSpeakerResponse>(
-      "admin/applied-history/speaker",
+      "admin/applied-history/speaker/session",
       async (_, { rejectWithValue }) => {
             try {
                   const response = await adminAppliedHistoryApi.getApplicationSpeaker();
@@ -58,7 +75,7 @@ export const getApplicationParticipationDetailed = createAppAsyncThunk<IAppliedP
 );
 
 export const getApplicationSpeakerDetailed = createAppAsyncThunk<IAppliedSpeakerDetailedResponse, IAppliedSpeakerDetailSearch>(
-      "admin/applied-history/speaker/detailed",
+      "admin/applied-history/speaker/session/detailed",
       async (searchDetail, { rejectWithValue }) => {
             try {
                   const response = await adminAppliedHistoryApi.getApplicationSpeakerDetail(searchDetail);

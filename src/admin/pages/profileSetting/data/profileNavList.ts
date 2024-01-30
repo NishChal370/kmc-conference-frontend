@@ -28,7 +28,7 @@ export const PROFILE_NAV_BAR = [
             navItems: [
                   {
                         id: getUniqueId(),
-                        label: "Speaking",
+                        label: "Speaker",
                         icon: undefined,
                         path: ADMIN_PROFILE_SETTING_PATH.appliedSpeaking.full,
                   },

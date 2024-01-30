@@ -9,12 +9,17 @@ import {
       deleteApplicationCallForPaperSchedule as deleteApplicationCallForPaperScheduleReq,
       deleteApplicationParticipationSchedule as deleteApplicationParticipationScheduleReq,
       deleteApplicationSpeakerSchedule as deleteApplicationSpeakerScheduleReq,
+      getApplicationSpeakerBasicInfo as getApplicationSpeakerBasicInfoReq,
 } from '@/admin/pages/profileSetting/appliedHistory/feature/appliedHistoryRequest';
 import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from '@/admin/model/appliedHistory/appliedHistoryModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useAppliedHistoryApi() {
       const dispatch = useAppDispatch();
+
+      const getApplicationSpeakerBasicInfo = () => {
+            dispatch(getApplicationSpeakerBasicInfoReq())
+      }
 
       const getApplicationSpeaker = () => {
             dispatch(getApplicationSpeakerReq())
@@ -127,6 +132,7 @@ function useAppliedHistoryApi() {
 
 
       return {
+            getApplicationSpeakerBasicInfo,
             getApplicationSpeaker, getApplicationParticipation,
             getApplicationCallForPaper, getApplicationParticipationDetailed,
             getApplicationSpeakerDetailed, getApplicationCallForPaperDetailed,

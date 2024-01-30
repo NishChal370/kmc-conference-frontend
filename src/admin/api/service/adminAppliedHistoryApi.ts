@@ -3,6 +3,15 @@ import AXIOS from "@/api/constant";
 import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 export const adminAppliedHistoryApi = {
+      getApplicationSpeakerBasicInfo: () => {
+            const options: AxiosRequestConfig = {
+                  method: "GET",
+                  url: `Speaker/2`, //TODO: Change this api.
+            };
+
+            return AXIOS.request(options);
+      },
+
       getApplicationSpeaker: () => {
             const options: AxiosRequestConfig = {
                   method: "GET",
