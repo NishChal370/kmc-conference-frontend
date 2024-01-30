@@ -86,17 +86,17 @@ export interface IAppliedSpeakerSessionModel {
 
 export type IAppliedSpeakerResponse = IAppliedSpeakerSessionModel[];
 
-export interface IAppliedSpeakerDetailedModel extends IAppliedSpeakerSessionModel {
+export interface IAppliedSpeakerSessionDetailedModel extends IAppliedSpeakerSessionModel {
       avRequirements?: string;
       sessionProposal: IAttachment | null;
       preferredSessionLengthMinutes?: number;
 }
 
-export interface IAppliedSpeakerDetailSearch {
+export interface IAppliedSpeakerSessionDetailSearch {
       sessionId: IScheduleModel["id"];
 }
 
-export type IAppliedSpeakerDetailedResponse = IAppliedSpeakerDetailedModel;
+export type IAppliedSpeakerSessionDetailedResponse = IAppliedSpeakerSessionDetailedModel;
 
 export interface IAppliedSpeakerBasicPutRequest {
       bio: string;

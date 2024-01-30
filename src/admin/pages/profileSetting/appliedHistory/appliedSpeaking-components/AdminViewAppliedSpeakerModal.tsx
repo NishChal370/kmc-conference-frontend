@@ -1,10 +1,10 @@
 import FileViewer from "@/admin/shared/file/FileViewer";
-import { Modal, ModalSanitizedText, ModalSectionHeader, ModalText } from "@/shared/modal";
-import { IAppliedSpeakerDetailedModel } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { Modal, ModalSectionHeader, ModalText } from "@/shared/modal";
+import { IAppliedSpeakerSessionDetailedModel } from "@/admin/model/appliedHistory/appliedHistoryModel";
 import { SpeakerApprovalStatus } from "@/enum/speaker/speakerEnum";
 
 interface IAdminViewAppliedSpeakerModal {
-      speakerDetail: IAppliedSpeakerDetailedModel;
+      speakerDetail: IAppliedSpeakerSessionDetailedModel;
       closeModalHandler: () => void;
 }
 function AdminViewAppliedSpeakerModal({ speakerDetail, closeModalHandler }: IAdminViewAppliedSpeakerModal) {

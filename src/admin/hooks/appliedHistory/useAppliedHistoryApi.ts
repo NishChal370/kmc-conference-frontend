@@ -4,7 +4,7 @@ import {
       getApplicationParticipation as getApplicationParticipationReq,
       getApplicationCallForPaper as getApplicationCallForPaperReq,
       getApplicationParticipationDetailed as getApplicationParticipationDetailedReq,
-      getApplicationSpeakerDetailed as getApplicationSpeakerDetailedReq,
+      getApplicationSpeakerSessionDetailed as getApplicationSpeakerSessionDetailedReq,
       getApplicationCallForPaperDetailed as getApplicationCallForPaperDetailedReq,
       deleteApplicationCallForPaperSchedule as deleteApplicationCallForPaperScheduleReq,
       deleteApplicationParticipationSchedule as deleteApplicationParticipationScheduleReq,
@@ -12,7 +12,7 @@ import {
       getApplicationSpeakerBasicInfo as getApplicationSpeakerBasicInfoReq,
       putAppliedSpeakerBasicInfo,
 } from '@/admin/pages/profileSetting/appliedHistory/feature/appliedHistoryRequest';
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from '@/admin/model/appliedHistory/appliedHistoryModel';
+import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerScheduleDeleteReq } from '@/admin/model/appliedHistory/appliedHistoryModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 
 function useAppliedHistoryApi() {
@@ -48,10 +48,10 @@ function useAppliedHistoryApi() {
                   .finally(swalAlertClose)
       }
 
-      const getApplicationSpeakerDetailed = (searchDetail: IAppliedSpeakerDetailSearch) => {
+      const getApplicationSpeakerSessionDetailed = (searchDetail: IAppliedSpeakerSessionDetailSearch) => {
             loadingAlertWithMessage({ title: "Loading", text: "Please wait while getting data" });
 
-            dispatch(getApplicationSpeakerDetailedReq(searchDetail))
+            dispatch(getApplicationSpeakerSessionDetailedReq(searchDetail))
                   .unwrap()
                   .catch((error) => {
                         errorToastMessage(error.detail);
@@ -154,7 +154,7 @@ function useAppliedHistoryApi() {
             getApplicationSpeakerBasicInfo,
             getApplicationSpeaker, getApplicationParticipation,
             getApplicationCallForPaper, getApplicationParticipationDetailed,
-            getApplicationSpeakerDetailed, getApplicationCallForPaperDetailed,
+            getApplicationSpeakerSessionDetailed, getApplicationCallForPaperDetailed,
             deleteApplicationCallForPaperSchedule, deleteApplicationParticipationSchedule, deleteApplicationSpeakerSchedule,
             updateApplicationSpeakerBasic,
       } as const;

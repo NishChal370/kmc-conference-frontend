@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerDetailSearch, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 export const adminAppliedHistoryApi = {
       getApplicationSpeakerBasicInfo: () => {
@@ -50,7 +50,7 @@ export const adminAppliedHistoryApi = {
       },
 
 
-      getApplicationSpeakerDetail: ({ sessionId }: IAppliedSpeakerDetailSearch) => {
+      getApplicationSpeakerSessionDetail: ({ sessionId }: IAppliedSpeakerSessionDetailSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
                   url: `Speaker/my-session?SessionId=${sessionId}`,

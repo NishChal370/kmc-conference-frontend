@@ -1,6 +1,6 @@
 import createAppAsyncThunk from "@/app/createAppAsyncThunk";
 import { adminAppliedHistoryApi } from "@/admin/api/service/adminAppliedHistoryApi";
-import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerBasicResponse, IAppliedSpeakerDetailSearch, IAppliedSpeakerDetailedResponse, IAppliedSpeakerResponse, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedCallForPaperDetailSearch, IAppliedCallForPaperDetailedResponse, IAppliedCallForPaperResponse, IAppliedCallForPaperScheduleDeleteReq, IAppliedParticipationDetailSearch, IAppliedParticipationDetailedResponse, IAppliedParticipationResponse, IAppliedParticipationScheduleDeleteReq, IAppliedSpeakerBasicPutRequest, IAppliedSpeakerBasicResponse, IAppliedSpeakerSessionDetailSearch, IAppliedSpeakerSessionDetailedResponse, IAppliedSpeakerResponse, IAppliedSpeakerScheduleDeleteReq } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 
 
@@ -74,11 +74,11 @@ export const getApplicationParticipationDetailed = createAppAsyncThunk<IAppliedP
       }
 );
 
-export const getApplicationSpeakerDetailed = createAppAsyncThunk<IAppliedSpeakerDetailedResponse, IAppliedSpeakerDetailSearch>(
+export const getApplicationSpeakerSessionDetailed = createAppAsyncThunk<IAppliedSpeakerSessionDetailedResponse, IAppliedSpeakerSessionDetailSearch>(
       "admin/applied-history/speaker/session/detailed",
       async (searchDetail, { rejectWithValue }) => {
             try {
-                  const response = await adminAppliedHistoryApi.getApplicationSpeakerDetail(searchDetail);
+                  const response = await adminAppliedHistoryApi.getApplicationSpeakerSessionDetail(searchDetail);
 
                   return response.data;
             } catch (error: any) {

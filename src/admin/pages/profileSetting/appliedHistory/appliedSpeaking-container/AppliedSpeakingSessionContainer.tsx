@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import {
-      IAppliedSpeakerDetailSearch,
+      IAppliedSpeakerSessionDetailSearch,
       IAppliedSpeakerSessionModel,
       IAppliedSpeakerScheduleDeleteReq,
 } from "@/admin/model/appliedHistory/appliedHistoryModel";
@@ -13,7 +13,7 @@ import AdminViewAppliedSpeakerModalContainer from "./AdminViewAppliedSpeakerModa
 
 function AppliedSpeakingSessionContainer() {
       const [viewModal, openViewModal, closeViewModal] =
-            useExtraModal<IAppliedSpeakerDetailSearch["sessionId"]>();
+            useExtraModal<IAppliedSpeakerSessionDetailSearch["sessionId"]>();
 
       const { status, error, data, isToRefetch } = useAppSelector(appliedHistorySliceState).appliedSpeaker;
 

@@ -4,10 +4,10 @@ import { appliedHistorySliceAction, appliedHistorySliceState } from "../feature/
 import useAppliedHistoryApi from "@/admin/hooks/appliedHistory/useAppliedHistoryApi";
 import { Status } from "@/enum/commonEnum";
 import AdminViewAppliedSpeakerModal from "../appliedSpeaking-components/AdminViewAppliedSpeakerModal";
-import { IAppliedSpeakerDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
+import { IAppliedSpeakerSessionDetailSearch } from "@/admin/model/appliedHistory/appliedHistoryModel";
 
 interface IAdminViewAppliedSpeakerModalContainer {
-      selectedSessionId: IAppliedSpeakerDetailSearch["sessionId"];
+      selectedSessionId: IAppliedSpeakerSessionDetailSearch["sessionId"];
       closeModalHandler: () => void;
 }
 
@@ -19,17 +19,17 @@ function AdminViewAppliedSpeakerModalContainer({
 
       const { status, data } = useAppSelector(appliedHistorySliceState).appliedSpeakerDetailed;
 
-      const { getApplicationSpeakerDetailed } = useAppliedHistoryApi();
+      const { getApplicationSpeakerSessionDetailed } = useAppliedHistoryApi();
 
       const fetchData = () => {
-            getApplicationSpeakerDetailed({ sessionId: selectedSessionId });
+            getApplicationSpeakerSessionDetailed({ sessionId: selectedSessionId });
       };
 
       useEffect(() => {
             fetchData();
 
             return () => {
-                  dispatch(appliedHistorySliceAction.resetAppliedParticipationDetailedSlice());
+                  dispatch(appliedHistorySliceAction.resetAppliedSpeakerSessionDetailedSlice());
             };
       }, []);
 
