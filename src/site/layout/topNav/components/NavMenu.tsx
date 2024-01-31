@@ -5,7 +5,13 @@ import NavMenuItemButton from "./NavMenuItemButton";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
 import RaiseUpAnimationWrapper from "@/template/animation/RaiseUpAnimationWrapper";
 import { ICON } from "@/constants/icon";
-import { ABOUT_US_PATH, ORGANIZERS_PATH, SCHEDULE_PATH, SPEAKER_PATH } from "@/site/constants/routePath";
+import {
+      ABOUT_US_PATH,
+      NEWS_PATH,
+      ORGANIZERS_PATH,
+      SCHEDULE_PATH,
+      SPEAKER_PATH,
+} from "@/site/constants/routePath";
 import "../styles/navMenu.css";
 import UserAccessPanel from "./UserAccessPanel";
 
@@ -96,8 +102,8 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                     >
                                           {[
                                                 { name: "About us", path: ABOUT_US_PATH.aboutUs.full },
+                                                { name: "News and Updates", path: NEWS_PATH.news.full },
                                                 // { name: "Gallery", path: "" },//TODO: add this after this page has been created
-                                                // { name: "News and Updates", path: "" },
                                                 { name: "Privacy Policy", path: "" },
                                           ].map(({ name, path }, index) => (
                                                 <NavMenuItemButton
