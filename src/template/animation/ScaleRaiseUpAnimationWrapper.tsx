@@ -8,7 +8,7 @@ interface IScaleRaiseUpAnimationWrapper {
 function ScaleRaiseUpAnimationWrapper({ children }: IScaleRaiseUpAnimationWrapper) {
       const [isInView, setIsInView] = useState<boolean>(false);
       return (
-            <span className=" flex w-fit h-fit" style={{ perspective: "500px" }}>
+            <span className=" flex w-full h-fit" style={{ perspective: "500px" }}>
                   <motion.div
                         initial={false}
                         animate={isInView ? { scale: 1, y: 0 } : { scale: 0.5, y: 200 }}
@@ -16,7 +16,7 @@ function ScaleRaiseUpAnimationWrapper({ children }: IScaleRaiseUpAnimationWrappe
                         onViewportEnter={() => {
                               setIsInView(true);
                         }}
-                        className="flex w-fit h-fit "
+                        className="flex w-full h-fit "
                   >
                         {children}
                   </motion.div>
