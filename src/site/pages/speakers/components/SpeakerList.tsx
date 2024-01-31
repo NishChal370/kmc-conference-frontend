@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import SpeakerCard from "./SpeakerCard";
 import SpeakerListWrapper from "../container/SpeakerListWrapper";
-import { ISpeakersContentResponse } from "@/admin/model/speaker/speakerContentModel";
 import SpeakerDetailContainer from "../container/SpeakerDetailContainer";
+import { ISpeakersContentResponse } from "@/admin/model/speaker/speakerContentModel";
 
 interface ISpeakerList {
       speakers: ISpeakersContentResponse;
@@ -21,7 +21,9 @@ function SpeakerList({ speakers }: ISpeakerList) {
                               {speakers.speakers.map((speaker, index) => (
                                     <Fragment key={speaker.id}>
                                           <SpeakerCard
-                                                isShowingFullDetail={showingSpeakerId === speaker.id}
+                                                isShowingFullDetail={
+                                                      !activeRowIndex && showingSpeakerId === speaker.id
+                                                }
                                                 image={speaker.photo}
                                                 name={speaker.name}
                                                 affiliation={speaker.affiliation}
