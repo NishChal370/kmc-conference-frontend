@@ -1,0 +1,49 @@
+#session-card---background {
+      background: url("https://images.pexels.com/photos/2104882/pexels-photo-2104882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
+            no-repeat center;
+      background-size: cover;
+}
+
+#aboutUs-card---background {
+      background: url("https://image.tourismnpl.com/Landmark/Kathmandu_Durbar_Square_968.jpeg") no-repeat
+            center;
+      background-size: cover;
+}
+
+#organizer-card---background {
+      background: url("https://images.unsplash.com/photo-1676873779968-f991734295c9?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+            no-repeat center;
+      background-size: cover;
+}
+
+.trapezoid-wrapper > *,
+.trapezoid-wrapper > * > * {
+      transition: all 0.25s linear;
+      transition-property: all;
+}
+
+.trapezoid-bottom {
+      width: 100%;
+      height: 6rem;
+
+      background-color: rgba(255, 0, 0, 0.568);
+      clip-path: polygon(22% 0, 30% 90%, 100% 90%, 100% 100%, 80% 100%, 20% 100%, 0 100%, 0 0);
+}
+
+.trapezoid-wrapper:hover .trapezoid-bottom {
+      height: 10rem;
+      clip-path: polygon(30% 0, 40% 90%, 100% 90%, 100% 100%, 80% 100%, 20% 100%, 0 100%, 0 0);
+}
+
+.trapezoid-top {
+      width: 100%;
+      height: 0rem;
+      background-color: rgba(255, 0, 0, 0.568);
+      transform: rotate(180deg);
+      clip-path: polygon(26% 0, 34% 90%, 100% 90%, 100% 100%, 80% 100%, 20% 100%, 0 100%, 0 0);
+}
+
+.trapezoid-wrapper:hover .trapezoid-top {
+      height: 8rem;
+      clip-path: polygon(34% 0, 40% 90%, 100% 90%, 100% 100%, 80% 100%, 20% 100%, 0 100%, 0 0);
+}
