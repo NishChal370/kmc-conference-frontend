@@ -11,7 +11,7 @@ function HomeSpeakersContainer() {
       const { getSpeakersContent } = useSpeakerContentApi();
 
       useEffect(() => {
-            getSpeakersContent({ pageNumber: 1, pageSize: 5 });
+            getSpeakersContent({ pageNumber: 1, pageSize: 8 });
 
             return () => {
                   dispatch(speakerSliceAction.resetSpeakersContentSlice());

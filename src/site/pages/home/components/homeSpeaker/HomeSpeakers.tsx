@@ -19,59 +19,60 @@ function HomeSpeakers({ speakers, status, error }: IHomeSpeakers) {
       const navigate = useNavigate();
 
       return (
-            <div className="home-section--width text-start flex flex-col justify-center items-center gap-10">
+            <div className="home-section--width text-start flex flex-col justify-center items-center gap-20">
                   <HeaderAnimatedText
                         el="h1"
                         text="Meet our 2080 speakers"
                         className="text-4xl font-bold self-start"
                   />
 
-                  <section
-                        className="grid place-items-center w-full h-full gap-x-12 gap-y-20 auto-cols-auto text-xl items-center
-                              sm:grid-cols-2 
-                              lg:grid-cols-3 
-                              xl:grid-cols-4
-                              [&>*]:w-fit 
-                        "
-                  >
-                        {speakers.speakers.map(({ id, name, jobTitle, affiliation, photo }) => (
-                              <HomeSpeakerCard
-                                    key={id}
-                                    photo={photo}
-                                    name={name}
-                                    jobTitle={jobTitle}
-                                    affiliation={affiliation}
-                              />
-                        ))}
-                        <span
-                              className="w-full h-fit 
+                  <span className="flex flex-col w-full items-center sm:items-start h-full gap-1">
+                        <section
+                              className="grid place-items-center w-fit h-fit gap-x-12 gap-y-20 auto-cols-auto text-xl items-center
+                                    sm:grid-cols-2 
+                                    lg:grid-cols-3 
+                                    xl:grid-cols-3
+                              "
+                        >
+                              {speakers.speakers.map(({ id, name, jobTitle, affiliation, photo }) => (
+                                    <HomeSpeakerCard
+                                          key={id}
+                                          photo={photo}
+                                          name={name}
+                                          jobTitle={jobTitle}
+                                          affiliation={affiliation}
+                                    />
+                              ))}
+                              <span
+                                    className="w-full h-fit 
                                     sm:col-span-2 
                                     lg:col-span-3 
                                     xl:col-span-4
                               "
-                        >
-                              {status === Status.FAILED ? (
-                                    <ErrorMessage
-                                          title={error?.title}
-                                          detail={error?.detail}
-                                          needTopPadding={false}
-                                    />
-                              ) : undefined}
+                              >
+                                    {status === Status.FAILED ? (
+                                          <ErrorMessage
+                                                title={error?.title}
+                                                detail={error?.detail}
+                                                needTopPadding={false}
+                                          />
+                                    ) : undefined}
 
-                              {status === Status.LOADING ? <LoadingMessage /> : undefined}
+                                    {status === Status.LOADING ? <LoadingMessage /> : undefined}
 
-                              {status === Status.DATA_NOT_FOUND ? (
-                                    <NotFoundMessage needTopPadding={false} />
-                              ) : undefined}
-                        </span>
-                  </section>
+                                    {status === Status.DATA_NOT_FOUND ? (
+                                          <NotFoundMessage needTopPadding={false} />
+                                    ) : undefined}
+                              </span>
+                        </section>
 
-                  {status !== Status.LOADING ? (
-                        <ViewMoreButton
-                              name="view speakers"
-                              clickHandler={() => navigate(SPEAKER_PATH.speaker.full)}
-                        />
-                  ) : undefined}
+                        {status !== Status.LOADING ? (
+                              <ViewMoreButton
+                                    name="view speakers"
+                                    clickHandler={() => navigate(SPEAKER_PATH.speaker.full)}
+                              />
+                        ) : undefined}
+                  </span>
             </div>
       );
 }
