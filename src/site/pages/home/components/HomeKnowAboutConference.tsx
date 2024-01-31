@@ -19,7 +19,7 @@ function HomeKnowAboutConference() {
                         className="font-bold text-4xl"
                   />
 
-                  <span className="grid lg:grid-cols-2 gap-14 home-section--width">
+                  <span className="grid lg:grid-cols-2 gap-14 w-full">
                         {HOME_KNOW_ABOUT_CONFERENCE_DETAIL.map((data) => (
                               <div key={data.id} id={data.id} className="w-full h-[18rem] object-cover flex">
                                     <span className="relative group trapezoid-wrapper cursor-pointer bg-black/70 w-full h-full text-white flex flex-col justify-between">
