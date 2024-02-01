@@ -17,6 +17,7 @@ import {
       AppliedCallForPaper,
       ChangePasswordContainer,
       NotFound,
+      AdminNews,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
 import {
@@ -27,6 +28,7 @@ import {
       ADMIN_APPLICANT_PATH,
       ADMIN_ADMINISTRATION_PATH,
       ADMIN_PROFILE_SETTING_PATH,
+      ADMIN_INFORMATION_PATH,
 } from "@/admin/constants/routePath";
 import { CheckDynamicRouteType } from "@/helper/validateRoute";
 
@@ -152,6 +154,30 @@ export const AdminRouter: RouteObject = {
                                     {
                                           path: ADMIN_PROFILE_SETTING_PATH.appliedParticipation.basic,
                                           element: <AppliedParticipation />,
+                                    },
+                                    {
+                                          path: "*",
+                                          element: <NotFound />,
+                                    },
+                              ],
+                        },
+
+                        {
+                              path: ADMIN_INFORMATION_PATH.base.basic,
+                              element: <Outlet />,
+                              children: [
+                                    {
+                                          index: true,
+                                          element: (
+                                                <Navigate
+                                                      to={ADMIN_INFORMATION_PATH.newsAndUpdates.basic}
+                                                      replace
+                                                />
+                                          ),
+                                    },
+                                    {
+                                          path: ADMIN_INFORMATION_PATH.newsAndUpdates.basic,
+                                          element: <AdminNews />,
                                     },
                                     {
                                           path: "*",

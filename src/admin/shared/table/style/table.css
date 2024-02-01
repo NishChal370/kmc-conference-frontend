@@ -22,8 +22,8 @@
 
       #page-table #table-image {
             @apply md:min-w-fit md:!w-[2rem]
-            lg:!max-w-[4rem]
-            xl:!min-w-[4rem] xl:!max-w-[4rem];
+            lg:!max-w-fit
+            xl:!min-w-[4rem] xl:!max-w-fit;
       }
 
       #page-table tr > td > p {

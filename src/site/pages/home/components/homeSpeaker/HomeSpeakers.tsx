@@ -23,7 +23,7 @@ function HomeSpeakers({ speakers, status, error }: IHomeSpeakers) {
                   <HeaderAnimatedText
                         el="h1"
                         text="Meet our 2080 speakers"
-                        className="text-4xl font-bold self-start"
+                        className="text-4xl font-bold self-start uppercase"
                   />
 
                   <span className="flex flex-col w-full items-center sm:items-start h-full gap-1">
@@ -45,10 +45,10 @@ function HomeSpeakers({ speakers, status, error }: IHomeSpeakers) {
                               ))}
                               <span
                                     className="w-full h-fit 
-                                    sm:col-span-2 
-                                    lg:col-span-3 
-                                    xl:col-span-4
-                              "
+                                          sm:col-span-2 
+                                          lg:col-span-3 
+                                          xl:col-span-4
+                                    "
                               >
                                     {status === Status.FAILED ? (
                                           <ErrorMessage

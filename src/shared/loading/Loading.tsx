@@ -1,5 +1,5 @@
 import { APP_SUB_TITLE, APP_TITLE } from "@/constants/appDetail";
-import appLogo from "@/assets/image/appLogo.png";
+import appLogo from "@/assets/image/organizers/appLogo.webp";
 import "./style/loading.css";
 
 function Loading() {

@@ -16,7 +16,7 @@ function ScaleRaiseUpAnimationWrapper({ children }: IScaleRaiseUpAnimationWrappe
                         onViewportEnter={() => {
                               setIsInView(true);
                         }}
-                        className="flex w-full h-fit "
+                        className="flex w-full h-fit items-center justify-center "
                   >
                         {children}
                   </motion.div>

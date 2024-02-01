@@ -16,6 +16,10 @@ export const ScheduleDetail = lazy(() => import("@/site/pages/scheduelDetail/Sch
 export const Speaker = lazy(() => import("@/site/pages/speakers/Speaker"));
 export const AboutUs = lazy(() => import("@/site/pages/aboutUs/AboutUs"));
 export const Organizer = lazy(() => import("@/site/pages/organizer/Organizer"));
+export const News = lazy(() => import("@/site/pages/news/News"));
+export const NewsDetail = lazy(() => import("@/site/pages/newsDetail/NewsDetail"));
+
+
 
 
 

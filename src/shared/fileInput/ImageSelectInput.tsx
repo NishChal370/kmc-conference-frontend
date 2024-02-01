@@ -3,7 +3,7 @@ import Button from "../button/Button";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { FILE_SIZE_LIMIT } from "@/constants/fileData/fileData";
 import { validateImageFile } from "@/utils/validation/validateImageFile";
-import imagePlaceHolder from "@/assets/image/webp/file-placeholder.webp";
+import imagePlaceHolder from "@/assets/image/webp/imagePlaceHolder.webp";
 import ServerImage from "../serverImage/ServerImage";
 
 interface IImageSelectInput<TControl extends FieldValues> {

@@ -1,16 +1,28 @@
 import { Suspense } from "react";
 import { Outlet, RouteObject } from "react-router-dom";
 import Loading from "@/shared/loading/Loading";
-import { AboutUs, App, Home, Organizer, Schedule, ScheduleDetail, Speaker, NotFound } from "./index";
+import {
+      AboutUs,
+      App,
+      Home,
+      Organizer,
+      Schedule,
+      ScheduleDetail,
+      Speaker,
+      NotFound,
+      News,
+      NewsDetail,
+} from "./index";
 import {
       ABOUT_US_PATH,
       HOME_PATH,
+      NEWS_PATH,
       ORGANIZERS_PATH,
       SCHEDULE_PATH,
       SPEAKER_PATH,
 } from "@/site/constants/routePath";
-import CheckDynamicRouteListType from "@/helper/validateRoute/CheckDynamicRouteListType";
 import { CheckDynamicRouteType } from "@/helper/validateRoute";
+import CheckDynamicRouteListType from "@/helper/validateRoute/CheckDynamicRouteListType";
 
 const PublicRouter: RouteObject = {
       path: "/",
@@ -30,7 +42,7 @@ const PublicRouter: RouteObject = {
                         },
 
                         {
-                              path: `${SCHEDULE_PATH.schedule.basic}`,
+                              path: SCHEDULE_PATH.schedule.basic,
                               element: (
                                     <CheckDynamicRouteListType
                                           params={[
@@ -80,6 +92,28 @@ const PublicRouter: RouteObject = {
                         {
                               path: ORGANIZERS_PATH.organizer.basic,
                               element: <Organizer />,
+                        },
+
+                        {
+                              path: NEWS_PATH.news.basic,
+                              element: <Outlet />,
+                              children: [
+                                    {
+                                          index: true,
+                                          element: <News />,
+                                    },
+
+                                    {
+                                          path: NEWS_PATH.newsDetail.basic,
+                                          element: (
+                                                <CheckDynamicRouteType
+                                                      type="number"
+                                                      paramName={NEWS_PATH.newsDetail.paramName}
+                                                />
+                                          ),
+                                          children: [{ index: true, element: <NewsDetail /> }],
+                                    },
+                              ],
                         },
 
                         {

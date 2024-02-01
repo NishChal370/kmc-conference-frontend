@@ -23,6 +23,8 @@ const AppliedCallForPaper = lazy(
       () => import("@/admin/pages/profileSetting/appliedHistory/AppliedCallForPaper")
 );
 
+const AdminNews = lazy(() => import("@/admin/pages/news/AdminNews"));
+
 const NotFound = lazy(() => import("@/site/pages/notFound/NotFound"));
 
 export {
@@ -39,5 +41,6 @@ export {
       AppliedSpeaking,
       AppliedParticipation,
       AppliedCallForPaper,
+      AdminNews,
       NotFound,
 };

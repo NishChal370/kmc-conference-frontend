@@ -1,5 +1,6 @@
 import { APP_SUB_TITLE } from "@/constants/appDetail";
-import appLogo from "@/assets/image/appLogo.png";
+import appLogo from "@/assets/image/organizers/appLogo.webp";
+
 function ScheduleNotSelected() {
       return (
             <div className="h-full min-w-full max-w-full   flex flex-col justify-center items-center  text-default ">

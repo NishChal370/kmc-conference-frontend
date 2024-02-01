@@ -1,5 +1,3 @@
-// import appLogoPrimary from "@/assets/image/webP/appLogoPrimary.webp";
-
 function ResetPasswordHeader() {
       return (
             <header

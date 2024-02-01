@@ -9,7 +9,6 @@ interface IFileDetail {
 }
 
 function FileDetail({ file, removeButtonHandler }: IFileDetail) {
-      console.log();
       return (
             <div className="relative flex gap-3 justify-between px-0 py-0 bg-mute/0 rounded-lg w-32 h-fit items-center text-default">
                   <a
