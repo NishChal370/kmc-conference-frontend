@@ -1,70 +1,109 @@
-import HomeNewsCard from "../../home/components/homeNews/HomeNewsCard";
+import NewsCard from "./NewsCard";
 
 function NewsList() {
       return (
-            <div className="grid grid-col-1 sm:grid-col-2 lg:grid-cols-3 gap-10 w-[70%] h-full">
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
+            <section
+                  className="grid grid-cols-1 gap-x-12 gap-y-10 sm:gap-y-20 justify-center items-center place-items-center
+                        sm:grid-cols-2 
+                        lg:grid-cols-3 
+                        xl:grid-cols-4
+                  "
+            >
+                  <NewsCard
+                        containerClassName="flex flex-col gap-3 h-fit cursor-pointer
+                              w-72 min-w-[18rem]  
+                              xl:w-64  xl:min-w-[256px] 
+                              2xl:w-72 2xl:min-w-[18rem] 
+                        "
+                        imageClassName="w-full h-72 min-h-[18rem]
+                              xl:min-h-[256px] xl:h-64
+                              2xl:h-72  2xl:min-h-[18rem]
+                              object-contain 
+                        "
+                        image={null}
                         date="June 29, 2023"
                         title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
                   />
 
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
+                  <NewsCard
+                        containerClassName="flex flex-col gap-3 h-fit cursor-pointer
+                              w-72 min-w-[18rem]  
+                              xl:w-64  xl:min-w-[256px] 
+                              2xl:w-72 2xl:min-w-[18rem] 
+                        "
+                        imageClassName="w-full h-72 min-h-[18rem]
+                              xl:min-h-[256px] xl:h-64
+                              2xl:h-72  2xl:min-h-[18rem]
+                              object-contain 
+                        "
+                        image={null}
                         date="June 29, 2023"
                         title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
                   />
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
+
+                  <NewsCard
+                        containerClassName="flex flex-col gap-3 h-fit cursor-pointer
+                              w-72 min-w-[18rem]  
+                              xl:w-64  xl:min-w-[256px] 
+                              2xl:w-72 2xl:min-w-[18rem] 
+                        "
+                        imageClassName="w-full h-72 min-h-[18rem]
+                              xl:min-h-[256px] xl:h-64
+                              2xl:h-72  2xl:min-h-[18rem]
+                              object-contain 
+                        "
+                        image={null}
                         date="June 29, 2023"
                         title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
                   />
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
+                  <NewsCard
+                        containerClassName="flex flex-col gap-3 h-fit cursor-pointer
+                              w-72 min-w-[18rem]  
+                              xl:w-64  xl:min-w-[256px] 
+                              2xl:w-72 2xl:min-w-[18rem] 
+                        "
+                        imageClassName="w-full h-72 min-h-[18rem]
+                              xl:min-h-[256px] xl:h-64
+                              2xl:h-72  2xl:min-h-[18rem]
+                              object-contain 
+                        "
+                        image={null}
                         date="June 29, 2023"
                         title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
                   />
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
+
+                  <NewsCard
+                        containerClassName="flex flex-col gap-3 h-fit cursor-pointer
+                              w-72 min-w-[18rem]  
+                              xl:w-64  xl:min-w-[256px] 
+                              2xl:w-72 2xl:min-w-[18rem] 
+                        "
+                        imageClassName="w-full h-72 min-h-[18rem]
+                              xl:min-h-[256px] xl:h-64
+                              2xl:h-72  2xl:min-h-[18rem]
+                              object-contain 
+                        "
+                        image={null}
                         date="June 29, 2023"
                         title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
                   />
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
+
+                  <NewsCard
+                        containerClassName="flex flex-col gap-3 h-fit cursor-pointer
+                              w-72 min-w-[18rem]  
+                              xl:w-64  xl:min-w-[256px] 
+                              2xl:w-72 2xl:min-w-[18rem] 
+                        "
+                        imageClassName="w-full h-72 min-h-[18rem]
+                              xl:min-h-[256px] xl:h-64
+                              2xl:h-72  2xl:min-h-[18rem]
+                              object-contain 
+                        "
+                        image={null}
                         date="June 29, 2023"
                         title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
                   />
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
-                        date="June 29, 2023"
-                        title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
-                  />
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
-                        date="June 29, 2023"
-                        title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
-                  />
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
-                        date="June 29, 2023"
-                        title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
-                  />
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
-                        date="June 29, 2023"
-                        title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
-                  />
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
-                        date="June 29, 2023"
-                        title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
-                  />
-                  <HomeNewsCard
-                        image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
-                        date="June 29, 2023"
-                        title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
-                  />
-            </div>
+            </section>
       );
 }
 

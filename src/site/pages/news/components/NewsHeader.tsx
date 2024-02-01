@@ -10,7 +10,7 @@ function NewsHeader() {
                   "
             >
                   <h1 className="text-4xl font-bold tracking-wider sm:text-center">
-                        The Story of Kathmandu&apos;s IT Conference
+                        Exclusive Coverage of Kathmandu&apos;s IT Conference
                   </h1>
             </PageHeader>
       );

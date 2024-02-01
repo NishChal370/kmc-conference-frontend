@@ -1,11 +1,11 @@
+import NewsCard from "@/site/pages/news/components/NewsCard";
 import ViewMoreButton from "@/site/shared/buttons/ViewMoreButton";
 import HeaderAnimatedText from "@/template/animation/HeadingAnimatedText";
-import HomeNewsCard from "./HomeNewsCard";
 import ScaleRaiseUpAnimationWrapper from "@/template/animation/ScaleRaiseUpAnimationWrapper";
 
 function HomeNews() {
       return (
-            <section className="home-section--width  flex flex-col items-center justify-center gap-20 w-full h-full">
+            <div className="home-section--width  flex flex-col items-start justify-center gap-20 w-full h-full">
                   <HeaderAnimatedText
                         el="h1"
                         text="Latest News And Updates"
@@ -13,34 +13,70 @@ function HomeNews() {
                   />
 
                   <span className="w-fit h-full flex flex-col items-center justify-center gap-10">
-                        <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20 w-fit justify-center">
+                        <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20 w-fit h-full justify-center">
                               <ScaleRaiseUpAnimationWrapper>
-                                    <HomeNewsCard
-                                          image="https://liveworx-rebuild.transforms.svdcdn.com/production/blog/Blog-banner-1-w1200q80autoformatfitcropdm1686059386s562fdf771efb70d138955bb40ba0b749.jpg?w=400&h=250&q=80&auto=format&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1701972957&s=a25a17ecfba71132f9341889e029a04b"
+                                    <NewsCard
+                                          containerClassName="flex flex-col gap-4 h-fit
+                                                w-72 min-w-[18rem]
+                                                xl:w-[20rem] xl:min-w-[20rem] 
+                                                2xl:w-[24rem] 2xl:min-w-[24rem] 
+                                          "
+                                          imageClassName=" w-full  h-72  min-h-[18rem] object-cover  hover:grayscale
+                                                xl:h-[20rem] xl:min-h-[20rem]
+                                                2xl:h-[24rem] 2xl:min-h-[24rem]
+                                          "
+                                          image={null}
                                           date="June 29, 2023"
                                           title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
                                     />
                               </ScaleRaiseUpAnimationWrapper>
 
                               <ScaleRaiseUpAnimationWrapper>
-                                    <HomeNewsCard
-                                          image="https://islington.edu.np/images/blog-images/career-cyber/career_in_cybersecurity.png"
+                                    <NewsCard
+                                          containerClassName="flex flex-col gap-4 h-fit
+                                                w-72 min-w-[18rem]
+                                                xl:w-[20rem] xl:min-w-[20rem] 
+                                                2xl:w-[24rem] 2xl:min-w-[24rem] 
+                                          "
+                                          imageClassName=" w-full  h-72  min-h-[18rem] object-cover  hover:grayscale
+                                                xl:h-[20rem] xl:min-h-[20rem]
+                                                2xl:h-[24rem] 2xl:min-h-[24rem]
+                                          "
+                                          image={null}
                                           date="June 29, 2023"
                                           title="9 Reasons you should add bill payments to your remittance app"
                                     />
                               </ScaleRaiseUpAnimationWrapper>
 
                               <ScaleRaiseUpAnimationWrapper>
-                                    <HomeNewsCard
-                                          image="https://uiuxtrend.com/wp-content/uploads/ray-reyes-3xwrg7Vv6Ts-unsplash.jpg"
+                                    <NewsCard
+                                          containerClassName="flex flex-col gap-4 h-fit
+                                                w-72 min-w-[18rem]
+                                                xl:w-[20rem] xl:min-w-[20rem] 
+                                                2xl:w-[24rem] 2xl:min-w-[24rem] 
+                                          "
+                                          imageClassName=" w-full  h-72  min-h-[18rem] object-cover  hover:grayscale
+                                                xl:h-[20rem] xl:min-h-[20rem]
+                                                2xl:h-[24rem] 2xl:min-h-[24rem]
+                                          "
+                                          image={null}
                                           date="June 29, 2023"
                                           title="Tangible Strategies for Digital Transformation from Industry Leaders at LiveWorx 2023 Tangible Strategies for Digital Transformation from Industry Leaders at LiveWorx 2023"
                                     />
                               </ScaleRaiseUpAnimationWrapper>
 
                               <ScaleRaiseUpAnimationWrapper>
-                                    <HomeNewsCard
-                                          image="https://assets-global.website-files.com/60b74d1fcbe8868f9a0c9d11/65aa317075c31cd2a6c2e422_Global%20Bill%20Payments-p-500.webp"
+                                    <NewsCard
+                                          containerClassName="flex flex-col gap-4 h-fit
+                                                w-72 min-w-[18rem]
+                                                xl:w-[20rem] xl:min-w-[20rem] 
+                                                2xl:w-[24rem] 2xl:min-w-[24rem] 
+                                          "
+                                          imageClassName=" w-full  h-72  min-h-[18rem] object-cover  hover:grayscale
+                                                xl:h-[20rem] xl:min-h-[20rem]
+                                                2xl:h-[24rem] 2xl:min-h-[24rem]
+                                          "
+                                          image={null}
                                           date="June 29, 2023"
                                           title="Leverage The Digital Thread For Better Human and Sustainability Outcomes"
                                     />
@@ -49,7 +85,7 @@ function HomeNews() {
 
                         <ViewMoreButton name="Read more" clickHandler={() => {}} />
                   </span>
-            </section>
+            </div>
       );
 }
 

@@ -40,7 +40,7 @@ function ServerImage({ image, className, alt, title }: IServerImage) {
                   id={`image-${uniqueId}-${image?.fileName}`}
                   loading="lazy"
                   alt={alt}
-                  className={"bg-gray-300 " + className}
+                  className={"bg-mute-1 " + className}
                   title={title ? title : image?.originalName ? atob(image.originalName) : ""}
                   src={imagePlaceHolder}
             ></img>

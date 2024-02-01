@@ -1,7 +1,18 @@
 import { Suspense } from "react";
 import { Outlet, RouteObject } from "react-router-dom";
 import Loading from "@/shared/loading/Loading";
-import { AboutUs, App, Home, Organizer, Schedule, ScheduleDetail, Speaker, NotFound, News } from "./index";
+import {
+      AboutUs,
+      App,
+      Home,
+      Organizer,
+      Schedule,
+      ScheduleDetail,
+      Speaker,
+      NotFound,
+      News,
+      NewsDetail,
+} from "./index";
 import {
       ABOUT_US_PATH,
       HOME_PATH,
@@ -85,7 +96,24 @@ const PublicRouter: RouteObject = {
 
                         {
                               path: NEWS_PATH.news.basic,
-                              element: <News />,
+                              element: <Outlet />,
+                              children: [
+                                    {
+                                          index: true,
+                                          element: <News />,
+                                    },
+
+                                    {
+                                          path: NEWS_PATH.newsDetail.basic,
+                                          element: (
+                                                <CheckDynamicRouteType
+                                                      type="number"
+                                                      paramName={NEWS_PATH.newsDetail.paramName}
+                                                />
+                                          ),
+                                          children: [{ index: true, element: <NewsDetail /> }],
+                                    },
+                              ],
                         },
 
                         {
