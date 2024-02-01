@@ -1,25 +1,29 @@
-import { useEffect } from "react";
-import SpeakerList from "../components/SpeakerList";
-import LoadingMessage from "@/shared/loading/LoadingMessage";
-import LoadingAnimation from "@/shared/loading/LoadingAnimation";
-import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
-import { Status } from "@/enum/commonEnum";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import NewsList from "../components/NewsList";
+import { newsAction, newsBasicSliceState } from "@/admin/pages/news/feature/newsSlice";
+import useNewsApi from "@/admin/hooks/news/useNewsApi";
+import { useEffect, useState } from "react";
+import { Status } from "@/enum/commonEnum";
+import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
+import LoadingMessage from "@/shared/loading/LoadingMessage";
 import useInfiniteScroll from "@/hooks/infiniteScroll/useInfiniteScroll";
-import useSpeakerContentApi from "@/admin/hooks/speaker/useSpeakerContentApi";
-import { speakerSliceAction, speakersContentSliceState } from "@/admin/pages/speaker/feature/speakerSlice";
+import LoadingAnimation from "@/shared/loading/LoadingAnimation";
+import { INewsBasicResponse } from "@/admin/model/news/newsModel";
 
-function SpeakerListContainer() {
+function NewsListContainer() {
       const dispatch = useAppDispatch();
-      const { getSpeakersContent } = useSpeakerContentApi();
+      const [newsInfiniteList, setNewsInfiniteList] = useState<INewsBasicResponse["news"]>();
 
-      const { status, data, error } = useAppSelector(speakersContentSliceState);
+      const { status, data, error } = useAppSelector(newsBasicSliceState);
+
       const { pageNumber, loader } = useInfiniteScroll({
             totalPages: data.totalPages,
       });
 
+      const { getNewsBasicInfo } = useNewsApi();
+
       const fetchData = () => {
-            getSpeakersContent({ pageNumber: pageNumber });
+            getNewsBasicInfo({ pageNumber: pageNumber });
       };
 
       useEffect(() => {
@@ -28,20 +32,24 @@ function SpeakerListContainer() {
 
       useEffect(() => {
             return () => {
-                  dispatch(speakerSliceAction.resetSpeakersContentSlice());
-                  dispatch(speakerSliceAction.resetSpeakerContentSlice());
+                  dispatch(newsAction.resetNewsBasicSlice());
+                  setNewsInfiniteList(undefined);
             };
       }, []);
 
+      useEffect(() => {
+            setNewsInfiniteList((prev) => (prev ? [...prev, ...data.news] : data.news));
+      }, [data]);
+
       return (
             <>
-                  {[Status.SUCCEEDED, Status.LOADING].includes(status) && <SpeakerList speakers={data} />}
+                  {newsInfiniteList ? <NewsList newsList={newsInfiniteList} /> : undefined}
 
-                  {status === Status.FAILED && (
+                  {status === Status.FAILED ? (
                         <ErrorMessage title={error?.title} detail={error?.detail} needTopPadding={false} />
-                  )}
+                  ) : undefined}
 
-                  {status === Status.DATA_NOT_FOUND && <NotFoundMessage needTopPadding={false} />}
+                  {status === Status.DATA_NOT_FOUND ? <NotFoundMessage needTopPadding={false} /> : undefined}
 
                   {data.totalPages === 0
                         ? (status === Status.IDEL || status === Status.LOADING) && <LoadingMessage />
@@ -64,4 +72,4 @@ function SpeakerListContainer() {
       );
 }
 
-export default SpeakerListContainer;
+export default NewsListContainer;

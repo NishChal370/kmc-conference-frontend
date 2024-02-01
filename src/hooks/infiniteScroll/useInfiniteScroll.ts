@@ -1,32 +1,22 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function useInfiniteScroll({ totalPages }: { totalPages: number }) {
-      const [pageNumber, setPageNumber] = useState<number>(1);
-      const pageNumberRef = useRef<number>(1);
-      const totalPagesRef = useRef<number>(totalPages);
+      const [page, setPage] = useState<number>(0)
       const loader = useRef<HTMLDivElement>(null);
+      const [triggerRerender, setTriggerRerender] = useState<number>(0);
 
-      totalPagesRef.current = useMemo(() => totalPages, [totalPages]);
 
-      const toShowLoader = useMemo(
-            () => totalPagesRef.current !== 0 && pageNumber < totalPagesRef.current,
-            [pageNumber, totalPagesRef.current]
-      );
-
+      // Intersection Observer to call increasePage
       useEffect(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
             const observer = new IntersectionObserver(
                   (entries) => {
-                        if (entries[0].isIntersecting && pageNumberRef.current < totalPagesRef.current) {
-                              if (pageNumber === 0) return;
-
-                              setPageNumber((prev) => {
-                                    pageNumberRef.current = prev + 1;
-
-                                    return prev + 1;
-                              });
+                        if (entries[0].isIntersecting) {
+                              setTriggerRerender(prev => prev + 1);
                         }
                   },
-                  { threshold: 1.0 }
+                  { threshold: 1 }
             );
 
             if (loader.current) {
@@ -40,12 +30,22 @@ function useInfiniteScroll({ totalPages }: { totalPages: number }) {
             };
       }, []);
 
+      useEffect(() => {
+
+            // Skip updating if triggerRerender is 0  0 means initial load)
+            if (triggerRerender === 0) return;
+
+            // Increment the page only if it hasn't reached totalPages
+            if (page < totalPages) {
+                  setPage(prev => prev + 1);
+            }
+      }, [triggerRerender]);
+
       return {
-            pageNumber: pageNumber,
-            totalPages: totalPagesRef.current,
+            pageNumber: page || 1,
             loader,
-            toShowLoader,
+            isInitial: triggerRerender === 0,
       } as const;
 }
 
-export default useInfiniteScroll
+export default useInfiniteScroll;

@@ -1,5 +1,5 @@
-import NewsList from "./components/NewsList";
 import NewsHeader from "./components/NewsHeader";
+import NewsListContainer from "./container/NewsListContainer";
 import "./style/news.css";
 
 function News() {
@@ -8,7 +8,7 @@ function News() {
                   <NewsHeader />
 
                   <span className="flex flex-col items-center w-full h-full ">
-                        <NewsList />
+                        <NewsListContainer />
                   </span>
             </span>
       );
