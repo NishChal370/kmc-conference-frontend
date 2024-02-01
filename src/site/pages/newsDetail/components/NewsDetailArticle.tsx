@@ -15,13 +15,15 @@ function NewsDetailArticle({ newsDetail }: INewsDetailArticle) {
                   "
             >
                   <header className="w-full h-fit flex flex-col items-center gap-10">
-                        <span className="flex flex-col w-full gap-4">
+                        <span className="flex flex-col w-full gap-2">
                               <h1 title="Title" className="text-4xl font-black">
                                     {newsDetail.title}
                               </h1>
 
-                              <p title="Create Date" className="text-base font-semibold ">
-                                    {changeDateFormat(newsDetail.createdDate, "medium")}
+                              <p title="Create Date" className="text-sm font-mono">
+                                    By {newsDetail.createdBy}
+                                    <br />
+                                    {changeDateFormat(newsDetail.createdDate, "long")}
                               </p>
                         </span>
 
