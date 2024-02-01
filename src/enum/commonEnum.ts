@@ -60,3 +60,7 @@ export enum OrderBy {
       Ascending,
       Descending,
 }
+
+
+
+export type ServerImageType = "news" | "user"

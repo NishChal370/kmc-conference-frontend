@@ -3,7 +3,7 @@ import Button from "../button/Button";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { FILE_SIZE_LIMIT } from "@/constants/fileData/fileData";
 import { validateImageFile } from "@/utils/validation/validateImageFile";
-// import imagePlaceHolder from "@/assets/image/webp/file-placeholder.webp";
+import imagePlaceHolder from "@/assets/image/webp/imagePlaceHolder.webp";
 import ServerImage from "../serverImage/ServerImage";
 
 interface IImageSelectInput<TControl extends FieldValues> {
@@ -31,7 +31,7 @@ function ImageSelectInput<TControl extends FieldValues>({ name, control }: IImag
                                           src={
                                                 field.value["newFiles"] && field.value["newFiles"].length
                                                       ? URL.createObjectURL(field.value["newFiles"][0] || "")
-                                                      : "https://media.istockphoto.com/id/1327592692/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-woman.jpg?s=612x612&w=0&k=20&c=y-dvtlLq6ksJ9aJXkkw2prwGwSiQvY37JfPpb73wYTc="
+                                                      : imagePlaceHolder
                                           }
                                           alt="Preview"
                                     />

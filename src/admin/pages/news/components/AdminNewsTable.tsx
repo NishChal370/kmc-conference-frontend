@@ -35,7 +35,7 @@ function AdminNewsTable({
                                                 {getIndex({ currentPageNumber, index })}
                                           </Td>
 
-                                          <Ti image={news.bannerImage} />
+                                          <Ti imageType="news" image={news.bannerImage} />
 
                                           <Td id="Date" dataName="Date" className="sm:text-start">
                                                 {changeDateFormat(news.createdDate)}

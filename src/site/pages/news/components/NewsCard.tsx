@@ -18,7 +18,12 @@ function NewsCard({ news, containerClassName, imageClassName }: INewCard) {
 
       return (
             <div className={" cursor-pointer " + containerClassName} onClick={navigateHandler}>
-                  <ServerImage image={news.bannerImage} className={imageClassName} alt="news-and-updates" />
+                  <ServerImage
+                        imageType="news"
+                        image={news.bannerImage}
+                        className={imageClassName}
+                        alt="news-and-updates"
+                  />
                   <article className="flex flex-col gap-3 w-fit h-full">
                         <p className="text-primary font-medium text-sm">
                               {changeDateFormat(news.createdDate, "medium") || ""}

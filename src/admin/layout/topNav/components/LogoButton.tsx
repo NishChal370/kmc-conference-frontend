@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ADMIN_BASE_PATH } from "@/admin/constants/routePath";
-import appLogo from "@/assets/image/appLogo.png";
+import appLogo from "@/assets/image/organizers/appLogo.webp";
 
 function LogoButton() {
       const navigate = useNavigate();

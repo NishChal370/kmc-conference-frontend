@@ -1,6 +1,6 @@
 import { APP_SUB_TITLE } from "@/constants/appDetail";
 import "./style/loading.css";
-import appLogo from "@/assets/image/appLogo.png";
+import appLogo from "@/assets/image/organizers/appLogo.webp";
 
 interface ILoadingMessage {
       needHeader?: boolean;

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { HOME_PATH } from "@/site/constants/routePath";
-import log from "@/assets/image/appLogo.png";
+import log from "@/assets/image/organizers/appLogo.webp";
 
 interface IAppMainLogo {
       id?: string;

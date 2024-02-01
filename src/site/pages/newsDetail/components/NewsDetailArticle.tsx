@@ -31,6 +31,7 @@ function NewsDetailArticle({ newsDetail }: INewsDetailArticle) {
                               "
                         >
                               <ServerImage
+                                    imageType="news"
                                     title={"Banner image of " + newsDetail.title}
                                     className="bg-mute-1 w-[100%] h-full object-contain object-center"
                                     image={newsDetail.bannerImage}

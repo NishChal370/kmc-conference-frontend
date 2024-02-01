@@ -1,4 +1,4 @@
-import noFile from "@/assets/image/webp/no-file.png";
+import noFile from "@/assets/image/webp/no-file.webp";
 
 function NoFileHolder() {
       return (

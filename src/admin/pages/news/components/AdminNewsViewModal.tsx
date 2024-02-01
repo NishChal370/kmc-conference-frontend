@@ -26,6 +26,7 @@ function AdminNewsViewModal({ newsDetail, closeModalHandler }: IAdminNewsViewMod
                               "
                         >
                               <ServerImage
+                                    imageType="news"
                                     className="w-[8.5rem] h-[8.5rem] object-cover rounded-sm "
                                     image={newsDetail.bannerImage}
                                     alt="news-update-img"
