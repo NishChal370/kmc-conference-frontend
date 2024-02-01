@@ -26,6 +26,8 @@ import participantReducer from "@/admin/pages/participant/feature/participantSli
 import userReducer from "@/admin/pages/user/feature/userSlice";
 import adminProfileReducer from "@/admin/pages/profileSetting/profile/feature/profileSlice";
 import appliedHistoryReducer from "@/admin/pages/profileSetting/appliedHistory/feature/appliedHistorySlice";
+import newsReducer from "@/admin/pages/news/feature/newsSlice";
+
 
 export const store = configureStore({
       reducer: {
@@ -51,6 +53,8 @@ export const store = configureStore({
             user: userReducer,
             adminProfile: adminProfileReducer,
             appliedHistory: appliedHistoryReducer,
+
+            news: newsReducer,
       },
 });
 

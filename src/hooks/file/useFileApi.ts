@@ -15,8 +15,7 @@ function useFileApi() {
                         return window.URL.createObjectURL(message);
                   })
                   .catch(({ errorMessage }) => {
-
-                        throw new Error(errorMessage)
+                        throw new Error(errorMessage || "Something went wrong")
                   });
       }
 

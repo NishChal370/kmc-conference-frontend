@@ -26,6 +26,8 @@ export type TIconType =
       | "speaker"
       | "callForPaper"
       | "participant"
+      | "information"
+      | "news"
       | "more-horizontal"
       | "sort-ascending"
       | "sort-descending"

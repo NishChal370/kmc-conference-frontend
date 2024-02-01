@@ -12,7 +12,7 @@ function LoginFormContainer() {
 
       const loginForm = useAppForm<ILogin>({
             defaultValues: {
-                  emailAddress: "test@gmail.com",
+                  emailAddress: "site-admin@kathmandu.it",
                   password: "Mypassword1!",
             },
       });

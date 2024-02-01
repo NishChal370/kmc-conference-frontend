@@ -1,6 +1,7 @@
 import {
       IconArrowNarrowLeft,
       IconArrowNarrowRight,
+      IconArticle,
       IconBed,
       IconBrandFacebook,
       IconBrandInstagram,
@@ -17,6 +18,7 @@ import {
       IconExclamationCircle,
       IconEye,
       IconHome2,
+      IconInfoSquare,
       IconLock,
       IconLockOpen,
       IconLogout,
@@ -136,6 +138,12 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "registered-user":
                         return <IconUserShield className={className} size={size ?? ICON.size} />;
+
+                  case "information":
+                        return <IconInfoSquare className={className} size={size ?? ICON.size} />;
+
+                  case "news":
+                        return <IconArticle className={className} size={size ?? ICON.size} />;
 
                   case "more-horizontal":
                         return <IconDots className={className} size={size ?? ICON.size} />;
