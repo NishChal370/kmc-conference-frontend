@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import Button from "@/shared/button/Button";
 import { SCHEDULE_PATH } from "@/site/constants/routePath";
 
 function ExploreScheduleButton() {

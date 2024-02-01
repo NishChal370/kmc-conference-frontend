@@ -1,6 +1,5 @@
 import NewsCard from "@/site/pages/news/components/NewsCard";
 import ScaleRaiseUpAnimationWrapper from "@/template/animation/ScaleRaiseUpAnimationWrapper";
-import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 import { INewsBasicResponse } from "@/admin/model/news/newsModel";
 
 interface IHomeNewsList {
@@ -21,9 +20,7 @@ function HomeNewsList({ newsList }: IHomeNewsList) {
                                           xl:h-[20rem] xl:min-h-[20rem]
                                           2xl:h-[24rem] 2xl:min-h-[24rem]
                                     "
-                                    image={news.bannerImage}
-                                    date={changeDateFormat(news.createdDate, "medium") || ""}
-                                    title={news.title}
+                                    news={news}
                               />
                         </ScaleRaiseUpAnimationWrapper>
                   ))}

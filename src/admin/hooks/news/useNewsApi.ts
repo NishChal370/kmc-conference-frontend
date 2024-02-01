@@ -23,6 +23,10 @@ function useNewsApi() {
                   .finally(swalAlertClose)
       }
 
+      const getNewsDetailedInfoContent = (searchDetail: INewsDetailSearch) => {
+            dispatch(fetchNewsDetailById(searchDetail))
+      }
+
       const addNewsDetail = async (newsDetail: INewsPostRequest) => {
             loadingAlertWithMessage();
 
@@ -78,7 +82,7 @@ function useNewsApi() {
             })
       }
 
-      return { getNewsBasicInfo, getNewsDetailedInfo, addNewsDetail, updateNewsDetail, deleteNewsDetail } as const;
+      return { getNewsBasicInfo, getNewsDetailedInfo, getNewsDetailedInfoContent, addNewsDetail, updateNewsDetail, deleteNewsDetail } as const;
 }
 
 export default useNewsApi

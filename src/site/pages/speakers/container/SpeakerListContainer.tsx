@@ -23,6 +23,8 @@ function SpeakerListContainer() {
       };
 
       useEffect(() => {
+            window.scroll({ top: 0, behavior: "smooth" });
+
             fetchData();
       }, [pageNumber]);
 

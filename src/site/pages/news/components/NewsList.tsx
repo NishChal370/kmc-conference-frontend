@@ -1,5 +1,4 @@
 import NewsCard from "./NewsCard";
-import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 import { INewsBasicResponse } from "@/admin/model/news/newsModel";
 
 interface INewsList {
@@ -15,7 +14,7 @@ function NewsList({ newsList }: INewsList) {
                         xl:grid-cols-4
                   "
             >
-                  {newsList.map((news, index) => (
+                  {newsList.map((news) => (
                         <NewsCard
                               key={news.id}
                               containerClassName="flex flex-col justify-between gap-3 h-full cursor-pointer hover:grayscale
@@ -28,9 +27,7 @@ function NewsList({ newsList }: INewsList) {
                                     2xl:h-72  2xl:min-h-[18rem] 2xl:min-h-[18rem]
                                     object-contain 
                               "
-                              image={news.bannerImage}
-                              date={changeDateFormat(news.createdDate, "medium") || ""}
-                              title={"COunt " + (index + 1) + " " + "id: " + news.id + " " + news.title}
+                              news={news}
                         />
                   ))}
             </section>
