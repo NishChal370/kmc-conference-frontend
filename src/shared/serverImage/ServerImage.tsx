@@ -2,7 +2,7 @@ import { DetailedHTMLProps, useEffect, useMemo, useState } from "react";
 import useFileApi from "@/hooks/file/useFileApi";
 import { IAttachment } from "@/models/file/fileModel";
 import getUniqueId from "@/utils/uniqueId/getUniqueId";
-import imagePlaceHolder from "@/assets/image/webp/imagePlaceHolder.webp";
+// import imagePlaceHolder from "@/assets/image/webp/22.png";
 import wentWrongImg from "@/assets/image/webp/warning.webp";
 
 interface IServerImage {
@@ -51,7 +51,9 @@ function ServerImage({ image, className, alt, title }: IServerImage) {
                   alt={alt}
                   className={"bg-mute-1 " + className}
                   title={title ? title : image?.originalName ? atob(image.originalName) : ""}
-                  src={imagePlaceHolder}
+                  src={
+                        "https://media.istockphoto.com/id/1327592692/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-woman.jpg?s=612x612&w=0&k=20&c=y-dvtlLq6ksJ9aJXkkw2prwGwSiQvY37JfPpb73wYTc="
+                  }
             ></img>
       ) : (
             <img
