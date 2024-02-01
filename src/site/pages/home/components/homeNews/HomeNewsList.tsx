@@ -14,11 +14,11 @@ function HomeNewsList({ newsList }: IHomeNewsList) {
                                     containerClassName="flex flex-col gap-4 h-fit  hover:grayscale
                                           w-72 min-w-[18rem]
                                           xl:w-[20rem] xl:min-w-[20rem] 
-                                          2xl:w-[24rem] 2xl:min-w-[24rem] 
+                                          2xl:w-[22rem] 2xl:min-w-[22rem] 
                                     "
                                     imageClassName=" w-full  h-72  min-h-[18rem] object-cover
                                           xl:h-[20rem] xl:min-h-[20rem]
-                                          2xl:h-[24rem] 2xl:min-h-[24rem]
+                                          2xl:h-[22rem] 2xl:min-h-[22rem]
                                     "
                                     news={news}
                               />
