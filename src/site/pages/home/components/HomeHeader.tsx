@@ -39,7 +39,7 @@ function HomeHeader() {
 
                   <span className="header absolute hidden md:flex flex-col justify-center items-start w-full  px-4 h-full [&>*:first-child]:lg:w-[70%] [&>*:first-child]:max-w-[76rem]">
                         <ScaleRaiseUpAnimationWrapper>
-                              <article className="translate-y-40 sm:translate-y-32 xl:translate-y-40 3xl:translate-y-32 lg:translate-x-48 text-white font-bold text-2xl sm:text-5xl flex flex-col items-start justify-center gap-10">
+                              <article className="translate-y-40 sm:translate-y-32 xl:translate-y-40 3xl:translate-y-32 lg:translate-x-0 text-white font-bold text-2xl sm:text-5xl flex flex-col items-start justify-center gap-10">
                                     <span className="drop-shadow-2xl">
                                           <HeaderAnimatedText
                                                 el="h1"
