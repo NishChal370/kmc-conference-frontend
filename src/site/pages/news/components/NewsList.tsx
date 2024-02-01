@@ -15,22 +15,22 @@ function NewsList({ newsList }: INewsList) {
                         xl:grid-cols-4
                   "
             >
-                  {newsList.map((news) => (
+                  {newsList.map((news, index) => (
                         <NewsCard
                               key={news.id}
-                              containerClassName="flex flex-col gap-3 h-fit cursor-pointer
+                              containerClassName="flex flex-col justify-between gap-3 h-full cursor-pointer hover:grayscale
                                     w-72 min-w-[18rem]  
                                     xl:w-64  xl:min-w-[256px] 
-                                    2xl:w-72 2xl:min-w-[18rem] 
+                                    2xl:w-72 2xl:min-w-[18rem]
                               "
                               imageClassName="w-full h-72 min-h-[18rem]
                                     xl:min-h-[256px] xl:h-64
-                                    2xl:h-72  2xl:min-h-[18rem]
+                                    2xl:h-72  2xl:min-h-[18rem] 2xl:min-h-[18rem]
                                     object-contain 
                               "
                               image={news.bannerImage}
                               date={changeDateFormat(news.createdDate, "medium") || ""}
-                              title={news.title}
+                              title={"COunt " + (index + 1) + " " + "id: " + news.id + " " + news.title}
                         />
                   ))}
             </section>

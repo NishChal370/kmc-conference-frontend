@@ -7,7 +7,7 @@ function News() {
             <span className="flex flex-col w-full h-full justify-start items-center gap-20 min-h-[80vh]">
                   <NewsHeader />
 
-                  <span className="flex flex-col items-center w-full h-full ">
+                  <span className="flex flex-col gap-10 items-center w-full h-full ">
                         <NewsListContainer />
                   </span>
             </span>

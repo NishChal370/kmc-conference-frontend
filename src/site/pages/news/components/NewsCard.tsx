@@ -10,7 +10,7 @@ interface INewCard {
 }
 function NewsCard({ image, date, title, containerClassName, imageClassName }: INewCard) {
       return (
-            <div className={containerClassName}>
+            <div className={" cursor-pointer " + containerClassName}>
                   <ServerImage image={image} className={imageClassName} alt="news-and-updates" />
                   <article className="flex flex-col gap-3 w-fit h-full">
                         <p className="text-primary font-medium text-sm">{date}</p>
