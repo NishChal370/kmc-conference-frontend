@@ -21,28 +21,11 @@ function ContactUsForm({
 }: IContactUsForm) {
       return (
             <form className="grid md:grid-cols-2 gap-x-6 gap-y-10 text-sm" onSubmit={formSubmitHandler}>
-                  <TextArea
-                        label="Enter Message"
-                        containerClassName="md:col-span-2"
-                        errorMessage={errors.description?.message}
-                  >
-                        {register("description", {
-                              required: {
-                                    value: true,
-                                    message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                        })}
-                  </TextArea>
-
                   <Input label="Enter your name" errorMessage={errors.fullName?.message}>
                         {register("fullName", {
                               required: {
                                     value: true,
                                     message: INPUT_ERROR_MESSAGE.empty,
-                              },
-                              pattern: {
-                                    value: REGEX.EMAIL,
-                                    message: INPUT_ERROR_MESSAGE.invalidEmail,
                               },
                         })}
                   </Input>
@@ -52,6 +35,10 @@ function ContactUsForm({
                               required: {
                                     value: true,
                                     message: INPUT_ERROR_MESSAGE.empty,
+                              },
+                              pattern: {
+                                    value: REGEX.EMAIL,
+                                    message: INPUT_ERROR_MESSAGE.invalidEmail,
                               },
                         })}
                   </Input>
@@ -68,6 +55,19 @@ function ContactUsForm({
                               },
                         })}
                   </Input>
+
+                  <TextArea
+                        label="Enter Message"
+                        containerClassName="md:col-span-2"
+                        errorMessage={errors.description?.message}
+                  >
+                        {register("description", {
+                              required: {
+                                    value: true,
+                                    message: INPUT_ERROR_MESSAGE.empty,
+                              },
+                        })}
+                  </TextArea>
 
                   <Button type="submit" extraClassName="md:col-span-2 uppercase " title="Send" />
             </form>

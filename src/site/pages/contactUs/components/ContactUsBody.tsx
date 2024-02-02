@@ -8,7 +8,7 @@ import { APP_EMAIL, APP_FACEBOOK, APP_LINKEDIN, APP_PHONE, APP_TWITTER } from "@
 
 function ContactUsBody() {
       return (
-            <span className=" flex justify-center items-center w-full min-h-[50vh] mt-10 md:mt-0">
+            <span className=" flex justify-center items-center w-full min-h-[50vh] mt-10 md:mt-2">
                   <div className="w-[90%] lg:w-[60%] flex flex-col-reverse gap-20 md:gap-0  md:grid md:grid-cols-2 justify-center lg:max-w-[70rem]">
                         <aside className="w-full grid gap-y-10">
                               <span className="flex flex-col">
@@ -66,7 +66,7 @@ function ContactUsBody() {
                               <section className="flex flex-col gap-2">
                                     <h4 className=" font-semibold text-2xl">Send us a Message</h4>
                                     <p className="font-medium text-sm text-mute">
-                                          When you fill out the form, out team will get back to you.
+                                          Please fill up the form and our team will get back to you.
                                     </p>
                               </section>
 
