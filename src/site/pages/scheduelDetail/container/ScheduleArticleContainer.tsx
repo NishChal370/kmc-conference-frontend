@@ -41,7 +41,7 @@ function ScheduleArticleContainer() {
                   {status === Status.LOADING && <LoadingMessage />}
 
                   {status === Status.FAILED && (
-                        <ErrorMessage title={error?.type} detail={error?.detail} traceId={error?.traceId} />
+                        <ErrorMessage title={error?.title} detail={error?.detail} traceId={error?.traceId} />
                   )}
             </>
       );
