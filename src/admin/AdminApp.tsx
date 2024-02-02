@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import TopNav from "./layout/topNav/TopNav";
 import SideNav from "./layout/sideNav/SideNav";
+import QRCodeModalContainer from "@/shared/qrCodeModal/container/QRCodeModalContainer";
 
 function AdminApp() {
       return (
@@ -22,6 +23,7 @@ function AdminApp() {
                   </main>
 
                   <ToastContainer />
+                  <QRCodeModalContainer />
             </>
       );
 }

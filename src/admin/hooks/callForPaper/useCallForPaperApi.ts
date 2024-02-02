@@ -5,6 +5,7 @@ import { ICallForPaperAddNewSessionPutRequest, ICallForPaperPostRequest } from '
 import { IAdminCallForPaperDeleteRequest, ICallForPaperBasicSearch, ICallForPaperByIdSearch } from '@/admin/model/callForPaper/callForPaperModel';
 import { scheduleSliceAction } from '@/admin/pages/schedule/feature/scheduleSlice';
 import { getCallForPaperBasicInfo as getCallForPaperBasicInfoReq, getCallForPaperDetailedById, deleteCallForPaperDetail as deleteCallForPaperDetailReq, postCallForPaperDetail, putCallForPaperNewSession } from '@/admin/pages/callForPaper/feature/callForPaperRequest';
+import { qrModalAction } from '@/service/qrModal/feature/qrModalSlice';
 
 function useCallForPaperApi() {
       const dispatch = useAppDispatch();
@@ -35,7 +36,12 @@ function useCallForPaperApi() {
             await dispatch(postCallForPaperDetail(speakerUpdateDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ title: "Success", message: "Your request for proposal has been placed." });
+                        store.dispatch(
+                              qrModalAction.showQRModal({
+                                    title: "Success",
+                                    message: "Form submitted successfully! Your request for proposal has been placed.",
+                              })
+                        );
 
                         store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
                   })
@@ -76,7 +82,12 @@ function useCallForPaperApi() {
             await dispatch(putCallForPaperNewSession(sessionDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ title: "Success", message: "Your request for proposal has been placed." });
+                        store.dispatch(
+                              qrModalAction.showQRModal({
+                                    title: "Success",
+                                    message: "Form submitted successfully! Your request for proposal has been placed.",
+                              })
+                        );
 
                         store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
                   })

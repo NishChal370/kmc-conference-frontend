@@ -9,7 +9,7 @@ function ProfileSetting() {
 
                   <div
                         className="self-center w-full max-w-7xl flex gap-6 flex-col
-                              xl:flex-row
+                              lg:flex-row
                         "
                   >
                         <ProfileSettingNav />

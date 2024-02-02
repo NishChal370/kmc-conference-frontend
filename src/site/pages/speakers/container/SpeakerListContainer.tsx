@@ -50,7 +50,12 @@ function SpeakerListContainer() {
                   ) : undefined}
 
                   {status === Status.FAILED ? (
-                        <ErrorMessage title={error?.title} detail={error?.detail} needTopPadding={false} />
+                        <ErrorMessage
+                              title={error?.title}
+                              detail={error?.detail}
+                              needTopPadding={false}
+                              traceId={error?.traceId}
+                        />
                   ) : undefined}
 
                   {status === Status.DATA_NOT_FOUND ? <NotFoundMessage needTopPadding={false} /> : undefined}

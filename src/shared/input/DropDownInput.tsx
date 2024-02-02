@@ -89,7 +89,11 @@ function DropDownInput({
                         >
                               <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
                                     {status === Status.FAILED && (
-                                          <ErrorMessage title={apiError?.title} detail={apiError?.detail} />
+                                          <ErrorMessage
+                                                title={apiError?.title}
+                                                detail={apiError?.detail}
+                                                traceId={apiError?.traceId}
+                                          />
                                     )}
 
                                     {status === Status.DATA_NOT_FOUND && <NotFoundMessage />}

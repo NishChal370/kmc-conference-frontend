@@ -20,7 +20,7 @@ function DayFilterSubNavContainer({ isOpen, dateId }: IDayFilterSubNavContainer)
 
       const { dayId: paramDayId, themeId: paramThemeId } = useParams();
 
-      const { data, status } = useAppSelector(dayThemesMinState);
+      const { data, status, error } = useAppSelector(dayThemesMinState);
 
       const navigateHandler = (datId: number, themeId: number) => () => {
             navigate(SCHEDULE_PATH.schedule.full({ dayId: datId, themeId: themeId }));
@@ -44,7 +44,7 @@ function DayFilterSubNavContainer({ isOpen, dateId }: IDayFilterSubNavContainer)
 
                   {isOpen && status === Status.FAILED && (
                         <span className="w-full flex flex-col gap-1 pt-4 justify-center items-center">
-                              <ErrorMessage needTopPadding={false} />
+                              <ErrorMessage needTopPadding={false} traceId={error?.traceId} />
                         </span>
                   )}
 
