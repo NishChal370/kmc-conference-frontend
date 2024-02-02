@@ -7,11 +7,7 @@ import ForgotPasswordForm from "../components/ForgotPasswordForm";
 import { Status } from "@/enum/commonEnum";
 
 function ForgotPasswordFormContainer() {
-      const form = useAppForm<IForgotPasswordForm>({
-            defaultValues: {
-                  email: "test@gmail.com",
-            },
-      });
+      const form = useAppForm<IForgotPasswordForm>();
 
       const { handleSubmit } = form;
 

@@ -10,12 +10,7 @@ import { AUTH_PATH } from "@/site/constants/routePath";
 function LoginFormContainer() {
       const navigate = useNavigate();
 
-      const loginForm = useAppForm<ILogin>({
-            defaultValues: {
-                  emailAddress: "site-admin@kathmandu.it",
-                  password: "Mypassword1!",
-            },
-      });
+      const loginForm = useAppForm<ILogin>();
       const { handleSubmit } = loginForm;
 
       const { login } = useLoginApi();
