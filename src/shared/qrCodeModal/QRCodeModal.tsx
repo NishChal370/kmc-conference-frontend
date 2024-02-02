@@ -22,7 +22,6 @@ function QRCodeModal() {
 
             if (canvas) {
                   const qrCodeURL = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-                  console.log(qrCodeURL);
 
                   // Create an anchor element and trigger a download
                   const aEl = document.createElement("a");

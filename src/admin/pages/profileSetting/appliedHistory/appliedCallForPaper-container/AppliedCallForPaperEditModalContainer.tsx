@@ -28,7 +28,6 @@ function AppliedCallForPaperEditModalContainer({
       const { updateAppliedCallForPaperBasic } = useAppliedHistoryApi();
 
       const formSubmitHandler = handleSubmit((callForPaperUpdatedDetail) => {
-            console.log(callForPaperUpdatedDetail);
             const previousExperience = callForPaperUpdatedDetail.previousExperience.map(({ value }) => value);
             const listOfConferences = callForPaperUpdatedDetail.listOfConferences.map(({ value }) => value);
 
