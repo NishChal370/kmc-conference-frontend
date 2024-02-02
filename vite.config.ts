@@ -13,4 +13,8 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  build: {
+    //SEE: https://github.com/vitejs/vite/discussions/9440
+    chunkSizeWarningLimit: 1600
+  }
 })
