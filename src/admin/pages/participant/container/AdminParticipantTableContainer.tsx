@@ -60,7 +60,9 @@ function AdminParticipantTableContainer({ openViewModal }: IAdminParticipantTabl
                         deleteParticipantDetailHandler={deleteParticipantDetailHandler}
                   />
 
-                  {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}
+                  {status === Status.FAILED && (
+                        <ErrorMessage title={error?.title} detail={error?.detail} traceId={error?.traceId} />
+                  )}
 
                   {status === Status.DATA_NOT_FOUND && <NotFoundMessage />}
 

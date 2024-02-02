@@ -75,7 +75,12 @@ function CallForPaperScheduleTableContainer({
                   />
 
                   {status === Status.FAILED && (
-                        <ErrorMessage needTopPadding={false} title={error?.title} detail={error?.detail} />
+                        <ErrorMessage
+                              needTopPadding={false}
+                              title={error?.title}
+                              detail={error?.detail}
+                              traceId={error?.traceId}
+                        />
                   )}
 
                   {status === Status.DATA_NOT_FOUND && <NotFoundMessage needTopPadding={false} />}

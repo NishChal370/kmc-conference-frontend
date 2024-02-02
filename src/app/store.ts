@@ -1,5 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+
+
+import qrModalReducer from "@/service/qrModal/feature/qrModalSlice";
+
 import loginReducer from "@/site/pages/login/feature/loginSlice";
 import verifyLoginReducer from "@/protectedRoute/feature/verifyLoginSlice";
 import forgotPasswordReducer from "@/site/pages/forgotPassword/feature/forgotPasswordSlice";
@@ -27,10 +31,14 @@ import userReducer from "@/admin/pages/user/feature/userSlice";
 import adminProfileReducer from "@/admin/pages/profileSetting/profile/feature/profileSlice";
 import appliedHistoryReducer from "@/admin/pages/profileSetting/appliedHistory/feature/appliedHistorySlice";
 import newsReducer from "@/admin/pages/news/feature/newsSlice";
+import contactUsReducer from "@/admin/pages/contactUs/feature/contactUsSlice";
 
 
 export const store = configureStore({
       reducer: {
+            qrModal: qrModalReducer,
+
+
             registerUser: registerUserReducer,
             forgotPassword: forgotPasswordReducer,
             resetPassword: resetPasswordReducer,
@@ -55,6 +63,8 @@ export const store = configureStore({
             appliedHistory: appliedHistoryReducer,
 
             news: newsReducer,
+
+            contactUs: contactUsReducer,
       },
 });
 

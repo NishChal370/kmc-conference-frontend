@@ -29,21 +29,21 @@ export const PROFILE_NAV_BAR = [
                   {
                         id: getUniqueId(),
                         label: "Speaker",
-                        icon: undefined,
+                        icon: "speaker",
                         path: ADMIN_PROFILE_SETTING_PATH.appliedSpeaking.full,
                   },
 
                   {
                         id: getUniqueId(),
                         label: "Call For Paper",
-                        icon: undefined,
+                        icon: "callForPaper",
                         path: ADMIN_PROFILE_SETTING_PATH.appliedCallForPaper.full,
                   },
 
                   {
                         id: getUniqueId(),
                         label: "Participation",
-                        icon: undefined,
+                        icon: "participant",
                         path: ADMIN_PROFILE_SETTING_PATH.appliedParticipation.full,
                   },
             ]

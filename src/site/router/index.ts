@@ -18,6 +18,7 @@ export const AboutUs = lazy(() => import("@/site/pages/aboutUs/AboutUs"));
 export const Organizer = lazy(() => import("@/site/pages/organizer/Organizer"));
 export const News = lazy(() => import("@/site/pages/news/News"));
 export const NewsDetail = lazy(() => import("@/site/pages/newsDetail/NewsDetail"));
+export const ContactUs = lazy(() => import("@/site/pages/contactUs/ContactUs"));
 
 
 

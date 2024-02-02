@@ -3,10 +3,10 @@ import AppIcon from "@/shared/icon/AppIcon";
 import ConferenceCTA from "./ConferenceCTA";
 import NavMenuItemButton from "./NavMenuItemButton";
 import AppMainLogo from "@/shared/logo/AppMainLogo";
-import RaiseUpAnimationWrapper from "@/template/animation/RaiseUpAnimationWrapper";
 import { ICON } from "@/constants/icon";
 import {
       ABOUT_US_PATH,
+      CONTACT_US_PATH,
       NEWS_PATH,
       ORGANIZERS_PATH,
       SCHEDULE_PATH,
@@ -14,6 +14,7 @@ import {
 } from "@/site/constants/routePath";
 import "../styles/navMenu.css";
 import UserAccessPanel from "./UserAccessPanel";
+import { APP_FACEBOOK, APP_LINKEDIN, APP_TWITTER } from "@/constants/appDetail";
 
 interface INavMenu {
       visibility: boolean;
@@ -104,7 +105,8 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
                                                 { name: "About us", path: ABOUT_US_PATH.aboutUs.full },
                                                 { name: "News and Updates", path: NEWS_PATH.news.full },
                                                 // { name: "Gallery", path: "" },//TODO: add this after this page has been created
-                                                { name: "Privacy Policy", path: "" },
+                                                // { name: "Privacy Policy", path: "" },,//TODO: add this after this page has been created
+                                                { name: "Contact Us", path: CONTACT_US_PATH.base.full },
                                           ].map(({ name, path }, index) => (
                                                 <NavMenuItemButton
                                                       key={index}
@@ -124,31 +126,30 @@ function NavMenu({ visibility, closeMenuHandler }: INavMenu) {
 
                                           <span className="flex gap-2 items-center justify-start [&>a]:active:text-whited">
                                                 {[
-                                                      { name: "facebook", link: "" }, //TODO: Add links here
-                                                      {
-                                                            name: "instagram",
-                                                            link: "",
-                                                      },
                                                       {
                                                             name: "linkedin",
-                                                            link: "",
+                                                            link: APP_LINKEDIN,
+                                                      },
+                                                      { name: "facebook", link: APP_FACEBOOK },
+                                                      {
+                                                            name: "twitter",
+                                                            link: APP_TWITTER,
                                                       },
                                                 ].map(({ name, link }, index) => (
-                                                      <RaiseUpAnimationWrapper key={index}>
-                                                            <a
-                                                                  className="transition ease-in-out duration-300
-                                                                        hover:-translate-y-1 hover:scale-110 hover:text-primary
-                                                                  "
-                                                                  href={link}
-                                                                  target="_blank"
-                                                                  rel="noreferrer"
-                                                            >
-                                                                  <AppIcon
-                                                                        name={name as any}
-                                                                        size={ICON.size + 16}
-                                                                  />
-                                                            </a>
-                                                      </RaiseUpAnimationWrapper>
+                                                      <a
+                                                            key={index}
+                                                            className="transition ease-in-out duration-300
+                                                                  hover:-translate-y-1 hover:scale-110 hover:text-primary
+                                                            "
+                                                            href={link}
+                                                            target="_blank"
+                                                            rel="noreferrer"
+                                                      >
+                                                            <AppIcon
+                                                                  name={name as any}
+                                                                  size={ICON.size + 16}
+                                                            />
+                                                      </a>
                                                 ))}
                                           </span>
                                     </section>

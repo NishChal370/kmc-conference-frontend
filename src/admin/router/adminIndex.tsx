@@ -25,6 +25,8 @@ const AppliedCallForPaper = lazy(
 
 const AdminNews = lazy(() => import("@/admin/pages/news/AdminNews"));
 
+const AdminContactUs = lazy(() => import("@/admin/pages/contactUs/AdminContactUs"));
+
 const NotFound = lazy(() => import("@/site/pages/notFound/NotFound"));
 
 export {
@@ -42,5 +44,6 @@ export {
       AppliedParticipation,
       AppliedCallForPaper,
       AdminNews,
+      AdminContactUs,
       NotFound,
 };

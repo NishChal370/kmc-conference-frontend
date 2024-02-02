@@ -6,6 +6,7 @@ import { getSpeakerBasicInfo as getSpeakerBasicInfoReq, deleteSpeakerDetail as d
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
 import { ISpeakerNewSessionPostRequest, ISpeakerPostRequest } from '@/admin/model/speaker/becomeSpeakerModel';
 import { ISpeakerApplicationBasicPutRequest, ISpeakerBasicSearch, ISpeakerByIdSearch, ISpeakerDeleteRequest, } from '@/admin/model/speaker/speakerModel';
+import { qrModalAction } from '@/service/qrModal/feature/qrModalSlice';
 
 
 function useSpeakerApi() {
@@ -37,7 +38,12 @@ function useSpeakerApi() {
             await dispatch(postSpeakerDetail(speakerUpdateDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ title: "Success", message: "Your request for speaker has been placed." });
+                        store.dispatch(
+                              qrModalAction.showQRModal({
+                                    title: "Success",
+                                    message: "Form submitted successfully! Your request for speaker has been placed.",
+                              })
+                        );
 
                         store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
                   })
@@ -96,7 +102,12 @@ function useSpeakerApi() {
             await dispatch(postSpeakerNewSession(sessionDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ title: "Success", message: "Your request for speaker has been placed." });
+                        store.dispatch(
+                              qrModalAction.showQRModal({
+                                    title: "Success",
+                                    message: "Form submitted successfully! Your request for speaker has been placed.",
+                              })
+                        );
 
                         store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
                   })

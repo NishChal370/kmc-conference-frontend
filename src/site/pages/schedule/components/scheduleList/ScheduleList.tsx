@@ -57,7 +57,9 @@ function ScheduleList() {
                         <NotFoundMessage needTopPadding={false} title="Requested Session does not exists" />
                   )}
 
-                  {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}
+                  {status === Status.FAILED && (
+                        <ErrorMessage title={error?.title} detail={error?.detail} traceId={error?.traceId} />
+                  )}
             </section>
       );
 }

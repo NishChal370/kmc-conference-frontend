@@ -23,7 +23,9 @@ function ScheduleTopicArticleContainer({ selectedTitleId }: IScheduleTopicArticl
             <>
                   {status === Status.SUCCEEDED && data && <ScheduleTopicArticle topicDetails={data} />}
 
-                  {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}
+                  {status === Status.FAILED && (
+                        <ErrorMessage title={error?.title} detail={error?.detail} traceId={error?.traceId} />
+                  )}
 
                   {status === Status.DATA_NOT_FOUND && <NotFoundMessage />}
 

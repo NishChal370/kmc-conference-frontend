@@ -9,4 +9,8 @@ export const ADMIN_INFORMATION_PATH = {
             basic: "news",
             full: `/${ADMIN_BASE_PATH}/information/news`,
       },
+      contactUs: {
+            basic: "contact-us",
+            full: `/${ADMIN_BASE_PATH}/information/contact-us`,
+      },
 } as const;

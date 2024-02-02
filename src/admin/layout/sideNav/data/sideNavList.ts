@@ -87,6 +87,12 @@ export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [
                         Icon: "news",
                         pathName: ADMIN_INFORMATION_PATH.newsAndUpdates.full,
                   },
+                  {
+                        id: getUniqueId(),
+                        title: "Contact Us",
+                        Icon: "contactUs",
+                        pathName: ADMIN_INFORMATION_PATH.contactUs.full,
+                  },
             ]
       },
 

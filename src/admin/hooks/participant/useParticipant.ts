@@ -5,6 +5,7 @@ import { deleteParticipantDetail as deleteParticipantDetailReq, getParticipantBa
 import { IParticipantPostRequest, IParticipationNewSessionPostRequest } from '@/admin/model/participant/attendScheduleModel';
 import { IAdminParticipantDeleteRequest, IParticipantBasicSearch, IParticipantByIdSearch } from '@/admin/model/participant/participantModel';
 import { errorToastMessage, loadingAlertWithMessage, showSuccessfulConfirmation, successMessage, swalAlertClose } from '@/utils/alert';
+import { qrModalAction } from '@/service/qrModal/feature/qrModalSlice';
 
 function useParticipantApi() {
       const dispatch = useAppDispatch();
@@ -52,7 +53,13 @@ function useParticipantApi() {
             await dispatch(postParticipation(dayThemeDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ title: "Success", message: "Form submitted successfully! Thank you for participating." });
+
+                        store.dispatch(
+                              qrModalAction.showQRModal({
+                                    title: "Success",
+                                    message: "Form submitted successfully! Thank you for participating.",
+                              })
+                        );
 
                         store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
                   })
@@ -71,7 +78,12 @@ function useParticipantApi() {
             await dispatch(postParticipationNewSession(sessionDetail))
                   .unwrap()
                   .then(() => {
-                        successMessage({ title: "Success", message: "Form submitted successfully! Thank you for participating." });
+                        store.dispatch(
+                              qrModalAction.showQRModal({
+                                    title: "Success",
+                                    message: "Form submitted successfully! Thank you for participating.",
+                              })
+                        );
 
                         store.dispatch(scheduleSliceAction.refetchScheduleContentDetails())
                   })

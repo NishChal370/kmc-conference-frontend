@@ -28,7 +28,11 @@ function HomeKnowAboutConference() {
                   >
                         {HOME_KNOW_ABOUT_CONFERENCE_DETAIL.map((data) => (
                               <ScaleRaiseUpAnimationWrapper key={data.id}>
-                                    <div id={data.id} className="w-full h-[18rem] object-cover flex">
+                                    <div
+                                          id={data.id}
+                                          className="w-full h-[18rem] object-cover flex hover:cursor-pointer"
+                                          onClick={clickHandler(data.pathName)}
+                                    >
                                           <span className="relative group trapezoid-wrapper cursor-pointer bg-black/70 w-full h-full text-white flex flex-col justify-between">
                                                 <div className="trapezoid-top"></div>
                                                 <div className="trapezoid-bottom"></div>
@@ -41,7 +45,6 @@ function HomeKnowAboutConference() {
                                                       <button
                                                             type="button"
                                                             className="group w-fit hidden group-hover:flex items-center pt-2 font-semibold transition-transform duration-300 ease-in-out hover:gap-2"
-                                                            onClick={clickHandler(data.pathName)}
                                                       >
                                                             Explore
                                                             <AppIcon name="arrow-right" />
