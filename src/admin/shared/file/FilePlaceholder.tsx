@@ -41,7 +41,7 @@ function FilePlaceholderContainer({ file }: IFilePlaceholderContainer) {
                         }
 
                         if (downloadButton) {
-                              downloadButton.href = window.URL.createObjectURL(new Blob([fileUrl]));
+                              downloadButton.href = fileUrl;
                         }
 
                         if (viewButton) {
