@@ -56,6 +56,7 @@ function AppliedParticipationDetailContainer() {
                                           title={error?.title}
                                           detail={error?.detail}
                                           needTopPadding={false}
+                                          traceId={error?.traceId}
                                     />
                               )}
 

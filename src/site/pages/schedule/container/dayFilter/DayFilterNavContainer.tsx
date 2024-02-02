@@ -18,7 +18,7 @@ interface IDayFilterNavContainer {
 function DayFilterNavContainer({ subNavHandler, showingSubNav }: IDayFilterNavContainer) {
       const dispatch = useAppDispatch();
       const { getConferenceDaysBasicInfo } = useConferenceDayApi();
-      const { status, data } = useAppSelector(conferenceDaysBasicInfoState);
+      const { status, data, error } = useAppSelector(conferenceDaysBasicInfoState);
 
       useEffect(() => {
             getConferenceDaysBasicInfo();
@@ -54,7 +54,9 @@ function DayFilterNavContainer({ subNavHandler, showingSubNav }: IDayFilterNavCo
                         </span>
                   )}
 
-                  {status === Status.FAILED && <ErrorMessage needTopPadding={false} />}
+                  {status === Status.FAILED && (
+                        <ErrorMessage needTopPadding={false} traceId={error?.traceId} />
+                  )}
             </>
       );
 }

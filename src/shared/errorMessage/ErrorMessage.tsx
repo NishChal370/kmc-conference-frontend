@@ -4,9 +4,10 @@ import errorImage from "@/assets/image/webp/warning.webp";
 interface IErrorMessage {
       title?: IApiErrorDetail["title"];
       detail?: IApiErrorDetail["detail"];
+      traceId?: IApiErrorDetail["traceId"];
       needTopPadding?: boolean;
 }
-function ErrorMessage({ title, detail, needTopPadding = true }: IErrorMessage) {
+function ErrorMessage({ title, detail, traceId, needTopPadding = true }: IErrorMessage) {
       return (
             <div
                   className={`w-full h-full flex flex-col justify-center items-center text-center gap-6 ${
@@ -22,6 +23,7 @@ function ErrorMessage({ title, detail, needTopPadding = true }: IErrorMessage) {
                               {title || "Something went wrong"}
                         </h1>
                         <p className="text-sm">{detail}</p>
+                        <p className="text-sm">{traceId}</p>
                   </article>
             </div>
       );

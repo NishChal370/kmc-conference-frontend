@@ -36,7 +36,7 @@ function NewsDetailArticleContainer() {
                   {status === Status.SUCCEEDED && data ? <NewsDetailArticle newsDetail={data} /> : undefined}
 
                   {status === Status.FAILED ? (
-                        <ErrorMessage title={error?.title} detail={error?.detail} />
+                        <ErrorMessage title={error?.title} detail={error?.detail} traceId={error?.traceId} />
                   ) : undefined}
 
                   {status === Status.DATA_NOT_FOUND ? <NotFoundMessage /> : undefined}

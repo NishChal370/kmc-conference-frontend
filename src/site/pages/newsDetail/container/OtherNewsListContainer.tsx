@@ -44,7 +44,9 @@ function OtherNewsListContainer() {
                         </>
                   ) : undefined}
 
-                  {status === Status.FAILED && <ErrorMessage title={error?.title} detail={error?.detail} />}
+                  {status === Status.FAILED && (
+                        <ErrorMessage title={error?.title} detail={error?.detail} traceId={error?.traceId} />
+                  )}
 
                   {(status === Status.IDEL || status === Status.LOADING) && <LoadingMessage />}
             </>

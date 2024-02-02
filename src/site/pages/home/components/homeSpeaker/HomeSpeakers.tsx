@@ -55,6 +55,7 @@ function HomeSpeakers({ speakers, status, error }: IHomeSpeakers) {
                                                 title={error?.title}
                                                 detail={error?.detail}
                                                 needTopPadding={false}
+                                                traceId={error?.traceId}
                                           />
                                     ) : undefined}
 

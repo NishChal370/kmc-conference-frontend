@@ -46,6 +46,7 @@ function VerifyEmailContainer() {
                                     needTopPadding={false}
                                     title="Failed to Verify Email Address"
                                     detail={error?.detail || "something went wrong"}
+                                    traceId={error?.traceId}
                               />
 
                               {error?.detail.includes("already confirmed") ? (
