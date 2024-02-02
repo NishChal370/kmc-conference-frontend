@@ -4,7 +4,7 @@ import twitter from "@/assets/image/webp/twitter.webp";
 import facebook from "@/assets/image/webp/facebook.png";
 import linkedin from "@/assets/image/webp/linkedin-outline.webp";
 import telephone from "@/assets/image/webp/telephone.png";
-import { APP_FACEBOOK, APP_LINKEDIN, APP_TWITTER } from "@/constants/appDetail";
+import { APP_EMAIL, APP_FACEBOOK, APP_LINKEDIN, APP_PHONE, APP_TWITTER } from "@/constants/appDetail";
 
 function ContactUsBody() {
       return (
@@ -22,17 +22,17 @@ function ContactUsBody() {
                                     "
                               >
                                     <span>
-                                          <img src={telephone} className="w-6 h-6" alt=" telephone" />
+                                          <img src={telephone} className="w-6 h-6" alt="telephone" />
                                           <article>
                                                 <p className="font-semibold">Phone Number</p>
-                                                <p>01-565629</p>
+                                                <p>{APP_PHONE}</p>
                                           </article>
                                     </span>
                                     <span>
                                           <img src={mail} className="w-6 h-6" alt="mail" />
                                           <article>
                                                 <p className="font-semibold">Email Address</p>
-                                                <p>info@gmaiil.com</p>
+                                                <p>{APP_EMAIL}</p>
                                           </article>
                                     </span>
                               </section>
