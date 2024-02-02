@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { SCHEDULE_PATH } from "@/site/constants/routePath";
+import { CONTACT_US_PATH, SCHEDULE_PATH } from "@/site/constants/routePath";
 
 function Footer() {
       const navigate = useNavigate();
@@ -25,7 +25,11 @@ function Footer() {
                         >
                               Looking for schedule?
                         </button>
-                        <button type="button" className="active:text-primary">
+                        <button
+                              type="button"
+                              className="active:text-primary"
+                              onClick={() => navigate(CONTACT_US_PATH.base.full)}
+                        >
                               Contact the organizer
                         </button>
                   </section>

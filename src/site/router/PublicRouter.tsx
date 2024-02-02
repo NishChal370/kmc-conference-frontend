@@ -12,6 +12,7 @@ import {
       NotFound,
       News,
       NewsDetail,
+      ContactUs,
 } from "./index";
 import {
       ABOUT_US_PATH,
@@ -20,6 +21,7 @@ import {
       ORGANIZERS_PATH,
       SCHEDULE_PATH,
       SPEAKER_PATH,
+      CONTACT_US_PATH,
 } from "@/site/constants/routePath";
 import { CheckDynamicRouteType } from "@/helper/validateRoute";
 import CheckDynamicRouteListType from "@/helper/validateRoute/CheckDynamicRouteListType";
@@ -92,6 +94,11 @@ const PublicRouter: RouteObject = {
                         {
                               path: ORGANIZERS_PATH.organizer.basic,
                               element: <Organizer />,
+                        },
+
+                        {
+                              path: CONTACT_US_PATH.base.basic,
+                              element: <ContactUs />,
                         },
 
                         {

@@ -6,6 +6,7 @@ import {
       IconBrandFacebook,
       IconBrandInstagram,
       IconBrandLinkedin,
+      IconBrandX,
       IconCalendarEvent,
       IconCarGarage,
       IconCheck,
@@ -17,6 +18,7 @@ import {
       IconEdit,
       IconExclamationCircle,
       IconEye,
+      IconHeadset,
       IconHome2,
       IconInfoSquare,
       IconLock,
@@ -64,6 +66,9 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "linkedin":
                         return <IconBrandLinkedin className={className} size={size ?? ICON.size} />;
+
+                  case "twitter":
+                        return <IconBrandX className={className} size={size ?? ICON.size} />;
 
                   case "calender":
                         return <IconCalendarEvent className={className} size={size ?? ICON.size} />;
@@ -144,6 +149,9 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "news":
                         return <IconArticle className={className} size={size ?? ICON.size} />;
+
+                  case "contactUs":
+                        return <IconHeadset className={className} size={size ?? ICON.size} />;
 
                   case "more-horizontal":
                         return <IconDots className={className} size={size ?? ICON.size} />;

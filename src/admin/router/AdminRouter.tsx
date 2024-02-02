@@ -18,6 +18,7 @@ import {
       ChangePasswordContainer,
       NotFound,
       AdminNews,
+      AdminContactUs,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
 import {
@@ -179,6 +180,11 @@ export const AdminRouter: RouteObject = {
                                           path: ADMIN_INFORMATION_PATH.newsAndUpdates.basic,
                                           element: <AdminNews />,
                                     },
+                                    {
+                                          path: ADMIN_INFORMATION_PATH.contactUs.basic,
+                                          element: <AdminContactUs />,
+                                    },
+
                                     {
                                           path: "*",
                                           element: <NotFound />,

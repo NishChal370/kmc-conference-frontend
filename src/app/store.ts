@@ -27,6 +27,7 @@ import userReducer from "@/admin/pages/user/feature/userSlice";
 import adminProfileReducer from "@/admin/pages/profileSetting/profile/feature/profileSlice";
 import appliedHistoryReducer from "@/admin/pages/profileSetting/appliedHistory/feature/appliedHistorySlice";
 import newsReducer from "@/admin/pages/news/feature/newsSlice";
+import contactUsReducer from "@/admin/pages/contactUs/feature/contactUsSlice";
 
 
 export const store = configureStore({
@@ -55,6 +56,8 @@ export const store = configureStore({
             appliedHistory: appliedHistoryReducer,
 
             news: newsReducer,
+
+            contactUs: contactUsReducer,
       },
 });
 
