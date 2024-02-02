@@ -4,7 +4,7 @@ import { Modal } from "../modal";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { qrModalAction, qrModalState } from "@/service/qrModal/feature/qrModalSlice";
 import Button from "../button/Button";
-import appLogo from "@/assets/image/organizers/appLogo.webp";
+import appLogoSmall from "@/assets/image/webp/appLogoSmall.webp";
 import useQRApi from "@/admin/hooks/qr/useQRApi";
 import { Status } from "@/enum/commonEnum";
 import { ErrorMessage, NotFoundMessage } from "../errorMessage";
@@ -66,11 +66,11 @@ function QRCodeModal() {
                                                 level="H"
                                                 includeMargin={false}
                                                 imageSettings={{
-                                                      src: appLogo,
+                                                      src: appLogoSmall,
                                                       x: undefined,
                                                       y: undefined,
-                                                      height: 58,
-                                                      width: 134,
+                                                      height: 70,
+                                                      width: 70,
                                                       excavate: true,
                                                 }}
                                           />
