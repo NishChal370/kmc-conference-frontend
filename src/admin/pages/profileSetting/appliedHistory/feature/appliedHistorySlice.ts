@@ -193,7 +193,9 @@ const appliedHistorySlice = createSlice({
 
                   })
                   .addCase(getApplicationSpeakerBasicInfo.rejected, (state, action) => {
-                        state.appliedSpeakerBasic.status = Status.FAILED;
+                        state.appliedSpeakerBasic.status = action.payload?.status === 404
+                              ? Status.DATA_NOT_FOUND
+                              : Status.FAILED;
                         state.appliedSpeakerBasic.error = action.payload;
                   })
 
@@ -224,7 +226,9 @@ const appliedHistorySlice = createSlice({
 
                   })
                   .addCase(getApplicationSpeakerSessionDetailed.rejected, (state, action) => {
-                        state.appliedSpeakerDetailed.status = Status.FAILED;
+                        state.appliedSpeakerDetailed.status = action.payload?.status === 404
+                              ? Status.DATA_NOT_FOUND
+                              : Status.FAILED;
                         state.appliedSpeakerDetailed.error = action.payload;
                   })
 
@@ -251,7 +255,9 @@ const appliedHistorySlice = createSlice({
 
                   })
                   .addCase(getApplicationCallForPaperBasicInfo.rejected, (state, action) => {
-                        state.appliedCallForPaperBasic.status = Status.FAILED;
+                        state.appliedCallForPaperBasic.status = action.payload?.status === 404
+                              ? Status.DATA_NOT_FOUND
+                              : Status.FAILED;
                         state.appliedCallForPaperBasic.error = action.payload;
                   })
 
@@ -282,7 +288,9 @@ const appliedHistorySlice = createSlice({
 
                   })
                   .addCase(getApplicationCallForPaperSessionDetailed.rejected, (state, action) => {
-                        state.appliedCallForPaperSessionDetailed.status = Status.FAILED;
+                        state.appliedCallForPaperSessionDetailed.status = action.payload?.status === 404
+                              ? Status.DATA_NOT_FOUND
+                              : Status.FAILED;
                         state.appliedCallForPaperSessionDetailed.error = action.payload;
                   })
 
@@ -309,7 +317,9 @@ const appliedHistorySlice = createSlice({
 
                   })
                   .addCase(getApplicationParticipationBasicInfo.rejected, (state, action) => {
-                        state.appliedParticipationBasic.status = Status.FAILED;
+                        state.appliedParticipationBasic.status = action.payload?.status === 404
+                              ? Status.DATA_NOT_FOUND
+                              : Status.FAILED;
                         state.appliedParticipationBasic.error = action.payload;
                   })
 
@@ -340,7 +350,9 @@ const appliedHistorySlice = createSlice({
 
                   })
                   .addCase(getApplicationParticipationSessionDetailed.rejected, (state, action) => {
-                        state.appliedParticipationSessionDetailed.status = Status.FAILED;
+                        state.appliedParticipationSessionDetailed.status = action.payload?.status === 404
+                              ? Status.DATA_NOT_FOUND
+                              : Status.FAILED;
                         state.appliedParticipationSessionDetailed.error = action.payload;
                   })
 
