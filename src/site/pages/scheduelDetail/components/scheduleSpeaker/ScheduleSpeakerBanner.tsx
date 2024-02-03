@@ -23,9 +23,7 @@ function ScheduleSpeakerBanner({ speakers }: IScheduleSpeakerBanner) {
                               Speakers
                         </h5>
 
-                        {!speakers.length && (
-                              <p className="text-error font-medium">Speaker detail Not Found.</p>
-                        )}
+                        {!speakers.length && <p className="text-error font-medium">Not Found.</p>}
 
                         {speakers.length > 0 && (
                               <span className="w-full flex flex-col min-w-full max-w-fit mt-2">
