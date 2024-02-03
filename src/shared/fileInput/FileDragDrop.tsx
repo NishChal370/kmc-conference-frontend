@@ -55,7 +55,7 @@ function FileDragDrop({
                                     title={ALLOWED_FILE_TYPE.toString()}
                                     className="peer text-mute text-xs underline cursor-pointer"
                               >
-                                    Hove to know file types
+                                    Hover to know file types
                               </p>
                               {errorMessage && (
                                     <p className="text-error text-xs mt-6 font-semibold">{errorMessage}</p>
