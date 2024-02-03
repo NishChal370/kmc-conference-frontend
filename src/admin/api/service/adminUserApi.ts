@@ -40,10 +40,10 @@ export const adminUserApi = {
 
             switch (userStatusDetail.userStatus) {
                   case UserStatus.ACTIVE:
-                        url = `Admin/activate-user`
+                        url = `activate-user`
                         break;
                   case UserStatus.BLOCKED:
-                        url = `Admin/block-user`
+                        url = `block-user`
                         break;
                   default:
                         url = ""

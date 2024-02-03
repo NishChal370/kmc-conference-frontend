@@ -101,7 +101,7 @@ function HomeHeader() {
                                                 className=" text-sm  w-[80%] pt-4 font-semibold
                                                       sm:text-base
                                                 "
-                                                text="Mark your calendars for an unparalleled tech gathering at Civil Mall this April."
+                                                text="Mark your calendars for an unparalleled tech gathering organized by Kathmandu Metropolitan City."
                                           />
                                     </span>
 
