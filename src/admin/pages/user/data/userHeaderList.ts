@@ -7,5 +7,6 @@ export const USER_HEADER_LIST: ITableHeaderDataList = [
       { id: "gender", title: "Gender", className: "sm:text-start" },
       { id: "phone-number", title: "Phone Number", className: "sm:text-start" },
       { id: "email", title: "Email", className: "sm:text-start" },
+      { id: "status", title: "Status", className: "sm:text-start" },
       { id: "action", title: "Action" },
 ]

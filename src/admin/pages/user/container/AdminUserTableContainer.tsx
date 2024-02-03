@@ -4,7 +4,11 @@ import AdminUserTable from "../components/AdminUserTable";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
 import { Status } from "@/enum/commonEnum";
-import { IAdminUserRoleChangeModal, IUserViewOrEditModal } from "@/admin/model/user/userModel";
+import {
+      IAdminUserRoleChangeModal,
+      IAdminUserStatusChangeModal,
+      IUserViewOrEditModal,
+} from "@/admin/model/user/userModel";
 import useUserApi from "@/admin/hooks/user/useUserApi";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
@@ -12,10 +16,15 @@ import { userSliceAction, userSliceState } from "../feature/userSlice";
 
 interface IAdminUserTableContainer {
       openEditRoleModal: (data: IAdminUserRoleChangeModal) => void;
+      openEditStatusModal: (data: IAdminUserStatusChangeModal) => void;
       openViewModal: ({ viewingData }: { viewingData: IUserViewOrEditModal }) => void;
 }
 
-function AdminUserTableContainer({ openEditRoleModal, openViewModal }: IAdminUserTableContainer) {
+function AdminUserTableContainer({
+      openViewModal,
+      openEditRoleModal,
+      openEditStatusModal,
+}: IAdminUserTableContainer) {
       const { search } = useLocation();
 
       const dispatch = useAppDispatch();
@@ -40,6 +49,10 @@ function AdminUserTableContainer({ openEditRoleModal, openViewModal }: IAdminUse
             openEditRoleModal(editingData);
       };
 
+      const openEditStatusModalHandler = (editingData: IAdminUserStatusChangeModal) => () => {
+            openEditStatusModal(editingData);
+      };
+
       useEffect(() => {
             fetchData();
       }, [search]);
@@ -58,6 +71,7 @@ function AdminUserTableContainer({ openEditRoleModal, openViewModal }: IAdminUse
                         users={data.registeredUsers}
                         openViewModalHandler={openViewModalHandler}
                         openEditRoleModalHandler={openEditRoleModalHandler}
+                        openEditStatusModalHandler={openEditStatusModalHandler}
                   />
 
                   {status === Status.FAILED && (

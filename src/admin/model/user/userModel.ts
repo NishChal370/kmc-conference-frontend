@@ -1,4 +1,5 @@
 import { GENDER, UserRole } from "@/enum/commonEnum"
+import { UserStatus } from "@/enum/user/userEnum";
 import { IBasicApiResponse } from "@/models/commonModel";
 import { IRegisterUserPostRequest } from '@/site/model/registerUser/registerUserModel';
 
@@ -16,8 +17,8 @@ export interface IUserModel {
       isCallForPaper: boolean;
       isParticipant: boolean;
       userRole: UserRole;
+      userStatus: UserStatus;
 }
-
 
 
 export interface IUserResponse extends IBasicApiResponse {
@@ -48,7 +49,20 @@ export interface IAdminUserRoleChangeRequest {
 
 
 export interface IAdminUserRoleChangeModal {
-      id: IUserModel["id"],
+      id: IUserModel["id"];
       fullName: IUserModel["fullName"];
-      userRole: IUserModel["userRole"],
+      userRole: IUserModel["userRole"];
+}
+
+
+export interface IAdminUserStatusChangeRequest {
+      userId: string;
+      userStatus: UserStatus;
+}
+
+
+export interface IAdminUserStatusChangeModal {
+      id: IUserModel["id"];
+      fullName: IUserModel["fullName"];
+      userStatus: IUserModel["userStatus"];
 }

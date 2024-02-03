@@ -1,6 +1,8 @@
 import { IUserModel } from "@/admin/model/user/userModel";
+import { UserStatus } from "@/enum/user/userEnum";
 import { Modal, ModalSectionHeader, ModalText } from "@/shared/modal";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
+import replaceUnderscoreWithSpace from "@/utils/stringFormat/replaceUnderscoreWithSpace";
 
 interface IAdminUserViewModal {
       user: IUserModel;
@@ -42,6 +44,11 @@ function AdminUserViewModal({ user, closeModalHandler }: IAdminUserViewModal) {
                                     <ModalText title="Affiliation" data={user.affiliation} />
 
                                     <ModalText title="User Role" data={user.userRole} />
+
+                                    <ModalText
+                                          title="User Status"
+                                          data={replaceUnderscoreWithSpace(UserStatus[user.userStatus])}
+                                    />
                               </article>
                         </section>
 

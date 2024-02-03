@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/app/hooks";
-import { IAdminUserRoleChangeRequest, IUserPostRequest, IUserSearch } from "@/admin/model/user/userModel";
-import { getUsers as getUsersReq, postUser, putUserRole } from "@/admin/pages/user/feature/userRequest";
+import { IAdminUserRoleChangeRequest, IAdminUserStatusChangeRequest, IUserPostRequest, IUserSearch } from "@/admin/model/user/userModel";
+import { getUsers as getUsersReq, postUser, putUserRole, putUserStatus } from "@/admin/pages/user/feature/userRequest";
 import { errorToastMessage, loadingAlertWithMessage, successMessage, swalAlertClose } from "@/utils/alert";
 
 function useUserApi() {
@@ -45,8 +45,25 @@ function useUserApi() {
                   .finally(swalAlertClose)
       }
 
+      const updateUserStatus = async (userStatusDetail: IAdminUserStatusChangeRequest) => {
+            loadingAlertWithMessage({ title: "Updating", text: "Please wait while updating" });
 
-      return { getUsers, addUserDetail, updateUserRole } as const;
+            await dispatch(putUserStatus(userStatusDetail))
+                  .unwrap()
+                  .then(() => {
+                        successMessage({ title: "Updated", message: "User status has been updated." });
+                  })
+                  .catch((error) => {
+                        errorToastMessage(error.detail);
+
+
+                        throw new Error(error);
+                  })
+                  .finally(swalAlertClose)
+      }
+
+
+      return { getUsers, addUserDetail, updateUserRole, updateUserStatus } as const;
 }
 
 export default useUserApi;

@@ -61,7 +61,7 @@ function StaticOptionsDropdownInput({
                         <div className="relative group tracking-wide items-start w-full min-w-fit text-base">
                               <Listbox.Button
                                     className={`relative border rounded-md w-full px-2 py-1.5 text-start ${
-                                          selected?.value ? "text-default" : "text-mute"
+                                          selected?.value.toString() ? "text-default" : "text-mute"
                                     } ${errorMessage ? "!border-error" : "border-default"} `}
                               >
                                     {({ open }) => (

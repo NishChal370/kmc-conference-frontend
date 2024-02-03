@@ -2,9 +2,15 @@ import AppIcon from "@/shared/icon/AppIcon";
 import { Table, TableBody, TableHead, Td } from "@/admin/shared/table";
 import TableActionButton from "@/admin/shared/table/TableActionButton";
 import { Status, UserRole } from "@/enum/commonEnum";
-import { IAdminUserRoleChangeModal, IUserModel } from "@/admin/model/user/userModel";
+import {
+      IAdminUserRoleChangeModal,
+      IAdminUserStatusChangeModal,
+      IUserModel,
+} from "@/admin/model/user/userModel";
 import { USER_HEADER_LIST } from "../data/userHeaderList";
 import getIndex from "@/utils/uniqueId/getIndex";
+import { UserStatus } from "@/enum/user/userEnum";
+import replaceUnderscoreWithSpace from "@/utils/stringFormat/replaceUnderscoreWithSpace";
 
 interface IAdminUserTable {
       status: Status;
@@ -12,6 +18,7 @@ interface IAdminUserTable {
       currentPageNumber: number;
       openViewModalHandler: (viewingData: IUserModel) => () => void;
       openEditRoleModalHandler: (editingData: IAdminUserRoleChangeModal) => () => void;
+      openEditStatusModalHandler: (editingData: IAdminUserStatusChangeModal) => () => void;
 }
 
 function AdminUserTable({
@@ -20,6 +27,7 @@ function AdminUserTable({
       status,
       openViewModalHandler,
       openEditRoleModalHandler,
+      openEditStatusModalHandler,
 }: IAdminUserTable) {
       return (
             <Table>
@@ -53,6 +61,10 @@ function AdminUserTable({
                                                 {user.email}
                                           </Td>
 
+                                          <Td id="status" dataName="Status">
+                                                {replaceUnderscoreWithSpace(UserStatus[user.userStatus])}
+                                          </Td>
+
                                           <Td id="table-action-container" dataName="Action">
                                                 <TableActionButton
                                                       items={[
@@ -77,6 +89,22 @@ function AdminUserTable({
                                                                         id: user.id,
                                                                         fullName: user.fullName,
                                                                         userRole: user.userRole,
+                                                                  }),
+                                                            },
+                                                            {
+                                                                  title: "Update Status",
+                                                                  type: "Update",
+                                                                  icon: <AppIcon name="update" />,
+                                                                  allowToAllRole: false,
+                                                                  notAllowedRoles: [
+                                                                        UserRole.REVIEWER,
+                                                                        UserRole.READ_ONLY,
+                                                                        UserRole.USER,
+                                                                  ],
+                                                                  clickHandler: openEditStatusModalHandler({
+                                                                        id: user.id,
+                                                                        fullName: user.fullName,
+                                                                        userStatus: user.userStatus,
                                                                   }),
                                                             },
                                                       ]}

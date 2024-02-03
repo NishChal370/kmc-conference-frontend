@@ -8,7 +8,7 @@ import { GENDER_OPTIONS } from "@/site/pages/registerUser/data/genderList";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
 import { REGEX } from "@/helper/regex";
 import PhoneInput from "@/shared/input/PhoneInput";
-import { USER_ROLE_OPTIONS } from "@/shared/input/data/userRoleOptionList";
+import { USER_ROLE_OPTIONS } from "@/admin/pages/user/data/userRoleOptionList";
 
 interface IAdminUserAddModal {
       modalType?: "Add" | "Edit";

@@ -11,7 +11,12 @@ import RoleBasedAccess from "@/helper/RoleBasedAccess";
 import { UserRole } from "@/enum/commonEnum";
 import { FieldStatus } from "@/admin/enum/modal/modalEnum";
 import { IModal } from "@/admin/model/modal/useModalModel";
-import { IAdminUserRoleChangeModal, IUserViewOrEditModal } from "@/admin/model/user/userModel";
+import {
+      IAdminUserRoleChangeModal,
+      IAdminUserStatusChangeModal,
+      IUserViewOrEditModal,
+} from "@/admin/model/user/userModel";
+import AdminUserStatusUpdateModalContainer from "./container/AdminUserStatusUpdateModalContainer";
 
 function AdminUser() {
       const { modalState, openAddModal, openViewModal, closeModal } =
@@ -19,6 +24,9 @@ function AdminUser() {
 
       const [roleChangeModal, openRoleChangeModal, closeRoleChangeModal] =
             useExtraModal<IAdminUserRoleChangeModal>();
+
+      const [statusChangeModal, openStatusChangeModal, closeStatusChangeModal] =
+            useExtraModal<IAdminUserStatusChangeModal>();
 
       return (
             <>
@@ -34,6 +42,7 @@ function AdminUser() {
                         <AdminUserTableContainer
                               openViewModal={openViewModal}
                               openEditRoleModal={openRoleChangeModal}
+                              openEditStatusModal={openStatusChangeModal}
                         />
 
                         <AdminUserPaginationContainer />
@@ -51,6 +60,13 @@ function AdminUser() {
                         <AdminUserRoleUpdateModalContainer
                               userRoleDetail={roleChangeModal.data}
                               closeModalHandler={closeRoleChangeModal}
+                        />
+                  )}
+
+                  {statusChangeModal?.isOpen && statusChangeModal?.data?.id && (
+                        <AdminUserStatusUpdateModalContainer
+                              userStatusDetail={statusChangeModal.data}
+                              closeModalHandler={closeStatusChangeModal}
                         />
                   )}
             </>

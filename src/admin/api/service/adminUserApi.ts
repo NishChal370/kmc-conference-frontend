@@ -1,6 +1,7 @@
 import AXIOS from "@/api/constant";
 import { AxiosRequestConfig } from "axios";
-import { IAdminUserRoleChangeRequest, IUserPostRequest, IUserSearch } from "@/admin/model/user/userModel";
+import { IAdminUserRoleChangeRequest, IAdminUserStatusChangeRequest, IUserPostRequest, IUserSearch } from "@/admin/model/user/userModel";
+import { UserStatus } from "@/enum/user/userEnum";
 
 export const adminUserApi = {
       getUsers: (searchDetail: IUserSearch) => {
@@ -29,6 +30,30 @@ export const adminUserApi = {
                   method: "PUT",
                   url: `Auth/update-role`,
                   data: roleDetail
+            };
+
+            return AXIOS.request(options);
+      },
+
+      putUserStatus: (userStatusDetail: IAdminUserStatusChangeRequest) => {
+            let url = "";
+
+            switch (userStatusDetail.userStatus) {
+                  case UserStatus.ACTIVE:
+                        url = `Admin/activate-user`
+                        break;
+                  case UserStatus.BLOCKED:
+                        url = `Admin/block-user`
+                        break;
+                  default:
+                        url = ""
+                        break;
+            }
+
+            const options: AxiosRequestConfig = {
+                  method: "POST",
+                  url: `Admin/${url}`,
+                  data: { userId: userStatusDetail.userId }
             };
 
             return AXIOS.request(options);
