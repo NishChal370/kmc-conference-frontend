@@ -31,7 +31,7 @@ function ScheduleTopicSelectInputContainer({ options, children }: IScheduleTopic
                   {topic ? (
                         children(topic.id)
                   ) : (
-                        <p className="text-error font-medium">Session topic Not found</p>
+                        <p className="text-error font-medium">Session topic not found</p>
                   )}
             </>
       );
