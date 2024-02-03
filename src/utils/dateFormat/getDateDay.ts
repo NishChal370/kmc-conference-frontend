@@ -5,7 +5,8 @@ function getDateDay(dateString: string) {
       const formatter = new Intl.DateTimeFormat('en-US', { day: 'numeric' });
 
       const day = +formatter.format(fullDate)
-      return day < 10 ? ("0" + 1) : day;
+
+      return day < 10 ? ("0" + day) : day;
 }
 
 export default getDateDay
