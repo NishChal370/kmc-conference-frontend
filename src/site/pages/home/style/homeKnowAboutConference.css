@@ -1,18 +1,15 @@
 #session-card---background {
-      background: url("https://images.pexels.com/photos/2104882/pexels-photo-2104882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
-            no-repeat center;
+      background: url("../../../../assets/image/webp/pexels-photo-2104882.webp") no-repeat center;
       background-size: cover;
 }
 
 #aboutUs-card---background {
-      background: url("https://image.tourismnpl.com/Landmark/Kathmandu_Durbar_Square_968.jpeg") no-repeat
-            center;
+      background: url("../../../../assets/image/webp/Kathmandu_Durbar_Square_968.webp") no-repeat center;
       background-size: cover;
 }
 
 #organizer-card---background {
-      background: url("https://images.unsplash.com/photo-1676873779968-f991734295c9?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-            no-repeat center;
+      background: url("../../../../assets/image/webp/photo-1676873779968-f991734295c9.webp") no-repeat center;
       background-size: cover;
 }
 
