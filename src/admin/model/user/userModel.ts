@@ -18,6 +18,7 @@ export interface IUserModel {
       isParticipant: boolean;
       userRole: UserRole;
       userStatus: UserStatus;
+      lockoutEnd: string;
 }
 
 

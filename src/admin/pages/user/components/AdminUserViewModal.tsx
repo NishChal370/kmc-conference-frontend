@@ -49,6 +49,10 @@ function AdminUserViewModal({ user, closeModalHandler }: IAdminUserViewModal) {
                                           title="User Status"
                                           data={replaceUnderscoreWithSpace(UserStatus[user.userStatus])}
                                     />
+
+                                    {user.lockoutEnd && (
+                                          <ModalText title="Lockout End" data={user.lockoutEnd.toString()} />
+                                    )}
                               </article>
                         </section>
 
