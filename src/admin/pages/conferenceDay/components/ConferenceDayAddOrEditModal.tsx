@@ -40,6 +40,7 @@ function ConferenceDayAddOrEditModal({
                                     isRequired
                                     type="date"
                                     label="Date"
+                                    allowBackDate={false}
                                     errorMessage={errors.date?.message}
                               >
                                     {register("date", {

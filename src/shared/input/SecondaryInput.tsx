@@ -1,14 +1,24 @@
 import { UseFormRegisterReturn } from "react-hook-form";
+import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 
-interface ISecondaryInput {
+type ISecondaryInput = {
       label: string;
       placeHolder?: string;
       errorMessage?: string;
       isRequired?: boolean;
       containerClassName?: string;
       children?: UseFormRegisterReturn<string>;
-      type?: React.InputHTMLAttributes<HTMLInputElement>["type"];
-}
+} & (
+      | {
+              type: "date";
+              allowBackDate?: boolean;
+        }
+      | {
+              // FIXME: here try to allowBackDate only when type is 'date'.
+              type?: Exclude<React.InputHTMLAttributes<HTMLInputElement>["type"], "date">;
+              allowBackDate?: true;
+        }
+);
 
 function SecondaryInput({
       label,
@@ -18,7 +28,9 @@ function SecondaryInput({
       placeHolder,
       errorMessage,
       containerClassName,
+      allowBackDate = true,
 }: ISecondaryInput) {
+      console.log(changeDateFormat(new Date().toString(), "short"));
       return (
             <div className={`relative flex flex-col gap-2 ${containerClassName}`}>
                   <span className="flex w-full justify-between gap-1 pl-1">
@@ -46,6 +58,11 @@ function SecondaryInput({
                                     type={type}
                                     className="border-0 w-full pl-2 py-1.5"
                                     placeholder={placeHolder ?? label}
+                                    min={
+                                          type === "date" && !allowBackDate
+                                                ? changeDateFormat(new Date().toString(), "short")
+                                                : undefined
+                                    } // Apply min only if type is date
                                     {...children}
                               />
                         </span>

@@ -251,6 +251,7 @@ function AppliedParticipationEditModal({
                                                 isRequired
                                                 type="date"
                                                 label="Arrival Date"
+                                                allowBackDate={false}
                                                 errorMessage={errors.arrivalDate?.message}
                                           >
                                                 {register("arrivalDate", {
@@ -265,6 +266,7 @@ function AppliedParticipationEditModal({
                                                 isRequired
                                                 type="date"
                                                 label="Departure Date"
+                                                allowBackDate={false}
                                                 errorMessage={errors.departureDate?.message}
                                           >
                                                 {register("departureDate", {
