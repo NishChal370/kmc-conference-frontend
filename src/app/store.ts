@@ -17,6 +17,8 @@ import registerUserReducer from "@/site/pages/registerUser/feature/registerUserS
 /***ADMIN PANEL */
 import adminSideNavReducer from "@/admin/layout/sideNav/feature/adminSideNavSlice";
 
+import applicantsStatisticReducer from "@/admin/pages/applicantsStatistic/feature/applicantsStatisticSlice";
+
 
 import dayThemeReducer from "@/admin/pages/dayTheme/feature/dayThemeSlice";
 import conferenceDayReducer from "@/admin/pages/conferenceDay/feature/conferenceDaySlice";
@@ -48,6 +50,8 @@ export const store = configureStore({
             verifyEmail: verifyEmailReducer,
 
             adminSideNav: adminSideNavReducer,
+
+            applicantsStatistic: applicantsStatisticReducer,
 
             dayTheme: dayThemeReducer,
             conferenceDay: conferenceDayReducer,

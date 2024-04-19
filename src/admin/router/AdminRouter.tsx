@@ -19,6 +19,7 @@ import {
       NotFound,
       AdminNews,
       AdminContactUs,
+      Dashboard,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
 import {
@@ -46,7 +47,7 @@ export const AdminRouter: RouteObject = {
                   children: [
                         {
                               index: true,
-                              element: <h1>Dashboard</h1>,
+                              element: <Dashboard />,
                         },
 
                         {
