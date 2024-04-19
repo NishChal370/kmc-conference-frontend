@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
 import AdminParticipantTable from "../components/AdminParticipantTable";
-import { useURLQueryValues } from "@/hooks/urlQueryHandler";
+import { useURLQueryHandler, useURLQueryValues } from "@/hooks/urlQueryHandler";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useParticipantApi from "@/admin/hooks/participant/useParticipant";
 import { Status } from "@/enum/commonEnum";
@@ -12,6 +12,7 @@ import {
       IAdminParticipantViewModal,
 } from "@/admin/model/participant/participantModel";
 import { participantBasicInfoSliceState, participantSliceAction } from "../feature/participantSlice";
+import { ADMIN_PARTICIPANT_SORT_VALUE } from "../data/adminParticipationSortValue";
 
 interface IAdminParticipantTableContainer {
       openViewModal: (viewingData: IAdminParticipantViewModal) => void;
@@ -26,10 +27,17 @@ function AdminParticipantTableContainer({ openViewModal }: IAdminParticipantTabl
 
       const { getParticipantBasicInfo, deleteParticipantDetail } = useParticipantApi();
 
-      const { currentPageNumber } = useURLQueryValues();
+      const { getSearchParmaValues, changeQuerySortBy } = useURLQueryHandler();
+      const { currentPageNumber, getCurrentOrderBy, getSearchParamSortBy } = getSearchParmaValues({
+            sortingValueList: ADMIN_PARTICIPANT_SORT_VALUE,
+      });
 
       const fetchData = () => {
-            getParticipantBasicInfo({ pageNumber: currentPageNumber });
+            getParticipantBasicInfo({
+                  pageNumber: currentPageNumber,
+                  sortBy: getSearchParamSortBy(),
+                  order: getCurrentOrderBy(),
+            });
       };
 
       const openViewModalHandler = (viewingData: IAdminParticipantViewModal) => () => {
@@ -38,6 +46,12 @@ function AdminParticipantTableContainer({ openViewModal }: IAdminParticipantTabl
 
       const deleteParticipantDetailHandler = (deletingDetail: IAdminParticipantDeleteRequest) => () => {
             deleteParticipantDetail(deletingDetail);
+      };
+
+      const sortHandler = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+            const currentSortValue = e.currentTarget.dataset.value;
+
+            if (currentSortValue) changeQuerySortBy({ sortBy: currentSortValue });
       };
 
       useEffect(() => {
@@ -54,6 +68,8 @@ function AdminParticipantTableContainer({ openViewModal }: IAdminParticipantTabl
             <>
                   <AdminParticipantTable
                         status={status}
+                        sortHandler={sortHandler}
+                        sortDetail={{ getOrderBy: getCurrentOrderBy, getSort: getSearchParamSortBy }}
                         currentPageNumber={currentPageNumber}
                         participantBasicInfo={data.participants}
                         openViewModalHandler={openViewModalHandler}

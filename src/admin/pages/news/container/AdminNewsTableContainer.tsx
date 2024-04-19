@@ -4,11 +4,12 @@ import LoadingMessage from "@/shared/loading/LoadingMessage";
 import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
 import AdminNewsTable from "../components/AdminNewsTable";
 import useNewsApi from "@/admin/hooks/news/useNewsApi";
-import { useURLQueryValues } from "@/hooks/urlQueryHandler";
+import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { newsAction, newsBasicSliceState } from "../feature/newsSlice";
 import { Status } from "@/enum/commonEnum";
 import { INewsDeleteRequest, INewsViewOrEditModal } from "@/admin/model/news/newsModel";
+import { NEWS_SORT_VALUE } from "../data/newsSortValue";
 
 interface IAdminNewsTableContainer {
       openViewModal: ({ viewingData }: { viewingData: INewsViewOrEditModal }) => void;
@@ -24,10 +25,17 @@ function AdminNewsTableContainer({ openEditModal, openViewModal }: IAdminNewsTab
 
       const { getNewsBasicInfo, deleteNewsDetail } = useNewsApi();
 
-      const { currentPageNumber } = useURLQueryValues();
+      const { getSearchParmaValues, changeQuerySortBy } = useURLQueryHandler();
+      const { currentPageNumber, getCurrentOrderBy, getSearchParamSortBy } = getSearchParmaValues({
+            sortingValueList: NEWS_SORT_VALUE,
+      });
 
       const fetchData = () => {
-            getNewsBasicInfo({ pageNumber: currentPageNumber });
+            getNewsBasicInfo({
+                  pageNumber: currentPageNumber,
+                  sortBy: getSearchParamSortBy(),
+                  order: getCurrentOrderBy(),
+            });
       };
 
       const openEditModalHandler = (editingData: INewsViewOrEditModal) => () => {
@@ -40,6 +48,12 @@ function AdminNewsTableContainer({ openEditModal, openViewModal }: IAdminNewsTab
 
       const deleteNewsHandler = (deletingDetail: INewsDeleteRequest) => () => {
             deleteNewsDetail(deletingDetail);
+      };
+
+      const sortHandler = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+            const currentSortValue = e.currentTarget.dataset.value;
+
+            if (currentSortValue) changeQuerySortBy({ sortBy: currentSortValue });
       };
 
       useEffect(() => {
@@ -56,6 +70,8 @@ function AdminNewsTableContainer({ openEditModal, openViewModal }: IAdminNewsTab
             <>
                   <AdminNewsTable
                         status={status}
+                        sortHandler={sortHandler}
+                        sortDetail={{ getOrderBy: getCurrentOrderBy, getSort: getSearchParamSortBy }}
                         currentPageNumber={currentPageNumber}
                         news={data.news}
                         openEditModalHandler={openEditModalHandler}

@@ -1,6 +1,6 @@
 import { GENDER, UserRole } from "@/enum/commonEnum"
 import { UserStatus } from "@/enum/user/userEnum";
-import { IBasicApiResponse } from "@/models/commonModel";
+import { IBasicApiResponse, IBasicSearchParam } from "@/models/commonModel";
 import { IRegisterUserPostRequest } from '@/site/model/registerUser/registerUserModel';
 
 export interface IUserModel {
@@ -26,9 +26,7 @@ export interface IUserResponse extends IBasicApiResponse {
       registeredUsers: IUserModel[];
 }
 
-export interface IUserSearch {
-      pageNumber: number;
-}
+export type IUserSearch = IBasicSearchParam;
 
 
 export type IUserViewOrEditModal = IUserModel;

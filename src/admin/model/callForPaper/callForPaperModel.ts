@@ -1,4 +1,4 @@
-import { IBasicApiResponse } from '@/models/commonModel';
+import { IBasicApiResponse, IBasicSearchParam } from '@/models/commonModel';
 
 export interface ICallForPaperBasicModel {
       id: number,
@@ -31,9 +31,7 @@ export interface ICallForPaperBasicResponse extends IBasicApiResponse {
 }
 
 
-export interface ICallForPaperBasicSearch {
-      pageNumber: number;
-}
+export type ICallForPaperBasicSearch = IBasicSearchParam;
 
 
 export type ICallForPaperByIdResponse = ICallForPaperDetailModel;

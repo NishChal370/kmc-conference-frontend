@@ -6,6 +6,7 @@ import { NEWS_TABLE_HEADER } from "../data/newsTableHeader";
 import getIndex from "@/utils/uniqueId/getIndex";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 import { INewsBasicResponse, INewsDeleteRequest, INewsViewOrEditModal } from "@/admin/model/news/newsModel";
+import { ISortDetail } from "@/admin/model/commonModel";
 
 interface IAdminNewsTable {
       status: Status;
@@ -14,18 +15,22 @@ interface IAdminNewsTable {
       deleteNewsHandler: (deletingDetail: INewsDeleteRequest) => () => void;
       openEditModalHandler: (editingData: INewsViewOrEditModal) => () => void;
       openViewModalHandler: (viewingData: INewsViewOrEditModal) => () => void;
+      sortDetail: ISortDetail<unknown, unknown>;
+      sortHandler: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => void;
 }
 function AdminNewsTable({
       status,
       currentPageNumber,
       news,
+      sortDetail,
+      sortHandler,
       deleteNewsHandler,
       openEditModalHandler,
       openViewModalHandler,
 }: IAdminNewsTable) {
       return (
             <Table>
-                  <TableHead headers={NEWS_TABLE_HEADER} />
+                  <TableHead headers={NEWS_TABLE_HEADER} sortDetail={sortDetail} sortHandler={sortHandler} />
 
                   <TableBody status={status}>
                         <>

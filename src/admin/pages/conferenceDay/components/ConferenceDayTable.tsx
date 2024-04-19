@@ -8,20 +8,25 @@ import {
       IConferenceDayModel,
 } from "@/admin/model/conferenceDay/conferenceDayModel";
 import getIndex from "@/utils/uniqueId/getIndex";
+import { ISortDetail } from "@/admin/model/commonModel";
 
 interface IConferenceDayTable {
       status: Status;
       currentPageNumber: number;
+      sortDetail: ISortDetail<unknown, unknown>; //NOTE: add type
       conferenceDay: IConferenceDayModel[];
       viewThemeHandler: (dayId: IConferenceDayModel["id"]) => () => void;
+      sortHandler: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => void;
       deleteButtonHandler: (conferenceDayDetail: IConferenceDayDeleteRequest) => () => void;
       editButtonHandler: ({ editingData }: { editingData: IConferenceDayModel }) => () => void;
 }
 
 function ConferenceDayTable({
       status,
-      currentPageNumber,
       conferenceDay,
+      currentPageNumber,
+      sortDetail,
+      sortHandler,
       viewThemeHandler,
       editButtonHandler,
       deleteButtonHandler,
@@ -29,7 +34,11 @@ function ConferenceDayTable({
       return (
             <>
                   <Table>
-                        <TableHead headers={CONFERENCE_DAY_TABLE_HEADER} />
+                        <TableHead
+                              headers={CONFERENCE_DAY_TABLE_HEADER}
+                              sortHandler={sortHandler}
+                              sortDetail={sortDetail}
+                        />
 
                         <TableBody status={status}>
                               <>

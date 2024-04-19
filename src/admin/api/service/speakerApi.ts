@@ -10,7 +10,7 @@ const speakerApi = {
       getBasicInfo: (searchDetail: ISpeakerBasicSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Speaker?pageNumber=${searchDetail.pageNumber}`,
+                  url: `Speaker${createQueryString(searchDetail)}`,
             };
 
             return AXIOS.request(options);

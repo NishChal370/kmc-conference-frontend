@@ -11,6 +11,7 @@ import useDayThemeApi from "@/admin/hooks/dayTheme/useDayThemeApi";
 import { ADMIN_SCHEDULE_PATH } from "@/admin/constants/routePath/adminSchedulePath";
 import { Status } from "@/enum/commonEnum";
 import { IDayThemeDeleteRequest, IDayThemeModel } from "@/admin/model/dayTheme/dayThemeModel";
+import { dayThemeSortValue } from "../data/dayThemeSortInfo";
 
 interface IAdminDayThemeTableContainer {
       openViewModal: ({ viewingData }: { viewingData: IDayThemeModel }) => void;
@@ -30,9 +31,11 @@ function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDay
 
       const { getDayThemes, deleteAdminDayTheme } = useDayThemeApi();
 
-      const { getSearchParmaValues, clearAllSearchParam } = useURLQueryHandler();
+      const { getSearchParmaValues, clearAllSearchParam, changeQuerySortBy } = useURLQueryHandler();
 
-      const { currentPageNumber } = getSearchParmaValues();
+      const { currentPageNumber, getSearchParamSortBy, getCurrentOrderBy } = getSearchParmaValues({
+            sortingValueList: dayThemeSortValue,
+      });
 
       const selectedDay = params["dayId"];
 
@@ -40,6 +43,8 @@ function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDay
             getDayThemes({
                   dayId: selectedDay ? parseInt(selectedDay) : undefined,
                   pageNumber: currentPageNumber,
+                  sortBy: getSearchParamSortBy(),
+                  order: getCurrentOrderBy(),
             });
       };
 
@@ -56,6 +61,12 @@ function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDay
 
       const viewScheduleHandler = (themeId: IDayThemeModel["id"]) => () => {
             navigate(ADMIN_SCHEDULE_PATH.schedule.full(themeId));
+      };
+
+      const sortHandler = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+            const currentSortValue = e.currentTarget.dataset.value;
+
+            if (currentSortValue) changeQuerySortBy({ sortBy: currentSortValue });
       };
 
       useEffect(() => {
@@ -75,6 +86,8 @@ function AdminDayThemeTableContainer({ openEditModal, openViewModal }: IAdminDay
                         currentPageNumber={currentPageNumber}
                         dayThemes={data.themes}
                         deleteHandler={deleteHandler}
+                        sortHandler={sortHandler}
+                        sortDetail={{ getOrderBy: getCurrentOrderBy, getSort: getSearchParamSortBy }}
                         openViewModalHandler={openViewModalHandler}
                         openEditModalHandler={openEditModalHandler}
                         viewScheduleHandler={viewScheduleHandler}

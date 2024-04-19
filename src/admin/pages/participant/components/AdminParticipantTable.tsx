@@ -9,11 +9,14 @@ import {
 import { Status, UserRole } from "@/enum/commonEnum";
 import { ADMIN_PARTICIPANT_HEADER_LIST } from "../data/adminParticipantHeader";
 import getIndex from "@/utils/uniqueId/getIndex";
+import { ISortDetail } from "@/admin/model/commonModel";
 
 interface IAdminParticipantTable {
       status: Status;
       currentPageNumber: number;
       participantBasicInfo: IParticipantBasicModel[];
+      sortDetail: ISortDetail<unknown, unknown>;
+      sortHandler: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => void;
       openViewModalHandler: (viewingData: IAdminParticipantViewModal) => () => void;
       deleteParticipantDetailHandler: (deletingDetail: IAdminParticipantDeleteRequest) => () => void;
 }
@@ -23,11 +26,17 @@ function AdminParticipantTable({
       currentPageNumber,
       participantBasicInfo,
       openViewModalHandler,
+      sortDetail,
+      sortHandler,
       deleteParticipantDetailHandler,
 }: IAdminParticipantTable) {
       return (
             <Table>
-                  <TableHead headers={ADMIN_PARTICIPANT_HEADER_LIST} />
+                  <TableHead
+                        headers={ADMIN_PARTICIPANT_HEADER_LIST}
+                        sortDetail={sortDetail}
+                        sortHandler={sortHandler}
+                  />
 
                   <TableBody status={status}>
                         <>

@@ -1,5 +1,5 @@
 import { SpeakerApprovalStatus } from '@/enum/speaker/speakerEnum';
-import { IBasicApiResponse, } from '@/models/commonModel';
+import { IBasicApiResponse, IBasicSearchParam, } from '@/models/commonModel';
 import { IScheduleModel } from '../schedule/scheduleModel';
 import { IAttachment, IFilUpdateDetail, } from '@/models/file/fileModel';
 import { IMultipleInputFields, IMultiplePhoneNumberInput } from '@/models/input/multiplePhoneInputModel';
@@ -94,9 +94,7 @@ export type ISpeakerByIdResponse = ISpeakerDetailModel;
 
 
 
-export interface ISpeakerBasicSearch {
-      pageNumber: number;
-}
+export type ISpeakerBasicSearch = IBasicSearchParam;
 
 
 

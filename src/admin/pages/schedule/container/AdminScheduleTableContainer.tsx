@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useScheduleApi from "@/admin/hooks/schedule/useScheduleApi";
 import { Status } from "@/enum/commonEnum";
 import { IScheduleModel } from "@/admin/model/schedule/scheduleModel";
+import { ADMIN_SCHEDULE_SORT_VALUE } from "../data/adminScheduleSortValue";
 
 interface IAdminScheduleTableContainer {
       openEditModal: (editingData: { editingData: IScheduleModel }) => void;
@@ -26,14 +27,21 @@ function AdminScheduleTableContainer({ openEditModal, openTopicAddModal }: IAdmi
 
       const { getSchedules, deleteAdminSchedule } = useScheduleApi();
 
-      const { getSearchParmaValues, clearAllSearchParam } = useURLQueryHandler();
+      const { getSearchParmaValues, clearAllSearchParam, changeQuerySortBy } = useURLQueryHandler();
 
-      const { currentPageNumber } = getSearchParmaValues();
+      const { currentPageNumber, getCurrentOrderBy, getSearchParamSortBy } = getSearchParmaValues({
+            sortingValueList: ADMIN_SCHEDULE_SORT_VALUE,
+      });
 
       const themeId = params["themeId"] ? parseInt(params["themeId"]) : undefined;
 
       const fetchData = () => {
-            getSchedules({ themeId: themeId, pageNumber: currentPageNumber });
+            getSchedules({
+                  themeId: themeId,
+                  pageNumber: currentPageNumber,
+                  order: getCurrentOrderBy(),
+                  sortBy: getSearchParamSortBy(),
+            });
       };
 
       const editButtonHandler = (data: { editingData: IScheduleModel }) => () => {
@@ -42,6 +50,12 @@ function AdminScheduleTableContainer({ openEditModal, openTopicAddModal }: IAdmi
 
       const openTopicAddModalHandler = (data: IScheduleModel["id"]) => () => {
             openTopicAddModal(data);
+      };
+
+      const sortHandler = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+            const currentSortValue = e.currentTarget.dataset.value;
+
+            if (currentSortValue) changeQuerySortBy({ sortBy: currentSortValue });
       };
 
       useEffect(() => {
@@ -58,6 +72,8 @@ function AdminScheduleTableContainer({ openEditModal, openTopicAddModal }: IAdmi
             <>
                   <AdminScheduleTable
                         status={status}
+                        sortHandler={sortHandler}
+                        sortDetail={{ getOrderBy: getCurrentOrderBy, getSort: getSearchParamSortBy }}
                         currentPageNumber={currentPageNumber}
                         schedules={data.sessions}
                         editButtonHandler={editButtonHandler}

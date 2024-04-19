@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
 import AdminCallForPaperTable from "../components/AdminCallForPaperTable";
-import { useURLQueryValues } from "@/hooks/urlQueryHandler";
+import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import useCallForPaperApi from "@/admin/hooks/callForPaper/useCallForPaperApi";
 import { Status } from "@/enum/commonEnum";
 import {
@@ -12,6 +12,7 @@ import {
       IAdminCallForPaperViewModal,
 } from "@/admin/model/callForPaper/callForPaperModel";
 import { callForPaperBasicInfoSliceState, callForPaperSliceAction } from "../feature/callForPaperSlice";
+import { CALL_FOR_PAPER_SORT_VALUE } from "../data/callForPaperSortValue";
 
 interface IAdminCallForPaperTableContainer {
       openViewModal: (data: IAdminCallForPaperViewModal) => void;
@@ -26,10 +27,17 @@ function AdminCallForPaperTableContainer({ openViewModal }: IAdminCallForPaperTa
 
       const { getCallForPaperBasicInfo, deleteCallForPaperDetail } = useCallForPaperApi();
 
-      const { currentPageNumber } = useURLQueryValues();
+      const { getSearchParmaValues, changeQuerySortBy } = useURLQueryHandler();
+      const { currentPageNumber, getCurrentOrderBy, getSearchParamSortBy } = getSearchParmaValues({
+            sortingValueList: CALL_FOR_PAPER_SORT_VALUE,
+      });
 
       const fetchData = () => {
-            getCallForPaperBasicInfo({ pageNumber: currentPageNumber });
+            getCallForPaperBasicInfo({
+                  pageNumber: currentPageNumber,
+                  sortBy: getSearchParamSortBy(),
+                  order: getCurrentOrderBy(),
+            });
       };
 
       const openViewModalHandler = (viewingData: IAdminCallForPaperViewModal) => () => {
@@ -38,6 +46,12 @@ function AdminCallForPaperTableContainer({ openViewModal }: IAdminCallForPaperTa
 
       const deleteCallForPaperDetailHandler = (deletingDetail: IAdminCallForPaperDeleteRequest) => () => {
             deleteCallForPaperDetail(deletingDetail);
+      };
+
+      const sortHandler = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+            const currentSortValue = e.currentTarget.dataset.value;
+
+            if (currentSortValue) changeQuerySortBy({ sortBy: currentSortValue });
       };
 
       useEffect(() => {
@@ -54,6 +68,8 @@ function AdminCallForPaperTableContainer({ openViewModal }: IAdminCallForPaperTa
             <>
                   <AdminCallForPaperTable
                         status={status}
+                        sortHandler={sortHandler}
+                        sortDetail={{ getOrderBy: getCurrentOrderBy, getSort: getSearchParamSortBy }}
                         currentPageNumber={currentPageNumber}
                         callForPaperBasicInfo={data.calls}
                         openViewModalHandler={openViewModalHandler}

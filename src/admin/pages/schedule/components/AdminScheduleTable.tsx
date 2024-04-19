@@ -7,11 +7,14 @@ import { Status, UserRole } from "@/enum/commonEnum";
 import { IScheduleDeleteRequest, IScheduleModel } from "@/admin/model/schedule/scheduleModel";
 import { ADMIN_SESSION_TABLE_HEADER } from "../data/adminScheduleHeaders";
 import getIndex from "@/utils/uniqueId/getIndex";
+import { ISortDetail } from "@/admin/model/commonModel";
 
 interface IAdminScheduleTable {
       status: Status;
       currentPageNumber: number;
       schedules: IScheduleModel[];
+      sortDetail?: ISortDetail<unknown, unknown>;
+      sortHandler?: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => void;
       openTopicAddModalHandler: (data: IScheduleModel["id"]) => () => void;
       deleteScheduleHandler: (deletingDetail: IScheduleDeleteRequest) => void;
       editButtonHandler: (data: { editingData: IScheduleModel }) => () => void;
@@ -20,6 +23,8 @@ interface IAdminScheduleTable {
 function AdminScheduleTable({
       schedules,
       status,
+      sortDetail,
+      sortHandler,
       currentPageNumber,
       editButtonHandler,
       deleteScheduleHandler,
@@ -28,7 +33,11 @@ function AdminScheduleTable({
       return (
             <>
                   <Table>
-                        <TableHead headers={ADMIN_SESSION_TABLE_HEADER} />
+                        <TableHead
+                              headers={ADMIN_SESSION_TABLE_HEADER}
+                              sortDetail={sortDetail}
+                              sortHandler={sortHandler}
+                        />
 
                         <TableBody status={status}>
                               <NestedRowContainer>

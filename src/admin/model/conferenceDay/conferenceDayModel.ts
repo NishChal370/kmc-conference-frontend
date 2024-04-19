@@ -1,4 +1,4 @@
-import { IBasicApiResponse } from "@/models/commonModel"
+import { IBasicApiResponse, IBasicSearchParam } from "@/models/commonModel"
 
 export interface IConferenceDayModel {
       id: number,
@@ -21,9 +21,7 @@ export interface IConferenceDayResponse extends IBasicApiResponse {
 }
 
 
-export interface IConferenceDaySearch {
-      pageNumber?: number;
-}
+export type IConferenceDaySearch = IBasicSearchParam;
 
 
 export interface IConferenceDayForm {

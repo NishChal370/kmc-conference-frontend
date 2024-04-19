@@ -3,12 +3,13 @@ import AXIOS from "@/api/constant";
 import convertObjectToFormData from "@/utils/objectFormat/convertObjectToFormData";
 import { ICallForPaperAddNewSessionPutRequest, ICallForPaperPostRequest } from "@/admin/model/callForPaper/callForPaperApplyModel";
 import { IAdminCallForPaperDeleteRequest, ICallForPaperBasicSearch, ICallForPaperByIdSearch } from "@/admin/model/callForPaper/callForPaperModel";
+import { createQueryString } from "@/utils/stringFormat/createQueryString";
 
 export const callForPaperApi = {
       getBasicInfo: (searchDetail: ICallForPaperBasicSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `CallForPaper?pageNumber=${searchDetail.pageNumber}`,
+                  url: `CallForPaper${createQueryString(searchDetail)}`,
             };
 
             return AXIOS.request(options);
