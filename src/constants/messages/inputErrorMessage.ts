@@ -8,5 +8,7 @@ export const INPUT_ERROR_MESSAGE = {
       invalidEmail: "Invalid email address",
       invalidDob: "Please enter a valid date of birth",
       invalidUrl: "Invalid url/link",
-      invalidPreferredSessionLength: "Should be between 5 to 120 minutes"
+      invalidPreferredSessionLength: "Should be between 5 to 120 minutes",
+      invalidStartTime: "Start time must be before end time.",
+      invalidEndTime: "End time must be after start time.",
 } as const;
