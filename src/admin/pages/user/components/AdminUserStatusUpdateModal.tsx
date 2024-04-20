@@ -60,7 +60,18 @@ function AdminUserStatusUpdateModal({
                               />
                         </span>
 
-                        <Button type="button" title="Save" onClickHandler={submitHandler} />
+                        <span className="w-full h-full flex flex-col gap-1">
+                              {currentStatus === UserStatus.EMAIL_NOT_CONFIRMED && (
+                                    <p className=" text-sky-900 ">Email must be confirmed.</p>
+                              )}
+
+                              <Button
+                                    disable={currentStatus === UserStatus.EMAIL_NOT_CONFIRMED}
+                                    type="button"
+                                    title="Save"
+                                    onClickHandler={submitHandler}
+                              />
+                        </span>
                   </div>
             </Modal>
       );
