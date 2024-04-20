@@ -43,35 +43,36 @@ function AdminUserStatusUpdateModal({
                         </section>
 
                         <span className="flex flex-col gap-1.5">
-                              <h5 className="text-md font-semibold">New Status</h5>
-                              <StaticOptionsDropdownInput
-                                    label=""
-                                    variant="secondary"
-                                    data={USER_STATUS_OPTIONS}
-                                    selected={{
-                                          value: value,
-                                          // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
-                                          option: USER_STATUS_OPTIONS.find((data) => data.value === value)
-                                                ?.option!,
-                                    }}
-                                    onChangeHandler={function (data): void {
-                                          onChangeHandler(+data.value);
-                                    }}
-                              />
+                              <h5 className="text-md font-semibold ">New Status</h5>
+                              <section className="flex flex-col w-full h-full">
+                                    <StaticOptionsDropdownInput
+                                          label=""
+                                          variant="secondary"
+                                          data={USER_STATUS_OPTIONS}
+                                          disable={currentStatus === UserStatus.EMAIL_NOT_CONFIRMED}
+                                          selected={{
+                                                value: value,
+                                                // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
+                                                option: USER_STATUS_OPTIONS.find(
+                                                      (data) => data.value === value
+                                                )?.option!,
+                                          }}
+                                          onChangeHandler={function (data): void {
+                                                onChangeHandler(+data.value);
+                                          }}
+                                    />
+                                    {currentStatus === UserStatus.EMAIL_NOT_CONFIRMED ? (
+                                          <p className=" text-blue-500">Email must be confirmed</p>
+                                    ) : undefined}
+                              </section>
                         </span>
 
-                        <span className="w-full h-full flex flex-col gap-1">
-                              {currentStatus === UserStatus.EMAIL_NOT_CONFIRMED && (
-                                    <p className=" text-sky-900 ">Email must be confirmed.</p>
-                              )}
-
-                              <Button
-                                    disable={currentStatus === UserStatus.EMAIL_NOT_CONFIRMED}
-                                    type="button"
-                                    title="Save"
-                                    onClickHandler={submitHandler}
-                              />
-                        </span>
+                        <Button
+                              disable={currentStatus === UserStatus.EMAIL_NOT_CONFIRMED}
+                              type="button"
+                              title="Save"
+                              onClickHandler={submitHandler}
+                        />
                   </div>
             </Modal>
       );
