@@ -62,8 +62,21 @@ function ConferenceDayTable({
                                                                   {day.venueInfo.location}
                                                             </span>
                                                             <br />
-                                                            {day.venueInfo.venueCity},&nbsp;
-                                                            {day.venueInfo.venueState}
+                                                            {day.venueInfo.locationPlusCode ? (
+                                                                  <a
+                                                                        target="_blank"
+                                                                        rel="noreferrer"
+                                                                        className=" text-blue-700 hover:underline"
+                                                                        href={`https://www.google.com/maps?q=${day.venueInfo.locationPlusCode}`}
+                                                                  >
+                                                                        {day.venueInfo.venueCity},&nbsp;
+                                                                        {day.venueInfo.venueState}
+                                                                  </a>
+                                                            ) : (
+                                                                  day.venueInfo.venueCity +
+                                                                  " " +
+                                                                  day.venueInfo.venueState
+                                                            )}
                                                       </>
                                                 </Td>
 
@@ -73,7 +86,19 @@ function ConferenceDayTable({
                                                                   {day.venueInfo.parkingInfo}
                                                             </span>
                                                             <br />
-                                                            {day.venueInfo.parkingLocation}
+
+                                                            {day.venueInfo.parkingPlusCode ? (
+                                                                  <a
+                                                                        target="_blank"
+                                                                        rel="noreferrer"
+                                                                        className=" text-blue-700 hover:underline"
+                                                                        href={`https://www.google.com/maps?q=${day.venueInfo.parkingPlusCode}`}
+                                                                  >
+                                                                        {day.venueInfo.parkingLocation}
+                                                                  </a>
+                                                            ) : (
+                                                                  day.venueInfo.parkingLocation
+                                                            )}
                                                       </>
                                                 </Td>
 
@@ -87,7 +112,19 @@ function ConferenceDayTable({
                                                                   {day.venueInfo.hotelInfo}
                                                             </span>
                                                             <br />
-                                                            {day.venueInfo.parkingLocation}
+
+                                                            {day.venueInfo.hotelPlusCode ? (
+                                                                  <a
+                                                                        target="_blank"
+                                                                        rel="noreferrer"
+                                                                        className=" text-blue-700 hover:underline"
+                                                                        href={`https://www.google.com/maps?q=${day.venueInfo.hotelPlusCode}`}
+                                                                  >
+                                                                        {day.venueInfo.hotelLocation}
+                                                                  </a>
+                                                            ) : (
+                                                                  day.venueInfo.hotelLocation
+                                                            )}
                                                       </>
                                                 </Td>
 

@@ -24,10 +24,12 @@ import {
       IconLock,
       IconLockOpen,
       IconLogout,
+      IconMap2,
       IconMapPin,
       IconMenu2,
       IconNews,
       IconPlus,
+      IconSelector,
       IconShare2,
       IconTrash,
       IconTriangle,
@@ -78,6 +80,8 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "location":
                         return <IconMapPin className={className} size={size ?? ICON.size} />;
+                  case "map":
+                        return <IconMap2 className={className} size={size ?? ICON.size} />;
 
                   case "share":
                         return <IconShare2 className={className} size={size ?? ICON.size} />;
@@ -113,6 +117,9 @@ function AppIcon({ name, className, size }: IIcon) {
                                     size={size ?? ICON.size}
                               />
                         );
+
+                  case "select":
+                        return <IconSelector className={className} size={size ?? ICON.size} />;
 
                   case "dashboard":
                         return <IconHome2 className={className} size={size ?? ICON.size} />;

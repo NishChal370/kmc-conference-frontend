@@ -26,8 +26,12 @@ function ConferenceDayAddModalContainer({ closeModal }: IConferenceDayAddModalCo
                         location: newConferenceDay.location,
                         venueCity: newConferenceDay.venueCity,
                         venueState: newConferenceDay.venueState,
+                        locationPlusCode: newConferenceDay.locationPlusCode,
+                        parkingPlusCode: newConferenceDay.parkingPlusCode,
+                        hotelPlusCode: newConferenceDay.hotelPlusCode,
                   },
             };
+
             addConferenceDayDetail(conferenceDay).then(closeModal);
       });
 

@@ -7,11 +7,14 @@ export interface IConferenceDayModel {
       venueInfo: {
             parkingInfo: string,
             parkingLocation: string,
+            parkingPlusCode: string,
             hotelInfo: string,
             hotelLocation: string,
+            hotelPlusCode: string,
             location: string,
             venueCity: string,
             venueState: string
+            locationPlusCode: string,
       }
 }
 
@@ -29,9 +32,12 @@ export interface IConferenceDayForm {
       date: string,
       parkingInfo: string,
       parkingLocation: string,
+      parkingPlusCode: string,
       hotelInfo: string,
       hotelLocation: string,
+      hotelPlusCode: string,
       location: string,
+      locationPlusCode: string,
       venueCity: string,
       venueState: string
 }
