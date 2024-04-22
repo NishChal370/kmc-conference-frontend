@@ -7,7 +7,6 @@ import ScheduleMaps from "./ScheduleMaps";
 interface IScheduleScheduleCard {
       scheduleDetail: IScheduleContentBriefDetailModel;
 }
-[];
 
 function ScheduleScheduleCard({ scheduleDetail }: IScheduleScheduleCard) {
       return (

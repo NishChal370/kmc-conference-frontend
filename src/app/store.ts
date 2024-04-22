@@ -36,6 +36,8 @@ import newsReducer from "@/admin/pages/news/feature/newsSlice";
 import contactUsReducer from "@/admin/pages/contactUs/feature/contactUsSlice";
 
 
+import verifyApplicantReducer from "@/admin/pages/verifyApplicant/feature/verifyApplicantSlice";
+
 export const store = configureStore({
       reducer: {
             qrModal: qrModalReducer,
@@ -69,6 +71,8 @@ export const store = configureStore({
             news: newsReducer,
 
             contactUs: contactUsReducer,
+
+            verifyApplicant: verifyApplicantReducer,
       },
 });
 
