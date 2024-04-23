@@ -1,3 +1,4 @@
+import { UserRole } from "@/enum/commonEnum";
 import { TIconType } from "@/models/icon/iconModel";
 
 export interface ISideNavDetail {
@@ -6,4 +7,5 @@ export interface ISideNavDetail {
       readonly Icon: TIconType,
       readonly subNav?: ReadonlyArray<ISideNavDetail>,
       readonly pathName: string,
+      readonly allowedRole?: UserRole[],
 }

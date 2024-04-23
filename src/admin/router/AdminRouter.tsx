@@ -23,6 +23,7 @@ import {
       VerifyApplicant,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
+import { SuperAdminRouter } from "./SuperAdminRouter";
 import {
       ADMIN_BASE_PATH,
       ADMIN_SCHEDULE_PATH,
@@ -198,6 +199,9 @@ export const AdminRouter: RouteObject = {
                               path: ADMIN_VERIFY_APPLICANT.verifyApplicant.basic,
                               element: <VerifyApplicant />,
                         },
+
+                        ...SuperAdminRouter,
+
                         {
                               path: "*",
                               element: <NotFound />,

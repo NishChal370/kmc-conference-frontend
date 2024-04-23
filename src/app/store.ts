@@ -34,7 +34,7 @@ import adminProfileReducer from "@/admin/pages/profileSetting/profile/feature/pr
 import appliedHistoryReducer from "@/admin/pages/profileSetting/appliedHistory/feature/appliedHistorySlice";
 import newsReducer from "@/admin/pages/news/feature/newsSlice";
 import contactUsReducer from "@/admin/pages/contactUs/feature/contactUsSlice";
-
+import auditLogSliceReducer from "@/admin/pages/auditLog/feature/auditLogSlice";
 
 import verifyApplicantReducer from "@/admin/pages/verifyApplicant/feature/verifyApplicantSlice";
 
@@ -71,6 +71,8 @@ export const store = configureStore({
             news: newsReducer,
 
             contactUs: contactUsReducer,
+
+            auditLogSlice: auditLogSliceReducer,
 
             verifyApplicant: verifyApplicantReducer,
       },

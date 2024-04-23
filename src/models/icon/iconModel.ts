@@ -32,6 +32,8 @@ export type TIconType =
       | "information"
       | "news"
       | "contactUs"
+      | "log"
+      | "audit-log"
       | "more-horizontal"
       | "sort-ascending"
       | "sort-descending"

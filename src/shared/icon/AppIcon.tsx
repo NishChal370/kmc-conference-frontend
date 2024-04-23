@@ -11,7 +11,9 @@ import {
       IconCarGarage,
       IconCheck,
       IconChevronDown,
+      IconClockCog,
       IconClockHour2,
+      IconClockRecord,
       IconColorFilter,
       IconDots,
       IconDownload,
@@ -159,6 +161,12 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "contactUs":
                         return <IconHeadset className={className} size={size ?? ICON.size} />;
+
+                  case "log":
+                        return <IconClockCog className={className} size={size ?? ICON.size} />;
+
+                  case "audit-log":
+                        return <IconClockRecord className={className} size={size ?? ICON.size} />;
 
                   case "more-horizontal":
                         return <IconDots className={className} size={size ?? ICON.size} />;

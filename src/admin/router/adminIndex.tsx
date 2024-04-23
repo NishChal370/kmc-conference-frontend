@@ -29,6 +29,8 @@ const AdminNews = lazy(() => import("@/admin/pages/news/AdminNews"));
 
 const AdminContactUs = lazy(() => import("@/admin/pages/contactUs/AdminContactUs"));
 
+const AuditLog = lazy(() => import("@/admin/pages/auditLog/AuditLog"));
+
 const VerifyApplicant = lazy(() => import("@/admin/pages/verifyApplicant/VerifyApplicant"));
 
 const NotFound = lazy(() => import("@/site/pages/notFound/NotFound"));
@@ -52,4 +54,5 @@ export {
       AdminContactUs,
       NotFound,
       VerifyApplicant,
+      AuditLog,
 };
