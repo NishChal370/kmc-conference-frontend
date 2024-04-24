@@ -7,7 +7,7 @@ export const adminAuditLogApi = {
       getAuditLog: (searchDetail: IAuditLogSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Audit${createQueryString(searchDetail)}&pageSize=2`,
+                  url: `Audit${createQueryString(searchDetail)}`,
             };
 
             return AXIOS.request(options);
