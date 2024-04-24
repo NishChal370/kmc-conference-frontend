@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
 import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
 import AdminParticipantTable from "../components/AdminParticipantTable";
-import { useURLQueryHandler, useURLQueryValues } from "@/hooks/urlQueryHandler";
+import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import useParticipantApi from "@/admin/hooks/participant/useParticipant";
 import { Status } from "@/enum/commonEnum";
