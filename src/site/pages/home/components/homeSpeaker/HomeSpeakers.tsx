@@ -47,7 +47,7 @@ function HomeSpeakers({ speakers, status, error }: IHomeSpeakers) {
                                     className="w-full h-fit 
                                           sm:col-span-2 
                                           lg:col-span-3 
-                                          xl:col-span-4
+                                          xl:col-span-3
                                     "
                               >
                                     {status === Status.FAILED ? (
