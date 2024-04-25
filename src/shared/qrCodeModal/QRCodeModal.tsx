@@ -9,6 +9,7 @@ import useQRApi from "@/admin/hooks/qr/useQRApi";
 import { Status } from "@/enum/commonEnum";
 import { ErrorMessage, NotFoundMessage } from "../errorMessage";
 import LoadingMessage from "../loading/LoadingMessage";
+import { ADMIN_VERIFY_APPLICANT } from "@/admin/constants/routePath";
 
 function QRCodeModal() {
       const dispatch = useAppDispatch();
@@ -43,6 +44,7 @@ function QRCodeModal() {
             getQR();
       }, []);
 
+      console.log(window.location.origin);
       return (
             <Modal title="" size="w-full sm:!max-w-[36rem]">
                   <span className="flex flex-col gap-12 items-center text-center justify-center w-full h-full">
@@ -58,7 +60,17 @@ function QRCodeModal() {
                                           <QRCode
                                                 id="qrCodeEl"
                                                 className="border-2 rounded-xl p-4"
-                                                value={qrCodeData ? JSON.stringify(qrCodeData) : ""}
+                                                value={
+                                                      qrCodeData
+                                                            ? `${
+                                                                    window.location.origin +
+                                                                    ADMIN_VERIFY_APPLICANT.verifyApplicant
+                                                                          .full
+                                                              }?qrId=${qrCodeData.id}&userCode=${
+                                                                    qrCodeData.userCode
+                                                              }`
+                                                            : ""
+                                                }
                                                 size={250}
                                                 bgColor="#ffffff"
                                                 fgColor="#000000"

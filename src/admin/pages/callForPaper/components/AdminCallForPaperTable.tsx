@@ -11,11 +11,14 @@ import { Status, UserRole } from "@/enum/commonEnum";
 import { NestedRowContainer, NestedRowWrapper } from "@/admin/shared/table/nested-table";
 import CallForPaperSchedule from "../../callForPaperSchedule/CallForPaperSchedule";
 import getIndex from "@/utils/uniqueId/getIndex";
+import { ISortDetail } from "@/admin/model/commonModel";
 
 interface IAdminCallForPaperTable {
       status: Status;
       currentPageNumber: number;
       callForPaperBasicInfo: ICallForPaperBasicModel[];
+      sortDetail: ISortDetail<unknown, unknown>;
+      sortHandler: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => void;
       openViewModalHandler: (viewingData: IAdminCallForPaperViewModal) => () => void;
       deleteCallForPaperDetailHandler: (deletingDetail: IAdminCallForPaperDeleteRequest) => () => void;
 }
@@ -24,12 +27,18 @@ function AdminCallForPaperTable({
       status,
       currentPageNumber,
       callForPaperBasicInfo,
+      sortDetail,
+      sortHandler,
       openViewModalHandler,
       deleteCallForPaperDetailHandler,
 }: IAdminCallForPaperTable) {
       return (
             <Table>
-                  <TableHead headers={CALL_FOR_PAPER_HEADER_LIST} />
+                  <TableHead
+                        headers={CALL_FOR_PAPER_HEADER_LIST}
+                        sortDetail={sortDetail}
+                        sortHandler={sortHandler}
+                  />
 
                   <TableBody status={status}>
                         <NestedRowContainer>

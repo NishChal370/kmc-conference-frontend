@@ -11,11 +11,14 @@ import { USER_HEADER_LIST } from "../data/userHeaderList";
 import getIndex from "@/utils/uniqueId/getIndex";
 import { UserStatus } from "@/enum/user/userEnum";
 import replaceUnderscoreWithSpace from "@/utils/stringFormat/replaceUnderscoreWithSpace";
+import { ISortDetail } from "@/admin/model/commonModel";
 
 interface IAdminUserTable {
       status: Status;
       users: IUserModel[];
       currentPageNumber: number;
+      sortDetail: ISortDetail<unknown, unknown>;
+      sortHandler: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => void;
       openViewModalHandler: (viewingData: IUserModel) => () => void;
       openEditRoleModalHandler: (editingData: IAdminUserRoleChangeModal) => () => void;
       openEditStatusModalHandler: (editingData: IAdminUserStatusChangeModal) => () => void;
@@ -25,13 +28,15 @@ function AdminUserTable({
       users,
       currentPageNumber,
       status,
+      sortDetail,
+      sortHandler,
       openViewModalHandler,
       openEditRoleModalHandler,
       openEditStatusModalHandler,
 }: IAdminUserTable) {
       return (
             <Table>
-                  <TableHead headers={USER_HEADER_LIST} />
+                  <TableHead headers={USER_HEADER_LIST} sortDetail={sortDetail} sortHandler={sortHandler} />
 
                   <TableBody status={status}>
                         <>

@@ -2,12 +2,13 @@ import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import { IParticipantPostRequest, IParticipationNewSessionPostRequest } from "@/admin/model/participant/attendScheduleModel";
 import { IAdminParticipantDeleteRequest, IParticipantBasicSearch, IParticipantByIdSearch } from "@/admin/model/participant/participantModel";
+import { createQueryString } from "@/utils/stringFormat/createQueryString";
 
 export const adminParticipantApi = {
       getBasicInfo: (searchDetail: IParticipantBasicSearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Participant?pageNumber=${searchDetail.pageNumber}`,
+                  url: `Participant${createQueryString(searchDetail)}`,
             };
 
             return AXIOS.request(options);

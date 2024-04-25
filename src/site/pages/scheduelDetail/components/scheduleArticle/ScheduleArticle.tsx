@@ -20,6 +20,7 @@ function ScheduleArticle({ scheduleDetail }: IScheduleArticle) {
                               [&>span]:flex [&>span]:flex-col [&>span]:justify-center [&>span]:gap-1.5
                               [&>span>*]:leading-loose
                               [&>span>h5]:text-xl [&>span>h5]:font-semibold
+                              [&>span>span>h5]:text-xl [&>span>span>h5]:font-semibold
                         "
                   >
                         <ScheduleArticleHeader scheduleDetail={scheduleDetail} />

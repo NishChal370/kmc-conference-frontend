@@ -12,6 +12,7 @@ import AppIcon from "@/shared/icon/AppIcon";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 import getIndex from "@/utils/uniqueId/getIndex";
 import { CONTACT_US_TABLE_HEADER } from "../data/adminContactUsTableHeader";
+import { ISortDetail } from "@/admin/model/commonModel";
 
 interface IAdminNewsTable {
       status: Status;
@@ -20,6 +21,8 @@ interface IAdminNewsTable {
       openEditStatusModalHandler: (editingData: IContactUsUpdateForm) => () => void;
       openViewModalHandler: (viewingData: IContactUsModel) => () => void;
       deleteNewsHandler: (deletingDetail: IContactUsDeleteRequest) => () => void;
+      sortDetail: ISortDetail<unknown, unknown>;
+      sortHandler: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => void;
 }
 function AdminContactUsTable({
       status,
@@ -28,10 +31,16 @@ function AdminContactUsTable({
       openEditStatusModalHandler,
       openViewModalHandler,
       deleteNewsHandler,
+      sortDetail,
+      sortHandler,
 }: IAdminNewsTable) {
       return (
             <Table>
-                  <TableHead headers={CONTACT_US_TABLE_HEADER} />
+                  <TableHead
+                        headers={CONTACT_US_TABLE_HEADER}
+                        sortDetail={sortDetail}
+                        sortHandler={sortHandler}
+                  />
 
                   <TableBody status={status}>
                         <>

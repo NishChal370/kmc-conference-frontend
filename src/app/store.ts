@@ -17,6 +17,8 @@ import registerUserReducer from "@/site/pages/registerUser/feature/registerUserS
 /***ADMIN PANEL */
 import adminSideNavReducer from "@/admin/layout/sideNav/feature/adminSideNavSlice";
 
+import applicantsStatisticReducer from "@/admin/pages/applicantsStatistic/feature/applicantsStatisticSlice";
+
 
 import dayThemeReducer from "@/admin/pages/dayTheme/feature/dayThemeSlice";
 import conferenceDayReducer from "@/admin/pages/conferenceDay/feature/conferenceDaySlice";
@@ -32,7 +34,9 @@ import adminProfileReducer from "@/admin/pages/profileSetting/profile/feature/pr
 import appliedHistoryReducer from "@/admin/pages/profileSetting/appliedHistory/feature/appliedHistorySlice";
 import newsReducer from "@/admin/pages/news/feature/newsSlice";
 import contactUsReducer from "@/admin/pages/contactUs/feature/contactUsSlice";
+import auditLogSliceReducer from "@/admin/pages/auditLog/feature/auditLogSlice";
 
+import verifyApplicantReducer from "@/admin/pages/verifyApplicant/feature/verifyApplicantSlice";
 
 export const store = configureStore({
       reducer: {
@@ -48,6 +52,8 @@ export const store = configureStore({
             verifyEmail: verifyEmailReducer,
 
             adminSideNav: adminSideNavReducer,
+
+            applicantsStatistic: applicantsStatisticReducer,
 
             dayTheme: dayThemeReducer,
             conferenceDay: conferenceDayReducer,
@@ -65,6 +71,10 @@ export const store = configureStore({
             news: newsReducer,
 
             contactUs: contactUsReducer,
+
+            auditLogSlice: auditLogSliceReducer,
+
+            verifyApplicant: verifyApplicantReducer,
       },
 });
 

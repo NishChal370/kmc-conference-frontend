@@ -59,6 +59,6 @@ export interface IBasicSliceState<TErrorDetail = IApiErrorDetail> {
 export interface IBasicSearchParam<TSortBy = undefined> {
       pageNumber: number;
       sortBy?: TSortBy;
-      orderBy?: OrderBy;
+      order?: OrderBy;
 }
 

@@ -1,9 +1,10 @@
 import { BaseSyntheticEvent } from "react";
-import { UseFormReturn } from "react-hook-form";
+import { Controller, UseFormReturn } from "react-hook-form";
 import SecondaryInput from "@/shared/input/SecondaryInput";
 import { Modal, ModalActionButtons, ModalFooter } from "@/shared/modal";
 import { IConferenceDayForm } from "@/admin/model/conferenceDay/conferenceDayModel";
 import { INPUT_ERROR_MESSAGE } from "@/constants/messages/inputErrorMessage";
+import LocationSelectInput from "@/shared/input/LocationSelectInput";
 
 interface IConferenceDayAddOrEditModal {
       modalType?: "Add" | "Edit";
@@ -21,6 +22,7 @@ function ConferenceDayAddOrEditModal({
       conferenceDayForm: {
             register,
             formState: { errors },
+            control,
       },
 }: IConferenceDayAddOrEditModal) {
       return (
@@ -40,6 +42,7 @@ function ConferenceDayAddOrEditModal({
                                     isRequired
                                     type="date"
                                     label="Date"
+                                    allowBackDate={modalType === "Edit"}
                                     errorMessage={errors.date?.message}
                               >
                                     {register("date", {
@@ -98,6 +101,27 @@ function ConferenceDayAddOrEditModal({
                                     </SecondaryInput>
                               </span>
 
+                              <Controller
+                                    control={control}
+                                    name="locationPlusCode"
+                                    rules={{
+                                          maxLength: {
+                                                value: 20,
+                                                message: INPUT_ERROR_MESSAGE.invalidPlusCodeLength,
+                                          },
+                                    }}
+                                    render={({ field, fieldState }) => (
+                                          <LocationSelectInput
+                                                label="Location"
+                                                errorMessage={fieldState.error?.message}
+                                                locationPlusCode={field.value}
+                                                submitSelectedLocation={(plusCode) => {
+                                                      field.onChange(plusCode?.trim());
+                                                }}
+                                          />
+                                    )}
+                              />
+
                               <SecondaryInput
                                     isRequired
                                     label="Parking Info"
@@ -124,6 +148,27 @@ function ConferenceDayAddOrEditModal({
                                     })}
                               </SecondaryInput>
 
+                              <Controller
+                                    control={control}
+                                    name="parkingPlusCode"
+                                    rules={{
+                                          maxLength: {
+                                                value: 20,
+                                                message: INPUT_ERROR_MESSAGE.invalidPlusCodeLength,
+                                          },
+                                    }}
+                                    render={({ field, fieldState }) => (
+                                          <LocationSelectInput
+                                                label="Parking"
+                                                errorMessage={fieldState.error?.message}
+                                                locationPlusCode={field.value}
+                                                submitSelectedLocation={(plusCode) => {
+                                                      field.onChange(plusCode?.trim());
+                                                }}
+                                          />
+                                    )}
+                              />
+
                               <SecondaryInput
                                     isRequired
                                     label="Accommodation Info"
@@ -149,6 +194,27 @@ function ConferenceDayAddOrEditModal({
                                           },
                                     })}
                               </SecondaryInput>
+
+                              <Controller
+                                    control={control}
+                                    name="hotelPlusCode"
+                                    rules={{
+                                          maxLength: {
+                                                value: 20,
+                                                message: INPUT_ERROR_MESSAGE.invalidPlusCodeLength,
+                                          },
+                                    }}
+                                    render={({ field, fieldState }) => (
+                                          <LocationSelectInput
+                                                label="Accommodation"
+                                                errorMessage={fieldState.error?.message}
+                                                locationPlusCode={field.value}
+                                                submitSelectedLocation={(plusCode) => {
+                                                      field.onChange(plusCode?.trim());
+                                                }}
+                                          />
+                                    )}
+                              />
                         </div>
 
                         <ModalFooter>

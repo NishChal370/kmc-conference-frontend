@@ -1,12 +1,13 @@
 import { AxiosRequestConfig } from "axios";
 import AXIOS from "@/api/constant";
 import { IConferenceDayDeleteRequest, IConferenceDayPostRequest, IConferenceDayPutRequest, IConferenceDaySearch } from "@/admin/model/conferenceDay/conferenceDayModel";
+import { createQueryString } from "@/utils/stringFormat/createQueryString";
 
 export const adminConferenceDayApi = {
       getDayDetail: (searchDetail: IConferenceDaySearch) => {
             const options: AxiosRequestConfig = {
                   method: "GET",
-                  url: `Days?pageNumber=${searchDetail.pageNumber}`,
+                  url: `Days${createQueryString(searchDetail)}`,
             };
 
             return AXIOS.request(options);

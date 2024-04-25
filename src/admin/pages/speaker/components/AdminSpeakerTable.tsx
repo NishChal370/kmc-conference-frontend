@@ -11,11 +11,14 @@ import { Status, UserRole } from "@/enum/commonEnum";
 import SpeakerSchedule from "../../speakerSchedule/SpeakerSchedule";
 import { NestedRowWrapper, NestedRowContainer } from "@/admin/shared/table/nested-table";
 import getIndex from "@/utils/uniqueId/getIndex";
+import { ISortDetail } from "@/admin/model/commonModel";
 
 interface IAdminSpeakerTable {
       status: Status;
       currentPageNumber: number;
       speakersBasicInfo: ISpeakerBasicModel[];
+      sortDetail: ISortDetail<unknown, unknown>;
+      sortHandler: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => void;
       openEditModalHandler: (editingData: ISpeakerViewOrEditModal) => () => void;
       openViewModalHandler: (viewingData: ISpeakerViewOrEditModal) => () => void;
       deleteSpeakerDetailHandler: (deletingDetail: ISpeakerDeleteRequest) => () => void;
@@ -23,6 +26,8 @@ interface IAdminSpeakerTable {
 
 function AdminSpeakerTable({
       status,
+      sortDetail,
+      sortHandler,
       currentPageNumber,
       speakersBasicInfo,
       openEditModalHandler,
@@ -31,7 +36,11 @@ function AdminSpeakerTable({
 }: IAdminSpeakerTable) {
       return (
             <Table>
-                  <TableHead headers={SPEAKER_HEADER_LIST} />
+                  <TableHead
+                        headers={SPEAKER_HEADER_LIST}
+                        sortDetail={sortDetail}
+                        sortHandler={sortHandler}
+                  />
 
                   <TableBody status={status}>
                         <NestedRowContainer>

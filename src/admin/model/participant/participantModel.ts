@@ -1,4 +1,4 @@
-import { IBasicApiResponse } from "@/models/commonModel";
+import { IBasicApiResponse, IBasicSearchParam } from "@/models/commonModel";
 import { IScheduleChoice } from "../schedule/scheduleModel";
 
 export interface IParticipantBasicModel {
@@ -49,9 +49,7 @@ export type IParticipantByIdResponse = IParticipantModel;
 
 
 
-export interface IParticipantBasicSearch {
-      pageNumber: number;
-}
+export type IParticipantBasicSearch = IBasicSearchParam;
 
 export interface IParticipantByIdSearch {
       id: IParticipantBasicModel["id"];

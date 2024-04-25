@@ -13,6 +13,7 @@ import useUserApi from "@/admin/hooks/user/useUserApi";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { userSliceAction, userSliceState } from "../feature/userSlice";
+import { USER_SORT_VALUE } from "../data/userSortValue";
 
 interface IAdminUserTableContainer {
       openEditRoleModal: (data: IAdminUserRoleChangeModal) => void;
@@ -33,12 +34,18 @@ function AdminUserTableContainer({
 
       const { getUsers } = useUserApi();
 
-      const { getSearchParmaValues } = useURLQueryHandler();
+      const { getSearchParmaValues, changeQuerySortBy } = useURLQueryHandler();
 
-      const { currentPageNumber } = getSearchParmaValues();
+      const { currentPageNumber, getCurrentOrderBy, getSearchParamSortBy } = getSearchParmaValues({
+            sortingValueList: USER_SORT_VALUE,
+      });
 
       const fetchData = () => {
-            getUsers({ pageNumber: currentPageNumber });
+            getUsers({
+                  pageNumber: currentPageNumber,
+                  sortBy: getSearchParamSortBy(),
+                  order: getCurrentOrderBy(),
+            });
       };
 
       const openViewModalHandler = (viewingData: IUserViewOrEditModal) => () => {
@@ -51,6 +58,12 @@ function AdminUserTableContainer({
 
       const openEditStatusModalHandler = (editingData: IAdminUserStatusChangeModal) => () => {
             openEditStatusModal(editingData);
+      };
+
+      const sortHandler = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+            const currentSortValue = e.currentTarget.dataset.value;
+
+            if (currentSortValue) changeQuerySortBy({ sortBy: currentSortValue });
       };
 
       useEffect(() => {
@@ -67,6 +80,8 @@ function AdminUserTableContainer({
             <>
                   <AdminUserTable
                         status={status}
+                        sortHandler={sortHandler}
+                        sortDetail={{ getOrderBy: getCurrentOrderBy, getSort: getSearchParamSortBy }}
                         currentPageNumber={currentPageNumber}
                         users={data.registeredUsers}
                         openViewModalHandler={openViewModalHandler}

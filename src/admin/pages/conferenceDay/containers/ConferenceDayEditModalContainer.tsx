@@ -29,6 +29,9 @@ function ConferenceDayEditModalContainer({
                         location: conferenceUpdatedDay.location,
                         venueCity: conferenceUpdatedDay.venueCity,
                         venueState: conferenceUpdatedDay.venueState,
+                        locationPlusCode: conferenceUpdatedDay.locationPlusCode,
+                        parkingPlusCode: conferenceUpdatedDay.parkingPlusCode,
+                        hotelPlusCode: conferenceUpdatedDay.hotelPlusCode,
                   },
             };
 
@@ -49,6 +52,9 @@ function ConferenceDayEditModalContainer({
                   location: conferenceDayDetail.venueInfo.location,
                   venueCity: conferenceDayDetail.venueInfo.venueCity,
                   venueState: conferenceDayDetail.venueInfo.venueState,
+                  locationPlusCode: conferenceDayDetail.venueInfo.locationPlusCode,
+                  parkingPlusCode: conferenceDayDetail.venueInfo.parkingPlusCode,
+                  hotelPlusCode: conferenceDayDetail.venueInfo.hotelPlusCode,
             };
 
             reset(initialValue);

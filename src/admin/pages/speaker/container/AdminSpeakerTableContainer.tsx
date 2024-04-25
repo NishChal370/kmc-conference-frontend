@@ -10,6 +10,7 @@ import useSpeakerApi from "@/admin/hooks/speaker/useSpeakerApi";
 import { Status } from "@/enum/commonEnum";
 import { ISpeakerDeleteRequest, ISpeakerViewOrEditModal } from "@/admin/model/speaker/speakerModel";
 import { speakerBasicInfoSliceState, speakerSliceAction } from "../feature/speakerSlice";
+import { SPEAKER_SORT_VALUE } from "../data/speakerSortValue";
 
 interface IAdminSpeakerTableContainer {
       openEditModal: ({ editingData }: { editingData: ISpeakerViewOrEditModal }) => void;
@@ -25,12 +26,18 @@ function AdminSpeakerTableContainer({ openViewModal, openEditModal }: IAdminSpea
 
       const { getSpeakerBasicInfo, deleteSpeakerDetail } = useSpeakerApi();
 
-      const { getSearchParmaValues, clearAllSearchParam } = useURLQueryHandler();
+      const { getSearchParmaValues, changeQuerySortBy } = useURLQueryHandler();
 
-      const { currentPageNumber } = getSearchParmaValues();
+      const { currentPageNumber, getCurrentOrderBy, getSearchParamSortBy } = getSearchParmaValues({
+            sortingValueList: SPEAKER_SORT_VALUE,
+      });
 
       const fetchData = () => {
-            getSpeakerBasicInfo({ pageNumber: currentPageNumber });
+            getSpeakerBasicInfo({
+                  pageNumber: currentPageNumber,
+                  sortBy: getSearchParamSortBy(),
+                  order: getCurrentOrderBy(),
+            });
       };
 
       const openViewModalHandler = (viewingData: ISpeakerViewOrEditModal) => () => {
@@ -43,6 +50,12 @@ function AdminSpeakerTableContainer({ openViewModal, openEditModal }: IAdminSpea
 
       const deleteSpeakerDetailHandler = (deletingDetail: ISpeakerDeleteRequest) => () => {
             deleteSpeakerDetail(deletingDetail);
+      };
+
+      const sortHandler = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+            const currentSortValue = e.currentTarget.dataset.value;
+
+            if (currentSortValue) changeQuerySortBy({ sortBy: currentSortValue });
       };
 
       useEffect(() => {
@@ -59,6 +72,8 @@ function AdminSpeakerTableContainer({ openViewModal, openEditModal }: IAdminSpea
             <>
                   <AdminSpeakerTable
                         status={status}
+                        sortHandler={sortHandler}
+                        sortDetail={{ getOrderBy: getCurrentOrderBy, getSort: getSearchParamSortBy }}
                         currentPageNumber={currentPageNumber}
                         speakersBasicInfo={data.speakers}
                         openViewModalHandler={openViewModalHandler}
@@ -70,9 +85,7 @@ function AdminSpeakerTableContainer({ openViewModal, openEditModal }: IAdminSpea
                         <ErrorMessage title={error?.title} detail={error?.detail} traceId={error?.traceId} />
                   )}
 
-                  {status === Status.DATA_NOT_FOUND && (
-                        <NotFoundMessage viewAllHandler={clearAllSearchParam} buttonTitle="Reload" />
-                  )}
+                  {status === Status.DATA_NOT_FOUND && <NotFoundMessage />}
 
                   {(status === Status.IDEL || status === Status.LOADING) && <LoadingMessage />}
             </>

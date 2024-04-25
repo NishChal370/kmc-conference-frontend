@@ -1,4 +1,4 @@
-import { IBasicApiResponse } from "@/models/commonModel"
+import { IBasicApiResponse, IBasicSearchParam } from "@/models/commonModel"
 
 export interface IConferenceDayModel {
       id: number,
@@ -7,11 +7,14 @@ export interface IConferenceDayModel {
       venueInfo: {
             parkingInfo: string,
             parkingLocation: string,
+            parkingPlusCode: string,
             hotelInfo: string,
             hotelLocation: string,
+            hotelPlusCode: string,
             location: string,
             venueCity: string,
             venueState: string
+            locationPlusCode: string,
       }
 }
 
@@ -21,9 +24,7 @@ export interface IConferenceDayResponse extends IBasicApiResponse {
 }
 
 
-export interface IConferenceDaySearch {
-      pageNumber?: number;
-}
+export type IConferenceDaySearch = IBasicSearchParam;
 
 
 export interface IConferenceDayForm {
@@ -31,9 +32,12 @@ export interface IConferenceDayForm {
       date: string,
       parkingInfo: string,
       parkingLocation: string,
+      parkingPlusCode: string,
       hotelInfo: string,
       hotelLocation: string,
+      hotelPlusCode: string,
       location: string,
+      locationPlusCode: string,
       venueCity: string,
       venueState: string
 }

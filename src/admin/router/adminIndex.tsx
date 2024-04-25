@@ -1,5 +1,7 @@
 import { lazy } from "react";
 
+const Dashboard = lazy(() => import("@/admin/pages/dashboard/Dashboard"));
+
 const Days = lazy(() => import("@/admin/pages/conferenceDay/ConferenceDay"));
 const AdminDayTheme = lazy(() => import("@/admin/pages/dayTheme/AdminDayTheme"));
 
@@ -27,9 +29,14 @@ const AdminNews = lazy(() => import("@/admin/pages/news/AdminNews"));
 
 const AdminContactUs = lazy(() => import("@/admin/pages/contactUs/AdminContactUs"));
 
+const AuditLog = lazy(() => import("@/admin/pages/auditLog/AuditLog"));
+
+const VerifyApplicant = lazy(() => import("@/admin/pages/verifyApplicant/VerifyApplicant"));
+
 const NotFound = lazy(() => import("@/site/pages/notFound/NotFound"));
 
 export {
+      Dashboard,
       Days,
       AdminDayTheme,
       AdminSchedule,
@@ -46,4 +53,6 @@ export {
       AdminNews,
       AdminContactUs,
       NotFound,
+      VerifyApplicant,
+      AuditLog,
 };

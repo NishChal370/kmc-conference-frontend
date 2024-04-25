@@ -1,4 +1,4 @@
-import { IBasicApiResponse } from "@/models/commonModel";
+import { IBasicApiResponse, IBasicSearchParam } from "@/models/commonModel";
 import { IDayThemeModel } from "../dayTheme/dayThemeModel";
 
 export interface IScheduleModel {
@@ -16,9 +16,8 @@ export interface ISchedulesResponse extends IBasicApiResponse {
 }
 
 
-export interface IScheduleSearch {
+export interface IScheduleSearch extends IBasicSearchParam {
       themeId?: IDayThemeModel["id"]
-      pageNumber?: number;
 }
 
 

@@ -1,4 +1,4 @@
-import { IBasicApiResponse } from "@/models/commonModel";
+import { IBasicApiResponse, IBasicSearchParam } from "@/models/commonModel";
 import { ContactReplyStatus } from "@/enum/contactUs/contactUsEnum";
 
 
@@ -17,9 +17,7 @@ export interface IContactUsResponse extends IBasicApiResponse {
       contactUs: IContactUsModel[];
 }
 
-export interface IContactUsSearch {
-      pageNumber: number;
-}
+export type IContactUsSearch = IBasicSearchParam;
 
 
 export interface IContactUsPostRequest {

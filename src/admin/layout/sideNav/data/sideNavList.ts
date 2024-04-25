@@ -1,6 +1,7 @@
 
-import { ADMIN_DASHBOARD_PATH, ADMIN_DAYS_PATH, ADMIN_DAY_THEME_PATH, ADMIN_SCHEDULE_PATH, ADMIN_APPLICANT_PATH, ADMIN_ADMINISTRATION_PATH, ADMIN_INFORMATION_PATH } from "@/admin/constants/routePath";
+import { ADMIN_DASHBOARD_PATH, ADMIN_DAYS_PATH, ADMIN_DAY_THEME_PATH, ADMIN_SCHEDULE_PATH, ADMIN_APPLICANT_PATH, ADMIN_ADMINISTRATION_PATH, ADMIN_INFORMATION_PATH, ADMIN_LOG_PATH } from "@/admin/constants/routePath";
 import { ISideNavDetail } from "@/admin/model/sideNav/sideNavModel";
+import { UserRole } from "@/enum/commonEnum";
 import getUniqueId from "@/utils/uniqueId/getUniqueId"
 
 export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [
@@ -94,6 +95,23 @@ export const SIDE_NAV_LIST: ReadonlyArray<ISideNavDetail> = [
                         pathName: ADMIN_INFORMATION_PATH.contactUs.full,
                   },
             ]
+      },
+
+      {
+            id: getUniqueId(),
+            title: "Logs",
+            Icon: "log",
+            pathName: ADMIN_LOG_PATH.base.basic,
+            allowedRole: [UserRole.SUPER_ADMIN],
+            subNav: [
+                  {
+                        id: getUniqueId(),
+                        title: "Audit logs",
+                        Icon: "audit-log",
+                        pathName: ADMIN_LOG_PATH.auditLog.full,
+
+                  }
+            ],
       },
 
 ];

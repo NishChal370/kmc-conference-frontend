@@ -5,6 +5,7 @@ import { Status, UserRole } from "@/enum/commonEnum";
 import AppIcon from "@/shared/icon/AppIcon";
 import { IDayThemeDeleteRequest, IDayThemeModel } from "@/admin/model/dayTheme/dayThemeModel";
 import getIndex from "@/utils/uniqueId/getIndex";
+import { ISortDetail } from "@/admin/model/commonModel";
 
 interface IAdminDayTheme {
       status: Status;
@@ -14,6 +15,8 @@ interface IAdminDayTheme {
       openEditModalHandler: (editingData: IDayThemeModel) => () => void;
       deleteHandler: (deletingData: IDayThemeDeleteRequest) => () => void;
       viewScheduleHandler: (themeId: IDayThemeModel["id"]) => () => void;
+      sortDetail: ISortDetail<unknown, unknown>;
+      sortHandler: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => void;
 }
 
 function AdminDayThemeTable({
@@ -24,10 +27,16 @@ function AdminDayThemeTable({
       viewScheduleHandler,
       openEditModalHandler,
       openViewModalHandler,
+      sortDetail,
+      sortHandler,
 }: IAdminDayTheme) {
       return (
             <Table>
-                  <TableHead headers={DAY_THEME_HEADER_LIST} />
+                  <TableHead
+                        headers={DAY_THEME_HEADER_LIST}
+                        sortDetail={sortDetail}
+                        sortHandler={sortHandler}
+                  />
 
                   <TableBody status={status}>
                         <>

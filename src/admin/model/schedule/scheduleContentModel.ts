@@ -68,7 +68,11 @@ export interface IScheduleContentBriefDetailModel {
             hotelLocation: string,
             location: string,
             venueCity: string,
-            venueState: string
+            venueState: string,
+            parkingPlusCode: string | null,
+            hotelPlusCode: string | null,
+            locationPlusCode: string | null,
+
       },
       speakers: [
             {

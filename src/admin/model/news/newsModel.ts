@@ -1,4 +1,4 @@
-import { IBasicApiResponse } from "@/models/commonModel";
+import { IBasicApiResponse, IBasicSearchParam } from "@/models/commonModel";
 import { IAttachment, IFilUpdateDetail } from "@/models/file/fileModel";
 
 
@@ -21,8 +21,7 @@ export interface INewsBasicResponse extends IBasicApiResponse {
 }
 
 
-export interface INewsBasicSearch {
-      pageNumber: number;
+export interface INewsBasicSearch extends IBasicSearchParam {
       pageSize?: number;
 }
 

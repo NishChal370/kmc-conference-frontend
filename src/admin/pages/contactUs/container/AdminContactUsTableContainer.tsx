@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { contactUsDetailsSliceState, contactUsSliceAction } from "../feature/contactUsSlice";
 import useContactUsApi from "@/admin/hooks/contactUs/useContactUsApi";
-import { useURLQueryValues } from "@/hooks/urlQueryHandler";
+import { useURLQueryHandler } from "@/hooks/urlQueryHandler";
 import { Status } from "@/enum/commonEnum";
 import { ErrorMessage, NotFoundMessage } from "@/shared/errorMessage";
 import LoadingMessage from "@/shared/loading/LoadingMessage";
@@ -13,6 +13,7 @@ import {
       IContactUsUpdateForm,
       IContactUsViewModal,
 } from "@/admin/model/contactUs/contactUsModel";
+import { CONTACT_US_SORT_VALUE } from "../data/contactUsSortValue";
 
 interface IAdminContactUsTableContainer {
       openViewModal: ({ viewingData }: { viewingData: IContactUsViewModal }) => void;
@@ -27,10 +28,17 @@ function AdminContactUsTableContainer({ openEditStatusModal, openViewModal }: IA
 
       const { getContactUs, deleteContactUs } = useContactUsApi();
 
-      const { currentPageNumber } = useURLQueryValues();
+      const { getSearchParmaValues, changeQuerySortBy } = useURLQueryHandler();
+      const { currentPageNumber, getCurrentOrderBy, getSearchParamSortBy } = getSearchParmaValues({
+            sortingValueList: CONTACT_US_SORT_VALUE,
+      });
 
       const fetchData = () => {
-            getContactUs({ pageNumber: currentPageNumber });
+            getContactUs({
+                  pageNumber: currentPageNumber,
+                  sortBy: getSearchParamSortBy(),
+                  order: getCurrentOrderBy(),
+            });
       };
 
       const openEditStatusModalHandler = (editingData: IContactUsUpdateForm) => () => {
@@ -43,6 +51,12 @@ function AdminContactUsTableContainer({ openEditStatusModal, openViewModal }: IA
 
       const deleteNewsHandler = (deletingDetail: IContactUsDeleteRequest) => () => {
             deleteContactUs(deletingDetail);
+      };
+
+      const sortHandler = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+            const currentSortValue = e.currentTarget.dataset.value;
+
+            if (currentSortValue) changeQuerySortBy({ sortBy: currentSortValue });
       };
 
       useEffect(() => {
@@ -59,6 +73,8 @@ function AdminContactUsTableContainer({ openEditStatusModal, openViewModal }: IA
             <>
                   <AdminContactUsTable
                         status={status}
+                        sortHandler={sortHandler}
+                        sortDetail={{ getOrderBy: getCurrentOrderBy, getSort: getSearchParamSortBy }}
                         currentPageNumber={currentPageNumber}
                         contactUsDetails={data.contactUs}
                         openEditStatusModalHandler={openEditStatusModalHandler}

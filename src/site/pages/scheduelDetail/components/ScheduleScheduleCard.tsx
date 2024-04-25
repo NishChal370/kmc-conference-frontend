@@ -2,11 +2,11 @@ import { ICON } from "@/constants/icon";
 import AppIcon from "@/shared/icon/AppIcon";
 import changeDateFormat from "@/utils/dateFormat/changeDateFormat";
 import { IScheduleContentBriefDetailModel } from "@/admin/model/schedule/scheduleContentModel";
+import ScheduleMaps from "./ScheduleMaps";
 
 interface IScheduleScheduleCard {
       scheduleDetail: IScheduleContentBriefDetailModel;
 }
-[];
 
 function ScheduleScheduleCard({ scheduleDetail }: IScheduleScheduleCard) {
       return (
@@ -55,7 +55,11 @@ function ScheduleScheduleCard({ scheduleDetail }: IScheduleScheduleCard) {
                         </span>
                   </div>
 
-                  {/* <img className="w-full h-60" src="https://i.stack.imgur.com/HILmr.png" alt="map-img" /> */}
+                  <ScheduleMaps
+                        locationCode={scheduleDetail.venueInfo.locationPlusCode}
+                        accommodationCode={scheduleDetail.venueInfo.hotelPlusCode}
+                        parkingCode={scheduleDetail.venueInfo.parkingPlusCode}
+                  />
             </aside>
       );
 }

@@ -24,8 +24,13 @@ function AdminDayThemeAddOrEditForm({
             register,
             control,
             formState: { errors },
+            watch,
       },
 }: IAdminDayThemeAddOrEditForm) {
+      // Watch values to compare
+      const startTime = watch("plenaryStartTime");
+      const endTime = watch("plenaryEndTime");
+
       return (
             <Modal
                   title={`${modalType} Theme Detail`}
@@ -98,6 +103,14 @@ function AdminDayThemeAddOrEditForm({
                                                       value: true,
                                                       message: INPUT_ERROR_MESSAGE.empty,
                                                 },
+                                                validate: (value) => {
+                                                      return (
+                                                            !value ||
+                                                            !endTime ||
+                                                            value < endTime ||
+                                                            INPUT_ERROR_MESSAGE.invalidStartTime
+                                                      );
+                                                },
                                           })}
                                     </SecondaryInput>
 
@@ -112,6 +125,14 @@ function AdminDayThemeAddOrEditForm({
                                                 required: {
                                                       value: true,
                                                       message: INPUT_ERROR_MESSAGE.empty,
+                                                },
+                                                validate: (value) => {
+                                                      return (
+                                                            !value ||
+                                                            !startTime ||
+                                                            value > startTime ||
+                                                            INPUT_ERROR_MESSAGE.invalidEndTime
+                                                      );
                                                 },
                                           })}
                                     </SecondaryInput>

@@ -19,8 +19,11 @@ import {
       NotFound,
       AdminNews,
       AdminContactUs,
+      Dashboard,
+      VerifyApplicant,
 } from "./adminIndex";
 import { PrivateRoute } from "@/protectedRoute";
+import { SuperAdminRouter } from "./SuperAdminRouter";
 import {
       ADMIN_BASE_PATH,
       ADMIN_SCHEDULE_PATH,
@@ -30,6 +33,7 @@ import {
       ADMIN_ADMINISTRATION_PATH,
       ADMIN_PROFILE_SETTING_PATH,
       ADMIN_INFORMATION_PATH,
+      ADMIN_VERIFY_APPLICANT,
 } from "@/admin/constants/routePath";
 import { CheckDynamicRouteType } from "@/helper/validateRoute";
 
@@ -46,7 +50,7 @@ export const AdminRouter: RouteObject = {
                   children: [
                         {
                               index: true,
-                              element: <h1>Dashboard</h1>,
+                              element: <Dashboard />,
                         },
 
                         {
@@ -191,6 +195,13 @@ export const AdminRouter: RouteObject = {
                                     },
                               ],
                         },
+                        {
+                              path: ADMIN_VERIFY_APPLICANT.verifyApplicant.basic,
+                              element: <VerifyApplicant />,
+                        },
+
+                        ...SuperAdminRouter,
+
                         {
                               path: "*",
                               element: <NotFound />,
