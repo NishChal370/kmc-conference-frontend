@@ -18,7 +18,7 @@ function ScheduleTopicArticle({ topicDetails }: IScheduleTopicArticle) {
                         article={topicDetails.internationalCases}
                   />
 
-                  <ScheduleArticleText title="Work shop" article={topicDetails.workshop} />
+                  <ScheduleArticleText title="Workshop" article={topicDetails.workshop} />
             </>
       );
 }

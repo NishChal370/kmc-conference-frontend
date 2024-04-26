@@ -83,12 +83,12 @@ function LocationMapModal({
                                           className="w-full px-3 py-[0.375rem] bg-white border border-mute-gray rounded-md 
                                                 outline-none focus-within:ring-0
                                           "
-                                          placeholder="past your location lat and long here"
+                                          placeholder="Paste your location lat and long here"
                                           onChange={inputChangeHandler}
                                     />
 
                                     <p className="text-center text-blue-900">
-                                          Past your location lat and long above
+                                          Paste your location lat and long above
                                     </p>
 
                                     <button
