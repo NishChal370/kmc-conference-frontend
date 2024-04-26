@@ -42,6 +42,7 @@ export type TIconType =
       | "delete"
       | "add"
       | "download"
+      | "infoCircle"
       | "user"
       | "logout"
       | "error";

@@ -1,6 +1,7 @@
 import { ReactElement, useState } from "react";
 import { Modal } from "../modal";
 import LoadingAnimation from "../loading/LoadingAnimation";
+import GetLatAndLongInstructionModal from "./GetLatAndLongInstructionModal";
 
 /**
  * @interface ILocationMapModalProps
@@ -73,10 +74,12 @@ function LocationMapModal({
 
                         {needInput && (
                               <form className="flex flex-col gap-2">
-                                    <label htmlFor="plus-code" className="font-semibold">
-                                          Location (lat and long):
-                                    </label>
-
+                                    <span className="flex gap-4">
+                                          <label htmlFor="plus-code" className="font-semibold">
+                                                Location (lat and long):
+                                          </label>
+                                          <GetLatAndLongInstructionModal />
+                                    </span>
                                     <input
                                           id="plus-code"
                                           value={selectedPlusCode}

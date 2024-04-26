@@ -22,6 +22,7 @@ import {
       IconEye,
       IconHeadset,
       IconHome2,
+      IconInfoCircle,
       IconInfoSquare,
       IconLock,
       IconLockOpen,
@@ -99,6 +100,9 @@ function AppIcon({ name, className, size }: IIcon) {
 
                   case "arrow-left":
                         return <IconArrowNarrowLeft className={className} size={size ?? ICON.size} />;
+
+                  case "infoCircle":
+                        return <IconInfoCircle className={className} size={size ?? ICON.size} />;
 
                   case "lock":
                         return <IconLock className={className} size={size ?? ICON.size} />;
