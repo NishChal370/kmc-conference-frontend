@@ -1,35 +1,35 @@
-# For build React app
-FROM node:lts AS development
+# Stage 1: Build the React app
+FROM node:lts AS build
 
 # Set working directory
 WORKDIR /app
 
-# 
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
 
+# Install dependencies using npm
 RUN npm ci
 
-COPY . /app
+# Copy the rest of the application code
+COPY . .
 
-FROM development AS build
+# Build the application
+RUN npm run build:prod
 
-RUN npm run build:staging
+# Stage 2: Run the application using Node.js
+FROM node:lts
 
+# Set working directory
+WORKDIR /app
 
-# For Nginx setup
-FROM nginx:alpine
+# Copy built files from the previous stage
+COPY --from=build /app/dist ./dist
 
-# Copy config nginx
-COPY --from=build /app/.nginx/nginx.conf /etc/nginx/conf.d/default.conf
+# Install a simple HTTP server to serve the app
+RUN npm install -g serve
 
-WORKDIR /usr/share/nginx/html
+# Expose port 3000
+EXPOSE 3001
 
-# Remove default nginx static assets
-RUN rm -rf ./*
-
-# Copy static assets from builder stage
-COPY --from=build /app/dist .
-
-# Containers run nginx with global directives and daemon off
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# Command to run the app
+CMD ["serve", "-s", "dist", "-l", "3001"]
